@@ -169,7 +169,7 @@ static var music_path: String = ""
 static var wap_path: String = ""
 static var wap_missing: Dictionary = {}
 static var sfx_master: float = 1.0
-static var music_volume: float = 1.0
+static var music_volume: float = 255.0
 # FMOD channel handles live far above sample indices and the game's "no channel"
 # sentinels (-1, 0, 9999, ...), so a stale or sentinel handle never matches a player.
 static var sfx_next_chan: int = 0x10000

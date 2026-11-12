@@ -5176,10 +5176,10 @@ static func script_sterowanie(S, A: Array) -> Variant:
     if (R.eqv(S, G.viewed, 0) and (S.g_plynne_przejscie < 500)):
         S.g_plynne_przejscie += 5
     if (R.eqv(S, G.viewed, 0) and (S.g_plynne_przejscie >= 500)):
-        R.aset(R.view_enabled, 0, 0)
+        R.view_enabled = 0
         R.aset(R.view_visible, 0, 1)
     if (R.eqv(S, G.viewed, 1) and (S.g_plynne_przejscie >= 1)):
-        R.aset(R.view_enabled, 0, 1)
+        R.view_enabled = 1
         R.aset(R.view_visible, 0, 1)
         S.g_plynne_przejscie = R.max(S, 1, (S.g_plynne_przejscie / float(1.05)))
     R.aset(R.view_xview, 0, ((((((((S.x / float(10))) - 51) + R.random(S, G.shakescreen)) - R.random(S, G.shakescreen)) + (G.shake * R.sin(S, R.degtorad(S, G.shake2))))) / float(S.g_plynne_przejscie)))
