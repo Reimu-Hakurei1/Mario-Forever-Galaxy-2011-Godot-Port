@@ -1,0 +1,83 @@
+{
+ "counts": {
+  "embedded_copied": 1445,
+  "embedded_sprites": 439,
+  "embedded_backgrounds": 10,
+  "embedded_frames": 1445,
+  "sound_slots": 138,
+  "sound_slots_unresolved": 7,
+  "music_slots": 0,
+  "music_slots_unresolved": 0,
+  "runtime_paths": 0,
+  "runtime_paths_unresolved": 0,
+  "sprite_add_calls": 0,
+  "background_add_calls": 0,
+  "loose_copied": 301,
+  "loose_total": 301,
+  "wap_sequences": 0,
+  "gaps": 38
+ },
+ "unresolved": {
+  "sounds": [
+   "snd_bonus_multipler.wav",
+   "snd_speech_amunition.wav",
+   "snd_speech_energy.wav",
+   "snd_speech_points.wav",
+   "snd_speech_special_weapon_upgrade.wav",
+   "snd_speech_sucker.wav",
+   "snd_speech_weapon_upgrade.wav"
+  ],
+  "music": [],
+  "runtime": []
+ },
+ "gaps": {
+  "objects_without_texture": [],
+  "rooms_without_bg": [],
+  "tiles_without_bg": [],
+  "plays_of_unloaded_slot": [
+   5,
+   29,
+   47
+  ],
+  "rooms_missing_scene": [
+   "card_game_1",
+   "card_game_2",
+   "level_0000",
+   "room0",
+   "room_animation_1",
+   "room_animation_2",
+   "room_animation_3",
+   "room_animation_4",
+   "room_choose_hero",
+   "room_map",
+   "room_map2",
+   "room_map3",
+   "room_map4",
+   "room_map5",
+   "room_map6",
+   "room_map7",
+   "room_map8",
+   "room_map_indicator",
+   "room_map_indicator2",
+   "room_map_indicator3",
+   "room_map_indicator4",
+   "room_map_indicator5",
+   "room_map_indicator6",
+   "room_map_indicator7",
+   "room_map_indicator8",
+   "room_samplerizer",
+   "room_savegame",
+   "room_sekwencja_nowej_mapy",
+   "room_shop",
+   "room_the_end_1",
+   "room_the_end_2",
+   "room_the_end_3",
+   "room_warp_1",
+   "starter",
+   "title"
+  ],
+  "literal_slots_dynamic": 5,
+  "empty_in_original": {},
+  "empty_in_original_examples": {}
+ }
+}

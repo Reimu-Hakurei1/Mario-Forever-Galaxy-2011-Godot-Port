@@ -1,0 +1,17 @@
+.godot/
+.qoder/
+__pycache__/
+*.pyc
+*.tmp
+*.log
+*.bak
+*.zip
+*.pck
+*.exe
+*.dat
+*.sav
+saves/
+user_data/
+export_credentials.cfg
+.env
+.env.*

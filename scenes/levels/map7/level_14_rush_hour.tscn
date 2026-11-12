@@ -1,0 +1,703 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Script" path="res://runtime/room_preview_boot.gd" id="boot"]
+
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin2.230.0.png" id="wave_tex_0"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin.229.0.png" id="wave_tex_1"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_u.112.0.png" id="wave_tex_2"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_u_crack.177.0.png" id="wave_tex_3"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonuschestmask.244.0.png" id="wave_tex_4"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonuschest2.245.0.png" id="wave_tex_5"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite157.157.0.png" id="wave_tex_6"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite161.161.0.png" id="wave_tex_7"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_c.30.0.png" id="wave_tex_8"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_f.34.0.png" id="wave_tex_9"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_l.68.0.png" id="wave_tex_10"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_m.69.0.png" id="wave_tex_11"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_n.70.0.png" id="wave_tex_12"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_p.73.0.png" id="wave_tex_13"]
+
+[sub_resource type="CanvasItemMaterial" id="player_add"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="player_subtract"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend2"]
+blend_mode = 2
+
+[node name="level_14_rush_hour" type="Node2D"]
+metadata/gm_room = "level_0000"
+metadata/gm_map = 6
+metadata/gm_lev = 14
+metadata/gm_minigame = 0
+metadata/gm_label = "RUSH_HOUR"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Bg0_background0" type="Node2D" parent="."]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Bg1_background0" type="Node2D" parent="."]
+z_index = -4079
+metadata/gm_foreground = false
+metadata/gm_background_slot = 1
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_-10000000" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -10000000
+
+[node name="o_hud_0" type="Sprite2D" parent="Objects_-10000000"]
+metadata/gm_object = "o_hud"
+metadata/gm_object_index = 3
+metadata/gm_id = "room_create_0"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 5
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(1024,600,o_hud)"
+position = Vector2(871, 0)
+metadata/gm_position = Vector2(1024.0, 600.0)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="Objects_-1000000" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = -1000000
+
+[node name="o_gameoverus_0" type="Sprite2D" parent="Objects_-1000000"]
+metadata/gm_object = "o_gameoverus"
+metadata/gm_object_index = 136
+metadata/gm_id = "room_create_3"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 70
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(400,300,o_gameoverus)"
+position = Vector2(400.0, 300.0)
+metadata/gm_position = Vector2(400.0, 300.0)
+metadata/gm_empty_draw_event = true
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_gameoverus [room_create_3]"
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 0
+
+[node name="o_player_a_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_player_a"
+metadata/gm_object_index = 0
+metadata/gm_id = 100322
+metadata/gm_visible = true
+metadata/gm_sprite_index = 543
+metadata/gm_preview_only = false
+position = Vector2(416, 576)
+metadata/gm_position = Vector2(416, 576)
+metadata/gm_empty_draw_event = false
+rotation = -1.570796327
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-48, -74)
+centered = false
+material = SubResource("player_add")
+
+[node name="Mask" type="Sprite2D" parent="Objects_0/o_player_a_0"]
+show_behind_parent = true
+material = SubResource("player_subtract")
+texture = ExtResource("t3")
+offset = Vector2(-48, -74)
+centered = false
+
+[node name="o_przeciwnikor_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_przeciwnikor"
+metadata/gm_object_index = 532
+metadata/gm_id = "room_create_1"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(0,0,o_przeciwnikor)"
+position = Vector2(0.0, 0.0)
+metadata/gm_position = Vector2(0.0, 0.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_przeciwnikor [room_create_1]"
+
+[node name="o_bonusho_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_bonusho"
+metadata/gm_object_index = 365
+metadata/gm_id = "room_create_2"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(-1000,-1000,o_bonusho)"
+position = Vector2(-1000.0, -1000.0)
+metadata/gm_position = Vector2(-1000.0, -1000.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 1784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_bonusho [room_create_2]"
+
+[node name="WAVE_REPRESENTATION_PREVIEW_ONLY_1" type="Node2D" parent="."]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_map = 6
+metadata/gm_zcx = 14
+metadata/gm_representation = "Source wave panels, NOT simultaneous enemies"
+metadata/gm_coverage = "Fixed targets where known; conditional source-declared rosters elsewhere. No runtime instances."
+metadata/gm_appearance = "Canonical textures/origins; static rest poses, no animation or damage effects."
+z_index = 100
+
+[node name="Label_2" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+offset_left = 20
+offset_top = 8
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "EDITOR WAVE REPRESENTATION - NOT SIMULTANEOUS"
+
+[node name="WAVE_00_period_86_at_t_8_3" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 86 AT T=8"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_map_7.598.gml:354"
+metadata/gm_perioder = 86
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=8; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 0
+metadata/gm_map = 6
+metadata/gm_zcx = 14
+
+[node name="Label_4" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 86 AT T=8 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_5" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_6" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 10
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if monetowanie>1000 && fififi>2500 && monetywowo>0"]
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 10, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if monetowanie>1000 && fififi>2500 && monetywowo>0"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_7" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/COINDROP_6"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_8" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/COINDROP_6"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_1")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_9" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/COINDROP_6"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="UFOS_TEAM_10" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(275.0, 191.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 40
+metadata/gm_spawn = "instance_create(100+random(700),-200,o_ufos_team)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=1"]
+metadata/gm_object = "o_ufos_team"
+metadata/gm_sprite = 112
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 40, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=1"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 40, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=1"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 41, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=2"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 41, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=2"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 42, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=3"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 42, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=3"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 43, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=4"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 43, "spawn": "instance_create(100+random(700),-200,o_ufos_team)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if shotta>=2600 && ufoses>0", "if ktora_strona=4"], "object": "o_ufos_team", "sprite": 112, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_112_11" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/UFOS_TEAM_10"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_2")
+centered = false
+offset = Vector2(-60, -81)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 112
+
+[node name="Label_12" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/UFOS_TEAM_10"]
+offset_left = -60.0
+offset_top = 38.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "UFOS_TEAM"
+
+[node name="UFO_A_CRUSH2_13" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(470.0, 191.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_ufos_team/event_8_0/action_0"
+metadata/gm_line = 50
+metadata/gm_spawn = "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if energia<=0"]
+metadata/gm_object = "o_ufo_a_crush2"
+metadata/gm_sprite = 177
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 50, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_ufos_team/event_8_0/action_0", "line": 83, "spawn": "instance_create(sin(degtorad(kontor))*kontor2+x,cos(degtorad(kontor3))*kontor2+y+3*cos(zajebiscie),o_ufo_a_crush2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if place_meeting(x,y,o_player_a) && o_player_a.skuszenie=0 && o_player_a.shield<=0"], "object": "o_ufo_a_crush2", "sprite": 177, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_177_14" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/UFO_A_CRUSH2_13"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-60, -81)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 177
+
+[node name="Label_15" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/UFO_A_CRUSH2_13"]
+offset_left = -60.0
+offset_top = 39.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "UFO_A_CRUSH2"
+
+[node name="KIND_15_16" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(656.0, 152.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 98
+metadata/gm_spawn = "lolo=instance_create(200,-200,o_enemy_1)"
+metadata/gm_kind_expression = ["15"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if liczba<=0 && instance_number(o_enemy_1)=0 && instance_number(o_key3)=0 && zdobyty=0"]
+metadata/gm_kind = 15
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 98, "spawn": "lolo=instance_create(200,-200,o_enemy_1)", "kind_expression": ["15"], "conditional": true, "conditions": ["if global.pauza=0", "if liczba<=0 && instance_number(o_enemy_1)=0 && instance_number(o_key3)=0 && zdobyty=0"], "kind": 15, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 98, "spawn": "lolo=instance_create(700,-200,o_enemy_1)", "kind_expression": ["15"], "conditional": true, "conditions": ["if global.pauza=0", "if liczba<=0 && instance_number(o_enemy_1)=0 && instance_number(o_key3)=0 && zdobyty=0"], "kind": 15, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_244_17" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_15_16"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-51, -42)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 244
+material = SubResource("wave_blend2")
+
+[node name="Sprite_245_18" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_15_16"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_5")
+centered = false
+offset = Vector2(-41, -31)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 245
+material = SubResource("wave_blend1")
+
+[node name="Label_19" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_15_16"]
+offset_left = -51.0
+offset_top = 50.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 15"
+
+[node name="KIND_4_20" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(55.0, 315.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 4
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 4, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 4, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 4, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_157_21" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_4_20"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_157_22" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_4_20"]
+position = Vector2(0, 0)
+scale = Vector2(-1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_161_23" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_4_20"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_7")
+centered = false
+offset = Vector2(-32, -38)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 161
+
+[node name="Label_24" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_4_20"]
+offset_left = -35.0
+offset_top = 44.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 4"
+
+[node name="KIND_5_25" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(248.0, 303.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 5
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 5, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 5, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 5, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_30_26" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_5_25"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_8")
+centered = false
+offset = Vector2(-33, -26)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 30
+
+[node name="Label_27" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_5_25"]
+offset_left = -33.0
+offset_top = 35.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 5"
+
+[node name="KIND_6_28" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(439.0, 305.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 6
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 6, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 6, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 6, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_34_29" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_6_28"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_9")
+centered = false
+offset = Vector2(-29, -28)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 34
+
+[node name="Label_30" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_6_28"]
+offset_left = -29.0
+offset_top = 37.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 6"
+
+[node name="KIND_7_31" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(644.0, 316.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 7
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 7, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 7, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 7, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_68_32" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_7_31"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_10")
+centered = false
+offset = Vector2(-39, -39)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 68
+
+[node name="Label_33" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_7_31"]
+offset_left = -39.0
+offset_top = 46.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 7"
+
+[node name="KIND_8_34" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(59.0, 448.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 8
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 8, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 8, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 8, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_69_35" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_8_34"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_11")
+centered = false
+offset = Vector2(-39, -39)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 69
+
+[node name="Sprite_70_36" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_8_34"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_12")
+centered = false
+offset = Vector2(-20, -19)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 70
+
+[node name="Label_37" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_8_34"]
+offset_left = -39.0
+offset_top = 46.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 8"
+
+[node name="KIND_9_38" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3"]
+position = Vector2(265.0, 461.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map4_grupowanie_26/event_3_0/action_0"
+metadata/gm_line = 116
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = ["losuj_rodzaj"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"]
+metadata/gm_kind = 9
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 116, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=0 && gett<10"], "kind": 9, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 126, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=10 && gett<20"], "kind": 9, "object": "o_enemy_1"}, {"source": "o_perioder_map4_grupowanie_26/event_3_0/action_0", "line": 136, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": ["losuj_rodzaj"], "conditional": true, "conditions": ["if global.pauza=0", "if global.pozycja[gett]=0 && delay>=20 && liczba>0", "if gett>=20 && gett<30"], "kind": 9, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_73_39" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_9_38"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_13")
+centered = false
+offset = Vector2(-50, -52)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 73
+
+[node name="Sprite_73_40" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_9_38"]
+position = Vector2(0, 0)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+texture = ExtResource("wave_tex_13")
+centered = false
+offset = Vector2(-50, -52)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 73
+
+[node name="Label_41" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_86_at_t_8_3/KIND_9_38"]
+offset_left = -50.0
+offset_top = 60.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 9"

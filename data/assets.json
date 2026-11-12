@@ -1,0 +1,9483 @@
+{
+ "sprites": {
+  "5": {
+   "name": "s_hud",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    158,
+    777,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_hud.5.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "6": {
+   "name": "s_stopper_b",
+   "origin": [
+    59,
+    6
+   ],
+   "bbox": [
+    0,
+    126,
+    29,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_stopper_b.6.0.png",
+    "res://images/sprites/s_stopper_b.6.1.png",
+    "res://images/sprites/s_stopper_b.6.2.png",
+    "res://images/sprites/s_stopper_b.6.3.png",
+    "res://images/sprites/s_stopper_b.6.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "11": {
+   "name": "s_enemy_a",
+   "origin": [
+    30,
+    30
+   ],
+   "bbox": [
+    10,
+    52,
+    57,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_a.11.0.png",
+    "res://images/sprites/s_enemy_a.11.1.png",
+    "res://images/sprites/s_enemy_a.11.2.png",
+    "res://images/sprites/s_enemy_a.11.3.png",
+    "res://images/sprites/s_enemy_a.11.4.png",
+    "res://images/sprites/s_enemy_a.11.5.png",
+    "res://images/sprites/s_enemy_a.11.6.png",
+    "res://images/sprites/s_enemy_a.11.7.png",
+    "res://images/sprites/s_enemy_a.11.8.png",
+    "res://images/sprites/s_enemy_a.11.9.png",
+    "res://images/sprites/s_enemy_a.11.10.png",
+    "res://images/sprites/s_enemy_a.11.11.png",
+    "res://images/sprites/s_enemy_a.11.12.png",
+    "res://images/sprites/s_enemy_a.11.13.png",
+    "res://images/sprites/s_enemy_a.11.14.png",
+    "res://images/sprites/s_enemy_a.11.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "12": {
+   "name": "s_bullet_1",
+   "origin": [
+    61,
+    4
+   ],
+   "bbox": [
+    0,
+    117,
+    8,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_1.12.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "14": {
+   "name": "s_explo_1",
+   "origin": [
+    39,
+    38
+   ],
+   "bbox": [
+    1,
+    77,
+    74,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_explo_1.14.0.png",
+    "res://images/sprites/s_explo_1.14.1.png",
+    "res://images/sprites/s_explo_1.14.2.png",
+    "res://images/sprites/s_explo_1.14.3.png",
+    "res://images/sprites/s_explo_1.14.4.png",
+    "res://images/sprites/s_explo_1.14.5.png",
+    "res://images/sprites/s_explo_1.14.6.png",
+    "res://images/sprites/s_explo_1.14.7.png",
+    "res://images/sprites/s_explo_1.14.8.png",
+    "res://images/sprites/s_explo_1.14.9.png",
+    "res://images/sprites/s_explo_1.14.10.png",
+    "res://images/sprites/s_explo_1.14.11.png",
+    "res://images/sprites/s_explo_1.14.12.png",
+    "res://images/sprites/s_explo_1.14.13.png",
+    "res://images/sprites/s_explo_1.14.14.png",
+    "res://images/sprites/s_explo_1.14.15.png",
+    "res://images/sprites/s_explo_1.14.16.png",
+    "res://images/sprites/s_explo_1.14.17.png",
+    "res://images/sprites/s_explo_1.14.18.png",
+    "res://images/sprites/s_explo_1.14.19.png",
+    "res://images/sprites/s_explo_1.14.20.png",
+    "res://images/sprites/s_explo_1.14.21.png",
+    "res://images/sprites/s_explo_1.14.22.png",
+    "res://images/sprites/s_explo_1.14.23.png",
+    "res://images/sprites/s_explo_1.14.24.png",
+    "res://images/sprites/s_explo_1.14.25.png",
+    "res://images/sprites/s_explo_1.14.26.png",
+    "res://images/sprites/s_explo_1.14.27.png",
+    "res://images/sprites/s_explo_1.14.28.png",
+    "res://images/sprites/s_explo_1.14.29.png",
+    "res://images/sprites/s_explo_1.14.30.png",
+    "res://images/sprites/s_explo_1.14.31.png",
+    "res://images/sprites/s_explo_1.14.32.png",
+    "res://images/sprites/s_explo_1.14.33.png",
+    "res://images/sprites/s_explo_1.14.34.png",
+    "res://images/sprites/s_explo_1.14.35.png",
+    "res://images/sprites/s_explo_1.14.36.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "15": {
+   "name": "s_bar_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    103,
+    15,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bar_1.15.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "16": {
+   "name": "s_bar_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    103,
+    15,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bar_2.16.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "19": {
+   "name": "s_bar_3",
+   "origin": [
+    0,
+    94
+   ],
+   "bbox": [
+    0,
+    14,
+    93,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bar_3.19.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "20": {
+   "name": "s_bullet_2",
+   "origin": [
+    49,
+    3
+   ],
+   "bbox": [
+    0,
+    64,
+    6,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_2.20.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "21": {
+   "name": "s_flash_1",
+   "origin": [
+    42,
+    32
+   ],
+   "bbox": [
+    0,
+    110,
+    68,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_flash_1.21.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "22": {
+   "name": "s_bullet_3",
+   "origin": [
+    21,
+    29
+   ],
+   "bbox": [
+    1,
+    40,
+    110,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_3.22.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "23": {
+   "name": "s_bullet_4",
+   "origin": [
+    8,
+    16
+   ],
+   "bbox": [
+    1,
+    14,
+    105,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_4.23.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "24": {
+   "name": "s_bullet_5",
+   "origin": [
+    13,
+    10
+   ],
+   "bbox": [
+    1,
+    25,
+    18,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_5.24.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "25": {
+   "name": "s_bullet_6",
+   "origin": [
+    22,
+    21
+   ],
+   "bbox": [
+    1,
+    42,
+    40,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_6.25.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "26": {
+   "name": "s_bullet_mark",
+   "origin": [
+    16,
+    16
+   ],
+   "bbox": [
+    7,
+    23,
+    23,
+    7
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_mark.26.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "28": {
+   "name": "s_odlamek_1",
+   "origin": [
+    9,
+    14
+   ],
+   "bbox": [
+    1,
+    16,
+    27,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_odlamek_1.28.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "29": {
+   "name": "s_enemy_b",
+   "origin": [
+    44,
+    27
+   ],
+   "bbox": [
+    0,
+    91,
+    57,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_b.29.0.png",
+    "res://images/sprites/s_enemy_b.29.1.png",
+    "res://images/sprites/s_enemy_b.29.2.png",
+    "res://images/sprites/s_enemy_b.29.3.png",
+    "res://images/sprites/s_enemy_b.29.4.png",
+    "res://images/sprites/s_enemy_b.29.5.png",
+    "res://images/sprites/s_enemy_b.29.6.png",
+    "res://images/sprites/s_enemy_b.29.7.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "30": {
+   "name": "s_enemy_c",
+   "origin": [
+    33,
+    26
+   ],
+   "bbox": [
+    1,
+    65,
+    51,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_c.30.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "32": {
+   "name": "s_bullet_7",
+   "origin": [
+    34,
+    6
+   ],
+   "bbox": [
+    1,
+    61,
+    9,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_7.32.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "34": {
+   "name": "s_enemy_f",
+   "origin": [
+    29,
+    28
+   ],
+   "bbox": [
+    1,
+    56,
+    55,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_f.34.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "38": {
+   "name": "s_gameover",
+   "origin": [
+    117,
+    26
+   ],
+   "bbox": [
+    2,
+    232,
+    48,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_gameover.38.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "41": {
+   "name": "s_bullet8",
+   "origin": [
+    11,
+    16
+   ],
+   "bbox": [
+    1,
+    48,
+    33,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet8.41.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "44": {
+   "name": "s_title_blur",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    799,
+    109,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_blur.44.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "45": {
+   "name": "s_title_blur2",
+   "origin": [
+    0,
+    108
+   ],
+   "bbox": [
+    0,
+    799,
+    109,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_blur2.45.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "46": {
+   "name": "s_title_bluer_c",
+   "origin": [
+    178,
+    432
+   ],
+   "bbox": [
+    0,
+    1,
+    7,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_bluer_c.46.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "47": {
+   "name": "sprite477",
+   "origin": [
+    0,
+    204
+   ],
+   "bbox": [
+    0,
+    19,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite477.47.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "48": {
+   "name": "s_title_go",
+   "origin": [
+    220,
+    28
+   ],
+   "bbox": [
+    5,
+    8,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_go.48.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "50": {
+   "name": "s_enemy_j",
+   "origin": [
+    108,
+    78
+   ],
+   "bbox": [
+    0,
+    221,
+    103,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_j.50.0.png",
+    "res://images/sprites/s_enemy_j.50.1.png",
+    "res://images/sprites/s_enemy_j.50.2.png",
+    "res://images/sprites/s_enemy_j.50.3.png",
+    "res://images/sprites/s_enemy_j.50.4.png",
+    "res://images/sprites/s_enemy_j.50.5.png",
+    "res://images/sprites/s_enemy_j.50.6.png",
+    "res://images/sprites/s_enemy_j.50.7.png",
+    "res://images/sprites/s_enemy_j.50.8.png",
+    "res://images/sprites/s_enemy_j.50.9.png",
+    "res://images/sprites/s_enemy_j.50.10.png",
+    "res://images/sprites/s_enemy_j.50.11.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "51": {
+   "name": "s_bullet_8",
+   "origin": [
+    12,
+    11
+   ],
+   "bbox": [
+    1,
+    22,
+    21,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_8.51.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "52": {
+   "name": "s_bullet_9",
+   "origin": [
+    44,
+    12
+   ],
+   "bbox": [
+    16,
+    69,
+    23,
+    2
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_9.52.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "53": {
+   "name": "s_bullet_10",
+   "origin": [
+    44,
+    12
+   ],
+   "bbox": [
+    15,
+    70,
+    23,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_10.53.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "54": {
+   "name": "s_bullet_11",
+   "origin": [
+    44,
+    12
+   ],
+   "bbox": [
+    16,
+    69,
+    22,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_11.54.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "55": {
+   "name": "s_bullet_12",
+   "origin": [
+    36,
+    39
+   ],
+   "bbox": [
+    1,
+    70,
+    77,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_12.55.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "56": {
+   "name": "s_hud_boss",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    299,
+    29,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_hud_boss.56.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "57": {
+   "name": "s_hud_boss2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    4,
+    29,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_hud_boss2.57.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "58": {
+   "name": "s_hud_boss3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    4,
+    29,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_hud_boss3.58.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "59": {
+   "name": "s_guide_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_1.59.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "60": {
+   "name": "s_guide_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_2.60.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "61": {
+   "name": "s_guide_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_3.61.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "62": {
+   "name": "s_guide_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_4.62.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "63": {
+   "name": "s_guide_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_5.63.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "64": {
+   "name": "s_guide_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_6.64.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "65": {
+   "name": "s_guide_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    9,
+    3,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_guide_7.65.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "67": {
+   "name": "s_explo_2",
+   "origin": [
+    39,
+    38
+   ],
+   "bbox": [
+    4,
+    74,
+    75,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_explo_2.67.0.png",
+    "res://images/sprites/s_explo_2.67.1.png",
+    "res://images/sprites/s_explo_2.67.2.png",
+    "res://images/sprites/s_explo_2.67.3.png",
+    "res://images/sprites/s_explo_2.67.4.png",
+    "res://images/sprites/s_explo_2.67.5.png",
+    "res://images/sprites/s_explo_2.67.6.png",
+    "res://images/sprites/s_explo_2.67.7.png",
+    "res://images/sprites/s_explo_2.67.8.png",
+    "res://images/sprites/s_explo_2.67.9.png",
+    "res://images/sprites/s_explo_2.67.10.png",
+    "res://images/sprites/s_explo_2.67.11.png",
+    "res://images/sprites/s_explo_2.67.12.png",
+    "res://images/sprites/s_explo_2.67.13.png",
+    "res://images/sprites/s_explo_2.67.14.png",
+    "res://images/sprites/s_explo_2.67.15.png",
+    "res://images/sprites/s_explo_2.67.16.png",
+    "res://images/sprites/s_explo_2.67.17.png",
+    "res://images/sprites/s_explo_2.67.18.png",
+    "res://images/sprites/s_explo_2.67.19.png",
+    "res://images/sprites/s_explo_2.67.20.png",
+    "res://images/sprites/s_explo_2.67.21.png",
+    "res://images/sprites/s_explo_2.67.22.png",
+    "res://images/sprites/s_explo_2.67.23.png",
+    "res://images/sprites/s_explo_2.67.24.png",
+    "res://images/sprites/s_explo_2.67.25.png",
+    "res://images/sprites/s_explo_2.67.26.png",
+    "res://images/sprites/s_explo_2.67.27.png",
+    "res://images/sprites/s_explo_2.67.28.png",
+    "res://images/sprites/s_explo_2.67.29.png",
+    "res://images/sprites/s_explo_2.67.30.png",
+    "res://images/sprites/s_explo_2.67.31.png",
+    "res://images/sprites/s_explo_2.67.32.png",
+    "res://images/sprites/s_explo_2.67.33.png",
+    "res://images/sprites/s_explo_2.67.34.png",
+    "res://images/sprites/s_explo_2.67.35.png",
+    "res://images/sprites/s_explo_2.67.36.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "68": {
+   "name": "s_enemy_l",
+   "origin": [
+    39,
+    39
+   ],
+   "bbox": [
+    1,
+    80,
+    75,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_l.68.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "69": {
+   "name": "s_enemy_m",
+   "origin": [
+    39,
+    39
+   ],
+   "bbox": [
+    1,
+    80,
+    75,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_m.69.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "70": {
+   "name": "s_enemy_n",
+   "origin": [
+    20,
+    19
+   ],
+   "bbox": [
+    1,
+    38,
+    38,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_n.70.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "73": {
+   "name": "s_enemy_p",
+   "origin": [
+    50,
+    52
+   ],
+   "bbox": [
+    1,
+    97,
+    102,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_p.73.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "75": {
+   "name": "s_bullet_1b",
+   "origin": [
+    112,
+    4
+   ],
+   "bbox": [
+    0,
+    117,
+    8,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_1b.75.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "76": {
+   "name": "s_bullet_1bb",
+   "origin": [
+    153,
+    39
+   ],
+   "bbox": [
+    0,
+    163,
+    79,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_1bb.76.0.png",
+    "res://images/sprites/s_bullet_1bb.76.1.png",
+    "res://images/sprites/s_bullet_1bb.76.2.png",
+    "res://images/sprites/s_bullet_1bb.76.3.png",
+    "res://images/sprites/s_bullet_1bb.76.4.png",
+    "res://images/sprites/s_bullet_1bb.76.5.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "77": {
+   "name": "s_bullet_15",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    13,
+    50,
+    51,
+    12
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_15.77.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "80": {
+   "name": "s_asteroids_1",
+   "origin": [
+    71,
+    71
+   ],
+   "bbox": [
+    1,
+    141,
+    140,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroids_1.80.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "81": {
+   "name": "s_asteroids_2",
+   "origin": [
+    51,
+    50
+   ],
+   "bbox": [
+    1,
+    100,
+    99,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroids_2.81.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "82": {
+   "name": "s_asteroids_3",
+   "origin": [
+    37,
+    37
+   ],
+   "bbox": [
+    1,
+    73,
+    73,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroids_3.82.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "83": {
+   "name": "s_asteroids_4",
+   "origin": [
+    25,
+    26
+   ],
+   "bbox": [
+    1,
+    49,
+    50,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroids_4.83.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "95": {
+   "name": "s_bulletprof_1",
+   "origin": [
+    4,
+    4
+   ],
+   "bbox": [
+    1,
+    7,
+    7,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bulletprof_1.95.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "108": {
+   "name": "s_bullet_14",
+   "origin": [
+    31,
+    292
+   ],
+   "bbox": [
+    1,
+    65,
+    321,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_14.108.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "109": {
+   "name": "s_explo_3",
+   "origin": [
+    37,
+    37
+   ],
+   "bbox": [
+    1,
+    72,
+    72,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_explo_3.109.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "110": {
+   "name": "s_ufo_b",
+   "origin": [
+    62,
+    92
+   ],
+   "bbox": [
+    1,
+    123,
+    99,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_ufo_b.110.0.png",
+    "res://images/sprites/s_ufo_b.110.1.png",
+    "res://images/sprites/s_ufo_b.110.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "111": {
+   "name": "s_bullet9",
+   "origin": [
+    8,
+    8
+   ],
+   "bbox": [
+    0,
+    23,
+    16,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet9.111.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "112": {
+   "name": "s_enemy_u",
+   "origin": [
+    60,
+    81
+   ],
+   "bbox": [
+    0,
+    123,
+    110,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_u.112.0.png",
+    "res://images/sprites/s_enemy_u.112.1.png",
+    "res://images/sprites/s_enemy_u.112.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "115": {
+   "name": "s_bossbul_1",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    1,
+    39,
+    39,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bossbul_1.115.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "116": {
+   "name": "s_bossbul_2",
+   "origin": [
+    25,
+    25
+   ],
+   "bbox": [
+    1,
+    48,
+    48,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bossbul_2.116.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "120": {
+   "name": "s_title_efekt_1",
+   "origin": [
+    147,
+    121
+   ],
+   "bbox": [
+    0,
+    5,
+    4,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_efekt_1.120.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "121": {
+   "name": "s_bullet_16",
+   "origin": [
+    32,
+    19
+   ],
+   "bbox": [
+    1,
+    63,
+    36,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_16.121.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "122": {
+   "name": "s_bullet_17",
+   "origin": [
+    49,
+    47
+   ],
+   "bbox": [
+    1,
+    97,
+    92,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_17.122.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "123": {
+   "name": "s_bullet_18",
+   "origin": [
+    32,
+    30
+   ],
+   "bbox": [
+    1,
+    62,
+    59,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_18.123.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "124": {
+   "name": "s_bullet_19",
+   "origin": [
+    32,
+    19
+   ],
+   "bbox": [
+    1,
+    62,
+    36,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_19.124.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "125": {
+   "name": "s_bullet_20",
+   "origin": [
+    14,
+    11
+   ],
+   "bbox": [
+    1,
+    27,
+    20,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_20.125.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "131": {
+   "name": "s_asteroids_panzer",
+   "origin": [
+    71,
+    71
+   ],
+   "bbox": [
+    0,
+    140,
+    139,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroids_panzer.131.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "133": {
+   "name": "s_statuses",
+   "origin": [
+    187,
+    63
+   ],
+   "bbox": [
+    1,
+    400,
+    120,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_statuses.133.0.png",
+    "res://images/sprites/s_statuses.133.1.png",
+    "res://images/sprites/s_statuses.133.2.png",
+    "res://images/sprites/s_statuses.133.3.png",
+    "res://images/sprites/s_statuses.133.4.png",
+    "res://images/sprites/s_statuses.133.5.png",
+    "res://images/sprites/s_statuses.133.6.png",
+    "res://images/sprites/s_statuses.133.7.png",
+    "res://images/sprites/s_statuses.133.8.png",
+    "res://images/sprites/s_statuses.133.9.png",
+    "res://images/sprites/s_statuses.133.10.png",
+    "res://images/sprites/s_statuses.133.11.png",
+    "res://images/sprites/s_statuses.133.12.png",
+    "res://images/sprites/s_statuses.133.13.png",
+    "res://images/sprites/s_statuses.133.14.png",
+    "res://images/sprites/s_statuses.133.15.png",
+    "res://images/sprites/s_statuses.133.16.png",
+    "res://images/sprites/s_statuses.133.17.png",
+    "res://images/sprites/s_statuses.133.18.png",
+    "res://images/sprites/s_statuses.133.19.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "136": {
+   "name": "s_spikey",
+   "origin": [
+    123,
+    123
+   ],
+   "bbox": [
+    1,
+    244,
+    245,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_spikey.136.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "137": {
+   "name": "s_sprite137",
+   "origin": [
+    56,
+    34
+   ],
+   "bbox": [
+    16,
+    97,
+    59,
+    5
+   ],
+   "frames": [
+    "res://images/sprites/s_sprite137.137.0.png",
+    "res://images/sprites/s_sprite137.137.1.png",
+    "res://images/sprites/s_sprite137.137.2.png",
+    "res://images/sprites/s_sprite137.137.3.png",
+    "res://images/sprites/s_sprite137.137.4.png",
+    "res://images/sprites/s_sprite137.137.5.png",
+    "res://images/sprites/s_sprite137.137.6.png",
+    "res://images/sprites/s_sprite137.137.7.png",
+    "res://images/sprites/s_sprite137.137.8.png",
+    "res://images/sprites/s_sprite137.137.9.png",
+    "res://images/sprites/s_sprite137.137.10.png",
+    "res://images/sprites/s_sprite137.137.11.png",
+    "res://images/sprites/s_sprite137.137.12.png",
+    "res://images/sprites/s_sprite137.137.13.png",
+    "res://images/sprites/s_sprite137.137.14.png",
+    "res://images/sprites/s_sprite137.137.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "138": {
+   "name": "s_title_efekt_2",
+   "origin": [
+    44,
+    44
+   ],
+   "bbox": [
+    0,
+    88,
+    88,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_efekt_2.138.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "139": {
+   "name": "sprite139",
+   "origin": [
+    461,
+    142
+   ],
+   "bbox": [
+    0,
+    17,
+    5,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite139.139.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "140": {
+   "name": "sprite140",
+   "origin": [
+    462,
+    142
+   ],
+   "bbox": [
+    0,
+    18,
+    5,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite140.140.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "141": {
+   "name": "sprite141",
+   "origin": [
+    227,
+    17
+   ],
+   "bbox": [
+    1,
+    8,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite141.141.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "142": {
+   "name": "sprite142",
+   "origin": [
+    231,
+    23
+   ],
+   "bbox": [
+    0,
+    8,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite142.142.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "143": {
+   "name": "sprite143",
+   "origin": [
+    86,
+    163
+   ],
+   "bbox": [
+    0,
+    2,
+    6,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite143.143.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "144": {
+   "name": "sprite144",
+   "origin": [
+    101,
+    179
+   ],
+   "bbox": [
+    2,
+    3,
+    4,
+    2
+   ],
+   "frames": [
+    "res://images/sprites/sprite144.144.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "145": {
+   "name": "sprite47",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    19,
+    5,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite47.145.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "146": {
+   "name": "s_enemy_s_die",
+   "origin": [
+    132,
+    135
+   ],
+   "bbox": [
+    9,
+    254,
+    258,
+    12
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_s_die.146.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "151": {
+   "name": "s_die",
+   "origin": [
+    68,
+    61
+   ],
+   "bbox": [
+    20,
+    117,
+    110,
+    20
+   ],
+   "frames": [
+    "res://images/sprites/s_die.151.0.png",
+    "res://images/sprites/s_die.151.1.png",
+    "res://images/sprites/s_die.151.2.png",
+    "res://images/sprites/s_die.151.3.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "152": {
+   "name": "s_diemask",
+   "origin": [
+    31,
+    28
+   ],
+   "bbox": [
+    0,
+    61,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_diemask.152.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "153": {
+   "name": "s_stopper_a",
+   "origin": [
+    3,
+    64
+   ],
+   "bbox": [
+    0,
+    31,
+    128,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_stopper_a.153.0.png",
+    "res://images/sprites/s_stopper_a.153.1.png",
+    "res://images/sprites/s_stopper_a.153.2.png",
+    "res://images/sprites/s_stopper_a.153.3.png",
+    "res://images/sprites/s_stopper_a.153.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "154": {
+   "name": "s_bonusenergy",
+   "origin": [
+    19,
+    20
+   ],
+   "bbox": [
+    1,
+    37,
+    38,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonusenergy.154.0.png",
+    "res://images/sprites/s_bonusenergy.154.1.png",
+    "res://images/sprites/s_bonusenergy.154.2.png",
+    "res://images/sprites/s_bonusenergy.154.3.png",
+    "res://images/sprites/s_bonusenergy.154.4.png",
+    "res://images/sprites/s_bonusenergy.154.5.png",
+    "res://images/sprites/s_bonusenergy.154.6.png",
+    "res://images/sprites/s_bonusenergy.154.7.png",
+    "res://images/sprites/s_bonusenergy.154.8.png",
+    "res://images/sprites/s_bonusenergy.154.9.png",
+    "res://images/sprites/s_bonusenergy.154.10.png",
+    "res://images/sprites/s_bonusenergy.154.11.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "155": {
+   "name": "s_bonuslives",
+   "origin": [
+    19,
+    19
+   ],
+   "bbox": [
+    0,
+    38,
+    38,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonuslives.155.0.png",
+    "res://images/sprites/s_bonuslives.155.1.png",
+    "res://images/sprites/s_bonuslives.155.2.png",
+    "res://images/sprites/s_bonuslives.155.3.png",
+    "res://images/sprites/s_bonuslives.155.4.png",
+    "res://images/sprites/s_bonuslives.155.5.png",
+    "res://images/sprites/s_bonuslives.155.6.png",
+    "res://images/sprites/s_bonuslives.155.7.png",
+    "res://images/sprites/s_bonuslives.155.8.png",
+    "res://images/sprites/s_bonuslives.155.9.png",
+    "res://images/sprites/s_bonuslives.155.10.png",
+    "res://images/sprites/s_bonuslives.155.11.png",
+    "res://images/sprites/s_bonuslives.155.12.png",
+    "res://images/sprites/s_bonuslives.155.13.png",
+    "res://images/sprites/s_bonuslives.155.14.png",
+    "res://images/sprites/s_bonuslives.155.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "156": {
+   "name": "sprite156",
+   "origin": [
+    31,
+    42
+   ],
+   "bbox": [
+    8,
+    54,
+    72,
+    11
+   ],
+   "frames": [
+    "res://images/sprites/sprite156.156.0.png",
+    "res://images/sprites/sprite156.156.1.png",
+    "res://images/sprites/sprite156.156.2.png",
+    "res://images/sprites/sprite156.156.3.png",
+    "res://images/sprites/sprite156.156.4.png",
+    "res://images/sprites/sprite156.156.5.png",
+    "res://images/sprites/sprite156.156.6.png",
+    "res://images/sprites/sprite156.156.7.png",
+    "res://images/sprites/sprite156.156.8.png",
+    "res://images/sprites/sprite156.156.9.png",
+    "res://images/sprites/sprite156.156.10.png",
+    "res://images/sprites/sprite156.156.11.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "157": {
+   "name": "sprite157",
+   "origin": [
+    35,
+    17
+   ],
+   "bbox": [
+    1,
+    40,
+    32,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite157.157.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "158": {
+   "name": "sprite158",
+   "origin": [
+    40,
+    37
+   ],
+   "bbox": [
+    0,
+    64,
+    67,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite158.158.0.png",
+    "res://images/sprites/sprite158.158.1.png",
+    "res://images/sprites/sprite158.158.2.png",
+    "res://images/sprites/sprite158.158.3.png",
+    "res://images/sprites/sprite158.158.4.png",
+    "res://images/sprites/sprite158.158.5.png",
+    "res://images/sprites/sprite158.158.6.png",
+    "res://images/sprites/sprite158.158.7.png",
+    "res://images/sprites/sprite158.158.8.png",
+    "res://images/sprites/sprite158.158.9.png",
+    "res://images/sprites/sprite158.158.10.png",
+    "res://images/sprites/sprite158.158.11.png",
+    "res://images/sprites/sprite158.158.12.png",
+    "res://images/sprites/sprite158.158.13.png",
+    "res://images/sprites/sprite158.158.14.png",
+    "res://images/sprites/sprite158.158.15.png",
+    "res://images/sprites/sprite158.158.16.png",
+    "res://images/sprites/sprite158.158.17.png",
+    "res://images/sprites/sprite158.158.18.png",
+    "res://images/sprites/sprite158.158.19.png",
+    "res://images/sprites/sprite158.158.20.png",
+    "res://images/sprites/sprite158.158.21.png",
+    "res://images/sprites/sprite158.158.22.png",
+    "res://images/sprites/sprite158.158.23.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "159": {
+   "name": "s_bullet_21",
+   "origin": [
+    14,
+    18
+   ],
+   "bbox": [
+    0,
+    27,
+    36,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_21.159.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "160": {
+   "name": "sprite160",
+   "origin": [
+    50,
+    38
+   ],
+   "bbox": [
+    0,
+    79,
+    72,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite160.160.0.png",
+    "res://images/sprites/sprite160.160.1.png",
+    "res://images/sprites/sprite160.160.2.png",
+    "res://images/sprites/sprite160.160.3.png",
+    "res://images/sprites/sprite160.160.4.png",
+    "res://images/sprites/sprite160.160.5.png",
+    "res://images/sprites/sprite160.160.6.png",
+    "res://images/sprites/sprite160.160.7.png",
+    "res://images/sprites/sprite160.160.8.png",
+    "res://images/sprites/sprite160.160.9.png",
+    "res://images/sprites/sprite160.160.10.png",
+    "res://images/sprites/sprite160.160.11.png",
+    "res://images/sprites/sprite160.160.12.png",
+    "res://images/sprites/sprite160.160.13.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "161": {
+   "name": "sprite161",
+   "origin": [
+    32,
+    38
+   ],
+   "bbox": [
+    1,
+    57,
+    72,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite161.161.0.png",
+    "res://images/sprites/sprite161.161.1.png",
+    "res://images/sprites/sprite161.161.2.png",
+    "res://images/sprites/sprite161.161.3.png",
+    "res://images/sprites/sprite161.161.4.png",
+    "res://images/sprites/sprite161.161.5.png",
+    "res://images/sprites/sprite161.161.6.png",
+    "res://images/sprites/sprite161.161.7.png",
+    "res://images/sprites/sprite161.161.8.png",
+    "res://images/sprites/sprite161.161.9.png",
+    "res://images/sprites/sprite161.161.10.png",
+    "res://images/sprites/sprite161.161.11.png",
+    "res://images/sprites/sprite161.161.12.png",
+    "res://images/sprites/sprite161.161.13.png",
+    "res://images/sprites/sprite161.161.14.png",
+    "res://images/sprites/sprite161.161.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "162": {
+   "name": "sprite162",
+   "origin": [
+    50,
+    40
+   ],
+   "bbox": [
+    0,
+    80,
+    75,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite162.162.0.png",
+    "res://images/sprites/sprite162.162.1.png",
+    "res://images/sprites/sprite162.162.2.png",
+    "res://images/sprites/sprite162.162.3.png",
+    "res://images/sprites/sprite162.162.4.png",
+    "res://images/sprites/sprite162.162.5.png",
+    "res://images/sprites/sprite162.162.6.png",
+    "res://images/sprites/sprite162.162.7.png",
+    "res://images/sprites/sprite162.162.8.png",
+    "res://images/sprites/sprite162.162.9.png",
+    "res://images/sprites/sprite162.162.10.png",
+    "res://images/sprites/sprite162.162.11.png",
+    "res://images/sprites/sprite162.162.12.png",
+    "res://images/sprites/sprite162.162.13.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "163": {
+   "name": "s_bullet_22",
+   "origin": [
+    30,
+    -3
+   ],
+   "bbox": [
+    1,
+    61,
+    21,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_22.163.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "164": {
+   "name": "sprite164",
+   "origin": [
+    22,
+    39
+   ],
+   "bbox": [
+    0,
+    46,
+    72,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite164.164.0.png",
+    "res://images/sprites/sprite164.164.1.png",
+    "res://images/sprites/sprite164.164.2.png",
+    "res://images/sprites/sprite164.164.3.png",
+    "res://images/sprites/sprite164.164.4.png",
+    "res://images/sprites/sprite164.164.5.png",
+    "res://images/sprites/sprite164.164.6.png",
+    "res://images/sprites/sprite164.164.7.png",
+    "res://images/sprites/sprite164.164.8.png",
+    "res://images/sprites/sprite164.164.9.png",
+    "res://images/sprites/sprite164.164.10.png",
+    "res://images/sprites/sprite164.164.11.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "165": {
+   "name": "sprite165",
+   "origin": [
+    35,
+    40
+   ],
+   "bbox": [
+    0,
+    65,
+    80,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite165.165.0.png",
+    "res://images/sprites/sprite165.165.1.png",
+    "res://images/sprites/sprite165.165.2.png",
+    "res://images/sprites/sprite165.165.3.png",
+    "res://images/sprites/sprite165.165.4.png",
+    "res://images/sprites/sprite165.165.5.png",
+    "res://images/sprites/sprite165.165.6.png",
+    "res://images/sprites/sprite165.165.7.png",
+    "res://images/sprites/sprite165.165.8.png",
+    "res://images/sprites/sprite165.165.9.png",
+    "res://images/sprites/sprite165.165.10.png",
+    "res://images/sprites/sprite165.165.11.png",
+    "res://images/sprites/sprite165.165.12.png",
+    "res://images/sprites/sprite165.165.13.png",
+    "res://images/sprites/sprite165.165.14.png",
+    "res://images/sprites/sprite165.165.15.png",
+    "res://images/sprites/sprite165.165.16.png",
+    "res://images/sprites/sprite165.165.17.png",
+    "res://images/sprites/sprite165.165.18.png",
+    "res://images/sprites/sprite165.165.19.png",
+    "res://images/sprites/sprite165.165.20.png",
+    "res://images/sprites/sprite165.165.21.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "166": {
+   "name": "s_superfireball",
+   "origin": [
+    65,
+    122
+   ],
+   "bbox": [
+    0,
+    162,
+    198,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_superfireball.166.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "167": {
+   "name": "sprite167",
+   "origin": [
+    51,
+    28
+   ],
+   "bbox": [
+    0,
+    101,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite167.167.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "168": {
+   "name": "sprite168",
+   "origin": [
+    39,
+    64
+   ],
+   "bbox": [
+    0,
+    86,
+    129,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite168.168.0.png",
+    "res://images/sprites/sprite168.168.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "169": {
+   "name": "sprite169",
+   "origin": [
+    23,
+    17
+   ],
+   "bbox": [
+    0,
+    45,
+    34,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite169.169.0.png",
+    "res://images/sprites/sprite169.169.1.png",
+    "res://images/sprites/sprite169.169.2.png",
+    "res://images/sprites/sprite169.169.3.png",
+    "res://images/sprites/sprite169.169.4.png",
+    "res://images/sprites/sprite169.169.5.png",
+    "res://images/sprites/sprite169.169.6.png",
+    "res://images/sprites/sprite169.169.7.png",
+    "res://images/sprites/sprite169.169.8.png",
+    "res://images/sprites/sprite169.169.9.png",
+    "res://images/sprites/sprite169.169.10.png",
+    "res://images/sprites/sprite169.169.11.png",
+    "res://images/sprites/sprite169.169.12.png",
+    "res://images/sprites/sprite169.169.13.png",
+    "res://images/sprites/sprite169.169.14.png",
+    "res://images/sprites/sprite169.169.15.png",
+    "res://images/sprites/sprite169.169.16.png",
+    "res://images/sprites/sprite169.169.17.png",
+    "res://images/sprites/sprite169.169.18.png",
+    "res://images/sprites/sprite169.169.19.png",
+    "res://images/sprites/sprite169.169.20.png",
+    "res://images/sprites/sprite169.169.21.png",
+    "res://images/sprites/sprite169.169.22.png",
+    "res://images/sprites/sprite169.169.23.png",
+    "res://images/sprites/sprite169.169.24.png",
+    "res://images/sprites/sprite169.169.25.png",
+    "res://images/sprites/sprite169.169.26.png",
+    "res://images/sprites/sprite169.169.27.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "171": {
+   "name": "sprite170",
+   "origin": [
+    20,
+    62
+   ],
+   "bbox": [
+    0,
+    43,
+    62,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite170.171.0.png",
+    "res://images/sprites/sprite170.171.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "172": {
+   "name": "s_lakitushot",
+   "origin": [
+    22,
+    21
+   ],
+   "bbox": [
+    0,
+    43,
+    41,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_lakitushot.172.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "174": {
+   "name": "s_ufo_a",
+   "origin": [
+    59,
+    91
+   ],
+   "bbox": [
+    0,
+    122,
+    107,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_ufo_a.174.0.png",
+    "res://images/sprites/s_ufo_a.174.1.png",
+    "res://images/sprites/s_ufo_a.174.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "175": {
+   "name": "s_ufo_a_crack",
+   "origin": [
+    59,
+    91
+   ],
+   "bbox": [
+    0,
+    122,
+    107,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_ufo_a_crack.175.0.png",
+    "res://images/sprites/s_ufo_a_crack.175.1.png",
+    "res://images/sprites/s_ufo_a_crack.175.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "176": {
+   "name": "s_ufo_b_crack",
+   "origin": [
+    76,
+    92
+   ],
+   "bbox": [
+    14,
+    136,
+    99,
+    2
+   ],
+   "frames": [
+    "res://images/sprites/s_ufo_b_crack.176.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "177": {
+   "name": "s_enemy_u_crack",
+   "origin": [
+    60,
+    81
+   ],
+   "bbox": [
+    0,
+    123,
+    111,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_u_crack.177.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "178": {
+   "name": "sprite178",
+   "origin": [
+    146,
+    70
+   ],
+   "bbox": [
+    5,
+    290,
+    136,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite178.178.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "179": {
+   "name": "sprite179",
+   "origin": [
+    7,
+    13
+   ],
+   "bbox": [
+    0,
+    105,
+    30,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite179.179.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "180": {
+   "name": "sprite180",
+   "origin": [
+    20,
+    15
+   ],
+   "bbox": [
+    0,
+    40,
+    29,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite180.180.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "181": {
+   "name": "sprite181",
+   "origin": [
+    70,
+    13
+   ],
+   "bbox": [
+    0,
+    72,
+    27,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite181.181.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "182": {
+   "name": "sprite182",
+   "origin": [
+    63,
+    231
+   ],
+   "bbox": [
+    0,
+    124,
+    252,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite182.182.0.png",
+    "res://images/sprites/sprite182.182.1.png",
+    "res://images/sprites/sprite182.182.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "183": {
+   "name": "sprite183",
+   "origin": [
+    63,
+    231
+   ],
+   "bbox": [
+    0,
+    124,
+    251,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite183.183.0.png",
+    "res://images/sprites/sprite183.183.1.png",
+    "res://images/sprites/sprite183.183.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "184": {
+   "name": "sprite184",
+   "origin": [
+    50,
+    3
+   ],
+   "bbox": [
+    0,
+    106,
+    422,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite184.184.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "185": {
+   "name": "sprite185",
+   "origin": [
+    98,
+    79
+   ],
+   "bbox": [
+    0,
+    200,
+    153,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite185.185.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "186": {
+   "name": "sprite186",
+   "origin": [
+    23,
+    23
+   ],
+   "bbox": [
+    0,
+    46,
+    45,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite186.186.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "187": {
+   "name": "sprite187",
+   "origin": [
+    32,
+    40
+   ],
+   "bbox": [
+    0,
+    67,
+    74,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite187.187.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "188": {
+   "name": "sprite188",
+   "origin": [
+    0,
+    35
+   ],
+   "bbox": [
+    0,
+    9,
+    70,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite188.188.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "189": {
+   "name": "sprite189",
+   "origin": [
+    62,
+    58
+   ],
+   "bbox": [
+    0,
+    119,
+    119,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite189.189.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "190": {
+   "name": "sprite190",
+   "origin": [
+    73,
+    73
+   ],
+   "bbox": [
+    0,
+    146,
+    146,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite190.190.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "191": {
+   "name": "sprite191",
+   "origin": [
+    0,
+    35
+   ],
+   "bbox": [
+    0,
+    9,
+    44,
+    25
+   ],
+   "frames": [
+    "res://images/sprites/sprite191.191.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "192": {
+   "name": "sprite192",
+   "origin": [
+    100,
+    77
+   ],
+   "bbox": [
+    0,
+    200,
+    153,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite192.192.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "193": {
+   "name": "sprite193",
+   "origin": [
+    66,
+    10
+   ],
+   "bbox": [
+    1,
+    130,
+    85,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite193.193.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "194": {
+   "name": "sprite194",
+   "origin": [
+    66,
+    10
+   ],
+   "bbox": [
+    1,
+    130,
+    85,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite194.194.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "195": {
+   "name": "sprite195",
+   "origin": [
+    33,
+    28
+   ],
+   "bbox": [
+    0,
+    65,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite195.195.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "196": {
+   "name": "sprite196",
+   "origin": [
+    33,
+    28
+   ],
+   "bbox": [
+    0,
+    65,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite196.196.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "197": {
+   "name": "sprite197",
+   "origin": [
+    17,
+    14
+   ],
+   "bbox": [
+    0,
+    34,
+    27,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite197.197.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "198": {
+   "name": "sprite198",
+   "origin": [
+    27,
+    15
+   ],
+   "bbox": [
+    0,
+    53,
+    43,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite198.198.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "199": {
+   "name": "sprite199",
+   "origin": [
+    138,
+    91
+   ],
+   "bbox": [
+    0,
+    351,
+    196,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite199.199.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "200": {
+   "name": "sprite200",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    15,
+    16,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite200.200.0.png",
+    "res://images/sprites/sprite200.200.1.png",
+    "res://images/sprites/sprite200.200.2.png",
+    "res://images/sprites/sprite200.200.3.png",
+    "res://images/sprites/sprite200.200.4.png",
+    "res://images/sprites/sprite200.200.5.png",
+    "res://images/sprites/sprite200.200.6.png",
+    "res://images/sprites/sprite200.200.7.png",
+    "res://images/sprites/sprite200.200.8.png",
+    "res://images/sprites/sprite200.200.9.png",
+    "res://images/sprites/sprite200.200.10.png",
+    "res://images/sprites/sprite200.200.11.png",
+    "res://images/sprites/sprite200.200.12.png",
+    "res://images/sprites/sprite200.200.13.png",
+    "res://images/sprites/sprite200.200.14.png",
+    "res://images/sprites/sprite200.200.15.png",
+    "res://images/sprites/sprite200.200.16.png",
+    "res://images/sprites/sprite200.200.17.png",
+    "res://images/sprites/sprite200.200.18.png",
+    "res://images/sprites/sprite200.200.19.png",
+    "res://images/sprites/sprite200.200.20.png",
+    "res://images/sprites/sprite200.200.21.png",
+    "res://images/sprites/sprite200.200.22.png",
+    "res://images/sprites/sprite200.200.23.png",
+    "res://images/sprites/sprite200.200.24.png",
+    "res://images/sprites/sprite200.200.25.png",
+    "res://images/sprites/sprite200.200.26.png",
+    "res://images/sprites/sprite200.200.27.png",
+    "res://images/sprites/sprite200.200.28.png",
+    "res://images/sprites/sprite200.200.29.png",
+    "res://images/sprites/sprite200.200.30.png",
+    "res://images/sprites/sprite200.200.31.png",
+    "res://images/sprites/sprite200.200.32.png",
+    "res://images/sprites/sprite200.200.33.png",
+    "res://images/sprites/sprite200.200.34.png",
+    "res://images/sprites/sprite200.200.35.png",
+    "res://images/sprites/sprite200.200.36.png",
+    "res://images/sprites/sprite200.200.37.png",
+    "res://images/sprites/sprite200.200.38.png",
+    "res://images/sprites/sprite200.200.39.png",
+    "res://images/sprites/sprite200.200.40.png",
+    "res://images/sprites/sprite200.200.41.png",
+    "res://images/sprites/sprite200.200.42.png",
+    "res://images/sprites/sprite200.200.43.png",
+    "res://images/sprites/sprite200.200.44.png",
+    "res://images/sprites/sprite200.200.45.png",
+    "res://images/sprites/sprite200.200.46.png",
+    "res://images/sprites/sprite200.200.47.png",
+    "res://images/sprites/sprite200.200.48.png",
+    "res://images/sprites/sprite200.200.49.png",
+    "res://images/sprites/sprite200.200.50.png",
+    "res://images/sprites/sprite200.200.51.png",
+    "res://images/sprites/sprite200.200.52.png",
+    "res://images/sprites/sprite200.200.53.png",
+    "res://images/sprites/sprite200.200.54.png",
+    "res://images/sprites/sprite200.200.55.png",
+    "res://images/sprites/sprite200.200.56.png",
+    "res://images/sprites/sprite200.200.57.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "201": {
+   "name": "sprite201",
+   "origin": [
+    94,
+    95
+   ],
+   "bbox": [
+    0,
+    188,
+    190,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite201.201.0.png",
+    "res://images/sprites/sprite201.201.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "204": {
+   "name": "s_bullet_1c",
+   "origin": [
+    61,
+    4
+   ],
+   "bbox": [
+    0,
+    117,
+    8,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_1c.204.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "205": {
+   "name": "s_bullet_100",
+   "origin": [
+    38,
+    18
+   ],
+   "bbox": [
+    0,
+    45,
+    36,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_100.205.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "206": {
+   "name": "s_flash_2",
+   "origin": [
+    37,
+    74
+   ],
+   "bbox": [
+    0,
+    135,
+    128,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_flash_2.206.0.png",
+    "res://images/sprites/s_flash_2.206.1.png",
+    "res://images/sprites/s_flash_2.206.2.png",
+    "res://images/sprites/s_flash_2.206.3.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "207": {
+   "name": "s_bullet_minigun",
+   "origin": [
+    125,
+    8
+   ],
+   "bbox": [
+    0,
+    140,
+    17,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun.207.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "208": {
+   "name": "sprite208",
+   "origin": [
+    12,
+    5
+   ],
+   "bbox": [
+    1,
+    23,
+    9,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite208.208.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "209": {
+   "name": "sprite209",
+   "origin": [
+    45,
+    45
+   ],
+   "bbox": [
+    0,
+    89,
+    89,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite209.209.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "210": {
+   "name": "sprite210",
+   "origin": [
+    45,
+    45
+   ],
+   "bbox": [
+    0,
+    89,
+    89,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite210.210.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "211": {
+   "name": "sprite211",
+   "origin": [
+    76,
+    22
+   ],
+   "bbox": [
+    1,
+    107,
+    42,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite211.211.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "213": {
+   "name": "s_bullet_minigun2",
+   "origin": [
+    130,
+    10
+   ],
+   "bbox": [
+    0,
+    140,
+    21,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun2.213.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "214": {
+   "name": "s_bullet_1b2",
+   "origin": [
+    39,
+    31
+   ],
+   "bbox": [
+    0,
+    66,
+    62,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_1b2.214.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "215": {
+   "name": "s_bullet_minigun3",
+   "origin": [
+    128,
+    16
+   ],
+   "bbox": [
+    0,
+    140,
+    31,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun3.215.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "216": {
+   "name": "s_bullet_minigun4",
+   "origin": [
+    136,
+    33
+   ],
+   "bbox": [
+    1,
+    271,
+    63,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun4.216.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "217": {
+   "name": "s_bullet_minigun5",
+   "origin": [
+    12,
+    12
+   ],
+   "bbox": [
+    1,
+    22,
+    22,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun5.217.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "218": {
+   "name": "s_bullet_minigun6",
+   "origin": [
+    10,
+    17
+   ],
+   "bbox": [
+    1,
+    49,
+    34,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun6.218.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "219": {
+   "name": "s_bullet_minigun7",
+   "origin": [
+    21,
+    21
+   ],
+   "bbox": [
+    0,
+    41,
+    42,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun7.219.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "220": {
+   "name": "s_bullet_minigun8",
+   "origin": [
+    14,
+    14
+   ],
+   "bbox": [
+    1,
+    27,
+    27,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minigun8.220.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "221": {
+   "name": "sprite221",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    1,
+    38,
+    18,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/sprite221.221.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "222": {
+   "name": "sprite222",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    1,
+    38,
+    38,
+    18
+   ],
+   "frames": [
+    "res://images/sprites/sprite222.222.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "228": {
+   "name": "s_effector_01",
+   "origin": [
+    52,
+    7
+   ],
+   "bbox": [
+    1,
+    103,
+    12,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_effector_01.228.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "229": {
+   "name": "s_bonus_coin",
+   "origin": [
+    43,
+    43
+   ],
+   "bbox": [
+    1,
+    85,
+    85,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_coin.229.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "230": {
+   "name": "s_bonus_coin2",
+   "origin": [
+    48,
+    48
+   ],
+   "bbox": [
+    1,
+    94,
+    94,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_coin2.230.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "231": {
+   "name": "s_bonus_diamond",
+   "origin": [
+    42,
+    44
+   ],
+   "bbox": [
+    1,
+    83,
+    87,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_diamond.231.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "232": {
+   "name": "s_bonus_diamond2",
+   "origin": [
+    48,
+    50
+   ],
+   "bbox": [
+    1,
+    95,
+    98,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_diamond2.232.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "233": {
+   "name": "s_bonus_diamond3",
+   "origin": [
+    42,
+    44
+   ],
+   "bbox": [
+    1,
+    83,
+    87,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_diamond3.233.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "234": {
+   "name": "s_special_magma",
+   "origin": [
+    1,
+    69
+   ],
+   "bbox": [
+    1,
+    33,
+    95,
+    46
+   ],
+   "frames": [
+    "res://images/sprites/s_special_magma.234.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "235": {
+   "name": "s_special_load",
+   "origin": [
+    55,
+    24
+   ],
+   "bbox": [
+    1,
+    108,
+    46,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_special_load.235.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "236": {
+   "name": "s_special_kaboom",
+   "origin": [
+    135,
+    125
+   ],
+   "bbox": [
+    1,
+    268,
+    249,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_special_kaboom.236.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "237": {
+   "name": "s_special_regen",
+   "origin": [
+    26,
+    26
+   ],
+   "bbox": [
+    1,
+    51,
+    51,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_special_regen.237.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "239": {
+   "name": "s_specials",
+   "origin": [
+    29,
+    34
+   ],
+   "bbox": [
+    0,
+    59,
+    59,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_specials.239.0.png",
+    "res://images/sprites/s_specials.239.1.png",
+    "res://images/sprites/s_specials.239.2.png",
+    "res://images/sprites/s_specials.239.3.png",
+    "res://images/sprites/s_specials.239.4.png",
+    "res://images/sprites/s_specials.239.5.png",
+    "res://images/sprites/s_specials.239.6.png",
+    "res://images/sprites/s_specials.239.7.png",
+    "res://images/sprites/s_specials.239.8.png",
+    "res://images/sprites/s_specials.239.9.png",
+    "res://images/sprites/s_specials.239.10.png",
+    "res://images/sprites/s_specials.239.11.png",
+    "res://images/sprites/s_specials.239.12.png",
+    "res://images/sprites/s_specials.239.13.png",
+    "res://images/sprites/s_specials.239.14.png",
+    "res://images/sprites/s_specials.239.15.png",
+    "res://images/sprites/s_specials.239.16.png",
+    "res://images/sprites/s_specials.239.17.png",
+    "res://images/sprites/s_specials.239.18.png",
+    "res://images/sprites/s_specials.239.19.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "240": {
+   "name": "s_additionalpanel",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    148,
+    21,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_additionalpanel.240.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "241": {
+   "name": "s_additionalpanelmask",
+   "origin": [
+    3,
+    3
+   ],
+   "bbox": [
+    1,
+    155,
+    31,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_additionalpanelmask.241.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "243": {
+   "name": "s_bonuschest",
+   "origin": [
+    41,
+    31
+   ],
+   "bbox": [
+    1,
+    77,
+    58,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonuschest.243.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "244": {
+   "name": "s_bonuschestmask",
+   "origin": [
+    51,
+    42
+   ],
+   "bbox": [
+    1,
+    100,
+    82,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonuschestmask.244.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "245": {
+   "name": "s_bonuschest2",
+   "origin": [
+    41,
+    31
+   ],
+   "bbox": [
+    1,
+    81,
+    60,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonuschest2.245.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "246": {
+   "name": "s_resoultefekt",
+   "origin": [
+    7,
+    137
+   ],
+   "bbox": [
+    1,
+    13,
+    272,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_resoultefekt.246.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "247": {
+   "name": "s_map_levelor",
+   "origin": [
+    13,
+    13
+   ],
+   "bbox": [
+    0,
+    26,
+    26,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_levelor.247.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "248": {
+   "name": "s_map_levelormask",
+   "origin": [
+    17,
+    17
+   ],
+   "bbox": [
+    0,
+    33,
+    33,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_levelormask.248.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "249": {
+   "name": "s_map_adder",
+   "origin": [
+    14,
+    5
+   ],
+   "bbox": [
+    0,
+    27,
+    10,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_adder.249.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "250": {
+   "name": "s_map_linker",
+   "origin": [
+    0,
+    9
+   ],
+   "bbox": [
+    0,
+    19,
+    18,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_linker.250.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "251": {
+   "name": "s_map_galactic_01",
+   "origin": [
+    89,
+    80
+   ],
+   "bbox": [
+    0,
+    175,
+    167,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_01.251.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "252": {
+   "name": "s_map_galactic_02",
+   "origin": [
+    37,
+    113
+   ],
+   "bbox": [
+    0,
+    73,
+    149,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_02.252.0.png",
+    "res://images/sprites/s_map_galactic_02.252.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "253": {
+   "name": "s_map_galactic_03",
+   "origin": [
+    50,
+    126
+   ],
+   "bbox": [
+    1,
+    99,
+    177,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_03.253.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "254": {
+   "name": "s_map_back",
+   "origin": [
+    440,
+    346
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_back.254.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "255": {
+   "name": "s_map_galactic_04",
+   "origin": [
+    37,
+    37
+   ],
+   "bbox": [
+    1,
+    73,
+    72,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_04.255.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "256": {
+   "name": "s_map_galactic_05",
+   "origin": [
+    44,
+    44
+   ],
+   "bbox": [
+    1,
+    87,
+    87,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_05.256.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "258": {
+   "name": "s_map_galactic_06",
+   "origin": [
+    37,
+    63
+   ],
+   "bbox": [
+    1,
+    73,
+    98,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_06.258.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "259": {
+   "name": "s_map_galactic_07",
+   "origin": [
+    50,
+    76
+   ],
+   "bbox": [
+    1,
+    98,
+    124,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_07.259.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "261": {
+   "name": "s_map_galactic_08",
+   "origin": [
+    72,
+    66
+   ],
+   "bbox": [
+    12,
+    114,
+    103,
+    11
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_08.261.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "262": {
+   "name": "s_map_galactic_09",
+   "origin": [
+    72,
+    66
+   ],
+   "bbox": [
+    1,
+    125,
+    116,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_09.262.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "264": {
+   "name": "s_map_marker",
+   "origin": [
+    59,
+    86
+   ],
+   "bbox": [
+    1,
+    113,
+    113,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_marker.264.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "265": {
+   "name": "s_map_punktor",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_punktor.265.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "267": {
+   "name": "s_ladowacz333",
+   "origin": [
+    65,
+    65
+   ],
+   "bbox": [
+    1,
+    128,
+    128,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_ladowacz333.267.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "270": {
+   "name": "s_map_trail",
+   "origin": [
+    5,
+    28
+   ],
+   "bbox": [
+    1,
+    9,
+    55,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_trail.270.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "271": {
+   "name": "s_map_pannel",
+   "origin": [
+    38,
+    38
+   ],
+   "bbox": [
+    1,
+    74,
+    74,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel.271.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "272": {
+   "name": "s_map_pannel_mask",
+   "origin": [
+    45,
+    45
+   ],
+   "bbox": [
+    1,
+    88,
+    88,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_mask.272.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "273": {
+   "name": "s_map_pannel_add",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    1,
+    39,
+    39,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_add.273.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "274": {
+   "name": "s_map_pannel_sub",
+   "origin": [
+    20,
+    19
+   ],
+   "bbox": [
+    1,
+    38,
+    37,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_sub.274.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "275": {
+   "name": "s_map_pannel_cur",
+   "origin": [
+    67,
+    48
+   ],
+   "bbox": [
+    1,
+    63,
+    95,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_cur.275.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "276": {
+   "name": "s_map_pannel_cur_mask",
+   "origin": [
+    72,
+    53
+   ],
+   "bbox": [
+    1,
+    143,
+    105,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_cur_mask.276.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "277": {
+   "name": "s_map_pannel_cur2",
+   "origin": [
+    67,
+    48
+   ],
+   "bbox": [
+    64,
+    132,
+    95,
+    4
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_cur2.277.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "278": {
+   "name": "s_map_pannel_dir",
+   "origin": [
+    58,
+    57
+   ],
+   "bbox": [
+    1,
+    115,
+    112,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_dir.278.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "279": {
+   "name": "s_map_pannel_dir2",
+   "origin": [
+    63,
+    62
+   ],
+   "bbox": [
+    1,
+    125,
+    123,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_pannel_dir2.279.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "288": {
+   "name": "s_map_levelor2",
+   "origin": [
+    13,
+    13
+   ],
+   "bbox": [
+    0,
+    26,
+    26,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_levelor2.288.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "289": {
+   "name": "s_map_engage",
+   "origin": [
+    77,
+    82
+   ],
+   "bbox": [
+    1,
+    158,
+    161,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_engage.289.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "290": {
+   "name": "s_map_testor",
+   "origin": [
+    291,
+    205
+   ],
+   "bbox": [
+    0,
+    590,
+    418,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_testor.290.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "292": {
+   "name": "s_ladowacz3",
+   "origin": [
+    65,
+    65
+   ],
+   "bbox": [
+    1,
+    128,
+    128,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_ladowacz3.292.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "293": {
+   "name": "s_castle_piece_1",
+   "origin": [
+    64,
+    32
+   ],
+   "bbox": [
+    0,
+    127,
+    63,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_1.293.0.png",
+    "res://images/sprites/s_castle_piece_1.293.1.png",
+    "res://images/sprites/s_castle_piece_1.293.2.png",
+    "res://images/sprites/s_castle_piece_1.293.3.png",
+    "res://images/sprites/s_castle_piece_1.293.4.png",
+    "res://images/sprites/s_castle_piece_1.293.5.png",
+    "res://images/sprites/s_castle_piece_1.293.6.png",
+    "res://images/sprites/s_castle_piece_1.293.7.png",
+    "res://images/sprites/s_castle_piece_1.293.8.png",
+    "res://images/sprites/s_castle_piece_1.293.9.png",
+    "res://images/sprites/s_castle_piece_1.293.10.png",
+    "res://images/sprites/s_castle_piece_1.293.11.png",
+    "res://images/sprites/s_castle_piece_1.293.12.png",
+    "res://images/sprites/s_castle_piece_1.293.13.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "294": {
+   "name": "s_castle_piece_2",
+   "origin": [
+    33,
+    34
+   ],
+   "bbox": [
+    0,
+    63,
+    63,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_2.294.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "295": {
+   "name": "s_castle_piece_3",
+   "origin": [
+    33,
+    32
+   ],
+   "bbox": [
+    0,
+    63,
+    56,
+    4
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_3.295.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "296": {
+   "name": "s_enemy_roslinka",
+   "origin": [
+    100,
+    27
+   ],
+   "bbox": [
+    1,
+    198,
+    52,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_roslinka.296.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "297": {
+   "name": "s_enemy_roslinka2",
+   "origin": [
+    10,
+    28
+   ],
+   "bbox": [
+    1,
+    51,
+    34,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_roslinka2.297.0.png",
+    "res://images/sprites/s_enemy_roslinka2.297.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "298": {
+   "name": "s_enemy_roslinka3",
+   "origin": [
+    101,
+    30
+   ],
+   "bbox": [
+    1,
+    246,
+    56,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_roslinka3.298.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "299": {
+   "name": "s_enemy_roslinka4",
+   "origin": [
+    14,
+    15
+   ],
+   "bbox": [
+    1,
+    27,
+    28,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_roslinka4.299.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "300": {
+   "name": "s_blocker",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    63,
+    63,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_blocker.300.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "301": {
+   "name": "s_castle_cannon",
+   "origin": [
+    25,
+    25
+   ],
+   "bbox": [
+    1,
+    65,
+    49,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_cannon.301.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "302": {
+   "name": "s_castle_piece_4",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    50,
+    47,
+    16
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_4.302.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "303": {
+   "name": "s_bullet_kulka",
+   "origin": [
+    35,
+    34
+   ],
+   "bbox": [
+    1,
+    69,
+    67,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_kulka.303.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "304": {
+   "name": "s_castle_piece_5",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    63,
+    45,
+    18
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_5.304.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "305": {
+   "name": "s_player_mask",
+   "origin": [
+    52,
+    78
+   ],
+   "bbox": [
+    11,
+    89,
+    123,
+    35
+   ],
+   "frames": [
+    "res://images/sprites/s_player_mask.305.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "306": {
+   "name": "s_castle_piece_6",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    63,
+    63,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_6.306.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "307": {
+   "name": "s_castle_piece_7",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    62,
+    127,
+    63,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_7.307.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "308": {
+   "name": "s_castle_piece_8",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    3,
+    124,
+    60,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_8.308.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "310": {
+   "name": "s_castle_piece_9",
+   "origin": [
+    49,
+    47
+   ],
+   "bbox": [
+    1,
+    96,
+    93,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_9.310.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "311": {
+   "name": "s_wiatrak_mask",
+   "origin": [
+    0,
+    16
+   ],
+   "bbox": [
+    0,
+    31,
+    31,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_wiatrak_mask.311.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "312": {
+   "name": "s_wiatrak_center",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    1,
+    38,
+    38,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_wiatrak_center.312.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "313": {
+   "name": "s_castle_point",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    63,
+    63,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_point.313.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "314": {
+   "name": "s_castle_cegla",
+   "origin": [
+    18,
+    9
+   ],
+   "bbox": [
+    1,
+    34,
+    17,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_cegla.314.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "315": {
+   "name": "s_title_efekt_3",
+   "origin": [
+    155,
+    137
+   ],
+   "bbox": [
+    0,
+    5,
+    5,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_title_efekt_3.315.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "316": {
+   "name": "s_asteroidus",
+   "origin": [
+    59,
+    59
+   ],
+   "bbox": [
+    1,
+    117,
+    117,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroidus.316.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "317": {
+   "name": "s_asteroidus2",
+   "origin": [
+    19,
+    21
+   ],
+   "bbox": [
+    1,
+    37,
+    41,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_asteroidus2.317.0.png",
+    "res://images/sprites/s_asteroidus2.317.1.png",
+    "res://images/sprites/s_asteroidus2.317.2.png",
+    "res://images/sprites/s_asteroidus2.317.3.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "318": {
+   "name": "s_startup_1",
+   "origin": [
+    0,
+    51
+   ],
+   "bbox": [
+    0,
+    31,
+    104,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_startup_1.318.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "319": {
+   "name": "s_spikeyhead",
+   "origin": [
+    79,
+    79
+   ],
+   "bbox": [
+    1,
+    157,
+    157,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeyhead.319.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "320": {
+   "name": "s_spikeymask",
+   "origin": [
+    79,
+    79
+   ],
+   "bbox": [
+    0,
+    158,
+    158,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeymask.320.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "321": {
+   "name": "s_spikeychain",
+   "origin": [
+    7,
+    37
+   ],
+   "bbox": [
+    1,
+    12,
+    72,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeychain.321.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "322": {
+   "name": "s_spikeygear",
+   "origin": [
+    29,
+    27
+   ],
+   "bbox": [
+    1,
+    57,
+    53,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeygear.322.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "323": {
+   "name": "s_spikeyguy",
+   "origin": [
+    30,
+    25
+   ],
+   "bbox": [
+    15,
+    46,
+    42,
+    14
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeyguy.323.0.png",
+    "res://images/sprites/s_spikeyguy.323.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "324": {
+   "name": "s_spikeyklosz",
+   "origin": [
+    64,
+    64
+   ],
+   "bbox": [
+    1,
+    126,
+    126,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_spikeyklosz.324.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "325": {
+   "name": "s_map_galactic_10",
+   "origin": [
+    44,
+    62
+   ],
+   "bbox": [
+    1,
+    195,
+    125,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_10.325.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "326": {
+   "name": "s_map_galactic_11",
+   "origin": [
+    57,
+    75
+   ],
+   "bbox": [
+    1,
+    223,
+    147,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_11.326.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "327": {
+   "name": "s_map_galactic_12",
+   "origin": [
+    14,
+    32
+   ],
+   "bbox": [
+    1,
+    32,
+    45,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_12.327.0.png",
+    "res://images/sprites/s_map_galactic_12.327.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "328": {
+   "name": "s_enemy_h_2",
+   "origin": [
+    85,
+    190
+   ],
+   "bbox": [
+    1,
+    182,
+    232,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_h_2.328.0.png",
+    "res://images/sprites/s_enemy_h_2.328.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "329": {
+   "name": "s_wirnik",
+   "origin": [
+    11,
+    0
+   ],
+   "bbox": [
+    1,
+    21,
+    66,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_wirnik.329.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "330": {
+   "name": "s_wirnik_2",
+   "origin": [
+    48,
+    11
+   ],
+   "bbox": [
+    1,
+    95,
+    21,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_wirnik_2.330.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "332": {
+   "name": "s_enemy_h_3",
+   "origin": [
+    86,
+    190
+   ],
+   "bbox": [
+    0,
+    186,
+    235,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_h_3.332.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "333": {
+   "name": "s_slow_motion_effect",
+   "origin": [
+    165,
+    163
+   ],
+   "bbox": [
+    1,
+    331,
+    326,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_slow_motion_effect.333.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "334": {
+   "name": "s_boss_ocznix",
+   "origin": [
+    32,
+    32
+   ],
+   "bbox": [
+    0,
+    64,
+    64,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_boss_ocznix.334.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "335": {
+   "name": "s_cards_set",
+   "origin": [
+    92,
+    71
+   ],
+   "bbox": [
+    1,
+    182,
+    141,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_cards_set.335.0.png",
+    "res://images/sprites/s_cards_set.335.1.png",
+    "res://images/sprites/s_cards_set.335.2.png",
+    "res://images/sprites/s_cards_set.335.3.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "344": {
+   "name": "s_card_star",
+   "origin": [
+    42,
+    47
+   ],
+   "bbox": [
+    1,
+    87,
+    92,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_card_star.344.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "345": {
+   "name": "s_card_cursor",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_card_cursor.345.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "346": {
+   "name": "s_map_galactic_13",
+   "origin": [
+    62,
+    61
+   ],
+   "bbox": [
+    1,
+    122,
+    120,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_13.346.0.png",
+    "res://images/sprites/s_map_galactic_13.346.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "347": {
+   "name": "s_map_galactic_14",
+   "origin": [
+    43,
+    28
+   ],
+   "bbox": [
+    0,
+    96,
+    91,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_14.347.0.png",
+    "res://images/sprites/s_map_galactic_14.347.1.png",
+    "res://images/sprites/s_map_galactic_14.347.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "348": {
+   "name": "s_map_galactic_15",
+   "origin": [
+    22,
+    21
+   ],
+   "bbox": [
+    1,
+    42,
+    41,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_galactic_15.348.0.png",
+    "res://images/sprites/s_map_galactic_15.348.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "349": {
+   "name": "s_dummy",
+   "origin": [
+    43,
+    44
+   ],
+   "bbox": [
+    1,
+    85,
+    87,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_dummy.349.0.png",
+    "res://images/sprites/s_dummy.349.1.png",
+    "res://images/sprites/s_dummy.349.2.png",
+    "res://images/sprites/s_dummy.349.3.png",
+    "res://images/sprites/s_dummy.349.4.png",
+    "res://images/sprites/s_dummy.349.5.png",
+    "res://images/sprites/s_dummy.349.6.png",
+    "res://images/sprites/s_dummy.349.7.png",
+    "res://images/sprites/s_dummy.349.8.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "350": {
+   "name": "s_dummy_fontmask",
+   "origin": [
+    0,
+    11
+   ],
+   "bbox": [
+    0,
+    18,
+    21,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_dummy_fontmask.350.0.png",
+    "res://images/sprites/s_dummy_fontmask.350.1.png",
+    "res://images/sprites/s_dummy_fontmask.350.2.png",
+    "res://images/sprites/s_dummy_fontmask.350.3.png",
+    "res://images/sprites/s_dummy_fontmask.350.4.png",
+    "res://images/sprites/s_dummy_fontmask.350.5.png",
+    "res://images/sprites/s_dummy_fontmask.350.6.png",
+    "res://images/sprites/s_dummy_fontmask.350.7.png",
+    "res://images/sprites/s_dummy_fontmask.350.8.png",
+    "res://images/sprites/s_dummy_fontmask.350.9.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "351": {
+   "name": "s_dummy_font",
+   "origin": [
+    0,
+    11
+   ],
+   "bbox": [
+    3,
+    15,
+    18,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_dummy_font.351.0.png",
+    "res://images/sprites/s_dummy_font.351.1.png",
+    "res://images/sprites/s_dummy_font.351.2.png",
+    "res://images/sprites/s_dummy_font.351.3.png",
+    "res://images/sprites/s_dummy_font.351.4.png",
+    "res://images/sprites/s_dummy_font.351.5.png",
+    "res://images/sprites/s_dummy_font.351.6.png",
+    "res://images/sprites/s_dummy_font.351.7.png",
+    "res://images/sprites/s_dummy_font.351.8.png",
+    "res://images/sprites/s_dummy_font.351.9.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "352": {
+   "name": "s_player_mapper",
+   "origin": [
+    58,
+    85
+   ],
+   "bbox": [
+    1,
+    146,
+    171,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_player_mapper.352.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "406": {
+   "name": "s_bullet_mini",
+   "origin": [
+    21,
+    21
+   ],
+   "bbox": [
+    0,
+    42,
+    42,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_mini.406.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "407": {
+   "name": "s_bullet_minimask",
+   "origin": [
+    11,
+    12
+   ],
+   "bbox": [
+    0,
+    23,
+    24,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_minimask.407.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "408": {
+   "name": "s_bullet_frost",
+   "origin": [
+    18,
+    18
+   ],
+   "bbox": [
+    1,
+    35,
+    35,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_frost.408.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "409": {
+   "name": "s_massive_minigun",
+   "origin": [
+    47,
+    9
+   ],
+   "bbox": [
+    1,
+    92,
+    17,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_massive_minigun.409.0.png",
+    "res://images/sprites/s_massive_minigun.409.1.png",
+    "res://images/sprites/s_massive_minigun.409.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "410": {
+   "name": "s_bullet_100plus",
+   "origin": [
+    43,
+    28
+   ],
+   "bbox": [
+    1,
+    47,
+    54,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bullet_100plus.410.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "411": {
+   "name": "s_heavylaser",
+   "origin": [
+    0,
+    11
+   ],
+   "bbox": [
+    0,
+    19,
+    20,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_heavylaser.411.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "412": {
+   "name": "s_heavylaser2",
+   "origin": [
+    0,
+    11
+   ],
+   "bbox": [
+    0,
+    19,
+    20,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_heavylaser2.412.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "413": {
+   "name": "s_shopback",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    323,
+    263,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopback.413.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "414": {
+   "name": "s_shopdeta",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    549,
+    47,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_shopdeta.414.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "415": {
+   "name": "s_shopdeta2",
+   "origin": [
+    543,
+    0
+   ],
+   "bbox": [
+    1,
+    541,
+    49,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_shopdeta2.415.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "416": {
+   "name": "s_shopkeeping",
+   "origin": [
+    56,
+    57
+   ],
+   "bbox": [
+    1,
+    111,
+    113,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_shopkeeping.416.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "417": {
+   "name": "s_shopkeeping2",
+   "origin": [
+    57,
+    58
+   ],
+   "bbox": [
+    0,
+    120,
+    122,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopkeeping2.417.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "419": {
+   "name": "s_shopsuwak",
+   "origin": [
+    5,
+    0
+   ],
+   "bbox": [
+    0,
+    797,
+    22,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopsuwak.419.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "420": {
+   "name": "s_shopsuwak2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    799,
+    21,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopsuwak2.420.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "421": {
+   "name": "s_shoppuntor",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shoppuntor.421.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "422": {
+   "name": "s_shopsuwak3",
+   "origin": [
+    23,
+    0
+   ],
+   "bbox": [
+    15,
+    22,
+    21,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopsuwak3.422.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "423": {
+   "name": "s_shopsuwak4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    7,
+    21,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopsuwak4.423.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "424": {
+   "name": "s_shopguns",
+   "origin": [
+    75,
+    75
+   ],
+   "bbox": [
+    0,
+    149,
+    149,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopguns.424.0.png",
+    "res://images/sprites/s_shopguns.424.1.png",
+    "res://images/sprites/s_shopguns.424.2.png",
+    "res://images/sprites/s_shopguns.424.3.png",
+    "res://images/sprites/s_shopguns.424.4.png",
+    "res://images/sprites/s_shopguns.424.5.png",
+    "res://images/sprites/s_shopguns.424.6.png",
+    "res://images/sprites/s_shopguns.424.7.png",
+    "res://images/sprites/s_shopguns.424.8.png",
+    "res://images/sprites/s_shopguns.424.9.png",
+    "res://images/sprites/s_shopguns.424.10.png",
+    "res://images/sprites/s_shopguns.424.11.png",
+    "res://images/sprites/s_shopguns.424.12.png",
+    "res://images/sprites/s_shopguns.424.13.png",
+    "res://images/sprites/s_shopguns.424.14.png",
+    "res://images/sprites/s_shopguns.424.15.png",
+    "res://images/sprites/s_shopguns.424.16.png",
+    "res://images/sprites/s_shopguns.424.17.png",
+    "res://images/sprites/s_shopguns.424.18.png",
+    "res://images/sprites/s_shopguns.424.19.png",
+    "res://images/sprites/s_shopguns.424.20.png",
+    "res://images/sprites/s_shopguns.424.21.png",
+    "res://images/sprites/s_shopguns.424.22.png",
+    "res://images/sprites/s_shopguns.424.23.png",
+    "res://images/sprites/s_shopguns.424.24.png",
+    "res://images/sprites/s_shopguns.424.25.png",
+    "res://images/sprites/s_shopguns.424.26.png",
+    "res://images/sprites/s_shopguns.424.27.png",
+    "res://images/sprites/s_shopguns.424.28.png",
+    "res://images/sprites/s_shopguns.424.29.png",
+    "res://images/sprites/s_shopguns.424.30.png",
+    "res://images/sprites/s_shopguns.424.31.png",
+    "res://images/sprites/s_shopguns.424.32.png",
+    "res://images/sprites/s_shopguns.424.33.png",
+    "res://images/sprites/s_shopguns.424.34.png",
+    "res://images/sprites/s_shopguns.424.35.png",
+    "res://images/sprites/s_shopguns.424.36.png",
+    "res://images/sprites/s_shopguns.424.37.png",
+    "res://images/sprites/s_shopguns.424.38.png",
+    "res://images/sprites/s_shopguns.424.39.png",
+    "res://images/sprites/s_shopguns.424.40.png",
+    "res://images/sprites/s_shopguns.424.41.png",
+    "res://images/sprites/s_shopguns.424.42.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "425": {
+   "name": "s_grzybcio",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    207,
+    316,
+    22
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio.425.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "426": {
+   "name": "s_grzybcio2",
+   "origin": [
+    0,
+    -22
+   ],
+   "bbox": [
+    0,
+    234,
+    325,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio2.426.0.png",
+    "res://images/sprites/s_grzybcio2.426.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "427": {
+   "name": "s_panel",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    708,
+    241,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_panel.427.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "428": {
+   "name": "s_stateczek",
+   "origin": [
+    136,
+    167
+   ],
+   "bbox": [
+    1,
+    270,
+    332,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_stateczek.428.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "429": {
+   "name": "s_weaponry",
+   "origin": [
+    182,
+    34
+   ],
+   "bbox": [
+    1,
+    360,
+    63,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_weaponry.429.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "430": {
+   "name": "s_weaponrymask",
+   "origin": [
+    188,
+    37
+   ],
+   "bbox": [
+    1,
+    370,
+    74,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_weaponrymask.430.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "431": {
+   "name": "s_buypasek",
+   "origin": [
+    24,
+    85
+   ],
+   "bbox": [
+    0,
+    48,
+    170,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_buypasek.431.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "432": {
+   "name": "s_buypasekmask",
+   "origin": [
+    27,
+    88
+   ],
+   "bbox": [
+    0,
+    54,
+    176,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_buypasekmask.432.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "433": {
+   "name": "s_fontoshop",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    2,
+    67,
+    67,
+    11
+   ],
+   "frames": [
+    "res://images/sprites/s_fontoshop.433.0.png",
+    "res://images/sprites/s_fontoshop.433.1.png",
+    "res://images/sprites/s_fontoshop.433.2.png",
+    "res://images/sprites/s_fontoshop.433.3.png",
+    "res://images/sprites/s_fontoshop.433.4.png",
+    "res://images/sprites/s_fontoshop.433.5.png",
+    "res://images/sprites/s_fontoshop.433.6.png",
+    "res://images/sprites/s_fontoshop.433.7.png",
+    "res://images/sprites/s_fontoshop.433.8.png",
+    "res://images/sprites/s_fontoshop.433.9.png",
+    "res://images/sprites/s_fontoshop.433.10.png",
+    "res://images/sprites/s_fontoshop.433.11.png",
+    "res://images/sprites/s_fontoshop.433.12.png",
+    "res://images/sprites/s_fontoshop.433.13.png",
+    "res://images/sprites/s_fontoshop.433.14.png",
+    "res://images/sprites/s_fontoshop.433.15.png",
+    "res://images/sprites/s_fontoshop.433.16.png",
+    "res://images/sprites/s_fontoshop.433.17.png",
+    "res://images/sprites/s_fontoshop.433.18.png",
+    "res://images/sprites/s_fontoshop.433.19.png",
+    "res://images/sprites/s_fontoshop.433.20.png",
+    "res://images/sprites/s_fontoshop.433.21.png",
+    "res://images/sprites/s_fontoshop.433.22.png",
+    "res://images/sprites/s_fontoshop.433.23.png",
+    "res://images/sprites/s_fontoshop.433.24.png",
+    "res://images/sprites/s_fontoshop.433.25.png",
+    "res://images/sprites/s_fontoshop.433.26.png",
+    "res://images/sprites/s_fontoshop.433.27.png",
+    "res://images/sprites/s_fontoshop.433.28.png",
+    "res://images/sprites/s_fontoshop.433.29.png",
+    "res://images/sprites/s_fontoshop.433.30.png",
+    "res://images/sprites/s_fontoshop.433.31.png",
+    "res://images/sprites/s_fontoshop.433.32.png",
+    "res://images/sprites/s_fontoshop.433.33.png",
+    "res://images/sprites/s_fontoshop.433.34.png",
+    "res://images/sprites/s_fontoshop.433.35.png",
+    "res://images/sprites/s_fontoshop.433.36.png",
+    "res://images/sprites/s_fontoshop.433.37.png",
+    "res://images/sprites/s_fontoshop.433.38.png",
+    "res://images/sprites/s_fontoshop.433.39.png",
+    "res://images/sprites/s_fontoshop.433.40.png",
+    "res://images/sprites/s_fontoshop.433.41.png",
+    "res://images/sprites/s_fontoshop.433.42.png",
+    "res://images/sprites/s_fontoshop.433.43.png",
+    "res://images/sprites/s_fontoshop.433.44.png",
+    "res://images/sprites/s_fontoshop.433.45.png",
+    "res://images/sprites/s_fontoshop.433.46.png",
+    "res://images/sprites/s_fontoshop.433.47.png",
+    "res://images/sprites/s_fontoshop.433.48.png",
+    "res://images/sprites/s_fontoshop.433.49.png",
+    "res://images/sprites/s_fontoshop.433.50.png",
+    "res://images/sprites/s_fontoshop.433.51.png",
+    "res://images/sprites/s_fontoshop.433.52.png",
+    "res://images/sprites/s_fontoshop.433.53.png",
+    "res://images/sprites/s_fontoshop.433.54.png",
+    "res://images/sprites/s_fontoshop.433.55.png",
+    "res://images/sprites/s_fontoshop.433.56.png",
+    "res://images/sprites/s_fontoshop.433.57.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "434": {
+   "name": "s_fontoshopmask",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    69,
+    69,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_fontoshopmask.434.0.png",
+    "res://images/sprites/s_fontoshopmask.434.1.png",
+    "res://images/sprites/s_fontoshopmask.434.2.png",
+    "res://images/sprites/s_fontoshopmask.434.3.png",
+    "res://images/sprites/s_fontoshopmask.434.4.png",
+    "res://images/sprites/s_fontoshopmask.434.5.png",
+    "res://images/sprites/s_fontoshopmask.434.6.png",
+    "res://images/sprites/s_fontoshopmask.434.7.png",
+    "res://images/sprites/s_fontoshopmask.434.8.png",
+    "res://images/sprites/s_fontoshopmask.434.9.png",
+    "res://images/sprites/s_fontoshopmask.434.10.png",
+    "res://images/sprites/s_fontoshopmask.434.11.png",
+    "res://images/sprites/s_fontoshopmask.434.12.png",
+    "res://images/sprites/s_fontoshopmask.434.13.png",
+    "res://images/sprites/s_fontoshopmask.434.14.png",
+    "res://images/sprites/s_fontoshopmask.434.15.png",
+    "res://images/sprites/s_fontoshopmask.434.16.png",
+    "res://images/sprites/s_fontoshopmask.434.17.png",
+    "res://images/sprites/s_fontoshopmask.434.18.png",
+    "res://images/sprites/s_fontoshopmask.434.19.png",
+    "res://images/sprites/s_fontoshopmask.434.20.png",
+    "res://images/sprites/s_fontoshopmask.434.21.png",
+    "res://images/sprites/s_fontoshopmask.434.22.png",
+    "res://images/sprites/s_fontoshopmask.434.23.png",
+    "res://images/sprites/s_fontoshopmask.434.24.png",
+    "res://images/sprites/s_fontoshopmask.434.25.png",
+    "res://images/sprites/s_fontoshopmask.434.26.png",
+    "res://images/sprites/s_fontoshopmask.434.27.png",
+    "res://images/sprites/s_fontoshopmask.434.28.png",
+    "res://images/sprites/s_fontoshopmask.434.29.png",
+    "res://images/sprites/s_fontoshopmask.434.30.png",
+    "res://images/sprites/s_fontoshopmask.434.31.png",
+    "res://images/sprites/s_fontoshopmask.434.32.png",
+    "res://images/sprites/s_fontoshopmask.434.33.png",
+    "res://images/sprites/s_fontoshopmask.434.34.png",
+    "res://images/sprites/s_fontoshopmask.434.35.png",
+    "res://images/sprites/s_fontoshopmask.434.36.png",
+    "res://images/sprites/s_fontoshopmask.434.37.png",
+    "res://images/sprites/s_fontoshopmask.434.38.png",
+    "res://images/sprites/s_fontoshopmask.434.39.png",
+    "res://images/sprites/s_fontoshopmask.434.40.png",
+    "res://images/sprites/s_fontoshopmask.434.41.png",
+    "res://images/sprites/s_fontoshopmask.434.42.png",
+    "res://images/sprites/s_fontoshopmask.434.43.png",
+    "res://images/sprites/s_fontoshopmask.434.44.png",
+    "res://images/sprites/s_fontoshopmask.434.45.png",
+    "res://images/sprites/s_fontoshopmask.434.46.png",
+    "res://images/sprites/s_fontoshopmask.434.47.png",
+    "res://images/sprites/s_fontoshopmask.434.48.png",
+    "res://images/sprites/s_fontoshopmask.434.49.png",
+    "res://images/sprites/s_fontoshopmask.434.50.png",
+    "res://images/sprites/s_fontoshopmask.434.51.png",
+    "res://images/sprites/s_fontoshopmask.434.52.png",
+    "res://images/sprites/s_fontoshopmask.434.53.png",
+    "res://images/sprites/s_fontoshopmask.434.54.png",
+    "res://images/sprites/s_fontoshopmask.434.55.png",
+    "res://images/sprites/s_fontoshopmask.434.56.png",
+    "res://images/sprites/s_fontoshopmask.434.57.png",
+    "res://images/sprites/s_fontoshopmask.434.58.png",
+    "res://images/sprites/s_fontoshopmask.434.59.png",
+    "res://images/sprites/s_fontoshopmask.434.60.png",
+    "res://images/sprites/s_fontoshopmask.434.61.png",
+    "res://images/sprites/s_fontoshopmask.434.62.png",
+    "res://images/sprites/s_fontoshopmask.434.63.png",
+    "res://images/sprites/s_fontoshopmask.434.64.png",
+    "res://images/sprites/s_fontoshopmask.434.65.png",
+    "res://images/sprites/s_fontoshopmask.434.66.png",
+    "res://images/sprites/s_fontoshopmask.434.67.png",
+    "res://images/sprites/s_fontoshopmask.434.68.png",
+    "res://images/sprites/s_fontoshopmask.434.69.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "435": {
+   "name": "s_shoplighterus",
+   "origin": [
+    40,
+    37
+   ],
+   "bbox": [
+    0,
+    77,
+    77,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shoplighterus.435.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "436": {
+   "name": "s_smallfonts",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    11,
+    12,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_smallfonts.436.0.png",
+    "res://images/sprites/s_smallfonts.436.1.png",
+    "res://images/sprites/s_smallfonts.436.2.png",
+    "res://images/sprites/s_smallfonts.436.3.png",
+    "res://images/sprites/s_smallfonts.436.4.png",
+    "res://images/sprites/s_smallfonts.436.5.png",
+    "res://images/sprites/s_smallfonts.436.6.png",
+    "res://images/sprites/s_smallfonts.436.7.png",
+    "res://images/sprites/s_smallfonts.436.8.png",
+    "res://images/sprites/s_smallfonts.436.9.png",
+    "res://images/sprites/s_smallfonts.436.10.png",
+    "res://images/sprites/s_smallfonts.436.11.png",
+    "res://images/sprites/s_smallfonts.436.12.png",
+    "res://images/sprites/s_smallfonts.436.13.png",
+    "res://images/sprites/s_smallfonts.436.14.png",
+    "res://images/sprites/s_smallfonts.436.15.png",
+    "res://images/sprites/s_smallfonts.436.16.png",
+    "res://images/sprites/s_smallfonts.436.17.png",
+    "res://images/sprites/s_smallfonts.436.18.png",
+    "res://images/sprites/s_smallfonts.436.19.png",
+    "res://images/sprites/s_smallfonts.436.20.png",
+    "res://images/sprites/s_smallfonts.436.21.png",
+    "res://images/sprites/s_smallfonts.436.22.png",
+    "res://images/sprites/s_smallfonts.436.23.png",
+    "res://images/sprites/s_smallfonts.436.24.png",
+    "res://images/sprites/s_smallfonts.436.25.png",
+    "res://images/sprites/s_smallfonts.436.26.png",
+    "res://images/sprites/s_smallfonts.436.27.png",
+    "res://images/sprites/s_smallfonts.436.28.png",
+    "res://images/sprites/s_smallfonts.436.29.png",
+    "res://images/sprites/s_smallfonts.436.30.png",
+    "res://images/sprites/s_smallfonts.436.31.png",
+    "res://images/sprites/s_smallfonts.436.32.png",
+    "res://images/sprites/s_smallfonts.436.33.png",
+    "res://images/sprites/s_smallfonts.436.34.png",
+    "res://images/sprites/s_smallfonts.436.35.png",
+    "res://images/sprites/s_smallfonts.436.36.png",
+    "res://images/sprites/s_smallfonts.436.37.png",
+    "res://images/sprites/s_smallfonts.436.38.png",
+    "res://images/sprites/s_smallfonts.436.39.png",
+    "res://images/sprites/s_smallfonts.436.40.png",
+    "res://images/sprites/s_smallfonts.436.41.png",
+    "res://images/sprites/s_smallfonts.436.42.png",
+    "res://images/sprites/s_smallfonts.436.43.png",
+    "res://images/sprites/s_smallfonts.436.44.png",
+    "res://images/sprites/s_smallfonts.436.45.png",
+    "res://images/sprites/s_smallfonts.436.46.png",
+    "res://images/sprites/s_smallfonts.436.47.png",
+    "res://images/sprites/s_smallfonts.436.48.png",
+    "res://images/sprites/s_smallfonts.436.49.png",
+    "res://images/sprites/s_smallfonts.436.50.png",
+    "res://images/sprites/s_smallfonts.436.51.png",
+    "res://images/sprites/s_smallfonts.436.52.png",
+    "res://images/sprites/s_smallfonts.436.53.png",
+    "res://images/sprites/s_smallfonts.436.54.png",
+    "res://images/sprites/s_smallfonts.436.55.png",
+    "res://images/sprites/s_smallfonts.436.56.png",
+    "res://images/sprites/s_smallfonts.436.57.png",
+    "res://images/sprites/s_smallfonts.436.58.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "437": {
+   "name": "s_shopcoin",
+   "origin": [
+    31,
+    35
+   ],
+   "bbox": [
+    0,
+    61,
+    70,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopcoin.437.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "438": {
+   "name": "s_shopcoinmask",
+   "origin": [
+    31,
+    35
+   ],
+   "bbox": [
+    0,
+    61,
+    70,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopcoinmask.438.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "439": {
+   "name": "s_coinfonts",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    3,
+    21,
+    22,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_coinfonts.439.0.png",
+    "res://images/sprites/s_coinfonts.439.1.png",
+    "res://images/sprites/s_coinfonts.439.2.png",
+    "res://images/sprites/s_coinfonts.439.3.png",
+    "res://images/sprites/s_coinfonts.439.4.png",
+    "res://images/sprites/s_coinfonts.439.5.png",
+    "res://images/sprites/s_coinfonts.439.6.png",
+    "res://images/sprites/s_coinfonts.439.7.png",
+    "res://images/sprites/s_coinfonts.439.8.png",
+    "res://images/sprites/s_coinfonts.439.9.png",
+    "res://images/sprites/s_coinfonts.439.10.png",
+    "res://images/sprites/s_coinfonts.439.11.png",
+    "res://images/sprites/s_coinfonts.439.12.png",
+    "res://images/sprites/s_coinfonts.439.13.png",
+    "res://images/sprites/s_coinfonts.439.14.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "440": {
+   "name": "s_coinfontsmask",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    22,
+    24,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_coinfontsmask.440.0.png",
+    "res://images/sprites/s_coinfontsmask.440.1.png",
+    "res://images/sprites/s_coinfontsmask.440.2.png",
+    "res://images/sprites/s_coinfontsmask.440.3.png",
+    "res://images/sprites/s_coinfontsmask.440.4.png",
+    "res://images/sprites/s_coinfontsmask.440.5.png",
+    "res://images/sprites/s_coinfontsmask.440.6.png",
+    "res://images/sprites/s_coinfontsmask.440.7.png",
+    "res://images/sprites/s_coinfontsmask.440.8.png",
+    "res://images/sprites/s_coinfontsmask.440.9.png",
+    "res://images/sprites/s_coinfontsmask.440.10.png",
+    "res://images/sprites/s_coinfontsmask.440.11.png",
+    "res://images/sprites/s_coinfontsmask.440.12.png",
+    "res://images/sprites/s_coinfontsmask.440.13.png",
+    "res://images/sprites/s_coinfontsmask.440.14.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "441": {
+   "name": "s_upgradebar",
+   "origin": [
+    9,
+    97
+   ],
+   "bbox": [
+    1,
+    19,
+    98,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_upgradebar.441.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "442": {
+   "name": "s_shopkeeping3",
+   "origin": [
+    55,
+    57
+   ],
+   "bbox": [
+    1,
+    116,
+    118,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_shopkeeping3.442.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "443": {
+   "name": "s_minipanel",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    454,
+    109,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_minipanel.443.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "444": {
+   "name": "s_shoppaseksily",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    6,
+    13,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shoppaseksily.444.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "445": {
+   "name": "s_shoppaseksily2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    6,
+    13,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shoppaseksily2.445.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "446": {
+   "name": "s_shoppaseksily3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    6,
+    13,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shoppaseksily3.446.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "448": {
+   "name": "s_mauselock",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    1,
+    25,
+    32,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_mauselock.448.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "449": {
+   "name": "s_mauselock2",
+   "origin": [
+    14,
+    12
+   ],
+   "bbox": [
+    0,
+    49,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_mauselock2.449.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "450": {
+   "name": "s_levelup",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    40,
+    16,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_levelup.450.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "451": {
+   "name": "s_levelup2",
+   "origin": [
+    2,
+    2
+   ],
+   "bbox": [
+    0,
+    44,
+    20,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_levelup2.451.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "452": {
+   "name": "s_levelmush",
+   "origin": [
+    10,
+    9
+   ],
+   "bbox": [
+    2,
+    18,
+    16,
+    2
+   ],
+   "frames": [
+    "res://images/sprites/s_levelmush.452.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "453": {
+   "name": "s_levelmush2",
+   "origin": [
+    13,
+    10
+   ],
+   "bbox": [
+    0,
+    25,
+    24,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_levelmush2.453.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "454": {
+   "name": "s_sellweap",
+   "origin": [
+    21,
+    9
+   ],
+   "bbox": [
+    1,
+    41,
+    17,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_sellweap.454.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "455": {
+   "name": "s_sellweap2",
+   "origin": [
+    28,
+    18
+   ],
+   "bbox": [
+    1,
+    55,
+    34,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_sellweap2.455.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "456": {
+   "name": "s_shopguns2",
+   "origin": [
+    75,
+    75
+   ],
+   "bbox": [
+    32,
+    112,
+    115,
+    20
+   ],
+   "frames": [
+    "res://images/sprites/s_shopguns2.456.0.png",
+    "res://images/sprites/s_shopguns2.456.1.png",
+    "res://images/sprites/s_shopguns2.456.2.png",
+    "res://images/sprites/s_shopguns2.456.3.png",
+    "res://images/sprites/s_shopguns2.456.4.png",
+    "res://images/sprites/s_shopguns2.456.5.png",
+    "res://images/sprites/s_shopguns2.456.6.png",
+    "res://images/sprites/s_shopguns2.456.7.png",
+    "res://images/sprites/s_shopguns2.456.8.png",
+    "res://images/sprites/s_shopguns2.456.9.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "457": {
+   "name": "s_shopbutton1",
+   "origin": [
+    42,
+    42
+   ],
+   "bbox": [
+    0,
+    83,
+    83,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopbutton1.457.0.png",
+    "res://images/sprites/s_shopbutton1.457.1.png",
+    "res://images/sprites/s_shopbutton1.457.2.png",
+    "res://images/sprites/s_shopbutton1.457.3.png",
+    "res://images/sprites/s_shopbutton1.457.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "458": {
+   "name": "s_shopbutton2",
+   "origin": [
+    44,
+    44
+   ],
+   "bbox": [
+    0,
+    91,
+    91,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shopbutton2.458.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "459": {
+   "name": "s_kumpel",
+   "origin": [
+    59,
+    36
+   ],
+   "bbox": [
+    1,
+    117,
+    71,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_kumpel.459.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "460": {
+   "name": "s_kumpel2",
+   "origin": [
+    59,
+    36
+   ],
+   "bbox": [
+    3,
+    115,
+    68,
+    4
+   ],
+   "frames": [
+    "res://images/sprites/s_kumpel2.460.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "461": {
+   "name": "s_kumpel3",
+   "origin": [
+    69,
+    33
+   ],
+   "bbox": [
+    1,
+    136,
+    65,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_kumpel3.461.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "462": {
+   "name": "s_livesus",
+   "origin": [
+    18,
+    18
+   ],
+   "bbox": [
+    1,
+    34,
+    35,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_livesus.462.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "463": {
+   "name": "s_livesusmask",
+   "origin": [
+    30,
+    31
+   ],
+   "bbox": [
+    0,
+    60,
+    62,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_livesusmask.463.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "464": {
+   "name": "s_oczniks",
+   "origin": [
+    1,
+    6
+   ],
+   "bbox": [
+    1,
+    20,
+    11,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_oczniks.464.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "467": {
+   "name": "s_grzybcio3",
+   "origin": [
+    37,
+    38
+   ],
+   "bbox": [
+    1,
+    73,
+    74,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio3.467.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "469": {
+   "name": "s_shop_upgrading_ring",
+   "origin": [
+    203,
+    197
+   ],
+   "bbox": [
+    1,
+    395,
+    392,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_shop_upgrading_ring.469.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "470": {
+   "name": "s_grzybcio_oko",
+   "origin": [
+    12,
+    20
+   ],
+   "bbox": [
+    3,
+    20,
+    35,
+    4
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_oko.470.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "471": {
+   "name": "s_grzybcio4",
+   "origin": [
+    51,
+    29
+   ],
+   "bbox": [
+    1,
+    108,
+    69,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio4.471.0.png",
+    "res://images/sprites/s_grzybcio4.471.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "472": {
+   "name": "s_grzybcio_buzia",
+   "origin": [
+    22,
+    9
+   ],
+   "bbox": [
+    1,
+    42,
+    17,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_buzia.472.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "473": {
+   "name": "s_grzybcio_lapa",
+   "origin": [
+    35,
+    11
+   ],
+   "bbox": [
+    0,
+    65,
+    59,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_lapa.473.0.png",
+    "res://images/sprites/s_grzybcio_lapa.473.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "474": {
+   "name": "s_grzybcio_buzia2",
+   "origin": [
+    26,
+    14
+   ],
+   "bbox": [
+    1,
+    50,
+    27,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_buzia2.474.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "475": {
+   "name": "s_grzybcio_buzia3",
+   "origin": [
+    22,
+    9
+   ],
+   "bbox": [
+    1,
+    42,
+    17,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_buzia3.475.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "476": {
+   "name": "s_grzybcio_buzia4",
+   "origin": [
+    23,
+    11
+   ],
+   "bbox": [
+    1,
+    47,
+    12,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_grzybcio_buzia4.476.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "477": {
+   "name": "s_neu",
+   "origin": [
+    28,
+    23
+   ],
+   "bbox": [
+    1,
+    55,
+    44,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_neu.477.0.png",
+    "res://images/sprites/s_neu.477.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "478": {
+   "name": "s_enemy_aup2",
+   "origin": [
+    30,
+    30
+   ],
+   "bbox": [
+    10,
+    52,
+    57,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_aup2.478.0.png",
+    "res://images/sprites/s_enemy_aup2.478.1.png",
+    "res://images/sprites/s_enemy_aup2.478.2.png",
+    "res://images/sprites/s_enemy_aup2.478.3.png",
+    "res://images/sprites/s_enemy_aup2.478.4.png",
+    "res://images/sprites/s_enemy_aup2.478.5.png",
+    "res://images/sprites/s_enemy_aup2.478.6.png",
+    "res://images/sprites/s_enemy_aup2.478.7.png",
+    "res://images/sprites/s_enemy_aup2.478.8.png",
+    "res://images/sprites/s_enemy_aup2.478.9.png",
+    "res://images/sprites/s_enemy_aup2.478.10.png",
+    "res://images/sprites/s_enemy_aup2.478.11.png",
+    "res://images/sprites/s_enemy_aup2.478.12.png",
+    "res://images/sprites/s_enemy_aup2.478.13.png",
+    "res://images/sprites/s_enemy_aup2.478.14.png",
+    "res://images/sprites/s_enemy_aup2.478.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "479": {
+   "name": "s_enemy_aup",
+   "origin": [
+    30,
+    30
+   ],
+   "bbox": [
+    10,
+    52,
+    57,
+    3
+   ],
+   "frames": [
+    "res://images/sprites/s_enemy_aup.479.0.png",
+    "res://images/sprites/s_enemy_aup.479.1.png",
+    "res://images/sprites/s_enemy_aup.479.2.png",
+    "res://images/sprites/s_enemy_aup.479.3.png",
+    "res://images/sprites/s_enemy_aup.479.4.png",
+    "res://images/sprites/s_enemy_aup.479.5.png",
+    "res://images/sprites/s_enemy_aup.479.6.png",
+    "res://images/sprites/s_enemy_aup.479.7.png",
+    "res://images/sprites/s_enemy_aup.479.8.png",
+    "res://images/sprites/s_enemy_aup.479.9.png",
+    "res://images/sprites/s_enemy_aup.479.10.png",
+    "res://images/sprites/s_enemy_aup.479.11.png",
+    "res://images/sprites/s_enemy_aup.479.12.png",
+    "res://images/sprites/s_enemy_aup.479.13.png",
+    "res://images/sprites/s_enemy_aup.479.14.png",
+    "res://images/sprites/s_enemy_aup.479.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "480": {
+   "name": "s_special_weapon",
+   "origin": [
+    27,
+    27
+   ],
+   "bbox": [
+    1,
+    50,
+    50,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_special_weapon.480.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "481": {
+   "name": "s_bonus_muschroom",
+   "origin": [
+    23,
+    22
+   ],
+   "bbox": [
+    0,
+    45,
+    43,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_muschroom.481.0.png",
+    "res://images/sprites/s_bonus_muschroom.481.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "482": {
+   "name": "s_bonus_flower",
+   "origin": [
+    20,
+    20
+   ],
+   "bbox": [
+    0,
+    40,
+    40,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_flower.482.0.png",
+    "res://images/sprites/s_bonus_flower.482.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "483": {
+   "name": "s_overheat",
+   "origin": [
+    78,
+    19
+   ],
+   "bbox": [
+    1,
+    155,
+    37,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_overheat.483.0.png",
+    "res://images/sprites/s_overheat.483.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "484": {
+   "name": "s_bonusfonts",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    2,
+    15,
+    13,
+    2
+   ],
+   "frames": [
+    "res://images/sprites/s_bonusfonts.484.0.png",
+    "res://images/sprites/s_bonusfonts.484.1.png",
+    "res://images/sprites/s_bonusfonts.484.2.png",
+    "res://images/sprites/s_bonusfonts.484.3.png",
+    "res://images/sprites/s_bonusfonts.484.4.png",
+    "res://images/sprites/s_bonusfonts.484.5.png",
+    "res://images/sprites/s_bonusfonts.484.6.png",
+    "res://images/sprites/s_bonusfonts.484.7.png",
+    "res://images/sprites/s_bonusfonts.484.8.png",
+    "res://images/sprites/s_bonusfonts.484.9.png",
+    "res://images/sprites/s_bonusfonts.484.10.png",
+    "res://images/sprites/s_bonusfonts.484.11.png",
+    "res://images/sprites/s_bonusfonts.484.12.png",
+    "res://images/sprites/s_bonusfonts.484.13.png",
+    "res://images/sprites/s_bonusfonts.484.14.png",
+    "res://images/sprites/s_bonusfonts.484.15.png",
+    "res://images/sprites/s_bonusfonts.484.16.png",
+    "res://images/sprites/s_bonusfonts.484.17.png",
+    "res://images/sprites/s_bonusfonts.484.18.png",
+    "res://images/sprites/s_bonusfonts.484.19.png",
+    "res://images/sprites/s_bonusfonts.484.20.png",
+    "res://images/sprites/s_bonusfonts.484.21.png",
+    "res://images/sprites/s_bonusfonts.484.22.png",
+    "res://images/sprites/s_bonusfonts.484.23.png",
+    "res://images/sprites/s_bonusfonts.484.24.png",
+    "res://images/sprites/s_bonusfonts.484.25.png",
+    "res://images/sprites/s_bonusfonts.484.26.png",
+    "res://images/sprites/s_bonusfonts.484.27.png",
+    "res://images/sprites/s_bonusfonts.484.28.png",
+    "res://images/sprites/s_bonusfonts.484.29.png",
+    "res://images/sprites/s_bonusfonts.484.30.png",
+    "res://images/sprites/s_bonusfonts.484.31.png",
+    "res://images/sprites/s_bonusfonts.484.32.png",
+    "res://images/sprites/s_bonusfonts.484.33.png",
+    "res://images/sprites/s_bonusfonts.484.34.png",
+    "res://images/sprites/s_bonusfonts.484.35.png",
+    "res://images/sprites/s_bonusfonts.484.36.png",
+    "res://images/sprites/s_bonusfonts.484.37.png",
+    "res://images/sprites/s_bonusfonts.484.38.png",
+    "res://images/sprites/s_bonusfonts.484.39.png",
+    "res://images/sprites/s_bonusfonts.484.40.png",
+    "res://images/sprites/s_bonusfonts.484.41.png",
+    "res://images/sprites/s_bonusfonts.484.42.png",
+    "res://images/sprites/s_bonusfonts.484.43.png",
+    "res://images/sprites/s_bonusfonts.484.44.png",
+    "res://images/sprites/s_bonusfonts.484.45.png",
+    "res://images/sprites/s_bonusfonts.484.46.png",
+    "res://images/sprites/s_bonusfonts.484.47.png",
+    "res://images/sprites/s_bonusfonts.484.48.png",
+    "res://images/sprites/s_bonusfonts.484.49.png",
+    "res://images/sprites/s_bonusfonts.484.50.png",
+    "res://images/sprites/s_bonusfonts.484.51.png",
+    "res://images/sprites/s_bonusfonts.484.52.png",
+    "res://images/sprites/s_bonusfonts.484.53.png",
+    "res://images/sprites/s_bonusfonts.484.54.png",
+    "res://images/sprites/s_bonusfonts.484.55.png",
+    "res://images/sprites/s_bonusfonts.484.56.png",
+    "res://images/sprites/s_bonusfonts.484.57.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "487": {
+   "name": "s_bonusfonts2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    17,
+    15,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonusfonts2.487.0.png",
+    "res://images/sprites/s_bonusfonts2.487.1.png",
+    "res://images/sprites/s_bonusfonts2.487.2.png",
+    "res://images/sprites/s_bonusfonts2.487.3.png",
+    "res://images/sprites/s_bonusfonts2.487.4.png",
+    "res://images/sprites/s_bonusfonts2.487.5.png",
+    "res://images/sprites/s_bonusfonts2.487.6.png",
+    "res://images/sprites/s_bonusfonts2.487.7.png",
+    "res://images/sprites/s_bonusfonts2.487.8.png",
+    "res://images/sprites/s_bonusfonts2.487.9.png",
+    "res://images/sprites/s_bonusfonts2.487.10.png",
+    "res://images/sprites/s_bonusfonts2.487.11.png",
+    "res://images/sprites/s_bonusfonts2.487.12.png",
+    "res://images/sprites/s_bonusfonts2.487.13.png",
+    "res://images/sprites/s_bonusfonts2.487.14.png",
+    "res://images/sprites/s_bonusfonts2.487.15.png",
+    "res://images/sprites/s_bonusfonts2.487.16.png",
+    "res://images/sprites/s_bonusfonts2.487.17.png",
+    "res://images/sprites/s_bonusfonts2.487.18.png",
+    "res://images/sprites/s_bonusfonts2.487.19.png",
+    "res://images/sprites/s_bonusfonts2.487.20.png",
+    "res://images/sprites/s_bonusfonts2.487.21.png",
+    "res://images/sprites/s_bonusfonts2.487.22.png",
+    "res://images/sprites/s_bonusfonts2.487.23.png",
+    "res://images/sprites/s_bonusfonts2.487.24.png",
+    "res://images/sprites/s_bonusfonts2.487.25.png",
+    "res://images/sprites/s_bonusfonts2.487.26.png",
+    "res://images/sprites/s_bonusfonts2.487.27.png",
+    "res://images/sprites/s_bonusfonts2.487.28.png",
+    "res://images/sprites/s_bonusfonts2.487.29.png",
+    "res://images/sprites/s_bonusfonts2.487.30.png",
+    "res://images/sprites/s_bonusfonts2.487.31.png",
+    "res://images/sprites/s_bonusfonts2.487.32.png",
+    "res://images/sprites/s_bonusfonts2.487.33.png",
+    "res://images/sprites/s_bonusfonts2.487.34.png",
+    "res://images/sprites/s_bonusfonts2.487.35.png",
+    "res://images/sprites/s_bonusfonts2.487.36.png",
+    "res://images/sprites/s_bonusfonts2.487.37.png",
+    "res://images/sprites/s_bonusfonts2.487.38.png",
+    "res://images/sprites/s_bonusfonts2.487.39.png",
+    "res://images/sprites/s_bonusfonts2.487.40.png",
+    "res://images/sprites/s_bonusfonts2.487.41.png",
+    "res://images/sprites/s_bonusfonts2.487.42.png",
+    "res://images/sprites/s_bonusfonts2.487.43.png",
+    "res://images/sprites/s_bonusfonts2.487.44.png",
+    "res://images/sprites/s_bonusfonts2.487.45.png",
+    "res://images/sprites/s_bonusfonts2.487.46.png",
+    "res://images/sprites/s_bonusfonts2.487.47.png",
+    "res://images/sprites/s_bonusfonts2.487.48.png",
+    "res://images/sprites/s_bonusfonts2.487.49.png",
+    "res://images/sprites/s_bonusfonts2.487.50.png",
+    "res://images/sprites/s_bonusfonts2.487.51.png",
+    "res://images/sprites/s_bonusfonts2.487.52.png",
+    "res://images/sprites/s_bonusfonts2.487.53.png",
+    "res://images/sprites/s_bonusfonts2.487.54.png",
+    "res://images/sprites/s_bonusfonts2.487.55.png",
+    "res://images/sprites/s_bonusfonts2.487.56.png",
+    "res://images/sprites/s_bonusfonts2.487.57.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "488": {
+   "name": "s_bonus_cooling",
+   "origin": [
+    24,
+    25
+   ],
+   "bbox": [
+    1,
+    47,
+    49,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_cooling.488.0.png",
+    "res://images/sprites/s_bonus_cooling.488.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "489": {
+   "name": "s_bonus_redstar",
+   "origin": [
+    23,
+    23
+   ],
+   "bbox": [
+    0,
+    46,
+    46,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_redstar.489.0.png",
+    "res://images/sprites/s_bonus_redstar.489.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "490": {
+   "name": "s_bonus_coolstar",
+   "origin": [
+    27,
+    26
+   ],
+   "bbox": [
+    0,
+    53,
+    51,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_bonus_coolstar.490.0.png",
+    "res://images/sprites/s_bonus_coolstar.490.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "492": {
+   "name": "s_qmpel",
+   "origin": [
+    27,
+    28
+   ],
+   "bbox": [
+    0,
+    54,
+    55,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_qmpel.492.0.png",
+    "res://images/sprites/s_qmpel.492.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "493": {
+   "name": "s_shyghost",
+   "origin": [
+    52,
+    45
+   ],
+   "bbox": [
+    0,
+    104,
+    89,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shyghost.493.0.png",
+    "res://images/sprites/s_shyghost.493.1.png",
+    "res://images/sprites/s_shyghost.493.2.png",
+    "res://images/sprites/s_shyghost.493.3.png",
+    "res://images/sprites/s_shyghost.493.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "494": {
+   "name": "s_shyghost2",
+   "origin": [
+    52,
+    45
+   ],
+   "bbox": [
+    0,
+    96,
+    86,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_shyghost2.494.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "495": {
+   "name": "s_unknown_location",
+   "origin": [
+    50,
+    53
+   ],
+   "bbox": [
+    0,
+    99,
+    105,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_unknown_location.495.0.png",
+    "res://images/sprites/s_unknown_location.495.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "496": {
+   "name": "s_map_gate",
+   "origin": [
+    35,
+    37
+   ],
+   "bbox": [
+    1,
+    68,
+    72,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_map_gate.496.0.png",
+    "res://images/sprites/s_map_gate.496.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "497": {
+   "name": "s_key",
+   "origin": [
+    59,
+    30
+   ],
+   "bbox": [
+    1,
+    117,
+    59,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_key.497.0.png",
+    "res://images/sprites/s_key.497.1.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "498": {
+   "name": "sprite498",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "499": {
+   "name": "s_castle_piece_10",
+   "origin": [
+    64,
+    96
+   ],
+   "bbox": [
+    22,
+    100,
+    127,
+    43
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_10.499.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "500": {
+   "name": "s_castle_piece_11",
+   "origin": [
+    64,
+    96
+   ],
+   "bbox": [
+    22,
+    99,
+    127,
+    13
+   ],
+   "frames": [
+    "res://images/sprites/s_castle_piece_11.500.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "501": {
+   "name": "s_boss_rockets_poiler",
+   "origin": [
+    13,
+    129
+   ],
+   "bbox": [
+    1,
+    109,
+    139,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_boss_rockets_poiler.501.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "502": {
+   "name": "s_boss_bigrocka",
+   "origin": [
+    20,
+    29
+   ],
+   "bbox": [
+    1,
+    131,
+    59,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_boss_bigrocka.502.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "511": {
+   "name": "s_warping_toad",
+   "origin": [
+    59,
+    91
+   ],
+   "bbox": [
+    1,
+    123,
+    131,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_warping_toad.511.0.png",
+    "res://images/sprites/s_warping_toad.511.1.png",
+    "res://images/sprites/s_warping_toad.511.2.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "523": {
+   "name": "s_anim_hero_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "524": {
+   "name": "s_anim_hero_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "525": {
+   "name": "s_anim_hero_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "526": {
+   "name": "s_anim_hero_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "527": {
+   "name": "s_savegamebrick",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "543": {
+   "name": "s_player_a",
+   "origin": [
+    48,
+    74
+   ],
+   "bbox": [
+    0,
+    125,
+    148,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/s_player_a.543.0.png",
+    "res://images/sprites/s_player_a.543.1.png",
+    "res://images/sprites/s_player_a.543.2.png",
+    "res://images/sprites/s_player_a.543.3.png",
+    "res://images/sprites/s_player_a.543.4.png",
+    "res://images/sprites/s_player_a.543.5.png",
+    "res://images/sprites/s_player_a.543.6.png",
+    "res://images/sprites/s_player_a.543.7.png",
+    "res://images/sprites/s_player_a.543.8.png",
+    "res://images/sprites/s_player_a.543.9.png",
+    "res://images/sprites/s_player_a.543.10.png",
+    "res://images/sprites/s_player_a.543.11.png",
+    "res://images/sprites/s_player_a.543.12.png",
+    "res://images/sprites/s_player_a.543.13.png",
+    "res://images/sprites/s_player_a.543.14.png",
+    "res://images/sprites/s_player_a.543.15.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "547": {
+   "name": "s_obj_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "548": {
+   "name": "s_obj_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "549": {
+   "name": "s_obj_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "551": {
+   "name": "s_obj_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "552": {
+   "name": "s_anim_txt_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "553": {
+   "name": "s_anim_txt_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "554": {
+   "name": "s_anim_txt_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "555": {
+   "name": "s_anim_txt_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "556": {
+   "name": "s_anim_txt_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "557": {
+   "name": "s_anim_txt_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "558": {
+   "name": "s_anim_txt_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "559": {
+   "name": "s_anim_txt_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "560": {
+   "name": "s_anim_txt_8",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "561": {
+   "name": "s_anim_txt_9",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "562": {
+   "name": "s_anim_txt_10",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "563": {
+   "name": "s_anim_txt_11",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "564": {
+   "name": "s_obj_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "565": {
+   "name": "s_obj_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "566": {
+   "name": "s_obj_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "567": {
+   "name": "s_obj_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "568": {
+   "name": "s_obj_8",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "569": {
+   "name": "s_anim_toad_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "570": {
+   "name": "s_anim_toad_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "571": {
+   "name": "s_anim_toad_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "572": {
+   "name": "s_anim_toad_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "573": {
+   "name": "s_anim_toad_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "574": {
+   "name": "s_anim_toad_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "575": {
+   "name": "s_anim_toad_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "576": {
+   "name": "s_anim_txt_12",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "577": {
+   "name": "s_anim_txt_13",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "578": {
+   "name": "s_obj_9",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "579": {
+   "name": "s_obj_10",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "580": {
+   "name": "s_obj_11",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "581": {
+   "name": "s_obj_12",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "582": {
+   "name": "s_obj_13",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "583": {
+   "name": "s_obj_14",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "604": {
+   "name": "s_obj_15",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "605": {
+   "name": "s_obj_16",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "606": {
+   "name": "s_obj_17",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "608": {
+   "name": "s_obj_18",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "609": {
+   "name": "s_anim_mario_run_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_0.609.0.png",
+    "res://images/sprites/s_anim_mario_run_0.609.1.png",
+    "res://images/sprites/s_anim_mario_run_0.609.2.png",
+    "res://images/sprites/s_anim_mario_run_0.609.3.png",
+    "res://images/sprites/s_anim_mario_run_0.609.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "610": {
+   "name": "s_anim_mario_run_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_1.610.0.png",
+    "res://images/sprites/s_anim_mario_run_1.610.1.png",
+    "res://images/sprites/s_anim_mario_run_1.610.2.png",
+    "res://images/sprites/s_anim_mario_run_1.610.3.png",
+    "res://images/sprites/s_anim_mario_run_1.610.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "611": {
+   "name": "s_anim_mario_run_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_2.611.0.png",
+    "res://images/sprites/s_anim_mario_run_2.611.1.png",
+    "res://images/sprites/s_anim_mario_run_2.611.2.png",
+    "res://images/sprites/s_anim_mario_run_2.611.3.png",
+    "res://images/sprites/s_anim_mario_run_2.611.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "612": {
+   "name": "s_anim_mario_run_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_3.612.0.png",
+    "res://images/sprites/s_anim_mario_run_3.612.1.png",
+    "res://images/sprites/s_anim_mario_run_3.612.2.png",
+    "res://images/sprites/s_anim_mario_run_3.612.3.png",
+    "res://images/sprites/s_anim_mario_run_3.612.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "613": {
+   "name": "s_anim_mario_run_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_4.613.0.png",
+    "res://images/sprites/s_anim_mario_run_4.613.1.png",
+    "res://images/sprites/s_anim_mario_run_4.613.2.png",
+    "res://images/sprites/s_anim_mario_run_4.613.3.png",
+    "res://images/sprites/s_anim_mario_run_4.613.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "614": {
+   "name": "s_anim_mario_run_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_5.614.0.png",
+    "res://images/sprites/s_anim_mario_run_5.614.1.png",
+    "res://images/sprites/s_anim_mario_run_5.614.2.png",
+    "res://images/sprites/s_anim_mario_run_5.614.3.png",
+    "res://images/sprites/s_anim_mario_run_5.614.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "615": {
+   "name": "s_anim_mario_run_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_6.615.0.png",
+    "res://images/sprites/s_anim_mario_run_6.615.1.png",
+    "res://images/sprites/s_anim_mario_run_6.615.2.png",
+    "res://images/sprites/s_anim_mario_run_6.615.3.png",
+    "res://images/sprites/s_anim_mario_run_6.615.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "616": {
+   "name": "s_anim_mario_run_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_run_7.616.0.png",
+    "res://images/sprites/s_anim_mario_run_7.616.1.png",
+    "res://images/sprites/s_anim_mario_run_7.616.2.png",
+    "res://images/sprites/s_anim_mario_run_7.616.3.png",
+    "res://images/sprites/s_anim_mario_run_7.616.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "617": {
+   "name": "s_anim_mario_stop",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_stop.617.0.png",
+    "res://images/sprites/s_anim_mario_stop.617.1.png",
+    "res://images/sprites/s_anim_mario_stop.617.2.png",
+    "res://images/sprites/s_anim_mario_stop.617.3.png",
+    "res://images/sprites/s_anim_mario_stop.617.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "618": {
+   "name": "s_anim_mario_panic_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_panic_0.618.0.png",
+    "res://images/sprites/s_anim_mario_panic_0.618.1.png",
+    "res://images/sprites/s_anim_mario_panic_0.618.2.png",
+    "res://images/sprites/s_anim_mario_panic_0.618.3.png",
+    "res://images/sprites/s_anim_mario_panic_0.618.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "619": {
+   "name": "s_anim_mario_panic_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_panic_1.619.0.png",
+    "res://images/sprites/s_anim_mario_panic_1.619.1.png",
+    "res://images/sprites/s_anim_mario_panic_1.619.2.png",
+    "res://images/sprites/s_anim_mario_panic_1.619.3.png",
+    "res://images/sprites/s_anim_mario_panic_1.619.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "620": {
+   "name": "s_anim_mario_panic_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_panic_2.620.0.png",
+    "res://images/sprites/s_anim_mario_panic_2.620.1.png",
+    "res://images/sprites/s_anim_mario_panic_2.620.2.png",
+    "res://images/sprites/s_anim_mario_panic_2.620.3.png",
+    "res://images/sprites/s_anim_mario_panic_2.620.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "621": {
+   "name": "s_anim_mario_panic_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_panic_3.621.0.png",
+    "res://images/sprites/s_anim_mario_panic_3.621.1.png",
+    "res://images/sprites/s_anim_mario_panic_3.621.2.png",
+    "res://images/sprites/s_anim_mario_panic_3.621.3.png",
+    "res://images/sprites/s_anim_mario_panic_3.621.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "622": {
+   "name": "s_anim_mario_roar_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_roar_0.622.0.png",
+    "res://images/sprites/s_anim_mario_roar_0.622.1.png",
+    "res://images/sprites/s_anim_mario_roar_0.622.2.png",
+    "res://images/sprites/s_anim_mario_roar_0.622.3.png",
+    "res://images/sprites/s_anim_mario_roar_0.622.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "623": {
+   "name": "s_anim_mario_roar_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_roar_1.623.0.png",
+    "res://images/sprites/s_anim_mario_roar_1.623.1.png",
+    "res://images/sprites/s_anim_mario_roar_1.623.2.png",
+    "res://images/sprites/s_anim_mario_roar_1.623.3.png",
+    "res://images/sprites/s_anim_mario_roar_1.623.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "624": {
+   "name": "s_anim_mario_roar_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_roar_2.624.0.png",
+    "res://images/sprites/s_anim_mario_roar_2.624.1.png",
+    "res://images/sprites/s_anim_mario_roar_2.624.2.png",
+    "res://images/sprites/s_anim_mario_roar_2.624.3.png",
+    "res://images/sprites/s_anim_mario_roar_2.624.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "625": {
+   "name": "s_anim_mario_roar_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_mario_roar_3.625.0.png",
+    "res://images/sprites/s_anim_mario_roar_3.625.1.png",
+    "res://images/sprites/s_anim_mario_roar_3.625.2.png",
+    "res://images/sprites/s_anim_mario_roar_3.625.3.png",
+    "res://images/sprites/s_anim_mario_roar_3.625.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "626": {
+   "name": "s_anim_luigy_run_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_0.626.0.png",
+    "res://images/sprites/s_anim_luigy_run_0.626.1.png",
+    "res://images/sprites/s_anim_luigy_run_0.626.2.png",
+    "res://images/sprites/s_anim_luigy_run_0.626.3.png",
+    "res://images/sprites/s_anim_luigy_run_0.626.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "627": {
+   "name": "s_anim_luigy_run_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_1.627.0.png",
+    "res://images/sprites/s_anim_luigy_run_1.627.1.png",
+    "res://images/sprites/s_anim_luigy_run_1.627.2.png",
+    "res://images/sprites/s_anim_luigy_run_1.627.3.png",
+    "res://images/sprites/s_anim_luigy_run_1.627.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "628": {
+   "name": "s_anim_luigy_run_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_2.628.0.png",
+    "res://images/sprites/s_anim_luigy_run_2.628.1.png",
+    "res://images/sprites/s_anim_luigy_run_2.628.2.png",
+    "res://images/sprites/s_anim_luigy_run_2.628.3.png",
+    "res://images/sprites/s_anim_luigy_run_2.628.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "629": {
+   "name": "s_anim_luigy_run_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_3.629.0.png",
+    "res://images/sprites/s_anim_luigy_run_3.629.1.png",
+    "res://images/sprites/s_anim_luigy_run_3.629.2.png",
+    "res://images/sprites/s_anim_luigy_run_3.629.3.png",
+    "res://images/sprites/s_anim_luigy_run_3.629.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "630": {
+   "name": "s_anim_luigy_run_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_4.630.0.png",
+    "res://images/sprites/s_anim_luigy_run_4.630.1.png",
+    "res://images/sprites/s_anim_luigy_run_4.630.2.png",
+    "res://images/sprites/s_anim_luigy_run_4.630.3.png",
+    "res://images/sprites/s_anim_luigy_run_4.630.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "631": {
+   "name": "s_anim_luigy_run_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_5.631.0.png",
+    "res://images/sprites/s_anim_luigy_run_5.631.1.png",
+    "res://images/sprites/s_anim_luigy_run_5.631.2.png",
+    "res://images/sprites/s_anim_luigy_run_5.631.3.png",
+    "res://images/sprites/s_anim_luigy_run_5.631.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "632": {
+   "name": "s_anim_luigy_run_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_6.632.0.png",
+    "res://images/sprites/s_anim_luigy_run_6.632.1.png",
+    "res://images/sprites/s_anim_luigy_run_6.632.2.png",
+    "res://images/sprites/s_anim_luigy_run_6.632.3.png",
+    "res://images/sprites/s_anim_luigy_run_6.632.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "633": {
+   "name": "s_anim_luigy_run_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_run_7.633.0.png",
+    "res://images/sprites/s_anim_luigy_run_7.633.1.png",
+    "res://images/sprites/s_anim_luigy_run_7.633.2.png",
+    "res://images/sprites/s_anim_luigy_run_7.633.3.png",
+    "res://images/sprites/s_anim_luigy_run_7.633.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "634": {
+   "name": "s_anim_luigy_stop",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_anim_luigy_stop.634.0.png",
+    "res://images/sprites/s_anim_luigy_stop.634.1.png",
+    "res://images/sprites/s_anim_luigy_stop.634.2.png",
+    "res://images/sprites/s_anim_luigy_stop.634.3.png",
+    "res://images/sprites/s_anim_luigy_stop.634.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "635": {
+   "name": "s_metroid_0",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_0.635.0.png",
+    "res://images/sprites/s_metroid_0.635.1.png",
+    "res://images/sprites/s_metroid_0.635.2.png",
+    "res://images/sprites/s_metroid_0.635.3.png",
+    "res://images/sprites/s_metroid_0.635.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "636": {
+   "name": "s_metroid_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_1.636.0.png",
+    "res://images/sprites/s_metroid_1.636.1.png",
+    "res://images/sprites/s_metroid_1.636.2.png",
+    "res://images/sprites/s_metroid_1.636.3.png",
+    "res://images/sprites/s_metroid_1.636.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "637": {
+   "name": "s_metroid_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_2.637.0.png",
+    "res://images/sprites/s_metroid_2.637.1.png",
+    "res://images/sprites/s_metroid_2.637.2.png",
+    "res://images/sprites/s_metroid_2.637.3.png",
+    "res://images/sprites/s_metroid_2.637.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "638": {
+   "name": "s_metroid_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_3.638.0.png",
+    "res://images/sprites/s_metroid_3.638.1.png",
+    "res://images/sprites/s_metroid_3.638.2.png",
+    "res://images/sprites/s_metroid_3.638.3.png",
+    "res://images/sprites/s_metroid_3.638.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "639": {
+   "name": "s_metroid_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_4.639.0.png",
+    "res://images/sprites/s_metroid_4.639.1.png",
+    "res://images/sprites/s_metroid_4.639.2.png",
+    "res://images/sprites/s_metroid_4.639.3.png",
+    "res://images/sprites/s_metroid_4.639.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "640": {
+   "name": "s_metroid_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_5.640.0.png",
+    "res://images/sprites/s_metroid_5.640.1.png",
+    "res://images/sprites/s_metroid_5.640.2.png",
+    "res://images/sprites/s_metroid_5.640.3.png",
+    "res://images/sprites/s_metroid_5.640.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "641": {
+   "name": "s_metroid_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_6.641.0.png",
+    "res://images/sprites/s_metroid_6.641.1.png",
+    "res://images/sprites/s_metroid_6.641.2.png",
+    "res://images/sprites/s_metroid_6.641.3.png",
+    "res://images/sprites/s_metroid_6.641.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "642": {
+   "name": "s_metroid_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_7.642.0.png",
+    "res://images/sprites/s_metroid_7.642.1.png",
+    "res://images/sprites/s_metroid_7.642.2.png",
+    "res://images/sprites/s_metroid_7.642.3.png",
+    "res://images/sprites/s_metroid_7.642.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "643": {
+   "name": "s_metroid_8",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_8.643.0.png",
+    "res://images/sprites/s_metroid_8.643.1.png",
+    "res://images/sprites/s_metroid_8.643.2.png",
+    "res://images/sprites/s_metroid_8.643.3.png",
+    "res://images/sprites/s_metroid_8.643.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "644": {
+   "name": "s_metroid_9",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_9.644.0.png",
+    "res://images/sprites/s_metroid_9.644.1.png",
+    "res://images/sprites/s_metroid_9.644.2.png",
+    "res://images/sprites/s_metroid_9.644.3.png",
+    "res://images/sprites/s_metroid_9.644.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "645": {
+   "name": "s_metroid_10",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    31,
+    0,
+    0,
+    31
+   ],
+   "frames": [
+    "res://images/sprites/s_metroid_10.645.0.png",
+    "res://images/sprites/s_metroid_10.645.1.png",
+    "res://images/sprites/s_metroid_10.645.2.png",
+    "res://images/sprites/s_metroid_10.645.3.png",
+    "res://images/sprites/s_metroid_10.645.4.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "646": {
+   "name": "s_anim_txt_14",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "678": {
+   "name": "s_logo_space_maker",
+   "origin": [
+    54,
+    19
+   ],
+   "bbox": [
+    1,
+    106,
+    37,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_logo_space_maker.678.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 0
+  },
+  "679": {
+   "name": "s_logo_special_1",
+   "origin": [
+    97,
+    97
+   ],
+   "bbox": [
+    1,
+    193,
+    193,
+    1
+   ],
+   "frames": [
+    "res://images/sprites/s_logo_special_1.679.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "680": {
+   "name": "s_logo_anim",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "688": {
+   "name": "s_logo_anim2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "689": {
+   "name": "s_logo_anim3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "690": {
+   "name": "s_logo_mini_1",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "691": {
+   "name": "s_logo_mini_2",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "692": {
+   "name": "s_logo_mini_3",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "693": {
+   "name": "s_logo_mini_4",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "694": {
+   "name": "s_logo_mini_5",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "695": {
+   "name": "s_logo_mini_6",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "696": {
+   "name": "s_logo_napis",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "697": {
+   "name": "s_logo_zmazywacz",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "698": {
+   "name": "s_logo_mini_7",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "699": {
+   "name": "s_logo_mini_8",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "701": {
+   "name": "s_logo_smarter",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "702": {
+   "name": "s_logo_joy",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "frames": [],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  },
+  "886": {
+   "name": "sprite886",
+   "origin": [
+    0,
+    0
+   ],
+   "bbox": [
+    6,
+    402,
+    66,
+    0
+   ],
+   "frames": [
+    "res://images/sprites/sprite886.886.0.png"
+   ],
+   "shape": 0,
+   "alpha_tolerance": 0,
+   "per_frame_colliders": 1
+  }
+ },
+ "backgrounds": {
+  "0": {
+   "name": "background0",
+   "frames": [
+    "res://images/backgrounds/background0.0.jpg"
+   ]
+  },
+  "2": {
+   "name": "background1",
+   "frames": [
+    "res://images/backgrounds/background1.2.jpg"
+   ]
+  },
+  "4": {
+   "name": "background2",
+   "frames": [
+    "res://images/backgrounds/background2.4.png"
+   ]
+  },
+  "5": {
+   "name": "background3",
+   "frames": [
+    "res://images/backgrounds/background3.5.png"
+   ]
+  },
+  "6": {
+   "name": "background5",
+   "frames": [
+    "res://images/backgrounds/background5.6.jpg"
+   ]
+  },
+  "41": {
+   "name": "back_asteroids",
+   "frames": [
+    "res://images/backgrounds/back_asteroids.41.png"
+   ]
+  },
+  "44": {
+   "name": "background0plus",
+   "frames": [
+    "res://images/backgrounds/background0plus.44.jpg"
+   ]
+  },
+  "45": {
+   "name": "s_shopbackround",
+   "frames": [
+    "res://images/backgrounds/s_shopbackround.45.png"
+   ]
+  },
+  "48": {
+   "name": "background48",
+   "frames": [
+    "res://images/backgrounds/background48.48.png"
+   ]
+  },
+  "52": {
+   "name": "background52",
+   "frames": []
+  }
+ },
+ "sounds": {
+  "0": "res://data/s/snd_apporach_1.wav",
+  "1": "res://data/s/snd_badhit_1.wav",
+  "2": "res://data/s/snd_badhit_2.wav",
+  "3": "res://data/s/snd_badhit_3.wav",
+  "4": "res://data/s/snd_badhit_a.ogg",
+  "6": "res://data/s/snd_explosion_a.ogg",
+  "7": "res://data/s/snd_explosion_b.ogg",
+  "8": "res://data/s/snd_explosion_c.ogg",
+  "9": "res://data/s/snd_impact_a.wav",
+  "10": "res://data/s/snd_impact_b.wav",
+  "11": "res://data/s/snd_impact_c.wav",
+  "12": "res://data/s/snd_playshot_a.ogg",
+  "13": "res://data/s/snd_playshot_b.wav",
+  "14": "res://data/s/snd_playshot_c.ogg",
+  "15": "res://data/s/snd_playshot_d.ogg",
+  "16": "res://data/s/snd_playshot_e.ogg",
+  "17": "res://data/s/snd_playshot_f.wav",
+  "18": "res://data/s/snd_playshot_g.wav",
+  "19": "res://data/s/snd_playshot_h.ogg",
+  "20": "res://data/s/snd_playshot_i.ogg",
+  "21": "res://data/s/snd_playshot_j.ogg",
+  "22": "res://data/s/snd_playshot_k.ogg",
+  "23": "res://data/s/snd_playshot_l.ogg",
+  "24": "res://data/s/snd_playshot_tt.wav",
+  "25": "res://data/s/snd_playshot_ttt.wav",
+  "26": "res://data/s/snd_playshot_tttt.wav",
+  "27": "res://data/s/snd_rak.ogg",
+  "28": null,
+  "29": null,
+  "30": null,
+  "31": null,
+  "32": null,
+  "33": "res://data/s/snd_ufoload.ogg",
+  "35": "res://data/s/snd_playshot_bosslas.ogg",
+  "36": "res://data/s/snd_playshot_bosslas2.ogg",
+  "38": null,
+  "39": null,
+  "40": "res://data/s/snd_izomatic.ogg",
+  "41": "res://data/s/snd_izomatic2.ogg",
+  "42": "res://data/s/snd_izomatic3.ogg",
+  "43": "res://data/s/snd_guideancer.ogg",
+  "44": "res://data/s/snd_guideancer2.ogg",
+  "45": "res://data/s/pointerus.wav",
+  "46": "res://data/s/snd_die.ogg",
+  "50": "res://data/s/boomerang1.ogg",
+  "51": "res://data/s/boomerang2.ogg",
+  "52": "res://data/s/fireball.ogg",
+  "53": "res://data/s/snd_radialshot.ogg",
+  "54": "res://data/s/snd_ladowanie.ogg",
+  "55": "res://data/s/snd_ladowanie2.ogg",
+  "56": "res://data/s/snd_ladowanie3.ogg",
+  "57": "res://data/s/snd_ballup.ogg",
+  "58": "res://data/s/snd_shortminigun.wav",
+  "59": "res://data/s/snd_smallbounce.ogg",
+  "60": "res://data/s/snd_smallshotta.ogg",
+  "61": "res://data/s/snd_smallexplo.ogg",
+  "62": "res://data/s/snd_smallballus.ogg",
+  "63": "res://data/s/snd_bluerockets.ogg",
+  "64": "res://data/s/snd_bigrocka.ogg",
+  "65": "res://data/s/snd_biglassa.ogg",
+  "66": "res://data/s/snd_fosforus.ogg",
+  "67": "res://data/s/snd_giggamachine.ogg",
+  "68": "res://data/s/snd_minifosfo.ogg",
+  "70": "res://data/s/snd_machinegun.ogg",
+  "69": "res://data/s/snd_shotgana.ogg",
+  "71": "res://data/s/snd_guidemag.ogg",
+  "72": "res://data/s/snd_flakexplo.ogg",
+  "73": "res://data/s/snd_minilaser.ogg",
+  "74": "res://data/s/snd_grenmagma.ogg",
+  "75": "res://data/s/snd_minishot.wav",
+  "76": "res://data/s/snd_coin_catch.ogg",
+  "77": "res://data/s/snd_small_krystak.ogg",
+  "78": "res://data/s/snd_big_crystak.ogg",
+  "79": "res://data/s/snd_explosion_normal.ogg",
+  "80": "res://data/s/snd_megaspecial.ogg",
+  "81": "res://data/s/snd_megaspecial2.ogg",
+  "82": "res://data/s/snd_magelaser.ogg",
+  "83": "res://data/s/snd_special_kaboom.ogg",
+  "84": "res://data/s/snd_takenap.ogg",
+  "85": "res://data/s/snd_twromb.ogg",
+  "86": "res://data/s/snd_flammeh.ogg",
+  "87": "res://data/s/snd_bite.ogg",
+  "88": "res://data/s/snd_pointblock.ogg",
+  "89": "res://data/s/snd_flammer.ogg",
+  "90": "res://data/s/snd_bowser_growl.ogg",
+  "91": "res://data/s/snd_bowser_laugh.ogg",
+  "92": "res://data/s/snd_bowser_cackle.ogg",
+  "93": "res://data/s/snd_bowser_huh.ogg",
+  "94": "res://data/s/snd_asteroid_destroy.ogg",
+  "95": "res://data/s/snd_metal_scratch1.ogg",
+  "96": "res://data/s/snd_metal_scratch2.ogg",
+  "97": "res://data/s/snd_metal_scratch3.ogg",
+  "98": "res://data/s/snd_bowser_laugh_2.ogg",
+  "99": "res://data/s/snd_motion_slow.ogg",
+  "100": "res://data/s/snd_motion_fast.ogg",
+  "110": "res://data/s/snd_minipini.ogg",
+  "111": "res://data/s/snd_weapon_lafontaine.ogg",
+  "112": "res://data/s/snd_weapon_lafontaine_boom.ogg",
+  "113": "res://data/s/snd_laser.ogg",
+  "101": "res://data/s/snd_font_additional.wav",
+  "102": "res://data/s/snd_sho_weapon_select.ogg",
+  "103": "res://data/s/snd_sell_weapon.ogg",
+  "104": "res://data/s/snd_weapon_level_change.wav",
+  "105": "res://data/s/snd_upgrade_up.ogg",
+  "106": "res://data/s/snd_upgrade_down.ogg",
+  "107": "res://data/s/snd_choosed_shop_weapon.ogg",
+  "108": "res://data/s/snd_buy.ogg",
+  "109": "res://data/s/snd_wrong.ogg",
+  "200": "res://data/s/snd_refill.ogg",
+  "201": "res://data/s/snd_buy_live.ogg",
+  "202": "res://data/s/snd_explosion_c.ogg",
+  "203": "res://data/s/snd_hint.ogg",
+  "204": "res://data/s/snd_hint2.ogg",
+  "205": "res://data/s/snd_overheat.ogg",
+  "206": "res://data/s/snd_koopa_troopa_die.ogg",
+  "207": "res://data/s/snd_ufo_laser.ogg",
+  "208": "res://data/s/snd_bigexplosion.ogg",
+  "209": "res://data/s/snd_boo.ogg",
+  "210": "res://data/s/snd_boo2.ogg",
+  "211": "res://data/s/snd_gate.ogg",
+  "212": "res://data/s/snd_peach_letter.ogg",
+  "213": "res://data/s/snd_list_od_peach.ogg",
+  "214": "res://data/s/snd_anim_prologue.ogg",
+  "215": "res://data/s/snd_mario_yahoo.ogg",
+  "216": "res://data/s/snd_mario_letsgo.ogg",
+  "217": "res://data/s/snd_anim_peach.ogg",
+  "218": "res://data/s/snd_megaboom.ogg",
+  "219": "res://data/s/snd_anim_0.ogg",
+  "220": "res://data/s/snd_anim_1.ogg",
+  "221": "res://data/s/snd_anim_2.ogg",
+  "222": "res://data/s/snd_anim_3.ogg",
+  "223": "res://data/s/snd_anim_4.ogg",
+  "224": "res://data/s/snd_anim_5.ogg",
+  "225": "res://data/s/snd_anim_6.ogg",
+  "226": "res://data/s/snd_anim_heart.ogg",
+  "227": "res://data/s/snd_anim_heart2.ogg",
+  "228": "res://data/s/snd_anim_heart3.ogg",
+  "229": "res://data/s/snd_char_select.ogg"
+ },
+ "music": {},
+ "runtime_paths": {},
+ "wap_sequences": []
+}

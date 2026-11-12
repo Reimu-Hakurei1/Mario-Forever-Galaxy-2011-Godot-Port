@@ -1,0 +1,965 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Script" path="res://runtime/room_preview_boot.gd" id="boot"]
+
+[ext_resource type="Texture2D" path="res://images/sprites/sprite157.157.0.png" id="wave_tex_0"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite156.156.0.png" id="wave_tex_1"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite158.158.0.png" id="wave_tex_2"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin2.230.0.png" id="wave_tex_3"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin.229.0.png" id="wave_tex_4"]
+
+[sub_resource type="CanvasItemMaterial" id="player_add"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="player_subtract"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend2"]
+blend_mode = 2
+
+[node name="level_14_hard_corps" type="Node2D"]
+metadata/gm_room = "level_0000"
+metadata/gm_map = 1
+metadata/gm_lev = 14
+metadata/gm_minigame = 0
+metadata/gm_label = "HARD_CORPS"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Bg0_background0" type="Node2D" parent="."]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Bg1_background0" type="Node2D" parent="."]
+z_index = -4079
+metadata/gm_foreground = false
+metadata/gm_background_slot = 1
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_-10000000" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -10000000
+
+[node name="o_hud_0" type="Sprite2D" parent="Objects_-10000000"]
+metadata/gm_object = "o_hud"
+metadata/gm_object_index = 3
+metadata/gm_id = "room_create_0"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 5
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(1024,600,o_hud)"
+position = Vector2(871, 0)
+metadata/gm_position = Vector2(1024.0, 600.0)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="Objects_-1000000" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = -1000000
+
+[node name="o_gameoverus_0" type="Sprite2D" parent="Objects_-1000000"]
+metadata/gm_object = "o_gameoverus"
+metadata/gm_object_index = 136
+metadata/gm_id = "room_create_3"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 70
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(400,300,o_gameoverus)"
+position = Vector2(400.0, 300.0)
+metadata/gm_position = Vector2(400.0, 300.0)
+metadata/gm_empty_draw_event = true
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_gameoverus [room_create_3]"
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 0
+
+[node name="o_player_a_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_player_a"
+metadata/gm_object_index = 0
+metadata/gm_id = 100322
+metadata/gm_visible = true
+metadata/gm_sprite_index = 543
+metadata/gm_preview_only = false
+position = Vector2(416, 576)
+metadata/gm_position = Vector2(416, 576)
+metadata/gm_empty_draw_event = false
+rotation = -1.570796327
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-48, -74)
+centered = false
+material = SubResource("player_add")
+
+[node name="Mask" type="Sprite2D" parent="Objects_0/o_player_a_0"]
+show_behind_parent = true
+material = SubResource("player_subtract")
+texture = ExtResource("t3")
+offset = Vector2(-48, -74)
+centered = false
+
+[node name="o_przeciwnikor_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_przeciwnikor"
+metadata/gm_object_index = 532
+metadata/gm_id = "room_create_1"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(0,0,o_przeciwnikor)"
+position = Vector2(0.0, 0.0)
+metadata/gm_position = Vector2(0.0, 0.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_przeciwnikor [room_create_1]"
+
+[node name="o_bonusho_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_bonusho"
+metadata/gm_object_index = 365
+metadata/gm_id = "room_create_2"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(-1000,-1000,o_bonusho)"
+position = Vector2(-1000.0, -1000.0)
+metadata/gm_position = Vector2(-1000.0, -1000.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 1784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_bonusho [room_create_2]"
+
+[node name="WAVE_REPRESENTATION_PREVIEW_ONLY_1" type="Node2D" parent="."]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+metadata/gm_representation = "Source wave panels, NOT simultaneous enemies"
+metadata/gm_coverage = "Fixed targets where known; conditional source-declared rosters elsewhere. No runtime instances."
+metadata/gm_appearance = "Canonical textures/origins; static rest poses, no animation or damage effects."
+z_index = 100
+
+[node name="Label_2" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+offset_left = 20
+offset_top = 8
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "EDITOR WAVE REPRESENTATION - NOT SIMULTANEOUS"
+
+[node name="WAVE_00_table_wave_0_budget_30_3" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_budget = 30
+metadata/gm_random_remaining = 0
+metadata/gm_gaps = []
+metadata/gm_timing = "zegarek += levtime per Step; spawn at >=100 when a slot is available; targets exclude row oscillation; NOT a simultaneous snapshot"
+metadata/gm_label = "TABLE WAVE 0 BUDGET 30"
+metadata/gm_source_order = 0
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_4" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "TABLE WAVE 0 BUDGET 30 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_5" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="KIND_2_6" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3"]
+position = Vector2(55.0, 152.0)
+metadata/gm_preview_only = true
+metadata/gm_kind = 2
+metadata/gm_object = "o_enemy_1"
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_wave_index = 0
+metadata/gm_kind_expression = "2+round(random(1))"
+metadata/gm_spawn = "instance_create(random(500),-400,o_enemy_1)"
+metadata/gm_levtime = [6]
+metadata/gm_slot = [0]
+metadata/gm_sequence = [110]
+metadata/gm_conditional = true
+metadata/gm_provenance = [{"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 0, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [0], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 1, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [1], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 2, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [2], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 3, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [3], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 4, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [4], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 5, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [5], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 6, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [6], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 7, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [7], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 8, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [8], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 9, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [9], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 10, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [10], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 11, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [11], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 12, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [12], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 13, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [13], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 14, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [14], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 15, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [15], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 16, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [16], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 17, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [17], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 18, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [18], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 19, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [19], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 20, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [20], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 21, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [21], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 22, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [22], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 23, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [23], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 24, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [24], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 25, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [25], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 26, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [26], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 27, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [27], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 28, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [28], "sequence": [110], "conditional": true}, {"kind": 2, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 29, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [29], "sequence": [110], "conditional": true}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_157_7" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_2_6"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_157_8" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_2_6"]
+position = Vector2(0, 0)
+scale = Vector2(-1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_156_9" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_2_6"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_1")
+centered = false
+offset = Vector2(-31, -42)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 156
+
+[node name="Label_10" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_2_6"]
+offset_left = -35.0
+offset_top = 46.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 2"
+
+[node name="KIND_3_11" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3"]
+position = Vector2(255.0, 147.0)
+metadata/gm_preview_only = true
+metadata/gm_kind = 3
+metadata/gm_object = "o_enemy_1"
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_wave_index = 0
+metadata/gm_kind_expression = "2+round(random(1))"
+metadata/gm_spawn = "instance_create(random(500),-400,o_enemy_1)"
+metadata/gm_levtime = [6]
+metadata/gm_slot = [0]
+metadata/gm_sequence = [110]
+metadata/gm_conditional = true
+metadata/gm_provenance = [{"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 0, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [0], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 1, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [1], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 2, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [2], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 3, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [3], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 4, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [4], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 5, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [5], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 6, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [6], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 7, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [7], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 8, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [8], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 9, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [9], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 10, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [10], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 11, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [11], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 12, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [12], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 13, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [13], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 14, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [14], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 15, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [15], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 16, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [16], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 17, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [17], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 18, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [18], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 19, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [19], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 20, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [20], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 21, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [21], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 22, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [22], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 23, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [23], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 24, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [24], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 25, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [25], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 26, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [26], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 27, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [27], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 28, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [28], "sequence": [110], "conditional": true}, {"kind": 3, "object": "o_enemy_1", "source": "script_perioder_maps.590.gml:1128", "wave_index": 29, "kind_expression": "2+round(random(1))", "spawn": "instance_create(random(500),-400,o_enemy_1)", "levtime": [6], "slot": [29], "sequence": [110], "conditional": true}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_157_12" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_3_11"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_157_13" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_3_11"]
+position = Vector2(0, 0)
+scale = Vector2(-1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_158_14" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_3_11"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_2")
+centered = false
+offset = Vector2(-40, -37)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 158
+
+[node name="Label_15" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_table_wave_0_budget_30_3/KIND_3_11"]
+offset_left = -40.0
+offset_top = 39.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 3"
+
+[node name="WAVE_01_period_25_at_t_20_16" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(1100, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=20"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=20; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 1
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_17" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=20 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_18" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_19" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_20" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16/COINDROP_19"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_21" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16/COINDROP_19"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_22" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_01_period_25_at_t_20_16/COINDROP_19"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_02_period_25_at_t_22_23" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(2200, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=22"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=22; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 2
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_24" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=22 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_25" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_26" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_27" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23/COINDROP_26"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_28" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23/COINDROP_26"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_29" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_02_period_25_at_t_22_23/COINDROP_26"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_03_period_25_at_t_23_30" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(3300, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=23"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=23; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 3
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_31" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=23 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_32" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_33" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_34" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30/COINDROP_33"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_35" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30/COINDROP_33"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_36" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_03_period_25_at_t_23_30/COINDROP_33"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_04_period_25_at_t_25_37" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(1100, 650)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=25"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=25; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 4
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_38" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=25 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_39" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_40" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_41" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37/COINDROP_40"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_42" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37/COINDROP_40"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_43" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_04_period_25_at_t_25_37/COINDROP_40"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_05_period_25_at_t_28_44" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(2200, 650)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=28"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=28; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 5
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_45" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=28 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_46" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_47" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_48" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44/COINDROP_47"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_49" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44/COINDROP_47"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_50" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_05_period_25_at_t_28_44/COINDROP_47"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_06_period_25_at_t_30_51" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(3300, 650)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=30"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=30; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 6
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_52" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=30 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_53" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_54" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_55" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51/COINDROP_54"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_56" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51/COINDROP_54"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_57" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_06_period_25_at_t_30_51/COINDROP_54"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="WAVE_07_period_25_at_t_35_58" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(1100, 1300)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 25 AT T=35"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_maps.590.gml:1128"
+metadata/gm_perioder = 25
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=35; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 7
+metadata/gm_map = 1
+metadata/gm_zcx = 14
+
+[node name="Label_59" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 25 AT T=35 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_60" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="COINDROP_61" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58"]
+position = Vector2(35.120000000000005, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_przeciwnikor/perioder_25"
+metadata/gm_line = 1
+metadata/gm_spawn = "lolo=instance_create(100+random(700),-100,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_przeciwnikor/perioder_25", "line": 1, "spawn": "lolo=instance_create(100+random(700),-100,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_62" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58/COINDROP_61"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_63" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58/COINDROP_61"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_64" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_07_period_25_at_t_35_58/COINDROP_61"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"

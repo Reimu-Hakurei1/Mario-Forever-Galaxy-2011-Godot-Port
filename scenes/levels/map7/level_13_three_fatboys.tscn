@@ -1,0 +1,399 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Script" path="res://runtime/room_preview_boot.gd" id="boot"]
+
+[ext_resource type="Texture2D" path="res://images/sprites/sprite178.178.0.png" id="wave_tex_0"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite179.179.0.png" id="wave_tex_1"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin2.230.0.png" id="wave_tex_2"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin.229.0.png" id="wave_tex_3"]
+
+[sub_resource type="CanvasItemMaterial" id="player_add"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="player_subtract"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend2"]
+blend_mode = 2
+
+[node name="level_13_three_fatboys" type="Node2D"]
+metadata/gm_room = "level_0000"
+metadata/gm_map = 6
+metadata/gm_lev = 13
+metadata/gm_minigame = 0
+metadata/gm_label = "THREE_FATBOYS!"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Bg0_background0" type="Node2D" parent="."]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Bg1_background0" type="Node2D" parent="."]
+z_index = -4079
+metadata/gm_foreground = false
+metadata/gm_background_slot = 1
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_-10000000" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -10000000
+
+[node name="o_hud_0" type="Sprite2D" parent="Objects_-10000000"]
+metadata/gm_object = "o_hud"
+metadata/gm_object_index = 3
+metadata/gm_id = "room_create_0"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 5
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(1024,600,o_hud)"
+position = Vector2(871, 0)
+metadata/gm_position = Vector2(1024.0, 600.0)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="Objects_-1000000" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = -1000000
+
+[node name="o_gameoverus_0" type="Sprite2D" parent="Objects_-1000000"]
+metadata/gm_object = "o_gameoverus"
+metadata/gm_object_index = 136
+metadata/gm_id = "room_create_3"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 70
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(400,300,o_gameoverus)"
+position = Vector2(400.0, 300.0)
+metadata/gm_position = Vector2(400.0, 300.0)
+metadata/gm_empty_draw_event = true
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_gameoverus [room_create_3]"
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 0
+
+[node name="o_player_a_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_player_a"
+metadata/gm_object_index = 0
+metadata/gm_id = 100322
+metadata/gm_visible = true
+metadata/gm_sprite_index = 543
+metadata/gm_preview_only = false
+position = Vector2(416, 576)
+metadata/gm_position = Vector2(416, 576)
+metadata/gm_empty_draw_event = false
+rotation = -1.570796327
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-48, -74)
+centered = false
+material = SubResource("player_add")
+
+[node name="Mask" type="Sprite2D" parent="Objects_0/o_player_a_0"]
+show_behind_parent = true
+material = SubResource("player_subtract")
+texture = ExtResource("t3")
+offset = Vector2(-48, -74)
+centered = false
+
+[node name="o_przeciwnikor_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_przeciwnikor"
+metadata/gm_object_index = 532
+metadata/gm_id = "room_create_1"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(0,0,o_przeciwnikor)"
+position = Vector2(0.0, 0.0)
+metadata/gm_position = Vector2(0.0, 0.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_przeciwnikor [room_create_1]"
+
+[node name="o_bonusho_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_bonusho"
+metadata/gm_object_index = 365
+metadata/gm_id = "room_create_2"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(-1000,-1000,o_bonusho)"
+position = Vector2(-1000.0, -1000.0)
+metadata/gm_position = Vector2(-1000.0, -1000.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 1784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_bonusho [room_create_2]"
+
+[node name="WAVE_REPRESENTATION_PREVIEW_ONLY_1" type="Node2D" parent="."]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_map = 6
+metadata/gm_zcx = 13
+metadata/gm_representation = "Source wave panels, NOT simultaneous enemies"
+metadata/gm_coverage = "Fixed targets where known; conditional source-declared rosters elsewhere. No runtime instances."
+metadata/gm_appearance = "Canonical textures/origins; static rest poses, no animation or damage effects."
+z_index = 100
+
+[node name="Label_2" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+offset_left = 20
+offset_top = 8
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "EDITOR WAVE REPRESENTATION - NOT SIMULTANEOUS"
+
+[node name="WAVE_00_create_roster_3" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "CREATE ROSTER"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_map_7.598.gml:326"
+metadata/gm_source_order = 0
+metadata/gm_map = 6
+metadata/gm_zcx = 13
+
+[node name="Label_4" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "CREATE ROSTER - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_5" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="FATBOY_BOSS6_6" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3"]
+position = Vector2(166.0, 180.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "script_perioder_map_7.598.gml:326"
+metadata/gm_line = 21
+metadata/gm_spawn = "instance_create(200,-200,o_fatboy_boss6)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_fatboy_boss6"
+metadata/gm_sprite = 178
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "script_perioder_map_7.598.gml:326", "line": 21, "spawn": "instance_create(200,-200,o_fatboy_boss6)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss6", "sprite": 178, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "script_perioder_map_7.598.gml:326", "line": 22, "spawn": "instance_create(700,-1200,o_fatboy_boss6)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss6", "sprite": 178, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "script_perioder_map_7.598.gml:326", "line": 23, "spawn": "instance_create(500,-2250,o_fatboy_boss6)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss6", "sprite": 178, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_178_7" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/FATBOY_BOSS6_6"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-146, -70)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 178
+
+[node name="Label_8" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/FATBOY_BOSS6_6"]
+offset_left = -146.0
+offset_top = 79.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "FATBOY_BOSS6"
+
+[node name="FATBOY_BOSS_CANON_9" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3"]
+position = Vector2(354.0, 123.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_fatboy_boss6/event_0_0/action_0"
+metadata/gm_line = 37
+metadata/gm_spawn = "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_fatboy_boss_canon"
+metadata/gm_sprite = 179
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_fatboy_boss6/event_0_0/action_0", "line": 37, "spawn": "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 40, "spawn": "cannon2=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 43, "spawn": "cannon3=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 37, "spawn": "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 40, "spawn": "cannon2=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 43, "spawn": "cannon3=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 37, "spawn": "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 40, "spawn": "cannon2=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss6/event_0_0/action_0", "line": 43, "spawn": "cannon3=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_179_10" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/FATBOY_BOSS_CANON_9"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_1")
+centered = false
+offset = Vector2(-7, -13)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 179
+
+[node name="Label_11" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/FATBOY_BOSS_CANON_9"]
+offset_left = -7.0
+offset_top = 26.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "FATBOY_BOSS_CANON"
+
+[node name="COINDROP_12" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3"]
+position = Vector2(557.12, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_fatboy_boss6/event_8_0/action_0"
+metadata/gm_line = 93
+metadata/gm_spawn = "lolo=instance_create(300+random(30)-random(30),y-200,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if odlatuje>0", "if y<=-600"]
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_fatboy_boss6/event_8_0/action_0", "line": 93, "spawn": "lolo=instance_create(300+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 95, "spawn": "lolo=instance_create(600+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 98, "spawn": "lolo=instance_create(300+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 100, "spawn": "lolo=instance_create(600+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 103, "spawn": "lolo=instance_create(300+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 105, "spawn": "lolo=instance_create(600+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 182, "spawn": "drop=instance_create(x,y-40,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 93, "spawn": "lolo=instance_create(300+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 95, "spawn": "lolo=instance_create(600+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 98, "spawn": "lolo=instance_create(300+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 100, "spawn": "lolo=instance_create(600+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 103, "spawn": "lolo=instance_create(300+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 105, "spawn": "lolo=instance_create(600+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 182, "spawn": "drop=instance_create(x,y-40,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 93, "spawn": "lolo=instance_create(300+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 95, "spawn": "lolo=instance_create(600+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 98, "spawn": "lolo=instance_create(300+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 100, "spawn": "lolo=instance_create(600+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 103, "spawn": "lolo=instance_create(300+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 105, "spawn": "lolo=instance_create(600+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss6/event_8_0/action_0", "line": 182, "spawn": "drop=instance_create(x,y-40,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_13" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/COINDROP_12"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_2")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_14" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/COINDROP_12"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_15" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_create_roster_3/COINDROP_12"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"

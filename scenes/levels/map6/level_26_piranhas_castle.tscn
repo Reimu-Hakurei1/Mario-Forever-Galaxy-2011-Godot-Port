@@ -1,0 +1,1016 @@
+[gd_scene load_steps=28 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Script" path="res://runtime/room_preview_boot.gd" id="boot"]
+
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_roslinka.296.0.png" id="wave_tex_0"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_roslinka2.297.0.png" id="wave_tex_1"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_wiatrak_mask.311.0.png" id="wave_tex_2"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin2.230.0.png" id="wave_tex_3"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bonus_coin.229.0.png" id="wave_tex_4"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_castle_point.313.0.png" id="wave_tex_5"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite157.157.0.png" id="wave_tex_6"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite158.158.0.png" id="wave_tex_7"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite161.161.0.png" id="wave_tex_8"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_roslinka2.297.1.png" id="wave_tex_9"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite178.178.0.png" id="wave_tex_10"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite179.179.0.png" id="wave_tex_11"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_a.11.0.png" id="wave_tex_12"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_h_2.328.0.png" id="wave_tex_13"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite201.201.0.png" id="wave_tex_14"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bullet_6.25.0.png" id="wave_tex_15"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_bossbul_1.115.0.png" id="wave_tex_16"]
+
+[sub_resource type="CanvasItemMaterial" id="player_add"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="player_subtract"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="wave_blend2"]
+blend_mode = 2
+
+[node name="level_26_piranhas_castle" type="Node2D"]
+metadata/gm_room = "level_0000"
+metadata/gm_map = 5
+metadata/gm_lev = 26
+metadata/gm_minigame = 0
+metadata/gm_label = "PIRANHAS'_CASTLE"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Bg0_background0" type="Node2D" parent="."]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Bg1_background0" type="Node2D" parent="."]
+z_index = -4079
+metadata/gm_foreground = false
+metadata/gm_background_slot = 1
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_-10000000" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -10000000
+
+[node name="o_hud_0" type="Sprite2D" parent="Objects_-10000000"]
+metadata/gm_object = "o_hud"
+metadata/gm_object_index = 3
+metadata/gm_id = "room_create_0"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 5
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(1024,600,o_hud)"
+position = Vector2(871, 0)
+metadata/gm_position = Vector2(1024.0, 600.0)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="Objects_-1000000" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = -1000000
+
+[node name="o_gameoverus_0" type="Sprite2D" parent="Objects_-1000000"]
+metadata/gm_object = "o_gameoverus"
+metadata/gm_object_index = 136
+metadata/gm_id = "room_create_3"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 70
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(400,300,o_gameoverus)"
+position = Vector2(400.0, 300.0)
+metadata/gm_position = Vector2(400.0, 300.0)
+metadata/gm_empty_draw_event = true
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_gameoverus [room_create_3]"
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 0
+
+[node name="o_player_a_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_player_a"
+metadata/gm_object_index = 0
+metadata/gm_id = 100322
+metadata/gm_visible = true
+metadata/gm_sprite_index = 543
+metadata/gm_preview_only = false
+position = Vector2(416, 576)
+metadata/gm_position = Vector2(416, 576)
+metadata/gm_empty_draw_event = false
+rotation = -1.570796327
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-48, -74)
+centered = false
+material = SubResource("player_add")
+
+[node name="Mask" type="Sprite2D" parent="Objects_0/o_player_a_0"]
+show_behind_parent = true
+material = SubResource("player_subtract")
+texture = ExtResource("t3")
+offset = Vector2(-48, -74)
+centered = false
+
+[node name="o_przeciwnikor_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_przeciwnikor"
+metadata/gm_object_index = 532
+metadata/gm_id = "room_create_1"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(0,0,o_przeciwnikor)"
+position = Vector2(0.0, 0.0)
+metadata/gm_position = Vector2(0.0, 0.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_przeciwnikor [room_create_1]"
+
+[node name="o_bonusho_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_bonusho"
+metadata/gm_object_index = 365
+metadata/gm_id = "room_create_2"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(-1000,-1000,o_bonusho)"
+position = Vector2(-1000.0, -1000.0)
+metadata/gm_position = Vector2(-1000.0, -1000.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 1784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_bonusho [room_create_2]"
+
+[node name="WAVE_REPRESENTATION_PREVIEW_ONLY_1" type="Node2D" parent="."]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_map = 5
+metadata/gm_zcx = 26
+metadata/gm_representation = "Source wave panels, NOT simultaneous enemies"
+metadata/gm_coverage = "Fixed targets where known; conditional source-declared rosters elsewhere. No runtime instances."
+metadata/gm_appearance = "Canonical textures/origins; static rest poses, no animation or damage effects."
+z_index = 100
+
+[node name="Label_2" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+offset_left = 20
+offset_top = 8
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "EDITOR WAVE REPRESENTATION - NOT SIMULTANEOUS"
+
+[node name="WAVE_00_period_69_at_t_1_3" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1"]
+position = Vector2(0, 0)
+metadata/gm_preview_only = true
+metadata/gm_label = "PERIOD 69 AT T=1"
+metadata/gm_gaps = []
+metadata/gm_source = "script_perioder_map_6.593.gml:191"
+metadata/gm_perioder = 69
+metadata/gm_stage = 0
+metadata/gm_trigger = "floor(periodtime)=1; periodtick differs; end_level=0; unpaused"
+metadata/gm_timing = "periodtime advances by 0.01 per unpaused controller Step; downstream timers and conditions are source-dependent"
+metadata/gm_source_order = 0
+metadata/gm_map = 5
+metadata/gm_zcx = 26
+
+[node name="Label_4" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+offset_left = 20
+offset_top = 30
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PERIOD 69 AT T=1 - CONDITIONAL TYPE ROSTER"
+
+[node name="Label_5" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+offset_left = 20
+offset_top = 54
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "PREVIEW ONLY - OFFSCREEN ARRIVAL / TIMING NOT SIMULATED"
+
+[node name="KIND_50_6" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(120.0, 160.98230693025866)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_8"
+metadata/gm_line = 2
+metadata/gm_spawn = "dudu=instance_create(x-110,y,o_enemy_1)"
+metadata/gm_kind_expression = ["50"]
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_kind = 50
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_8", "line": 2, "spawn": "dudu=instance_create(x-110,y,o_enemy_1)", "kind_expression": ["50"], "conditional": true, "conditions": [], "kind": 50, "object": "o_enemy_1"}, {"source": "o_castle_obj/event_8_0/action_0/castle_item_10", "line": 2, "spawn": "dudu=instance_create(x+110,y,o_enemy_1)", "kind_expression": ["50"], "conditional": true, "conditions": [], "kind": 50, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_296_7" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_50_6"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-100, -27)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 296
+
+[node name="Sprite_297_8" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_50_6"]
+position = Vector2(99.86295347545739, -5.233595624294384)
+scale = Vector2(1, 1)
+rotation = -0.5235987755982988
+texture = ExtResource("wave_tex_1")
+centered = false
+offset = Vector2(-10, -28)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 297
+
+[node name="Sprite_297_9" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_50_6"]
+position = Vector2(99.93908270190957, 3.489949670250108)
+scale = Vector2(1, -1)
+rotation = 0.5235987755982988
+texture = ExtResource("wave_tex_1")
+centered = false
+offset = Vector2(-10, -28)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 297
+
+[node name="Label_10" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_50_6"]
+offset_left = -100.0
+offset_top = 57.23866097621439
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 50"
+
+[node name="WIATRAK_11" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(296.1781750646404, 126.0)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_27"
+metadata/gm_line = 2
+metadata/gm_spawn = "dudu=instance_create(x+32,y+32,o_wiatrak)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_wiatrak"
+metadata/gm_sprite = 311
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_27", "line": 2, "spawn": "dudu=instance_create(x+32,y+32,o_wiatrak)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_wiatrak", "sprite": 311, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_311_12" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/WIATRAK_11"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_2")
+centered = false
+offset = Vector2(0, -16)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 311
+
+[node name="Label_13" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/WIATRAK_11"]
+offset_left = 0.0
+offset_top = 24.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "WIATRAK"
+
+[node name="COINDROP_14" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(506.2981750646404, 124.832)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_28"
+metadata/gm_line = 1
+metadata/gm_spawn = "fufu=instance_create(x+32,y+32,o_coindrop)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_coindrop"
+metadata/gm_recipe = "o_coindrop"
+metadata/gm_appearance = "Source Draw layers at a fixed rest pose; no timing or damage effects"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_28", "line": 1, "spawn": "fufu=instance_create(x+32,y+32,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 96, "spawn": "lolo=instance_create(300+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 98, "spawn": "lolo=instance_create(600+random(30)-random(30),y-200,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 101, "spawn": "lolo=instance_create(300+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 103, "spawn": "lolo=instance_create(600+random(30)-random(30),y-400,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 106, "spawn": "lolo=instance_create(300+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 108, "spawn": "lolo=instance_create(600+random(30)-random(30),y,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if odlatuje>0", "if y<=-600"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}, {"source": "o_fatboy_boss5/event_8_0/action_0", "line": 176, "spawn": "drop=instance_create(x,y-40,o_coindrop)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_coindrop", "recipe": "o_coindrop", "appearance": "Source Draw layers at a fixed rest pose; no timing or damage effects"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_230_15" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/COINDROP_14"]
+position = Vector2(0, 0)
+scale = Vector2(0.315, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_3")
+centered = false
+offset = Vector2(-48, -48)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 230
+material = SubResource("wave_blend2")
+
+[node name="Sprite_229_16" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/COINDROP_14"]
+position = Vector2(0, 0)
+scale = Vector2(0.3, 0.309)
+rotation = -0.0
+texture = ExtResource("wave_tex_4")
+centered = false
+offset = Vector2(-43, -43)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 229
+material = SubResource("wave_blend1")
+
+[node name="Label_17" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/COINDROP_14"]
+offset_left = -15.120000000000001
+offset_top = 22.832
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "COINDROP"
+
+[node name="KIND_55_18" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(52.0, 297.22096790647305)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_0"
+metadata/gm_line = 2
+metadata/gm_spawn = "dudu=instance_create(x,y,o_enemy_1)"
+metadata/gm_kind_expression = ["55"]
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_kind = 55
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_0", "line": 2, "spawn": "dudu=instance_create(x,y,o_enemy_1)", "kind_expression": ["55"], "conditional": true, "conditions": [], "kind": 55, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_313_19" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_55_18"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_5")
+centered = false
+offset = Vector2(-32, -32)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 313
+
+[node name="Label_20" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_55_18"]
+offset_left = -32.0
+offset_top = 40.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 55"
+
+[node name="KIND_3_21" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(255.0, 302.22096790647305)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_enemier_2_nonblock_harder/event_3_0/action_0"
+metadata/gm_line = 6
+metadata/gm_spawn = "dodo=instance_create(x,y,o_enemy_1)"
+metadata/gm_kind_expression = ["3"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if zegarek>40"]
+metadata/gm_kind = 3
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_enemier_2_nonblock_harder/event_3_0/action_0", "line": 6, "spawn": "dodo=instance_create(x,y,o_enemy_1)", "kind_expression": ["3"], "conditional": true, "conditions": ["if global.pauza=0", "if zegarek>40"], "kind": 3, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_157_22" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_3_21"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_157_23" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_3_21"]
+position = Vector2(0, 0)
+scale = Vector2(-1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_158_24" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_3_21"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_7")
+centered = false
+offset = Vector2(-40, -37)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 158
+
+[node name="Label_25" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_3_21"]
+offset_left = -40.0
+offset_top = 39.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 3"
+
+[node name="KIND_4_26" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(445.0, 303.22096790647305)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_33"
+metadata/gm_line = 1
+metadata/gm_spawn = "fufu=instance_create(x,y,o_enemy_1)"
+metadata/gm_kind_expression = ["4"]
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_kind = 4
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_33", "line": 1, "spawn": "fufu=instance_create(x,y,o_enemy_1)", "kind_expression": ["4"], "conditional": true, "conditions": [], "kind": 4, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_157_27" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_4_26"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_157_28" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_4_26"]
+position = Vector2(0, 0)
+scale = Vector2(-1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_6")
+centered = false
+offset = Vector2(-35, -17)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 157
+
+[node name="Sprite_161_29" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_4_26"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_8")
+centered = false
+offset = Vector2(-32, -38)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 161
+
+[node name="Label_30" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_4_26"]
+offset_left = -35.0
+offset_top = 44.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 4"
+
+[node name="KIND_56_31" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(120.0, 445.20327483673174)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_obj/event_8_0/action_0/castle_item_34"
+metadata/gm_line = 2
+metadata/gm_spawn = "dudu=instance_create(x-110,y,o_enemy_1)"
+metadata/gm_kind_expression = ["56"]
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_kind = 56
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_obj/event_8_0/action_0/castle_item_34", "line": 2, "spawn": "dudu=instance_create(x-110,y,o_enemy_1)", "kind_expression": ["56"], "conditional": true, "conditions": [], "kind": 56, "object": "o_enemy_1"}, {"source": "o_castle_obj/event_8_0/action_0/castle_item_35", "line": 2, "spawn": "dudu=instance_create(x,y+110,o_enemy_1)", "kind_expression": ["56"], "conditional": true, "conditions": [], "kind": 56, "object": "o_enemy_1"}, {"source": "o_castle_obj/event_8_0/action_0/castle_item_36", "line": 2, "spawn": "dudu=instance_create(x+110,y,o_enemy_1)", "kind_expression": ["56"], "conditional": true, "conditions": [], "kind": 56, "object": "o_enemy_1"}, {"source": "o_castle_obj/event_8_0/action_0/castle_item_37", "line": 2, "spawn": "dudu=instance_create(x,y-110,o_enemy_1)", "kind_expression": ["56"], "conditional": true, "conditions": [], "kind": 56, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_296_32" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_56_31"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_0")
+centered = false
+offset = Vector2(-100, -27)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 296
+modulate = Color(1, 0, 0, 1)
+
+[node name="Sprite_297_33" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_56_31"]
+position = Vector2(99.86295347545739, -5.233595624294384)
+scale = Vector2(1, 1)
+rotation = -0.5235987755982988
+texture = ExtResource("wave_tex_9")
+centered = false
+offset = Vector2(-10, -28)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 297
+
+[node name="Sprite_297_34" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_56_31"]
+position = Vector2(99.93908270190957, 3.489949670250108)
+scale = Vector2(1, -1)
+rotation = 0.5235987755982988
+texture = ExtResource("wave_tex_9")
+centered = false
+offset = Vector2(-10, -28)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 297
+
+[node name="Label_35" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_56_31"]
+offset_left = -100.0
+offset_top = 57.23866097621439
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 56"
+
+[node name="FATBOY_BOSS5_36" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(442.1781750646404, 464.22096790647305)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map6_piranha_castle_2/event_3_0/action_0"
+metadata/gm_line = 31
+metadata/gm_spawn = "instance_create(450,-300,o_fatboy_boss5)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if dodawacz_assign=104"]
+metadata/gm_object = "o_fatboy_boss5"
+metadata/gm_sprite = 178
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_perioder_map6_piranha_castle_2/event_3_0/action_0", "line": 31, "spawn": "instance_create(450,-300,o_fatboy_boss5)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if dodawacz_assign=104"], "object": "o_fatboy_boss5", "sprite": 178, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_178_37" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/FATBOY_BOSS5_36"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_10")
+centered = false
+offset = Vector2(-146, -70)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 178
+
+[node name="Label_38" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/FATBOY_BOSS5_36"]
+offset_left = -146.0
+offset_top = 79.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "FATBOY_BOSS5"
+
+[node name="FATBOY_BOSS_CANON_39" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(630.1781750646404, 407.22096790647305)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_fatboy_boss5/event_0_0/action_0"
+metadata/gm_line = 38
+metadata/gm_spawn = "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = []
+metadata/gm_object = "o_fatboy_boss_canon"
+metadata/gm_sprite = 179
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_fatboy_boss5/event_0_0/action_0", "line": 38, "spawn": "cannon1=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss5/event_0_0/action_0", "line": 41, "spawn": "cannon2=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_fatboy_boss5/event_0_0/action_0", "line": 44, "spawn": "cannon3=instance_create(-1000,-1000,o_fatboy_boss_canon)", "kind_expression": [], "conditional": true, "conditions": [], "object": "o_fatboy_boss_canon", "sprite": 179, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_179_40" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/FATBOY_BOSS_CANON_39"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_11")
+centered = false
+offset = Vector2(-7, -13)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 179
+
+[node name="Label_41" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/FATBOY_BOSS_CANON_39"]
+offset_left = -7.0
+offset_top = 26.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "FATBOY_BOSS_CANON"
+
+[node name="KIND_0_42" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(50.0, 620.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_castle_enemier/event_3_0/action_0"
+metadata/gm_line = 18
+metadata/gm_spawn = "dudu=instance_create(random(800),-200-random(200),o_enemy_1)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if liczba>-1 && mozna_tworzyc=1", "if liczba>0", "if ooo>=0 && ooo<10"]
+metadata/gm_kind = 0
+metadata/gm_object = "o_enemy_1"
+metadata/gm_provenance = [{"source": "o_castle_enemier/event_3_0/action_0", "line": 18, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if liczba>-1 && mozna_tworzyc=1", "if liczba>0", "if ooo>=0 && ooo<10"], "kind": 0, "object": "o_enemy_1"}, {"source": "o_castle_enemier/event_3_0/action_0", "line": 26, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if liczba>-1 && mozna_tworzyc=1", "if liczba>0", "if ooo>=10 && ooo<20"], "kind": 0, "object": "o_enemy_1"}, {"source": "o_castle_enemier/event_3_0/action_0", "line": 34, "spawn": "dudu=instance_create(random(800),-200-random(200),o_enemy_1)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if liczba>-1 && mozna_tworzyc=1", "if liczba>0", "if ooo>=20 && ooo<30"], "kind": 0, "object": "o_enemy_1"}, {"source": "o_enemy_dookola_1/event_3_0/action_0", "line": 6, "spawn": "instance_create(-9999,-9999,o_enemy_1)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if tworz=0"], "kind": 0, "object": "o_enemy_1"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_11_43" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_0_42"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_12")
+centered = false
+offset = Vector2(-30, -30)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 11
+
+[node name="Label_44" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/KIND_0_42"]
+offset_left = -30.0
+offset_top = 38.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "KIND 0"
+
+[node name="BOSS_55_TALK_45" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(300.0, 780.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_perioder_map6_piranha_castle_2/event_3_0/action_0"
+metadata/gm_line = 49
+metadata/gm_spawn = "instance_create(450,-200,o_boss_55_talk)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if dodawacz_assign=102"]
+metadata/gm_object = "o_boss_55_talk"
+metadata/gm_sprite = 328
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_perioder_map6_piranha_castle_2/event_3_0/action_0", "line": 49, "spawn": "instance_create(450,-200,o_boss_55_talk)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if dodawacz_assign=102"], "object": "o_boss_55_talk", "sprite": 328, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_328_46" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_55_TALK_45"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_13")
+centered = false
+offset = Vector2(-85, -190)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 328
+
+[node name="Label_47" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_55_TALK_45"]
+offset_left = -85.0
+offset_top = 52.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSS_55_TALK"
+
+[node name="BOSS_5_FIGHT_48" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(519.0, 780.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_55_talk/event_8_0/action_0"
+metadata/gm_line = 22
+metadata/gm_spawn = "instance_create(x,y,o_boss_5_fight)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if dialotime[dialonumber]=-1"]
+metadata/gm_object = "o_boss_5_fight"
+metadata/gm_sprite = 328
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_55_talk/event_8_0/action_0", "line": 22, "spawn": "instance_create(x,y,o_boss_5_fight)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if dialotime[dialonumber]=-1"], "object": "o_boss_5_fight", "sprite": 328, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_328_49" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_5_FIGHT_48"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_13")
+centered = false
+offset = Vector2(-85, -190)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 328
+
+[node name="Label_50" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_5_FIGHT_48"]
+offset_left = -85.0
+offset_top = 52.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSS_5_FIGHT"
+
+[node name="BOSSGIGA2_51" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(114.0, 974.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 19
+metadata/gm_spawn = "biggger1=instance_create(x,y,o_bossgiga2)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if kiedy_biggery>800"]
+metadata/gm_object = "o_bossgiga2"
+metadata/gm_sprite = 201
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 19, "spawn": "biggger1=instance_create(x,y,o_bossgiga2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if kiedy_biggery>800"], "object": "o_bossgiga2", "sprite": 201, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 20, "spawn": "biggger2=instance_create(x,y,o_bossgiga2)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if kiedy_biggery>800"], "object": "o_bossgiga2", "sprite": 201, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_201_52" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSGIGA2_51"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_14")
+centered = false
+offset = Vector2(-94, -95)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 201
+
+[node name="Label_53" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSGIGA2_51"]
+offset_left = -94.0
+offset_top = 104.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSSGIGA2"
+
+[node name="BOSSBUL_1_54" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(266.0, 900.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 60
+metadata/gm_spawn = "strzal=instance_create(x,y+16,o_bossbul_1)"
+metadata/gm_kind_expression = ["0"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if rozstrzelywywuj>=20"]
+metadata/gm_object = "o_bossbul_1"
+metadata/gm_sprite = 25
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 60, "spawn": "strzal=instance_create(x,y+16,o_bossbul_1)", "kind_expression": ["0"], "conditional": true, "conditions": ["if global.pauza=0", "if rozstrzelywywuj>=20"], "object": "o_bossbul_1", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 271, "spawn": "strzal=instance_create(x,y+16,o_bossbul_1)", "kind_expression": ["0"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=14 && szybkostrzelnosc2>0 && szybkostrzelnosc>40 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_1", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_25_55" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_1_54"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_15")
+centered = false
+offset = Vector2(-22, -21)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 25
+
+[node name="Label_56" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_1_54"]
+offset_left = -22.0
+offset_top = 29.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSSBUL_1"
+
+[node name="BOSSGIGA_57" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(533.0, 974.2209679064731)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 74
+metadata/gm_spawn = "gigabullet=instance_create(x,y-200,o_bossgiga)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if giga=300 && rozstrzel<kiedy_rozstrzel"]
+metadata/gm_object = "o_bossgiga"
+metadata/gm_sprite = 201
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 74, "spawn": "gigabullet=instance_create(x,y-200,o_bossgiga)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if giga=300 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossgiga", "sprite": 201, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_201_58" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSGIGA_57"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_14")
+centered = false
+offset = Vector2(-94, -95)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 201
+
+[node name="Label_59" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSGIGA_57"]
+offset_left = -94.0
+offset_top = 104.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSSGIGA"
+
+[node name="BOSS_55_ENDTALK_60" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(105.0, 1315.220967906473)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 143
+metadata/gm_spawn = "instance_create(x,y,o_boss_55_endtalk)"
+metadata/gm_kind_expression = []
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if energia<=0"]
+metadata/gm_object = "o_boss_55_endtalk"
+metadata/gm_sprite = 328
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 143, "spawn": "instance_create(x,y,o_boss_55_endtalk)", "kind_expression": [], "conditional": true, "conditions": ["if global.pauza=0", "if energia<=0"], "object": "o_boss_55_endtalk", "sprite": 328, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_328_61" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_55_ENDTALK_60"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_13")
+centered = false
+offset = Vector2(-85, -190)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 328
+
+[node name="Label_62" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSS_55_ENDTALK_60"]
+offset_left = -85.0
+offset_top = 52.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSS_55_ENDTALK"
+
+[node name="BOSSBUL_3_63" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(261.0, 1146.220967906473)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 202
+metadata/gm_spawn = "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)"
+metadata/gm_kind_expression = ["20"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if sekwencja2=2 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"]
+metadata/gm_object = "o_bossbul_3"
+metadata/gm_sprite = 25
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 202, "spawn": "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)", "kind_expression": ["20"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=2 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_3", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 213, "spawn": "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)", "kind_expression": ["20"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=4 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_3", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 224, "spawn": "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)", "kind_expression": ["20"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=6 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_3", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 235, "spawn": "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)", "kind_expression": ["20"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=8 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_3", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}, {"source": "o_boss_5_fight/event_8_0/action_0", "line": 246, "spawn": "strzal=instance_create(x+random(16)-random(16),y+80+random(16)-random(16),o_bossbul_3)", "kind_expression": ["20"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=10 && szybkostrzelnosc2>0 && szybkostrzelnosc>10 && sekwencja<9 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_3", "sprite": 25, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_25_64" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_3_63"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_15")
+centered = false
+offset = Vector2(-22, -21)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 25
+
+[node name="Label_65" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_3_63"]
+offset_left = -22.0
+offset_top = 29.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSSBUL_3"
+
+[node name="BOSSBUL_2_66" type="Node2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3"]
+position = Vector2(454.0, 1145.220967906473)
+metadata/gm_preview_only = true
+metadata/gm_source = "o_boss_5_fight/event_8_0/action_0"
+metadata/gm_line = 259
+metadata/gm_spawn = "strzal=instance_create(x,y,o_bossbul_2)"
+metadata/gm_kind_expression = ["0"]
+metadata/gm_conditional = true
+metadata/gm_conditions = ["if global.pauza=0", "if sekwencja2=12 && szybkostrzelnosc2>0 && szybkostrzelnosc>30 && rozstrzel<kiedy_rozstrzel"]
+metadata/gm_object = "o_bossbul_2"
+metadata/gm_sprite = 115
+metadata/gm_appearance = "Canonical object frame; custom Draw effects not simulated"
+metadata/gm_provenance = [{"source": "o_boss_5_fight/event_8_0/action_0", "line": 259, "spawn": "strzal=instance_create(x,y,o_bossbul_2)", "kind_expression": ["0"], "conditional": true, "conditions": ["if global.pauza=0", "if sekwencja2=12 && szybkostrzelnosc2>0 && szybkostrzelnosc>30 && rozstrzel<kiedy_rozstrzel"], "object": "o_bossbul_2", "sprite": 115, "appearance": "Canonical object frame; custom Draw effects not simulated"}]
+metadata/gm_representation = "roster_not_position"
+
+[node name="Sprite_115_67" type="Sprite2D" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_2_66"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = -0.0
+texture = ExtResource("wave_tex_16")
+centered = false
+offset = Vector2(-20, -20)
+metadata/gm_preview_only = true
+metadata/gm_sprite_index = 115
+
+[node name="Label_68" type="Label" parent="WAVE_REPRESENTATION_PREVIEW_ONLY_1/WAVE_00_period_69_at_t_1_3/BOSSBUL_2_66"]
+offset_left = -20.0
+offset_top = 29.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+metadata/gm_preview_only = true
+text = "BOSSBUL_2"
