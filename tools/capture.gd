@@ -1,7 +1,7 @@
 extends Node2D
 
 var frames := 0
-var scene_path := "res://scenes/levels/room_level_1_1.tscn"
+var scene_path := "res://stages/room_level_1_1.tscn"
 var out_path := "capture.png"
 var cam_x := 400.0
 

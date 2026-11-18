@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/hard_squad.ogg-9648c14195e97a4ed3a6666e39a667
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=14.303492
 bpm=0
 beat_count=0
 bar_beats=4

@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/save_room.ogg-53563920c3d32bdefa30cb18270236b
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=1.393197
 bpm=0
 beat_count=0
 bar_beats=4

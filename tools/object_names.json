@@ -1,0 +1,2332 @@
+{
+ "categories": [
+  "player",
+  "enemies",
+  "bosses",
+  "bullets",
+  "effects",
+  "spawners",
+  "items",
+  "ui",
+  "stage",
+  "misc"
+ ],
+ "objects": {
+  "o_anim_1": {
+   "category": "effects",
+   "index": 538,
+   "name": "anim_1"
+  },
+  "o_anim_2": {
+   "category": "effects",
+   "index": 547,
+   "name": "anim_2"
+  },
+  "o_anim_3": {
+   "category": "effects",
+   "index": 553,
+   "name": "anim_3"
+  },
+  "o_anim_4": {
+   "category": "effects",
+   "index": 560,
+   "name": "anim_4"
+  },
+  "o_anim_bowser": {
+   "category": "effects",
+   "index": 543,
+   "name": "anim_bowser"
+  },
+  "o_anim_bowser_2": {
+   "category": "effects",
+   "index": 549,
+   "name": "anim_bowser_2"
+  },
+  "o_anim_bowser_3": {
+   "category": "effects",
+   "index": 559,
+   "name": "anim_bowser_3"
+  },
+  "o_anim_exp_rico": {
+   "category": "effects",
+   "index": 555,
+   "name": "anim_explosion_fx_rico"
+  },
+  "o_anim_explosion": {
+   "category": "effects",
+   "index": 554,
+   "name": "anim_explosion"
+  },
+  "o_anim_fat_cannon": {
+   "category": "effects",
+   "index": 551,
+   "name": "anim_fat_cannon"
+  },
+  "o_anim_fatboy": {
+   "category": "effects",
+   "index": 544,
+   "name": "anim_fat_boy"
+  },
+  "o_anim_fatboy_2": {
+   "category": "effects",
+   "index": 550,
+   "name": "anim_fat_boy_2"
+  },
+  "o_anim_hero_0": {
+   "category": "effects",
+   "index": 561,
+   "name": "anim_hero_0"
+  },
+  "o_anim_hero_1": {
+   "category": "effects",
+   "index": 562,
+   "name": "anim_hero_1"
+  },
+  "o_anim_hero_2": {
+   "category": "effects",
+   "index": 563,
+   "name": "anim_hero_2"
+  },
+  "o_anim_hero_3": {
+   "category": "effects",
+   "index": 564,
+   "name": "anim_hero_3"
+  },
+  "o_anim_odlamek": {
+   "category": "effects",
+   "index": 556,
+   "name": "anim_shard"
+  },
+  "o_anim_odlamek2": {
+   "category": "effects",
+   "index": 557,
+   "name": "anim_shard_2"
+  },
+  "o_anim_slave": {
+   "category": "effects",
+   "index": 539,
+   "name": "anim_slave"
+  },
+  "o_anim_txt": {
+   "category": "effects",
+   "index": 540,
+   "name": "anim_text"
+  },
+  "o_blur_1": {
+   "category": "effects",
+   "index": 52,
+   "name": "blur_1"
+  },
+  "o_blur_2": {
+   "category": "effects",
+   "index": 53,
+   "name": "blur_2"
+  },
+  "o_blur_3": {
+   "category": "effects",
+   "index": 54,
+   "name": "blur_3"
+  },
+  "o_bonusho": {
+   "category": "items",
+   "index": 365,
+   "name": "bonus_ho"
+  },
+  "o_booster_weapon_1": {
+   "category": "player",
+   "index": 294,
+   "name": "booster_weapon_1"
+  },
+  "o_booster_weapon_2": {
+   "category": "player",
+   "index": 300,
+   "name": "booster_weapon_2"
+  },
+  "o_bosefe": {
+   "category": "effects",
+   "index": 113,
+   "name": "boss_fx"
+  },
+  "o_bosefe_2": {
+   "category": "effects",
+   "index": 122,
+   "name": "boss_fx_2"
+  },
+  "o_boss_1": {
+   "category": "bosses",
+   "index": 169,
+   "name": "boss_1"
+  },
+  "o_boss_1_fight": {
+   "category": "bosses",
+   "index": 40,
+   "name": "boss_1_fight"
+  },
+  "o_boss_2": {
+   "category": "bosses",
+   "index": 263,
+   "name": "boss_2"
+  },
+  "o_boss_2_fight": {
+   "category": "bosses",
+   "index": 262,
+   "name": "boss_2_fight"
+  },
+  "o_boss_3": {
+   "category": "bosses",
+   "index": 261,
+   "name": "boss_3"
+  },
+  "o_boss_3_fight": {
+   "category": "bosses",
+   "index": 334,
+   "name": "boss_3_fight"
+  },
+  "o_boss_4_fight": {
+   "category": "bosses",
+   "index": 362,
+   "name": "boss_4_fight"
+  },
+  "o_boss_4_talk": {
+   "category": "bosses",
+   "index": 335,
+   "name": "boss_4_talk"
+  },
+  "o_boss_5": {
+   "category": "bosses",
+   "index": 336,
+   "name": "boss_5"
+  },
+  "o_boss_55_endtalk": {
+   "category": "bosses",
+   "index": 420,
+   "name": "boss_55_end_talk"
+  },
+  "o_boss_55_talk": {
+   "category": "bosses",
+   "index": 417,
+   "name": "boss_55_talk"
+  },
+  "o_boss_5_endtalk": {
+   "category": "bosses",
+   "index": 363,
+   "name": "boss_5_end_talk"
+  },
+  "o_boss_5_fight": {
+   "category": "bosses",
+   "index": 418,
+   "name": "boss_5_fight"
+  },
+  "o_boss_5_talk": {
+   "category": "bosses",
+   "index": 361,
+   "name": "boss_5_talk"
+  },
+  "o_boss_6_endtalk": {
+   "category": "bosses",
+   "index": 467,
+   "name": "boss_6_end_talk"
+  },
+  "o_boss_6_fight": {
+   "category": "bosses",
+   "index": 466,
+   "name": "boss_6_fight"
+  },
+  "o_boss_6_talk": {
+   "category": "bosses",
+   "index": 465,
+   "name": "boss_6_talk"
+  },
+  "o_boss_7_endtalk": {
+   "category": "bosses",
+   "index": 507,
+   "name": "boss_7_end_talk"
+  },
+  "o_boss_7_fight": {
+   "category": "bosses",
+   "index": 505,
+   "name": "boss_7_fight"
+  },
+  "o_boss_8_endtalk": {
+   "category": "bosses",
+   "index": 504,
+   "name": "boss_8_end_talk"
+  },
+  "o_boss_8_endtalk2": {
+   "category": "bosses",
+   "index": 514,
+   "name": "boss_8_end_talk_2"
+  },
+  "o_boss_8_fight": {
+   "category": "bosses",
+   "index": 508,
+   "name": "boss_8_fight"
+  },
+  "o_boss_map4_talk": {
+   "category": "bosses",
+   "index": 375,
+   "name": "boss_map_4_talk"
+  },
+  "o_bossbul_1": {
+   "category": "bullets",
+   "index": 119,
+   "name": "boss_bullet_1"
+  },
+  "o_bossbul_2": {
+   "category": "bullets",
+   "index": 120,
+   "name": "boss_bullet_2"
+  },
+  "o_bossbul_3": {
+   "category": "bullets",
+   "index": 121,
+   "name": "boss_bullet_3"
+  },
+  "o_bossbul_33": {
+   "category": "bullets",
+   "index": 506,
+   "name": "boss_bullet_33"
+  },
+  "o_bossgiga": {
+   "category": "bosses",
+   "index": 170,
+   "name": "boss_giga"
+  },
+  "o_bossgiga2": {
+   "category": "bosses",
+   "index": 419,
+   "name": "boss_giga_2"
+  },
+  "o_bullet_1": {
+   "category": "bullets",
+   "index": 13,
+   "name": "bullet_1"
+  },
+  "o_bullet_1bb": {
+   "category": "bullets",
+   "index": 79,
+   "name": "bullet_1bb"
+  },
+  "o_bullet_1bbb": {
+   "category": "bullets",
+   "index": 80,
+   "name": "bullet_1bbb"
+  },
+  "o_bullet_2": {
+   "category": "bullets",
+   "index": 21,
+   "name": "bullet_2"
+  },
+  "o_bullet_200": {
+   "category": "bullets",
+   "index": 185,
+   "name": "bullet_200"
+  },
+  "o_bullet_200_autotrack": {
+   "category": "bullets",
+   "index": 283,
+   "name": "bullet_200_auto_track"
+  },
+  "o_bullet_201": {
+   "category": "bullets",
+   "index": 187,
+   "name": "bullet_201"
+  },
+  "o_bullet_202": {
+   "category": "bullets",
+   "index": 193,
+   "name": "bullet_202"
+  },
+  "o_bullet_203": {
+   "category": "bullets",
+   "index": 196,
+   "name": "bullet_203"
+  },
+  "o_bullet_3": {
+   "category": "bullets",
+   "index": 25,
+   "name": "bullet_3"
+  },
+  "o_bullet_3b": {
+   "category": "bullets",
+   "index": 74,
+   "name": "bullet_3b"
+  },
+  "o_bullet_3plus": {
+   "category": "bullets",
+   "index": 496,
+   "name": "bullet_3_plus"
+  },
+  "o_bullet_4": {
+   "category": "bullets",
+   "index": 33,
+   "name": "bullet_4"
+  },
+  "o_bullet_5": {
+   "category": "bullets",
+   "index": 59,
+   "name": "bullet_5"
+  },
+  "o_bullet_6": {
+   "category": "bullets",
+   "index": 72,
+   "name": "bullet_6"
+  },
+  "o_bullet_7": {
+   "category": "bullets",
+   "index": 112,
+   "name": "bullet_7"
+  },
+  "o_bullet_fatboy": {
+   "category": "bullets",
+   "index": 158,
+   "name": "bullet_fat_boy"
+  },
+  "o_bullet_fatboy2": {
+   "category": "bullets",
+   "index": 371,
+   "name": "bullet_fat_boy_2"
+  },
+  "o_bullet_fatboy222": {
+   "category": "bullets",
+   "index": 552,
+   "name": "bullet_fat_boy_222"
+  },
+  "o_bullet_flamecans": {
+   "category": "bullets",
+   "index": 250,
+   "name": "bullet_flame_cans"
+  },
+  "o_bullet_flamecans2": {
+   "category": "bullets",
+   "index": 470,
+   "name": "bullet_flame_cans_2"
+  },
+  "o_bullet_flamecans22": {
+   "category": "bullets",
+   "index": 483,
+   "name": "bullet_flame_cans_22"
+  },
+  "o_bullet_flamecans222": {
+   "category": "bullets",
+   "index": 529,
+   "name": "bullet_flame_cans_222"
+  },
+  "o_bullet_lakitu": {
+   "category": "bullets",
+   "index": 151,
+   "name": "bullet_lakitu"
+  },
+  "o_bullet_rakiety_1": {
+   "category": "bullets",
+   "index": 199,
+   "name": "bullet_rockets_1"
+  },
+  "o_bullet_rakiety_2": {
+   "category": "bullets",
+   "index": 200,
+   "name": "bullet_rockets_2"
+  },
+  "o_bullet_rakiety_3": {
+   "category": "bullets",
+   "index": 201,
+   "name": "bullet_rockets_3"
+  },
+  "o_bullet_rakiety_4": {
+   "category": "bullets",
+   "index": 203,
+   "name": "bullet_rockets_4"
+  },
+  "o_bullet_rakiety_5": {
+   "category": "bullets",
+   "index": 205,
+   "name": "bullet_rockets_5"
+  },
+  "o_bullet_rakiety_6": {
+   "category": "bullets",
+   "index": 207,
+   "name": "bullet_rockets_6"
+  },
+  "o_bullet_rakiety_7": {
+   "category": "bullets",
+   "index": 208,
+   "name": "bullet_rockets_7"
+  },
+  "o_bullet_rakiety_8": {
+   "category": "bullets",
+   "index": 209,
+   "name": "bullet_rockets_8"
+  },
+  "o_bulletkumpel_200": {
+   "category": "player",
+   "index": 212,
+   "name": "buddy_bullet_200"
+  },
+  "o_card": {
+   "category": "ui",
+   "index": 267,
+   "name": "card"
+  },
+  "o_card_2": {
+   "category": "ui",
+   "index": 392,
+   "name": "card_2"
+  },
+  "o_card_cursor": {
+   "category": "ui",
+   "index": 269,
+   "name": "card_cursor"
+  },
+  "o_card_pointerus": {
+   "category": "ui",
+   "index": 268,
+   "name": "card_pointer"
+  },
+  "o_cardgame": {
+   "category": "ui",
+   "index": 266,
+   "name": "card_game"
+  },
+  "o_cardgame_2": {
+   "category": "ui",
+   "index": 391,
+   "name": "card_game_2"
+  },
+  "o_cardgame_blanker": {
+   "category": "ui",
+   "index": 270,
+   "name": "card_game_blanker"
+  },
+  "o_castle_enemier": {
+   "category": "enemies",
+   "index": 248,
+   "name": "castle_enemy"
+  },
+  "o_castle_enemier_2": {
+   "category": "enemies",
+   "index": 260,
+   "name": "castle_enemy_2"
+  },
+  "o_castle_enemier_2_nonblock": {
+   "category": "enemies",
+   "index": 249,
+   "name": "castle_enemy_2_nonblock"
+  },
+  "o_castle_enemier_2_nonblock_harder": {
+   "category": "enemies",
+   "index": 349,
+   "name": "castle_enemy_2_nonblock_harder"
+  },
+  "o_castle_enemier_3": {
+   "category": "enemies",
+   "index": 340,
+   "name": "castle_enemy_3"
+  },
+  "o_castle_obj": {
+   "category": "stage",
+   "index": 242,
+   "name": "castle_obj"
+  },
+  "o_choose_hero": {
+   "category": "player",
+   "index": 535,
+   "name": "choose_hero"
+  },
+  "o_choose_hero_bullet": {
+   "category": "player",
+   "index": 536,
+   "name": "choose_hero_bullet"
+  },
+  "o_coindrop": {
+   "category": "items",
+   "index": 214,
+   "name": "coin_drop"
+  },
+  "o_coolexplosion_bullet": {
+   "category": "bullets",
+   "index": 302,
+   "name": "cool_explosion_bullet"
+  },
+  "o_creatorum_1": {
+   "category": "spawners",
+   "index": 245,
+   "name": "creator_1"
+  },
+  "o_cyber_team": {
+   "category": "enemies",
+   "index": 435,
+   "name": "cyber_team"
+  },
+  "o_diamonddrop": {
+   "category": "items",
+   "index": 215,
+   "name": "diamond_drop"
+  },
+  "o_dier": {
+   "category": "misc",
+   "index": 150,
+   "name": "death"
+  },
+  "o_dodatkowy_1": {
+   "category": "items",
+   "index": 57,
+   "name": "bonus_1"
+  },
+  "o_dodatkowy_1_b": {
+   "category": "items",
+   "index": 58,
+   "name": "bonus_1_b"
+  },
+  "o_dodatkowy_1_samosterujacy": {
+   "category": "items",
+   "index": 341,
+   "name": "bonus_1_homing"
+  },
+  "o_dodatkowy_1die": {
+   "category": "items",
+   "index": 149,
+   "name": "bonus_1_death"
+  },
+  "o_dodatkowy_2": {
+   "category": "items",
+   "index": 82,
+   "name": "bonus_2"
+  },
+  "o_dodatkowy_2_samosterujacy": {
+   "category": "items",
+   "index": 402,
+   "name": "bonus_2_homing"
+  },
+  "o_dodatkowy_3_b": {
+   "category": "items",
+   "index": 116,
+   "name": "bonus_3_b"
+  },
+  "o_dodatkowy_3_b2": {
+   "category": "items",
+   "index": 446,
+   "name": "bonus_3_b2"
+  },
+  "o_dodatkowy_3_b22": {
+   "category": "items",
+   "index": 510,
+   "name": "bonus_3_b22"
+  },
+  "o_dodatkowy_3_b222": {
+   "category": "items",
+   "index": 512,
+   "name": "bonus_3_b222"
+  },
+  "o_dodatkowy_3_b2plus": {
+   "category": "items",
+   "index": 513,
+   "name": "bonus_3_b2_plus"
+  },
+  "o_dodatkowy_3_b3": {
+   "category": "items",
+   "index": 509,
+   "name": "bonus_3_b3"
+  },
+  "o_dodatkowy_3_samosterujacy": {
+   "category": "items",
+   "index": 403,
+   "name": "bonus_3_homing"
+  },
+  "o_dodatkowy_4_samosterujacy": {
+   "category": "items",
+   "index": 488,
+   "name": "bonus_4_homing"
+  },
+  "o_dodatkowy_4_samosterujacy2": {
+   "category": "items",
+   "index": 531,
+   "name": "bonus_4_homing_2"
+  },
+  "o_drop": {
+   "category": "items",
+   "index": 216,
+   "name": "drop"
+  },
+  "o_ducher_do_okola": {
+   "category": "enemies",
+   "index": 396,
+   "name": "ducher_around"
+  },
+  "o_ducher_spadajace": {
+   "category": "enemies",
+   "index": 397,
+   "name": "ducher_falling"
+  },
+  "o_enemy_1": {
+   "category": "enemies",
+   "index": 12,
+   "name": "enemy_1"
+  },
+  "o_enemy_17e": {
+   "category": "enemies",
+   "index": 95,
+   "name": "enemy_17e"
+  },
+  "o_enemy_17g": {
+   "category": "enemies",
+   "index": 98,
+   "name": "enemy_17g"
+  },
+  "o_enemy_17h": {
+   "category": "enemies",
+   "index": 99,
+   "name": "enemy_17h"
+  },
+  "o_enemy_17i": {
+   "category": "enemies",
+   "index": 101,
+   "name": "enemy_17i"
+  },
+  "o_enemy_9": {
+   "category": "enemies",
+   "index": 49,
+   "name": "enemy_9"
+  },
+  "o_enemy_dookola_1": {
+   "category": "enemies",
+   "index": 410,
+   "name": "enemy_around_1"
+  },
+  "o_enemy_dookola_1_delayed": {
+   "category": "enemies",
+   "index": 434,
+   "name": "enemy_around_1_delayed"
+  },
+  "o_enemy_dookola_2": {
+   "category": "enemies",
+   "index": 412,
+   "name": "enemy_around_2"
+  },
+  "o_enemy_flame_bullet": {
+   "category": "bullets",
+   "index": 243,
+   "name": "enemy_flame_bullet"
+  },
+  "o_enemy_flame_bullet2": {
+   "category": "bullets",
+   "index": 424,
+   "name": "enemy_flame_bullet_2"
+  },
+  "o_explo_1": {
+   "category": "effects",
+   "index": 14,
+   "name": "explosion_1"
+  },
+  "o_explo_2": {
+   "category": "effects",
+   "index": 114,
+   "name": "explosion_2"
+  },
+  "o_exploder_1": {
+   "category": "effects",
+   "index": 15,
+   "name": "exploder_1"
+  },
+  "o_exploder_10_as": {
+   "category": "effects",
+   "index": 91,
+   "name": "exploder_10_as"
+  },
+  "o_exploder_11_as": {
+   "category": "effects",
+   "index": 94,
+   "name": "exploder_11_as"
+  },
+  "o_exploder_2": {
+   "category": "effects",
+   "index": 16,
+   "name": "exploder_2"
+  },
+  "o_exploder_3": {
+   "category": "effects",
+   "index": 17,
+   "name": "exploder_3"
+  },
+  "o_exploder_4": {
+   "category": "effects",
+   "index": 28,
+   "name": "exploder_4"
+  },
+  "o_exploder_5": {
+   "category": "effects",
+   "index": 39,
+   "name": "exploder_5"
+  },
+  "o_exploder_6": {
+   "category": "effects",
+   "index": 42,
+   "name": "exploder_6"
+  },
+  "o_exploder_7": {
+   "category": "effects",
+   "index": 50,
+   "name": "exploder_7"
+  },
+  "o_exploder_8": {
+   "category": "effects",
+   "index": 83,
+   "name": "exploder_8"
+  },
+  "o_exploder_9_as": {
+   "category": "effects",
+   "index": 89,
+   "name": "exploder_9_as"
+  },
+  "o_exploder_koszacy": {
+   "category": "effects",
+   "index": 528,
+   "name": "exploder_mower"
+  },
+  "o_fallexploder_1": {
+   "category": "effects",
+   "index": 148,
+   "name": "fall_exploder_1"
+  },
+  "o_fallexploder_2": {
+   "category": "effects",
+   "index": 265,
+   "name": "fall_exploder_2"
+  },
+  "o_fatboy_a": {
+   "category": "enemies",
+   "index": 156,
+   "name": "fat_boy_a"
+  },
+  "o_fatboy_a_crush": {
+   "category": "enemies",
+   "index": 159,
+   "name": "fat_boy_a_crush"
+  },
+  "o_fatboy_a_crush_endcastle": {
+   "category": "enemies",
+   "index": 378,
+   "name": "fat_boy_a_crush_end_castle"
+  },
+  "o_fatboy_boss": {
+   "category": "bosses",
+   "index": 369,
+   "name": "fat_boy_boss"
+  },
+  "o_fatboy_boss2": {
+   "category": "bosses",
+   "index": 373,
+   "name": "fat_boy_boss_2"
+  },
+  "o_fatboy_boss3": {
+   "category": "bosses",
+   "index": 377,
+   "name": "fat_boy_boss_3"
+  },
+  "o_fatboy_boss4": {
+   "category": "bosses",
+   "index": 389,
+   "name": "fat_boy_boss_4"
+  },
+  "o_fatboy_boss5": {
+   "category": "bosses",
+   "index": 429,
+   "name": "fat_boy_boss_5"
+  },
+  "o_fatboy_boss6": {
+   "category": "bosses",
+   "index": 453,
+   "name": "fat_boy_boss_6"
+  },
+  "o_fatboy_boss7": {
+   "category": "bosses",
+   "index": 476,
+   "name": "fat_boy_boss_7"
+  },
+  "o_fatboy_boss_canon": {
+   "category": "bosses",
+   "index": 370,
+   "name": "fat_boy_boss_cannon"
+  },
+  "o_fatboy_boss_canon_2": {
+   "category": "bosses",
+   "index": 390,
+   "name": "fat_boy_boss_cannon_2"
+  },
+  "o_fatboy_cannon": {
+   "category": "enemies",
+   "index": 157,
+   "name": "fat_boy_cannon"
+  },
+  "o_flamecans": {
+   "category": "enemies",
+   "index": 353,
+   "name": "flame_cans"
+  },
+  "o_flamecans2": {
+   "category": "enemies",
+   "index": 432,
+   "name": "flame_cans_2"
+  },
+  "o_flamecans_boss": {
+   "category": "bosses",
+   "index": 251,
+   "name": "flame_cans_boss"
+  },
+  "o_flamecans_boss2": {
+   "category": "bosses",
+   "index": 345,
+   "name": "flame_cans_boss_2"
+  },
+  "o_flamecans_boss3": {
+   "category": "bosses",
+   "index": 347,
+   "name": "flame_cans_boss_3"
+  },
+  "o_flamecans_boss4": {
+   "category": "bosses",
+   "index": 416,
+   "name": "flame_cans_boss_4"
+  },
+  "o_flamecans_crush": {
+   "category": "enemies",
+   "index": 163,
+   "name": "flame_cans_crush"
+  },
+  "o_flamecans_map5": {
+   "category": "enemies",
+   "index": 400,
+   "name": "flame_cans_map_5"
+  },
+  "o_flamecans_map7": {
+   "category": "enemies",
+   "index": 469,
+   "name": "flame_cans_map_7"
+  },
+  "o_flamecans_shoota": {
+   "category": "enemies",
+   "index": 438,
+   "name": "flame_cans_shooter"
+  },
+  "o_flamemark": {
+   "category": "effects",
+   "index": 162,
+   "name": "flame_mark"
+  },
+  "o_flash_1": {
+   "category": "effects",
+   "index": 22,
+   "name": "flash_1"
+  },
+  "o_flash_2": {
+   "category": "effects",
+   "index": 23,
+   "name": "flash_2"
+  },
+  "o_flash_3": {
+   "category": "effects",
+   "index": 24,
+   "name": "flash_3"
+  },
+  "o_flash_4": {
+   "category": "effects",
+   "index": 27,
+   "name": "flash_4"
+  },
+  "o_flash_5": {
+   "category": "effects",
+   "index": 35,
+   "name": "flash_5"
+  },
+  "o_flash_6": {
+   "category": "effects",
+   "index": 43,
+   "name": "flash_6"
+  },
+  "o_frozen_ball": {
+   "category": "items",
+   "index": 278,
+   "name": "frozen_ball"
+  },
+  "o_frozen_ball2": {
+   "category": "items",
+   "index": 279,
+   "name": "frozen_ball_2"
+  },
+  "o_gameoverus": {
+   "category": "ui",
+   "index": 136,
+   "name": "game_over"
+  },
+  "o_goomba_team": {
+   "category": "enemies",
+   "index": 356,
+   "name": "goomba_team"
+  },
+  "o_guide_1": {
+   "category": "ui",
+   "index": 61,
+   "name": "guide_1"
+  },
+  "o_guide_2": {
+   "category": "ui",
+   "index": 62,
+   "name": "guide_2"
+  },
+  "o_guide_3": {
+   "category": "ui",
+   "index": 63,
+   "name": "guide_3"
+  },
+  "o_guide_4": {
+   "category": "ui",
+   "index": 64,
+   "name": "guide_4"
+  },
+  "o_guide_5": {
+   "category": "ui",
+   "index": 65,
+   "name": "guide_5"
+  },
+  "o_guide_6": {
+   "category": "ui",
+   "index": 66,
+   "name": "guide_6"
+  },
+  "o_guide_7": {
+   "category": "ui",
+   "index": 67,
+   "name": "guide_7"
+  },
+  "o_hammer_team": {
+   "category": "enemies",
+   "index": 440,
+   "name": "hammer_team"
+  },
+  "o_hud": {
+   "category": "ui",
+   "index": 3,
+   "name": "hud"
+  },
+  "o_izo_a": {
+   "category": "effects",
+   "index": 124,
+   "name": "iso_a"
+  },
+  "o_izo_b": {
+   "category": "effects",
+   "index": 125,
+   "name": "iso_b"
+  },
+  "o_izo_c": {
+   "category": "effects",
+   "index": 213,
+   "name": "iso_c"
+  },
+  "o_kaboom": {
+   "category": "effects",
+   "index": 218,
+   "name": "kaboom"
+  },
+  "o_key": {
+   "category": "items",
+   "index": 350,
+   "name": "key"
+  },
+  "o_key2": {
+   "category": "items",
+   "index": 387,
+   "name": "key_2"
+  },
+  "o_key3": {
+   "category": "items",
+   "index": 414,
+   "name": "key_3"
+  },
+  "o_key4": {
+   "category": "items",
+   "index": 439,
+   "name": "key_4"
+  },
+  "o_key5": {
+   "category": "items",
+   "index": 451,
+   "name": "key_5"
+  },
+  "o_key_efekt": {
+   "category": "effects",
+   "index": 351,
+   "name": "key_effect"
+  },
+  "o_kumpel_1": {
+   "category": "player",
+   "index": 210,
+   "name": "buddy_1"
+  },
+  "o_kumpel_a": {
+   "category": "player",
+   "index": 26,
+   "name": "buddy_a"
+  },
+  "o_laser_u": {
+   "category": "bullets",
+   "index": 106,
+   "name": "laser_u"
+  },
+  "o_laser_u10": {
+   "category": "bullets",
+   "index": 192,
+   "name": "laser_u10"
+  },
+  "o_laser_u15": {
+   "category": "bullets",
+   "index": 197,
+   "name": "laser_u15"
+  },
+  "o_laser_u16": {
+   "category": "bullets",
+   "index": 198,
+   "name": "laser_u16"
+  },
+  "o_laser_u19": {
+   "category": "bullets",
+   "index": 195,
+   "name": "laser_u19"
+  },
+  "o_laser_u2": {
+   "category": "bullets",
+   "index": 172,
+   "name": "laser_u2"
+  },
+  "o_laser_u22": {
+   "category": "bullets",
+   "index": 276,
+   "name": "laser_u22"
+  },
+  "o_laser_u22coins": {
+   "category": "bullets",
+   "index": 282,
+   "name": "laser_u22coins"
+  },
+  "o_laser_u22s": {
+   "category": "bullets",
+   "index": 284,
+   "name": "laser_u22s"
+  },
+  "o_laser_u3": {
+   "category": "bullets",
+   "index": 173,
+   "name": "laser_u3"
+  },
+  "o_laser_u4": {
+   "category": "bullets",
+   "index": 175,
+   "name": "laser_u4"
+  },
+  "o_laser_u5": {
+   "category": "bullets",
+   "index": 181,
+   "name": "laser_u5"
+  },
+  "o_laser_u55": {
+   "category": "bullets",
+   "index": 290,
+   "name": "laser_u55"
+  },
+  "o_laser_u6": {
+   "category": "bullets",
+   "index": 182,
+   "name": "laser_u6"
+  },
+  "o_laser_u6plus": {
+   "category": "bullets",
+   "index": 285,
+   "name": "laser_u6plus"
+  },
+  "o_laser_u7": {
+   "category": "bullets",
+   "index": 188,
+   "name": "laser_u7"
+  },
+  "o_laser_u8": {
+   "category": "bullets",
+   "index": 189,
+   "name": "laser_u8"
+  },
+  "o_laser_u88": {
+   "category": "bullets",
+   "index": 277,
+   "name": "laser_u88"
+  },
+  "o_laser_u888": {
+   "category": "bullets",
+   "index": 280,
+   "name": "laser_u888"
+  },
+  "o_laser_u8888": {
+   "category": "bullets",
+   "index": 281,
+   "name": "laser_u8888"
+  },
+  "o_laser_u9": {
+   "category": "bullets",
+   "index": 190,
+   "name": "laser_u9"
+  },
+  "o_laserflash": {
+   "category": "effects",
+   "index": 171,
+   "name": "laser_flash"
+  },
+  "o_laserflash10": {
+   "category": "effects",
+   "index": 191,
+   "name": "laser_flash_10"
+  },
+  "o_laserflash2": {
+   "category": "effects",
+   "index": 174,
+   "name": "laser_flash_2"
+  },
+  "o_laserflash3": {
+   "category": "effects",
+   "index": 176,
+   "name": "laser_flash_3"
+  },
+  "o_laserflash4": {
+   "category": "effects",
+   "index": 177,
+   "name": "laser_flash_4"
+  },
+  "o_laserflash40": {
+   "category": "effects",
+   "index": 287,
+   "name": "laser_flash_40"
+  },
+  "o_laserflash5": {
+   "category": "effects",
+   "index": 178,
+   "name": "laser_flash_5"
+  },
+  "o_laserflash6": {
+   "category": "effects",
+   "index": 180,
+   "name": "laser_flash_6"
+  },
+  "o_laserflash7": {
+   "category": "effects",
+   "index": 183,
+   "name": "laser_flash_7"
+  },
+  "o_laserflash8": {
+   "category": "effects",
+   "index": 184,
+   "name": "laser_flash_8"
+  },
+  "o_laserflash9": {
+   "category": "effects",
+   "index": 186,
+   "name": "laser_flash_9"
+  },
+  "o_level_weapon_1": {
+   "category": "player",
+   "index": 308,
+   "name": "level_weapon_1"
+  },
+  "o_loader": {
+   "category": "ui",
+   "index": 717,
+   "name": "loader"
+  },
+  "o_logo_anim": {
+   "category": "effects",
+   "index": 577,
+   "name": "logo_anim"
+  },
+  "o_logo_faller": {
+   "category": "ui",
+   "index": 580,
+   "name": "logo_faller"
+  },
+  "o_logo_flood": {
+   "category": "ui",
+   "index": 579,
+   "name": "logo_flood"
+  },
+  "o_logo_napis": {
+   "category": "ui",
+   "index": 581,
+   "name": "logo_text"
+  },
+  "o_logo_smoth": {
+   "category": "ui",
+   "index": 578,
+   "name": "logo_smooth"
+  },
+  "o_map7_berserkers_creator_teams_1": {
+   "category": "ui",
+   "index": 472,
+   "name": "map_7_berserkers_creator_teams_1"
+  },
+  "o_map_back": {
+   "category": "ui",
+   "index": 226,
+   "name": "map_back"
+  },
+  "o_map_chest_efe": {
+   "category": "ui",
+   "index": 224,
+   "name": "map_chest_fx"
+  },
+  "o_map_drawline": {
+   "category": "ui",
+   "index": 223,
+   "name": "map_draw_line"
+  },
+  "o_map_goodie_1": {
+   "category": "items",
+   "index": 515,
+   "name": "map_goodie_1"
+  },
+  "o_map_goodie_2_green": {
+   "category": "items",
+   "index": 516,
+   "name": "map_goodie_2_green"
+  },
+  "o_map_goodie_3": {
+   "category": "items",
+   "index": 517,
+   "name": "map_goodie_3"
+  },
+  "o_map_goodie_4": {
+   "category": "items",
+   "index": 518,
+   "name": "map_goodie_4"
+  },
+  "o_map_goodie_5": {
+   "category": "items",
+   "index": 519,
+   "name": "map_goodie_5"
+  },
+  "o_map_goodie_6": {
+   "category": "items",
+   "index": 520,
+   "name": "map_goodie_6"
+  },
+  "o_map_goodie_7": {
+   "category": "items",
+   "index": 521,
+   "name": "map_goodie_7"
+  },
+  "o_map_helperscroll": {
+   "category": "ui",
+   "index": 236,
+   "name": "map_helper_scroll"
+  },
+  "o_map_interface": {
+   "category": "ui",
+   "index": 225,
+   "name": "map_interface"
+  },
+  "o_map_level": {
+   "category": "ui",
+   "index": 220,
+   "name": "map_level"
+  },
+  "o_map_looot": {
+   "category": "ui",
+   "index": 228,
+   "name": "map_loot"
+  },
+  "o_map_pannel": {
+   "category": "ui",
+   "index": 229,
+   "name": "map_panel"
+  },
+  "o_map_pannel_add": {
+   "category": "ui",
+   "index": 230,
+   "name": "map_panel_add"
+  },
+  "o_map_pannel_cur": {
+   "category": "ui",
+   "index": 232,
+   "name": "map_panel_cur"
+  },
+  "o_map_pannel_cur2": {
+   "category": "ui",
+   "index": 233,
+   "name": "map_panel_cur_2"
+  },
+  "o_map_pannel_loout": {
+   "category": "ui",
+   "index": 235,
+   "name": "map_panel_loot_2"
+  },
+  "o_map_pannel_sub": {
+   "category": "ui",
+   "index": 231,
+   "name": "map_panel_sub"
+  },
+  "o_map_pointer": {
+   "category": "ui",
+   "index": 227,
+   "name": "map_pointer"
+  },
+  "o_nextmap_obj": {
+   "category": "ui",
+   "index": 522,
+   "name": "next_map_obj"
+  },
+  "o_nextmap_player": {
+   "category": "ui",
+   "index": 523,
+   "name": "next_map_player"
+  },
+  "o_nextmap_toad": {
+   "category": "ui",
+   "index": 524,
+   "name": "next_map_toad"
+  },
+  "o_pather_1": {
+   "category": "stage",
+   "index": 244,
+   "name": "pather_1"
+  },
+  "o_perioder_1": {
+   "category": "spawners",
+   "index": 146,
+   "name": "wave_1"
+  },
+  "o_perioder_10_kolo_czekaj": {
+   "category": "spawners",
+   "index": 255,
+   "name": "wave_10_circle_wait"
+  },
+  "o_perioder_11_spikeyswarm": {
+   "category": "spawners",
+   "index": 257,
+   "name": "wave_11_spikey_swarm"
+  },
+  "o_perioder_12_castle_2": {
+   "category": "spawners",
+   "index": 259,
+   "name": "wave_12_castle_2"
+  },
+  "o_perioder_12_keycastle": {
+   "category": "spawners",
+   "index": 348,
+   "name": "wave_12_key_castle"
+  },
+  "o_perioder_14_gunrange": {
+   "category": "spawners",
+   "index": 272,
+   "name": "wave_14_gun_range"
+  },
+  "o_perioder_15": {
+   "category": "spawners",
+   "index": 311,
+   "name": "wave_15"
+  },
+  "o_perioder_16": {
+   "category": "spawners",
+   "index": 312,
+   "name": "wave_16"
+  },
+  "o_perioder_16_lepszy": {
+   "category": "spawners",
+   "index": 355,
+   "name": "wave_16_better"
+  },
+  "o_perioder_16_lepszy2": {
+   "category": "spawners",
+   "index": 357,
+   "name": "wave_16_better_2"
+  },
+  "o_perioder_16_lepszy3": {
+   "category": "spawners",
+   "index": 358,
+   "name": "wave_16_better_3"
+  },
+  "o_perioder_17": {
+   "category": "spawners",
+   "index": 318,
+   "name": "wave_17"
+  },
+  "o_perioder_18_kolo_1": {
+   "category": "spawners",
+   "index": 319,
+   "name": "wave_18_circle_1"
+  },
+  "o_perioder_18_kolo_2": {
+   "category": "spawners",
+   "index": 320,
+   "name": "wave_18_circle_2"
+  },
+  "o_perioder_18_kolo_3": {
+   "category": "spawners",
+   "index": 321,
+   "name": "wave_18_circle_3"
+  },
+  "o_perioder_18_kolo_4": {
+   "category": "spawners",
+   "index": 323,
+   "name": "wave_18_circle_4"
+  },
+  "o_perioder_18_kolo_5": {
+   "category": "spawners",
+   "index": 324,
+   "name": "wave_18_circle_5"
+  },
+  "o_perioder_2": {
+   "category": "spawners",
+   "index": 147,
+   "name": "wave_2"
+  },
+  "o_perioder_20_kamikaze_spikeys": {
+   "category": "spawners",
+   "index": 342,
+   "name": "wave_20_kamikaze_spikeys"
+  },
+  "o_perioder_20_troopa_circles_1": {
+   "category": "spawners",
+   "index": 337,
+   "name": "wave_20_troopa_circles_1"
+  },
+  "o_perioder_20_troopa_circles_2": {
+   "category": "spawners",
+   "index": 338,
+   "name": "wave_20_troopa_circles_2"
+  },
+  "o_perioder_20_troopa_circles_3": {
+   "category": "spawners",
+   "index": 339,
+   "name": "wave_20_troopa_circles_3"
+  },
+  "o_perioder_21_bigcircle": {
+   "category": "spawners",
+   "index": 352,
+   "name": "wave_21_big_circle"
+  },
+  "o_perioder_22_goomba_revenge": {
+   "category": "spawners",
+   "index": 354,
+   "name": "wave_22_goomba_revenge"
+  },
+  "o_perioder_3": {
+   "category": "spawners",
+   "index": 237,
+   "name": "wave_3"
+  },
+  "o_perioder_4_asteroids": {
+   "category": "spawners",
+   "index": 238,
+   "name": "wave_4_asteroids"
+  },
+  "o_perioder_4_asteroids_1": {
+   "category": "spawners",
+   "index": 325,
+   "name": "wave_4_asteroids_1"
+  },
+  "o_perioder_5_kolo": {
+   "category": "spawners",
+   "index": 239,
+   "name": "wave_5_circle"
+  },
+  "o_perioder_6_bonus_wave": {
+   "category": "spawners",
+   "index": 240,
+   "name": "wave_6_bonus_wave"
+  },
+  "o_perioder_6_bonus_wave_2": {
+   "category": "spawners",
+   "index": 271,
+   "name": "wave_6_bonus_wave_2"
+  },
+  "o_perioder_7_castle_1": {
+   "category": "spawners",
+   "index": 241,
+   "name": "wave_7_castle_1"
+  },
+  "o_perioder_7_castle_2": {
+   "category": "spawners",
+   "index": 326,
+   "name": "wave_7_castle_2"
+  },
+  "o_perioder_8": {
+   "category": "spawners",
+   "index": 253,
+   "name": "wave_8"
+  },
+  "o_perioder_9_zygzak": {
+   "category": "spawners",
+   "index": 254,
+   "name": "wave_9_zigzag"
+  },
+  "o_perioder_funny_bonus_catch": {
+   "category": "spawners",
+   "index": 343,
+   "name": "wave_funny_bonus_catch"
+  },
+  "o_perioder_ghost_1": {
+   "category": "spawners",
+   "index": 328,
+   "name": "wave_ghost_1"
+  },
+  "o_perioder_ghost_2": {
+   "category": "spawners",
+   "index": 394,
+   "name": "wave_ghost_2"
+  },
+  "o_perioder_ghost_2_castle": {
+   "category": "spawners",
+   "index": 395,
+   "name": "wave_ghost_2_castle"
+  },
+  "o_perioder_guardians_1": {
+   "category": "spawners",
+   "index": 500,
+   "name": "wave_guardians_1"
+  },
+  "o_perioder_help_1": {
+   "category": "spawners",
+   "index": 306,
+   "name": "wave_help_1"
+  },
+  "o_perioder_map3_endcastle": {
+   "category": "spawners",
+   "index": 360,
+   "name": "wave_map_3_end_castle"
+  },
+  "o_perioder_map3_two_fire_cans": {
+   "category": "spawners",
+   "index": 344,
+   "name": "wave_map_3_two_fire_cans"
+  },
+  "o_perioder_map4_castle_rush": {
+   "category": "spawners",
+   "index": 364,
+   "name": "wave_map_4_castle_rush"
+  },
+  "o_perioder_map4_castle_rush_2": {
+   "category": "spawners",
+   "index": 457,
+   "name": "wave_map_4_castle_rush_2"
+  },
+  "o_perioder_map4_endcastle": {
+   "category": "spawners",
+   "index": 376,
+   "name": "wave_map_4_end_castle"
+  },
+  "o_perioder_map4_fatboy": {
+   "category": "spawners",
+   "index": 368,
+   "name": "wave_map_4_fat_boy"
+  },
+  "o_perioder_map4_fatboy2": {
+   "category": "spawners",
+   "index": 422,
+   "name": "wave_map_4_fat_boy_2"
+  },
+  "o_perioder_map4_grupowanie_1": {
+   "category": "spawners",
+   "index": 374,
+   "name": "wave_map_4_grouping_1"
+  },
+  "o_perioder_map4_grupowanie_10": {
+   "category": "spawners",
+   "index": 408,
+   "name": "wave_map_4_grouping_10"
+  },
+  "o_perioder_map4_grupowanie_11": {
+   "category": "spawners",
+   "index": 409,
+   "name": "wave_map_4_grouping_11"
+  },
+  "o_perioder_map4_grupowanie_12": {
+   "category": "spawners",
+   "index": 411,
+   "name": "wave_map_4_grouping_12"
+  },
+  "o_perioder_map4_grupowanie_13": {
+   "category": "spawners",
+   "index": 413,
+   "name": "wave_map_4_grouping_13"
+  },
+  "o_perioder_map4_grupowanie_14": {
+   "category": "spawners",
+   "index": 430,
+   "name": "wave_map_4_grouping_14"
+  },
+  "o_perioder_map4_grupowanie_15": {
+   "category": "spawners",
+   "index": 433,
+   "name": "wave_map_4_grouping_15"
+  },
+  "o_perioder_map4_grupowanie_16": {
+   "category": "spawners",
+   "index": 436,
+   "name": "wave_map_4_grouping_16"
+  },
+  "o_perioder_map4_grupowanie_16plus": {
+   "category": "spawners",
+   "index": 456,
+   "name": "wave_map_4_grouping_16_plus"
+  },
+  "o_perioder_map4_grupowanie_17": {
+   "category": "spawners",
+   "index": 441,
+   "name": "wave_map_4_grouping_17"
+  },
+  "o_perioder_map4_grupowanie_18": {
+   "category": "spawners",
+   "index": 445,
+   "name": "wave_map_4_grouping_18"
+  },
+  "o_perioder_map4_grupowanie_19": {
+   "category": "spawners",
+   "index": 448,
+   "name": "wave_map_4_grouping_19"
+  },
+  "o_perioder_map4_grupowanie_2": {
+   "category": "spawners",
+   "index": 379,
+   "name": "wave_map_4_grouping_2"
+  },
+  "o_perioder_map4_grupowanie_20": {
+   "category": "spawners",
+   "index": 450,
+   "name": "wave_map_4_grouping_20"
+  },
+  "o_perioder_map4_grupowanie_21": {
+   "category": "spawners",
+   "index": 452,
+   "name": "wave_map_4_grouping_21"
+  },
+  "o_perioder_map4_grupowanie_22": {
+   "category": "spawners",
+   "index": 454,
+   "name": "wave_map_4_grouping_22"
+  },
+  "o_perioder_map4_grupowanie_23": {
+   "category": "spawners",
+   "index": 455,
+   "name": "wave_map_4_grouping_23"
+  },
+  "o_perioder_map4_grupowanie_24": {
+   "category": "spawners",
+   "index": 460,
+   "name": "wave_map_4_grouping_24"
+  },
+  "o_perioder_map4_grupowanie_25": {
+   "category": "spawners",
+   "index": 462,
+   "name": "wave_map_4_grouping_25"
+  },
+  "o_perioder_map4_grupowanie_26": {
+   "category": "spawners",
+   "index": 463,
+   "name": "wave_map_4_grouping_26"
+  },
+  "o_perioder_map4_grupowanie_27": {
+   "category": "spawners",
+   "index": 468,
+   "name": "wave_map_4_grouping_27"
+  },
+  "o_perioder_map4_grupowanie_28": {
+   "category": "spawners",
+   "index": 474,
+   "name": "wave_map_4_grouping_28"
+  },
+  "o_perioder_map4_grupowanie_29": {
+   "category": "spawners",
+   "index": 478,
+   "name": "wave_map_4_grouping_29"
+  },
+  "o_perioder_map4_grupowanie_3": {
+   "category": "spawners",
+   "index": 380,
+   "name": "wave_map_4_grouping_3"
+  },
+  "o_perioder_map4_grupowanie_30": {
+   "category": "spawners",
+   "index": 479,
+   "name": "wave_map_4_grouping_30"
+  },
+  "o_perioder_map4_grupowanie_31": {
+   "category": "spawners",
+   "index": 484,
+   "name": "wave_map_4_grouping_31"
+  },
+  "o_perioder_map4_grupowanie_32": {
+   "category": "spawners",
+   "index": 486,
+   "name": "wave_map_4_grouping_32"
+  },
+  "o_perioder_map4_grupowanie_33": {
+   "category": "spawners",
+   "index": 487,
+   "name": "wave_map_4_grouping_33"
+  },
+  "o_perioder_map4_grupowanie_34": {
+   "category": "spawners",
+   "index": 489,
+   "name": "wave_map_4_grouping_34"
+  },
+  "o_perioder_map4_grupowanie_35": {
+   "category": "spawners",
+   "index": 491,
+   "name": "wave_map_4_grouping_35"
+  },
+  "o_perioder_map4_grupowanie_36": {
+   "category": "spawners",
+   "index": 493,
+   "name": "wave_map_4_grouping_36"
+  },
+  "o_perioder_map4_grupowanie_37": {
+   "category": "spawners",
+   "index": 498,
+   "name": "wave_map_4_grouping_37"
+  },
+  "o_perioder_map4_grupowanie_38": {
+   "category": "spawners",
+   "index": 499,
+   "name": "wave_map_4_grouping_38"
+  },
+  "o_perioder_map4_grupowanie_4": {
+   "category": "spawners",
+   "index": 381,
+   "name": "wave_map_4_grouping_4"
+  },
+  "o_perioder_map4_grupowanie_5": {
+   "category": "spawners",
+   "index": 383,
+   "name": "wave_map_4_grouping_5"
+  },
+  "o_perioder_map4_grupowanie_6": {
+   "category": "spawners",
+   "index": 386,
+   "name": "wave_map_4_grouping_6"
+  },
+  "o_perioder_map4_grupowanie_7": {
+   "category": "spawners",
+   "index": 388,
+   "name": "wave_map_4_grouping_7"
+  },
+  "o_perioder_map4_grupowanie_8": {
+   "category": "spawners",
+   "index": 405,
+   "name": "wave_map_4_grouping_8"
+  },
+  "o_perioder_map4_grupowanie_9": {
+   "category": "spawners",
+   "index": 407,
+   "name": "wave_map_4_grouping_9"
+  },
+  "o_perioder_map4_skrzynki": {
+   "category": "spawners",
+   "index": 367,
+   "name": "wave_map_4_crates"
+  },
+  "o_perioder_map4_ufos_light": {
+   "category": "spawners",
+   "index": 372,
+   "name": "wave_map_4_ufos_light"
+  },
+  "o_perioder_map5_bigbad": {
+   "category": "spawners",
+   "index": 399,
+   "name": "wave_map_5_big_bad"
+  },
+  "o_perioder_map5_chests": {
+   "category": "spawners",
+   "index": 404,
+   "name": "wave_map_5_chests"
+  },
+  "o_perioder_map5_endcastle": {
+   "category": "spawners",
+   "index": 415,
+   "name": "wave_map_5_end_castle"
+  },
+  "o_perioder_map5_spikeys": {
+   "category": "spawners",
+   "index": 384,
+   "name": "wave_map_5_spikeys"
+  },
+  "o_perioder_map6_asteroids_1": {
+   "category": "spawners",
+   "index": 449,
+   "name": "wave_map_6_asteroids_1"
+  },
+  "o_perioder_map6_asteroids_x": {
+   "category": "spawners",
+   "index": 426,
+   "name": "wave_map_6_asteroids_x"
+  },
+  "o_perioder_map6_berserkerous": {
+   "category": "spawners",
+   "index": 425,
+   "name": "wave_map_6_berserkerous"
+  },
+  "o_perioder_map6_castle_rush_3": {
+   "category": "spawners",
+   "index": 458,
+   "name": "wave_map_6_castle_rush_3"
+  },
+  "o_perioder_map6_endcastle": {
+   "category": "spawners",
+   "index": 464,
+   "name": "wave_map_6_end_castle"
+  },
+  "o_perioder_map6_grupowanie_1": {
+   "category": "spawners",
+   "index": 427,
+   "name": "wave_map_6_grouping_1"
+  },
+  "o_perioder_map6_piranha_castle_1": {
+   "category": "spawners",
+   "index": 421,
+   "name": "wave_map_6_piranha_castle_1"
+  },
+  "o_perioder_map6_piranha_castle_2": {
+   "category": "spawners",
+   "index": 428,
+   "name": "wave_map_6_piranha_castle_2"
+  },
+  "o_perioder_map6_piranhasus_1": {
+   "category": "spawners",
+   "index": 423,
+   "name": "wave_map_6_piranhasus_1"
+  },
+  "o_perioder_map6_piranhasus_2": {
+   "category": "spawners",
+   "index": 437,
+   "name": "wave_map_6_piranhasus_2"
+  },
+  "o_perioder_map6_piranhasus_3": {
+   "category": "spawners",
+   "index": 447,
+   "name": "wave_map_6_piranhasus_3"
+  },
+  "o_perioder_map7_asteroids_1": {
+   "category": "spawners",
+   "index": 473,
+   "name": "wave_map_7_asteroids_1"
+  },
+  "o_perioder_map7_endcastle": {
+   "category": "spawners",
+   "index": 475,
+   "name": "wave_map_7_end_castle"
+  },
+  "o_perioder_map7_racing_1": {
+   "category": "spawners",
+   "index": 471,
+   "name": "wave_map_7_racing_1"
+  },
+  "o_perioder_map8_Ufoses_1": {
+   "category": "spawners",
+   "index": 497,
+   "name": "wave_map_8_ufoses_1"
+  },
+  "o_perioder_map8_asteroids_1": {
+   "category": "spawners",
+   "index": 494,
+   "name": "wave_map_8_asteroids_1"
+  },
+  "o_perioder_map8_endcastle": {
+   "category": "spawners",
+   "index": 490,
+   "name": "wave_map_8_end_castle"
+  },
+  "o_perioder_map8_endcastle22": {
+   "category": "spawners",
+   "index": 502,
+   "name": "wave_map_8_end_castle_22"
+  },
+  "o_perioder_map8_endcastle_2": {
+   "category": "spawners",
+   "index": 492,
+   "name": "wave_map_8_end_castle_2"
+  },
+  "o_perioder_map_3_asteroidy": {
+   "category": "spawners",
+   "index": 359,
+   "name": "wave_map_3_asteroids"
+  },
+  "o_perioder_map_5_asteroidy": {
+   "category": "spawners",
+   "index": 398,
+   "name": "wave_map_5_asteroids"
+  },
+  "o_perioder_map_completer": {
+   "category": "spawners",
+   "index": 477,
+   "name": "wave_map_completer"
+  },
+  "o_phase_1": {
+   "category": "bullets",
+   "index": 109,
+   "name": "phase_1"
+  },
+  "o_photon_a": {
+   "category": "bullets",
+   "index": 78,
+   "name": "photon_a"
+  },
+  "o_photon_a2": {
+   "category": "bullets",
+   "index": 194,
+   "name": "photon_a2"
+  },
+  "o_photon_b": {
+   "category": "bullets",
+   "index": 60,
+   "name": "photon_b"
+  },
+  "o_photon_laser": {
+   "category": "bullets",
+   "index": 286,
+   "name": "photon_laser"
+  },
+  "o_photon_laser2": {
+   "category": "bullets",
+   "index": 288,
+   "name": "photon_laser_2"
+  },
+  "o_photon_laser3": {
+   "category": "bullets",
+   "index": 289,
+   "name": "photon_laser_3"
+  },
+  "o_photon_laser31": {
+   "category": "bullets",
+   "index": 304,
+   "name": "photon_laser_31"
+  },
+  "o_player_a": {
+   "category": "player",
+   "index": 0,
+   "name": "player_a"
+  },
+  "o_przeciwnikor": {
+   "category": "spawners",
+   "index": 532,
+   "name": "enemy_controller"
+  },
+  "o_qmpel": {
+   "category": "player",
+   "index": 309,
+   "name": "buddy"
+  },
+  "o_rico_1": {
+   "category": "misc",
+   "index": 69,
+   "name": "rico_1"
+  },
+  "o_rocketufo_a": {
+   "category": "enemies",
+   "index": 153,
+   "name": "rocket_ufo_a"
+  },
+  "o_rocketufo_a_crush": {
+   "category": "enemies",
+   "index": 154,
+   "name": "rocket_ufo_a_crush"
+  },
+  "o_savegame_draw": {
+   "category": "ui",
+   "index": 534,
+   "name": "save_draw"
+  },
+  "o_ship_special": {
+   "category": "items",
+   "index": 217,
+   "name": "ship_special"
+  },
+  "o_shop": {
+   "category": "items",
+   "index": 291,
+   "name": "shop"
+  },
+  "o_shoppunktor": {
+   "category": "items",
+   "index": 293,
+   "name": "shop_pointer"
+  },
+  "o_shopsuwak": {
+   "category": "items",
+   "index": 292,
+   "name": "shop_slider"
+  },
+  "o_shyghost": {
+   "category": "enemies",
+   "index": 327,
+   "name": "shy_ghost"
+  },
+  "o_shyghost2": {
+   "category": "enemies",
+   "index": 329,
+   "name": "shy_ghost_2"
+  },
+  "o_shyghost3": {
+   "category": "enemies",
+   "index": 330,
+   "name": "shy_ghost_3"
+  },
+  "o_skyeye": {
+   "category": "enemies",
+   "index": 164,
+   "name": "sky_eye"
+  },
+  "o_skyeye2": {
+   "category": "enemies",
+   "index": 501,
+   "name": "sky_eye_2"
+  },
+  "o_skyeye_crush": {
+   "category": "enemies",
+   "index": 167,
+   "name": "sky_eye_crush"
+  },
+  "o_skyeye_laser": {
+   "category": "enemies",
+   "index": 165,
+   "name": "sky_eye_laser"
+  },
+  "o_skyeye_laser2": {
+   "category": "enemies",
+   "index": 166,
+   "name": "sky_eye_laser_2"
+  },
+  "o_sparkle": {
+   "category": "effects",
+   "index": 144,
+   "name": "sparkle"
+  },
+  "o_sparkle2": {
+   "category": "effects",
+   "index": 145,
+   "name": "sparkle_2"
+  },
+  "o_sparklefast": {
+   "category": "effects",
+   "index": 565,
+   "name": "sparkle_fast"
+  },
+  "o_special_weapon_1": {
+   "category": "player",
+   "index": 295,
+   "name": "special_weapon_1"
+  },
+  "o_special_weapon_2": {
+   "category": "player",
+   "index": 297,
+   "name": "special_weapon_2"
+  },
+  "o_special_weapon_3": {
+   "category": "player",
+   "index": 298,
+   "name": "special_weapon_3"
+  },
+  "o_special_weapon_4": {
+   "category": "player",
+   "index": 299,
+   "name": "special_weapon_4"
+  },
+  "o_special_weapon_5": {
+   "category": "player",
+   "index": 301,
+   "name": "special_weapon_5"
+  },
+  "o_special_weapon_6": {
+   "category": "player",
+   "index": 305,
+   "name": "special_weapon_6"
+  },
+  "o_specjaldrop1": {
+   "category": "items",
+   "index": 219,
+   "name": "special_drop_1"
+  },
+  "o_spikey_swarm_map_5": {
+   "category": "enemies",
+   "index": 382,
+   "name": "spikey_swarm_map_5"
+  },
+  "o_stopper_a": {
+   "category": "ui",
+   "index": 4,
+   "name": "stopper_a"
+  },
+  "o_the_end": {
+   "category": "ui",
+   "index": 566,
+   "name": "ending"
+  },
+  "o_the_end_2": {
+   "category": "ui",
+   "index": 569,
+   "name": "ending_2"
+  },
+  "o_the_end_3": {
+   "category": "ui",
+   "index": 571,
+   "name": "ending_3"
+  },
+  "o_the_end_bowser": {
+   "category": "ui",
+   "index": 576,
+   "name": "ending_bowser"
+  },
+  "o_the_end_player": {
+   "category": "ui",
+   "index": 567,
+   "name": "ending_player"
+  },
+  "o_the_end_player2": {
+   "category": "ui",
+   "index": 570,
+   "name": "ending_player_2"
+  },
+  "o_the_end_star": {
+   "category": "ui",
+   "index": 572,
+   "name": "ending_star"
+  },
+  "o_the_end_star2": {
+   "category": "ui",
+   "index": 573,
+   "name": "ending_star_2"
+  },
+  "o_the_end_star3": {
+   "category": "ui",
+   "index": 574,
+   "name": "ending_star_3"
+  },
+  "o_the_end_star4": {
+   "category": "ui",
+   "index": 575,
+   "name": "ending_star_4"
+  },
+  "o_the_end_toad": {
+   "category": "ui",
+   "index": 568,
+   "name": "ending_toad"
+  },
+  "o_title": {
+   "category": "ui",
+   "index": 45,
+   "name": "title"
+  },
+  "o_title_screen": {
+   "category": "ui",
+   "index": 55,
+   "name": "title_screen"
+  },
+  "o_titler1": {
+   "category": "ui",
+   "index": 123,
+   "name": "title_text_1"
+  },
+  "o_titler2": {
+   "category": "ui",
+   "index": 137,
+   "name": "title_text_2"
+  },
+  "o_titler22": {
+   "category": "ui",
+   "index": 143,
+   "name": "title_text_22"
+  },
+  "o_titler3": {
+   "category": "ui",
+   "index": 138,
+   "name": "title_text_3"
+  },
+  "o_titletile": {
+   "category": "ui",
+   "index": 46,
+   "name": "title_tile"
+  },
+  "o_ufo_a": {
+   "category": "enemies",
+   "index": 118,
+   "name": "ufo_a"
+  },
+  "o_ufo_a2": {
+   "category": "enemies",
+   "index": 317,
+   "name": "ufo_a2"
+  },
+  "o_ufo_a_crush": {
+   "category": "enemies",
+   "index": 152,
+   "name": "ufo_a_crush"
+  },
+  "o_ufo_a_crush2": {
+   "category": "enemies",
+   "index": 443,
+   "name": "ufo_a_crush_2"
+  },
+  "o_ufo_mega": {
+   "category": "bosses",
+   "index": 461,
+   "name": "ufo_mega"
+  },
+  "o_ufos_team": {
+   "category": "enemies",
+   "index": 442,
+   "name": "ufos_team"
+  },
+  "o_ufos_team2": {
+   "category": "enemies",
+   "index": 482,
+   "name": "ufos_team_2"
+  },
+  "o_ufos_team_dolny": {
+   "category": "enemies",
+   "index": 444,
+   "name": "ufos_team_lower"
+  },
+  "o_ufoteam": {
+   "category": "enemies",
+   "index": 401,
+   "name": "ufo_team"
+  },
+  "o_ufoteam2": {
+   "category": "enemies",
+   "index": 495,
+   "name": "ufo_team_2"
+  },
+  "o_weapon_a": {
+   "category": "player",
+   "index": 8,
+   "name": "weapon_a"
+  },
+  "o_weapon_b": {
+   "category": "player",
+   "index": 9,
+   "name": "weapon_b"
+  },
+  "o_weapon_c": {
+   "category": "player",
+   "index": 10,
+   "name": "weapon_c"
+  },
+  "o_wiatrak": {
+   "category": "enemies",
+   "index": 247,
+   "name": "fan"
+  },
+  "object393": {
+   "category": "spawners",
+   "index": 393,
+   "name": "ghost_wave"
+  },
+  "object537": {
+   "category": "stage",
+   "index": 537,
+   "name": "room_exit"
+  }
+ },
+ "version": 1
+}

@@ -1,9 +1,10 @@
 extends SceneTree
+var R = load("res://engine/r.gd")
 
 ## Render the live runtime to a PNG, for visual comparison with the original game.
 ##   godot --path . -s tools/shot.gd -- --room=19 --out=shot.png --frames=120 [--lev=2]
 ## Or boot a generated room scene the same way F6 does:
-##   godot --path . -s tools/shot.gd -- --scene=res://scenes/levels/level_0000.tscn --out=shot.png
+##   godot --path . -s tools/shot.gd -- --scene=res://stages/level_0000.tscn --out=shot.png
 
 var frames: int = 0
 var wait: int = 120
@@ -36,7 +37,7 @@ func _process(_delta: float) -> bool:
 	frames += 1
 	if frames == 8 and room_id >= 0:
 		if lev >= 0:
-			var G = load("res://gen/globals.gd")
+			var G = load("res://game/globals.gd")
 			G.aktualny_lev = lev
 		R.pending_room = room_id
 	if frames >= 20 and press_z and frames % 60 < 2:

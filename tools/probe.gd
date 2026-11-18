@@ -1,4 +1,5 @@
 extends SceneTree
+var R = load("res://engine/r.gd")
 
 ## Headless room-flow probe: boots the game, logs every room change and any
 ## runtime warning, and exits after --frames steps.

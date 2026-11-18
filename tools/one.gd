@@ -1,4 +1,5 @@
 extends SceneTree
+var R = load("res://engine/r.gd")
 
 ## Single-room headless probe with a heartbeat, for isolating a hang.
 ##   godot --headless --path . -s tools/one.gd -- --room=55 --frames=600

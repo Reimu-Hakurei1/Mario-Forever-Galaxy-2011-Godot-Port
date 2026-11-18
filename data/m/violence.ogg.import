@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/violence.ogg-b52eb1b2cbb18645c90fb9e7121cc832
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=14.953651
 bpm=0
 beat_count=0
 bar_beats=4

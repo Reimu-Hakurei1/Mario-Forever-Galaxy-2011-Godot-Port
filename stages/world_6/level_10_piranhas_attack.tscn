@@ -1,0 +1,817 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+
+[ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
+[ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="editable_setting"]
+[ext_resource type="Script" path="res://engine/level_spawn_rule.gd" id="editable_spawn"]
+
+[sub_resource type="CanvasItemMaterial" id="player_add"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="player_subtract"]
+blend_mode = 2
+
+[node name="level_10_piranhas_attack" type="Node2D"]
+metadata/gm_room = "level_0000"
+metadata/gm_map = 5
+metadata/gm_lev = 10
+metadata/gm_minigame = 0
+metadata/gm_label = "PIRANHAS_ATTACK!"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Bg0_background0" type="Node2D" parent="."]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(-444, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0"]
+position = Vector2(413, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Bg1_background0" type="Node2D" parent="."]
+z_index = -4079
+metadata/gm_foreground = false
+metadata/gm_background_slot = 1
+metadata/gm_hspeed = 0
+metadata/gm_vspeed = 0
+
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(-222, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg1_background0"]
+position = Vector2(635, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_-10000000" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -10000000
+
+[node name="o_hud_0" type="Sprite2D" parent="Objects_-10000000"]
+metadata/gm_object = "o_hud"
+metadata/gm_object_index = 3
+metadata/gm_id = "room_create_0"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 5
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(1024,600,o_hud)"
+position = Vector2(871, 0)
+metadata/gm_position = Vector2(1024.0, 600.0)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="Objects_-1000000" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = -1000000
+
+[node name="o_gameoverus_0" type="Sprite2D" parent="Objects_-1000000"]
+metadata/gm_object = "o_gameoverus"
+metadata/gm_object_index = 136
+metadata/gm_id = "room_create_3"
+metadata/gm_visible = true
+metadata/gm_sprite_index = 70
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(400,300,o_gameoverus)"
+position = Vector2(400.0, 300.0)
+metadata/gm_position = Vector2(400.0, 300.0)
+metadata/gm_empty_draw_event = true
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_-1000000/o_gameoverus_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_gameoverus [room_create_3]"
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 0
+
+[node name="o_player_a_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_player_a"
+metadata/gm_object_index = 0
+metadata/gm_id = 100322
+metadata/gm_visible = true
+metadata/gm_sprite_index = 543
+metadata/gm_preview_only = false
+position = Vector2(416, 576)
+metadata/gm_position = Vector2(416, 576)
+metadata/gm_empty_draw_event = false
+rotation = -1.570796327
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-48, -74)
+centered = false
+material = SubResource("player_add")
+
+[node name="Mask" type="Sprite2D" parent="Objects_0/o_player_a_0"]
+show_behind_parent = true
+material = SubResource("player_subtract")
+texture = ExtResource("t3")
+offset = Vector2(-48, -74)
+centered = false
+
+[node name="o_przeciwnikor_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_przeciwnikor"
+metadata/gm_object_index = 532
+metadata/gm_id = "room_create_1"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(0,0,o_przeciwnikor)"
+position = Vector2(0.0, 0.0)
+metadata/gm_position = Vector2(0.0, 0.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_przeciwnikor_1"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_przeciwnikor [room_create_1]"
+
+[node name="o_bonusho_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_bonusho"
+metadata/gm_object_index = 365
+metadata/gm_id = "room_create_2"
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = true
+metadata/gm_source = "instance_create(-1000,-1000,o_bonusho)"
+position = Vector2(-1000.0, -1000.0)
+metadata/gm_position = Vector2(-1000.0, -1000.0)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_bonusho_2"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = 1784.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_bonusho [room_create_2]"
+
+[node name="Waves" type="Node2D" parent="."]
+script = ExtResource("editable_waves")
+z_index = 100
+
+[node name="Timing" type="Node" parent="Waves"]
+
+[node name="Enemies" type="Node2D" parent="Waves"]
+
+[node name="Level_Start" type="Node" parent="Waves/Timing"]
+
+[node name="Kamikaze_0_0_299" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "kamik"
+stage = 0
+first_index = 0
+last_index = 299
+value = 0
+source_value = 0
+activation = 0
+source_key = "0:kamik:0:0:299"
+source_expression = "script_perioder_map_6.593.gml:69: 0"
+
+[node name="Enemy_Type_0_0_29" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "lev"
+stage = 0
+first_index = 0
+last_index = 29
+value = 4
+source_value = 4
+activation = 0
+source_key = "0:lev:0:0:29"
+source_expression = "script_perioder_map_6.593.gml:69: 4"
+
+[node name="Enemy_Type_0_30_30" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "lev"
+stage = 0
+first_index = 30
+last_index = 30
+value = -1
+source_value = -1
+activation = 0
+source_key = "0:lev:0:30:30"
+source_expression = "script_perioder_map_6.593.gml:69: -1"
+
+[node name="Spawn_Rate_0_0_29" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "levtime"
+stage = 0
+first_index = 0
+last_index = 29
+value = 10
+source_value = 10
+activation = 0
+source_key = "0:levtime:0:0:29"
+source_expression = "script_perioder_map_6.593.gml:69: 10"
+
+[node name="Spawn_Rate_0_30_30" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "levtime"
+stage = 0
+first_index = 30
+last_index = 30
+value = 2
+source_value = 2
+activation = 0
+source_key = "0:levtime:0:30:30"
+source_expression = "script_perioder_map_6.593.gml:69: 2"
+
+[node name="Enemy_Budget_0_-1_-1" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "num"
+stage = 0
+first_index = -1
+last_index = -1
+value = 150
+source_value = 150
+activation = 0
+source_key = "0:num:0:-1:-1"
+source_expression = "script_perioder_map_6.593.gml:69: 150"
+
+[node name="Timed_Event_0_1_1" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "perioder"
+stage = 0
+first_index = 1
+last_index = 1
+value = 65
+source_value = 65
+activation = 0
+source_key = "0:perioder:0:1:1"
+source_expression = "script_perioder_map_6.593.gml:69: 65"
+
+[node name="Formation_Slot_0_0_0" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 0
+last_index = 0
+value = 0
+source_value = 0
+activation = 0
+source_key = "0:pozd:0:0:0"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_1_1" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 1
+last_index = 1
+value = 1
+source_value = 1
+activation = 0
+source_key = "0:pozd:0:1:1"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_2_2" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 2
+last_index = 2
+value = 2
+source_value = 2
+activation = 0
+source_key = "0:pozd:0:2:2"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_3_3" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 3
+last_index = 3
+value = 3
+source_value = 3
+activation = 0
+source_key = "0:pozd:0:3:3"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_4_4" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 4
+last_index = 4
+value = 4
+source_value = 4
+activation = 0
+source_key = "0:pozd:0:4:4"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_5_5" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 5
+last_index = 5
+value = 5
+source_value = 5
+activation = 0
+source_key = "0:pozd:0:5:5"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_6_6" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 6
+last_index = 6
+value = 6
+source_value = 6
+activation = 0
+source_key = "0:pozd:0:6:6"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_7_7" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 7
+last_index = 7
+value = 7
+source_value = 7
+activation = 0
+source_key = "0:pozd:0:7:7"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_8_8" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 8
+last_index = 8
+value = 8
+source_value = 8
+activation = 0
+source_key = "0:pozd:0:8:8"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_9_9" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 9
+last_index = 9
+value = 9
+source_value = 9
+activation = 0
+source_key = "0:pozd:0:9:9"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_10_10" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 10
+last_index = 10
+value = 10
+source_value = 10
+activation = 0
+source_key = "0:pozd:0:10:10"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_11_11" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 11
+last_index = 11
+value = 11
+source_value = 11
+activation = 0
+source_key = "0:pozd:0:11:11"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_12_12" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 12
+last_index = 12
+value = 12
+source_value = 12
+activation = 0
+source_key = "0:pozd:0:12:12"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_13_13" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 13
+last_index = 13
+value = 13
+source_value = 13
+activation = 0
+source_key = "0:pozd:0:13:13"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_14_14" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 14
+last_index = 14
+value = 14
+source_value = 14
+activation = 0
+source_key = "0:pozd:0:14:14"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_15_15" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 15
+last_index = 15
+value = 15
+source_value = 15
+activation = 0
+source_key = "0:pozd:0:15:15"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_16_16" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 16
+last_index = 16
+value = 16
+source_value = 16
+activation = 0
+source_key = "0:pozd:0:16:16"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_17_17" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 17
+last_index = 17
+value = 17
+source_value = 17
+activation = 0
+source_key = "0:pozd:0:17:17"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_18_18" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 18
+last_index = 18
+value = 18
+source_value = 18
+activation = 0
+source_key = "0:pozd:0:18:18"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_19_19" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 19
+last_index = 19
+value = 19
+source_value = 19
+activation = 0
+source_key = "0:pozd:0:19:19"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_20_20" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 20
+last_index = 20
+value = 20
+source_value = 20
+activation = 0
+source_key = "0:pozd:0:20:20"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_21_21" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 21
+last_index = 21
+value = 21
+source_value = 21
+activation = 0
+source_key = "0:pozd:0:21:21"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_22_22" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 22
+last_index = 22
+value = 22
+source_value = 22
+activation = 0
+source_key = "0:pozd:0:22:22"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_23_23" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 23
+last_index = 23
+value = 23
+source_value = 23
+activation = 0
+source_key = "0:pozd:0:23:23"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_24_24" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 24
+last_index = 24
+value = 24
+source_value = 24
+activation = 0
+source_key = "0:pozd:0:24:24"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_25_25" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 25
+last_index = 25
+value = 25
+source_value = 25
+activation = 0
+source_key = "0:pozd:0:25:25"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_26_26" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 26
+last_index = 26
+value = 26
+source_value = 26
+activation = 0
+source_key = "0:pozd:0:26:26"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_27_27" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 27
+last_index = 27
+value = 27
+source_value = 27
+activation = 0
+source_key = "0:pozd:0:27:27"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_28_28" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 28
+last_index = 28
+value = 28
+source_value = 28
+activation = 0
+source_key = "0:pozd:0:28:28"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_29_29" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 29
+last_index = 29
+value = 29
+source_value = 29
+activation = 0
+source_key = "0:pozd:0:29:29"
+source_expression = "script_perioder_map_6.593.gml:69: i"
+
+[node name="Formation_Slot_0_30_299" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "pozd"
+stage = 0
+first_index = 30
+last_index = 299
+value = -1
+source_value = -1
+activation = 0
+source_key = "0:pozd:0:30:299"
+source_expression = "script_perioder_map_6.593.gml:69: -1"
+
+[node name="Arrival_Sequence_0_0_29" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "sekwencus"
+stage = 0
+first_index = 0
+last_index = 29
+value = 110
+source_value = 110
+activation = 0
+source_key = "0:sekwencus:0:0:29"
+source_expression = "script_perioder_map_6.593.gml:69: 110"
+
+[node name="Arrival_Sequence_0_30_299" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "sekwencus"
+stage = 0
+first_index = 30
+last_index = 299
+value = 0
+source_value = 0
+activation = 0
+source_key = "0:sekwencus:0:30:299"
+source_expression = "script_perioder_map_6.593.gml:69: 0"
+
+[node name="Random_Type_Maximum_0_-1_-1" type="Node" parent="Waves/Timing/Level_Start"]
+script = ExtResource("editable_setting")
+table = "sila_wrogow"
+stage = 0
+first_index = -1
+last_index = -1
+value = 6
+source_value = 6
+activation = 0
+source_key = "0:sila_wrogow:0:-1:-1"
+source_expression = "script_perioder_map_6.593.gml:69: 6"
+
+[node name="enemy_1_4" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(60, 64)
+source_position = Vector2(60, 64)
+object_index = 12
+match_enemy_kind = 4
+preview_layers = [{"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite161.161.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 38, "blend": 0}]
+source_key = "o_enemy_1:4"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_0" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(180, 96)
+source_position = Vector2(180, 96)
+object_index = 12
+match_enemy_kind = 0
+preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+source_key = "o_enemy_1:0"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_1" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(280, 96)
+source_position = Vector2(280, 96)
+object_index = 12
+match_enemy_kind = 1
+preview_layers = [{"texture": "res://images/sprites/s_sprite137.137.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 56, "oy": 34, "blend": 0}]
+source_key = "o_enemy_1:1"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_2" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(380, 96)
+source_position = Vector2(380, 96)
+object_index = 12
+match_enemy_kind = 2
+preview_layers = [{"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite156.156.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 31, "oy": 42, "blend": 0}]
+source_key = "o_enemy_1:2"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_3" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(480, 96)
+source_position = Vector2(480, 96)
+object_index = 12
+match_enemy_kind = 3
+preview_layers = [{"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite158.158.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 40, "oy": 37, "blend": 0}]
+source_key = "o_enemy_1:3"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_5" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(580, 96)
+source_position = Vector2(580, 96)
+object_index = 12
+match_enemy_kind = 5
+preview_layers = [{"texture": "res://images/sprites/s_enemy_c.30.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 33, "oy": 26, "blend": 0}]
+source_key = "o_enemy_1:5"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="enemy_1_6" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(680, 96)
+source_position = Vector2(680, 96)
+object_index = 12
+match_enemy_kind = 6
+preview_layers = [{"texture": "res://images/sprites/s_enemy_f.34.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 29, "oy": 28, "blend": 0}]
+source_key = "o_enemy_1:6"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. script_perioder_map_6.593.gml:69"
+
+[node name="coindrop" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(780, 96)
+source_position = Vector2(780, 96)
+object_index = 214
+match_enemy_kind = -1
+preview_layers = [{"texture": "res://images/sprites/s_bonus_coin2.230.0.png", "x": 0, "y": 0, "sx": 0.315, "sy": 0.309, "rotation": -0.0, "ox": 48, "oy": 48, "blend": 2}, {"texture": "res://images/sprites/s_bonus_coin.229.0.png", "x": 0, "y": 0, "sx": 0.3, "sy": 0.309, "rotation": -0.0, "ox": 43, "oy": 43, "blend": 1}]
+source_key = "o_coindrop:-1"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map6_piranhasus_1/event_3_0/action_0"
+
+[node name="enemy_1_56" type="Node2D" parent="Waves/Enemies"]
+script = ExtResource("editable_spawn")
+position = Vector2(80, 224)
+source_position = Vector2(80, 224)
+object_index = 12
+match_enemy_kind = 56
+preview_layers = [{"texture": "res://images/sprites/s_enemy_roslinka.296.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 100, "oy": 27, "blend": 0}, {"texture": "res://images/sprites/s_enemy_roslinka2.297.1.png", "x": 99.86295347545739, "y": -5.233595624294384, "sx": 1, "sy": 1, "rotation": -0.5235987755982988, "ox": 10, "oy": 28, "blend": 0}, {"texture": "res://images/sprites/s_enemy_roslinka2.297.1.png", "x": 99.93908270190957, "y": 3.489949670250108, "sx": 1, "sy": -1, "rotation": 0.5235987755982988, "ox": 10, "oy": 28, "blend": 0}]
+source_key = "o_enemy_1:56"
+source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map6_piranhasus_1/event_3_0/action_0"

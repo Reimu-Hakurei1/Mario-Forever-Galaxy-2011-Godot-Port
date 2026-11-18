@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/real_battle.ogg-c5569d632c8201a7b99d4c4f9e060
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=3.668753
 bpm=0
 beat_count=0
 bar_beats=4

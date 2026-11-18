@@ -1,0 +1,3957 @@
+[gd_scene load_steps=33 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/sprites/s_map_levelor.247.0.png"]
+[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_map_galactic_04.255.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_enemy_a.11.0.png"]
+[ext_resource type="Texture2D" id="t4" path="res://images/sprites/sprite156.156.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://data/g/s_map_back.jpg"]
+[ext_resource type="Texture2D" id="t6" path="res://images/sprites/s_map_linker.250.0.png"]
+[ext_resource type="Texture2D" id="t7" path="res://images/sprites/s_map_galactic_01.251.0.png"]
+[ext_resource type="Texture2D" id="t8" path="res://images/sprites/s_map_levelormask.248.0.png"]
+[ext_resource type="Texture2D" id="t9" path="res://images/sprites/s_bonus_coin2.230.0.png"]
+[ext_resource type="Texture2D" id="t10" path="res://images/sprites/s_bonus_coin.229.0.png"]
+[ext_resource type="Texture2D" id="t11" path="res://images/sprites/s_map_levelor2.288.0.png"]
+[ext_resource type="Texture2D" id="t12" path="res://images/sprites/s_asteroids_1.80.0.png"]
+[ext_resource type="Texture2D" id="t13" path="res://images/sprites/s_map_galactic_15.348.0.png"]
+[ext_resource type="Texture2D" id="t14" path="res://images/sprites/s_map_galactic_15.348.1.png"]
+[ext_resource type="Texture2D" id="t15" path="res://images/sprites/s_map_galactic_09.262.0.png"]
+[ext_resource type="Texture2D" id="t16" path="res://images/sprites/s_map_galactic_08.261.0.png"]
+[ext_resource type="Texture2D" id="t17" path="res://images/sprites/s_map_galactic_05.256.0.png"]
+[ext_resource type="Texture2D" id="t18" path="res://images/sprites/s_map_galactic_13.346.0.png"]
+[ext_resource type="Texture2D" id="t19" path="res://images/sprites/s_map_galactic_13.346.1.png"]
+[ext_resource type="Texture2D" id="t20" path="res://images/sprites/s_map_galactic_14.347.0.png"]
+[ext_resource type="Texture2D" id="t21" path="res://images/sprites/s_map_galactic_14.347.1.png"]
+[ext_resource type="Texture2D" id="t22" path="res://images/sprites/s_map_galactic_03.253.0.png"]
+[ext_resource type="Texture2D" id="t23" path="res://images/sprites/s_map_galactic_02.252.0.png"]
+[ext_resource type="Texture2D" id="t24" path="res://images/sprites/s_shopcoinmask.438.0.png"]
+[ext_resource type="Texture2D" id="t25" path="res://images/sprites/s_shopcoin.437.0.png"]
+[ext_resource type="Texture2D" id="t26" path="res://images/sprites/s_map_galactic_11.326.0.png"]
+[ext_resource type="Texture2D" id="t27" path="res://images/sprites/s_map_galactic_10.325.0.png"]
+[ext_resource type="Texture2D" id="t28" path="res://images/sprites/s_map_galactic_12.327.0.png"]
+[ext_resource type="Texture2D" id="t29" path="res://images/sprites/s_cards_set.335.0.png"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+
+[sub_resource type="CanvasItemMaterial" id="preview_blend1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="preview_blend2"]
+blend_mode = 2
+
+[node name="room_map" type="Node2D"]
+metadata/gm_room = "room_map"
+metadata/gm_bg_colour = 0
+metadata/gm_map = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1000, 1000)
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 2000
+
+[node name="Objects_-123" type="Node2D" parent="."]
+z_index = 1
+metadata/gm_depth = -123
+
+[node name="o_map_interface_0" type="Sprite2D" parent="Objects_-123"]
+metadata/gm_object = "o_map_interface"
+metadata/gm_object_index = 225
+metadata/gm_id = 100339
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(32, 32)
+metadata/gm_preview_pos = Vector2(32, 32)
+metadata/gm_position = Vector2(32, 32)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t1")
+offset = Vector2(-13, -13)
+centered = false
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = 0
+
+[node name="o_map_helperscroll_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_helperscroll"
+metadata/gm_object_index = 236
+metadata/gm_id = 100334
+metadata/gm_visible = false
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(48, 80)
+metadata/gm_preview_pos = Vector2(48, 80)
+metadata/gm_position = Vector2(48, 80)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_map_helperscroll_0"]
+z_as_relative = false
+z_index = 4095
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+color = Color(1, 0.55, 0.1, 0.9)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_map_helperscroll_0"]
+z_as_relative = false
+z_index = 4095
+offset_left = 12.0
+offset_top = -10
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "o_map_helperscroll [100334]"
+
+[node name="o_map_level_1" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100340
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(640, 544)
+metadata/gm_preview_pos = Vector2(640, 544)
+metadata/gm_position = Vector2(640, 544)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 0
+metadata/gm_map_name = "START POINT"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_2" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100341
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(864, 592)
+metadata/gm_preview_pos = Vector2(864, 592)
+metadata/gm_position = Vector2(864, 592)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 1
+metadata/gm_map_name = "HOT SPOT"
+metadata/gm_map_gfxlev = 100
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_3" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100345
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(912, 384)
+metadata/gm_preview_pos = Vector2(912, 384)
+metadata/gm_position = Vector2(912, 384)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 2
+metadata/gm_map_name = "FIRST_ENCONTER"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_4" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100346
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1136, 320)
+metadata/gm_preview_pos = Vector2(1136, 320)
+metadata/gm_position = Vector2(1136, 320)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 3
+metadata/gm_map_name = "GOMBAS_CAMP"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_5" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100348
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1424, 384)
+metadata/gm_preview_pos = Vector2(1424, 384)
+metadata/gm_position = Vector2(1424, 384)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 4
+metadata/gm_map_name = "ASTEROIDS"
+metadata/gm_map_gfxlev = 2
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_6" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100349
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1216, 576)
+metadata/gm_preview_pos = Vector2(1216, 576)
+metadata/gm_position = Vector2(1216, 576)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 5
+metadata/gm_map_name = "HOT_SPOT"
+metadata/gm_map_gfxlev = 100
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_7" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100350
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1440, 592)
+metadata/gm_preview_pos = Vector2(1440, 592)
+metadata/gm_position = Vector2(1440, 592)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 6
+metadata/gm_map_name = "ENEMY_WALL"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_8" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100351
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1600, 672)
+metadata/gm_preview_pos = Vector2(1600, 672)
+metadata/gm_position = Vector2(1600, 672)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 7
+metadata/gm_map_name = "SHOP"
+metadata/gm_map_gfxlev = 4
+metadata/gm_map_minigame = 2
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_9" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100352
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1728, 608)
+metadata/gm_preview_pos = Vector2(1728, 608)
+metadata/gm_position = Vector2(1728, 608)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 8
+metadata/gm_map_name = "GUN_RANGE"
+metadata/gm_map_gfxlev = 5
+metadata/gm_map_minigame = 10
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_10" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100353
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1248, 816)
+metadata/gm_preview_pos = Vector2(1248, 816)
+metadata/gm_position = Vector2(1248, 816)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 9
+metadata/gm_map_name = "HOT_SPOT"
+metadata/gm_map_gfxlev = 100
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_11" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100354
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1040, 816)
+metadata/gm_preview_pos = Vector2(1040, 816)
+metadata/gm_position = Vector2(1040, 816)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 10
+metadata/gm_map_name = "CASTLE"
+metadata/gm_map_gfxlev = 1
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_12" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100355
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1440, 832)
+metadata/gm_preview_pos = Vector2(1440, 832)
+metadata/gm_position = Vector2(1440, 832)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 11
+metadata/gm_map_name = "BONUS_STAGE"
+metadata/gm_map_gfxlev = 6
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_13" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100361
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(928, 1008)
+metadata/gm_preview_pos = Vector2(928, 1008)
+metadata/gm_position = Vector2(928, 1008)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 12
+metadata/gm_map_name = "KOOPA_TROOPA'S"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_14" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100362
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1104, 1120)
+metadata/gm_preview_pos = Vector2(1104, 1120)
+metadata/gm_position = Vector2(1104, 1120)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 13
+metadata/gm_map_name = "HOT_SPOT"
+metadata/gm_map_gfxlev = 100
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_15" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100363
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(992, 1216)
+metadata/gm_preview_pos = Vector2(992, 1216)
+metadata/gm_position = Vector2(992, 1216)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 14
+metadata/gm_map_name = "BONUS_STAGE"
+metadata/gm_map_gfxlev = 6
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_16" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100364
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1280, 1168)
+metadata/gm_preview_pos = Vector2(1280, 1168)
+metadata/gm_position = Vector2(1280, 1168)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 15
+metadata/gm_map_name = "SPINY_MACHINES"
+metadata/gm_map_gfxlev = 0
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_17" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100366
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(1440, 1152)
+metadata/gm_preview_pos = Vector2(1440, 1152)
+metadata/gm_position = Vector2(1440, 1152)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 16
+metadata/gm_map_name = "BOWSER_CASTLE"
+metadata/gm_map_gfxlev = 7
+metadata/gm_map_minigame = 0
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_level_18" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_level"
+metadata/gm_object_index = 220
+metadata/gm_id = 100371
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(864, 1264)
+metadata/gm_preview_pos = Vector2(864, 1264)
+metadata/gm_position = Vector2(864, 1264)
+metadata/gm_empty_draw_event = false
+metadata/gm_map_node = 17
+metadata/gm_map_name = "CARD_GAME"
+metadata/gm_map_gfxlev = 8
+metadata/gm_map_minigame = 1
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="o_map_goodie_1_19" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_1"
+metadata/gm_object_index = 515
+metadata/gm_id = 100780
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(832, 288)
+metadata/gm_preview_pos = Vector2(832, 288)
+metadata/gm_position = Vector2(832, 288)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_5_20" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_5"
+metadata/gm_object_index = 519
+metadata/gm_id = 100781
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(720, 800)
+metadata/gm_preview_pos = Vector2(720, 800)
+metadata/gm_position = Vector2(720, 800)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_1_21" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_1"
+metadata/gm_object_index = 515
+metadata/gm_id = 100783
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(64, 224)
+metadata/gm_preview_pos = Vector2(64, 224)
+metadata/gm_position = Vector2(64, 224)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_2_green_22" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_2_green"
+metadata/gm_object_index = 516
+metadata/gm_id = 100784
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(1952, 208)
+metadata/gm_preview_pos = Vector2(1952, 208)
+metadata/gm_position = Vector2(1952, 208)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_3_23" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_3"
+metadata/gm_object_index = 517
+metadata/gm_id = 100785
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(1904, 1696)
+metadata/gm_preview_pos = Vector2(1904, 1696)
+metadata/gm_position = Vector2(1904, 1696)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_3_24" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_3"
+metadata/gm_object_index = 517
+metadata/gm_id = 100786
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(992, 1904)
+metadata/gm_preview_pos = Vector2(992, 1904)
+metadata/gm_position = Vector2(992, 1904)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_5_25" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_5"
+metadata/gm_object_index = 519
+metadata/gm_id = 100787
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(1424, 1456)
+metadata/gm_preview_pos = Vector2(1424, 1456)
+metadata/gm_position = Vector2(1424, 1456)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_3_26" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_3"
+metadata/gm_object_index = 517
+metadata/gm_id = 100788
+metadata/gm_visible = true
+metadata/gm_sprite_index = 255
+metadata/gm_preview_only = false
+position = Vector2(192, 1776)
+metadata/gm_preview_pos = Vector2(192, 1776)
+metadata/gm_position = Vector2(192, 1776)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t2")
+offset = Vector2(-37, -37)
+centered = false
+
+[node name="o_map_goodie_6_27" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_6"
+metadata/gm_object_index = 520
+metadata/gm_id = 100794
+metadata/gm_visible = true
+metadata/gm_sprite_index = 11
+metadata/gm_preview_only = false
+position = Vector2(944, 320)
+metadata/gm_preview_pos = Vector2(944, 320)
+metadata/gm_position = Vector2(944, 320)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t3")
+offset = Vector2(-30, -30)
+centered = false
+
+[node name="o_map_goodie_6_28" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_6"
+metadata/gm_object_index = 520
+metadata/gm_id = 100795
+metadata/gm_visible = true
+metadata/gm_sprite_index = 11
+metadata/gm_preview_only = false
+position = Vector2(1136, 384)
+metadata/gm_preview_pos = Vector2(1136, 384)
+metadata/gm_position = Vector2(1136, 384)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t3")
+offset = Vector2(-30, -30)
+centered = false
+
+[node name="o_map_goodie_6_29" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_6"
+metadata/gm_object_index = 520
+metadata/gm_id = 100796
+metadata/gm_visible = true
+metadata/gm_sprite_index = 11
+metadata/gm_preview_only = false
+position = Vector2(1200, 272)
+metadata/gm_preview_pos = Vector2(1200, 272)
+metadata/gm_position = Vector2(1200, 272)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t3")
+offset = Vector2(-30, -30)
+centered = false
+
+[node name="o_map_goodie_6_30" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_6"
+metadata/gm_object_index = 520
+metadata/gm_id = 100798
+metadata/gm_visible = true
+metadata/gm_sprite_index = 11
+metadata/gm_preview_only = false
+position = Vector2(1120, 1184)
+metadata/gm_preview_pos = Vector2(1120, 1184)
+metadata/gm_position = Vector2(1120, 1184)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t3")
+offset = Vector2(-30, -30)
+centered = false
+
+[node name="o_map_goodie_7_31" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_7"
+metadata/gm_object_index = 521
+metadata/gm_id = 100799
+metadata/gm_visible = true
+metadata/gm_sprite_index = 156
+metadata/gm_preview_only = false
+position = Vector2(992, 928)
+metadata/gm_preview_pos = Vector2(992, 928)
+metadata/gm_position = Vector2(992, 928)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(-31, -42)
+centered = false
+
+[node name="o_map_goodie_7_32" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_map_goodie_7"
+metadata/gm_object_index = 521
+metadata/gm_id = 100800
+metadata/gm_visible = true
+metadata/gm_sprite_index = 156
+metadata/gm_preview_only = false
+position = Vector2(880, 1024)
+metadata/gm_preview_pos = Vector2(880, 1024)
+metadata/gm_position = Vector2(880, 1024)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t4")
+offset = Vector2(-31, -42)
+centered = false
+
+[node name="Objects_10000" type="Node2D" parent="."]
+z_index = -1
+metadata/gm_depth = 10000
+
+[node name="o_map_back_0" type="Sprite2D" parent="Objects_10000"]
+metadata/gm_object = "o_map_back"
+metadata/gm_object_index = 226
+metadata/gm_id = 100347
+metadata/gm_visible = true
+metadata/gm_sprite_index = 247
+metadata/gm_preview_only = false
+position = Vector2(64, 128)
+metadata/gm_preview_pos = Vector2(64, 128)
+metadata/gm_position = Vector2(64, 128)
+metadata/gm_empty_draw_event = false
+metadata/gm_draw_replaced_by_editor_preview = true
+
+[node name="EditorPreview" type="Node2D" parent="."]
+metadata/gm_preview_only = true
+
+[node name="Layer0" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(0, 0)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer1" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(880, 0)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer2" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(1760, 0)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer3" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(0, 693)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer4" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(880, 693)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer5" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(1760, 693)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer6" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(0, 1386)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer7" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(880, 1386)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer8" type="Sprite2D" parent="EditorPreview"]
+z_index = -4000
+position = Vector2(1760, 1386)
+texture = ExtResource("t5")
+centered = false
+offset = Vector2(0, 0)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer9" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(640, 564)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(10.954256850621082, 1)
+rotation = 0.21109333322274654
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer10" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(640.0, 524.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer11" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(640, 564)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer12" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(640, 564)
+texture = ExtResource("t1")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer13" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(864, 612)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(10.173331251301068, 1)
+rotation = -1.3439974787410107
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer14" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864, 612)
+texture = ExtResource("t9")
+centered = false
+offset = Vector2(-48, -48)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer15" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864, 612)
+texture = ExtResource("t10")
+centered = false
+offset = Vector2(-43, -43)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer16" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(912, 404)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(11.14817582284883, 1)
+rotation = -0.27829965900511133
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer17" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(912.0, 364.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer18" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(912, 404)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer19" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(912, 404)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer20" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1136, 340)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(14.25127113166862, 1)
+rotation = 0.21866894587394198
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer21" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1136, 340)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(12.91044369139217, 1)
+rotation = 1.2679114584199251
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer22" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1136.0, 300.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer23" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1136, 340)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer24" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1136, 340)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer25" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1424, 404)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(9.930723848324238, 1)
+rotation = 1.4940244355251187
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer26" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1308.6323009744533, 330.9803994338084)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer27" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1308.6323009744533, 330.9803994338084)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer28" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424.0, 384.0)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.5, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer29" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424.0, 384.0)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.5, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer30" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424.0, 424.0)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer31" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424.0, 424.0)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer32" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1489.1351777206748, 284.03484240185975)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.3, 0.3)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer33" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1489.1351777206748, 284.03484240185975)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.3, 0.3)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer34" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1489.1351777206748, 417.5369440015343)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer35" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1489.1351777206748, 417.5369440015343)
+texture = ExtResource("t12")
+centered = false
+offset = Vector2(-71, -71)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer36" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424.0, 364.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(2.0, 2.0)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.4)
+material = SubResource("preview_blend1")
+
+[node name="Layer37" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424, 404)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer38" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1424, 404)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer39" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1216, 596)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(10.72853507809456, 1)
+rotation = 0.07130746478529032
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer40" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1216, 596)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(11.606196760337244, 1)
+rotation = 1.4382447944982228
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer41" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1216, 596)
+texture = ExtResource("t9")
+centered = false
+offset = Vector2(-48, -48)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer42" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1216, 596)
+texture = ExtResource("t10")
+centered = false
+offset = Vector2(-43, -43)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer43" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1440, 612)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(8.44427190999916, 1)
+rotation = 0.4636476090008061
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer44" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 572.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer45" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 612)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer46" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 612)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer47" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1600, 692)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(6.655417527999328, 1)
+rotation = -0.4636476090008061
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer48" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 702.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer49" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 702.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer50" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1582.8989928337164, 605.0153689607046)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer51" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1582.8989928337164, 605.0153689607046)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer52" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1632.1393804843271, 690.3022221559488)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer53" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1632.1393804843271, 690.3022221559488)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer54" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1556.6987298107783, 626.9999999999997)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer55" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1556.6987298107783, 626.9999999999997)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer56" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1649.2403876506105, 660.6824088833462)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer57" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1649.2403876506105, 660.6824088833462)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer58" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1550.7596123493895, 660.6824088833463)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer59" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1550.7596123493895, 660.6824088833463)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer60" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1643.3012701892224, 627.0000000000008)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer61" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1643.3012701892224, 627.0000000000008)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer62" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1567.860619515673, 690.3022221559488)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer63" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1567.860619515673, 690.3022221559488)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer64" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1617.1010071662827, 605.0153689607043)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer65" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1617.1010071662827, 605.0153689607043)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer66" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 702.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer67" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 702.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer68" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1582.898992833717, 605.0153689607043)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer69" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1582.898992833717, 605.0153689607043)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer70" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1632.139380484326, 690.3022221559496)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer71" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1632.139380484326, 690.3022221559496)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer72" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1556.698729810779, 626.9999999999985)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer73" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1556.698729810779, 626.9999999999985)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer74" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1649.2403876506105, 660.682408883346)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer75" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1649.2403876506105, 660.682408883346)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer76" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1550.7596123493895, 660.6824088833464)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer77" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1550.7596123493895, 660.6824088833464)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer78" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1643.3012701892224, 627.0000000000007)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer79" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1643.3012701892224, 627.0000000000007)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer80" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1567.8606195156742, 690.3022221559498)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer81" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1567.8606195156742, 690.3022221559498)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer82" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1617.1010071662854, 605.0153689607052)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer83" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1617.1010071662854, 605.0153689607052)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer84" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 717.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer85" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 717.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer86" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296251, 602.2071111972664)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer87" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296251, 602.2071111972664)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer88" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 663.2871315483505)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer89" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 663.2871315483505)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer90" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459885, 684.5000000000001)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer91" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459885, 684.5000000000001)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer92" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 590.919979648916)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer93" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 590.919979648916)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer94" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 713.080020351084)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer95" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 713.080020351084)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer96" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459888, 619.5000000000002)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer97" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459888, 619.5000000000002)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer98" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 640.7128684516495)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer99" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 640.7128684516495)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer100" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296251, 701.7928888027334)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer101" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296251, 701.7928888027334)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer102" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 587.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer103" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 587.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer104" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703749, 701.7928888027335)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer105" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703749, 701.7928888027335)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer106" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457935, 640.7128684516499)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer107" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457935, 640.7128684516499)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer108" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540117, 619.4999999999995)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer109" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540117, 619.4999999999995)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer110" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161686, 713.080020351084)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer111" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161686, 713.080020351084)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer112" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161686, 590.919979648916)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer113" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161686, 590.919979648916)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer114" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540115, 684.4999999999998)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer115" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540115, 684.4999999999998)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer116" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457937, 663.28713154835)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer117" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457937, 663.28713154835)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer118" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703755, 602.207111197266)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer119" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703755, 602.207111197266)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer120" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 717.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer121" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 717.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer122" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296258, 602.2071111972671)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer123" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296258, 602.2071111972671)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer124" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 663.2871315483501)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer125" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 663.2871315483501)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer126" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459888, 684.4999999999997)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer127" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.2916512459888, 684.4999999999997)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer128" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838321, 590.9199796489157)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer129" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838321, 590.9199796489157)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer130" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 713.080020351084)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer131" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1577.7686906838314, 713.080020351084)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer132" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.291651245989, 619.500000000001)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer133" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1656.291651245989, 619.500000000001)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer134" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 640.7128684516491)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer135" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1535.9874960542065, 640.7128684516491)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer136" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296254, 701.7928888027334)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer137" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1641.7811946296254, 701.7928888027334)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer138" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.000000000001, 587.0)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer139" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.000000000001, 587.0)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer140" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703749, 701.7928888027335)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer141" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.2188053703749, 701.7928888027335)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer142" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457935, 640.7128684516489)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer143" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457935, 640.7128684516489)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer144" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540117, 619.4999999999995)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer145" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540117, 619.4999999999995)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer146" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.231309316167, 713.0800203510846)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer147" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.231309316167, 713.0800203510846)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer148" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161677, 590.9199796489156)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer149" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1622.2313093161677, 590.9199796489156)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer150" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540115, 684.4999999999999)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer151" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1543.7083487540115, 684.4999999999999)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer152" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457932, 663.2871315483518)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer153" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1664.0125039457932, 663.2871315483518)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer154" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.218805370374, 602.2071111972673)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer155" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1558.218805370374, 602.2071111972673)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer156" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 652.0)
+texture = ExtResource("t15")
+centered = false
+offset = Vector2(-72, -66)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer157" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600.0, 652.0)
+texture = ExtResource("t16")
+centered = false
+offset = Vector2(-72, -66)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer158" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1606.9459271066771, 612.6076898795117)
+texture = ExtResource("t13")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer159" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1606.9459271066771, 612.6076898795117)
+texture = ExtResource("t14")
+centered = false
+offset = Vector2(-22, -21)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer160" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600, 692)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer161" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1600, 692)
+texture = ExtResource("t1")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer162" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1737.0929742682567, 583.8385316345285)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.4, 0.4)
+rotation = -0.017453292519943295
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer163" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1737.0929742682567, 583.8385316345285)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.4, 0.4)
+rotation = -0.017453292519943295
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer164" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1755.2789228047704, 575.5155949035857)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer165" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1755.2789228047704, 575.5155949035857)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer166" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1759.825409938899, 573.43486072085)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer167" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1759.825409938899, 573.43486072085)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer168" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1764.3718970730272, 566.0908295910292)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer169" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1764.3718970730272, 566.0908295910292)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer170" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1782.557845609541, 555.1362443865439)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer171" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1782.557845609541, 555.1362443865439)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.03490658503988659
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer172" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1728.0, 588.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.1)
+material = SubResource("preview_blend1")
+
+[node name="Layer173" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1728.0, 588.0)
+texture = ExtResource("t18")
+centered = false
+offset = Vector2(-62, -61)
+scale = Vector2(1, 1)
+rotation = -0.006701243003990711
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer174" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1728.0, 588.0)
+texture = ExtResource("t19")
+centered = false
+offset = Vector2(-62, -61)
+scale = Vector2(1, 1)
+rotation = -0.006701243003990711
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer175" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1727.5309165005679, 508.0015717271412)
+texture = ExtResource("t20")
+centered = false
+offset = Vector2(-43, -28)
+scale = Vector2(1, 1)
+rotation = -0.006701243003990711
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer176" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1727.5309165005679, 508.0015717271412)
+texture = ExtResource("t21")
+centered = false
+offset = Vector2(-43, -28)
+scale = Vector2(1, 1)
+rotation = -0.006701243003990711
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer177" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1727.5309165005679, 508.0015717271412)
+texture = ExtResource("t21")
+centered = false
+offset = Vector2(-43, -28)
+scale = Vector2(1, 1)
+rotation = -0.006701243003990711
+modulate = Color(1, 1, 1, 0.4)
+material = SubResource("preview_blend1")
+
+[node name="Layer178" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1728, 628)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer179" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1728, 628)
+texture = ExtResource("t1")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer180" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1248, 836)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(9.9, 1)
+rotation = 3.141592653589793
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer181" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1248, 836)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(9.133275663033837, 1)
+rotation = 0.08314123188844125
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer182" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1248, 836)
+texture = ExtResource("t9")
+centered = false
+offset = Vector2(-48, -48)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer183" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1248, 836)
+texture = ExtResource("t10")
+centered = false
+offset = Vector2(-43, -43)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer184" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1040, 836)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(10.613955191559842, 1)
+rotation = 2.0988707752212563
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer185" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 796.0)
+texture = ExtResource("t22")
+centered = false
+offset = Vector2(-50, -126)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer186" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 796.0)
+texture = ExtResource("t23")
+centered = false
+offset = Vector2(-37, -113)
+scale = Vector2(1, 1)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer187" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 866.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer188" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 866.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer189" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 916.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer190" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040.0, 916.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer191" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040, 836)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer192" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1040, 836)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer193" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1467.2789228047704, 813.6770632690572)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer194" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1467.2789228047704, 813.6770632690572)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer195" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1444.9392002820953, 801.2101575713906)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.375, 0.375)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer196" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1444.9392002820953, 801.2101575713906)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.375, 0.375)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer197" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1409.727900187683, 807.6198403410006)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.35000000000000003, 0.35000000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer198" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1409.727900187683, 807.6198403410006)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.35000000000000003, 0.35000000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer199" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1396.8484076401587, 828.5242302656542)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.325, 0.325)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer200" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1396.8484076401587, 828.5242302656542)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.325, 0.325)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer201" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1426.0292250900536, 845.0440868796088)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.30000000000000004, 0.30000000000000004)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer202" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1426.0292250900536, 845.0440868796088)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.30000000000000004, 0.30000000000000004)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer203" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1476.1342629295334, 840.8475563585827)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.275, 0.275)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer204" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1476.1342629295334, 840.8475563585827)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.275, 0.275)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer205" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1499.3614947974029, 818.2169991209761)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer206" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1499.3614947974029, 818.2169991209761)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer207" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1466.7877015407141, 797.3994829291137)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.22500000000000003, 0.22500000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer208" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1466.7877015407141, 797.3994829291137)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.22500000000000003, 0.22500000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer209" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1401.9185222377441, 798.5059971858593)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer210" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1401.9185222377441, 798.5059971858593)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer211" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1365.0007345086972, 822.1283452416535)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.17500000000000002, 0.17500000000000002)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer212" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1365.0007345086972, 822.1283452416535)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.17500000000000002, 0.17500000000000002)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer213" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 812.0)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.7, 0.7)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer214" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 812.0)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.7, 0.7)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer215" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 852)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer216" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 852)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer217" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(928, 1028)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(9.930723848324238, 1)
+rotation = 0.5667292175235064
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer218" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(928.0, 988.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer219" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(928, 1028)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer220" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(928, 1028)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer221" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1104, 1140)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(6.87563556583431, 1)
+rotation = 2.432966381462123
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer222" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1104, 1140)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(8.621403400793103, 1)
+rotation = 0.2662520491509254
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer223" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1104, 1140)
+texture = ExtResource("t9")
+centered = false
+offset = Vector2(-48, -48)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer224" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1104, 1140)
+texture = ExtResource("t10")
+centered = false
+offset = Vector2(-43, -43)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer225" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(992, 1236)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(6.335202996254024, 1)
+rotation = 2.782821983319221
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer226" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1019.2789228047704, 1197.677063269057)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer227" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1019.2789228047704, 1197.677063269057)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer228" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(996.9392002820954, 1185.2101575713907)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.375, 0.375)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer229" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(996.9392002820954, 1185.2101575713907)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.375, 0.375)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer230" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(961.7279001876828, 1191.6198403410006)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.35000000000000003, 0.35000000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer231" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(961.7279001876828, 1191.6198403410006)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.35000000000000003, 0.35000000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer232" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(948.8484076401587, 1212.5242302656543)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.325, 0.325)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer233" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(948.8484076401587, 1212.5242302656543)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.325, 0.325)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer234" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(978.0292250900537, 1229.0440868796088)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.30000000000000004, 0.30000000000000004)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer235" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(978.0292250900537, 1229.0440868796088)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.30000000000000004, 0.30000000000000004)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer236" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1028.1342629295334, 1224.8475563585826)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.275, 0.275)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer237" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1028.1342629295334, 1224.8475563585826)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.275, 0.275)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer238" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1051.3614947974029, 1202.216999120976)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer239" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1051.3614947974029, 1202.216999120976)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.25, 0.25)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer240" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1018.7877015407141, 1181.3994829291137)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.22500000000000003, 0.22500000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer241" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1018.7877015407141, 1181.3994829291137)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.22500000000000003, 0.22500000000000003)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer242" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(953.9185222377441, 1182.5059971858593)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer243" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(953.9185222377441, 1182.5059971858593)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer244" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(917.0007345086972, 1206.1283452416535)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.17500000000000002, 0.17500000000000002)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer245" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(917.0007345086972, 1206.1283452416535)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.17500000000000002, 0.17500000000000002)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer246" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(992.0, 1196.0)
+texture = ExtResource("t24")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.7, 0.7)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer247" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(992.0, 1196.0)
+texture = ExtResource("t25")
+centered = false
+offset = Vector2(-31, -35)
+scale = Vector2(0.7, 0.7)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer248" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(992, 1236)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer249" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(992, 1236)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer250" type="Sprite2D" parent="EditorPreview"]
+z_index = -100
+position = Vector2(1280, 1188)
+texture = ExtResource("t6")
+centered = false
+offset = Vector2(0, -9)
+scale = Vector2(7.539900496896712, 1)
+rotation = -0.09966865249116202
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer251" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1280.0, 1148.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer252" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1280, 1188)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer253" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1280, 1188)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer254" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1132.0)
+texture = ExtResource("t26")
+centered = false
+offset = Vector2(-57, -75)
+scale = Vector2(1, 1)
+rotation = -1.5707963267948966
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer255" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1132.0)
+texture = ExtResource("t27")
+centered = false
+offset = Vector2(-44, -62)
+scale = Vector2(1, 1)
+rotation = -1.5707963267948966
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer256" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1222.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer257" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1222.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer258" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1222.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.5, 0.5)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.5)
+material = SubResource("preview_blend1")
+
+[node name="Layer259" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1282.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer260" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1282.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.5, 0.5)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer261" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1282.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.5, 0.5)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.4)
+material = SubResource("preview_blend1")
+
+[node name="Layer262" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1202.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer263" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1202.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.4, 0.4)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer264" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1202.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.4, 0.4)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.6)
+material = SubResource("preview_blend1")
+
+[node name="Layer265" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1252.0)
+texture = ExtResource("t17")
+centered = false
+offset = Vector2(-44, -44)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer266" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1252.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = -0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer267" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1252.0)
+texture = ExtResource("t2")
+centered = false
+offset = Vector2(-37, -37)
+scale = Vector2(0.2, 0.2)
+rotation = 0.0
+modulate = Color(1, 1, 1, 0.6)
+material = SubResource("preview_blend1")
+
+[node name="Layer268" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440.0, 1180.0)
+texture = ExtResource("t28")
+centered = false
+offset = Vector2(-14, -32)
+scale = Vector2(-0.6, 0.6)
+rotation = -3.141592653589793
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer269" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1481.569219381653, 1108.0)
+texture = ExtResource("t28")
+centered = false
+offset = Vector2(-14, -32)
+scale = Vector2(-0.6, 0.6)
+rotation = -5.235987755982989
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer270" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1409.146194735046, 1095.2298667302891)
+texture = ExtResource("t28")
+centered = false
+offset = Vector2(-14, -32)
+scale = Vector2(-0.6, 0.6)
+rotation = -6.981317007977318
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer271" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1409.146194735046, 1168.7701332697109)
+texture = ExtResource("t28")
+centered = false
+offset = Vector2(-14, -32)
+scale = Vector2(-0.6, 0.6)
+rotation = -8.726646259971648
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer272" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 1172)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer273" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(1440, 1172)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer274" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1244.0)
+texture = ExtResource("t7")
+centered = false
+offset = Vector2(-89, -80)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Layer275" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1274.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -20.769418098732523
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer276" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1304.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -48.69468613064179
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer277" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1324.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -34.033920413889426
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer278" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1294.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -20.769418098732523
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer279" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1264.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.2, 0.2)
+rotation = -21.81661564992912
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer280" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864.0, 1244.0)
+texture = ExtResource("t29")
+centered = false
+offset = Vector2(-92, -71)
+scale = Vector2(0.4, 0.4)
+rotation = -1.5707963267948966
+modulate = Color(1, 1, 1, 1)
+
+[node name="Layer281" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864, 1284)
+texture = ExtResource("t8")
+centered = false
+offset = Vector2(-17, -17)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend2")
+
+[node name="Layer282" type="Sprite2D" parent="EditorPreview"]
+z_index = 100
+position = Vector2(864, 1284)
+texture = ExtResource("t11")
+centered = false
+offset = Vector2(-13, -13)
+scale = Vector2(1, 1)
+rotation = 0.0
+modulate = Color(1, 1, 1, 1)
+material = SubResource("preview_blend1")
+
+[node name="Description0" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 24
+offset_top = 24
+offset_right = 974
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "MAP 1 | EDITOR PREVIEW\nSource icons and default graph; frozen pose, no save state.\nBackground rotation, particles and screen-blended fog omitted."
+
+[node name="Description1" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 520
+offset_top = 586
+offset_right = 760
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "0: START POINT"
+
+[node name="Description2" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 744
+offset_top = 634
+offset_right = 984
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "1: HOT SPOT"
+
+[node name="Description3" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 792
+offset_top = 426
+offset_right = 1032
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "2: FIRST ENCONTER"
+
+[node name="Description4" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1016
+offset_top = 362
+offset_right = 1256
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "3: GOMBAS CAMP"
+
+[node name="Description5" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1304
+offset_top = 426
+offset_right = 1544
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "4: ASTEROIDS"
+
+[node name="Description6" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1096
+offset_top = 618
+offset_right = 1336
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "5: HOT SPOT"
+
+[node name="Description7" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1320
+offset_top = 634
+offset_right = 1560
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "6: ENEMY WALL"
+
+[node name="Description8" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1480
+offset_top = 714
+offset_right = 1720
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "7: SHOP"
+
+[node name="Description9" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1608
+offset_top = 650
+offset_right = 1848
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "8: GUN RANGE"
+
+[node name="Description10" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1128
+offset_top = 858
+offset_right = 1368
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "9: HOT SPOT"
+
+[node name="Description11" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 920
+offset_top = 858
+offset_right = 1160
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "10: CASTLE"
+
+[node name="Description12" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1320
+offset_top = 874
+offset_right = 1560
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "11: BONUS STAGE"
+
+[node name="Description13" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 808
+offset_top = 1050
+offset_right = 1048
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "12: KOOPA TROOPA'S"
+
+[node name="Description14" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 984
+offset_top = 1162
+offset_right = 1224
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "13: HOT SPOT"
+
+[node name="Description15" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 872
+offset_top = 1258
+offset_right = 1112
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "14: BONUS STAGE"
+
+[node name="Description16" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1160
+offset_top = 1210
+offset_right = 1400
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "15: SPINY MACHINES"
+
+[node name="Description17" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 1320
+offset_top = 1194
+offset_right = 1560
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "16: BOWSER CASTLE"
+
+[node name="Description18" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 744
+offset_top = 1306
+offset_right = 984
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "17: CARD GAME"

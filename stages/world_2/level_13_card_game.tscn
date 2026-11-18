@@ -1,0 +1,4001 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://engine/level_snapshot.gd" id="3_rc75b"]
+[ext_resource type="Texture2D" path="res://images/sprites/sprite190.190.0.png" id="4_7a1r7"]
+[ext_resource type="Script" path="res://engine/level_snapshot_instance.gd" id="5_4tktg"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_startup_1.318.0.png" id="6_pb4lk"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_mauselock2.449.0.png" id="7_hgavd"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_mauselock.448.0.png" id="8_ijion"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.3.png" id="9_s3os0"]
+[ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.2.png" id="10_2q6c5"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Texture2D" path="res://images/backgrounds/background0.0.jpg" id="t1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3rqoo"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwox4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1gwe8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g3ty2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6api6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ynbk"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xptsq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oueej"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rb0fl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_un8ge"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_as1xi"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aknwl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yh4kt"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2mns2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kargl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bcx31"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mlh0s"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d2n3s"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jshyl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oakf7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qtbcd"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oegwn"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7dj4y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iah77"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cfw8u"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_apsoo"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v3wnn"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_si8ra"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_68od0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_et2fu"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xgqs1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ujxc0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oalkh"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8f511"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2jepw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bqca3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wtnj6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6pkv6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_05jat"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ovc7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gh5ft"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nmmdc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vxvml"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ci7qf"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8mmvy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_06wet"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1fnxu"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3ew2t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_21rc5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t5fr0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_byfao"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_52j0k"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kjswc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v14xs"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lyerv"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x7y1i"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_as445"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hrsd0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pyno6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0cljc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xx7fr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aqwf3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a0evw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1qkkx"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ga3ir"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nla1b"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_myrrp"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uhsc5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jaj4v"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lx8eu"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_drb6y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r21ln"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qfnnp"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dq71y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pkhjo"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_18b8g"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gucg0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d2tqa"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0tj48"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_22q0k"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_paktk"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_agsxf"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6i60h"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m5yct"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_khg3h"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yekse"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0l5y0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mfsub"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cnxg8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7iiti"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6nfsl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oydok"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ngnbr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rlo8g"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xm53j"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_htjdr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0erdi"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u25bl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wanvt"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gg8dv"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h8p4q"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nvk23"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rb2nh"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_icxb7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_krivo"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gy4ax"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wroy1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ecje"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tiqqn"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cdxo5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3qjob"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ypl4a"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ta1rl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d47dc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4v3qr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jh6v5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eh8hn"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u2pec"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cfam3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_py71o"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ew4ib"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ix7oc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hwfsb"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7pk8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2mla2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_at3kg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xol7v"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_510fj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3ak2h"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pmb4f"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vu7eg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_urw2b"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_thcah"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l8253"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2hj5y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_muqyf"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n8weq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v20yn"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yghm4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3sye1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wp78u"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t7ans"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4s66o"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_angoq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l07li"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pitxc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1er6j"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vpuyd"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_shdvc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w6ms5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a2c4y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_suuuj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77cgh"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wp4o2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s7lbv"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ps4n"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgs8e"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y0edg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btf3y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wj1bm"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bc8ir"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rt4y2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kn7e8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d8vp5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q5m0f"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yengl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q6uok"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7krlr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iux7h"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pjm1r"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_spjne"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ihc5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w1o3m"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xwuky"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dqses"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dyslc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h0xor"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mp0q4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y7mx2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72ajq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ir0l6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dmrlg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3wau7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h3s3v"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xs3au"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ijn5g"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tqdc4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqo7t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a8am1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_da4xq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwb1i"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rcace"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lpnyo"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ih6wd"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0hm1t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qmi80"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0iwds"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tcskh"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v77hd"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vj74q"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uq2gy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34d0c"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1hu8k"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0e3vl"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tua11"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtlws"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xfyij"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c5dif"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kcioy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vanyj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uqs6w"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hp8cg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_slbg2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wpk3f"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s8ako"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_12pss"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7gyfv"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r2n45"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_84vwx"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ky2jc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kk7b4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_30xf2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qdb5l"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f1l50"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bpdqq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mm4p2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tlonc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kfblw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xb44l"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y5buj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vw3f4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dlyhg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jhw0v"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m65e8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ecev"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5762r"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e3wio"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l5uge"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67cfw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l23m4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cghbq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tudsa"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k3ejc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_no7gk"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xp5l5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ljaf2"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mh8cs"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b2flu"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hhy3e"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hk4p7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cwcr5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ntlun"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w5tct"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qdth5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mps0u"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2jk45"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_phba7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y1msb"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pw68m"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3bet0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xgsqg"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h1i2e"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_770xf"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mwkky"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jij5a"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rvr3o"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kdb2k"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ecxn5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fckf6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0jut3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p2unm"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4nm6y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0lx5i"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oi27q"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4l35c"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fylkc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7tsu1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xphwq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eqgjr"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7aydq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hpp8l"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x8mwy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5m08p"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q8xab"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tt04n"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_15md3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_31qjs"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xe715"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7w75u"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3wgq3"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5vfat"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_unwht"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpeu4"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bqvh0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_osape"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ydygw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lh3ki"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f283y"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gshht"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pkx3i"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkat0"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q2u4c"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4yjdq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xce5i"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u37jc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hp17t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h4riq"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cmwjc"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_denrv"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ybma7"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtnry"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hd3ts"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1iexj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5dp1o"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lpff5"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cnvad"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kjv2t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l1dfw"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a6ceh"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_retei"]
+blend_mode = 1
+
+[node name="level_13_card_game" type="Node2D" unique_id=374030084]
+script = ExtResource("boot")
+metadata/gm_room = "card_game_2"
+metadata/gm_map = 1
+metadata/gm_lev = 13
+metadata/gm_minigame = 3
+metadata/gm_label = "CARD_GAME"
+metadata/gm_bg_colour = 0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=34080695]
+position = Vector2(1512, 1384)
+limit_left = 0
+limit_top = 0
+limit_right = 5000
+limit_bottom = 5000
+
+[node name="Bg0_background0" type="Node2D" parent="." unique_id=1225594946]
+z_index = -4080
+metadata/gm_foreground = false
+metadata/gm_background_slot = 0
+metadata/gm_hspeed = 1
+metadata/gm_vspeed = 2
+
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0" unique_id=714726876]
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_0" type="Sprite2D" parent="Bg0_background0" unique_id=614602424]
+position = Vector2(857, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_0" type="Sprite2D" parent="Bg0_background0" unique_id=1546092569]
+position = Vector2(1714, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_0" type="Sprite2D" parent="Bg0_background0" unique_id=1531266340]
+position = Vector2(2571, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_0" type="Sprite2D" parent="Bg0_background0" unique_id=1151842089]
+position = Vector2(3428, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_0" type="Sprite2D" parent="Bg0_background0" unique_id=1636265136]
+position = Vector2(4285, 0)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_1" type="Sprite2D" parent="Bg0_background0" unique_id=794940785]
+position = Vector2(0, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_1" type="Sprite2D" parent="Bg0_background0" unique_id=1237981435]
+position = Vector2(857, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_1" type="Sprite2D" parent="Bg0_background0" unique_id=1914822624]
+position = Vector2(1714, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_1" type="Sprite2D" parent="Bg0_background0" unique_id=264595301]
+position = Vector2(2571, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_1" type="Sprite2D" parent="Bg0_background0" unique_id=696868018]
+position = Vector2(3428, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_1" type="Sprite2D" parent="Bg0_background0" unique_id=1178783020]
+position = Vector2(4285, 573)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_2" type="Sprite2D" parent="Bg0_background0" unique_id=1275769197]
+position = Vector2(0, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_2" type="Sprite2D" parent="Bg0_background0" unique_id=477335793]
+position = Vector2(857, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_2" type="Sprite2D" parent="Bg0_background0" unique_id=1701923746]
+position = Vector2(1714, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_2" type="Sprite2D" parent="Bg0_background0" unique_id=861193688]
+position = Vector2(2571, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_2" type="Sprite2D" parent="Bg0_background0" unique_id=696972389]
+position = Vector2(3428, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_2" type="Sprite2D" parent="Bg0_background0" unique_id=427029417]
+position = Vector2(4285, 1146)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_3" type="Sprite2D" parent="Bg0_background0" unique_id=1814052721]
+position = Vector2(0, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_3" type="Sprite2D" parent="Bg0_background0" unique_id=103838556]
+position = Vector2(857, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_3" type="Sprite2D" parent="Bg0_background0" unique_id=1963691552]
+position = Vector2(1714, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_3" type="Sprite2D" parent="Bg0_background0" unique_id=399273032]
+position = Vector2(2571, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_3" type="Sprite2D" parent="Bg0_background0" unique_id=76416129]
+position = Vector2(3428, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_3" type="Sprite2D" parent="Bg0_background0" unique_id=1428745209]
+position = Vector2(4285, 1719)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_4" type="Sprite2D" parent="Bg0_background0" unique_id=1692468240]
+position = Vector2(0, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_4" type="Sprite2D" parent="Bg0_background0" unique_id=2055460313]
+position = Vector2(857, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_4" type="Sprite2D" parent="Bg0_background0" unique_id=852703432]
+position = Vector2(1714, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_4" type="Sprite2D" parent="Bg0_background0" unique_id=826930603]
+position = Vector2(2571, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_4" type="Sprite2D" parent="Bg0_background0" unique_id=1904084318]
+position = Vector2(3428, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_4" type="Sprite2D" parent="Bg0_background0" unique_id=624440499]
+position = Vector2(4285, 2292)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_5" type="Sprite2D" parent="Bg0_background0" unique_id=446514987]
+position = Vector2(0, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_5" type="Sprite2D" parent="Bg0_background0" unique_id=1276786932]
+position = Vector2(857, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_5" type="Sprite2D" parent="Bg0_background0" unique_id=1007986258]
+position = Vector2(1714, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_5" type="Sprite2D" parent="Bg0_background0" unique_id=1368016262]
+position = Vector2(2571, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_5" type="Sprite2D" parent="Bg0_background0" unique_id=1122234548]
+position = Vector2(3428, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_5" type="Sprite2D" parent="Bg0_background0" unique_id=1930495459]
+position = Vector2(4285, 2865)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_6" type="Sprite2D" parent="Bg0_background0" unique_id=773031241]
+position = Vector2(0, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_6" type="Sprite2D" parent="Bg0_background0" unique_id=2039495276]
+position = Vector2(857, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_6" type="Sprite2D" parent="Bg0_background0" unique_id=391964143]
+position = Vector2(1714, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_6" type="Sprite2D" parent="Bg0_background0" unique_id=1329941461]
+position = Vector2(2571, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_6" type="Sprite2D" parent="Bg0_background0" unique_id=1192421830]
+position = Vector2(3428, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_6" type="Sprite2D" parent="Bg0_background0" unique_id=1460397910]
+position = Vector2(4285, 3438)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_7" type="Sprite2D" parent="Bg0_background0" unique_id=1784349994]
+position = Vector2(0, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_7" type="Sprite2D" parent="Bg0_background0" unique_id=1270937956]
+position = Vector2(857, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_7" type="Sprite2D" parent="Bg0_background0" unique_id=2141503654]
+position = Vector2(1714, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_7" type="Sprite2D" parent="Bg0_background0" unique_id=487967653]
+position = Vector2(2571, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_7" type="Sprite2D" parent="Bg0_background0" unique_id=1007735835]
+position = Vector2(3428, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_7" type="Sprite2D" parent="Bg0_background0" unique_id=2041669792]
+position = Vector2(4285, 4011)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t0_8" type="Sprite2D" parent="Bg0_background0" unique_id=1347667666]
+position = Vector2(0, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t1_8" type="Sprite2D" parent="Bg0_background0" unique_id=215619879]
+position = Vector2(857, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t2_8" type="Sprite2D" parent="Bg0_background0" unique_id=1577894128]
+position = Vector2(1714, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t3_8" type="Sprite2D" parent="Bg0_background0" unique_id=1319989861]
+position = Vector2(2571, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t4_8" type="Sprite2D" parent="Bg0_background0" unique_id=167905223]
+position = Vector2(3428, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="t5_8" type="Sprite2D" parent="Bg0_background0" unique_id=1787872048]
+position = Vector2(4285, 4584)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Objects_0" type="Node2D" parent="." unique_id=792817329]
+metadata/gm_depth = 0
+
+[node name="o_cardgame_2_0" type="Sprite2D" parent="Objects_0" unique_id=166119425]
+position = Vector2(16, 16)
+metadata/gm_object = "o_cardgame_2"
+metadata/gm_object_index = 391
+metadata/gm_id = 100586
+metadata/gm_visible = true
+metadata/gm_sprite_index = -1
+metadata/gm_preview_only = false
+metadata/gm_position = Vector2(16, 16)
+metadata/gm_empty_draw_event = false
+
+[node name="EditorMarker" type="Polygon2D" parent="Objects_0/o_cardgame_2_0" unique_id=1180696272]
+z_index = 4095
+z_as_relative = false
+color = Color(1, 0.55, 0.1, 0.9)
+polygon = PackedVector2Array(0, -8, 8, 0, 0, 8, -8, 0)
+metadata/editor_marker = true
+
+[node name="EditorLabel" type="Label" parent="Objects_0/o_cardgame_2_0" unique_id=166885468]
+z_index = 4095
+z_as_relative = false
+offset_left = 12.0
+offset_top = 5000.0
+theme_override_font_sizes/font_size = 12
+text = "o_cardgame_2 [100586]"
+
+[node name="EditorPreview" type="Node2D" parent="." unique_id=684386362]
+metadata/gm_preview_only = true
+
+[node name="CapturedLevel" type="Node2D" parent="." unique_id=1897993340]
+script = ExtResource("3_rc75b")
+source_keys = Array[String](["placed:100586", "placed:100586/269:0", "placed:100586/392:0", "placed:100586/392:1", "placed:100586/392:2", "placed:100586/392:3"])
+capture_frame = 300
+apply_edits = true
+
+[node name="RoomColor" type="Polygon2D" parent="CapturedLevel" unique_id=1858021300]
+z_index = -4096
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(1000, 1000, 2024, 1000, 2024, 1768, 1000, 1768)
+
+[node name="Layer_71168952185" type="Node2D" parent="CapturedLevel" unique_id=1250663556]
+z_index = -4095
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@69" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=8376168]
+position = Vector2(301, 602)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@70" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=2106632971]
+position = Vector2(1158, 602)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@71" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=180432794]
+position = Vector2(2015, 602)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@72" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=1675967908]
+position = Vector2(301, 1175)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@73" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=659375156]
+position = Vector2(1158, 1175)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@74" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=1253805931]
+position = Vector2(2015, 1175)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@75" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=1284875985]
+position = Vector2(301, 1748)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@76" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=1143042342]
+position = Vector2(1158, 1748)
+texture = ExtResource("t1")
+centered = false
+
+[node name="@Sprite2D@77" type="Sprite2D" parent="CapturedLevel/Layer_71168952185" unique_id=1159675812]
+position = Vector2(2015, 1748)
+texture = ExtResource("t1")
+centered = false
+
+[node name="Layer_191629363116" type="Node2D" parent="CapturedLevel" unique_id=264229043]
+z_index = -1217
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@78" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1318511502]
+modulate = Color(1, 1, 1, 0.009455982)
+material = SubResource("CanvasItemMaterial_3rqoo")
+position = Vector2(1212.4076, 1377.1315)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@79" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=771981608]
+modulate = Color(1, 1, 1, 0.00018335937)
+material = SubResource("CanvasItemMaterial_bwox4")
+position = Vector2(1229.9097, 1348.184)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@80" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1973818577]
+modulate = Color(1, 1, 1, 0.0318712)
+material = SubResource("CanvasItemMaterial_1gwe8")
+position = Vector2(1393.5419, 1336.8616)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@81" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1331743128]
+modulate = Color(1, 1, 1, 0.04127782)
+material = SubResource("CanvasItemMaterial_g3ty2")
+position = Vector2(1596.4537, 1375.9037)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@82" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2097598262]
+modulate = Color(1, 1, 1, 0.0576448)
+material = SubResource("CanvasItemMaterial_6api6")
+position = Vector2(1209.4136, 1368.2554)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@83" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=845038208]
+modulate = Color(1, 1, 1, 0.050359134)
+material = SubResource("CanvasItemMaterial_0ynbk")
+position = Vector2(1238.7654, 1364.5991)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@84" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1201375763]
+modulate = Color(1, 1, 1, 0.03502594)
+material = SubResource("CanvasItemMaterial_xptsq")
+position = Vector2(1420.1595, 1413.6858)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@85" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1009983548]
+modulate = Color(1, 1, 1, 0.052605245)
+material = SubResource("CanvasItemMaterial_oueej")
+position = Vector2(1796.6475, 1350.1318)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@86" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1551678751]
+modulate = Color(1, 1, 1, 0.08701843)
+material = SubResource("CanvasItemMaterial_rb0fl")
+position = Vector2(1375.2386, 1370.8221)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@87" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1550147365]
+modulate = Color(1, 1, 1, 0.07235616)
+material = SubResource("CanvasItemMaterial_un8ge")
+position = Vector2(1816.3607, 1366.0159)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@88" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=141806402]
+modulate = Color(1, 1, 1, 0.03038968)
+material = SubResource("CanvasItemMaterial_as1xi")
+position = Vector2(1233.8552, 1375.1416)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@89" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=816460997]
+modulate = Color(1, 1, 1, 0.0011446057)
+material = SubResource("CanvasItemMaterial_aknwl")
+position = Vector2(1385.976, 1362.0721)
+scale = Vector2(0.05173579, 0.05173579)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@90" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=719172723]
+modulate = Color(1, 1, 1, 0.07108819)
+material = SubResource("CanvasItemMaterial_yh4kt")
+position = Vector2(1639.2356, 1359.4443)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@91" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=897370124]
+modulate = Color(1, 1, 1, 0.11752208)
+material = SubResource("CanvasItemMaterial_2mns2")
+position = Vector2(1426.3297, 1383.7856)
+scale = Vector2(0.035391405, 0.035391405)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@92" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1056372592]
+modulate = Color(1, 1, 1, 0.019274244)
+material = SubResource("CanvasItemMaterial_kargl")
+position = Vector2(1610.1958, 1374.6638)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@93" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1693426069]
+modulate = Color(1, 1, 1, 0.10674058)
+material = SubResource("CanvasItemMaterial_bcx31")
+position = Vector2(1778.5248, 1386.7307)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@94" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1408931953]
+modulate = Color(1, 1, 1, 0.1477156)
+material = SubResource("CanvasItemMaterial_mlh0s")
+position = Vector2(1612.8263, 1375.0295)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@95" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1291249916]
+modulate = Color(1, 1, 1, 0.051177632)
+material = SubResource("CanvasItemMaterial_d2n3s")
+position = Vector2(1786.5603, 1337.8428)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@96" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=90094256]
+modulate = Color(1, 1, 1, 0.15118517)
+material = SubResource("CanvasItemMaterial_jshyl")
+position = Vector2(1416.7429, 1402.3971)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@97" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=900767994]
+modulate = Color(1, 1, 1, 0.16204156)
+material = SubResource("CanvasItemMaterial_oakf7")
+position = Vector2(1604.455, 1360.423)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@98" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=135412902]
+modulate = Color(1, 1, 1, 0.10192581)
+material = SubResource("CanvasItemMaterial_qtbcd")
+position = Vector2(1631.022, 1358.7953)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@99" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=434572936]
+modulate = Color(1, 1, 1, 0.018640518)
+material = SubResource("CanvasItemMaterial_oegwn")
+position = Vector2(1236.0876, 1423.923)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@100" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1736554889]
+modulate = Color(1, 1, 1, 0.01772587)
+material = SubResource("CanvasItemMaterial_7dj4y")
+position = Vector2(1812.7708, 1385.9746)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@101" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=24343345]
+modulate = Color(1, 1, 1, 0.16980591)
+material = SubResource("CanvasItemMaterial_iah77")
+position = Vector2(1391.2972, 1403.8737)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@102" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1564032712]
+modulate = Color(1, 1, 1, 0.12116489)
+material = SubResource("CanvasItemMaterial_cfw8u")
+position = Vector2(1584.6593, 1399.4974)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@103" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1710775408]
+modulate = Color(1, 1, 1, 0.06758428)
+material = SubResource("CanvasItemMaterial_apsoo")
+position = Vector2(1231.193, 1351.8123)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@104" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=725233302]
+modulate = Color(1, 1, 1, 0.05036541)
+material = SubResource("CanvasItemMaterial_v3wnn")
+position = Vector2(1432.3242, 1400.1774)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@105" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=344477121]
+modulate = Color(1, 1, 1, 0.1974129)
+material = SubResource("CanvasItemMaterial_si8ra")
+position = Vector2(1812.598, 1386.8134)
+scale = Vector2(0.05974611, 0.05974611)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@106" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1033084414]
+modulate = Color(1, 1, 1, 0.04434081)
+material = SubResource("CanvasItemMaterial_68od0")
+position = Vector2(1217.8075, 1376.8376)
+scale = Vector2(0.08805837, 0.08805837)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@107" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1699327610]
+modulate = Color(1, 1, 1, 0.12316929)
+material = SubResource("CanvasItemMaterial_et2fu")
+position = Vector2(1792.3317, 1396.116)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@108" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1202017598]
+modulate = Color(1, 1, 1, 0.18583661)
+material = SubResource("CanvasItemMaterial_xgqs1")
+position = Vector2(1425.2777, 1411.2195)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@109" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1463940322]
+modulate = Color(1, 1, 1, 0.18098184)
+material = SubResource("CanvasItemMaterial_ujxc0")
+position = Vector2(1616.8802, 1338.3104)
+scale = Vector2(0.0021009324, 0.0021009324)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@110" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=351157846]
+modulate = Color(1, 1, 1, 0.2150438)
+material = SubResource("CanvasItemMaterial_oalkh")
+position = Vector2(1794.2966, 1369.1747)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@111" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=212003274]
+modulate = Color(1, 1, 1, 0.034057017)
+material = SubResource("CanvasItemMaterial_8f511")
+position = Vector2(1425.3068, 1354.6393)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@112" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1766660104]
+modulate = Color(1, 1, 1, 0.061962627)
+material = SubResource("CanvasItemMaterial_2jepw")
+position = Vector2(1635.5175, 1407.7218)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@113" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2064105582]
+modulate = Color(1, 1, 1, 0.19307716)
+material = SubResource("CanvasItemMaterial_bqca3")
+position = Vector2(1841.5038, 1377.8083)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@114" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1993239702]
+modulate = Color(1, 1, 1, 0.105853096)
+material = SubResource("CanvasItemMaterial_wtnj6")
+position = Vector2(1816.0198, 1350.9194)
+scale = Vector2(0.06989311, 0.06989311)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@115" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1545958774]
+modulate = Color(1, 1, 1, 0.10184498)
+material = SubResource("CanvasItemMaterial_6pkv6")
+position = Vector2(1406.3461, 1401.8392)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@116" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1941336008]
+modulate = Color(1, 1, 1, 0.25773606)
+material = SubResource("CanvasItemMaterial_05jat")
+position = Vector2(1597.0618, 1369.047)
+scale = Vector2(0.11050157, 0.11050157)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@117" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1913210132]
+modulate = Color(1, 1, 1, 0.21852706)
+material = SubResource("CanvasItemMaterial_7ovc7")
+position = Vector2(1182.4766, 1385.5793)
+scale = Vector2(0.06102862, 0.06102862)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@118" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=559636640]
+modulate = Color(1, 1, 1, 0.24285436)
+material = SubResource("CanvasItemMaterial_gh5ft")
+position = Vector2(1436.1566, 1366.2723)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@119" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=546750441]
+modulate = Color(1, 1, 1, 0.1303027)
+material = SubResource("CanvasItemMaterial_nmmdc")
+position = Vector2(1633.5007, 1331.0636)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@120" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1576121563]
+modulate = Color(1, 1, 1, 0.01765288)
+material = SubResource("CanvasItemMaterial_vxvml")
+position = Vector2(1834.303, 1398.0925)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@121" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1117742473]
+modulate = Color(1, 1, 1, 0.20542394)
+material = SubResource("CanvasItemMaterial_ci7qf")
+position = Vector2(1428.7296, 1349.5039)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@122" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1761724254]
+modulate = Color(1, 1, 1, 0.12771486)
+material = SubResource("CanvasItemMaterial_8mmvy")
+position = Vector2(1812.5728, 1388.3682)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@123" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1991004284]
+modulate = Color(1, 1, 1, 0.13539521)
+material = SubResource("CanvasItemMaterial_06wet")
+position = Vector2(1229.5258, 1367.675)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@124" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=764843753]
+modulate = Color(1, 1, 1, 0.28929007)
+material = SubResource("CanvasItemMaterial_1fnxu")
+position = Vector2(1402.7611, 1365.2823)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@125" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1716130626]
+modulate = Color(1, 1, 1, 0.26181015)
+material = SubResource("CanvasItemMaterial_3ew2t")
+position = Vector2(1606.1919, 1364.594)
+scale = Vector2(0.09582882, 0.09582882)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@126" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1026157064]
+modulate = Color(1, 1, 1, 0.17219855)
+material = SubResource("CanvasItemMaterial_21rc5")
+position = Vector2(1401.0957, 1360.9279)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@127" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=317914485]
+modulate = Color(1, 1, 1, 0.1768924)
+material = SubResource("CanvasItemMaterial_t5fr0")
+position = Vector2(1614.3909, 1383.8442)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@128" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=290329839]
+modulate = Color(1, 1, 1, 0.21919218)
+material = SubResource("CanvasItemMaterial_byfao")
+position = Vector2(1186.8522, 1357.844)
+scale = Vector2(0.10149798, 0.10149798)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@129" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2107686416]
+modulate = Color(1, 1, 1, 0.11325723)
+material = SubResource("CanvasItemMaterial_52j0k")
+position = Vector2(1389.055, 1348.7296)
+scale = Vector2(0.02132251, 0.02132251)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@130" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1402603660]
+modulate = Color(1, 1, 1, 0.15535583)
+material = SubResource("CanvasItemMaterial_kjswc")
+position = Vector2(1227.2168, 1386.2574)
+scale = Vector2(0.034017958, 0.034017958)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@131" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=626157888]
+modulate = Color(1, 1, 1, 0.22706051)
+material = SubResource("CanvasItemMaterial_v14xs")
+position = Vector2(1414.0509, 1368.3877)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@132" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=956671788]
+modulate = Color(1, 1, 1, 0.07636882)
+material = SubResource("CanvasItemMaterial_lyerv")
+position = Vector2(1219.9735, 1403.6392)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@133" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1441016082]
+modulate = Color(1, 1, 1, 0.16397527)
+material = SubResource("CanvasItemMaterial_x7y1i")
+position = Vector2(1846.7095, 1377.9347)
+scale = Vector2(0.022002194, 0.022002194)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@134" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1741430396]
+modulate = Color(1, 1, 1, 0.13275886)
+material = SubResource("CanvasItemMaterial_as445")
+position = Vector2(1387.2828, 1366.0514)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@135" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1338295212]
+modulate = Color(1, 1, 1, 0.30501288)
+material = SubResource("CanvasItemMaterial_hrsd0")
+position = Vector2(1616.2831, 1372.0901)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@136" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=800753273]
+modulate = Color(1, 1, 1, 0.24270423)
+material = SubResource("CanvasItemMaterial_pyno6")
+position = Vector2(1209.406, 1381.2828)
+scale = Vector2(0.057755165, 0.057755165)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@137" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1786358398]
+modulate = Color(1, 1, 1, 0.2169474)
+material = SubResource("CanvasItemMaterial_0cljc")
+position = Vector2(1597.0706, 1351.7251)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@138" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1080466940]
+modulate = Color(1, 1, 1, 0.18519786)
+material = SubResource("CanvasItemMaterial_xx7fr")
+position = Vector2(1170.4858, 1407.4896)
+scale = Vector2(0.07970022, 0.07970022)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@139" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=391533428]
+modulate = Color(1, 1, 1, 0.11472964)
+material = SubResource("CanvasItemMaterial_aqwf3")
+position = Vector2(1601.7808, 1394.1993)
+scale = Vector2(0.0461481, 0.0461481)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@140" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=651792235]
+modulate = Color(1, 1, 1, 0.17509729)
+material = SubResource("CanvasItemMaterial_a0evw")
+position = Vector2(1791.6122, 1335.0171)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@141" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2082677490]
+modulate = Color(1, 1, 1, 0.34266788)
+material = SubResource("CanvasItemMaterial_1qkkx")
+position = Vector2(1221.781, 1389.6669)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@142" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=884950559]
+modulate = Color(1, 1, 1, 0.19722766)
+material = SubResource("CanvasItemMaterial_ga3ir")
+position = Vector2(1388.1544, 1341.1554)
+scale = Vector2(0.17603417, 0.17603417)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@143" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1371845149]
+modulate = Color(1, 1, 1, 0.11147794)
+material = SubResource("CanvasItemMaterial_nla1b")
+position = Vector2(1810.3934, 1378.389)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@144" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1131622017]
+modulate = Color(1, 1, 1, 0.2944044)
+material = SubResource("CanvasItemMaterial_myrrp")
+position = Vector2(1411.8945, 1358.4766)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@145" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1411256951]
+modulate = Color(1, 1, 1, 0.2797565)
+material = SubResource("CanvasItemMaterial_uhsc5")
+position = Vector2(1623.771, 1417.8517)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@146" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1106986175]
+modulate = Color(1, 1, 1, 0.3715099)
+material = SubResource("CanvasItemMaterial_jaj4v")
+position = Vector2(1821.9386, 1385.2821)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@147" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1963468801]
+modulate = Color(1, 1, 1, 0.16809647)
+material = SubResource("CanvasItemMaterial_lx8eu")
+position = Vector2(1200.9052, 1370.2267)
+scale = Vector2(0.0019289633, 0.0019289633)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@148" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=527668550]
+modulate = Color(1, 1, 1, 0.30143243)
+material = SubResource("CanvasItemMaterial_drb6y")
+position = Vector2(1418.7783, 1397.8734)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@149" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1891100832]
+modulate = Color(1, 1, 1, 0.30232033)
+material = SubResource("CanvasItemMaterial_r21ln")
+position = Vector2(1615.5204, 1385.1588)
+scale = Vector2(0.022129908, 0.022129908)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@150" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1207152557]
+modulate = Color(1, 1, 1, 0.022616034)
+material = SubResource("CanvasItemMaterial_qfnnp")
+position = Vector2(1796.8037, 1366.4283)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@151" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1391406079]
+modulate = Color(1, 1, 1, 0.300144)
+material = SubResource("CanvasItemMaterial_dq71y")
+position = Vector2(1187.4806, 1394.2347)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@152" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=312580427]
+modulate = Color(1, 1, 1, 0.39774698)
+material = SubResource("CanvasItemMaterial_pkhjo")
+position = Vector2(1428.8918, 1344.8442)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@153" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1586969514]
+modulate = Color(1, 1, 1, 0.04367985)
+material = SubResource("CanvasItemMaterial_18b8g")
+position = Vector2(1622.037, 1418.6409)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@154" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1005561290]
+modulate = Color(1, 1, 1, 0.3772942)
+material = SubResource("CanvasItemMaterial_gucg0")
+position = Vector2(1800.99, 1371.1322)
+scale = Vector2(0.0364847, 0.0364847)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@155" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=567193478]
+modulate = Color(1, 1, 1, 0.22686543)
+material = SubResource("CanvasItemMaterial_d2tqa")
+position = Vector2(1239.6714, 1382.357)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@156" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2063120369]
+modulate = Color(1, 1, 1, 0.37242994)
+material = SubResource("CanvasItemMaterial_0tj48")
+position = Vector2(1400.8734, 1385.3903)
+scale = Vector2(0.15314375, 0.15314375)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@157" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1827929628]
+modulate = Color(1, 1, 1, 0.051996928)
+material = SubResource("CanvasItemMaterial_22q0k")
+position = Vector2(1645.1421, 1371.8986)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@158" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1546445727]
+modulate = Color(1, 1, 1, 0.07660161)
+material = SubResource("CanvasItemMaterial_paktk")
+position = Vector2(1814.3237, 1339.8026)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@159" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=779104146]
+modulate = Color(1, 1, 1, 0.30374706)
+material = SubResource("CanvasItemMaterial_agsxf")
+position = Vector2(1419.149, 1382.0117)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@160" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=264887999]
+modulate = Color(1, 1, 1, 0.27025247)
+material = SubResource("CanvasItemMaterial_6i60h")
+position = Vector2(1576.5752, 1330.7517)
+scale = Vector2(0.19527288, 0.19527288)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@161" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=338231061]
+modulate = Color(1, 1, 1, 0.3558256)
+material = SubResource("CanvasItemMaterial_m5yct")
+position = Vector2(1190.7517, 1360.5803)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@162" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=766188592]
+modulate = Color(1, 1, 1, 0.20033932)
+material = SubResource("CanvasItemMaterial_khg3h")
+position = Vector2(1413.9315, 1358.6583)
+scale = Vector2(0.16520676, 0.16520676)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@163" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1426959218]
+modulate = Color(1, 1, 1, 0.40096408)
+material = SubResource("CanvasItemMaterial_yekse")
+position = Vector2(1578.9956, 1360.3271)
+scale = Vector2(0.1596653, 0.1596653)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@164" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2105773610]
+modulate = Color(1, 1, 1, 0.33029717)
+material = SubResource("CanvasItemMaterial_0l5y0")
+position = Vector2(1843.2008, 1380.196)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@165" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=137890419]
+modulate = Color(1, 1, 1, 0.21853304)
+material = SubResource("CanvasItemMaterial_mfsub")
+position = Vector2(1191.5178, 1358.2971)
+scale = Vector2(0.0107384855, 0.0107384855)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@166" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1944289076]
+modulate = Color(1, 1, 1, 0.28060097)
+material = SubResource("CanvasItemMaterial_cnxg8")
+position = Vector2(1399.7566, 1375.6886)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@167" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1318900347]
+modulate = Color(1, 1, 1, 0.12086275)
+material = SubResource("CanvasItemMaterial_7iiti")
+position = Vector2(1814.4008, 1397.4485)
+scale = Vector2(0.014523867, 0.014523867)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@168" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1360151214]
+modulate = Color(1, 1, 1, 0.30062217)
+material = SubResource("CanvasItemMaterial_6nfsl")
+position = Vector2(1215.3734, 1377.3717)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@169" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1768232189]
+modulate = Color(1, 1, 1, 0.105965085)
+material = SubResource("CanvasItemMaterial_oydok")
+position = Vector2(1601.1995, 1408.9615)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@170" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=285716046]
+modulate = Color(1, 1, 1, 0.39955476)
+material = SubResource("CanvasItemMaterial_ngnbr")
+position = Vector2(1821.9725, 1370.0183)
+scale = Vector2(0.11398818, 0.11398818)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@171" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1603527358]
+modulate = Color(1, 1, 1, 0.30219215)
+material = SubResource("CanvasItemMaterial_rlo8g")
+position = Vector2(1242.6096, 1364.1106)
+scale = Vector2(0.07274753, 0.07274753)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@172" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1634574716]
+modulate = Color(1, 1, 1, 0.41346815)
+material = SubResource("CanvasItemMaterial_xm53j")
+position = Vector2(1402.5172, 1390.9102)
+scale = Vector2(0.067409515, 0.067409515)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@173" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1945234331]
+modulate = Color(1, 1, 1, 0.41365233)
+material = SubResource("CanvasItemMaterial_htjdr")
+position = Vector2(1558.7466, 1376.8058)
+scale = Vector2(0.21895202, 0.21895202)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@174" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1362252797]
+modulate = Color(1, 1, 1, 0.36394182)
+material = SubResource("CanvasItemMaterial_0erdi")
+position = Vector2(1803.0643, 1358.8445)
+scale = Vector2(0.1633712, 0.1633712)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@175" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=40149745]
+modulate = Color(1, 1, 1, 0.46699888)
+material = SubResource("CanvasItemMaterial_u25bl")
+position = Vector2(1205.3097, 1377.3674)
+scale = Vector2(0.11104605, 0.11104605)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@176" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1307279145]
+modulate = Color(1, 1, 1, 0.26623952)
+material = SubResource("CanvasItemMaterial_wanvt")
+position = Vector2(1406.9769, 1367.6631)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@177" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1991438472]
+modulate = Color(1, 1, 1, 0.071790345)
+material = SubResource("CanvasItemMaterial_gg8dv")
+position = Vector2(1575.8818, 1365.4056)
+scale = Vector2(0.02524956, 0.02524956)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@178" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=582420141]
+modulate = Color(1, 1, 1, 0.26110235)
+material = SubResource("CanvasItemMaterial_h8p4q")
+position = Vector2(1807.2429, 1367.8323)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@179" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1896579592]
+modulate = Color(1, 1, 1, 0.35067412)
+material = SubResource("CanvasItemMaterial_nvk23")
+position = Vector2(1201.2682, 1352.317)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@180" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1713363405]
+modulate = Color(1, 1, 1, 0.16722108)
+material = SubResource("CanvasItemMaterial_rb2nh")
+position = Vector2(1402.5166, 1376.7292)
+scale = Vector2(0.049757678, 0.049757678)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@181" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1373090297]
+modulate = Color(1, 1, 1, 0.3747265)
+material = SubResource("CanvasItemMaterial_icxb7")
+position = Vector2(1635.6083, 1410.4237)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@182" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=995489533]
+modulate = Color(1, 1, 1, 0.21338575)
+material = SubResource("CanvasItemMaterial_krivo")
+position = Vector2(1821.6923, 1356.5933)
+scale = Vector2(0.1498791, 0.1498791)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@183" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=297904422]
+modulate = Color(1, 1, 1, 0.40084293)
+material = SubResource("CanvasItemMaterial_gy4ax")
+position = Vector2(1203.2867, 1366.3715)
+scale = Vector2(0.008073654, 0.008073654)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@184" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=391554774]
+modulate = Color(1, 1, 1, 0.47138315)
+material = SubResource("CanvasItemMaterial_wroy1")
+position = Vector2(1393.8257, 1384.587)
+scale = Vector2(0.17190386, 0.17190386)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@185" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1480977847]
+modulate = Color(1, 1, 1, 0.10146917)
+material = SubResource("CanvasItemMaterial_4ecje")
+position = Vector2(1595.7595, 1374.4651)
+scale = Vector2(0.08621908, 0.08621908)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@186" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=829327270]
+modulate = Color(1, 1, 1, 0.39664236)
+material = SubResource("CanvasItemMaterial_tiqqn")
+position = Vector2(1811.6293, 1358.6405)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@187" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=875117262]
+modulate = Color(1, 1, 1, 0.4796954)
+material = SubResource("CanvasItemMaterial_cdxo5")
+position = Vector2(1189.6699, 1369.0145)
+scale = Vector2(0.1519097, 0.1519097)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@188" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1022079652]
+modulate = Color(1, 1, 1, 0.4736854)
+material = SubResource("CanvasItemMaterial_3qjob")
+position = Vector2(1414.1685, 1373.6364)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@189" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1868215219]
+modulate = Color(1, 1, 1, 0.39045304)
+material = SubResource("CanvasItemMaterial_ypl4a")
+position = Vector2(1597.077, 1377.5846)
+scale = Vector2(0.16094953, 0.16094953)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@190" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1668860005]
+modulate = Color(1, 1, 1, 0.3733669)
+material = SubResource("CanvasItemMaterial_ta1rl")
+position = Vector2(1806.5945, 1356.7576)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@191" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1003009004]
+modulate = Color(1, 1, 1, 0.48598543)
+material = SubResource("CanvasItemMaterial_d47dc")
+position = Vector2(1232.9988, 1394.31)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@192" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=247262654]
+modulate = Color(1, 1, 1, 0.28444642)
+material = SubResource("CanvasItemMaterial_4v3qr")
+position = Vector2(1422.0999, 1360.5111)
+scale = Vector2(0.20548877, 0.20548877)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@193" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=843477435]
+modulate = Color(1, 1, 1, 0.32286435)
+material = SubResource("CanvasItemMaterial_jh6v5")
+position = Vector2(1608.1306, 1398.246)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@194" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=875269280]
+modulate = Color(1, 1, 1, 0.41648388)
+material = SubResource("CanvasItemMaterial_eh8hn")
+position = Vector2(1826.6757, 1363.8809)
+scale = Vector2(0.044574544, 0.044574544)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@195" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1662082833]
+modulate = Color(1, 1, 1, 0.28114632)
+material = SubResource("CanvasItemMaterial_u2pec")
+position = Vector2(1219.6356, 1367.294)
+scale = Vector2(0.23825149, 0.23825149)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@196" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2013278513]
+modulate = Color(1, 1, 1, 0.24367802)
+material = SubResource("CanvasItemMaterial_cfam3")
+position = Vector2(1408.7902, 1350.15)
+scale = Vector2(0.22379324, 0.22379324)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@197" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=895286731]
+modulate = Color(1, 1, 1, 0.45661092)
+material = SubResource("CanvasItemMaterial_py71o")
+position = Vector2(1608.8313, 1383.3104)
+scale = Vector2(0.0997786, 0.0997786)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@198" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1788640696]
+modulate = Color(1, 1, 1, 0.46112508)
+material = SubResource("CanvasItemMaterial_ew4ib")
+position = Vector2(1816.5104, 1371.7755)
+scale = Vector2(0.0033376522, 0.0033376522)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@199" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2087815244]
+modulate = Color(1, 1, 1, 0.40614736)
+material = SubResource("CanvasItemMaterial_ix7oc")
+position = Vector2(1201.7704, 1356.8062)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@200" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1532791375]
+modulate = Color(1, 1, 1, 0.11370505)
+material = SubResource("CanvasItemMaterial_hwfsb")
+position = Vector2(1378.8145, 1390.549)
+scale = Vector2(0.05100595, 0.05100595)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@201" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1919875260]
+modulate = Color(1, 1, 1, 0.45822453)
+material = SubResource("CanvasItemMaterial_t7pk8")
+position = Vector2(1579.1069, 1353.2682)
+scale = Vector2(0.2262118, 0.2262118)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@202" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1309341634]
+modulate = Color(1, 1, 1, 0.38947347)
+material = SubResource("CanvasItemMaterial_2mla2")
+position = Vector2(1797.7145, 1375.6396)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@203" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1615779194]
+modulate = Color(1, 1, 1, 0.4014512)
+material = SubResource("CanvasItemMaterial_at3kg")
+position = Vector2(1221.2288, 1365.8881)
+scale = Vector2(0.082046255, 0.082046255)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@204" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=227182115]
+modulate = Color(1, 1, 1, 0.09159671)
+material = SubResource("CanvasItemMaterial_xol7v")
+position = Vector2(1408.8945, 1405.6991)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@205" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2139662081]
+modulate = Color(1, 1, 1, 0.31939995)
+material = SubResource("CanvasItemMaterial_510fj")
+position = Vector2(1628.9514, 1369.3184)
+scale = Vector2(0.09950096, 0.09950096)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@206" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=596523608]
+modulate = Color(1, 1, 1, 0.49435917)
+material = SubResource("CanvasItemMaterial_3ak2h")
+position = Vector2(1797.5283, 1380.1082)
+scale = Vector2(0.14672588, 0.14672588)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@207" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=415134317]
+modulate = Color(1, 1, 1, 0.39601895)
+material = SubResource("CanvasItemMaterial_pmb4f")
+position = Vector2(1223.9113, 1374.2692)
+scale = Vector2(0.2683659, 0.2683659)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@208" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2092684249]
+modulate = Color(1, 1, 1, 0.21162917)
+material = SubResource("CanvasItemMaterial_vu7eg")
+position = Vector2(1404.4161, 1396.011)
+scale = Vector2(0.25156423, 0.25156423)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@209" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=840616734]
+modulate = Color(1, 1, 1, 0.549955)
+material = SubResource("CanvasItemMaterial_urw2b")
+position = Vector2(1611.1493, 1378.2246)
+scale = Vector2(0.11071426, 0.11071426)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@210" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1738039714]
+modulate = Color(1, 1, 1, 0.41844285)
+material = SubResource("CanvasItemMaterial_thcah")
+position = Vector2(1777.3165, 1342.354)
+scale = Vector2(0.12857005, 0.12857005)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@211" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1716065447]
+modulate = Color(1, 1, 1, 0.5013559)
+material = SubResource("CanvasItemMaterial_l8253")
+position = Vector2(1208.1578, 1404.887)
+scale = Vector2(0.035272073, 0.035272073)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@212" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=194115818]
+modulate = Color(1, 1, 1, 0.37520212)
+material = SubResource("CanvasItemMaterial_2hj5y")
+position = Vector2(1419.0953, 1352.3894)
+scale = Vector2(0.25854212, 0.25854212)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@213" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=986897706]
+modulate = Color(1, 1, 1, 0.34247115)
+material = SubResource("CanvasItemMaterial_muqyf")
+position = Vector2(1600.0919, 1398.0461)
+scale = Vector2(0.17913014, 0.17913014)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@214" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1594786869]
+modulate = Color(1, 1, 1, 0.3335718)
+material = SubResource("CanvasItemMaterial_n8weq")
+position = Vector2(1800.5292, 1386.6349)
+scale = Vector2(0.16822928, 0.16822928)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@215" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=481033343]
+modulate = Color(1, 1, 1, 0.37503782)
+material = SubResource("CanvasItemMaterial_v20yn")
+position = Vector2(1199.681, 1395.0779)
+scale = Vector2(0.1366057, 0.1366057)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@216" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=636746674]
+modulate = Color(1, 1, 1, 0.43656453)
+material = SubResource("CanvasItemMaterial_yghm4")
+position = Vector2(1421.8887, 1358.9525)
+scale = Vector2(0.19962077, 0.19962077)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@217" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1925186813]
+modulate = Color(1, 1, 1, 0.37021095)
+material = SubResource("CanvasItemMaterial_3sye1")
+position = Vector2(1583.7009, 1383.3533)
+scale = Vector2(0.14403228, 0.14403228)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@218" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1823255890]
+modulate = Color(1, 1, 1, 0.5373265)
+material = SubResource("CanvasItemMaterial_wp78u")
+position = Vector2(1795.4055, 1371.9099)
+scale = Vector2(0.16729905, 0.16729905)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@219" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=677540939]
+modulate = Color(1, 1, 1, 0.54136467)
+material = SubResource("CanvasItemMaterial_t7ans")
+position = Vector2(1205.0021, 1382.9154)
+scale = Vector2(0.18539904, 0.18539904)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@220" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=924931139]
+modulate = Color(1, 1, 1, 0.5754362)
+material = SubResource("CanvasItemMaterial_4s66o")
+position = Vector2(1405.2583, 1337.4515)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@221" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=456484309]
+modulate = Color(1, 1, 1, 0.5420703)
+material = SubResource("CanvasItemMaterial_angoq")
+position = Vector2(1623.35, 1395.2955)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@222" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1430142158]
+modulate = Color(1, 1, 1, 0.56115675)
+material = SubResource("CanvasItemMaterial_l07li")
+position = Vector2(1834.0471, 1372.9288)
+scale = Vector2(0.006088792, 0.006088792)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@223" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1004322833]
+modulate = Color(1, 1, 1, 0.21348959)
+material = SubResource("CanvasItemMaterial_pitxc")
+position = Vector2(1221.8984, 1355.6564)
+scale = Vector2(0.23358965, 0.23358965)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@224" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=497212771]
+modulate = Color(1, 1, 1, 0.44113538)
+material = SubResource("CanvasItemMaterial_1er6j")
+position = Vector2(1411.3561, 1386.6284)
+scale = Vector2(0.12675844, 0.12675844)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@225" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1600206902]
+modulate = Color(1, 1, 1, 0.5691164)
+material = SubResource("CanvasItemMaterial_vpuyd")
+position = Vector2(1613.2754, 1360.707)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@226" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=405771390]
+modulate = Color(1, 1, 1, 0.5065601)
+material = SubResource("CanvasItemMaterial_shdvc")
+position = Vector2(1806.7611, 1334.5293)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@227" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=872803861]
+modulate = Color(1, 1, 1, 0.22570625)
+material = SubResource("CanvasItemMaterial_w6ms5")
+position = Vector2(1226.3217, 1378.4442)
+scale = Vector2(0.11425123, 0.11425123)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@228" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1041409586]
+modulate = Color(1, 1, 1, 0.26564056)
+material = SubResource("CanvasItemMaterial_a2c4y")
+position = Vector2(1422.002, 1379.0504)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@229" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2105081290]
+modulate = Color(1, 1, 1, 0.3946912)
+material = SubResource("CanvasItemMaterial_suuuj")
+position = Vector2(1624.2084, 1376.3035)
+scale = Vector2(0.12157343, 0.12157343)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@230" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1679308711]
+modulate = Color(1, 1, 1, 0.40761942)
+material = SubResource("CanvasItemMaterial_77cgh")
+position = Vector2(1836.5455, 1340.5776)
+scale = Vector2(0.10985649, 0.10985649)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@231" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1377015959]
+modulate = Color(1, 1, 1, 0.38959706)
+material = SubResource("CanvasItemMaterial_wp4o2")
+position = Vector2(1203.4037, 1369.3793)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@232" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=146134837]
+modulate = Color(1, 1, 1, 0.50173384)
+material = SubResource("CanvasItemMaterial_s7lbv")
+position = Vector2(1434.1259, 1359.8512)
+scale = Vector2(0.106340736, 0.106340736)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@233" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=835334050]
+modulate = Color(1, 1, 1, 0.29961693)
+material = SubResource("CanvasItemMaterial_7ps4n")
+position = Vector2(1626.3662, 1364.7667)
+scale = Vector2(0.076775655, 0.076775655)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@234" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=451231438]
+modulate = Color(1, 1, 1, 0.23955165)
+material = SubResource("CanvasItemMaterial_pgs8e")
+position = Vector2(1779.1746, 1366.0992)
+scale = Vector2(0.15894648, 0.15894648)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@235" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=341392493]
+modulate = Color(1, 1, 1, 0.4075182)
+material = SubResource("CanvasItemMaterial_y0edg")
+position = Vector2(1191.1229, 1366.155)
+scale = Vector2(0.28104296, 0.28104296)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@236" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=233874539]
+modulate = Color(1, 1, 1, 0.45025042)
+material = SubResource("CanvasItemMaterial_btf3y")
+position = Vector2(1378.3636, 1335.6917)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@237" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1733508781]
+modulate = Color(1, 1, 1, 0.5226402)
+material = SubResource("CanvasItemMaterial_wj1bm")
+position = Vector2(1600.1948, 1389.4241)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@238" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1140333338]
+modulate = Color(1, 1, 1, 0.5067524)
+material = SubResource("CanvasItemMaterial_bc8ir")
+position = Vector2(1786.9348, 1343.1453)
+scale = Vector2(0.16471496, 0.16471496)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@239" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1498986292]
+modulate = Color(1, 1, 1, 0.59404594)
+material = SubResource("CanvasItemMaterial_rt4y2")
+position = Vector2(1218.6372, 1341.5807)
+scale = Vector2(0.23025969, 0.23025969)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@240" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1920784133]
+modulate = Color(1, 1, 1, 0.6251054)
+material = SubResource("CanvasItemMaterial_kn7e8")
+position = Vector2(1400.9323, 1389.9894)
+scale = Vector2(0.17556337, 0.17556337)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@241" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=287452259]
+modulate = Color(1, 1, 1, 0.31836274)
+material = SubResource("CanvasItemMaterial_d8vp5")
+position = Vector2(1615.7885, 1392.3151)
+scale = Vector2(0.049048625, 0.049048625)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@242" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=379431419]
+modulate = Color(1, 1, 1, 0.3264026)
+material = SubResource("CanvasItemMaterial_q5m0f")
+position = Vector2(1790.237, 1387.2716)
+scale = Vector2(0.19886868, 0.19886868)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@243" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1712340944]
+modulate = Color(1, 1, 1, 0.5992563)
+material = SubResource("CanvasItemMaterial_yengl")
+position = Vector2(1197.8972, 1333.7101)
+scale = Vector2(0.14711267, 0.14711267)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@244" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1935158382]
+modulate = Color(1, 1, 1, 0.5722224)
+material = SubResource("CanvasItemMaterial_q6uok")
+position = Vector2(1380.6129, 1371.5839)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@245" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1812025621]
+modulate = Color(1, 1, 1, 0.4745176)
+material = SubResource("CanvasItemMaterial_7krlr")
+position = Vector2(1576.4503, 1352.3778)
+scale = Vector2(0.24114442, 0.24114442)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@246" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=642799282]
+modulate = Color(1, 1, 1, 0.37351936)
+material = SubResource("CanvasItemMaterial_iux7h")
+position = Vector2(1806.5674, 1389.8652)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@247" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1486650654]
+modulate = Color(1, 1, 1, 0.42387807)
+material = SubResource("CanvasItemMaterial_pjm1r")
+position = Vector2(1211.5062, 1382.6002)
+scale = Vector2(0.13508461, 0.13508461)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@248" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=786120639]
+modulate = Color(1, 1, 1, 0.47527233)
+material = SubResource("CanvasItemMaterial_spjne")
+position = Vector2(1407.042, 1357.0801)
+scale = Vector2(0.22136283, 0.22136283)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@249" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1854298980]
+modulate = Color(1, 1, 1, 0.5213895)
+material = SubResource("CanvasItemMaterial_0ihc5")
+position = Vector2(1603.8175, 1364.9104)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@250" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1845943843]
+modulate = Color(1, 1, 1, 0.63230515)
+material = SubResource("CanvasItemMaterial_w1o3m")
+position = Vector2(1799.8635, 1329.934)
+scale = Vector2(0.057268124, 0.057268124)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@251" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=319879662]
+modulate = Color(1, 1, 1, 0.63122606)
+material = SubResource("CanvasItemMaterial_xwuky")
+position = Vector2(1228.6187, 1391.9746)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@252" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1100426072]
+modulate = Color(1, 1, 1, 0.48411787)
+material = SubResource("CanvasItemMaterial_dqses")
+position = Vector2(1423.1897, 1363.5028)
+scale = Vector2(0.30511695, 0.30511695)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@253" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1067676704]
+modulate = Color(1, 1, 1, 0.5623763)
+material = SubResource("CanvasItemMaterial_dyslc")
+position = Vector2(1604.9218, 1370.4705)
+scale = Vector2(0.046775185, 0.046775185)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@254" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=517619689]
+modulate = Color(1, 1, 1, 0.6288923)
+material = SubResource("CanvasItemMaterial_h0xor")
+position = Vector2(1805.549, 1339.1952)
+scale = Vector2(0.31082922, 0.31082922)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@255" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=817541998]
+modulate = Color(1, 1, 1, 0.6226184)
+material = SubResource("CanvasItemMaterial_mp0q4")
+position = Vector2(1179.8828, 1340.3867)
+scale = Vector2(0.23587398, 0.23587398)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@256" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=503128778]
+modulate = Color(1, 1, 1, 0.6173829)
+material = SubResource("CanvasItemMaterial_y7mx2")
+position = Vector2(1392.0752, 1329.4094)
+scale = Vector2(0.18797909, 0.18797909)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@257" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1134443379]
+modulate = Color(1, 1, 1, 0.36540627)
+material = SubResource("CanvasItemMaterial_72ajq")
+position = Vector2(1609.1598, 1368.9666)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@258" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1990132442]
+modulate = Color(1, 1, 1, 0.5021627)
+material = SubResource("CanvasItemMaterial_ir0l6")
+position = Vector2(1789.8658, 1350.3815)
+scale = Vector2(0.2271006, 0.2271006)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@259" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2100819434]
+modulate = Color(1, 1, 1, 0.49651036)
+material = SubResource("CanvasItemMaterial_dmrlg")
+position = Vector2(1210.2019, 1358.7732)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@260" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1156502715]
+modulate = Color(1, 1, 1, 0.53916806)
+material = SubResource("CanvasItemMaterial_3wau7")
+position = Vector2(1425.8232, 1403.2484)
+scale = Vector2(0.12178426, 0.12178426)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@261" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1364285029]
+modulate = Color(1, 1, 1, 0.48809385)
+material = SubResource("CanvasItemMaterial_h3s3v")
+position = Vector2(1607.2097, 1369.3953)
+scale = Vector2(0.14389268, 0.14389268)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@262" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1272119335]
+modulate = Color(1, 1, 1, 0.43234745)
+material = SubResource("CanvasItemMaterial_xs3au")
+position = Vector2(1798.3422, 1359.6149)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@263" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1656058475]
+modulate = Color(1, 1, 1, 0.5962899)
+material = SubResource("CanvasItemMaterial_ijn5g")
+position = Vector2(1193.0461, 1348.3036)
+scale = Vector2(0.111453444, 0.111453444)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@264" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2015353246]
+modulate = Color(1, 1, 1, 0.6856281)
+material = SubResource("CanvasItemMaterial_tqdc4")
+position = Vector2(1383.0045, 1313.051)
+scale = Vector2(0.27985495, 0.27985495)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@265" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1072271336]
+modulate = Color(1, 1, 1, 0.67971116)
+material = SubResource("CanvasItemMaterial_cqo7t")
+position = Vector2(1607.2325, 1385.111)
+scale = Vector2(0.11718828, 0.11718828)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@266" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=856525506]
+modulate = Color(1, 1, 1, 0.6882382)
+material = SubResource("CanvasItemMaterial_a8am1")
+position = Vector2(1778.6525, 1390.0525)
+scale = Vector2(0.23752363, 0.23752363)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@267" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1776707116]
+modulate = Color(1, 1, 1, 0.5971858)
+material = SubResource("CanvasItemMaterial_da4xq")
+position = Vector2(1216.8734, 1364.2072)
+scale = Vector2(0.021294449, 0.021294449)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@268" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1941455650]
+modulate = Color(1, 1, 1, 0.48680517)
+material = SubResource("CanvasItemMaterial_bwb1i")
+position = Vector2(1424.8029, 1351.5432)
+scale = Vector2(0.12426756, 0.12426756)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@269" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=159884804]
+modulate = Color(1, 1, 1, 0.69065183)
+material = SubResource("CanvasItemMaterial_rcace")
+position = Vector2(1586.295, 1348.6533)
+scale = Vector2(0.016287925, 0.016287925)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@270" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2144671428]
+modulate = Color(1, 1, 1, 0.42392126)
+material = SubResource("CanvasItemMaterial_lpnyo")
+position = Vector2(1783.832, 1392.0883)
+scale = Vector2(0.288943, 0.288943)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@271" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=899804236]
+modulate = Color(1, 1, 1, 0.68695533)
+material = SubResource("CanvasItemMaterial_ih6wd")
+position = Vector2(1203.6013, 1365.03)
+scale = Vector2(0.0750634, 0.0750634)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@272" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1987073017]
+modulate = Color(1, 1, 1, 0.5788193)
+material = SubResource("CanvasItemMaterial_0hm1t")
+position = Vector2(1390.1709, 1402.1953)
+scale = Vector2(0.03930709, 0.03930709)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@273" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1704404962]
+modulate = Color(1, 1, 1, 0.6538976)
+material = SubResource("CanvasItemMaterial_qmi80")
+position = Vector2(1615.2177, 1369.0198)
+scale = Vector2(0.05129576, 0.05129576)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@274" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=132411229]
+modulate = Color(1, 1, 1, 0.5770665)
+material = SubResource("CanvasItemMaterial_0iwds")
+position = Vector2(1805.7983, 1385.6921)
+scale = Vector2(0.018519612, 0.018519612)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@275" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1256926887]
+modulate = Color(1, 1, 1, 0.66024166)
+material = SubResource("CanvasItemMaterial_tcskh")
+position = Vector2(1173.0797, 1316.518)
+scale = Vector2(0.19328885, 0.19328885)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@276" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1928570931]
+modulate = Color(1, 1, 1, 0.5106011)
+material = SubResource("CanvasItemMaterial_v77hd")
+position = Vector2(1396.2379, 1379.3894)
+scale = Vector2(0.061995424, 0.061995424)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@277" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=954568731]
+modulate = Color(1, 1, 1, 0.71957594)
+material = SubResource("CanvasItemMaterial_vj74q")
+position = Vector2(1618.7257, 1369.7386)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@278" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1174102077]
+modulate = Color(1, 1, 1, 0.4948522)
+material = SubResource("CanvasItemMaterial_uq2gy")
+position = Vector2(1805.7189, 1399.333)
+scale = Vector2(0.21887866, 0.21887866)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@279" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=291792720]
+modulate = Color(1, 1, 1, 0.70169675)
+material = SubResource("CanvasItemMaterial_34d0c")
+position = Vector2(1175.778, 1363.8553)
+scale = Vector2(0.26287925, 0.26287925)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@280" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1670231563]
+modulate = Color(1, 1, 1, 0.5262473)
+material = SubResource("CanvasItemMaterial_1hu8k")
+position = Vector2(1392.8983, 1352.9843)
+scale = Vector2(0.2484677, 0.2484677)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@281" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=220923511]
+modulate = Color(1, 1, 1, 0.6782284)
+material = SubResource("CanvasItemMaterial_0e3vl")
+position = Vector2(1568.5127, 1305.422)
+scale = Vector2(0.34577388, 0.34577388)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@282" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=146403650]
+modulate = Color(1, 1, 1, 0.7298074)
+material = SubResource("CanvasItemMaterial_tua11")
+position = Vector2(1757.8901, 1375.7041)
+scale = Vector2(0.345449, 0.345449)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@283" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1090477219]
+modulate = Color(1, 1, 1, 0.4835366)
+material = SubResource("CanvasItemMaterial_jtlws")
+position = Vector2(1171.3109, 1358.1443)
+scale = Vector2(0.21690324, 0.21690324)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@284" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1871306820]
+modulate = Color(1, 1, 1, 0.6893796)
+material = SubResource("CanvasItemMaterial_xfyij")
+position = Vector2(1399.4553, 1349.7438)
+scale = Vector2(0.30435064, 0.30435064)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@285" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1319470277]
+modulate = Color(1, 1, 1, 0.6762851)
+material = SubResource("CanvasItemMaterial_c5dif")
+position = Vector2(1581.6416, 1368.9775)
+scale = Vector2(0.11967998, 0.11967998)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@286" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=274067643]
+modulate = Color(1, 1, 1, 0.69291615)
+material = SubResource("CanvasItemMaterial_kcioy")
+position = Vector2(1766.0332, 1327.2006)
+scale = Vector2(0.2733089, 0.2733089)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@287" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=772039474]
+modulate = Color(1, 1, 1, 0.6855089)
+material = SubResource("CanvasItemMaterial_vanyj")
+position = Vector2(1232.7194, 1376.8999)
+scale = Vector2(0.12349425, 0.12349425)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@288" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=106557564]
+modulate = Color(1, 1, 1, 0.74629635)
+material = SubResource("CanvasItemMaterial_uqs6w")
+position = Vector2(1438.594, 1383.0652)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@289" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1782891214]
+modulate = Color(1, 1, 1, 0.6803566)
+material = SubResource("CanvasItemMaterial_hp8cg")
+position = Vector2(1583.0673, 1390.0018)
+scale = Vector2(0.047366757, 0.047366757)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@290" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=262489139]
+modulate = Color(1, 1, 1, 0.56647485)
+material = SubResource("CanvasItemMaterial_slbg2")
+position = Vector2(1790.0243, 1399.4747)
+scale = Vector2(0.156311, 0.156311)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@291" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=369929015]
+modulate = Color(1, 1, 1, 0.60227865)
+material = SubResource("CanvasItemMaterial_wpk3f")
+position = Vector2(1201.8137, 1335.651)
+scale = Vector2(0.27069253, 0.27069253)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@292" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=286658841]
+modulate = Color(1, 1, 1, 0.6693663)
+material = SubResource("CanvasItemMaterial_s8ako")
+position = Vector2(1436.5853, 1394.7264)
+scale = Vector2(0.001312471, 0.001312471)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@293" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=842901227]
+modulate = Color(1, 1, 1, 0.538704)
+material = SubResource("CanvasItemMaterial_12pss")
+position = Vector2(1595.7125, 1344.3032)
+scale = Vector2(0.25597072, 0.25597072)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@294" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1478246135]
+modulate = Color(1, 1, 1, 0.58128744)
+material = SubResource("CanvasItemMaterial_7gyfv")
+position = Vector2(1805.6686, 1358.953)
+scale = Vector2(0.064545125, 0.064545125)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@295" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2038606647]
+modulate = Color(1, 1, 1, 0.7621961)
+material = SubResource("CanvasItemMaterial_r2n45")
+position = Vector2(1204.2544, 1393.0404)
+scale = Vector2(0.09401608, 0.09401608)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@296" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=405582791]
+modulate = Color(1, 1, 1, 0.6311592)
+material = SubResource("CanvasItemMaterial_84vwx")
+position = Vector2(1416.7367, 1345.7637)
+scale = Vector2(0.09903588, 0.09903588)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@297" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1764576849]
+modulate = Color(1, 1, 1, 0.7487762)
+material = SubResource("CanvasItemMaterial_ky2jc")
+position = Vector2(1608.0582, 1365.1655)
+scale = Vector2(0.15519145, 0.15519145)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@298" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=565502657]
+modulate = Color(1, 1, 1, 0.74284947)
+material = SubResource("CanvasItemMaterial_kk7b4")
+position = Vector2(1776.697, 1330.2009)
+scale = Vector2(0.30673802, 0.30673802)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@299" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1799553241]
+modulate = Color(1, 1, 1, 0.58924484)
+material = SubResource("CanvasItemMaterial_30xf2")
+position = Vector2(1195.4365, 1387.5109)
+scale = Vector2(0.19747233, 0.19747233)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@300" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=442391295]
+modulate = Color(1, 1, 1, 0.7318445)
+material = SubResource("CanvasItemMaterial_qdb5l")
+position = Vector2(1406.6913, 1399.2552)
+scale = Vector2(0.065005876, 0.065005876)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@301" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=630383474]
+modulate = Color(1, 1, 1, 0.77383786)
+material = SubResource("CanvasItemMaterial_f1l50")
+position = Vector2(1552.1127, 1337.4967)
+scale = Vector2(0.33713058, 0.33713058)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@302" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=530369726]
+modulate = Color(1, 1, 1, 0.6263296)
+material = SubResource("CanvasItemMaterial_bpdqq")
+position = Vector2(1807.8943, 1372.8563)
+scale = Vector2(0.056154795, 0.056154795)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@303" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=404291469]
+modulate = Color(1, 1, 1, 0.70756847)
+material = SubResource("CanvasItemMaterial_mm4p2")
+position = Vector2(1212.2573, 1394.1294)
+scale = Vector2(0.01625387, 0.01625387)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@304" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1171148144]
+modulate = Color(1, 1, 1, 0.7383859)
+material = SubResource("CanvasItemMaterial_tlonc")
+position = Vector2(1400.6464, 1395.6929)
+scale = Vector2(0.05987276, 0.05987276)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@305" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=534368312]
+modulate = Color(1, 1, 1, 0.77760595)
+material = SubResource("CanvasItemMaterial_kfblw")
+position = Vector2(1580.3733, 1361.663)
+scale = Vector2(0.33401006, 0.33401006)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@306" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1645967025]
+modulate = Color(1, 1, 1, 0.63557875)
+material = SubResource("CanvasItemMaterial_xb44l")
+position = Vector2(1808.6135, 1370.0166)
+scale = Vector2(0.15679264, 0.15679264)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@307" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1945264890]
+modulate = Color(1, 1, 1, 0.77834034)
+material = SubResource("CanvasItemMaterial_y5buj")
+position = Vector2(1193.2207, 1371.1384)
+scale = Vector2(0.36303407, 0.36303407)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@308" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=772940180]
+modulate = Color(1, 1, 1, 0.7143401)
+material = SubResource("CanvasItemMaterial_vw3f4")
+position = Vector2(1380.4531, 1403.3231)
+scale = Vector2(0.056000214, 0.056000214)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@309" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=386800981]
+modulate = Color(1, 1, 1, 0.76718235)
+material = SubResource("CanvasItemMaterial_dlyhg")
+position = Vector2(1606.9327, 1395.2858)
+scale = Vector2(0.05197489, 0.05197489)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@310" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=327249330]
+modulate = Color(1, 1, 1, 0.7918153)
+material = SubResource("CanvasItemMaterial_jhw0v")
+position = Vector2(1803.5457, 1327.461)
+scale = Vector2(0.39409196, 0.39409196)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@311" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1431019826]
+modulate = Color(1, 1, 1, 0.71894276)
+material = SubResource("CanvasItemMaterial_m65e8")
+position = Vector2(1222.0496, 1367.9541)
+scale = Vector2(0.15598215, 0.15598215)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@312" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=562652756]
+modulate = Color(1, 1, 1, 0.7708862)
+material = SubResource("CanvasItemMaterial_4ecev")
+position = Vector2(1417.6855, 1336.1984)
+scale = Vector2(0.25447828, 0.25447828)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@313" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1225434628]
+modulate = Color(1, 1, 1, 0.78510976)
+material = SubResource("CanvasItemMaterial_5762r")
+position = Vector2(1558.6897, 1333.6803)
+scale = Vector2(0.36767513, 0.36767513)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@314" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=25667130]
+modulate = Color(1, 1, 1, 0.6746044)
+material = SubResource("CanvasItemMaterial_e3wio")
+position = Vector2(1788.3429, 1358.5729)
+scale = Vector2(0.34973752, 0.34973752)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@315" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1548508208]
+modulate = Color(1, 1, 1, 0.7504264)
+material = SubResource("CanvasItemMaterial_l5uge")
+position = Vector2(1186.9879, 1353.2865)
+scale = Vector2(0.115006946, 0.115006946)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@316" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1775233309]
+modulate = Color(1, 1, 1, 0.6788059)
+material = SubResource("CanvasItemMaterial_67cfw")
+position = Vector2(1404.1674, 1369.4686)
+scale = Vector2(0.10019225, 0.10019225)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@317" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=695203036]
+modulate = Color(1, 1, 1, 0.77985406)
+material = SubResource("CanvasItemMaterial_l23m4")
+position = Vector2(1626.8097, 1373.773)
+scale = Vector2(0.09408791, 0.09408791)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@318" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2005718732]
+modulate = Color(1, 1, 1, 0.7941072)
+material = SubResource("CanvasItemMaterial_cghbq")
+position = Vector2(1808.1327, 1359.4894)
+scale = Vector2(0.08546408, 0.08546408)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@319" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1834301150]
+modulate = Color(1, 1, 1, 0.7778735)
+material = SubResource("CanvasItemMaterial_tudsa")
+position = Vector2(1221.9731, 1370.0782)
+scale = Vector2(0.04633244, 0.04633244)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@320" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1499259464]
+modulate = Color(1, 1, 1, 0.7995618)
+material = SubResource("CanvasItemMaterial_k3ejc")
+position = Vector2(1380.6697, 1353.7615)
+scale = Vector2(0.31240454, 0.31240454)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@321" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=319679202]
+modulate = Color(1, 1, 1, 0.72729576)
+material = SubResource("CanvasItemMaterial_no7gk")
+position = Vector2(1613.9885, 1340.4292)
+scale = Vector2(0.10101838, 0.10101838)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@322" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=625847524]
+modulate = Color(1, 1, 1, 0.82868046)
+material = SubResource("CanvasItemMaterial_xp5l5")
+position = Vector2(1812.514, 1391.8519)
+scale = Vector2(0.1246255, 0.1246255)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@323" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1892868497]
+modulate = Color(1, 1, 1, 0.80308414)
+material = SubResource("CanvasItemMaterial_ljaf2")
+position = Vector2(1194.428, 1357.4801)
+scale = Vector2(0.20854364, 0.20854364)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@324" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1186721143]
+modulate = Color(1, 1, 1, 0.7340441)
+material = SubResource("CanvasItemMaterial_mh8cs")
+position = Vector2(1374.7874, 1365.0017)
+scale = Vector2(0.2642645, 0.2642645)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@325" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1557344257]
+modulate = Color(1, 1, 1, 0.8284657)
+material = SubResource("CanvasItemMaterial_b2flu")
+position = Vector2(1599.7704, 1357.3556)
+scale = Vector2(0.1355669, 0.1355669)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@326" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1025961340]
+modulate = Color(1, 1, 1, 0.6813437)
+material = SubResource("CanvasItemMaterial_hhy3e")
+position = Vector2(1758.9055, 1350.6019)
+scale = Vector2(0.35240254, 0.35240254)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@327" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1227075963]
+modulate = Color(1, 1, 1, 0.7286579)
+material = SubResource("CanvasItemMaterial_hk4p7")
+position = Vector2(1205.5333, 1358.6333)
+scale = Vector2(0.18646792, 0.18646792)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@328" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=424638116]
+modulate = Color(1, 1, 1, 0.7115457)
+material = SubResource("CanvasItemMaterial_cwcr5")
+position = Vector2(1373.7457, 1333.6772)
+scale = Vector2(0.3210744, 0.3210744)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@329" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=478127311]
+modulate = Color(1, 1, 1, 0.7491368)
+material = SubResource("CanvasItemMaterial_ntlun")
+position = Vector2(1586.3273, 1388.8993)
+scale = Vector2(0.119106464, 0.119106464)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@330" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1797881052]
+modulate = Color(1, 1, 1, 0.8377304)
+material = SubResource("CanvasItemMaterial_w5tct")
+position = Vector2(1774.6447, 1354.3931)
+scale = Vector2(0.19156599, 0.19156599)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@331" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1881362510]
+modulate = Color(1, 1, 1, 0.7808217)
+material = SubResource("CanvasItemMaterial_qdth5")
+position = Vector2(1187.2583, 1370.8135)
+scale = Vector2(0.30589244, 0.30589244)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@332" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1872190170]
+modulate = Color(1, 1, 1, 0.8405682)
+material = SubResource("CanvasItemMaterial_mps0u")
+position = Vector2(1397.6846, 1380.8126)
+scale = Vector2(0.26591575, 0.26591575)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@333" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1423499855]
+modulate = Color(1, 1, 1, 0.7861848)
+material = SubResource("CanvasItemMaterial_2jk45")
+position = Vector2(1590.2573, 1332.0016)
+scale = Vector2(0.33151913, 0.33151913)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@334" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2125668439]
+modulate = Color(1, 1, 1, 0.8392274)
+material = SubResource("CanvasItemMaterial_phba7")
+position = Vector2(1820.594, 1384.0089)
+scale = Vector2(0.19219884, 0.19219884)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@335" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=926349573]
+modulate = Color(1, 1, 1, 0.83116555)
+material = SubResource("CanvasItemMaterial_y1msb")
+position = Vector2(1210.6843, 1365.7925)
+scale = Vector2(0.20514585, 0.20514585)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@336" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1138816534]
+modulate = Color(1, 1, 1, 0.7463306)
+material = SubResource("CanvasItemMaterial_pw68m")
+position = Vector2(1385.0483, 1317.6545)
+scale = Vector2(0.41223562, 0.41223562)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@337" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1980301107]
+modulate = Color(1, 1, 1, 0.8596554)
+material = SubResource("CanvasItemMaterial_3bet0")
+position = Vector2(1575.8436, 1378.11)
+scale = Vector2(0.31422496, 0.31422496)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@338" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=871700764]
+modulate = Color(1, 1, 1, 0.7614625)
+material = SubResource("CanvasItemMaterial_xgsqg")
+position = Vector2(1814.5715, 1388.4697)
+scale = Vector2(0.10072896, 0.10072896)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@339" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=666440572]
+modulate = Color(1, 1, 1, 0.8142341)
+material = SubResource("CanvasItemMaterial_h1i2e")
+position = Vector2(1202.9688, 1354.3722)
+scale = Vector2(0.3814482, 0.3814482)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@340" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2016376411]
+modulate = Color(1, 1, 1, 0.81536347)
+material = SubResource("CanvasItemMaterial_770xf")
+position = Vector2(1417.053, 1349.1125)
+scale = Vector2(0.3916021, 0.3916021)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@341" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=15277041]
+modulate = Color(1, 1, 1, 0.8020103)
+material = SubResource("CanvasItemMaterial_mwkky")
+position = Vector2(1575.0853, 1336.1465)
+scale = Vector2(0.24236335, 0.24236335)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@342" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1143144349]
+modulate = Color(1, 1, 1, 0.8322434)
+material = SubResource("CanvasItemMaterial_jij5a")
+position = Vector2(1788.9506, 1357.7621)
+scale = Vector2(0.24902444, 0.24902444)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@343" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2070781964]
+modulate = Color(1, 1, 1, 0.78859484)
+material = SubResource("CanvasItemMaterial_rvr3o")
+position = Vector2(1197.0989, 1376.01)
+scale = Vector2(0.19154198, 0.19154198)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@344" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=748101242]
+modulate = Color(1, 1, 1, 0.79728186)
+material = SubResource("CanvasItemMaterial_kdb2k")
+position = Vector2(1412.528, 1334.0758)
+scale = Vector2(0.15132704, 0.15132704)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@345" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1094359801]
+modulate = Color(1, 1, 1, 0.87434846)
+material = SubResource("CanvasItemMaterial_ecxn5")
+position = Vector2(1602.6285, 1359.695)
+scale = Vector2(0.3848438, 0.3848438)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@346" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1084302129]
+modulate = Color(1, 1, 1, 0.8348255)
+material = SubResource("CanvasItemMaterial_fckf6")
+position = Vector2(1776.4519, 1360.2927)
+scale = Vector2(0.106240205, 0.106240205)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@347" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1984224887]
+modulate = Color(1, 1, 1, 0.8208404)
+material = SubResource("CanvasItemMaterial_0jut3")
+position = Vector2(1165.599, 1363.1884)
+scale = Vector2(0.38005546, 0.38005546)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@348" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=138756677]
+modulate = Color(1, 1, 1, 0.8616117)
+material = SubResource("CanvasItemMaterial_p2unm")
+position = Vector2(1401.039, 1365.7421)
+scale = Vector2(0.29912153, 0.29912153)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@349" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1595835299]
+modulate = Color(1, 1, 1, 0.82556045)
+material = SubResource("CanvasItemMaterial_4nm6y")
+position = Vector2(1591.5474, 1355.6543)
+scale = Vector2(0.22484805, 0.22484805)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@350" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=922384590]
+modulate = Color(1, 1, 1, 0.85334027)
+material = SubResource("CanvasItemMaterial_0lx5i")
+position = Vector2(1782.3546, 1345.2323)
+scale = Vector2(0.28344023, 0.28344023)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@351" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=825147178]
+modulate = Color(1, 1, 1, 0.86149603)
+material = SubResource("CanvasItemMaterial_oi27q")
+position = Vector2(1202.6932, 1375.8025)
+scale = Vector2(0.0799564, 0.0799564)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@352" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1994818844]
+modulate = Color(1, 1, 1, 0.88620514)
+material = SubResource("CanvasItemMaterial_4l35c")
+position = Vector2(1376.6877, 1359.9913)
+scale = Vector2(0.24309637, 0.24309637)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@353" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=746128940]
+modulate = Color(1, 1, 1, 0.8656498)
+material = SubResource("CanvasItemMaterial_fylkc")
+position = Vector2(1572.8209, 1398.7482)
+scale = Vector2(0.25032088, 0.25032088)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@354" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1017090696]
+modulate = Color(1, 1, 1, 0.86535543)
+material = SubResource("CanvasItemMaterial_7tsu1")
+position = Vector2(1779.9408, 1395.8757)
+scale = Vector2(0.07641574, 0.07641574)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@355" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2037579628]
+modulate = Color(1, 1, 1, 0.88304263)
+material = SubResource("CanvasItemMaterial_xphwq")
+position = Vector2(1185.3153, 1356.7476)
+scale = Vector2(0.1098322, 0.1098322)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@356" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1317178977]
+modulate = Color(1, 1, 1, 0.90903854)
+material = SubResource("CanvasItemMaterial_eqgjr")
+position = Vector2(1377.1621, 1372.7152)
+scale = Vector2(0.37153277, 0.37153277)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@357" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1685864579]
+modulate = Color(1, 1, 1, 0.9062934)
+material = SubResource("CanvasItemMaterial_7aydq")
+position = Vector2(1586.0421, 1363.9917)
+scale = Vector2(0.17233282, 0.17233282)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@358" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=749616207]
+modulate = Color(1, 1, 1, 0.86155355)
+material = SubResource("CanvasItemMaterial_hpp8l")
+position = Vector2(1814.3842, 1361.0057)
+scale = Vector2(0.13402614, 0.13402614)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@359" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2118329098]
+modulate = Color(1, 1, 1, 0.9072945)
+material = SubResource("CanvasItemMaterial_x8mwy")
+position = Vector2(1171.1476, 1334.9447)
+scale = Vector2(0.43581903, 0.43581903)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@360" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1938930863]
+modulate = Color(1, 1, 1, 0.8768319)
+material = SubResource("CanvasItemMaterial_5m08p")
+position = Vector2(1409.9369, 1371.331)
+scale = Vector2(0.07798883, 0.07798883)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@361" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=963506566]
+modulate = Color(1, 1, 1, 0.92276996)
+material = SubResource("CanvasItemMaterial_q8xab")
+position = Vector2(1627.0105, 1328.5817)
+scale = Vector2(0.29430273, 0.29430273)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@362" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=719419201]
+modulate = Color(1, 1, 1, 0.8709268)
+material = SubResource("CanvasItemMaterial_tt04n")
+position = Vector2(1814.8977, 1354.5876)
+scale = Vector2(0.0858684, 0.0858684)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@363" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=844236595]
+modulate = Color(1, 1, 1, 0.9370137)
+material = SubResource("CanvasItemMaterial_15md3")
+position = Vector2(1185.2197, 1375.1483)
+scale = Vector2(0.20605366, 0.20605366)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@364" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1759113558]
+modulate = Color(1, 1, 1, 0.9328658)
+material = SubResource("CanvasItemMaterial_31qjs")
+position = Vector2(1363.4076, 1372.8485)
+scale = Vector2(0.30070582, 0.30070582)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@365" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1069003076]
+modulate = Color(1, 1, 1, 0.9169998)
+material = SubResource("CanvasItemMaterial_xe715")
+position = Vector2(1588.0786, 1378.3076)
+scale = Vector2(0.083596766, 0.083596766)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@366" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=38021989]
+modulate = Color(1, 1, 1, 0.92271036)
+material = SubResource("CanvasItemMaterial_7w75u")
+position = Vector2(1791.0336, 1374.0099)
+scale = Vector2(0.3782092, 0.3782092)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@367" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=367647948]
+modulate = Color(1, 1, 1, 0.9216263)
+material = SubResource("CanvasItemMaterial_3wgq3")
+position = Vector2(1181.9215, 1353.406)
+scale = Vector2(0.11838735, 0.11838735)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@368" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2120870112]
+modulate = Color(1, 1, 1, 0.9204861)
+material = SubResource("CanvasItemMaterial_5vfat")
+position = Vector2(1394.6454, 1362.7704)
+scale = Vector2(0.35103497, 0.35103497)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@369" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1679492141]
+modulate = Color(1, 1, 1, 0.93774796)
+material = SubResource("CanvasItemMaterial_unwht")
+position = Vector2(1634.2008, 1369.9692)
+scale = Vector2(0.08841853, 0.08841853)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@370" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=117440086]
+modulate = Color(1, 1, 1, 0.9297149)
+material = SubResource("CanvasItemMaterial_tpeu4")
+position = Vector2(1774.7412, 1359.5085)
+scale = Vector2(0.23653188, 0.23653188)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@371" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1328031113]
+modulate = Color(1, 1, 1, 0.9561179)
+material = SubResource("CanvasItemMaterial_bqvh0")
+position = Vector2(1213.7451, 1378.4454)
+scale = Vector2(0.112156086, 0.112156086)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@372" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1592423993]
+modulate = Color(1, 1, 1, 0.9258145)
+material = SubResource("CanvasItemMaterial_osape")
+position = Vector2(1399.9816, 1371.4071)
+scale = Vector2(0.46821338, 0.46821338)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@373" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=415279092]
+modulate = Color(1, 1, 1, 0.95664376)
+material = SubResource("CanvasItemMaterial_ydygw")
+position = Vector2(1587.7144, 1376.5046)
+scale = Vector2(0.28368312, 0.28368312)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@374" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=450768511]
+modulate = Color(1, 1, 1, 0.9594937)
+material = SubResource("CanvasItemMaterial_lh3ki")
+position = Vector2(1817.089, 1328.1526)
+scale = Vector2(0.19662152, 0.19662152)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@375" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=450004428]
+modulate = Color(1, 1, 1, 0.963829)
+material = SubResource("CanvasItemMaterial_f283y")
+position = Vector2(1192.6841, 1328.608)
+scale = Vector2(0.22128013, 0.22128013)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@376" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2089342073]
+modulate = Color(1, 1, 1, 0.946686)
+material = SubResource("CanvasItemMaterial_gshht")
+position = Vector2(1379.2555, 1344.6085)
+scale = Vector2(0.38236967, 0.38236967)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@377" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=161409208]
+modulate = Color(1, 1, 1, 0.9646931)
+material = SubResource("CanvasItemMaterial_pkx3i")
+position = Vector2(1551.7184, 1350.2059)
+scale = Vector2(0.44834664, 0.44834664)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@378" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=609866458]
+modulate = Color(1, 1, 1, 0.9619146)
+material = SubResource("CanvasItemMaterial_xkat0")
+position = Vector2(1782.1246, 1383.1975)
+scale = Vector2(0.41437188, 0.41437188)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@379" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=399953580]
+modulate = Color(1, 1, 1, 0.9705693)
+material = SubResource("CanvasItemMaterial_q2u4c")
+position = Vector2(1187.3541, 1379.7574)
+scale = Vector2(0.1907539, 0.1907539)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@380" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1481432416]
+modulate = Color(1, 1, 1, 0.96715355)
+material = SubResource("CanvasItemMaterial_4yjdq")
+position = Vector2(1376.3304, 1344.0836)
+scale = Vector2(0.25983894, 0.25983894)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@381" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1752019479]
+modulate = Color(1, 1, 1, 0.9760967)
+material = SubResource("CanvasItemMaterial_xce5i")
+position = Vector2(1617.0111, 1399.7577)
+scale = Vector2(0.11501653, 0.11501653)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@382" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1174712686]
+modulate = Color(1, 1, 1, 0.9794237)
+material = SubResource("CanvasItemMaterial_u37jc")
+position = Vector2(1817.7179, 1362.3763)
+scale = Vector2(0.10252855, 0.10252855)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@383" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=209102639]
+modulate = Color(1, 1, 1, 0.9881101)
+material = SubResource("CanvasItemMaterial_hp17t")
+position = Vector2(1199.713, 1391.6646)
+scale = Vector2(0.13068299, 0.13068299)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@384" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1659350398]
+modulate = Color(1, 1, 1, 0.98974144)
+material = SubResource("CanvasItemMaterial_h4riq")
+position = Vector2(1381.1561, 1328.8538)
+scale = Vector2(0.4770705, 0.4770705)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@385" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1603965954]
+modulate = Color(1, 1, 1, 0.98820525)
+material = SubResource("CanvasItemMaterial_cmwjc")
+position = Vector2(1572.0562, 1358.5824)
+scale = Vector2(0.3687974, 0.3687974)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@386" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=2048100558]
+modulate = Color(1, 1, 1, 0.98273575)
+material = SubResource("CanvasItemMaterial_denrv")
+position = Vector2(1806.6666, 1364.9972)
+scale = Vector2(0.33903995, 0.33903995)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@387" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=107168156]
+material = SubResource("CanvasItemMaterial_ybma7")
+position = Vector2(1209.2059, 1352.307)
+scale = Vector2(0.28318486, 0.28318486)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@388" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=83536317]
+material = SubResource("CanvasItemMaterial_jtnry")
+position = Vector2(1373.8068, 1295.3937)
+scale = Vector2(0.48597282, 0.48597282)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@389" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=140212298]
+material = SubResource("CanvasItemMaterial_hd3ts")
+position = Vector2(1567.8846, 1377.0554)
+scale = Vector2(0.18026926, 0.18026926)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="@Sprite2D@390" type="Sprite2D" parent="CapturedLevel/Layer_191629363116" unique_id=1115860866]
+material = SubResource("CanvasItemMaterial_1iexj")
+position = Vector2(1780.8497, 1332.3156)
+scale = Vector2(0.3232497, 0.3232497)
+texture = ExtResource("4_7a1r7")
+centered = false
+
+[node name="cardgame_2_100586" type="Node2D" parent="CapturedLevel" unique_id=247936613]
+z_index = -1217
+position = Vector2(16, 16)
+script = ExtResource("5_4tktg")
+source_key = "placed:100586"
+object_index = 391
+source_position = Vector2(16, 16)
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@391" type="Sprite2D" parent="CapturedLevel/cardgame_2_100586" unique_id=1396475144]
+material = SubResource("CanvasItemMaterial_5dp1o")
+position = Vector2(484, 1266)
+scale = Vector2(81.66967, 2)
+texture = ExtResource("6_pb4lk")
+centered = false
+
+[node name="card_cursor_200001" type="Node2D" parent="CapturedLevel" unique_id=635694252]
+z_index = 3478
+script = ExtResource("5_4tktg")
+source_key = "placed:100586/269:0"
+object_index = 269
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@392" type="Sprite2D" parent="CapturedLevel/card_cursor_200001" unique_id=1265149844]
+material = SubResource("CanvasItemMaterial_lpff5")
+position = Vector2(2180, 1853)
+texture = ExtResource("7_hgavd")
+centered = false
+
+[node name="@Sprite2D@393" type="Sprite2D" parent="CapturedLevel/card_cursor_200001" unique_id=1764944143]
+material = SubResource("CanvasItemMaterial_cnvad")
+position = Vector2(2194, 1865)
+texture = ExtResource("8_ijion")
+centered = false
+
+[node name="card_2_200003" type="Node2D" parent="CapturedLevel" unique_id=1694064418]
+z_index = -1217
+position = Vector2(1212, 1376)
+script = ExtResource("5_4tktg")
+source_key = "placed:100586/392:0"
+object_index = 392
+source_position = Vector2(1212, 1376)
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@394" type="Sprite2D" parent="CapturedLevel/card_2_200003" unique_id=1126773191]
+position = Vector2(-61.217274, 89.12175)
+rotation = -1.5220292
+scale = Vector2(1, 0.8)
+texture = ExtResource("9_s3os0")
+centered = false
+
+[node name="@Sprite2D@395" type="Sprite2D" parent="CapturedLevel/card_2_200003" unique_id=1946426358]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_kjv2t")
+position = Vector2(-60.917377, 89.326996)
+rotation = -1.5253903
+scale = Vector2(1, 0.8)
+texture = ExtResource("9_s3os0")
+centered = false
+
+[node name="card_2_200004" type="Node2D" parent="CapturedLevel" unique_id=2074879369]
+z_index = -1217
+position = Vector2(1412, 1376)
+script = ExtResource("5_4tktg")
+source_key = "placed:100586/392:1"
+object_index = 392
+source_position = Vector2(1412, 1376)
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@396" type="Sprite2D" parent="CapturedLevel/card_2_200004" unique_id=2058034045]
+position = Vector2(-61.217274, 89.12175)
+rotation = -1.5220292
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false
+
+[node name="@Sprite2D@397" type="Sprite2D" parent="CapturedLevel/card_2_200004" unique_id=333419931]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_l1dfw")
+position = Vector2(-60.917377, 89.326996)
+rotation = -1.5253903
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false
+
+[node name="card_2_200005" type="Node2D" parent="CapturedLevel" unique_id=1828492368]
+z_index = -1217
+position = Vector2(1612, 1376)
+script = ExtResource("5_4tktg")
+source_key = "placed:100586/392:2"
+object_index = 392
+source_position = Vector2(1612, 1376)
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@398" type="Sprite2D" parent="CapturedLevel/card_2_200005" unique_id=1057722610]
+position = Vector2(-61.217274, 89.12175)
+rotation = -1.5220292
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false
+
+[node name="@Sprite2D@399" type="Sprite2D" parent="CapturedLevel/card_2_200005" unique_id=1509835586]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_a6ceh")
+position = Vector2(-60.917377, 89.326996)
+rotation = -1.5253903
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false
+
+[node name="card_2_200006" type="Node2D" parent="CapturedLevel" unique_id=2112859881]
+z_index = -1217
+position = Vector2(1812, 1376)
+script = ExtResource("5_4tktg")
+source_key = "placed:100586/392:3"
+object_index = 392
+source_position = Vector2(1812, 1376)
+original_kind = 0
+metadata/_edit_group_ = true
+
+[node name="@Sprite2D@400" type="Sprite2D" parent="CapturedLevel/card_2_200006" unique_id=1445147468]
+position = Vector2(-61.217274, 89.12175)
+rotation = -1.5220292
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false
+
+[node name="@Sprite2D@401" type="Sprite2D" parent="CapturedLevel/card_2_200006" unique_id=1864505479]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_retei")
+position = Vector2(-60.917377, 89.326996)
+rotation = -1.5253903
+scale = Vector2(1, 0.8)
+texture = ExtResource("10_2q6c5")
+centered = false

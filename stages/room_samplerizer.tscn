@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" id="t1" path="res://images/sprites/sprite886.886.0.png"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+
+[node name="room_samplerizer" type="Node2D"]
+metadata/gm_room = "room_samplerizer"
+metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 384)
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 768
+
+[node name="Objects_0" type="Node2D" parent="."]
+z_index = 0
+metadata/gm_depth = 0
+
+[node name="o_loader_0" type="Sprite2D" parent="Objects_0"]
+metadata/gm_object = "o_loader"
+metadata/gm_object_index = 717
+metadata/gm_id = 100820
+metadata/gm_visible = true
+metadata/gm_sprite_index = 886
+metadata/gm_preview_only = false
+position = Vector2(352, 624)
+metadata/gm_preview_pos = Vector2(352, 624)
+metadata/gm_position = Vector2(352, 624)
+metadata/gm_empty_draw_event = false
+rotation = 0
+scale = Vector2(1, 1)
+texture = ExtResource("t1")
+offset = Vector2(0, 0)
+centered = false
+
+[node name="EditorPreview" type="Node2D" parent="."]
+metadata/gm_preview_only = true
+
+[node name="Description0" type="Label" parent="EditorPreview"]
+z_index = 4000
+offset_left = 48
+offset_top = 180
+offset_right = 968
+mouse_filter = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "AUDIO INITIALIZER | script_samples_init()\nLoads audio samples; no gameplay layout.\nNext: room0 (logo)"

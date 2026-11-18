@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/castle_fly2.ogg-77ecc45424ad34697993359d7790a
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=4.597551
 bpm=0
 beat_count=0
 bar_beats=4

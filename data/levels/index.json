@@ -1,7 +1,7 @@
 [
  {
   "name": "starter",
-  "scene": "res://scenes/levels/starter.tscn",
+  "scene": "res://stages/starter.tscn",
   "data": "res://data/levels/starter.json",
   "width": 1024,
   "height": 768,
@@ -9,7 +9,7 @@
  },
  {
   "name": "room_samplerizer",
-  "scene": "res://scenes/levels/room_samplerizer.tscn",
+  "scene": "res://stages/room_samplerizer.tscn",
   "data": "res://data/levels/room_samplerizer.json",
   "width": 1024,
   "height": 768,
@@ -17,7 +17,7 @@
  },
  {
   "name": "room0",
-  "scene": "res://scenes/levels/room0.tscn",
+  "scene": "res://stages/room0.tscn",
   "data": "res://data/levels/room0.json",
   "width": 1024,
   "height": 768,
@@ -25,7 +25,7 @@
  },
  {
   "name": "room_animation_1",
-  "scene": "res://scenes/levels/room_animation_1.tscn",
+  "scene": "res://stages/room_animation_1.tscn",
   "data": "res://data/levels/room_animation_1.json",
   "width": 1024,
   "height": 768,
@@ -33,7 +33,7 @@
  },
  {
   "name": "room_animation_2",
-  "scene": "res://scenes/levels/room_animation_2.tscn",
+  "scene": "res://stages/room_animation_2.tscn",
   "data": "res://data/levels/room_animation_2.json",
   "width": 1024,
   "height": 768,
@@ -41,7 +41,7 @@
  },
  {
   "name": "room_animation_3",
-  "scene": "res://scenes/levels/room_animation_3.tscn",
+  "scene": "res://stages/room_animation_3.tscn",
   "data": "res://data/levels/room_animation_3.json",
   "width": 1024,
   "height": 768,
@@ -49,7 +49,7 @@
  },
  {
   "name": "room_animation_4",
-  "scene": "res://scenes/levels/room_animation_4.tscn",
+  "scene": "res://stages/room_animation_4.tscn",
   "data": "res://data/levels/room_animation_4.json",
   "width": 1024,
   "height": 768,
@@ -57,7 +57,7 @@
  },
  {
   "name": "title",
-  "scene": "res://scenes/levels/title.tscn",
+  "scene": "res://stages/title.tscn",
   "data": "res://data/levels/title.json",
   "width": 1024,
   "height": 768,
@@ -65,7 +65,7 @@
  },
  {
   "name": "room_savegame",
-  "scene": "res://scenes/levels/room_savegame.tscn",
+  "scene": "res://stages/room_savegame.tscn",
   "data": "res://data/levels/room_savegame.json",
   "width": 1024,
   "height": 768,
@@ -73,7 +73,7 @@
  },
  {
   "name": "room_map_indicator",
-  "scene": "res://scenes/levels/room_map_indicator.tscn",
+  "scene": "res://stages/room_map_indicator.tscn",
   "data": "res://data/levels/room_map_indicator.json",
   "width": 1024,
   "height": 768,
@@ -81,7 +81,7 @@
  },
  {
   "name": "room_map",
-  "scene": "res://scenes/levels/room_map.tscn",
+  "scene": "res://stages/room_map.tscn",
   "data": "res://data/levels/room_map.json",
   "width": 2000,
   "height": 2000,
@@ -89,7 +89,7 @@
  },
  {
   "name": "level_0000",
-  "scene": "res://scenes/levels/level_0000.tscn",
+  "scene": "res://stages/level_0000.tscn",
   "data": "res://data/levels/level_0000.json",
   "width": 1024,
   "height": 768,
@@ -97,7 +97,7 @@
  },
  {
   "name": "room_map_indicator2",
-  "scene": "res://scenes/levels/room_map_indicator2.tscn",
+  "scene": "res://stages/room_map_indicator2.tscn",
   "data": "res://data/levels/room_map_indicator2.json",
   "width": 1024,
   "height": 768,
@@ -105,7 +105,7 @@
  },
  {
   "name": "room_map2",
-  "scene": "res://scenes/levels/room_map2.tscn",
+  "scene": "res://stages/room_map2.tscn",
   "data": "res://data/levels/room_map2.json",
   "width": 2000,
   "height": 2000,
@@ -113,7 +113,7 @@
  },
  {
   "name": "room_map_indicator3",
-  "scene": "res://scenes/levels/room_map_indicator3.tscn",
+  "scene": "res://stages/room_map_indicator3.tscn",
   "data": "res://data/levels/room_map_indicator3.json",
   "width": 1024,
   "height": 768,
@@ -121,7 +121,7 @@
  },
  {
   "name": "room_map3",
-  "scene": "res://scenes/levels/room_map3.tscn",
+  "scene": "res://stages/room_map3.tscn",
   "data": "res://data/levels/room_map3.json",
   "width": 3000,
   "height": 3000,
@@ -129,7 +129,7 @@
  },
  {
   "name": "room_map_indicator4",
-  "scene": "res://scenes/levels/room_map_indicator4.tscn",
+  "scene": "res://stages/room_map_indicator4.tscn",
   "data": "res://data/levels/room_map_indicator4.json",
   "width": 1024,
   "height": 768,
@@ -137,7 +137,7 @@
  },
  {
   "name": "room_map4",
-  "scene": "res://scenes/levels/room_map4.tscn",
+  "scene": "res://stages/room_map4.tscn",
   "data": "res://data/levels/room_map4.json",
   "width": 3000,
   "height": 4000,
@@ -145,7 +145,7 @@
  },
  {
   "name": "room_map_indicator5",
-  "scene": "res://scenes/levels/room_map_indicator5.tscn",
+  "scene": "res://stages/room_map_indicator5.tscn",
   "data": "res://data/levels/room_map_indicator5.json",
   "width": 1024,
   "height": 768,
@@ -153,7 +153,7 @@
  },
  {
   "name": "room_map5",
-  "scene": "res://scenes/levels/room_map5.tscn",
+  "scene": "res://stages/room_map5.tscn",
   "data": "res://data/levels/room_map5.json",
   "width": 3000,
   "height": 4000,
@@ -161,7 +161,7 @@
  },
  {
   "name": "room_map_indicator6",
-  "scene": "res://scenes/levels/room_map_indicator6.tscn",
+  "scene": "res://stages/room_map_indicator6.tscn",
   "data": "res://data/levels/room_map_indicator6.json",
   "width": 1024,
   "height": 768,
@@ -169,7 +169,7 @@
  },
  {
   "name": "room_map6",
-  "scene": "res://scenes/levels/room_map6.tscn",
+  "scene": "res://stages/room_map6.tscn",
   "data": "res://data/levels/room_map6.json",
   "width": 3000,
   "height": 4000,
@@ -177,7 +177,7 @@
  },
  {
   "name": "room_map_indicator7",
-  "scene": "res://scenes/levels/room_map_indicator7.tscn",
+  "scene": "res://stages/room_map_indicator7.tscn",
   "data": "res://data/levels/room_map_indicator7.json",
   "width": 1024,
   "height": 768,
@@ -185,7 +185,7 @@
  },
  {
   "name": "room_map7",
-  "scene": "res://scenes/levels/room_map7.tscn",
+  "scene": "res://stages/room_map7.tscn",
   "data": "res://data/levels/room_map7.json",
   "width": 3000,
   "height": 5000,
@@ -193,7 +193,7 @@
  },
  {
   "name": "room_map_indicator8",
-  "scene": "res://scenes/levels/room_map_indicator8.tscn",
+  "scene": "res://stages/room_map_indicator8.tscn",
   "data": "res://data/levels/room_map_indicator8.json",
   "width": 1024,
   "height": 768,
@@ -201,7 +201,7 @@
  },
  {
   "name": "room_map8",
-  "scene": "res://scenes/levels/room_map8.tscn",
+  "scene": "res://stages/room_map8.tscn",
   "data": "res://data/levels/room_map8.json",
   "width": 8000,
   "height": 2000,
@@ -209,7 +209,7 @@
  },
  {
   "name": "card_game_1",
-  "scene": "res://scenes/levels/card_game_1.tscn",
+  "scene": "res://stages/card_game_1.tscn",
   "data": "res://data/levels/card_game_1.json",
   "width": 5000,
   "height": 5000,
@@ -217,7 +217,7 @@
  },
  {
   "name": "card_game_2",
-  "scene": "res://scenes/levels/card_game_2.tscn",
+  "scene": "res://stages/card_game_2.tscn",
   "data": "res://data/levels/card_game_2.json",
   "width": 5000,
   "height": 5000,
@@ -225,7 +225,7 @@
  },
  {
   "name": "room_shop",
-  "scene": "res://scenes/levels/room_shop.tscn",
+  "scene": "res://stages/room_shop.tscn",
   "data": "res://data/levels/room_shop.json",
   "width": 1024,
   "height": 768,
@@ -233,7 +233,7 @@
  },
  {
   "name": "room_the_end_1",
-  "scene": "res://scenes/levels/room_the_end_1.tscn",
+  "scene": "res://stages/room_the_end_1.tscn",
   "data": "res://data/levels/room_the_end_1.json",
   "width": 1024,
   "height": 768,
@@ -241,7 +241,7 @@
  },
  {
   "name": "room_the_end_2",
-  "scene": "res://scenes/levels/room_the_end_2.tscn",
+  "scene": "res://stages/room_the_end_2.tscn",
   "data": "res://data/levels/room_the_end_2.json",
   "width": 1024,
   "height": 768,
@@ -249,7 +249,7 @@
  },
  {
   "name": "room_the_end_3",
-  "scene": "res://scenes/levels/room_the_end_3.tscn",
+  "scene": "res://stages/room_the_end_3.tscn",
   "data": "res://data/levels/room_the_end_3.json",
   "width": 1024,
   "height": 768,
@@ -257,7 +257,7 @@
  },
  {
   "name": "room_warp_1",
-  "scene": "res://scenes/levels/room_warp_1.tscn",
+  "scene": "res://stages/room_warp_1.tscn",
   "data": "res://data/levels/room_warp_1.json",
   "width": 1024,
   "height": 768,
@@ -265,7 +265,7 @@
  },
  {
   "name": "room_sekwencja_nowej_mapy",
-  "scene": "res://scenes/levels/room_sekwencja_nowej_mapy.tscn",
+  "scene": "res://stages/room_sekwencja_nowej_mapy.tscn",
   "data": "res://data/levels/room_sekwencja_nowej_mapy.json",
   "width": 1024,
   "height": 768,
@@ -273,7 +273,7 @@
  },
  {
   "name": "room_choose_hero",
-  "scene": "res://scenes/levels/room_choose_hero.tscn",
+  "scene": "res://stages/room_choose_hero.tscn",
   "data": "res://data/levels/room_choose_hero.json",
   "width": 1024,
   "height": 768,

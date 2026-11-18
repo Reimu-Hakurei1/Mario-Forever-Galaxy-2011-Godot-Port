@@ -1,4 +1,5 @@
 extends SceneTree
+var R = load("res://engine/r.gd")
 
 ## Headless flow tour: intro -> title -> save select -> hero -> map -> first level.
 ## Saves stay inside --savedir; the shipped skipper/settings are seeded there by boot.
@@ -75,7 +76,7 @@ func _process(_delta: float) -> bool:
 			_tap(ENTER)
 		14, 4, 19, 22, 26, 30, 35, 43:
 			if not map_jumped and room_frames > 120:
-				var G = load("res://gen/globals.gd")
+				var G = load("res://game/globals.gd")
 				# The map screen only sets global.aktualny_lev when the cursor touches a
 				# level node; jumping straight to map_levelgo[0] left it 0, which has no
 				# perioder config and instantly "completed" the empty level.
@@ -109,7 +110,7 @@ func _process(_delta: float) -> bool:
 				if room_frames % 10 == 0:
 					_tap(FIRE)
 			if room_frames % 120 == 0:
-				var G = load("res://gen/globals.gd")
+				var G = load("res://game/globals.gd")
 				for inst in R.instances:
 					if int(inst.g_object_index) == 0:
 						print("LEVEL x=%.1f y=%.1f frame=%d energia=%s zycia=%s inst=%d" % [

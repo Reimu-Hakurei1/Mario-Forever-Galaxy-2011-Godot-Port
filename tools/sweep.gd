@@ -1,4 +1,5 @@
 extends SceneTree
+var R = load("res://engine/r.gd")
 
 ## Headless smoke sweep: force-loads every Galaxy room for --hold frames each and
 ## prints BEGIN/END markers so script errors in the log can be attributed to a room.
