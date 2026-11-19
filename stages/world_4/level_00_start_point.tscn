@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
-[ext_resource type="Script" path="res://engine/wave_editing_guide.gd" id="wave_guide"]
 
 
 [ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
@@ -232,8 +231,55 @@ script = ExtResource("editable_waves")
 z_index = 100
 
 
-[node name="WaveEditingGuide" type="Node2D" parent="Waves"]
-script = ExtResource("wave_guide")
+
+[node name="TopSpawnZone" type="ColorRect" parent="Waves"]
+color = Color(1, 0, 0, 0.2)
+position = Vector2(0, 0)
+size = Vector2(1024, 200)
+z_index = 1000
+
+[node name="TopSpawnBorder" type="ReferenceRect" parent="Waves"]
+border_color = Color(1, 0, 0, 0.8)
+border_width = 3.0
+position = Vector2(0, 0)
+size = Vector2(1024, 200)
+z_index = 1001
+
+[node name="CenterSpawnZone" type="ColorRect" parent="Waves"]
+color = Color(0, 1, 0, 0.2)
+position = Vector2(0, 200)
+size = Vector2(1024, 400)
+z_index = 1000
+
+[node name="CenterSpawnBorder" type="ReferenceRect" parent="Waves"]
+border_color = Color(0, 1, 0, 0.8)
+border_width = 3.0
+position = Vector2(0, 200)
+size = Vector2(1024, 400)
+z_index = 1001
+
+[node name="BottomSpawnZone" type="ColorRect" parent="Waves"]
+color = Color(0, 0, 1, 0.2)
+position = Vector2(0, 400)
+size = Vector2(1024, 368)
+z_index = 1000
+
+[node name="BottomSpawnBorder" type="ReferenceRect" parent="Waves"]
+border_color = Color(0, 0, 1, 0.8)
+border_width = 3.0
+position = Vector2(0, 400)
+size = Vector2(1024, 368)
+z_index = 1001
+
+[node name="EnemySpawnsLabel" type="Label" parent="Waves"]
+text = "Enemy Spawns"
+position = Vector2(10, 10)
+z_index = 1002
+
+[node name="WaveTimingLabel" type="Label" parent="Waves"]
+text = "Wave Timing"
+position = Vector2(10, 30)
+z_index = 1002
 [node name="Timing" type="Node" parent="Waves"]
 
 [node name="Enemies" type="Node2D" parent="Waves"]
