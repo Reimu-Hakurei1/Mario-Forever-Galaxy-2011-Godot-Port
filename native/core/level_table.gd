@@ -178,6 +178,15 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 	var parts: PackedStringArray = key.split(":")
 	var world := int(parts[0])
 	var node := int(parts[1])
+	# Minigame nodes — the original's map_minigame routing: 1/3 = card
+	# game rooms, 2 = shop, 10 = training stage.
+	if bool(st.get("is_minigame", false)):
+		return {
+			"background": -1, "music": "", "waves": [], "boss": {},
+			"mode": "minigame",
+			"minigame": int(st.get("minigame", 0)),
+			"label": str(st.get("title", "MINIGAME")),
+		}
 	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
 	var pool: Array = theme["music"]
 	var bg_pool: Array = theme.get("bg_pool", [theme["bg"]])

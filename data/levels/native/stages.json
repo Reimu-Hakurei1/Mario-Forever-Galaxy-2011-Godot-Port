@@ -540,7 +540,7 @@
     "bg1": 6.0,
     "bg2": 5.0
    },
-   "title": "",
+   "title": "CANNONS",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -1001,7 +1001,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "DEVASTATIONS",
    "is_boss": false,
    "is_castle": false,
    "music": 4,
@@ -1049,7 +1049,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "TROOPA'S_ACTROBATIONS!",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -1122,7 +1122,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "BOWSER_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 8,
@@ -1169,7 +1169,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "DANGEROUS_PLACE",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -1342,7 +1342,7 @@
     "bg1": 6.0,
     "bg2": 5.0
    },
-   "title": "",
+   "title": "HARD_ATTACK!",
    "is_boss": false,
    "is_castle": false,
    "music": 15,
@@ -1529,7 +1529,7 @@
     "bg1": 5.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "TROOPA_CIRCLES",
    "is_boss": false,
    "is_castle": true,
    "music": 7,
@@ -2175,7 +2175,7 @@
     "bg1": 5.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "WARFARE",
    "is_boss": false,
    "is_castle": false,
    "music": 12,
@@ -2258,7 +2258,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 10.0
    },
-   "title": "",
+   "title": "BONUS_STAGE",
    "is_boss": false,
    "is_castle": false,
    "music": 5,
@@ -2463,7 +2463,7 @@
     "bg1": 5.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "ACROBATICS",
    "is_boss": false,
    "is_castle": false,
    "music": 12,
@@ -2739,7 +2739,7 @@
     "bg1": 5.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "HARD_CORPS",
    "is_boss": false,
    "is_castle": true,
    "music": 4,
@@ -2874,11 +2874,13 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 1000000.0
    },
-   "title": "",
+   "title": "GUN_RANGE",
    "is_boss": false,
    "is_castle": false,
    "music": 11,
-   "bg": 0
+   "bg": 0,
+   "minigame": 10,
+   "is_minigame": true
   },
   "1:12": {
    "waves": [
@@ -2919,11 +2921,13 @@
     "bg1": 5.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "GUN_RANGE",
    "is_boss": false,
    "is_castle": false,
    "music": 11,
-   "bg": 5
+   "bg": 5,
+   "minigame": 10,
+   "is_minigame": true
   },
   "0:15": {
    "waves": [
@@ -2962,7 +2966,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 20.0
    },
-   "title": "",
+   "title": "SPINY_MACHINES",
    "is_boss": false,
    "is_castle": false,
    "music": 8,
@@ -3272,7 +3276,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 1000000.0
    },
-   "title": "",
+   "title": "CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 3,
@@ -3315,7 +3319,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 10.0
    },
-   "title": "",
+   "title": "ASTEROIDS",
    "is_boss": false,
    "is_castle": false,
    "music": 6,
@@ -3358,7 +3362,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 10.0
    },
-   "title": "",
+   "title": "BONUS_STAGE",
    "is_boss": false,
    "is_castle": false,
    "music": 5,
@@ -3401,7 +3405,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 10.0
    },
-   "title": "",
+   "title": "BONUS_STAGE",
    "is_boss": false,
    "is_castle": false,
    "music": 5,
@@ -3564,7 +3568,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 1000000.0
    },
-   "title": "",
+   "title": "BOWSER_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 10,
@@ -3647,7 +3651,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 1000000.0
    },
-   "title": "",
+   "title": "FIRST_ENCONTER",
    "is_boss": false,
    "is_castle": false,
    "music": 11,
@@ -3691,7 +3695,7 @@
     "rodzaj_pokonania": 1.0,
     "kiedy_pokona": 100.0
    },
-   "title": "",
+   "title": "BOWSER_CASTLE",
    "is_boss": true,
    "is_castle": true,
    "music": 10,
@@ -3737,11 +3741,13 @@
     "sila_wrogow": 0.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "GUN_RANGE",
    "is_boss": false,
    "is_castle": false,
    "music": 11,
-   "bg": 0
+   "bg": 0,
+   "minigame": 10,
+   "is_minigame": true
   },
   "4:11": {
    "waves": [
@@ -3881,7 +3887,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "INTENSIVE_BATTLE_2",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -3945,7 +3951,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "INTENSIVE_BATTLE_3",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -3993,7 +3999,7 @@
     "bg1": 8.0,
     "bg2": 8.0
    },
-   "title": "",
+   "title": "SPIKEY'S_ATTACK!",
    "is_boss": true,
    "is_castle": false,
    "music": 8,
@@ -4089,7 +4095,7 @@
     "bg1": 6.0,
     "bg2": 7.0
    },
-   "title": "",
+   "title": "SWARMS",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -4182,7 +4188,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "ASTEROIDS",
    "is_boss": false,
    "is_castle": false,
    "music": 7,
@@ -4230,7 +4236,7 @@
     "bg1": 7.0,
     "bg2": 7.0
    },
-   "title": "",
+   "title": "BIG_BAD_GUYS!",
    "is_boss": false,
    "is_castle": false,
    "music": 7,
@@ -4422,7 +4428,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "ACROBATICS_OF_DEATH",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -4448,7 +4454,7 @@
     "bg1": 8.0,
     "bg2": 8.0
    },
-   "title": "",
+   "title": "CANNONS_II",
    "is_boss": true,
    "is_castle": false,
    "music": 16,
@@ -4474,7 +4480,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "CANNONS",
    "is_boss": true,
    "is_castle": false,
    "music": 16,
@@ -4765,7 +4771,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "PIRANHAS'_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 3,
@@ -4791,7 +4797,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "FIGHTIN'_ZONE",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -4839,7 +4845,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "PIRANHAS_ATTACK!",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -4887,7 +4893,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "BERSERKEROUS_RAGE",
    "is_boss": false,
    "is_castle": false,
    "music": 7,
@@ -4935,7 +4941,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "IRON_ASTEROIDS",
    "is_boss": false,
    "is_castle": false,
    "music": 7,
@@ -4983,7 +4989,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "LAKITU!!!",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -5028,7 +5034,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "PIRANHAS'_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 3,
@@ -5164,7 +5170,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "GRAND_ARMY!",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -5212,7 +5218,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "GRAND_ARMY_2",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -5260,7 +5266,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "KEY_HOLDER!",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -5308,7 +5314,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "TROOPA_SWARMS",
    "is_boss": false,
    "is_castle": false,
    "music": 15,
@@ -5356,7 +5362,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "GOOMBA'S_UFOS",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -5404,7 +5410,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "PIRANHA_DEVASTATIONS",
    "is_boss": false,
    "is_castle": false,
    "music": 21,
@@ -5452,7 +5458,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "GREAT_WAR",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -5500,7 +5506,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "ASTEROID'S_RUN",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -5548,7 +5554,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "CARBON_STARS",
    "is_boss": false,
    "is_castle": false,
    "music": 15,
@@ -5596,7 +5602,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "BOWSER_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 10,
@@ -5644,7 +5650,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "CARBON_SLASH",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -5670,7 +5676,7 @@
     "bg1": 8.0,
     "bg2": 8.0
    },
-   "title": "",
+   "title": "FATBOYS_BOSS!",
    "is_boss": false,
    "is_castle": false,
    "music": 9,
@@ -5718,7 +5724,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "STAR_KILLING!!!",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -6033,7 +6039,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "THREE_FATBOYS!",
    "is_boss": false,
    "is_castle": false,
    "music": 9,
@@ -6081,7 +6087,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "RUSH_HOUR",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -6129,7 +6135,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "ASTEROID'S_RUN",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -6292,7 +6298,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "SPIKEYS_DANCE",
    "is_boss": false,
    "is_castle": false,
    "music": 8,
@@ -6340,7 +6346,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "HAMMER_RACING",
    "is_boss": false,
    "is_castle": false,
    "music": 4,
@@ -6492,7 +6498,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "TROOOPA_TEAMS",
    "is_boss": false,
    "is_castle": false,
    "music": 15,
@@ -6540,7 +6546,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "UFOS_AND_ASTEROIDS",
    "is_boss": false,
    "is_castle": false,
    "music": 18,
@@ -6588,7 +6594,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "TROOPA_DEVASTATORS",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -6636,7 +6642,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "CASTLE_OF_CANNONS",
    "is_boss": false,
    "is_castle": true,
    "music": 19,
@@ -6662,7 +6668,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "BOSS!",
    "is_boss": false,
    "is_castle": false,
    "music": 9,
@@ -6710,7 +6716,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "MEGA_TROOPAS!!!",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -6758,7 +6764,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "UFO'S_FLOOD",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -6806,7 +6812,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "FATBOY'S_FLOOD!!!!!",
    "is_boss": false,
    "is_castle": false,
    "music": 2,
@@ -6854,7 +6860,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "MEGA_TROOPAS_2",
    "is_boss": false,
    "is_castle": false,
    "music": 15,
@@ -6903,7 +6909,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "LAKITUS_AND_SPIKEYS",
    "is_boss": false,
    "is_castle": false,
    "music": 16,
@@ -6952,7 +6958,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "SPIKEYS_FALL",
    "is_boss": false,
    "is_castle": false,
    "music": 12,
@@ -7000,7 +7006,7 @@
     "bg1": 6.0,
     "bg2": 0.0
    },
-   "title": "",
+   "title": "SLAVE_CASTLE_1",
    "is_boss": false,
    "is_castle": true,
    "music": 3,
@@ -7049,7 +7055,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "MEGA_TROOPAS_3",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -7097,7 +7103,7 @@
     "bg1": 6.0,
     "bg2": 1.0
    },
-   "title": "",
+   "title": "SLAVE_CASTLE_2",
    "is_boss": false,
    "is_castle": true,
    "music": 17,
@@ -7144,7 +7150,7 @@
     "sila_wrogow": 0.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "MEGA_TROOPAS_4",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -7190,7 +7196,7 @@
     "sila_wrogow": 0.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "UFOS_AND_ASTEROIDS",
    "is_boss": false,
    "is_castle": false,
    "music": 7,
@@ -7236,7 +7242,7 @@
     "sila_wrogow": 0.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "UFOMANIA",
    "is_boss": false,
    "is_castle": false,
    "music": 17,
@@ -7283,7 +7289,7 @@
     "sila_wrogow": 10.0,
     "sila_szyb": 2.0
    },
-   "title": "",
+   "title": "MEGA_TROOPAS_5",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -7330,7 +7336,7 @@
     "sila_wrogow": 10.0,
     "sila_szyb": 300.0
    },
-   "title": "",
+   "title": "ELITE_TROOPS",
    "is_boss": false,
    "is_castle": false,
    "music": 19,
@@ -7376,7 +7382,7 @@
     "sila_wrogow": 6.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "FATBOY'S_FLOOD!!!!!",
    "is_boss": false,
    "is_castle": false,
    "music": 6,
@@ -7422,7 +7428,7 @@
     "sila_wrogow": 6.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "BOWSER_GUARDIANS",
    "is_boss": false,
    "is_castle": false,
    "music": 6,
@@ -7468,7 +7474,7 @@
     "sila_wrogow": 6.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "BOWSER_GUARDIANS",
    "is_boss": false,
    "is_castle": false,
    "music": 6,
@@ -7514,7 +7520,7 @@
     "sila_wrogow": 6.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "BOWSER_GUARDIANS",
    "is_boss": false,
    "is_castle": false,
    "music": 6,
@@ -7560,11 +7566,488 @@
     "sila_wrogow": 6.0,
     "sila_szyb": 0.0
    },
-   "title": "",
+   "title": "LAST_CASTLE",
    "is_boss": false,
    "is_castle": true,
    "music": 10,
    "bg": 0
+  },
+  "4:7": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "4:22": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 3,
+   "is_minigame": true
+  },
+  "4:34": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "4:35": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "4:41": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "4:42": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "3:1": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "3:2": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "3:16": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "3:17": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "3:18": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "3:20": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "3:31": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "3:32": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "3:33": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "2:4": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "2:7": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "2:8": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "2:20": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "2:24": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "2:25": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "1:4": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "1:11": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "1:13": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "0:7": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "0:8": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "0:17": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 1,
+   "is_minigame": true
+  },
+  "5:11": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "5:12": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "5:14": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 3,
+   "is_minigame": true
+  },
+  "5:23": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "5:24": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "5:29": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 3,
+   "is_minigame": true
+  },
+  "5:43": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 3,
+   "is_minigame": true
+  },
+  "5:45": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "CARD_GAME",
+   "minigame": 3,
+   "is_minigame": true
+  },
+  "5:50": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "5:51": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "6:10": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "6:11": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "6:16": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "6:17": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "6:20": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "6:21": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "6:25": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "6:26": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "6:31": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "6:32": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "7:1": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "7:2": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "7:9": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "7:10": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
+  },
+  "7:17": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "SHOP",
+   "minigame": 2,
+   "is_minigame": true
+  },
+  "7:18": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {},
+   "title": "GUN_RANGE",
+   "minigame": 10,
+   "is_minigame": true
   }
  }
 }

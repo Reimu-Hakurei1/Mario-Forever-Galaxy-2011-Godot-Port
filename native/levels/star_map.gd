@@ -318,14 +318,17 @@ func _make_node(idx: int, w: int, l: int) -> Button:
 func _on_level_pressed(idx: int) -> void:
 	NativeGame.active_level = idx
 	NativeGame.pending_level = NativeLevelTable.config_for(idx)
-	NativeGame.reset_run()
+	# Minigame nodes (card game/shop/gun range) don't start a run.
+	if str(NativeGame.pending_level.get("mode", "")) != "minigame":
+		NativeGame.reset_run()
 	# Entering a new world's first level plays the inter-map briefing
 	# (objects/ui/next_map_obj.gd) before the flight — only on the
 	# frontier node, not when replaying old levels.
 	var world := NativeLevelTable.world_of(idx)
 	var first_of_map := idx == 0 \
 		or NativeLevelTable.world_of(idx - 1) != world
-	if first_of_map and idx == NativeGame.level_index:
+	if first_of_map and idx == NativeGame.level_index \
+			and str(NativeGame.pending_level.get("mode", "")) != "minigame":
 		var lines: Array = NativeDialogueTable.NEXT_MAP.get(world, [])
 		if not lines.is_empty():
 			var talk := NativeBossDialogue.new()
@@ -353,9 +356,18 @@ func _fade_to_arena() -> void:
 	tw.tween_property(fade, "modulate:a", 1.0, 0.35)
 	tw.tween_callback(func():
 		var cfg: Dictionary = NativeGame.pending_level
-		var scene := "res://native/levels/castle.tscn" \
-			if str(cfg.get("mode", "arena")) == "castle" \
-			else "res://native/levels/arena.tscn"
+		var mode := str(cfg.get("mode", "arena"))
+		var scene := "res://native/levels/arena.tscn"
+		if mode == "castle":
+			scene = "res://native/levels/castle.tscn"
+		elif mode == "minigame":
+			# Original map_minigame routing: 1/3 card game,
+			# 2 shop, 10 training (plays as a normal stage).
+			match int(cfg.get("minigame", 0)):
+				1, 3:
+					scene = "res://native/ui/card_game.tscn"
+				2:
+					scene = "res://native/ui/shop.tscn"
 		get_tree().change_scene_to_file(scene))
 
 
@@ -371,12 +383,6 @@ func _center_on_frontier() -> void:
 ## glides the camera back to the frontier node — the original's pad
 ## behaviour (hold to inspect, release to return).
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_C:
-		# Card game — the original's card_game_1/2 rooms. No in-game
-		# trigger was ever wired in the source, so it's a free-play
-		# bonus reachable from the map.
-		get_tree().change_scene_to_file("res://native/ui/card_game.tscn")
-		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_panning = event.pressed
