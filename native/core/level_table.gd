@@ -11,8 +11,31 @@ class_name NativeLevelTable
 ##
 ## Level ids are flat: index = world * LEVELS_PER_WORLD + level.
 
+## Campaign = the original's authored stage schedules, extracted from
+## script_perioder_maps/script_perioder_map_* in part_7.gd into
+## data/levels/native/stages.json. Each playable (map, node) pair is one
+## level; index = rank in that sorted list. Nodes without a schedule
+## block are map connectors/minigames, not levels.
 const LEVELS_PER_WORLD := 10
 const WORLDS := 8
+const STAGES_PATH := "res://data/levels/native/stages.json"
+
+static var _stages: Dictionary = {}
+static var _playable: Array = []   # ["m:n", ...] sorted by map then node
+
+
+static func _load_stages() -> void:
+	if not _stages.is_empty():
+		return
+	if FileAccess.file_exists(STAGES_PATH):
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(STAGES_PATH))
+		if typeof(parsed) == TYPE_DICTIONARY:
+			_stages = parsed.get("stages", {})
+	_playable = _stages.keys()
+	_playable.sort_custom(func(a, b):
+		var pa: PackedStringArray = str(a).split(":")
+		var pb: PackedStringArray = str(b).split(":")
+		return int(pa[0]) * 1000 + int(pa[1]) < int(pb[0]) * 1000 + int(pb[1]))
 
 # Background/music pools per world — picked from data/assets.json ids.
 # `music` is a per-level pool: config_for rotates through it so levels
@@ -61,6 +84,13 @@ static func config_for(level_index: int) -> Dictionary:
 	var custom := _custom_config(level_index)
 	if not custom.is_empty():
 		return custom
+	_load_stages()
+	if level_index < _playable.size():
+		return _authored_config(_playable[level_index], level_index)
+	# Fallback for indices past the authored roster (modulo wrap).
+	var wrapped := level_index % maxi(1, _playable.size())
+	if wrapped != level_index:
+		return _authored_config(_playable[wrapped], level_index)
 	var world := level_index / LEVELS_PER_WORLD
 	var level := level_index % LEVELS_PER_WORLD
 	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
@@ -140,18 +170,70 @@ static func _custom_config(level_index: int) -> Dictionary:
 	}
 
 
-## Total levels in the campaign.
+## Config for one extracted stage schedule. Waves come straight from
+## stages.json (already in spawner dict format); boss/castle flags and
+## the stage title were extracted alongside them.
+static func _authored_config(key: String, level_index: int) -> Dictionary:
+	var st: Dictionary = _stages.get(key, {})
+	var parts: PackedStringArray = key.split(":")
+	var world := int(parts[0])
+	var node := int(parts[1])
+	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
+	var pool: Array = theme["music"]
+	var bg_pool: Array = theme.get("bg_pool", [theme["bg"]])
+	var waves: Array = []
+	for w in st.get("waves", []):
+		var wave: Dictionary = (w as Dictionary).duplicate()
+		wave["health"] = float(wave.get("health", 10.0)) * \
+			minf(8.0 + level_index * 0.4, 40.0) / 10.0
+		waves.append(wave)
+	# Authored schedules can be sparse — top up with a couple of
+	# procedural waves so every stage has a proper ending.
+	if waves.size() < 3:
+		var tail := _generate_waves(level_index, world)
+		var t: float = (waves[waves.size() - 1]["delay"] + 5.0) if not waves.is_empty() else 1.0
+		for i in range(maxi(0, tail.size() - 2), tail.size()):
+			var w: Dictionary = tail[i].duplicate()
+			w["delay"] = t
+			waves.append(w)
+			t += 8.0
+	waves.sort_custom(func(a, b): return float(a["delay"]) < float(b["delay"]))
+	var is_boss := bool(st.get("is_boss", false))
+	return {
+		"background": int(bg_pool[node % bg_pool.size()]),
+		"music": str(pool[node % pool.size()]),
+		"waves": waves,
+		"boss": {"tier": world,
+			"variant": BOSS_VARIANTS.get(world, "")} if is_boss else {},
+		"mode": "castle" if bool(st.get("is_castle", false)) else "arena",
+		"label": str(st.get("title", "")) if str(st.get("title", "")) != "" \
+			else "M%d-%02d" % [world + 1, node + 1],
+	}
+
+
+## Total levels in the campaign — the authored playable stages.
 static func level_count() -> int:
-	return WORLDS * LEVELS_PER_WORLD
+	_load_stages()
+	return _playable.size()
 
 
-## Which world/level a flat index belongs to.
+## Which map/node a flat index belongs to ("m:n" stage key).
+static func stage_key(level_index: int) -> String:
+	_load_stages()
+	if _playable.is_empty():
+		return "0:0"
+	return _playable[level_index % _playable.size()]
+
+
+## Map number (world) and node index for a flat level index.
 static func world_of(level_index: int) -> int:
-	return level_index / LEVELS_PER_WORLD
+	var p := stage_key(level_index).split(":")
+	return int(p[0])
 
 
 static func level_of(level_index: int) -> int:
-	return level_index % LEVELS_PER_WORLD
+	var p := stage_key(level_index).split(":")
+	return int(p[1])
 
 
 ## Hand-authored wave blueprints — distinct level "feels" layered on top

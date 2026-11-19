@@ -1,0 +1,7570 @@
+{
+ "perioder_dispatch": {
+  "1": {
+   "obj": 146,
+   "rodzaj": null
+  },
+  "2": {
+   "obj": 147,
+   "rodzaj": null
+  },
+  "3": {
+   "obj": 237,
+   "rodzaj": null
+  },
+  "4": {
+   "obj": 238,
+   "rodzaj": null
+  },
+  "5": {
+   "obj": 239,
+   "rodzaj": null
+  },
+  "6": {
+   "obj": 240,
+   "rodzaj": null
+  },
+  "7": {
+   "obj": 241,
+   "rodzaj": null
+  },
+  "8": {
+   "obj": 253,
+   "rodzaj": null
+  },
+  "9": {
+   "obj": 254,
+   "rodzaj": null
+  },
+  "10": {
+   "obj": 255,
+   "rodzaj": null
+  },
+  "11": {
+   "obj": 257,
+   "rodzaj": null
+  },
+  "12": {
+   "obj": 259,
+   "rodzaj": null
+  },
+  "13": {
+   "obj": 271,
+   "rodzaj": null
+  },
+  "14": {
+   "obj": 272,
+   "rodzaj": null
+  },
+  "15": {
+   "obj": 311,
+   "rodzaj": null
+  },
+  "17": {
+   "obj": 318,
+   "rodzaj": null
+  },
+  "18": {
+   "obj": 319,
+   "rodzaj": null
+  },
+  "19": {
+   "obj": 320,
+   "rodzaj": null
+  },
+  "20": {
+   "obj": 321,
+   "rodzaj": null
+  },
+  "21": {
+   "obj": 323,
+   "rodzaj": null
+  },
+  "22": {
+   "obj": 324,
+   "rodzaj": null
+  },
+  "23": {
+   "obj": 325,
+   "rodzaj": null
+  },
+  "24": {
+   "obj": 251,
+   "rodzaj": null
+  },
+  "25": {
+   "obj": 326,
+   "rodzaj": null
+  },
+  "27": {
+   "obj": 328,
+   "rodzaj": null
+  },
+  "28": {
+   "obj": 337,
+   "rodzaj": null
+  },
+  "29": {
+   "obj": 338,
+   "rodzaj": null
+  },
+  "30": {
+   "obj": 339,
+   "rodzaj": null
+  },
+  "31": {
+   "obj": 340,
+   "rodzaj": null
+  },
+  "32": {
+   "obj": 342,
+   "rodzaj": null
+  },
+  "33": {
+   "obj": 343,
+   "rodzaj": null
+  },
+  "34": {
+   "obj": 344,
+   "rodzaj": null
+  },
+  "35": {
+   "obj": 348,
+   "rodzaj": null
+  },
+  "36": {
+   "obj": 352,
+   "rodzaj": null
+  },
+  "37": {
+   "obj": 354,
+   "rodzaj": null
+  },
+  "38": {
+   "obj": 359,
+   "rodzaj": null
+  },
+  "39": {
+   "obj": 360,
+   "rodzaj": null
+  },
+  "40": {
+   "obj": 364,
+   "rodzaj": null
+  },
+  "41": {
+   "obj": 367,
+   "rodzaj": null
+  },
+  "42": {
+   "obj": 372,
+   "rodzaj": null
+  },
+  "43": {
+   "obj": 353,
+   "rodzaj": null
+  },
+  "44": {
+   "obj": 353,
+   "rodzaj": null
+  },
+  "45": {
+   "obj": 374,
+   "rodzaj": null
+  },
+  "46": {
+   "obj": 376,
+   "rodzaj": null
+  },
+  "47": {
+   "obj": 379,
+   "rodzaj": null
+  },
+  "48": {
+   "obj": 380,
+   "rodzaj": null
+  },
+  "49": {
+   "obj": 381,
+   "rodzaj": null
+  },
+  "50": {
+   "obj": 382,
+   "rodzaj": null
+  },
+  "51": {
+   "obj": 383,
+   "rodzaj": null
+  },
+  "52": {
+   "obj": 384,
+   "rodzaj": null
+  },
+  "53": {
+   "obj": 386,
+   "rodzaj": null
+  },
+  "54": {
+   "obj": 388,
+   "rodzaj": null
+  },
+  "55": {
+   "obj": 394,
+   "rodzaj": null
+  },
+  "56": {
+   "obj": 398,
+   "rodzaj": null
+  },
+  "57": {
+   "obj": 399,
+   "rodzaj": null
+  },
+  "58": {
+   "obj": 404,
+   "rodzaj": null
+  },
+  "59": {
+   "obj": 405,
+   "rodzaj": null
+  },
+  "60": {
+   "obj": 407,
+   "rodzaj": null
+  },
+  "61": {
+   "obj": 408,
+   "rodzaj": null
+  },
+  "62": {
+   "obj": 411,
+   "rodzaj": null
+  },
+  "63": {
+   "obj": 415,
+   "rodzaj": null
+  },
+  "64": {
+   "obj": 421,
+   "rodzaj": null
+  },
+  "65": {
+   "obj": 423,
+   "rodzaj": null
+  },
+  "66": {
+   "obj": 425,
+   "rodzaj": null
+  },
+  "67": {
+   "obj": 426,
+   "rodzaj": null
+  },
+  "68": {
+   "obj": 427,
+   "rodzaj": null
+  },
+  "69": {
+   "obj": 428,
+   "rodzaj": null
+  },
+  "70": {
+   "obj": 430,
+   "rodzaj": null
+  },
+  "71": {
+   "obj": 433,
+   "rodzaj": null
+  },
+  "72": {
+   "obj": 436,
+   "rodzaj": null
+  },
+  "73": {
+   "obj": 441,
+   "rodzaj": null
+  },
+  "74": {
+   "obj": 445,
+   "rodzaj": null
+  },
+  "75": {
+   "obj": 447,
+   "rodzaj": null
+  },
+  "76": {
+   "obj": 448,
+   "rodzaj": null
+  },
+  "77": {
+   "obj": 449,
+   "rodzaj": null
+  },
+  "78": {
+   "obj": 450,
+   "rodzaj": null
+  },
+  "79": {
+   "obj": 452,
+   "rodzaj": null
+  },
+  "80": {
+   "obj": 454,
+   "rodzaj": null
+  },
+  "81": {
+   "obj": 455,
+   "rodzaj": null
+  },
+  "82": {
+   "obj": 457,
+   "rodzaj": null
+  },
+  "83": {
+   "obj": 458,
+   "rodzaj": null
+  },
+  "84": {
+   "obj": 460,
+   "rodzaj": null
+  },
+  "85": {
+   "obj": 462,
+   "rodzaj": null
+  },
+  "86": {
+   "obj": 463,
+   "rodzaj": null
+  },
+  "87": {
+   "obj": 464,
+   "rodzaj": null
+  },
+  "88": {
+   "obj": 468,
+   "rodzaj": null
+  },
+  "89": {
+   "obj": 471,
+   "rodzaj": null
+  },
+  "90": {
+   "obj": 472,
+   "rodzaj": null
+  },
+  "91": {
+   "obj": 473,
+   "rodzaj": null
+  },
+  "92": {
+   "obj": 474,
+   "rodzaj": null
+  },
+  "93": {
+   "obj": 475,
+   "rodzaj": null
+  },
+  "94": {
+   "obj": 478,
+   "rodzaj": null
+  },
+  "95": {
+   "obj": 479,
+   "rodzaj": null
+  },
+  "96": {
+   "obj": 484,
+   "rodzaj": null
+  },
+  "97": {
+   "obj": 486,
+   "rodzaj": null
+  },
+  "98": {
+   "obj": 487,
+   "rodzaj": null
+  },
+  "99": {
+   "obj": 489,
+   "rodzaj": null
+  },
+  "100": {
+   "obj": 490,
+   "rodzaj": null
+  },
+  "101": {
+   "obj": 491,
+   "rodzaj": null
+  },
+  "102": {
+   "obj": 492,
+   "rodzaj": null
+  },
+  "103": {
+   "obj": 493,
+   "rodzaj": null
+  },
+  "104": {
+   "obj": 494,
+   "rodzaj": null
+  },
+  "105": {
+   "obj": 497,
+   "rodzaj": null
+  },
+  "106": {
+   "obj": 498,
+   "rodzaj": null
+  },
+  "107": {
+   "obj": 499,
+   "rodzaj": null
+  },
+  "108": {
+   "obj": 500,
+   "rodzaj": null
+  },
+  "109": {
+   "obj": 502,
+   "rodzaj": null
+  },
+  "1000": {
+   "obj": 306,
+   "rodzaj": null
+  },
+  "1001": {
+   "obj": 308,
+   "rodzaj": null
+  },
+  "1004": {
+   "obj": 305,
+   "rodzaj": 1
+  },
+  "1005": {
+   "obj": 305,
+   "rodzaj": 5
+  },
+  "1006": {
+   "obj": 305,
+   "rodzaj": 8
+  },
+  "1008": {
+   "obj": 305,
+   "rodzaj": 8
+  },
+  "1009": {
+   "obj": 305,
+   "rodzaj": 8
+  },
+  "1010": {
+   "obj": 305,
+   "rodzaj": 1
+  },
+  "1011": {
+   "obj": 305,
+   "rodzaj": 2
+  },
+  "1012": {
+   "obj": 305,
+   "rodzaj": 3
+  },
+  "2000": {
+   "obj": 298,
+   "rodzaj": null
+  }
+ },
+ "stages": {
+  "3:5": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_castle_rush"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 364,
+     "name": "wave_map_4_castle_rush",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0
+   },
+   "title": "BE_FAST!!!",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 16,
+   "bg": 0
+  },
+  "3:8": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 20.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 100.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 5.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 5.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "3:10": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [
+    368
+   ],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 90.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 10.0,
+    "sila_energii": 30.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "BOOOOMERANGS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "3:12": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_1"
+    },
+    {
+     "delay": 16.7,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_2"
+    },
+    {
+     "delay": 25.05,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_1"
+    },
+    {
+     "delay": 33.4,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_2"
+    },
+    {
+     "delay": 50.1,
+     "count": 20,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "ufo_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_ufos_light"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 337,
+     "name": "wave_20_troopa_circles_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 338,
+     "name": "wave_20_troopa_circles_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 25.05,
+     "obj": 337,
+     "name": "wave_20_troopa_circles_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 33.4,
+     "obj": 338,
+     "name": "wave_20_troopa_circles_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 50.1,
+     "obj": 372,
+     "name": "wave_map_4_ufos_light",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 10.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 250.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 5.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "THE_GAME#IS_GETTING#HARDER",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "3:22": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 16.7,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 25.05,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 1
+    },
+    {
+     "delay": 16.7,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 2
+    },
+    {
+     "delay": 25.05,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 3
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 7.0
+   },
+   "title": "GET_THEM_ALL!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "3:23": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 9.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "FATBOY!!!!!!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 9,
+   "bg": 6
+  },
+  "3:25": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 16.7,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 25.05,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 33.4,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 35.07,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 50.1,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 51.77,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 66.8,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 83.5,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 100.2,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 116.9,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 2
+    },
+    {
+     "delay": 16.7,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 25.05,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 2
+    },
+    {
+     "delay": 33.4,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 35.07,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 2
+    },
+    {
+     "delay": 50.1,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 51.77,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 2
+    },
+    {
+     "delay": 66.8,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 83.5,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 100.2,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 116.9,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 4.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 300.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_energii": 50.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 4,
+   "bg": 6
+  },
+  "3:26": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 374,
+     "name": "wave_map_4_grouping_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 10.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "3:34": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 100.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 30.0,
+    "sila_wrogow": 3.0,
+    "sila_szyb": 50.0,
+    "sila_energii": 50.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "WATCH_OUT_FOR!#BERSERKERS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "3:36": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 376,
+     "name": "wave_map_4_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 8.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 8,
+   "bg": 6
+  },
+  "3:37": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 379,
+     "name": "wave_map_4_grouping_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "3:38": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 11.69,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 13.36,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 15.03,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 16.7,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 18.37,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 11.69,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 13.36,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 15.03,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 18.37,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 15.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "IT'WILL_BE#FUNNY_:)",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "2:3": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 15.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 100.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 30.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 5.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "2:2": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 1
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "sila_energii": 25.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 100.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 30.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 5.0
+   },
+   "title": "PICKUP_IT!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 6
+  },
+  "2:6": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_1"
+    },
+    {
+     "delay": 16.7,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_2"
+    },
+    {
+     "delay": 41.75,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_3"
+    },
+    {
+     "delay": 66.8,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_1"
+    },
+    {
+     "delay": 100.2,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_20_troopa_circles_2"
+    },
+    {
+     "delay": 116.9,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 340,
+     "spawn_name": "castle_enemy_3"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 337,
+     "name": "wave_20_troopa_circles_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 338,
+     "name": "wave_20_troopa_circles_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 41.75,
+     "obj": 339,
+     "name": "wave_20_troopa_circles_3",
+     "rodzaj": null
+    },
+    {
+     "delay": 66.8,
+     "obj": 337,
+     "name": "wave_20_troopa_circles_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 100.2,
+     "obj": 338,
+     "name": "wave_20_troopa_circles_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 116.9,
+     "obj": 340,
+     "name": "castle_enemy_3",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 7.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 7,
+   "bg": 5
+  },
+  "2:9": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 30,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "kamikaze",
+     "kinds": [
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "divers",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_20_kamikaze_spikeys"
+    },
+    {
+     "delay": 16.7,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 25.05,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 33.4,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 35.07,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 50.1,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 51.77,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 53.44,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 55.11,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 342,
+     "name": "wave_20_kamikaze_spikeys",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 5
+    },
+    {
+     "delay": 25.05,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 33.4,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 5
+    },
+    {
+     "delay": 35.07,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 50.1,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 51.77,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 53.44,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 55.11,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 3.0,
+    "bg2": 3.0
+   },
+   "title": "COLLECT_IT!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 3
+  },
+  "2:10": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "bonus_fall",
+     "kinds": [
+      "bonus_fall"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_funny_bonus_catch"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 343,
+     "name": "wave_funny_bonus_catch",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 15.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "IT'WILL_BE#FUNNY_:)",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 0
+  },
+  "2:11": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_3_two_fire_cans"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 344,
+     "name": "wave_map_3_two_fire_cans",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 1.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "KOOPA_TROOPA#BROTHAS!!!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 1,
+   "bg": 0
+  },
+  "2:16": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "shooter",
+     "kinds": [
+      "shooter"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_12_key_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 348,
+     "name": "wave_12_key_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 14.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "FIND_A_KEY!",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 14,
+   "bg": 0
+  },
+  "2:21": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "crab"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_21_big_circle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 352,
+     "name": "wave_21_big_circle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 15.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "CIRCLES#INCOMING!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 0
+  },
+  "2:23": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "elite",
+     "kinds": [
+      "elite",
+      "shooter",
+      "rocket_ufo"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_22_goomba_revenge"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 354,
+     "name": "wave_22_goomba_revenge",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 15.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 5.0
+   },
+   "title": "GOOMBASESSS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "2:28": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_3_asteroids"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 359,
+     "name": "wave_map_3_asteroids",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 6.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 5.0
+   },
+   "title": "ROCK'EM_UP!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 6
+  },
+  "2:31": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 25.05,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 25.05,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 5.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "GET_IT!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 0
+  },
+  "2:30": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_3_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 360,
+     "name": "wave_map_3_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 10.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "BOWSER_IS#BAAAD!",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 10,
+   "bg": 0
+  },
+  "1:2": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 40,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "rocket_ufo",
+     "kinds": [
+      "rocket_ufo"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_15"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 311,
+     "name": "wave_15",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 45.0,
+    "bg1": 1.0,
+    "bg2": 1.0
+   },
+   "title": "GOOMBASES!#HATES_MARIO!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 1
+  },
+  "1:1": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "mini",
+     "kinds": [
+      "mini",
+      "shooter"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_17"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 318,
+     "name": "wave_17",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 80.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 50.0,
+    "sila_wrogow": 2.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 5
+  },
+  "1:7": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave"
+    },
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave"
+    },
+    {
+     "delay": 10.02,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 240,
+     "name": "wave_6_bonus_wave",
+     "rodzaj": null
+    },
+    {
+     "delay": 6.68,
+     "obj": 240,
+     "name": "wave_6_bonus_wave",
+     "rodzaj": null
+    },
+    {
+     "delay": 10.02,
+     "obj": 240,
+     "name": "wave_6_bonus_wave",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 5.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 0
+  },
+  "1:8": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_1"
+    },
+    {
+     "delay": 25.05,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_2"
+    },
+    {
+     "delay": 33.4,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_3"
+    },
+    {
+     "delay": 50.1,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_1"
+    },
+    {
+     "delay": 66.8,
+     "count": 30,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_4"
+    },
+    {
+     "delay": 100.2,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_5"
+    },
+    {
+     "delay": 116.9,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_1"
+    },
+    {
+     "delay": 118.57,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_2"
+    },
+    {
+     "delay": 120.24,
+     "count": 9,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_18_circle_3"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 319,
+     "name": "wave_18_circle_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 25.05,
+     "obj": 320,
+     "name": "wave_18_circle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 33.4,
+     "obj": 321,
+     "name": "wave_18_circle_3",
+     "rodzaj": null
+    },
+    {
+     "delay": 50.1,
+     "obj": 319,
+     "name": "wave_18_circle_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 66.8,
+     "obj": 323,
+     "name": "wave_18_circle_4",
+     "rodzaj": null
+    },
+    {
+     "delay": 100.2,
+     "obj": 324,
+     "name": "wave_18_circle_5",
+     "rodzaj": null
+    },
+    {
+     "delay": 116.9,
+     "obj": 319,
+     "name": "wave_18_circle_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 118.57,
+     "obj": 320,
+     "name": "wave_18_circle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 120.24,
+     "obj": 321,
+     "name": "wave_18_circle_3",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 80.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 5
+  },
+  "1:9": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_4_asteroids_1"
+    },
+    {
+     "delay": 16.7,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_4_asteroids_1"
+    },
+    {
+     "delay": 25.05,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_4_asteroids_1"
+    },
+    {
+     "delay": 100.2,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 251,
+     "spawn_name": "flame_cans_boss"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 325,
+     "name": "wave_4_asteroids_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 325,
+     "name": "wave_4_asteroids_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 25.05,
+     "obj": 325,
+     "name": "wave_4_asteroids_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 100.2,
+     "obj": 251,
+     "name": "flame_cans_boss",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 80.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "#AAAAASTEROIDS!",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 6,
+   "bg": 5
+  },
+  "1:14": {
+   "waves": [
+    {
+     "delay": 33.4,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 36.74,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 38.41,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 41.75,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 46.76,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 50.1,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    },
+    {
+     "delay": 58.45,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon",
+      "eye"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 33.4,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 36.74,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 38.41,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 41.75,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 46.76,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 50.1,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 58.45,
+     "obj": 326,
+     "name": "wave_7_castle_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 4.0,
+    "sila_energii": 30.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 30.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 30.0,
+    "sila_wrogow": 3.0,
+    "sila_szyb": 4.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 4,
+   "bg": 5
+  },
+  "1:19": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 5.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 60.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 0.0,
+    "kiedy_pokona": 30.0,
+    "sila_wrogow": 3.0,
+    "sila_szyb": 4.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "WATCH_OUT_FOR!#BERSERKERS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 5
+  },
+  "1:15": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "ghost",
+     "kinds": [
+      "ghost"
+     ],
+     "health": 10.0,
+     "pattern": "ghosts",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_ghost_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 328,
+     "name": "wave_ghost_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 13.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "BOOO!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 13,
+   "bg": 5
+  },
+  "1:22": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "muzyka": 10.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0
+   },
+   "title": "BOWSER_WILL#BE_ANGRY!!!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 10,
+   "bg": 0
+  },
+  "1:5": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 20,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_14_gun_range"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 272,
+     "name": "wave_14_gun_range",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 11.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1000000.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 11,
+   "bg": 0
+  },
+  "1:12": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 20,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_14_gun_range"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 272,
+     "name": "wave_14_gun_range",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 11.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1000000.0,
+    "bg1": 5.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 11,
+   "bg": 5
+  },
+  "0:15": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "mini",
+     "kinds": [
+      "mini"
+     ],
+     "health": 10.0,
+     "pattern": "swarm",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_11_spikey_swarm"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 257,
+     "name": "wave_11_spikey_swarm",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 8.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 20.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 8,
+   "bg": 0
+  },
+  "0:12": {
+   "waves": [
+    {
+     "delay": 25.05,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_2"
+    },
+    {
+     "delay": 33.4,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_3"
+    },
+    {
+     "delay": 50.1,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_4_asteroids"
+    },
+    {
+     "delay": 75.15,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "zigzag",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_9_zigzag"
+    },
+    {
+     "delay": 83.5,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "zigzag",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_9_zigzag"
+    },
+    {
+     "delay": 100.2,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_10_circle_wait"
+    },
+    {
+     "delay": 116.9,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_10_circle_wait"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 25.05,
+     "obj": 147,
+     "name": "wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 33.4,
+     "obj": 237,
+     "name": "wave_3",
+     "rodzaj": null
+    },
+    {
+     "delay": 50.1,
+     "obj": 238,
+     "name": "wave_4_asteroids",
+     "rodzaj": null
+    },
+    {
+     "delay": 75.15,
+     "obj": 254,
+     "name": "wave_9_zigzag",
+     "rodzaj": null
+    },
+    {
+     "delay": 83.5,
+     "obj": 254,
+     "name": "wave_9_zigzag",
+     "rodzaj": null
+    },
+    {
+     "delay": 100.2,
+     "obj": 255,
+     "name": "wave_10_circle_wait",
+     "rodzaj": null
+    },
+    {
+     "delay": 116.9,
+     "obj": 255,
+     "name": "wave_10_circle_wait",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 4.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 60.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 80.0
+   },
+   "title": "SMALL#ASTEROIDS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 4,
+   "bg": 0
+  },
+  "0:6": {
+   "waves": [
+    {
+     "delay": 25.05,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    },
+    {
+     "delay": 41.75,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    },
+    {
+     "delay": 58.45,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "zigzag",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_9_zigzag"
+    },
+    {
+     "delay": 75.15,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 25.05,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    },
+    {
+     "delay": 41.75,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    },
+    {
+     "delay": 58.45,
+     "obj": 254,
+     "name": "wave_9_zigzag",
+     "rodzaj": null
+    },
+    {
+     "delay": 75.15,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 50.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 55.0
+   },
+   "title": "SWARM#APPORACHING",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 0
+  },
+  "0:10": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "eye",
+     "kinds": [
+      "eye",
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_7_castle_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 241,
+     "name": "wave_7_castle_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 3.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1000000.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 3,
+   "bg": 0
+  },
+  "0:4": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 40,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_8"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 253,
+     "name": "wave_8",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 6.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 0
+  },
+  "0:14": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 5.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 0
+  },
+  "0:11": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 240,
+     "name": "wave_6_bonus_wave",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 5.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 0
+  },
+  "0:3": {
+   "waves": [
+    {
+     "delay": 5.01,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 308,
+     "spawn_name": "level_weapon_1"
+    },
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_1"
+    },
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_3"
+    },
+    {
+     "delay": 33.4,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_4_asteroids"
+    },
+    {
+     "delay": 58.45,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 5.01,
+     "obj": 308,
+     "name": "level_weapon_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 8.35,
+     "obj": 146,
+     "name": "wave_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 237,
+     "name": "wave_3",
+     "rodzaj": null
+    },
+    {
+     "delay": 33.4,
+     "obj": 238,
+     "name": "wave_4_asteroids",
+     "rodzaj": null
+    },
+    {
+     "delay": 58.45,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 4.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 40.0
+   },
+   "title": "SMALL#ASTEROIDS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 4,
+   "bg": 0
+  },
+  "0:16": {
+   "waves": [
+    {
+     "delay": 3.34,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "shooter",
+     "kinds": [
+      "shooter",
+      "fat_boy"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_12_castle_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 3.34,
+     "obj": 259,
+     "name": "wave_12_castle_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 10.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1000000.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 10,
+   "bg": 0
+  },
+  "0:2": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_help_1"
+    },
+    {
+     "delay": 3.34,
+     "count": 20,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_14_gun_range"
+    },
+    {
+     "delay": 75.15,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 306,
+     "name": "wave_help_1",
+     "rodzaj": null
+    },
+    {
+     "delay": 3.34,
+     "obj": 272,
+     "name": "wave_14_gun_range",
+     "rodzaj": null
+    },
+    {
+     "delay": 75.15,
+     "obj": 147,
+     "name": "wave_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 11.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1000000.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 11,
+   "bg": 0
+  },
+  "4:6": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_5_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 415,
+     "name": "wave_map_5_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "sila_energii": 20.0,
+    "muzyka": 10.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 2.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0
+   },
+   "title": "",
+   "is_boss": true,
+   "is_castle": true,
+   "music": 10,
+   "bg": 0
+  },
+  "4:8": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_14_gun_range"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 272,
+     "name": "wave_14_gun_range",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 11.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 11,
+   "bg": 0
+  },
+  "4:11": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_3"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 380,
+     "name": "wave_map_4_grouping_3",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 7.0
+   },
+   "title": "PREPARE_FOR_#REAL_BATTLE!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:13": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_4"
+    },
+    {
+     "delay": 10.02,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 20.04,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    },
+    {
+     "delay": 36.74,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 353,
+     "spawn_name": "flame_cans"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 381,
+     "name": "wave_map_4_grouping_4",
+     "rodzaj": null
+    },
+    {
+     "delay": 10.02,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 20.04,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    },
+    {
+     "delay": 36.74,
+     "obj": 353,
+     "name": "flame_cans",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 18.0,
+    "sila_energii": 100.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 5.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:15": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_5"
+    },
+    {
+     "delay": 10.02,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 382,
+     "spawn_name": "spikey_swarm_map_5"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 383,
+     "name": "wave_map_4_grouping_5",
+     "rodzaj": null
+    },
+    {
+     "delay": 10.02,
+     "obj": 382,
+     "name": "spikey_swarm_map_5",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:17": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 30,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "kamikaze",
+     "kinds": [
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "swarm",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_5_spikeys"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 384,
+     "name": "wave_map_5_spikeys",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 8.0,
+    "sila_energii": 100.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 2.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 8.0,
+    "bg2": 8.0
+   },
+   "title": "",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 8,
+   "bg": 8
+  },
+  "4:18": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 386,
+     "name": "wave_map_4_grouping_6",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 6.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 7.0
+   },
+   "title": "OMG!#CYBER_TROOPAS!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 6
+  },
+  "4:20": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_7"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 388,
+     "name": "wave_map_4_grouping_7",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 7.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:23": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "ghost",
+     "kinds": [
+      "ghost"
+     ],
+     "health": 10.0,
+     "pattern": "ghosts",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_ghost_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 394,
+     "name": "wave_ghost_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 13.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 6.0,
+    "bg2": 7.0
+   },
+   "title": "BOOOOOO!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 13,
+   "bg": 6
+  },
+  "4:26": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_5_asteroids"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 398,
+     "name": "wave_map_5_asteroids",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 6
+  },
+  "4:29": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_5_big_bad"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 399,
+     "name": "wave_map_5_big_bad",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 7.0,
+    "bg2": 7.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 7
+  },
+  "4:33": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "loot",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_5_chests"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 404,
+     "name": "wave_map_5_chests",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 5.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 8.0,
+    "bg2": 8.0
+   },
+   "title": "BONUS_TIME!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 8
+  },
+  "4:36": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_grouping_8"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 405,
+     "name": "wave_map_4_grouping_8",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "IT_WILL_BE#PAINFUL!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:38": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_9"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 407,
+     "name": "wave_map_4_grouping_9",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 50.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 1.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "IT_WILL_BE#DIFFICULT!",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:40": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_10"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 408,
+     "name": "wave_map_4_grouping_10",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "4:44": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 2.0,
+    "num": 100.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 5.0,
+    "sila_szyb": 4.0,
+    "bg1": 8.0,
+    "bg2": 8.0
+   },
+   "title": "",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 16,
+   "bg": 8
+  },
+  "4:43": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 2.0,
+    "num": 100.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 5.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "4:46": {
+   "waves": [
+    {
+     "delay": 11.69,
+     "count": 5,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_12"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 11.69,
+     "obj": 411,
+     "name": "wave_map_4_grouping_12",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 18.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "CIRCLES#OF_DOOM",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "4:45": {
+   "waves": [
+    {
+     "delay": 10.02,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 11.69,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 13.36,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 15.03,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 16.7,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 18.37,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 20.04,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "bonus",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_6_bonus_wave_2"
+    },
+    {
+     "delay": 23.38,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    },
+    {
+     "delay": 25.05,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 305,
+     "spawn_name": "special_weapon_6"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 10.02,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 11.69,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 13.36,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 15.03,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 18.37,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 20.04,
+     "obj": 271,
+     "name": "wave_6_bonus_wave_2",
+     "rodzaj": null
+    },
+    {
+     "delay": 23.38,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    },
+    {
+     "delay": 25.05,
+     "obj": 305,
+     "name": "special_weapon_6",
+     "rodzaj": 8
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 5.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "TRY_TO#CATCH_THEM!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 6
+  },
+  "5:2": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "bottom",
+     "mode": "chase",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "piranhas",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_piranha_castle_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 421,
+     "name": "wave_map_6_piranha_castle_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 3.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 3,
+   "bg": 6
+  },
+  "5:5": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "sila_energii": 100.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 150.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 100.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "5:10": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "bottom",
+     "mode": "chase",
+     "kind": "rocket_ufo",
+     "kinds": [
+      "rocket_ufo"
+     ],
+     "health": 10.0,
+     "pattern": "piranhas",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_piranhasus_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 423,
+     "name": "wave_map_6_piranhasus_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "sila_energii": 50.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 150.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 50.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "5:16": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "divers",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_6_berserkerous"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 425,
+     "name": "wave_map_6_berserkerous",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "sila_energii": 75.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 200.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 6
+  },
+  "5:19": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_asteroids_x"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 426,
+     "name": "wave_map_6_asteroids_x",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 6
+  },
+  "5:22": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_6_grouping_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 427,
+     "name": "wave_map_6_grouping_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 5.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "5:26": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "bottom",
+     "mode": "chase",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "piranhas",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_piranha_castle_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 428,
+     "name": "wave_map_6_piranha_castle_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 3.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 3,
+   "bg": 6
+  },
+  "5:30": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "loot",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_5_chests"
+    },
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "loot",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_5_chests"
+    },
+    {
+     "delay": 25.05,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "loot",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_5_chests"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 404,
+     "name": "wave_map_5_chests",
+     "rodzaj": null
+    },
+    {
+     "delay": 16.7,
+     "obj": 404,
+     "name": "wave_map_5_chests",
+     "rodzaj": null
+    },
+    {
+     "delay": 25.05,
+     "obj": 404,
+     "name": "wave_map_5_chests",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 5.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "BONUS_TIME!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 5,
+   "bg": 6
+  },
+  "5:32": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_14"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 430,
+     "name": "wave_map_4_grouping_14",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 50.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 25.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "5:34": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_15"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 433,
+     "name": "wave_map_4_grouping_15",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 60.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 50.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "5:36": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_16"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 436,
+     "name": "wave_map_4_grouping_16",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "5:38": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_17"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 441,
+     "name": "wave_map_4_grouping_17",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 15.0,
+    "sila_energii": 25.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "5:39": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_18"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 445,
+     "name": "wave_map_4_grouping_18",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "5:40": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "bottom",
+     "mode": "chase",
+     "kind": "rocket_ufo",
+     "kinds": [
+      "rocket_ufo"
+     ],
+     "health": 10.0,
+     "pattern": "piranhas",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_piranhasus_3"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 447,
+     "name": "wave_map_6_piranhasus_3",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 21.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 21,
+   "bg": 6
+  },
+  "5:46": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_19"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 448,
+     "name": "wave_map_4_grouping_19",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "5:47": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_6_asteroids_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 449,
+     "name": "wave_map_6_asteroids_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "5:54": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_20"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 450,
+     "name": "wave_map_4_grouping_20",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 15.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "5:57": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "shooter",
+     "kinds": [
+      "shooter"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 464,
+     "name": "wave_map_6_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 10.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 10,
+   "bg": 6
+  },
+  "6:1": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_21"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 452,
+     "name": "wave_map_4_grouping_21",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "6:2": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 9.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 8.0,
+    "bg2": 8.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 9,
+   "bg": 8
+  },
+  "6:3": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_22"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 454,
+     "name": "wave_map_4_grouping_22",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "6:4": {
+   "waves": [
+    {
+     "delay": 11.69,
+     "count": 5,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_23"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 11.69,
+     "obj": 455,
+     "name": "wave_map_4_grouping_23",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 8.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "CIRCLES#OF_DOOM",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 8,
+   "bg": 6
+  },
+  "6:5": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "CHESTMANIA!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 6
+  },
+  "6:6": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "CHESTMANIA!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 6
+  },
+  "6:7": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_castle_rush_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 457,
+     "name": "wave_map_4_castle_rush_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "SUPER_FAST!",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 16,
+   "bg": 6
+  },
+  "6:8": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_6_castle_rush_3"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 458,
+     "name": "wave_map_6_castle_rush_3",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 16.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "MEGA_FAST!",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 16,
+   "bg": 6
+  },
+  "6:9": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_24"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 460,
+     "name": "wave_map_4_grouping_24",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 4.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "UFO_UFO_UFOS",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 4,
+   "bg": 6
+  },
+  "6:12": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_25"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 462,
+     "name": "wave_map_4_grouping_25",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "WATCH_OUT!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "6:13": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 9.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 9,
+   "bg": 6
+  },
+  "6:14": {
+   "waves": [
+    {
+     "delay": 13.36,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_26"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 13.36,
+     "obj": 463,
+     "name": "wave_map_4_grouping_26",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 5.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 130.0,
+    "sila_wrogow": 4.0,
+    "sila_szyb": 4.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "6:15": {
+   "waves": [
+    {
+     "delay": 1.67,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_6_asteroids_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 1.67,
+     "obj": 449,
+     "name": "wave_map_6_asteroids_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "6:18": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "muzyka": 12.0,
+    "level_music": 1.0,
+    "viewed": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "CHESTMANIA!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 6
+  },
+  "6:19": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "ghost",
+     "kinds": [
+      "ghost"
+     ],
+     "health": 10.0,
+     "pattern": "ghosts",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_ghost_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 394,
+     "name": "wave_ghost_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 13.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "BOOOOOO!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 13,
+   "bg": 6
+  },
+  "6:22": {
+   "waves": [
+    {
+     "delay": 16.7,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_27"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 16.7,
+     "obj": 468,
+     "name": "wave_map_4_grouping_27",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "muzyka": 19.0,
+    "level_music": 1.0,
+    "viewed": 0.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "FLAME!!!!",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "6:23": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 30,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "kamikaze",
+     "kinds": [
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "swarm",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_5_spikeys"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 384,
+     "name": "wave_map_5_spikeys",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 8.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 8,
+   "bg": 6
+  },
+  "6:24": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "divers",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_7_racing_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 471,
+     "name": "wave_map_7_racing_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 4.0,
+    "sila_energii": 25.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 4,
+   "bg": 6
+  },
+  "6:27": {
+   "waves": [
+    {
+     "delay": 25.05,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    },
+    {
+     "delay": 41.75,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    },
+    {
+     "delay": 58.45,
+     "count": 20,
+     "edge": "top",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "zigzag",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_9_zigzag"
+    },
+    {
+     "delay": 75.15,
+     "count": 10,
+     "edge": "top",
+     "mode": "ring",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "circle",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_5_circle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 25.05,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    },
+    {
+     "delay": 41.75,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    },
+    {
+     "delay": 58.45,
+     "obj": 254,
+     "name": "wave_9_zigzag",
+     "rodzaj": null
+    },
+    {
+     "delay": 75.15,
+     "obj": 239,
+     "name": "wave_5_circle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 7.0,
+    "level_music": 1.0,
+    "bost": 7.0,
+    "bosb": 7.0,
+    "num": 200.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 55.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "sila_energii": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "SWARM#APPORACHING",
+   "is_boss": true,
+   "is_castle": false,
+   "music": 7,
+   "bg": 6
+  },
+  "6:28": {
+   "waves": [
+    {
+     "delay": 8.35,
+     "count": 1,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "health": 10.0,
+     "spawn_obj": 472,
+     "spawn_name": "map_7_berserkers_creator_teams_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 8.35,
+     "obj": 472,
+     "name": "map_7_berserkers_creator_teams_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 15.0,
+    "sila_energii": 100.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 5.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "6:29": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_7_asteroids_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 473,
+     "name": "wave_map_7_asteroids_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 18.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 18,
+   "bg": 6
+  },
+  "6:30": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_28"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 474,
+     "name": "wave_map_4_grouping_28",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "6:33": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_7_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 475,
+     "name": "wave_map_7_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 19,
+   "bg": 6
+  },
+  "6:34": {
+   "waves": [],
+   "perioder": [],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 9.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 1.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 9,
+   "bg": 6
+  },
+  "7:3": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_29"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 478,
+     "name": "wave_map_4_grouping_29",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "7:4": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_30"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 479,
+     "name": "wave_map_4_grouping_30",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 6
+  },
+  "7:5": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 10,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_grouping_31"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 484,
+     "name": "wave_map_4_grouping_31",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 2.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 2,
+   "bg": 6
+  },
+  "7:6": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_32"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 486,
+     "name": "wave_map_4_grouping_32",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 15.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 15,
+   "bg": 6
+  },
+  "7:7": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_33"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 487,
+     "name": "wave_map_4_grouping_33",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 16.0,
+    "sila_energii": 33.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 100.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 16,
+   "bg": 6
+  },
+  "7:8": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_34"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 489,
+     "name": "wave_map_4_grouping_34",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 12.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 100.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 12,
+   "bg": 6
+  },
+  "7:11": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_8_end_castle"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 490,
+     "name": "wave_map_8_end_castle",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 3.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 100.0,
+    "bg1": 6.0,
+    "bg2": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 3,
+   "bg": 6
+  },
+  "7:12": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_35"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 491,
+     "name": "wave_map_4_grouping_35",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 17.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 6
+  },
+  "7:13": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_8_end_castle_2"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 492,
+     "name": "wave_map_8_end_castle_2",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 17.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0,
+    "bg1": 6.0,
+    "bg2": 1.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 17,
+   "bg": 6
+  },
+  "7:14": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_36"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 493,
+     "name": "wave_map_4_grouping_36",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 0
+  },
+  "7:15": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "asteroids",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_8_asteroids_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 494,
+     "name": "wave_map_8_asteroids_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 7.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 7,
+   "bg": 0
+  },
+  "7:16": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "ufo_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_8_ufoses_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 497,
+     "name": "wave_map_8_ufoses_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 17.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 0.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 17,
+   "bg": 0
+  },
+  "7:19": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_36"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 493,
+     "name": "wave_map_4_grouping_36",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 50.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 10.0,
+    "sila_szyb": 2.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 0
+  },
+  "7:20": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 40,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba",
+      "kamikaze"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.16666666666666666,
+     "script": "wave_map_4_grouping_37"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 498,
+     "name": "wave_map_4_grouping_37",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 19.0,
+    "sila_energii": 50.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 0.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 100.0,
+    "sila_wrogow": 10.0,
+    "sila_szyb": 300.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 19,
+   "bg": 0
+  },
+  "7:21": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 10,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "grid",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_4_grouping_31"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 484,
+     "name": "wave_map_4_grouping_31",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 0
+  },
+  "7:22": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 6,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_guardians_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 500,
+     "name": "wave_guardians_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 0
+  },
+  "7:23": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 6,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_guardians_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 500,
+     "name": "wave_guardians_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 0
+  },
+  "7:24": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 6,
+     "edge": "right",
+     "mode": "chase",
+     "kind": "goomba",
+     "kinds": [
+      "goomba"
+     ],
+     "health": 10.0,
+     "pattern": "gunship",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_guardians_1"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 500,
+     "name": "wave_guardians_1",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 1.0,
+    "muzyka": 6.0,
+    "sila_energii": 0.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": false,
+   "music": 6,
+   "bg": 0
+  },
+  "7:26": {
+   "waves": [
+    {
+     "delay": 6.68,
+     "count": 20,
+     "edge": "top",
+     "mode": "formation",
+     "kind": "cannon",
+     "kinds": [
+      "cannon"
+     ],
+     "health": 10.0,
+     "pattern": "castle_stream",
+     "interval_s": 0.3333333333333333,
+     "script": "wave_map_8_end_castle_22"
+    }
+   ],
+   "perioder": [
+    {
+     "delay": 6.68,
+     "obj": 502,
+     "name": "wave_map_8_end_castle_22",
+     "rodzaj": null
+    }
+   ],
+   "spawns": [],
+   "flags": {
+    "viewed": 0.0,
+    "muzyka": 10.0,
+    "sila_energii": 500.0,
+    "level_music": 1.0,
+    "bost": 0.0,
+    "bosb": 0.0,
+    "num": 0.0,
+    "przysp": 1.0,
+    "rodzaj_pokonania": 1.0,
+    "kiedy_pokona": 10.0,
+    "sila_wrogow": 6.0,
+    "sila_szyb": 0.0
+   },
+   "title": "",
+   "is_boss": false,
+   "is_castle": true,
+   "music": 10,
+   "bg": 0
+  }
+ }
+}

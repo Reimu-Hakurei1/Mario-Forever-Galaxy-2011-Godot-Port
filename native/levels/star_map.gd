@@ -144,37 +144,93 @@ func _build_header() -> void:
 	add_child(opts)
 
 
+## Authored galaxy map — node positions come straight from the
+## original's room_map* instance placements (data/levels/native/
+## map_nodes.json). Each of the 8 maps gets a region in the world
+## container; playable nodes (those with an extracted stage schedule)
+## become level buttons ranked by NativeLevelTable, connector nodes
+## render as dim markers. Regions are laid out left-to-right so the
+## existing camera pan/zoom covers the whole galaxy.
+const MAP_REGION_W := 980.0
+const MAP_REGION_H := 1080.0
+const MAP_GAP := 60.0
+
+var _map_nodes: Dictionary = {}    # map idx -> [[x,y],...] authored coords
+var _node_rank: Dictionary = {}    # "m:n" -> playable level index
+
+
+func _load_map_data() -> void:
+	if not _map_nodes.is_empty():
+		return
+	var path := "res://data/levels/native/map_nodes.json"
+	if FileAccess.file_exists(path):
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
+		if typeof(parsed) == TYPE_DICTIONARY:
+			for k in parsed:
+				var arr: Array = []
+				for p in parsed[k]:
+					arr.append(Vector2(float(p[0]), float(p[1])))
+				_map_nodes[int(k)] = arr
+	for i in NativeLevelTable.level_count():
+		_node_rank[NativeLevelTable.stage_key(i)] = i
+
+
 func _build_grid() -> void:
-	var worlds := NativeLevelTable.WORLDS
-	var per_world := NativeLevelTable.LEVELS_PER_WORLD
-	var grid_w := per_world * (NODE_SIZE + NODE_GAP) - NODE_GAP
-	var start_x := (1024.0 - grid_w) / 2.0
-	var start_y := 120.0
-
-	for w in worlds:
-		# World label on the left of each row — name + number.
+	_load_map_data()
+	var count := NativeLevelTable.level_count()
+	for m in NativeLevelTable.WORLDS:
+		var origin := Vector2(m * (MAP_REGION_W + MAP_GAP) + 40,
+			120 + (MAP_REGION_H - 900) / 2)
+		# Region label — the original names each map (MAP 1..8).
 		var wl := Label.new()
-		wl.text = "W%d %s%s" % [w + 1, WORLD_NAMES[w],
-			" ✓" if (w + 1) * NativeLevelTable.LEVELS_PER_WORLD - 1 <= NativeGame.level_index else ""]
-		wl.add_theme_font_size_override("font_size", 14)
-		wl.add_theme_color_override("font_color", WORLD_COLORS[w])
-		wl.position = Vector2(start_x - 90, start_y + w * ROW_HEIGHT + NODE_SIZE / 2 - 10)
+		wl.text = "MAP %d %s%s" % [m + 1, WORLD_NAMES[m],
+			" ✓" if _map_cleared(m) else ""]
+		wl.add_theme_font_size_override("font_size", 16)
+		wl.add_theme_color_override("font_color", WORLD_COLORS[m])
+		wl.position = origin + Vector2(0, -34)
 		_world.add_child(wl)
+		var pts: Array = _map_nodes.get(m, [])
+		if pts.is_empty():
+			continue
+		# Normalize authored coords into the region, keeping aspect.
+		var minp: Vector2 = pts[0]
+		var maxp: Vector2 = pts[0]
+		for p in pts:
+			minp = minp.min(p)
+			maxp = maxp.max(p)
+		var span: Vector2 = maxp - minp
+		var scale := minf((MAP_REGION_W - 80) / maxf(span.x, 1.0),
+			(MAP_REGION_H - 80) / maxf(span.y, 1.0))
+		for n in pts.size():
+			var rel: Vector2 = (pts[n] - minp) * scale
+			var pos: Vector2 = origin + rel + Vector2(40, 40)
+			var key := "%d:%d" % [m, n]
+			if _node_rank.has(key):
+				var idx: int = _node_rank[key]
+				var btn := _make_node(idx, m, n)
+				btn.position = pos - Vector2(NODE_SIZE, NODE_SIZE) / 2
+				_world.add_child(btn)
+				_nodes.append(btn)
+				_node_centers[idx] = btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
+			else:
+				# Connector/path node — a dim star, not a level.
+				var dot := ColorRect.new()
+				dot.color = Color(0.35, 0.35, 0.45, 0.8)
+				dot.size = Vector2(10, 10)
+				dot.position = pos - Vector2(5, 5)
+				_world.add_child(dot)
+	_build_ship_cursor()
+	if count > 0:
+		_build_map_decor()
 
-		for l in per_world:
-			var idx := w * per_world + l
-			var btn := _make_node(idx, w, l)
-			btn.position = Vector2(
-				start_x + l * (NODE_SIZE + NODE_GAP),
-				start_y + w * ROW_HEIGHT)
-			_world.add_child(btn)
-			_nodes.append(btn)
-			# Node center in world space — the camera's pan/zoom target.
-			_node_centers[idx] = btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
 
-	_draw_paths(start_x, start_y, per_world)
-	_build_ship_cursor(start_x, start_y, per_world)
-	_build_map_decor(start_x, start_y, per_world)
+## True when every playable node of a map is behind the frontier.
+func _map_cleared(m: int) -> bool:
+	for i in NativeLevelTable.level_count():
+		if NativeLevelTable.world_of(i) == m \
+				and i > NativeGame.level_index:
+			return false
+	return true
 
 
 ## Map secrets — the original's hidden map goodies (o_map_goodie_*)
@@ -183,21 +239,18 @@ func _build_grid() -> void:
 ## only; they need efekty >= 1 like the original's G.efekty check.
 var _decor: Array = []   # {sprite, base_pos, phase, kind}
 
-func _build_map_decor(start_x: float, start_y: float, per_world: int) -> void:
+func _build_map_decor() -> void:
 	if NativeGame.efekty < 1:
 		return
-	var grid_w := per_world * (NODE_SIZE + NODE_GAP) - NODE_GAP
-	# A handful of twinkling sprites tucked between rows — the
-	# "find the hidden goodie" treasure of the Galaxy map.
+	# Twinkling goodie sprites scattered at region edges — the original's
+	# hidden map goodies (o_map_goodie_*).
 	var spots := [
-		Vector2(start_x + grid_w * 0.5, start_y - 46),
-		Vector2(start_x - 60, start_y + 1 * ROW_HEIGHT + NODE_SIZE / 2),
-		Vector2(start_x + grid_w + 60, start_y + 3 * ROW_HEIGHT + NODE_SIZE / 2),
-		Vector2(start_x + grid_w * 0.3, start_y + 7 * ROW_HEIGHT + NODE_SIZE / 2 + 40),
-		Vector2(start_x + grid_w * 0.7, start_y - 30),
+		Vector2(120, 260), Vector2(1060, 420), Vector2(2140, 300),
+		Vector2(3220, 500), Vector2(4300, 350), Vector2(5380, 480),
+		Vector2(6460, 320), Vector2(7540, 420),
 	]
 	for i in spots.size():
-		var sid: int = [255, 256, 255, 256, 255][i]
+		var sid: int = 255 if i % 2 == 0 else 256
 		var tex := NativeAssets.sprite_frame(sid, 0)
 		if tex == null:
 			continue
@@ -209,54 +262,24 @@ func _build_map_decor(start_x: float, start_y: float, per_world: int) -> void:
 		_world.add_child(sp)
 		_decor.append({"sprite": sp, "base": spots[i],
 			"phase": randf() * TAU, "kind": "goodie"})
-	# Pulsing loot panels beside a few world rows (sprite 278/279 —
-	# s_map_pannel_dir glow, the original's map_panel_loot).
-	for w in [1, 4, 6]:
-		var sid: int = 278 if w % 2 == 0 else 279
-		var tex := NativeAssets.sprite_frame(sid, 0)
-		if tex == null:
-			continue
-		var sp := Sprite2D.new()
-		sp.texture = tex
-		sp.offset = -NativeAssets.sprite_origin(sid)
-		sp.scale = Vector2(0.55, 0.55)
-		sp.position = Vector2(start_x - 46,
-			start_y + w * ROW_HEIGHT + NODE_SIZE / 2)
-		_world.add_child(sp)
-		_decor.append({"sprite": sp, "base": sp.position,
-			"phase": randf() * TAU, "kind": "panel"})
 
 
 ## Connect consecutive nodes in each world row with a dim path line —
 ## the Galaxy map's flight lanes between stars.
-func _draw_paths(start_x: float, start_y: float, per_world: int) -> void:
-	for w in NativeLevelTable.WORLDS:
-		var unlocked_color: Color = WORLD_COLORS[w] * 0.55
-		var locked_color := Color(0.2, 0.2, 0.28)
-		for l in per_world - 1:
-			var a_idx := w * per_world + l
-			var b_idx := a_idx + 1
-			var line := Line2D.new()
-			var y := start_y + w * ROW_HEIGHT + NODE_SIZE / 2.0
-			line.points = PackedVector2Array([
-				Vector2(start_x + l * (NODE_SIZE + NODE_GAP) + NODE_SIZE, y),
-				Vector2(start_x + (l + 1) * (NODE_SIZE + NODE_GAP), y),
-			])
-			# The lane glows once both ends are unlocked.
-			line.default_color = unlocked_color \
-				if b_idx <= NativeGame.level_index else locked_color
-			line.width = 3.0
-			_world.add_child(line)
+func _draw_paths(_start_x: float, _start_y: float, _per_world: int) -> void:
+	pass   # authored node adjacency isn't extracted; nodes stand alone
 
 
 ## The player's ship parked on the frontier node — pulses gently to
 ## invite the next flight, like the Galaxy map cursor.
-func _build_ship_cursor(start_x: float, start_y: float, _per_world: int) -> void:
-	if NativeGame.level_index >= _nodes.size():
+func _build_ship_cursor() -> void:
+	var total := NativeLevelTable.level_count()
+	if total == 0 or NativeGame.level_index >= total:
 		return    # campaign complete — no frontier to mark
 	var idx := NativeGame.level_index
-	var w := NativeLevelTable.world_of(idx)
-	var l := NativeLevelTable.level_of(idx)
+	var center: Vector2 = _node_centers.get(idx, Vector2.ZERO)
+	if center == Vector2.ZERO:
+		return
 	var tex := NativeAssets.sprite_frame(543, 1)   # upright ship frame
 	if tex == null:
 		return
@@ -264,10 +287,8 @@ func _build_ship_cursor(start_x: float, start_y: float, _per_world: int) -> void
 	_ship_cursor.texture = tex
 	_ship_cursor.offset = -NativeAssets.sprite_origin(543)
 	_ship_cursor.scale = Vector2(0.28, 0.28)
-	_cursor_base_y = start_y + w * ROW_HEIGHT + NODE_SIZE / 2.0
-	_ship_cursor.position = Vector2(
-		start_x + l * (NODE_SIZE + NODE_GAP) + NODE_SIZE / 2.0,
-		_cursor_base_y)
+	_cursor_base_y = center.y
+	_ship_cursor.position = center
 	_world.add_child(_ship_cursor)
 
 
@@ -287,8 +308,7 @@ func _make_node(idx: int, w: int, l: int) -> Button:
 	else:
 		btn.modulate = Color(0.25, 0.25, 0.3)
 	btn.disabled = not unlocked
-	btn.tooltip_text = "WORLD %d — LEVEL %d%s" % [w + 1, l + 1,
-		" — BOSS" if l % 5 == 4 else ""]
+	btn.tooltip_text = NativeLevelTable.config_for(idx).get("label", "")
 
 	if unlocked:
 		btn.pressed.connect(_on_level_pressed.bind(idx))
@@ -303,8 +323,9 @@ func _on_level_pressed(idx: int) -> void:
 	# (objects/ui/next_map_obj.gd) before the flight — only on the
 	# frontier node, not when replaying old levels.
 	var world := NativeLevelTable.world_of(idx)
-	if world > 0 and NativeLevelTable.level_of(idx) == 0 \
-			and idx == NativeGame.level_index:
+	var first_of_map := idx == 0 \
+		or NativeLevelTable.world_of(idx - 1) != world
+	if first_of_map and idx == NativeGame.level_index:
 		var lines: Array = NativeDialogueTable.NEXT_MAP.get(world, [])
 		if not lines.is_empty():
 			var talk := NativeBossDialogue.new()
