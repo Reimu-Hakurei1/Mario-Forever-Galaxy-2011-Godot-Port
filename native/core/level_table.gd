@@ -222,7 +222,7 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 ## closest ported behaviour; "boss" entries become sky-eye mini-bosses.
 const _KIND_ALIASES := {
 	"shy_ghost": "ghost", "warlock": "shooter",
-	"castle_enemy": "shooter", "fat_boy": "elite", "boss": "eye",
+	"castle_enemy": "shooter", "fat_boy": "fat_boy", "boss": "eye",
 }
 const _MAX_WAVE_COUNT := 40   # originals run 100-200; cap for pacing
 

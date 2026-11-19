@@ -299,6 +299,7 @@ static func _kind_from_name(kind_name: String) -> int:
 		"flame_cannon": return NativeEnemy.Kind.FLAME_CANNON
 		"rotary": return NativeEnemy.Kind.ROTARY
 		"fat_cannon": return NativeEnemy.Kind.FAT_CANNON
+		"fat_boy", "fat_boy_a": return NativeEnemy.Kind.FAT_BOY
 		"flame": return NativeEnemy.Kind.FLAME
 		"flame_shooter", "flame_cans_shooter": return NativeEnemy.Kind.FLAME_SHOOTER
 		"fan": return NativeEnemy.Kind.FAN

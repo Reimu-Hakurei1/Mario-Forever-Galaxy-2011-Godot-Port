@@ -28,7 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
-	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER,
+	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER, FAT_BOY,
 	EYE2, UFO_A2, GHOST2, GHOST3, RUNNER,
 }
 
@@ -97,6 +97,12 @@ const KIND_PROFILES := {
 	# it's a `hazard`, not a shootable enemy.
 	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
 		"contact_damage": 8.0, "hazard": true},
+	# fat_boy_a — the koopa's mid-boss bruiser: very tanky, lumbers in
+	# and hurls cannon volleys (its three fat_boy_cannon children are
+	# approximated by a wide spread).
+	Kind.FAT_BOY: {"sprite": 178, "score": 800, "health": 300.0,
+		"shoot_interval": 200.0, "spread": 5, "chase": 0.8,
+		"contact_damage": 40.0, "scale": 0.6},
 	# flame_cans_shooter — the hovering can that parks on an anchor and
 	# bursts 10-shot volleys (g_ilosc_pociskow = 10, sekwencer 2).
 	Kind.FLAME_SHOOTER: {"sprite": 182, "score": 300, "health": 100.0,
@@ -369,8 +375,11 @@ func _physics_process(_delta: float) -> void:
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO, Kind.FLAME_SHOOTER]:
 		_behave_shooter()
+	elif kind == Kind.FAT_BOY:
+		_chase_player_slow()
+		_tick_shooter()
 	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
-			or kind == Kind.ACE or kind == Kind.GHOST:
+			or kind == Kind.ACE or kind == Kind.GHOST or kind == Kind.RUNNER:
 		_behave_kamikaze()
 	else:
 		_behave_goomba()
