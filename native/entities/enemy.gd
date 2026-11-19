@@ -1,28 +1,37 @@
 extends Node2D
 class_name NativeEnemy
-## NativeEnemy — flying enemy (ports GameMaker `o_enemy_1` family).
+## NativeEnemy — flying enemy (ports the GameMaker `o_enemy_*` family).
 ##
-## The original enemy is a state machine: spawn off-screen → take a
-## formation slot → sway while tracking the player → die to bullets or
-## ram the ship. This port implements that loop plus the common variants
-## seen across the original's ~40 enemy objects:
+## The original has ~40 enemy objects sharing one state machine: spawn
+## off-screen → take a formation slot → sway while tracking the player →
+## die to bullets or ram the ship. This port keeps that loop and adds a
+## `kind` profile per enemy family so each gets its own sprite, stats and
+## behaviour — the native equivalent of the original's per-object events.
 ##
-##   - "goomba"    — formation hover, the baseline enemy
-##   - "shooter"   — holds position, periodically fires aimed shots
-##   - "kamikaze"  — ignores formation, charges the player relentlessly
+## Kinds ported so far:
+##   goomba   — formation hover, the baseline grunts (o_enemy_1)
+##   shooter  — UFO that holds station and fires aimed shots (o_ufo_a)
+##   kamikaze — beelines for the player, no formation (o_perioder divers)
+##   tank     — slow heavy with lots of hull (o_fat_boy_a)
+##   eye      — turret that spins and fires bursts (o_sky_eye)
 ##
 ## Kills award score and roll the original's drop table (coin / gem /
 ## health), then play the explosion animation.
 
-const SPRITE_ID := 11             # s_enemy_a — 16 frame animation
-const ANIM_FPS := 8.0
-const HIT_FLASH_TIME := 4         # frames of white flash on hit (oberwanie)
-const DEATH_SCORE := 100
-
 ## Movement/behaviour modes.
 enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
-## Enemy variants — each maps to a family of objects in the original.
-enum Kind { GOOMBA, SHOOTER, KAMIKAZE }
+## Enemy families — each maps to objects in the original registry.
+enum Kind { GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE }
+
+## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
+## kill award; shooter-ish kinds get `shoot_interval`/`spread`.
+const KIND_PROFILES := {
+	Kind.GOOMBA: {"sprite": 11, "score": 100},
+	Kind.SHOOTER: {"sprite": 174, "score": 150, "shoot_interval": 170.0, "spread": 1},
+	Kind.KAMIKAZE: {"sprite": 11, "score": 120, "tint": Color(1.0, 0.55, 0.5)},
+	Kind.TANK: {"sprite": 178, "score": 300, "shoot_interval": 240.0, "spread": 3, "scale": 0.55},
+	Kind.EYE: {"sprite": 185, "score": 200, "shoot_interval": 110.0, "spread": 1, "burst": 3},
+}
 
 # Drop table rolled on death (from the original o_drop logic): most kills
 # drop nothing, coins are common, gems rare, health very rare.
@@ -44,49 +53,87 @@ var sway_speed := 0.05            # radians per frame
 var chase_speed := 1.2            # px/frame toward the player
 var drift_speed := 0.4            # px/frame toward formation slot
 var kamikaze_speed := 2.2         # px/frame — kamikaze dive speed
-var shoot_interval := 180.0       # frames between shots (shooter only)
-var shoot_range := 600.0          # px — only fires when player is in range
+var shoot_interval := 180.0       # frames between shots
+var shoot_range := 620.0          # px — only fires when player is in range
+var spread := 1                   # bullets per volley
+var burst := 1                    # shots per volley trigger (eye)
 
 var _anim: AnimatedSprite2D
 var _flash := 0
 var _dead := false
 var _shoot_timer := 0.0
+var _burst_left := 0
+var _score := DEATH_SCORE_DEFAULT
+
+const DEATH_SCORE_DEFAULT := 100
 
 
 func _ready() -> void:
 	add_to_group("enemies")
+	_apply_profile()
 
 	_anim = AnimatedSprite2D.new()
 	var frames := SpriteFrames.new()
 	frames.remove_animation("default")
 	frames.add_animation("fly")
-	for tex in NativeAssets.sprite_frames(SPRITE_ID):
+	for tex in NativeAssets.sprite_frames(_sprite_id):
 		frames.add_frame("fly", tex)
 	frames.set_animation_speed("fly", ANIM_FPS)
 	_anim.sprite_frames = frames
 	_anim.play("fly")
-	_anim.offset = -NativeAssets.sprite_origin(SPRITE_ID)
+	_anim.offset = -NativeAssets.sprite_origin(_sprite_id)
+	if _scale_factor != 1.0:
+		_anim.scale = Vector2(_scale_factor, _scale_factor)
+	if _tint != Color.WHITE:
+		_anim.modulate = _tint
 	add_child(_anim)
 
 	sway_phase = randf() * TAU
 	_shoot_timer = shoot_interval * randf_range(0.5, 1.0)
 
 
+var _sprite_id := 11
+var _scale_factor := 1.0
+var _tint := Color.WHITE
+const ANIM_FPS := 8.0
+const HIT_FLASH_TIME := 4         # frames of white flash on hit (oberwanie)
+
+
+## Pull sprite/score/combat stats out of the kind profile. Health stays
+## whatever the wave assigned — profiles only set defaults the wave may
+## still override before add_child().
+func _apply_profile() -> void:
+	var p: Dictionary = KIND_PROFILES.get(kind, KIND_PROFILES[Kind.GOOMBA])
+	_sprite_id = p.get("sprite", 11)
+	_score = p.get("score", DEATH_SCORE_DEFAULT)
+	shoot_interval = p.get("shoot_interval", shoot_interval)
+	spread = p.get("spread", 1)
+	burst = p.get("burst", 1)
+	_scale_factor = p.get("scale", 1.0)
+	_tint = p.get("tint", Color.WHITE)
+	if kind == Kind.KAMIKAZE:
+		mode = Mode.KAMIKAZE
+		kamikaze_speed = 2.4
+
+
 func _physics_process(_delta: float) -> void:
 	if _dead:
 		return
 
-	match kind:
-		Kind.SHOOTER:
-			_behave_shooter()
-		Kind.KAMIKAZE:
-			_behave_kamikaze()
-		_:
-			_behave_goomba()
+	# Shooter-ish kinds share the hold-position-and-fire behaviour; tanks
+	# and eyes get their own entries via kind checks below.
+	if kind == Kind.SHOOTER or kind == Kind.EYE or kind == Kind.TANK:
+		_behave_shooter()
+	elif kind == Kind.KAMIKAZE:
+		_behave_kamikaze()
+	else:
+		_behave_goomba()
 
 	if _flash > 0:
 		_flash -= 1
 		_anim.modulate = Color(3, 3, 3)   # additive-style white hit flash
+	elif _tint != Color.WHITE:
+		_anim.modulate = _tint
 	else:
 		_anim.modulate = Color.WHITE
 
@@ -111,9 +158,15 @@ func _behave_goomba() -> void:
 			pass
 
 
-## Holds its formation slot and fires aimed shots when the player is near.
+## Holds its formation slot and fires volleys when the player is near.
+## Tanks chase slowly instead of holding station.
 func _behave_shooter() -> void:
-	# Drift to slot first, then orbit it while shooting.
+	if kind == Kind.TANK:
+		_chase_player_slow()
+		_tick_shooter()
+		return
+
+	# Spawn-in glide first, then orbit the slot while shooting.
 	if mode == Mode.SPAWN:
 		var to_slot := formation_slot - position
 		if to_slot.length() < 8.0:
@@ -122,13 +175,29 @@ func _behave_shooter() -> void:
 			position += to_slot.normalized() * drift_speed
 		return
 	_sway_and_track()
+	# Eye turrets slowly rotate to face the player — reads as tracking.
+	if kind == Kind.EYE:
+		var ship := get_tree().get_first_node_in_group("player")
+		if ship != null:
+			_anim.rotation = (ship.global_position - position).angle()
+	_tick_shooter()
 
+
+func _tick_shooter() -> void:
 	_shoot_timer -= 1.0
+	# Burst enemies fire `burst` shots `spread` apart on each trigger.
+	if _burst_left > 0:
+		_burst_left -= 1
+		var ship := get_tree().get_first_node_in_group("player")
+		if ship != null:
+			_fire_volley(ship.global_position)
+		return
 	var ship := get_tree().get_first_node_in_group("player")
 	if _shoot_timer <= 0.0 and ship != null:
 		var dist := position.distance_to(ship.global_position)
 		if dist < shoot_range:
-			_fire_at_player(ship.global_position)
+			_fire_volley(ship.global_position)
+			_burst_left = burst - 1
 			_shoot_timer = shoot_interval
 		else:
 			_shoot_timer = 30.0   # re-check soon rather than full interval
@@ -166,13 +235,28 @@ func _chase_player() -> void:
 	_anim.rotation = to_player.angle()
 
 
-## Spawn an aimed enemy bullet at the player's position.
-func _fire_at_player(target: Vector2) -> void:
-	var bullet := NativeEnemyBullet.new()
-	bullet.global_position = position
-	var dir := (target - position).normalized()
-	bullet.velocity = dir * NativeEnemyBullet.SPEED
-	get_parent().add_child(bullet)
+## Tanks move like chasers but at a third of the speed.
+func _chase_player_slow() -> void:
+	var ship := get_tree().get_first_node_in_group("player")
+	if ship == null:
+		return
+	var to_player: Vector2 = ship.global_position - position
+	if to_player.length() > 4.0:
+		position += to_player.normalized() * (chase_speed / 3.0)
+	_anim.rotation = to_player.angle()
+
+
+## Fire `spread` bullets fanned around the aim direction.
+func _fire_volley(target: Vector2) -> void:
+	var base_dir := (target - position).normalized()
+	var base_angle := base_dir.angle()
+	for i in spread:
+		var offset := (i - (spread - 1) / 2.0) * 0.22   # ~12.6° fan per bullet
+		var dir := Vector2.RIGHT.rotated(base_angle + offset)
+		var bullet := NativeEnemyBullet.new()
+		bullet.global_position = position
+		bullet.velocity = dir * NativeEnemyBullet.SPEED
+		get_parent().add_child(bullet)
 	NativeAssets.sound(79)  # enemy shot (original sampel id)
 
 
@@ -193,7 +277,7 @@ func die() -> void:
 		return
 	_dead = true
 	NativeGame.kill_enemy()
-	NativeGame.add_score(DEATH_SCORE)
+	NativeGame.add_score(_score)
 	_roll_drop()
 	_spawn_explosion()
 	queue_free()

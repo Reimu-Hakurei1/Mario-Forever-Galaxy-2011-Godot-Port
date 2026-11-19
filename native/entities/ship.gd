@@ -208,9 +208,10 @@ func _apply_firing(delta: float) -> void:
 		NativeGame.overheating = maxf(0.0, NativeGame.overheating - OVERHEAT_COOLING * delta * 60.0)
 
 
-## Spawn one bullet at muzzle `index`. The offset direction (ship → muzzle)
-## becomes the bullet's flight direction, matching how script_laser_* stored
-## unx/uny on the spawned bolt.
+## Spawn bolts at muzzle `index`. The offset direction (ship → muzzle)
+## becomes each bolt's flight direction, matching how script_laser_* stored
+## unx/uny on the spawned bolt. Weapon upgrades fan extra bolts around the
+## center shot — the native stand-in for the original's weapon levels.
 func _fire_muzzle(index: int) -> void:
 	var m: Array = MUZZLES[index]
 	var muzzle_angle := float(m[0]) + tilt - 90.0
@@ -218,11 +219,19 @@ func _fire_muzzle(index: int) -> void:
 	# Original formula: x uses sin, y uses cos — compass-style degrees.
 	var offset := Vector2(sin(rad), cos(rad)) * float(m[1])
 	var spawn_pos := position + offset
-	var bullet := NativeBullet.new()
-	bullet.global_position = spawn_pos
-	bullet.velocity = offset.normalized() * NativeBullet.START_SPEED
-	bullet.damage = SHOT_DAMAGE
-	get_parent().add_child(bullet)
+	var base_dir := offset.normalized()
+	var base_angle := base_dir.angle()
+
+	# weapon_power 0 = single bolt, 1 = 3-way fan, 2 = 5-way fan.
+	var bolts := 1 + NativeGame.weapon_power * 2
+	for i in bolts:
+		var fan := (i - (bolts - 1) / 2.0) * 0.18   # ~10° spread per bolt
+		var dir := Vector2.RIGHT.rotated(base_angle + fan)
+		var bullet := NativeBullet.new()
+		bullet.global_position = spawn_pos
+		bullet.velocity = dir * NativeBullet.START_SPEED
+		bullet.damage = SHOT_DAMAGE
+		get_parent().add_child(bullet)
 
 	NativeGame.overheating += OVERHEAT_PER_SHOT
 	# Muzzle report — sound id 29 from the original sampel table.

@@ -35,6 +35,10 @@ func _ready() -> void:
 	if tex != null:
 		_sprite.texture = tex
 		_sprite.offset = -NativeAssets.sprite_origin(SPRITES[kind])
+	# The health sprite (s_spikey) is a huge powerup graphic — shrink it so
+	# it reads as a small collectible like the coin and gem.
+	if kind == Kind.HEALTH:
+		_sprite.scale = Vector2(0.3, 0.3)
 	# Gems shimmer in the original via HSV cycling — a gentle hue pulse
 	# reads the same at a fraction of the cost.
 	if kind == Kind.GEM:

@@ -19,6 +19,7 @@ static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
 static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
+static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
 static var efekty: int = 2           ## G.efekty — particle quality setting
 static var dzwiek: int = 1           ## G.dzwiek — sound enabled
 static var muzyka: int = 1           ## G.muzyka — music enabled
