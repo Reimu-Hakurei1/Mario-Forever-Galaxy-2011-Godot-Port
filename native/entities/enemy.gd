@@ -117,7 +117,7 @@ func _apply_profile() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if _dead:
+	if NativeGame.paused or _dead:
 		return
 
 	# Shooter-ish kinds share the hold-position-and-fire behaviour; tanks

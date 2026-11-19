@@ -34,7 +34,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if _dead:
+	if NativeGame.paused or _dead:
 		return
 
 	# Accelerate like the original (speed += 0.4/frame up to the cap).

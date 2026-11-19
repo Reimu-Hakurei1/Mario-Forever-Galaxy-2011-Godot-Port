@@ -34,6 +34,7 @@ var _respawn_timer := -1.0          # <0 means "ship alive / not pending"
 var _death_pending := false
 var _level_cleared := false
 var _clear_timer := -1.0
+var _pause_label: Label = null
 
 
 func _ready() -> void:
@@ -75,6 +76,30 @@ func _ready() -> void:
 			player.play()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	# ESC / P toggles pause — every entity checks NativeGame.paused.
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event.keycode == KEY_ESCAPE or event.keycode == KEY_P):
+		_set_paused(not NativeGame.paused)
+
+
+func _set_paused(on: bool) -> void:
+	NativeGame.paused = on
+	if _pause_label == null:
+		_pause_label = Label.new()
+		_pause_label.text = "PAUSED"
+		_pause_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_pause_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_pause_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_pause_label.add_theme_font_size_override("font_size", 56)
+		_pause_label.add_theme_color_override("font_color", Color.WHITE)
+		var layer := CanvasLayer.new()
+		layer.layer = 30
+		layer.add_child(_pause_label)
+		add_child(layer)
+	_pause_label.get_parent().visible = on
+
+
 func _process(delta: float) -> void:
 	# Death flow — NativeGame.energy hits 0 when the ship is destroyed.
 	# _death_pending guards against retriggering during the respawn delay.
@@ -108,6 +133,14 @@ func _process(delta: float) -> void:
 
 
 func _on_player_died() -> void:
+	# Hull explosion at the death point — the original plays the big
+	# explosion anim plus a ship breakup.
+	for i in 4:
+		var boom := NativeExplosion.new()
+		boom.global_position = _ship.global_position + Vector2(
+			randf_range(-30, 30), randf_range(-30, 30))
+		add_child(boom)
+	_ship.visible = false
 	NativeGame.lives -= 1
 	if NativeGame.lives < 0:
 		# Out of lives — game over. Spare lives refill for the next run;
@@ -124,7 +157,9 @@ func _respawn() -> void:
 	NativeGame.energy = 100.0
 	NativeGame.overheating = 0.0
 	_death_pending = false
+	_ship.visible = true
 	_ship.global_position = PLAYER_SPAWN
+	_ship.vel = Vector2.ZERO
 	_ship.invulnerable = true
 	await get_tree().create_timer(2.0).timeout
 	_ship.invulnerable = false

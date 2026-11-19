@@ -29,6 +29,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if NativeGame.paused:
+		return
 	position += velocity
 
 	# Contact with the ship = damage. The ship's invulnerable flag covers

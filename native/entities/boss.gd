@@ -62,7 +62,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if _dead:
+	if NativeGame.paused or _dead:
 		return
 
 	match phase:

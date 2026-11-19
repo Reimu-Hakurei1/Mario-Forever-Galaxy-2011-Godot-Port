@@ -47,6 +47,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if NativeGame.paused:
+		return
 	_t += 0.08
 	# Bob/spin so pickups read as alive.
 	_sprite.rotation = sin(_t) * 0.35
