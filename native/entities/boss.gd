@@ -42,7 +42,21 @@ const TIER_HP_MULT := [1.0, 1.6, 2.0, 2.5, 3.2, 4.5, 6.5, 9.0]
 const BURST_INTERVAL := 150.0     # frames between attack patterns
 const MINION_INTERVAL := 600.0    # frames between minion summons
 
+# Alternate boss encounters from objects/bosses/ — the original fields
+# ufo_mega / fat_boy_boss / flame_cans_boss in specific stages instead
+# of the clown. Each overrides the hull sprite, HP and bar name.
+const VARIANTS := {
+	"ufo_mega": {"name": "UFO MEGA", "sprite": 174, "scale": 1.1,
+		"tint": Color(0.8, 0.9, 1.0), "hp_mult": 0.7},
+	"fat_boy": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp_mult": 3.0},
+	"flame_cans": {"name": "FLAME CANS", "sprite": 306, "scale": 1.0,
+		"tint": Color(1.0, 0.6, 0.3), "hp_mult": 1.5},
+}
+
 var tier := 0                     # world index — scales HP and aggression
+var variant := ""                 # "", "ufo_mega", "fat_boy", "flame_cans"
+var boss_name := "BOWSER'S_SPACE_CLOWN"
 var health := BASE_HP
 var phase := Phase.ENTER
 var max_health := BASE_HP
@@ -60,6 +74,8 @@ var _hp_bar: ProgressBar
 func _ready() -> void:
 	add_to_group("enemies")
 	max_health = BASE_HP * TIER_HP_MULT[mini(tier, TIER_HP_MULT.size() - 1)]
+	if VARIANTS.has(variant):
+		max_health *= VARIANTS[variant]["hp_mult"]
 	health = max_health
 
 	# Spawn above the arena and descend to the fight line.
@@ -70,6 +86,12 @@ func _ready() -> void:
 	# attack clock — deeper worlds mean faster, angrier bosses.
 	var profile: Dictionary = TIER_PROFILES[mini(tier, TIER_PROFILES.size() - 1)]
 	var sprite_id: int = profile["sprite"]
+	if VARIANTS.has(variant):
+		var v: Dictionary = VARIANTS[variant]
+		boss_name = v["name"]
+		sprite_id = v["sprite"]
+		profile = {"sprite": sprite_id, "scale": v["scale"],
+			"tint": v["tint"]}
 
 	_anim = AnimatedSprite2D.new()
 	var frames := SpriteFrames.new()
@@ -298,7 +320,7 @@ func _build_hp_bar() -> void:
 	# The original names every boss on its health bar
 	# (G.pasek_napis = "BOWSER'S_SPACE_CLOWN").
 	var name_label := Label.new()
-	name_label.text = "BOWSER'S_SPACE_CLOWN"
+	name_label.text = boss_name
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	name_label.offset_left = 312.0

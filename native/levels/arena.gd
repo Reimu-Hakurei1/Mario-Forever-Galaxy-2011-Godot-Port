@@ -267,6 +267,7 @@ func _spawn_boss() -> void:
 	NativeAssets.play_sound(90 + randi() % 3)
 	var boss := NativeBoss.new()
 	boss.tier = _boss_cfg.get("tier", 0)
+	boss.variant = str(_boss_cfg.get("variant", ""))
 	add_child(boss)
 
 

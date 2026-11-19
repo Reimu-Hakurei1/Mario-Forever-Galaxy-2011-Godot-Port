@@ -23,11 +23,19 @@ native/
                         hero stats, overdrive powerup
     bullet.gd          Player projectile
     enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
-    enemy.gd           Enemy — 12 kinds (goomba/shooter/kamikaze/tank/eye/
-                        mini/ufo_a/ufo_b/ros/crab/jumbo/elite), drops,
-                        directional knockback
-    boss.gd            Level boss — hover, attack patterns, enrage, minions,
-                        health bar
+    enemy.gd           Enemy — 30 kinds ported from the original objects:
+                        grunts (goomba/mini/dart/weaver/ghost/ducher_fall/
+                        bonus), shooters (shooter/ufo_a/ufo_b/ros/crab/
+                        stinger/drone/hunter/lancer/rocket_ufo), divers
+                        (kamikaze/ace), heavies (tank/jumbo/elite/warlord),
+                        the sky-eye laser boss, castle defenses
+                        (cannon/flame_cannon/rotary/fat_cannon/flame/fan),
+                        sprite-derived contact radii, drop table
+    enemy_ring.gd      Orbiting swarm — o_enemy_around/ducher_around rings
+    boss.gd            Level boss — original HP escalation curve, hover,
+                        attack patterns, enrage, tiered minions, named
+                        health bar, alternate variants (ufo_mega/fat_boy/
+                        flame_cans)
     pickup.gd          Collectibles — coin/gem/health + power/life/cooling
                         powerups with magnet
     explosion.gd       Death burst effect

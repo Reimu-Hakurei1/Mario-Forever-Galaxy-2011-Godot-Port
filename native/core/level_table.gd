@@ -36,6 +36,10 @@ const BOSS_MUSIC := {
 
 # Enemy kinds available to the generator — must match the spawner's
 # string→Kind mapping and enemy.gd's KIND_PROFILES.
+# Which world fields which alternate boss (objects/bosses/ufo_mega,
+# fat_boy_boss, flame_cans_boss appear in specific original stages).
+const BOSS_VARIANTS := {1: "ufo_mega", 3: "fat_boy", 5: "flame_cans"}
+
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
@@ -96,7 +100,7 @@ static func config_for(level_index: int) -> Dictionary:
 		"music": music,
 		"waves": waves,
 		# Every 5th level ends with a boss fight once the waves are clear.
-		"boss": {"tier": world} if level % 5 == 4 else {},
+		"boss": {"tier": world, "variant": BOSS_VARIANTS.get(world, "")} if level % 5 == 4 else {},
 		"mode": "castle" if is_castle else "arena",
 		"label": "W%d-%02d" % [world + 1, level + 1],
 	}
@@ -124,7 +128,7 @@ static func _custom_config(level_index: int) -> Dictionary:
 			BOSS_MUSIC.get(world, pool[level % pool.size()]) if is_boss
 			else pool[level % pool.size()])),
 		"waves": parsed.get("waves", []),
-		"boss": parsed.get("boss", {"tier": world} if is_boss else {}),
+		"boss": parsed.get("boss", {"tier": world, "variant": BOSS_VARIANTS.get(world, "")} if is_boss else {}),
 		"mode": str(parsed.get("mode", "castle" if level % 5 == 3 else "arena")),
 		"label": str(parsed.get("label", "W%d-%02d" % [world + 1, level + 1])),
 	}
