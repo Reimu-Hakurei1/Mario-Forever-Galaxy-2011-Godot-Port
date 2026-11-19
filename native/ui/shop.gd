@@ -32,12 +32,16 @@ const UPGRADES := [
 const MAX_LEVEL := 5               # original caps upgrades around here
 
 var _rows: Array = []
-var _tab := "upgrades"          # "upgrades" | "weapons"
+var _tab := "upgrades"          # "upgrades" | "weapons" | "specials"
 var _weapon_panel: Control
 var _slot_rows: Array = []      # per-slot UI state
 var _catalog: ItemList
 var _sel_slot := -1             # slot the catalog BUY equips into
 var _sel_weapon := -1           # catalog index highlighted in the list
+var _special_panel: Control
+var _special_list: ItemList
+var _sel_special := -1          # catalog index highlighted in the list
+var _special_slots_ui: Array = []  # the four equipped-slot labels
 
 
 func _ready() -> void:
@@ -61,6 +65,7 @@ func _ready() -> void:
 	for i in UPGRADES.size():
 		_build_row(i)
 	_build_weapons_panel()
+	_build_specials_panel()
 	_build_footer()
 
 
@@ -116,6 +121,13 @@ func _build_tabs() -> void:
 	wp.custom_minimum_size = Vector2(200, 40)
 	wp.pressed.connect(_set_tab.bind("weapons"))
 	add_child(wp)
+	var sp := Button.new()
+	sp.name = "TabSpecials"
+	sp.text = "SPECIALS"
+	sp.position = Vector2(748, 136)
+	sp.custom_minimum_size = Vector2(200, 40)
+	sp.pressed.connect(_set_tab.bind("specials"))
+	add_child(sp)
 
 
 func _set_tab(tab: String) -> void:
@@ -123,6 +135,7 @@ func _set_tab(tab: String) -> void:
 	for row in _rows:
 		(row["row"] as Control).visible = tab == "upgrades"
 	_weapon_panel.visible = tab == "weapons"
+	_special_panel.visible = tab == "specials"
 	NativeAssets.play_sound(62)
 
 
@@ -264,6 +277,88 @@ func _build_weapons_panel() -> void:
 	_weapon_panel.add_child(hint)
 
 
+## SPECIALS tab — the original shop's SUPPORT page (G.bron_albo_support):
+## your four G.specialslot rings on the left, the special-item catalog
+## on the right. BUY stores the highlighted item in the first empty
+## slot (NativeGame.buy_special); in-game, X fires slot 0 and Z/C
+## rotate the ring.
+func _build_specials_panel() -> void:
+	_special_panel = Control.new()
+	_special_panel.name = "SpecialPanel"
+	_special_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_special_panel.visible = false
+	add_child(_special_panel)
+
+	# Left: the four special slots — "ACTIVE" marks slot 0.
+	for i in 4:
+		var row := PanelContainer.new()
+		row.position = Vector2(70, 190 + i * 92)
+		row.custom_minimum_size = Vector2(400, 80)
+		_special_panel.add_child(row)
+		var box := VBoxContainer.new()
+		row.add_child(box)
+		var title := Label.new()
+		title.name = "Title"
+		title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		title.add_theme_font_size_override("font_size", 18)
+		title.add_theme_color_override("font_color", Color(1.0, 0.7, 0.3))
+		box.add_child(title)
+		var desc := Label.new()
+		desc.name = "Desc"
+		desc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		desc.add_theme_font_size_override("font_size", 13)
+		desc.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
+		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(desc)
+		_special_slots_ui.append({"panel": row, "title": title, "desc": desc})
+
+	# Right: the nine special items + detail + BUY.
+	_special_list = ItemList.new()
+	_special_list.position = Vector2(510, 190)
+	_special_list.size = Vector2(440, 340)
+	_special_list.add_theme_font_size_override("font_size", 15)
+	_special_list.item_selected.connect(_on_special_pick)
+	for i in range(1, NativeSpecialTable.ITEMS.size()):
+		_special_list.add_item("%02d  %s" % [i, NativeSpecialTable.ITEMS[i]["name"]])
+	_special_panel.add_child(_special_list)
+
+	var detail := Label.new()
+	detail.name = "Detail"
+	detail.position = Vector2(510, 540)
+	detail.size = Vector2(440, 80)
+	detail.add_theme_font_size_override("font_size", 14)
+	detail.add_theme_color_override("font_color", Color(0.85, 0.85, 0.9))
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_special_panel.add_child(detail)
+
+	var buy := Button.new()
+	buy.name = "BuySpecial"
+	buy.text = "SELECT AN ITEM"
+	buy.position = Vector2(510, 630)
+	buy.custom_minimum_size = Vector2(440, 44)
+	buy.add_theme_font_size_override("font_size", 17)
+	buy.pressed.connect(_on_buy_special)
+	_special_panel.add_child(buy)
+
+	var hint := Label.new()
+	hint.text = "In game: X fires the ACTIVE special, Z/C rotate the ring."
+	hint.position = Vector2(70, 650)
+	hint.add_theme_font_size_override("font_size", 14)
+	hint.add_theme_color_override("font_color", Color(0.6, 0.6, 0.7))
+	_special_panel.add_child(hint)
+
+
+func _on_special_pick(index: int) -> void:
+	_sel_special = index + 1   # list row 0 = item id 1
+	NativeAssets.play_sound(62)
+
+
+func _on_buy_special() -> void:
+	if _sel_special > 0:
+		NativeGame.buy_special(_sel_special)
+		NativeAssets.play_sound(62)
+
+
 func _on_slot_pick(event: InputEvent, slot: int) -> void:
 	# Only left-clicks select the slot — gui_input fires for every event.
 	if event is InputEventMouseButton and event.pressed \
@@ -364,6 +459,9 @@ func _refresh() -> void:
 	if _weapon_panel != null and _weapon_panel.visible:
 		_refresh_weapons()
 		return
+	if _special_panel != null and _special_panel.visible:
+		_refresh_specials()
+		return
 	for i in _rows.size():
 		var u: Dictionary = UPGRADES[i]
 		var lvl := _get_lvl(u["field"])
@@ -434,6 +532,43 @@ func _refresh_weapons() -> void:
 		detail.text = ""
 	if buy != null and _sel_weapon < 0:
 		buy.text = "SELECT A WEAPON"
+		buy.disabled = true
+
+
+## Repaint the SPECIALS tab — equipped ring slots and catalog buy state.
+func _refresh_specials() -> void:
+	for i in _special_slots_ui.size():
+		var row: Dictionary = _special_slots_ui[i]
+		var id: int = NativeGame.special_slots[i]
+		# Slot 0 is the active special — highlight it.
+		(row["panel"] as PanelContainer).modulate = \
+			Color(1.0, 0.85, 0.4) if i == 0 else Color.WHITE
+		if id <= 0:
+			(row["title"] as Label).text = "SLOT %d — EMPTY%s" % [
+				i + 1, "  (ACTIVE)" if i == 0 else ""]
+			(row["desc"] as Label).text = ""
+			continue
+		var item := NativeSpecialTable.at(id)
+		(row["title"] as Label).text = "%s%s" % [item["name"],
+			"  (ACTIVE)" if i == 0 else ""]
+		(row["desc"] as Label).text = item["desc"]
+
+	var detail := _special_panel.get_node_or_null("Detail") as Label
+	var buy := _special_panel.get_node_or_null("BuySpecial") as Button
+	if _sel_special > 0:
+		var item := NativeSpecialTable.at(_sel_special)
+		if detail != null:
+			detail.text = "%s\n%s\nPrice %d coins" % [
+				item["name"], item["desc"], NativeSpecialTable.PRICES[_sel_special]]
+		if buy != null:
+			buy.text = "BUY %s (%d coins)" % [
+				item["name"], NativeSpecialTable.PRICES[_sel_special]]
+			buy.disabled = NativeGame.special_free_slot() < 0 \
+				or NativeGame.coins < NativeSpecialTable.PRICES[_sel_special]
+	elif detail != null:
+		detail.text = ""
+	if buy != null and _sel_special <= 0:
+		buy.text = "SELECT AN ITEM"
 		buy.disabled = true
 
 

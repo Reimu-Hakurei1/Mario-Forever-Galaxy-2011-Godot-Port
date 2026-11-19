@@ -14,6 +14,7 @@ var _heat_bar: ProgressBar
 var _lives_label: Label
 var _coins_label: Label
 var _buffs_label: Label          # active powerup timers (shield/overdrive)
+var _special_label: Label        # the four G.specialslot items
 
 
 func _ready() -> void:
@@ -52,6 +53,11 @@ func _build() -> void:
 	_heat_bar = _make_bar(Color(0.9, 0.5, 0.1), "HEAT")
 	top_right.add_child(_heat_bar)
 
+	# Special-item ring — shows the four slots, slot 0 (X fires it)
+	# marked with ▶. Hidden when the hero carries no specials.
+	_special_label = _make_label("", 13)
+	top_right.add_child(_special_label)
+
 	# --- Bottom-center: active powerup timers ---
 	_buffs_label = _make_label("", 16)
 	_buffs_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
@@ -89,6 +95,17 @@ func _process(_delta: float) -> void:
 		_buffs_label.add_theme_color_override("font_color", Color(0.5, 0.85, 1.0))
 	else:
 		_buffs_label.add_theme_color_override("font_color", Color(1.0, 0.55, 0.45))
+
+	# Special ring — rebuild the short text each frame (4 slots, cheap).
+	var parts: Array[String] = []
+	for i in NativeGame.special_slots.size():
+		var id: int = NativeGame.special_slots[i]
+		if id <= 0:
+			continue
+		var item := NativeSpecialTable.at(id)
+		parts.append("%s%s" % ["▶" if i == 0 else " ", item["name"]])
+	_special_label.text = "   ".join(parts)
+	_special_label.visible = not parts.is_empty()
 
 
 func _make_label(text: String, size: int) -> Label:

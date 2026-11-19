@@ -135,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	_update_visuals(delta)
 	_tick_orbit(delta)
 	_tick_balls()
+	_tick_special(delta)
 
 
 ## Shield pickup timer — while active the hull is invulnerable and the
@@ -336,6 +337,93 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
+
+
+# ---------------------------------------------------------------------------
+# Special items — ports script_special / script_zmiana_specjala.
+# X fires the active special (specialslot[0]); Z/C rotate the ring so a
+# different item becomes active. Effects implement each item's
+# g_sekwencja_special outcome — see NativeSpecialTable for the mapping.
+# ---------------------------------------------------------------------------
+
+var _special_prev := {KEY_X: false, KEY_Z: false, KEY_C: false}
+
+
+func _tick_special(delta: float) -> void:
+	# Trickle heal from FIELD DRESSING / NANO SWARM.
+	if NativeGame.special_heal_left > 0.0:
+		NativeGame.special_heal_left = maxf(0.0, NativeGame.special_heal_left - delta)
+		if NativeGame.special_heal_left > 0.0 and NativeGame.energy > 0.0:
+			NativeGame.heal_player(NativeGame.special_heal_rate * delta)
+
+	# Edge-triggered special buttons (keyboard_check in the original).
+	var use := Input.is_key_pressed(KEY_X)
+	if use and not _special_prev[KEY_X]:
+		_use_special(NativeGame.special_active())
+	_special_prev[KEY_X] = use
+	var prev := Input.is_key_pressed(KEY_Z)
+	if prev and not _special_prev[KEY_Z]:
+		NativeGame.rotate_special(-1)
+	_special_prev[KEY_Z] = prev
+	var next := Input.is_key_pressed(KEY_C)
+	if next and not _special_prev[KEY_C]:
+		NativeGame.rotate_special(1)
+	_special_prev[KEY_C] = next
+
+
+## Fire the item in the active special slot. Each id maps to the
+## gameplay effect of its g_sekwencja_special sequence.
+func _use_special(id: int) -> void:
+	if id <= 0 or NativeGame.energy <= 0.0:
+		return
+	var item := NativeSpecialTable.at(id)
+	if item.is_empty():
+		return
+	NativeAssets.play_sound(62)
+
+	# Heal-over-time specials (seq 23000 / 50000).
+	if item.has("heal_rate"):
+		NativeGame.special_heal_rate = item["heal_rate"]
+		NativeGame.special_heal_left = item["heal_time"]
+		return
+
+	match id:
+		2:  # NOVA BLAST — seq 22000 heavy blast: hurts everything on screen
+			for enemy in get_tree().get_nodes_in_group("enemies"):
+				if is_instance_valid(enemy):
+					enemy.take_damage(item["damage"])
+		3:  # PIERCER SLUG — seq 1000: huge bolt straight up, pierces
+			_special_bolt(Vector2(0, -1) * 2.5, item["damage"], true)
+		4:  # NOVA RING — seq 1: damage nova around the ship
+			for enemy in get_tree().get_nodes_in_group("enemies"):
+				if is_instance_valid(enemy) \
+						and global_position.distance_to(enemy.global_position) < 320.0:
+					enemy.take_damage(item["damage"])
+		5:  # RED SHOT — seq 5000: single heavy slug
+			_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false)
+		6:  # TRIPLE MISSILE — seq 30000 x3: three heavy bolts fanned
+			for i in 3:
+				_special_bolt(Vector2(0, -1).rotated((i - 1) * 0.28) * 3.2,
+					item["damage"], false)
+		8:  # BOMB RING — seq 80000: eleven bombs burst outward
+			for i in 11:
+				var dir := Vector2.RIGHT.rotated(i * TAU / 11.0)
+				_special_bolt(dir * 2.8, item["damage"], false)
+		9:  # CHRONO — seq 100000 zwolnij_gre: clears enemy fire + shield
+			for bullet in get_tree().get_nodes_in_group("enemy_bullets"):
+				if is_instance_valid(bullet):
+					bullet.queue_free()
+			NativeGame.shield_time = item["shield"]
+
+
+## Spawn one special bolt — same parent/group conventions as _fire_slot.
+func _special_bolt(dir: Vector2, dmg: float, pierce: bool) -> void:
+	var bullet := NativeBullet.new()
+	bullet.global_position = global_position
+	bullet.velocity = dir
+	bullet.damage = dmg
+	bullet.pierce = pierce
+	get_parent().add_child(bullet)
 
 
 ## Closest living enemy to the ship — the auto-targeting weapons'

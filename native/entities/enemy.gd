@@ -331,6 +331,15 @@ func die() -> void:
 
 ## Roll the drop table — coins common, gems rare, health very rare.
 func _roll_drop() -> void:
+	# Rare special-item drop — the original's o_specjaldrop1 objects are
+	# placed by level scripts; here any kill has a small chance to spill
+	# one so the system stays reachable on every stage.
+	if randf() < 0.02:
+		var drop := NativePickup.new()
+		drop.special_id = randi_range(1, 9)
+		drop.global_position = position
+		get_parent().add_child(drop)
+		return
 	var roll := randf()
 	var acc := 0.0
 	for entry in DROP_TABLE:

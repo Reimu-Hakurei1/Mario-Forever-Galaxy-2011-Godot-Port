@@ -33,6 +33,9 @@ const VALUES := {
 }
 
 var kind := Kind.COIN
+## Special-item id (1..9) when this drop carries a special — ports
+## o_specjaldrop1. 0 = a normal currency/powerup pickup.
+var special_id := 0
 var _sprite: Sprite2D
 var _t := 0.0
 
@@ -40,10 +43,19 @@ var _t := 0.0
 func _ready() -> void:
 	add_to_group("pickups")
 	_sprite = Sprite2D.new()
-	var tex := NativeAssets.sprite_frame(SPRITES[kind], 0)
-	if tex != null:
-		_sprite.texture = tex
-		_sprite.offset = -NativeAssets.sprite_origin(SPRITES[kind])
+	if special_id > 0:
+		# Special icons live on sprite 239 (same sheet the original's
+		# special-slot HUD draws from).
+		var tex := NativeAssets.sprite_frame(239, special_id)
+		if tex != null:
+			_sprite.texture = tex
+			_sprite.offset = -NativeAssets.sprite_origin(239)
+			_sprite.modulate = Color(1.0, 0.7, 0.3)
+	else:
+		var tex := NativeAssets.sprite_frame(SPRITES[kind], 0)
+		if tex != null:
+			_sprite.texture = tex
+			_sprite.offset = -NativeAssets.sprite_origin(SPRITES[kind])
 	# The health sprite (s_spikey) is a huge powerup graphic — shrink it so
 	# it reads as a small collectible like the coin and gem.
 	if kind == Kind.HEALTH:
@@ -97,6 +109,15 @@ func _physics_process(_delta: float) -> void:
 
 
 func _collect() -> void:
+	# Special drop — fills the first empty G.specialslot ring slot.
+	# If the ring is full the item salvages for a coin refund.
+	if special_id > 0:
+		if NativeGame.add_special(special_id) >= 0:
+			NativeAssets.play_sound(62)
+		else:
+			NativeGame.coins += NativeSpecialTable.PRICES[special_id] / 4
+			NativeAssets.play_sound(62)
+		return
 	var v: Dictionary = VALUES[kind]
 	if v.has("coins"):
 		NativeGame.coins += v["coins"]

@@ -16,6 +16,7 @@ var _sprite: Sprite2D
 
 
 func _ready() -> void:
+	add_to_group("enemy_bullets")   # CHRONO special clears this group
 	_sprite = Sprite2D.new()
 	var tex := NativeAssets.sprite_frame(SPRITE_ID, 0)
 	if tex != null:

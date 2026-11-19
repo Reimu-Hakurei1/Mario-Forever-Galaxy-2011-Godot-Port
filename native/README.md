@@ -67,7 +67,14 @@ title → intro (new game only) → hero select → star map
 - **game_over.tscn** — final stats when lives run out
 - **options.tscn** — overlay from title or star map (music/sfx/effects/volume)
 
-Controls: **Arrow keys** move · **Space** fires · **ESC/P** pause.
+Controls: **Arrow keys** (or WASD) move · **Space/Ctrl** fires ·
+**X** fires the active special item · **Z/C** rotate the special ring ·
+**ESC/P** pause.
+
+Special items (`NativeSpecialTable`, ports `G.specialslot` + the
+`g_sekwencja_special` sequences): each hero starts with up to four —
+X fires slot 0, Z/C cycle which item is active. Items come from rare
+enemy drops and the shop's SPECIALS tab (the original's SUPPORT page).
 
 ## How GameMaker concepts map to Godot
 

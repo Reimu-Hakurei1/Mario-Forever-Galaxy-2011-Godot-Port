@@ -17,10 +17,12 @@ var velocity := Vector2.ZERO     # world px/frame
 var damage := 34.0
 var explosive := false          # EXPLOSIVE AMMO — splash damage on hit
 var coin_on_hit := false        # CREATE COINS — GOLD GUN drops a coin
+var pierce := false             # PIERCER SLUG — passes through enemies
 
 var _sprite: Sprite2D
 var _scale := 0.2
 var _dead := false
+var _hit := {}                  # pierce: enemy_id -> last-hit physics frame
 
 
 func _ready() -> void:
@@ -49,13 +51,23 @@ func _physics_process(_delta: float) -> void:
 	# object; a group scan is the same check in native terms. Bullets are
 	# small and few, so the scan is cheap.
 	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if is_instance_valid(enemy) \
-				and position.distance_to(enemy.global_position) < 34.0:
-			enemy.take_damage(damage)
-			if explosive:
-				_splash(enemy)
-			if coin_on_hit:
-				_drop_coin()
+		if not is_instance_valid(enemy) \
+				or position.distance_to(enemy.global_position) >= 34.0:
+			continue
+		var eid := enemy.get_instance_id()
+		var frame := Engine.get_physics_frames()
+		# Piercing bolts keep flying — a per-target cooldown stops one
+		# enemy eating the whole volley in a single frame.
+		if pierce:
+			if frame - int(_hit.get(eid, -9999)) < 12:
+				continue
+			_hit[eid] = frame
+		enemy.take_damage(damage)
+		if explosive:
+			_splash(enemy)
+		if coin_on_hit:
+			_drop_coin()
+		if not pierce:
 			_dead = true
 			queue_free()
 			return

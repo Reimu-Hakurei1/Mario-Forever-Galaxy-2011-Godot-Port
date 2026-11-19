@@ -33,9 +33,16 @@ static var weapons: Array[int] = [-1, -1, -1, -1, -1]
 static var weapon_level: Array[int] = [0, 0, 0, 0, 0]
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
+static var special_heal_rate: float = 0.0  ## hull/sec from a heal special
+static var special_heal_left: float = 0.0  ## seconds of heal-special left
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
+## G.specialslot[0..3] — the four special-item slots (ids 1..9 index
+## NativeSpecialTable.ITEMS, 0 = empty). Slot 0 is the ACTIVE special:
+## the prev/next keys rotate the ring so a different item becomes active.
+## Persistent across levels, like the original's profile save.
+static var special_slots: Array[int] = [0, 0, 0, 0]
 
 ## Playable ships — ports the four `g_hero` loadouts from choose_hero.gd.
 ## Each hero gets a starter weapon on the centre gun (slot index 1 =
@@ -46,19 +53,23 @@ static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
 const HEROES := [
 	{"name": "CLASSIC", "desc": "LIGHT MUSHROOM GUN — the every-plumber starter",
 		"firerate": 0.0, "slower": 1.0, "tint": Color.WHITE,
-		"loadout": {1: [1, 5]}, "upgrades": {}},
+		"loadout": {1: [1, 5]}, "upgrades": {},
+		"specials": [1, 2, 3, 4]},
 	{"name": "VETERAN", "desc": "Mushroom gun + WING/BOOST/ARMOUR/BALLS pre-installed",
 		"firerate": 0.0, "slower": 1.0, "tint": Color(1.0, 0.6, 0.6),
 		"loadout": {1: [1, 5]},
 		"upgrades": {"upgrade_boost": 1, "upgrade_wing": 1,
-			"upgrade_armour": 1, "upgrade_balls": 1}},
-	{"name": "SPECIALIST", "desc": "Extra spare ship — special slots pending",
+			"upgrade_armour": 1, "upgrade_balls": 1},
+		"specials": [8, 7, 5, 4]},
+	{"name": "SPECIALIST", "desc": "Extra spare ship, no special items",
 		"firerate": 0.0, "slower": 1.1, "tint": Color(0.6, 0.9, 1.0),
-		"loadout": {1: [1, 5]}, "upgrades": {}, "lives": 4},
+		"loadout": {1: [1, 5]}, "upgrades": {}, "lives": 4,
+		"specials": [0, 0, 0, 0]},
 	{"name": "HEAVY", "desc": "LINEAR SHOTGUN + double freezer, sluggish",
 		"firerate": 0.1, "slower": 1.8, "tint": Color(1.0, 0.85, 0.4),
 		"loadout": {1: [6, 5]}, "upgrades": {"upgrade_freezer": 2},
-		"overpriced": 0.05, "cooling": 1.0},
+		"overpriced": 0.05, "cooling": 1.0,
+		"specials": [2, 2, 2, 0]},
 ]
 
 # Level handoff — the star map writes the chosen level's config here and
@@ -112,6 +123,8 @@ static func reset_run() -> void:
 	overheating = 0.0
 	overdrive_time = 0.0
 	shield_time = 0.0
+	special_heal_rate = 0.0
+	special_heal_left = 0.0
 	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0
@@ -190,6 +203,8 @@ static func apply_hero() -> void:
 	upgrade_armour = int(up.get("upgrade_armour", 0))
 	upgrade_orbit = int(up.get("upgrade_orbit", 0))
 	upgrade_balls = int(up.get("upgrade_balls", 0))
+	for i in 4:
+		special_slots[i] = int(h.get("specials", [0, 0, 0, 0])[i])
 	lives = int(h.get("lives", 3))
 	save()
 
@@ -273,6 +288,67 @@ static func sell_weapon(slot: int) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Special items — G.specialslot ring. Slot 0 is active; prev/next rotate
+# the array (script_zmiana_specjala). Items are earned from drops or
+# bought on the shop's SUPPORT page (here: the SPECIALS tab).
+# ---------------------------------------------------------------------------
+
+## The item id in the active slot (0 = nothing equipped).
+static func special_active() -> int:
+	return special_slots[0] if special_slots.size() > 0 else 0
+
+
+## Rotate the special ring — dir -1 = previous, +1 = next
+## (script_zmiana_specjala swaps specialslot entries).
+static func rotate_special(dir: int) -> void:
+	if special_slots.size() < 2:
+		return
+	if dir > 0:
+		var first := special_slots[0]
+		for i in special_slots.size() - 1:
+			special_slots[i] = special_slots[i + 1]
+		special_slots[special_slots.size() - 1] = first
+	else:
+		var last := special_slots[special_slots.size() - 1]
+		for i in range(special_slots.size() - 1, 0, -1):
+			special_slots[i] = special_slots[i - 1]
+		special_slots[0] = last
+
+
+## First empty special slot index, or -1 when all four are full.
+static func special_free_slot() -> int:
+	for i in special_slots.size():
+		if special_slots[i] == 0:
+			return i
+	return -1
+
+
+## Store a special item in the first empty slot (special_drop behaviour).
+## Returns the slot used, or -1 if the ring is full.
+static func add_special(id: int) -> int:
+	var slot := special_free_slot()
+	if slot < 0:
+		return -1
+	special_slots[slot] = id
+	save()
+	return slot
+
+
+## SUPPORT-page purchase: buy item `id` into the first empty slot.
+static func buy_special(id: int) -> bool:
+	if id <= 0 or id >= NativeSpecialTable.ITEMS.size():
+		return false
+	if special_free_slot() < 0:
+		return false
+	var price: int = NativeSpecialTable.PRICES[id]
+	if coins < price:
+		return false
+	coins -= price
+	add_special(id)
+	return true
+
+
+# ---------------------------------------------------------------------------
 # Save / load — persists the profile fields (not per-run state) to
 # user://native_save.cfg. The original used GameMaker .ini saves in the
 # same spirit: unlocked level, currency, upgrades, settings.
@@ -300,6 +376,7 @@ static func save() -> void:
 	cfg.set_value("profile", "samus_cooling", samus_cooling)
 	cfg.set_value("profile", "weapons", weapons)
 	cfg.set_value("profile", "weapon_level", weapon_level)
+	cfg.set_value("profile", "special_slots", special_slots)
 	cfg.set_value("profile", "hero", hero)
 	cfg.set_value("profile", "hero_tint", hero_tint)
 	cfg.set_value("settings", "efekty", efekty)
@@ -331,6 +408,8 @@ static func reset_profile() -> void:
 	for i in 5:
 		weapons[i] = -1
 		weapon_level[i] = 0
+	for i in 4:
+		special_slots[i] = 0
 	hero = 0
 	hero_tint = Color.WHITE
 	save()
@@ -362,6 +441,9 @@ static func load_save() -> bool:
 	var saved_levels: Array = cfg.get_value("profile", "weapon_level", [])
 	for i in mini(5, saved_levels.size()):
 		weapon_level[i] = int(saved_levels[i])
+	var saved_specials: Array = cfg.get_value("profile", "special_slots", [])
+	for i in mini(4, saved_specials.size()):
+		special_slots[i] = int(saved_specials[i])
 	hero = int(cfg.get_value("profile", "hero", hero))
 	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
 	efekty = int(cfg.get_value("settings", "efekty", efekty))
