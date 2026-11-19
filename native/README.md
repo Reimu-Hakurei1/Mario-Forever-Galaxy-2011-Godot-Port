@@ -54,6 +54,7 @@ scene — press F5):
 ```
 title → intro (new game only) → hero select → star map
       → arena → (level clear) → shop → star map
+                 ├→ (level 80 clear) → ending → star map
                  └→ (game over) → game over screen → star map
 ```
 
