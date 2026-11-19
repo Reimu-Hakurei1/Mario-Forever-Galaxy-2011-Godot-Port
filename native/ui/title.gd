@@ -124,8 +124,13 @@ func _on_continue() -> void:
 
 func _on_new_game() -> void:
 	NativeGame.reset_profile()
-	# New game plays the opening story first.
-	get_tree().change_scene_to_file(INTRO_SCENE)
+	# New game plays the opening story cinematic (room_animation_1)
+	# before the intro pages — the original's room order is logo →
+	# anim_1..4 → title → hero select.
+	var cs = load("res://native/ui/cutscene.gd").new()
+	cs.setup("opening")
+	cs.next_scene = INTRO_SCENE
+	get_tree().root.add_child(cs)
 
 
 ## Options opens as an overlay — it frees itself on close, no scene swap.

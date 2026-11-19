@@ -173,7 +173,10 @@ func _next_level() -> void:
 	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
 	NativeGame.save()
 	if NativeGame.active_level >= NativeLevelTable.level_count() - 1:
-		get_tree().change_scene_to_file("res://native/ui/ending.tscn")
+		var cs = load("res://native/ui/cutscene.gd").new()
+		cs.setup("finale")
+		cs.next_scene = "res://native/ui/ending.tscn"
+		get_tree().root.add_child(cs)
 	else:
 		get_tree().change_scene_to_file("res://native/ui/shop.tscn")
 
