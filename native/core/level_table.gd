@@ -39,7 +39,7 @@ const BOSS_MUSIC := {
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite", "split",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
-	"lancer", "ace"]
+	"lancer", "ace", "capsule"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -174,6 +174,7 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 				["eye", "top", "formation", 3, hp * 1.6],
 				["ufo_a", "right", "formation", 4, hp * 1.4],
 				["ros", "top", "formation", 3, hp * 2.0],
+				["capsule", "top", "formation", 2, hp * 0.5],
 			], t, 8.0)
 		3:  # ambush — pressure from every edge
 			return _waves_from([

@@ -113,12 +113,17 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"warlord": enemy.kind = NativeEnemy.Kind.WARLORD
 		"lancer": enemy.kind = NativeEnemy.Kind.LANCER
 		"ace": enemy.kind = NativeEnemy.Kind.ACE
+		"capsule": enemy.kind = NativeEnemy.Kind.CAPSULE
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
 	# enter, take a slot, and sway there while the player fights through.
 	var slot_index: int = wave["spawned"]
 	enemy.formation_slot = _formation_slot(slot_index)
+	# Capsules materialise directly at their slot — they never move, so
+	# an offscreen edge spawn would just get culled.
+	if enemy.kind == NativeEnemy.Kind.CAPSULE:
+		enemy.global_position = enemy.formation_slot
 	match wave.get("mode", "formation"):
 		"chase": enemy.mode = NativeEnemy.Mode.CHASE
 		"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
