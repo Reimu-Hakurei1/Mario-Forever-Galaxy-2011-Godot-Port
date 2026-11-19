@@ -8,14 +8,16 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		queue_free()
 		return
+	z_index = 1000  # Ensure guides are on top
 	# Add visual guides for common spawn zones
-	_add_spawn_zone("Top_Spawn", Vector2(0, 0), Vector2(1024, 200), Color(1, 0, 0, 0.1))
-	_add_spawn_zone("Center_Spawn", Vector2(0, 200), Vector2(1024, 400), Color(0, 1, 0, 0.1))
-	_add_spawn_zone("Bottom_Spawn", Vector2(0, 400), Vector2(1024, 368), Color(0, 0, 1, 0.1))
+	_add_spawn_zone("Top_Spawn", Vector2(0, 0), Vector2(1024, 200), Color(1, 0, 0, 0.2))
+	_add_spawn_zone("Center_Spawn", Vector2(0, 200), Vector2(1024, 400), Color(0, 1, 0, 0.2))
+	_add_spawn_zone("Bottom_Spawn", Vector2(0, 400), Vector2(1024, 368), Color(0, 0, 1, 0.2))
 	
 	# Add labels
 	_add_label("Enemy Spawns", Vector2(10, 10), Color.YELLOW)
 	_add_label("Wave Timing", Vector2(10, 30), Color.CYAN)
+	print("WaveEditingGuide: Added visual guides")
 
 func _add_spawn_zone(name: String, pos: Vector2, size: Vector2, color: Color) -> void:
 	var rect := ColorRect.new()
@@ -23,18 +25,23 @@ func _add_spawn_zone(name: String, pos: Vector2, size: Vector2, color: Color) ->
 	rect.color = color
 	rect.position = pos
 	rect.size = size
+	rect.z_index = 1000
 	add_child(rect)
 	var border := ReferenceRect.new()
-	border.border_color = Color(color.r, color.g, color.b, 0.5)
-	border.border_width = 1.0
+	border.border_color = Color(color.r, color.g, color.b, 0.8)
+	border.border_width = 3.0
 	border.position = pos
 	border.size = size
+	border.z_index = 1001
 	add_child(border)
 
 func _add_label(text: String, pos: Vector2, color: Color) -> void:
 	var label := Label.new()
 	label.text = text
 	label.position = pos
+	label.z_index = 1002
 	label.add_theme_color_override("font_color", color)
-	label.add_theme_font_size_override("font_size", 16)
+	label.add_theme_color_override("font_outline_color", Color.BLACK)
+	label.add_theme_constant_override("outline_size", 4)
+	label.add_theme_font_size_override("font_size", 24)
 	add_child(label)
