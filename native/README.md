@@ -23,23 +23,30 @@ native/
                         hero stats, overdrive powerup
     bullet.gd          Player projectile
     enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
-    enemy.gd           Enemy — 30 kinds ported from the original objects:
-                        grunts (goomba/mini/dart/weaver/ghost/ducher_fall/
-                        bonus), shooters (shooter/ufo_a/ufo_b/ros/crab/
-                        stinger/drone/hunter/lancer/rocket_ufo), divers
-                        (kamikaze/ace), heavies (tank/jumbo/elite/warlord),
-                        the sky-eye laser boss, castle defenses
+    enemy.gd           Enemy — 34 kinds ported from the original objects:
+                        grunts (goomba/mini/dart/weaver/ghost/ghost2/
+                        ghost3/ducher_fall/bonus), shooters (shooter/
+                        ufo_a/ufo_a2/ufo_b/ros/crab/stinger/drone/hunter/
+                        lancer/rocket_ufo), divers (kamikaze/ace),
+                        heavies (tank/jumbo/elite/warlord), the sky-eye
+                        laser boss (+blue EYE2 phase), castle defenses
                         (cannon/flame_cannon/rotary/fat_cannon/flame/fan),
                         sprite-derived contact radii, drop table
-    enemy_ring.gd      Orbiting swarm — o_enemy_around/ducher_around rings
+    enemy_ring.gd      Orbiting swarm + team fighters — o_enemy_around/
+                        ducher_around rings, o_*_team squads (mixed
+                        members, screen drift, mother volleys)
     boss.gd            Level boss — original HP escalation curve, hover,
                         attack patterns, enrage, tiered minions, named
                         health bar, alternate variants (ufo_mega/fat_boy/
                         flame_cans)
     pickup.gd          Collectibles — coin/gem/health + power/life/cooling
                         powerups with magnet
-    explosion.gd       Death burst effect
-    wave_spawner.gd    Wave scheduler — data-driven spawn groups
+    explosion.gd       Death burst effect — sprite/scale variants
+                        (boss kaboom, radius-scaled enemy bursts)
+    death_wreck.gd    o_death — the tumbling ship wreck on player death
+    wave_spawner.gd    Wave scheduler — delayed groups plus scripted
+                        o_wave_* patterns (grid phalanxes, circles,
+                        streams, piranhas, ghosts, zigzag, loot)
   ui/
     hud.gd             Score / hull / heat / lives display
     shop.gd            Upgrade shop — wings/boosters/freezer/weapon/lives
@@ -48,6 +55,10 @@ native/
     hero_select.gd     Ship select — CLASSIC/SAMUS/COMET/TITAN
     options.gd         Settings overlay — music/sfx/effects/volume
     game_over.gd       Final stats screen on game over
+    boss_dialogue.gd   Typewriter overlay — boss speeches, NAME| tags
+  core/
+    dialogue_table.gd Boss intro/end talks + inter-map briefings
+                        (o_boss_*_talk/end_talk, next_map_obj)
   levels/
     star_map.gd/.tscn  Level select — 8x10 campaign grid with unlocks,
                         starfield backdrop
