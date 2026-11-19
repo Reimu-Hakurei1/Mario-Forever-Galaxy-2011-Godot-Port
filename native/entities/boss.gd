@@ -34,9 +34,11 @@ const ENTER_SPEED := 0.8          # px/frame descent
 const FIGHT_Y := 160.0            # hover line at the top of the arena
 const HIT_FLASH := 4
 # Boss hull — the original's boss_*.gd scripts set g_energia 1000-50000
-# per world tier; ours spans the same range across 8 world tiers.
-const BASE_HP := 1000.0
-const HP_PER_TIER := 700.0
+# per world tier (boss_1=1000 … boss_8=50000, a 50x escalation). Our
+# damage scale is compressed, so the curve keeps the same *shape*:
+# early bosses fall fast, the last one is a genuine wall.
+const BASE_HP := 1200.0
+const TIER_HP_MULT := [1.0, 1.6, 2.0, 2.5, 3.2, 4.5, 6.5, 9.0]
 const BURST_INTERVAL := 150.0     # frames between attack patterns
 const MINION_INTERVAL := 600.0    # frames between minion summons
 
@@ -57,7 +59,7 @@ var _hp_bar: ProgressBar
 
 func _ready() -> void:
 	add_to_group("enemies")
-	max_health = BASE_HP + tier * HP_PER_TIER
+	max_health = BASE_HP * TIER_HP_MULT[mini(tier, TIER_HP_MULT.size() - 1)]
 	health = max_health
 
 	# Spawn above the arena and descend to the fight line.
@@ -201,11 +203,18 @@ func _spawn_bullet(dir: Vector2) -> void:
 	get_parent().add_child(bullet)
 
 
-## Summon a small escort — reuse the basic enemy at reduced stats.
+## Summon a small escort — the original bosses call in enemy_9 grunts
+## early and heavier wingmen (ufo/crab/elite) in later worlds.
 func _summon_minions() -> void:
+	var pool: Array = [NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.MINI]
+	if tier >= 4:
+		pool = [NativeEnemy.Kind.UFO_A, NativeEnemy.Kind.CRAB,
+			NativeEnemy.Kind.ELITE]
+	elif tier >= 2:
+		pool = [NativeEnemy.Kind.SHOOTER, NativeEnemy.Kind.GHOST]
 	for i in 2:
 		var minion := NativeEnemy.new()
-		minion.kind = NativeEnemy.Kind.GOOMBA
+		minion.kind = pool[(tier + i) % pool.size()]
 		minion.health = 10.0
 		minion.mode = NativeEnemy.Mode.CHASE
 		minion.global_position = position + Vector2(-40 + i * 80, 40)
@@ -285,6 +294,22 @@ func _build_hp_bar() -> void:
 	fill.set_corner_radius_all(4)
 	_hp_bar.add_theme_stylebox_override("fill", fill)
 	layer.add_child(_hp_bar)
+
+	# The original names every boss on its health bar
+	# (G.pasek_napis = "BOWSER'S_SPACE_CLOWN").
+	var name_label := Label.new()
+	name_label.text = "BOWSER'S_SPACE_CLOWN"
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	name_label.offset_left = 312.0
+	name_label.offset_right = 712.0
+	name_label.offset_top = -2.0
+	name_label.offset_bottom = 16.0
+	name_label.add_theme_font_size_override("font_size", 16)
+	name_label.add_theme_color_override("font_color", Color(1, 0.85, 0.4))
+	name_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	name_label.add_theme_constant_override("outline_size", 4)
+	layer.add_child(name_label)
 
 
 func _update_hp_bar() -> void:
