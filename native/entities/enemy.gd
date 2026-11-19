@@ -25,6 +25,7 @@ enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
 enum Kind {
 	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
 	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE, SPLIT,
+	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -52,6 +53,14 @@ const KIND_PROFILES := {
 	# Splitter — bursts into a pod of minis on death (the original's
 	# divide-and-conquer enemy).
 	Kind.SPLIT: {"sprite": 30, "score": 180, "chase": 1.1, "scale": 0.8},
+	# Second-wave variants — sprites pulled straight from the original's
+	# enemy catalog (s_enemy_b/l/m/u, s_enemy_h_*, s_enemy_aup2).
+	Kind.DART: {"sprite": 29, "score": 130, "chase": 2.2, "scale": 0.7},
+	Kind.STINGER: {"sprite": 34, "score": 170, "shoot_interval": 190.0, "spread": 1},
+	Kind.WEAVER: {"sprite": 69, "score": 140, "dive": 3.0, "tint": Color(0.8, 0.9, 1.0)},
+	Kind.DRONE: {"sprite": 112, "score": 190, "shoot_interval": 150.0, "spread": 2},
+	Kind.HUNTER: {"sprite": 328, "score": 260, "shoot_interval": 130.0, "spread": 1, "burst": 2},
+	Kind.WARLORD: {"sprite": 478, "score": 380, "chase": 1.3, "scale": 0.6},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -144,7 +153,7 @@ func _apply_profile() -> void:
 	# Behaviour family routing: shooters hold station and fire, kamikaze
 	# variants dive, everything else uses the goomba pattern. The new
 	# kinds join the family that matches their profile.
-	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B:
+	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER:
 		mode = Mode.KAMIKAZE
 		kamikaze_speed = p.get("dive", 2.4)
 
@@ -154,9 +163,10 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	# Shooter-ish kinds share the hold-position-and-fire behaviour.
-	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS, Kind.CRAB]:
+	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
+			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER]:
 		_behave_shooter()
-	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B:
+	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER:
 		_behave_kamikaze()
 	else:
 		_behave_goomba()

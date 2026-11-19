@@ -37,7 +37,8 @@ const BOSS_MUSIC := {
 # Enemy kinds available to the generator — must match the spawner's
 # string→Kind mapping and enemy.gd's KIND_PROFILES.
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
-	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite", "split"]
+	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite", "split",
+	"dart", "stinger", "weaver", "drone", "hunter", "warlord"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -182,18 +183,19 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		var mode := "formation"
 		var roll := (w * 7 + difficulty * 3 + world) % 24
 		if w >= 5 and roll >= 20:
-			kind = ["jumbo", "crab", "ros"][roll % 3]
+			kind = ["jumbo", "crab", "ros", "warlord"][roll % 4]
 		elif w >= 4 and roll >= 16:
-			kind = ["tank", "eye", "elite"][roll % 3]
+			kind = ["tank", "eye", "elite", "hunter"][roll % 4]
 		elif w >= 3 and roll >= 12:
-			kind = ["ufo_a", "ufo_b", "shooter"][roll % 3]
+			kind = ["ufo_a", "ufo_b", "shooter", "stinger", "drone"][roll % 5]
 		elif w >= 2 and roll >= 8:
-			kind = ["kamikaze", "mini", "shooter", "split"][roll % 4]
+			kind = ["kamikaze", "mini", "shooter", "split", "dart", "weaver"][roll % 6]
 		elif w >= 2 and roll == 7:
 			mode = "chase"
-		if kind == "kamikaze" or kind == "ufo_b":
+		if kind in ["kamikaze", "ufo_b", "weaver"]:
 			mode = "kamikaze"
-		elif kind in ["shooter", "ufo_a", "tank", "eye", "ros", "crab"]:
+		elif kind in ["shooter", "ufo_a", "tank", "eye", "ros", "crab",
+				"stinger", "drone", "hunter"]:
 			mode = "formation"
 
 		var count := 3 + w + (difficulty / 3)
@@ -208,6 +210,10 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			"crab": hp = hp * 2.0
 			"elite": hp = hp * 1.8
 			"split": hp = hp * 0.9
+			"dart": hp = hp * 0.7
+			"weaver": hp = hp * 0.8
+			"warlord": hp = hp * 1.6
+			"hunter": hp = hp * 1.3
 
 		waves.append({
 			"delay": t,
