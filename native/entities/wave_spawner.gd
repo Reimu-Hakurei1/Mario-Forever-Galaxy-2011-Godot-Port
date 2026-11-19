@@ -305,6 +305,7 @@ static func _kind_from_name(kind_name: String) -> int:
 		"fan": return NativeEnemy.Kind.FAN
 		"ducher_fall": return NativeEnemy.Kind.FALLER
 		"bonus_fall": return NativeEnemy.Kind.BONUS
+		"bonus_block", "bonus_1", "bonus_2", "bonus_3", "bonus_4": return NativeEnemy.Kind.BONUS_BLOCK
 		"eye2", "sky_eye_2": return NativeEnemy.Kind.EYE2
 		"ufo_a2": return NativeEnemy.Kind.UFO_A2
 		"ghost2", "shy_ghost_2": return NativeEnemy.Kind.GHOST2

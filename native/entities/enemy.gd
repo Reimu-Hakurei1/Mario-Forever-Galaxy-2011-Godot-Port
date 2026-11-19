@@ -28,7 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
-	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER, FAT_BOY,
+	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER, FAT_BOY, BONUS_BLOCK,
 	EYE2, UFO_A2, GHOST2, GHOST3, RUNNER,
 }
 
@@ -97,6 +97,12 @@ const KIND_PROFILES := {
 	# it's a `hazard`, not a shootable enemy.
 	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
 		"contact_damage": 8.0, "hazard": true},
+	# bonus_1/2/3/4 (o_bonus_*) — indestructible bonus-stage blockers:
+	# they can't be killed (g_oberwanie = -1) and ram the ship for a
+	# heavy hit, exactly like the fan hazard but worth nothing.
+	Kind.BONUS_BLOCK: {"sprite": 136, "score": 0, "health": 99999.0,
+		"contact_damage": 25.0, "hazard": true,
+		"tint": Color(1.0, 0.85, 0.4)},
 	# fat_boy_a — the koopa's mid-boss bruiser: very tanky, lumbers in
 	# and hurls cannon volleys (its three fat_boy_cannon children are
 	# approximated by a wide spread).

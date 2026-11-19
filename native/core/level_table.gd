@@ -301,9 +301,14 @@ static func _scripted_wave(script_name: String, entry: Dictionary,
 	elif pattern == "loot":
 		wave["count"] = mini(count, 8)
 	elif pattern == "bonus":
-		# Bonus waves drop bonus_fall/ducher_fall targets.
+		# Bonus waves drop bonus_fall/ducher_fall targets plus the
+		# original's indestructible bonus_* ram-blockers.
 		if "bonus_fall" not in kinds and "ducher_fall" not in kinds:
 			kinds.append("bonus_fall")
+			wave["kinds"] = kinds
+		kinds = wave.get("kinds", kinds)
+		if "bonus_block" not in kinds:
+			kinds.append("bonus_block")
 			wave["kinds"] = kinds
 	return wave
 
