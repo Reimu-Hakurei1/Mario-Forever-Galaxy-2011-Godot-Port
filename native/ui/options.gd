@@ -38,6 +38,12 @@ func _ready() -> void:
 	box.add_child(_toggle("SOUND FX", NativeGame.dzwiek, func(v): NativeGame.dzwiek = v))
 	box.add_child(_effects_row())
 	box.add_child(_volume_row())
+	box.add_child(_toggle("FULLSCREEN", 1 if NativeGame.fullscreen else 0,
+		func(v):
+			NativeGame.fullscreen = v != 0
+			DisplayServer.window_set_mode(
+				DisplayServer.WINDOW_MODE_FULLSCREEN if NativeGame.fullscreen
+				else DisplayServer.WINDOW_MODE_WINDOWED)))
 
 	var controls := Label.new()
 	controls.text = "ARROWS/WASD move · SPACE/Ctrl fire\nX cycle weapon · ESC/P pause · Q quit to map"

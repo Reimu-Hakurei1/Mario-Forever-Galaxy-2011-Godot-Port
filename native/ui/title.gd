@@ -35,6 +35,10 @@ func _ready() -> void:
 	add_child(title)
 
 	var has_save := NativeGame.load_save()
+	# Apply the saved display mode before the first frame is shown.
+	DisplayServer.window_set_mode(
+		DisplayServer.WINDOW_MODE_FULLSCREEN if NativeGame.fullscreen
+		else DisplayServer.WINDOW_MODE_WINDOWED)
 	_has_save = has_save
 
 	var cont := Button.new()
