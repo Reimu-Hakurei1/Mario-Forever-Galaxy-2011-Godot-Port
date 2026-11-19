@@ -238,21 +238,39 @@ func _spawn_bullet(dir: Vector2) -> void:
 	get_parent().add_child(bullet)
 
 
-## Summon a small escort — the original bosses call in enemy_9 grunts
-## early and heavier wingmen (ufo/crab/elite) in later worlds.
+## Summon a small escort — extracted from the boss_N_fight scripts:
+## every tier calls in enemy_9 RUNNER grunts; boss_5+ adds ring
+## orbiters (enemy_around_1) and heavier wingmen (boss_giga_2 ≈ elite);
+## boss_7/8 lean on the bonus_3_b swarm (also accelerating runners).
 func _summon_minions() -> void:
-	var pool: Array = [NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.MINI]
+	# Late-tier bosses sometimes release a ring instead of a pair.
+	if tier >= 4 and randf() < 0.3:
+		var ring := NativeEnemyRing.new()
+		ring.orbiters_count = 8 if tier < 6 else 12
+		ring.start_radius = 160.0
+		ring.shrink_delay = 900.0
+		ring.orbiter_kind = NativeEnemy.Kind.RUNNER \
+			if tier >= 6 else NativeEnemy.Kind.GOOMBA
+		ring.orbiter_health = 10.0
+		ring.global_position = position + Vector2(0, 120)
+		get_parent().add_child(ring)
+		return
+	var pool: Array = [NativeEnemy.Kind.RUNNER, NativeEnemy.Kind.GOOMBA,
+		NativeEnemy.Kind.MINI]
 	if tier >= 4:
-		pool = [NativeEnemy.Kind.UFO_A, NativeEnemy.Kind.CRAB,
-			NativeEnemy.Kind.ELITE]
+		pool = [NativeEnemy.Kind.RUNNER, NativeEnemy.Kind.ELITE,
+			NativeEnemy.Kind.UFO_A]
 	elif tier >= 2:
-		pool = [NativeEnemy.Kind.SHOOTER, NativeEnemy.Kind.GHOST]
-	for i in 2:
+		pool = [NativeEnemy.Kind.RUNNER, NativeEnemy.Kind.SHOOTER,
+			NativeEnemy.Kind.GHOST]
+	var count := 4 if tier >= 6 else 2   # boss_7/8 swarm harder
+	for i in count:
 		var minion := NativeEnemy.new()
 		minion.kind = pool[(tier + i) % pool.size()]
 		minion.health = 10.0
 		minion.mode = NativeEnemy.Mode.CHASE
-		minion.global_position = position + Vector2(-40 + i * 80, 40)
+		minion.global_position = position + Vector2(
+			-60 + i * (120.0 / maxf(1.0, count - 1.0)), 40)
 		minion.formation_slot = minion.global_position
 		get_parent().add_child(minion)
 
