@@ -37,6 +37,7 @@ func _ready() -> void:
 	box.add_child(_toggle("MUSIC", NativeGame.muzyka, func(v): NativeGame.muzyka = v))
 	box.add_child(_toggle("SOUND FX", NativeGame.dzwiek, func(v): NativeGame.dzwiek = v))
 	box.add_child(_effects_row())
+	box.add_child(_difficulty_row())
 	box.add_child(_volume_row())
 	box.add_child(_toggle("FULLSCREEN", 1 if NativeGame.fullscreen else 0,
 		func(v):
@@ -91,6 +92,26 @@ func _effects_row() -> HBoxContainer:
 	opt.select(clampi(NativeGame.efekty, 0, 2))
 	opt.item_selected.connect(func(i):
 		NativeGame.efekty = i
+		NativeGame.save())
+	row.add_child(opt)
+	return row
+
+
+func _difficulty_row() -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 16)
+	var lbl := Label.new()
+	lbl.text = "DIFFICULTY"
+	lbl.custom_minimum_size = Vector2(160, 0)
+	lbl.add_theme_font_size_override("font_size", 20)
+	row.add_child(lbl)
+	var opt := OptionButton.new()
+	opt.add_item("EASY")
+	opt.add_item("NORMAL")
+	opt.add_item("HARD")
+	opt.select(clampi(NativeGame.difficulty, 0, 2))
+	opt.item_selected.connect(func(i):
+		NativeGame.difficulty = i
 		NativeGame.save())
 	row.add_child(opt)
 	return row

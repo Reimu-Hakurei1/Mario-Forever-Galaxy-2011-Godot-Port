@@ -54,6 +54,7 @@ static var dzwiek: int = 1           ## G.dzwiek — sound enabled
 static var muzyka: int = 1           ## G.muzyka — music enabled
 static var glosnosc_dzwieku: float = 1.0  ## G.glosnosc_dzwieku — sfx volume
 static var fullscreen: bool = false     ## borderless fullscreen toggle
+static var difficulty: int = 1          ## 0 EASY / 1 NORMAL / 2 HARD
 
 # --- Per-run state (reset when a level starts) ---
 static var energy: float = 100.0     ## G.energia — hull; 0 = death
@@ -120,10 +121,18 @@ static func score_mult() -> float:
 static func damage_player(amount: float) -> void:
 	if paused:
 		return
+	# HARD hits ~30% harder, EASY ~25% softer.
+	amount *= [0.75, 1.0, 1.3][clampi(difficulty, 0, 2)]
 	var before := energy
 	energy = maxf(0.0, energy - amount)
 	if energy < before:
 		hurt_flash = 0.18
+
+
+## Enemy HP multiplier for the current difficulty — waves scale their
+## health values by this when spawning.
+static func enemy_hp_mult() -> float:
+	return [0.7, 1.0, 1.4][clampi(difficulty, 0, 2)]
 
 
 static func heal_player(amount: float) -> void:
@@ -172,6 +181,7 @@ static func save() -> void:
 	cfg.set_value("settings", "muzyka", muzyka)
 	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
 	cfg.set_value("settings", "fullscreen", fullscreen)
+	cfg.set_value("settings", "difficulty", difficulty)
 	cfg.save(SAVE_PATH)
 
 
@@ -223,4 +233,5 @@ static func load_save() -> bool:
 	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))
 	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
 	fullscreen = bool(cfg.get_value("settings", "fullscreen", fullscreen))
+	difficulty = int(cfg.get_value("settings", "difficulty", difficulty))
 	return true

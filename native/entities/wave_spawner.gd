@@ -87,7 +87,8 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	var pos := _edge_position(edge, wave.get("spawned", 0))
 
 	var enemy := NativeEnemy.new()
-	enemy.health = wave.get("health", 100.0)
+	# Difficulty scales wave HP — EASY enemies are frailer, HARD tankier.
+	enemy.health = wave.get("health", 100.0) * NativeGame.enemy_hp_mult()
 	enemy.global_position = pos
 
 	# Enemy variant — string name → Kind enum. Keep in sync with

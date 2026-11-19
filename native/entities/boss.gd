@@ -55,7 +55,7 @@ var _hp_bar: ProgressBar
 
 func _ready() -> void:
 	add_to_group("enemies")
-	max_health = BASE_HP + tier * HP_PER_TIER
+	max_health = (BASE_HP + tier * HP_PER_TIER) * NativeGame.enemy_hp_mult()
 	health = max_health
 
 	# Spawn above the arena and descend to the fight line.
