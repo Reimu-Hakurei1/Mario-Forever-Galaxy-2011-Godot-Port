@@ -28,6 +28,7 @@ const ENEMY_KINDS := [
 const DEFENSE_KINDS := [
 	NativeEnemy.Kind.CANNON, NativeEnemy.Kind.CANNON,
 	NativeEnemy.Kind.FLAME_CANNON, NativeEnemy.Kind.ROTARY,
+	NativeEnemy.Kind.FAT_CANNON,
 ]
 
 var _next_y := -120.0           # next spawn row's y (local space)

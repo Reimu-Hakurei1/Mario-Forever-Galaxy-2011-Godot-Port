@@ -27,7 +27,7 @@ enum Kind {
 	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
-	CANNON, FLAME_CANNON, ROTARY,
+	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -81,6 +81,10 @@ const KIND_PROFILES := {
 		"contact_damage": 25.0, "barrel": 307},
 	Kind.ROTARY: {"sprite": 300, "score": 300, "health": 80.0,
 		"contact_damage": 35.0, "barrel": 301},
+	# o_fatboy_cannon — the fat boy's own gun: slower 300f cadence,
+	# longer 90px muzzle, heavier cannonball.
+	Kind.FAT_CANNON: {"sprite": 178, "score": 350, "health": 90.0,
+		"contact_damage": 40.0, "barrel": 301, "fire_interval": 300.0},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -114,6 +118,7 @@ var shoot_range := 620.0          # px — only fires when player is in range
 var spread := 1                   # bullets per volley
 var burst := 1                    # shots per volley trigger (eye)
 var contact_damage := 15.0        # hull lost on ram (cannons hit harder)
+var fire_interval := 200.0        # cannon cadence — fat boy's gun is 300
 
 var _anim: AnimatedSprite2D
 var _flash := 0
@@ -216,6 +221,7 @@ func _apply_profile() -> void:
 	_scale_factor = p.get("scale", 1.0)
 	_tint = p.get("tint", Color.WHITE)
 	contact_damage = p.get("contact_damage", contact_damage)
+	fire_interval = p.get("fire_interval", fire_interval)
 	# Profile health is only a default — a wave that assigned health
 	# explicitly (anything above the untouched 10.0) keeps its value.
 	if p.has("health") and health <= 10.0:
@@ -244,7 +250,8 @@ func _physics_process(_delta: float) -> void:
 	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
 	if kind == Kind.EYE:
 		_behave_skyeye()
-	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY]:
+	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY,
+			Kind.FAT_CANNON]:
 		_behave_cannon()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
@@ -435,12 +442,22 @@ func _behave_cannon() -> void:
 			_fire_castle_shot(166, 6.5, _barrel_angle + randf_range(
 				-deg_to_rad(5), deg_to_rad(5)), 8.0)
 		return
-	if _cannon_timer < 200.0:
+	if _cannon_timer < fire_interval:
 		return
 	_cannon_timer = 0.0
 	match kind:
 		Kind.CANNON:
 			_fire_castle_shot(158, 4.5, _barrel_angle, 12.0)
+		Kind.FAT_CANNON:
+			# Longer muzzle reach (90px) and a heavier shell.
+			var shot := NativeEnemyBullet.new()
+			shot.sprite_id = 158
+			shot.damage = 18.0
+			shot.global_position = position + \
+				Vector2.RIGHT.rotated(_barrel_angle) * 90.0
+			shot.velocity = Vector2.RIGHT.rotated(_barrel_angle) * 5.0
+			get_parent().add_child(shot)
+			NativeAssets.play_sound(79)
 		Kind.FLAME_CANNON:
 			_flame_left = 10
 			_flame_timer = 0.0
@@ -550,7 +567,7 @@ func die() -> void:
 func _roll_drop() -> void:
 	# Castle defenses always spill coins in the original (g_drop with
 	# szansa 1000, sila_monet/diamentow 3) — guarantee a couple.
-	if kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY]:
+	if kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY, Kind.FAT_CANNON]:
 		for i in randi_range(2, 3):
 			var coin := NativePickup.new()
 			coin.kind = NativePickup.Kind.COIN
