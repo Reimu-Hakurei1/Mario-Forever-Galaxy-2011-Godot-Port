@@ -131,6 +131,9 @@ func _on_player_died() -> void:
 		boom.global_position = _ship.global_position + Vector2(
 			randf_range(-30, 30), randf_range(-30, 30))
 		add_child(boom)
+	var wreck := NativeDeathWreck.new()
+	wreck.global_position = _ship.global_position
+	add_child(wreck)
 	_ship.visible = false
 	NativeGame.lives -= 1
 	if NativeGame.lives < 0:

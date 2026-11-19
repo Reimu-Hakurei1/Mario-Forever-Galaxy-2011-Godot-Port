@@ -193,12 +193,14 @@ func _process(delta: float) -> void:
 
 func _on_player_died() -> void:
 	# Hull explosion at the death point — the original plays the big
-	# explosion anim plus a ship breakup.
+	# explosion anim plus the tumbling s_die wreck (o_death: the hull
+	# spins and falls off the bottom of the screen).
 	for i in 4:
 		var boom := NativeExplosion.new()
 		boom.global_position = _ship.global_position + Vector2(
 			randf_range(-30, 30), randf_range(-30, 30))
 		add_child(boom)
+	_spawn_death_tumble()
 	_ship.visible = false
 	NativeGame.lives -= 1
 	if NativeGame.lives < 0:
@@ -210,6 +212,13 @@ func _on_player_died() -> void:
 		get_tree().change_scene_to_file("res://native/ui/game_over.tscn")
 		return
 	_respawn_timer = RESPAWN_DELAY
+
+
+## The o_death wreck — the hull tumbles off the bottom of the screen.
+func _spawn_death_tumble() -> void:
+	var wreck := NativeDeathWreck.new()
+	wreck.global_position = _ship.global_position
+	add_child(wreck)
 
 
 func _respawn() -> void:
