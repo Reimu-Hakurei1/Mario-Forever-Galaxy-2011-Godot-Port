@@ -101,6 +101,7 @@ static var fullscreen: bool = false     ## borderless fullscreen toggle
 static var energy: float = 100.0     ## G.energia — hull; 0 = death
 static var overheating: float = 0.0  ## G.overheating — gun heat
 static var paused: bool = false      ## G.pauza
+static var castle_key_found: bool = false  ## castle stage: key touched
 static var enemies_killed: int = 0
 static var enemies_missed: int = 0
 static var kill_streak: int = 0          ## consecutive kills within the window
@@ -142,6 +143,7 @@ static func reset_run() -> void:
 	special_heal_rate = 0.0
 	special_heal_left = 0.0
 	energy_reserve = 0.0
+	castle_key_found = false
 	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0

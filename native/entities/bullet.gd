@@ -49,28 +49,30 @@ func _physics_process(_delta: float) -> void:
 
 	# Hit test — the original used place_meeting() against the enemy parent
 	# object; a group scan is the same check in native terms. Bullets are
-	# small and few, so the scan is cheap.
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if not is_instance_valid(enemy) \
-				or position.distance_to(enemy.global_position) >= 34.0:
-			continue
-		var eid := enemy.get_instance_id()
-		var frame := Engine.get_physics_frames()
-		# Piercing bolts keep flying — a per-target cooldown stops one
-		# enemy eating the whole volley in a single frame.
-		if pierce:
-			if frame - int(_hit.get(eid, -9999)) < 12:
+	# small and few, so the scan is cheap. Castle blocks share the scan —
+	# they're destructible but aren't enemies (no score on break).
+	for group in ["enemies", "blocks"]:
+		for target in get_tree().get_nodes_in_group(group):
+			if not is_instance_valid(target) \
+					or position.distance_to(target.global_position) >= 34.0:
 				continue
-			_hit[eid] = frame
-		enemy.take_damage(damage)
-		if explosive:
-			_splash(enemy)
-		if coin_on_hit:
-			_drop_coin()
-		if not pierce:
-			_dead = true
-			queue_free()
-			return
+			var tid := target.get_instance_id()
+			var frame := Engine.get_physics_frames()
+			# Piercing bolts keep flying — a per-target cooldown stops one
+			# enemy eating the whole volley in a single frame.
+			if pierce:
+				if frame - int(_hit.get(tid, -9999)) < 12:
+					continue
+				_hit[tid] = frame
+			target.take_damage(damage)
+			if explosive:
+				_splash(target)
+			if coin_on_hit:
+				_drop_coin()
+			if not pierce:
+				_dead = true
+				queue_free()
+				return
 
 	# Slight visual stretch as the bolt travels.
 	_scale += SCALE_GROWTH

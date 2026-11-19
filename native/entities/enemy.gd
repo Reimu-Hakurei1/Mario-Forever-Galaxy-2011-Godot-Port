@@ -79,6 +79,7 @@ const DROP_TABLE := [
 ]
 
 var kind := Kind.GOOMBA
+var scroll_down := 0.0           # px/frame — castle stages drift enemies
 var health := 10.0                # g_energia — scaled to weapon firepower
 var mode := Mode.SPAWN
 var formation_slot := Vector2.ZERO
@@ -162,6 +163,10 @@ func _apply_profile() -> void:
 func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
 		return
+
+	# Castle stages: the whole world scrolls down past the ship.
+	if scroll_down > 0.0:
+		position.y += scroll_down
 
 	# Shooter-ish kinds share the hold-position-and-fire behaviour.
 	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,

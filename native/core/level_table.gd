@@ -76,6 +76,10 @@ static func config_for(level_index: int) -> Dictionary:
 	# Music: boss levels get the world's boss track; normal levels rotate
 	# through the world pool by level number.
 	var is_boss := level % 5 == 4
+	# Castle stages — the original interleaves side-scroll castle rooms
+	# between shmup stages; here every pre-boss level (slot 4 of each
+	# five) is a castle crawl ending at a key.
+	var is_castle := level % 5 == 3
 	var pool: Array = theme["music"]
 	var music := str(BOSS_MUSIC.get(world, str(pool[0]))) if is_boss \
 		else str(pool[level % pool.size()])
@@ -91,6 +95,7 @@ static func config_for(level_index: int) -> Dictionary:
 		"waves": waves,
 		# Every 5th level ends with a boss fight once the waves are clear.
 		"boss": {"tier": world} if level % 5 == 4 else {},
+		"mode": "castle" if is_castle else "arena",
 		"label": "W%d-%02d" % [world + 1, level + 1],
 	}
 
@@ -118,6 +123,7 @@ static func _custom_config(level_index: int) -> Dictionary:
 			else pool[level % pool.size()])),
 		"waves": parsed.get("waves", []),
 		"boss": parsed.get("boss", {"tier": world} if is_boss else {}),
+		"mode": str(parsed.get("mode", "castle" if level % 5 == 3 else "arena")),
 		"label": str(parsed.get("label", "W%d-%02d" % [world + 1, level + 1])),
 	}
 

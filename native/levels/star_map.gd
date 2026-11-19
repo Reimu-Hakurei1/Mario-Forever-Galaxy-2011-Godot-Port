@@ -264,7 +264,11 @@ func _fade_to_arena() -> void:
 	var tw := create_tween()
 	tw.tween_property(fade, "modulate:a", 1.0, 0.35)
 	tw.tween_callback(func():
-		get_tree().change_scene_to_file("res://native/levels/arena.tscn"))
+		var cfg: Dictionary = NativeGame.pending_level
+		var scene := "res://native/levels/castle.tscn" \
+			if str(cfg.get("mode", "arena")) == "castle" \
+			else "res://native/levels/arena.tscn"
+		get_tree().change_scene_to_file(scene))
 
 
 ## Snap the camera onto the frontier (highest unlocked) node.
