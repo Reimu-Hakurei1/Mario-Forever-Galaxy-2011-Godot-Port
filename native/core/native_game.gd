@@ -27,6 +27,7 @@ static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
+static var hiscore_name: String = "ACE"  ## initials shown beside best score
 static var damage_mult: float = 1.0    ## hero bullet damage multiplier
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
 
@@ -163,6 +164,7 @@ static func save() -> void:
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
 	cfg.set_value("profile", "hero", hero)
+	cfg.set_value("profile", "hiscore_name", hiscore_name)
 	cfg.set_value("profile", "damage_mult", damage_mult)
 	cfg.set_value("profile", "hero_tint", hero_tint)
 	cfg.set_value("settings", "efekty", efekty)
@@ -189,6 +191,7 @@ static func reset_profile() -> void:
 	samus_firerate = 0.0
 	samus_slower = 1.0
 	hero = 0
+	hiscore_name = "ACE"
 	damage_mult = 1.0
 	hero_tint = Color.WHITE
 	save()
@@ -212,6 +215,7 @@ static func load_save() -> bool:
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
 	hero = int(cfg.get_value("profile", "hero", hero))
+	hiscore_name = str(cfg.get_value("profile", "hiscore_name", hiscore_name))
 	damage_mult = float(cfg.get_value("profile", "damage_mult", damage_mult))
 	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
 	efekty = int(cfg.get_value("settings", "efekty", efekty))
