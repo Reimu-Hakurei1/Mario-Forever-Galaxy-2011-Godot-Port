@@ -35,6 +35,7 @@ const DEFENSE_KINDS := [
 var _next_y := -120.0           # next spawn row's y (local space)
 var _chunk := 0
 var _level_index := 0
+var _path_tiles: Array[Sprite2D] = []
 
 
 func _ready() -> void:
@@ -51,6 +52,17 @@ func _physics_process(_delta: float) -> void:
 		_spawn_row(_next_y)
 		_next_y += ROW_GAP
 		_chunk += 1
+	# o_pather_1 — castle floor/path tiles (sprite 306) scroll down
+	# with the stage between the obstacle rows.
+	for i in range(_path_tiles.size() - 1, -1, -1):
+		var tile := _path_tiles[i]
+		if not is_instance_valid(tile):
+			_path_tiles.remove_at(i)
+			continue
+		tile.position.y += 2.0
+		if tile.position.y > NativeGame.room_size().y + 80.0:
+			_path_tiles.remove_at(i)
+			tile.queue_free()
 
 
 func _spawn_row(y: float) -> void:
@@ -103,6 +115,20 @@ func _spawn_row(y: float) -> void:
 		coin.tier = randi_range(1, 4)
 		coin.position = Vector2(corridor_x + randf_range(-60, 60), y - 100)
 		add_child(coin)
+
+	# Path tiles dress the floor between obstacle rows — the original's
+	# castle rooms are lined with scrolling castle pieces.
+	if randf() < 0.6:
+		var tile := Sprite2D.new()
+		var tex := NativeAssets.sprite_frame(306, 0)
+		if tex != null:
+			tile.texture = tex
+			tile.offset = -NativeAssets.sprite_origin(306)
+			tile.scale = Vector2(0.8, 0.8)
+			tile.modulate = Color(0.55, 0.55, 0.65, 0.8)
+			tile.position = Vector2(randf_range(60, 964), y + randf_range(-60, 60))
+		add_child(tile)
+		_path_tiles.append(tile)
 
 
 func _maybe_add_enemy(y: float, diff: float) -> void:
