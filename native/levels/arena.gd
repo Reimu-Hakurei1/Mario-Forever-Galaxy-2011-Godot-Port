@@ -124,9 +124,10 @@ func _on_level_cleared() -> void:
 ## Level cleared — unlock the next node and return to the star map,
 ## matching the original's flow (level → map → next level).
 func _next_level() -> void:
-	# Unlock the node after the one just cleared, then head back to the map.
+	# Unlock the node after the one just cleared, then visit the shop —
+	# the original flow is level → results → shop → map.
 	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
-	_go_to_map()
+	get_tree().change_scene_to_file("res://native/ui/shop.tscn")
 
 
 func _go_to_map() -> void:
