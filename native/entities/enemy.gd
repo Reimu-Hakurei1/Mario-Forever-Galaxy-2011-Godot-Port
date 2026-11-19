@@ -115,6 +115,10 @@ const DROP_TABLE := [
 
 var kind := Kind.GOOMBA
 var scroll_down := 0.0           # px/frame — castle stages drift enemies
+var orbit_around: Node2D = null  # ring-mother — slot on a circle around it
+var orbit_radius := 0.0
+var orbit_angle := 0.0
+var orbit_speed := 0.017         # ~1°/frame like the original g_kat
 var health := 10.0                # g_energia — scaled to weapon firepower
 var mode := Mode.SPAWN
 var formation_slot := Vector2.ZERO
@@ -280,6 +284,20 @@ func _physics_process(_delta: float) -> void:
 	# Castle stages: the whole world scrolls down past the ship.
 	if scroll_down > 0.0:
 		position.y += scroll_down
+
+	# Ring-mother orbiters are positioned absolutely by their parent —
+	# they don't run their own movement AI.
+	if orbit_around != null and is_instance_valid(orbit_around):
+		orbit_angle += orbit_speed
+		global_position = orbit_around.global_position + Vector2(
+			sin(orbit_angle), cos(orbit_angle)) * orbit_radius
+		if _flash > 0:
+			_flash -= 1
+			_anim.modulate = Color(3, 3, 3)
+		else:
+			_anim.modulate = Color.WHITE
+		_check_player_collision()
+		return
 
 	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
 	if kind == Kind.EYE:

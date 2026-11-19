@@ -86,6 +86,14 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	var edge: String = wave["edge"]
 	var pos := _edge_position(edge, wave.get("spawned", 0))
 
+	# The orbiting swarm is a spawner object, not a single enemy —
+	# o_enemy_around_1 releases ten grunts on a rotating ring.
+	if wave.get("kind", "") == "ring":
+		var ring := NativeEnemyRing.new()
+		ring.global_position = pos
+		get_parent().add_child(ring)
+		return
+
 	var enemy := NativeEnemy.new()
 	enemy.health = wave.get("health", 10.0)
 	enemy.global_position = pos
