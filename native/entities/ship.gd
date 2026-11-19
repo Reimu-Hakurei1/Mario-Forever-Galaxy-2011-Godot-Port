@@ -475,9 +475,14 @@ func _proj_scale(proj: String) -> float:
 # ---------------------------------------------------------------------------
 
 var _special_prev := {KEY_X: false, KEY_Z: false, KEY_C: false}
+var _charge_id := 0
+var _charge_item: Dictionary = {}
+var _charge_t := 0.0
+var _charge_bubble: Sprite2D
 
 
 func _tick_special(delta: float) -> void:
+	_tick_special_charge(delta)
 	# Trickle heal from FIELD DRESSING / NANO SWARM.
 	if NativeGame.special_heal_left > 0.0:
 		NativeGame.special_heal_left = maxf(0.0, NativeGame.special_heal_left - delta)
@@ -499,6 +504,63 @@ func _tick_special(delta: float) -> void:
 	_special_prev[KEY_C] = next
 
 
+## Charge-up for seq 1000/5000 specials — the o_ship_special bubble
+## (sprite 234 + additive sprite-138 glow in the original) grows around
+## the ship for ~5s, then the shot releases.
+func _start_special_charge(id: int, item: Dictionary) -> void:
+	if _charge_id != 0:
+		return
+	_charge_id = id
+	_charge_item = item
+	_charge_t = 0.0
+	_charge_bubble = Sprite2D.new()
+	var tex := NativeAssets.sprite_frame(234, 0)
+	if tex == null:
+		_charge_bubble.queue_free()
+		_charge_bubble = null
+	else:
+		_charge_bubble.texture = tex
+		_charge_bubble.offset = -NativeAssets.sprite_origin(234)
+		# Czerwony=1 for RED SHOT (blue glow), 0 for PIERCER SLUG.
+		_charge_bubble.modulate = Color(1.0, 0.3, 0.25) if id == 5 \
+			else Color(0.4, 0.7, 1.0)
+		_charge_bubble.scale = Vector2.ZERO
+		_charge_bubble.modulate.a = 0.0
+		add_child(_charge_bubble)
+
+
+func _tick_special_charge(delta: float) -> void:
+	if _charge_id == 0:
+		return
+	# Original counts ~300 frames at 60fps before release.
+	_charge_t += delta
+	var k := clampf(_charge_t / 5.0, 0.0, 1.0)
+	if is_instance_valid(_charge_bubble):
+		_charge_bubble.global_position = global_position
+		_charge_bubble.scale = Vector2.ONE * (0.4 + k * 2.6)
+		_charge_bubble.modulate.a = minf(1.0, k * 2.0)
+	if _charge_t >= 5.0:
+		_release_special_charge()
+
+
+func _release_special_charge() -> void:
+	var id := _charge_id
+	var item := _charge_item
+	_charge_id = 0
+	_charge_item = {}
+	if is_instance_valid(_charge_bubble):
+		_charge_bubble.queue_free()
+	_charge_bubble = null
+	if id == 3:
+		# PIERCER SLUG — seq 1000 release: huge bolt, pierces.
+		_special_bolt(Vector2(0, -1) * 2.5, item["damage"], true,
+			{"sprite": 411, "tint": Color(0.5, 0.9, 1.0), "scale": 0.45})
+	elif id == 5:
+		# RED SHOT — seq 5000 release: single heavy slug.
+		_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false,
+			{"sprite": 480, "tint": Color(1.0, 0.35, 0.3), "scale": 0.5})
+
+
 ## Fire the item in the active special slot. Each id maps to the
 ## gameplay effect of its g_sekwencja_special sequence.
 func _use_special(id: int) -> void:
@@ -509,6 +571,13 @@ func _use_special(id: int) -> void:
 		return
 	NativeAssets.play_sound(62)
 
+	# Charge specials — seq 1000 (PIERCER SLUG, blue) and seq 5000
+	# (RED SHOT, red) grow the o_ship_special bubble (sprite 234) for
+	# ~300 frames, then release the shot.
+	if id == 3 or id == 5:
+		_start_special_charge(id, item)
+		return
+
 	# Heal-over-time specials (seq 23000 / 50000).
 	if item.has("heal_rate"):
 		NativeGame.special_heal_rate = item["heal_rate"]
@@ -516,24 +585,23 @@ func _use_special(id: int) -> void:
 		return
 
 	match id:
-		2:  # NOVA BLAST — seq 22000 heavy blast: hurts everything on screen
+		2:  # NOVA BLAST — seq 22000: obj 218 (o_kaboom, sprite 236)
+			# grows over the ship while the blast damages everything
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				if is_instance_valid(enemy):
 					enemy.take_damage(item["damage"])
-			# The original flashes the special_weapon sprite on cast.
 			_flash_special_fx(480)
-		3:  # PIERCER SLUG — seq 1000: huge bolt straight up, pierces
-			_special_bolt(Vector2(0, -1) * 2.5, item["damage"], true,
-				{"sprite": 411, "tint": Color(0.5, 0.9, 1.0), "scale": 0.45})
+			var kaboom := NativeExplosion.new()
+			kaboom.sprite_id = 236
+			kaboom.burst_scale = 1.6
+			kaboom.global_position = global_position
+			get_parent().add_child(kaboom)
 		4:  # NOVA RING — seq 1: damage nova around the ship
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				if is_instance_valid(enemy) \
 						and global_position.distance_to(enemy.global_position) < 320.0:
 					enemy.take_damage(item["damage"])
 			_flash_special_fx(480)
-		5:  # RED SHOT — seq 5000: single heavy slug
-			_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false,
-				{"sprite": 480, "tint": Color(1.0, 0.35, 0.3), "scale": 0.5})
 		6:  # TRIPLE MISSILE — seq 30000: three photon_laser31 bolts
 			# (obj 304, sprite 411) fanned around the nose
 			for i in 3:
