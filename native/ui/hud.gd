@@ -15,6 +15,7 @@ var _lives_label: Label
 var _coins_label: Label
 var _buffs_label: Label          # active powerup timers (shield/overdrive)
 var _special_label: Label        # the four G.specialslot items
+var _gun_icons: Array[TextureRect] = []   # the five G.weapon slot icons
 
 
 func _ready() -> void:
@@ -39,6 +40,19 @@ func _build() -> void:
 	stats.add_child(_lives_label)
 	_coins_label = _make_label("o 0", 16)
 	stats.add_child(_coins_label)
+
+	# --- Gun icons: the original HUD draws the five G.weapon slot icons
+	# (sprite 424 frames for standard guns, 456 for the 1000-series).
+	var guns := HBoxContainer.new()
+	guns.add_theme_constant_override("separation", 4)
+	top_left.add_child(guns)
+	for i in 5:
+		var icon := TextureRect.new()
+		icon.custom_minimum_size = Vector2(36, 36)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		guns.add_child(icon)
+		_gun_icons.append(icon)
 
 	# --- Top-right: hull energy + weapon heat bars ---
 	var top_right := VBoxContainer.new()
@@ -106,6 +120,19 @@ func _process(_delta: float) -> void:
 		parts.append("%s%s" % ["▶" if i == 0 else " ", item["name"]])
 	_special_label.text = "   ".join(parts)
 	_special_label.visible = not parts.is_empty()
+
+	# Gun icons — sprite 424 frames are the standard catalog, 456 the
+	# weapon-1000 series (frame = id - 1000), exactly like the original
+	# HUD's draw_sprite_ext(424/456, weapon_id) calls.
+	for i in _gun_icons.size():
+		var wid := NativeGame.weapons[i] if i < NativeGame.weapons.size() else -1
+		var tex: Texture2D = null
+		if wid >= 1000:
+			tex = NativeAssets.sprite_frame(456, wid - 1000)
+		elif wid >= 0:
+			tex = NativeAssets.sprite_frame(424, wid)
+		_gun_icons[i].texture = tex
+		_gun_icons[i].modulate = Color.WHITE if wid >= 0 else Color(1, 1, 1, 0.18)
 
 
 func _make_label(text: String, size: int) -> Label:
