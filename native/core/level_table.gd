@@ -42,8 +42,16 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
-## the arena scene consumes: {background, music, waves}.
+## the arena scene consumes: {background, music, waves, boss, label}.
+##
+## Levels can be hand-authored: drop a JSON file at
+## `data/levels/native/<index>.json` (e.g. `00.json` = level 1) and it
+## replaces the generated config entirely — see data/levels/native/
+## for the format. Waves are the same dicts the spawner consumes.
 static func config_for(level_index: int) -> Dictionary:
+	var custom := _custom_config(level_index)
+	if not custom.is_empty():
+		return custom
 	var world := level_index / LEVELS_PER_WORLD
 	var level := level_index % LEVELS_PER_WORLD
 	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
@@ -83,6 +91,33 @@ static func config_for(level_index: int) -> Dictionary:
 		# Every 5th level ends with a boss fight once the waves are clear.
 		"boss": {"tier": world} if level % 5 == 4 else {},
 		"label": "W%d-%02d" % [world + 1, level + 1],
+	}
+
+
+## Load a hand-authored level override. Missing keys fall back to the
+## world's theme defaults so files only need to specify what they change.
+static func _custom_config(level_index: int) -> Dictionary:
+	var path := "res://data/levels/native/%02d.json" % level_index
+	if not FileAccess.file_exists(path):
+		return {}
+	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_warning("NativeLevelTable: bad JSON in %s" % path)
+		return {}
+	var world := level_index / LEVELS_PER_WORLD
+	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
+	var level := level_index % LEVELS_PER_WORLD
+	var is_boss := level % 5 == 4
+	var pool: Array = theme["music"]
+	var bg_pool: Array = theme.get("bg_pool", [theme["bg"]])
+	return {
+		"background": int(parsed.get("background", bg_pool[level % bg_pool.size()])),
+		"music": str(parsed.get("music",
+			BOSS_MUSIC.get(world, pool[level % pool.size()]) if is_boss
+			else pool[level % pool.size()])),
+		"waves": parsed.get("waves", []),
+		"boss": parsed.get("boss", {"tier": world} if is_boss else {}),
+		"label": str(parsed.get("label", "W%d-%02d" % [world + 1, level + 1])),
 	}
 
 

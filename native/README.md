@@ -101,6 +101,34 @@ Controls: **Arrow keys** move · **Space** fires · **ESC/P** pause.
   GameMaker variable/function it replaces so future ports can verify
   behavior against the legacy runtime.
 
+## Hand-authoring levels
+
+Drop a JSON file at `data/levels/native/<index>.json` (zero-based —
+`00.json` is level 1, `09.json` is world 1's boss level) and it
+replaces the generated config for that level entirely. Missing keys
+fall back to the world's theme defaults.
+
+```json
+{
+	"label": "W1-01",
+	"background": 0,
+	"music": "mixed_battle",
+	"waves": [
+		{"delay": 1.0, "count": 4, "edge": "top",
+		 "mode": "formation", "kind": "goomba", "health": 100}
+	],
+	"boss": {"tier": 0}
+}
+```
+
+- `waves` — `delay` (seconds), `count`, `edge` (top/left/right/bottom),
+  `mode` (formation/chase/kamikaze), `kind` (see KINDS in
+  `level_table.gd` — goomba, shooter, kamikaze, tank, eye, mini, ufo_a,
+  ufo_b, ros, crab, jumbo, elite, split, dart, stinger, weaver, drone,
+  hunter, warlord), `health`.
+- `boss` — `{}` for none, `{"tier": N}` for a boss fight after the waves.
+- `00.json` ships as a working example of a hand-authored opener.
+
 ## Porting more content
 
 To add an enemy type: subclass or configure `NativeEnemy` (health, sway,
