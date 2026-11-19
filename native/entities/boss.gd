@@ -15,12 +15,19 @@ enum Phase { ENTER, FIGHT, ENRAGE, DYING }
 ## Boss looks escalate with world tier — later worlds field angrier,
 ## meaner variants of the same hull (the original swaps boss sprites
 ## per stage the same way).
+## Each world fields a distinct boss hull from the original's boss
+## catalog — 328/332 are the h_* fighters, 334 is s_boss_ocznix,
+## 501/502 are the rocket platforms and big-rock bruiser. Tiers past
+## the roster reuse the angriest hull with hotter tints.
 const TIER_PROFILES := [
 	{"sprite": 328, "scale": 0.8, "tint": Color.WHITE},
-	{"sprite": 328, "scale": 0.85, "tint": Color(1.0, 0.9, 0.8)},
+	{"sprite": 501, "scale": 0.75, "tint": Color(0.85, 0.95, 1.0)},
 	{"sprite": 332, "scale": 0.8, "tint": Color(1.0, 0.85, 0.7)},
-	{"sprite": 332, "scale": 0.85, "tint": Color(1.0, 0.75, 0.7)},
+	{"sprite": 502, "scale": 0.7, "tint": Color(1.0, 0.8, 0.6)},
+	{"sprite": 334, "scale": 0.85, "tint": Color(1.0, 0.9, 0.8)},
+	{"sprite": 501, "scale": 0.85, "tint": Color(0.9, 0.8, 1.0)},
 	{"sprite": 332, "scale": 0.9, "tint": Color(1.0, 0.65, 0.6)},
+	{"sprite": 502, "scale": 0.8, "tint": Color(1.0, 0.6, 0.55)},
 ]
 const ANIM_FPS := 6.0
 const ENTER_SPEED := 0.8          # px/frame descent
