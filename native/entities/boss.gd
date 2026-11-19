@@ -66,6 +66,7 @@ var _flash := 0
 var _dead := false
 var _pattern_timer := 90.0
 var _minion_timer := 300.0
+var _barrage_timer := 300.0
 var _pattern := 0
 var _spiral_angle := 0.0           # rotation offset for spiral barrages
 var _hp_bar: ProgressBar
@@ -169,10 +170,41 @@ func _hover_and_attack() -> void:
 			interval *= 0.6
 		_pattern_timer = interval
 
+	# Phase barrage — the boss_N_fight scripts run a periodic missile
+	# volley (g_rakiety ~500f cycle) whose spread grows with the fight
+	# phase (etap <10 / 10-19 / >=20 → 2 / 4 / 6 launch points).
+	_barrage_timer -= 1.0
+	if _barrage_timer <= 0.0:
+		_fire_barrage()
+		_barrage_timer = 480.0 - tier * 20.0
+
 	_minion_timer -= 1.0
 	if _minion_timer <= 0.0:
 		_summon_minions()
 		_minion_timer = MINION_INTERVAL
+
+
+## Fight phase 0/1/2 from remaining hull — the original's g_etap
+## thresholds (~66% and ~33% health) that escalate volley size.
+func _fight_phase() -> int:
+	var frac := health / max_health
+	if frac > 0.66:
+		return 0
+	if frac > 0.33:
+		return 1
+	return 2
+
+
+## Missile barrage — aimed fan whose shot count climbs 5/7/9 across
+## the three fight phases, mirroring the boss_1_fight launch-point
+## escalation (2 → 4 → 6 emitters).
+func _fire_barrage() -> void:
+	var ship := get_tree().get_first_node_in_group("player")
+	if ship == null:
+		return
+	var count := 5 + _fight_phase() * 2
+	_fire_aimed(ship.global_position, count, 0.22)
+	NativeAssets.play_sound(79)
 
 
 ## Rotate through attack patterns: aimed burst → radial ring → fan →
@@ -183,8 +215,9 @@ func _fire_pattern() -> void:
 		return
 	match _pattern % 4:
 		0:
-			# Aimed 3-shot burst at the player.
-			_fire_aimed(ship.global_position, 3, 0.15)
+			# Aimed burst — widens with the fight phase like the
+			# original's per-phase volley counts.
+			_fire_aimed(ship.global_position, 3 + _fight_phase(), 0.15)
 		1:
 			# Radial ring of bullets in all directions.
 			_fire_radial(10)
