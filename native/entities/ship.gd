@@ -351,6 +351,22 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		bullet.damage = st["damage"]
 		bullet.explosive = "EXPLOSIVE AMMO" in add
 		bullet.coin_on_hit = "CREATE COINS" in add
+		# Per-weapon projectile art — the sprite each script_laser_<id>
+		# projectile object draws in the original.
+		var psid := NativeWeaponTable.projectile_sprite(int(st.get("id", -1)))
+		if psid > 0:
+			bullet.sprite_id = psid
+			# Source bullets range 6-79px — normalize to ~14px on screen.
+			var ptex := NativeAssets.sprite_frame(psid, 0)
+			if ptex != null:
+				var psz := maxf(ptex.get_width(), ptex.get_height())
+				if psz > 0.0:
+					bullet.scale0 = clampf(14.0 / psz, 0.1, 0.8)
+		# PHASE CANNON (id 22, o_phase_1) — the bolt accelerates the
+		# whole way up (g_iyor -= 0.5 + age/lolo per frame).
+		if int(st.get("id", -1)) == 22:
+			bullet.max_speed = 14.0
+			bullet.accel_per_frame = 0.06
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += st["overheat"]

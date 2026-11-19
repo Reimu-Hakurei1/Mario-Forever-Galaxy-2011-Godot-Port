@@ -86,6 +86,24 @@ const SUPER_WEAPONS := {
 ## Max upgrade level per slot � the original shop caps at 10.
 const MAX_LEVEL := 10
 
+## Projectile sprite per weapon id — the first draw_sprite_ext sprite of
+## the object each script_laser_<id> spawns (laserflash muzzle objects
+## excluded). -1 = no dedicated sprite (default bolt art).
+const WEAPON_SPRITES := {
+	0: 407, 1: 12, 2: 12, 3: 12, 4: 12, 5: 12, 6: 12,
+	7: 408, 8: 408, 9: 12, 10: 12, 11: 12, 12: 407,
+	13: 409, 14: 409, 15: 75, 16: 55, 17: 438, 18: 207,
+	19: 75, 20: 75, 21: 205, 22: 76, 23: 121, 24: 409,
+	25: 407, 26: 410, 27: 207, 28: 411, 29: 205, 30: 205,
+	31: 75, 32: 211, 33: 211, 34: 411, 35: 411, 36: 213,
+	37: 75, 38: 75, 39: 211, 40: 215, 41: 211, 42: 216,
+}
+
+
+## Sprite id for a weapon's projectile, or -1 for the default bolt.
+static func projectile_sprite(weapon_id: int) -> int:
+	return WEAPON_SPRITES.get(weapon_id, -1)
+
 
 static func at(id: int) -> Dictionary:
 	if id >= 1000:
