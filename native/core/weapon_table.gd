@@ -62,17 +62,48 @@ const WEAPONS := [
 	{"name": "SUPER AUTOBEAM CANNON", "type": "SINGLE SHOT WEAPON", "fp": 10.0, "oh": 10.0, "fr": 10.0, "multi": 2, "rate": 0.0, "add": "N/A", "cost": 2500000, "upcost": 40000.0, "fp_per": 2.0, "oh_per": 5.0, "fr_per": 0.5, "desc": "POWERFUL WEAPON - POWERFUL PRICE!\""},
 	{"name": "GIANT MINIGUN", "type": "SINGLE SHOT WEAPON", "fp": 1.0, "oh": 20.0, "fr": 20.0, "multi": 20, "rate": 12.0, "add": "N/A", "cost": 3500000, "upcost": 40000.0, "fp_per": 1.5, "oh_per": 2.0, "fr_per": 1.4, "desc": "AS WE CAN SEE SCIENTIST INSTEAD OF SLEEPING INVENT MORE AND MORE INTERESTING GUNS. # WELL FOR EXAMPLE THAT MIN"},
 	{"name": "SPREADUS VON DE MEGA GUN", "type": "SINGLE SHOT WEAPON", "fp": 10.0, "oh": 5.0, "fr": 40.0, "multi": 10, "rate": 0.0, "add": "N/A", "cost": 4000000, "upcost": 40000.0, "fp_per": 1.0, "oh_per": 20.0, "fr_per": 1.0, "desc": "POWERFUL SPLASH WEAPON. # IT'S INVENTOR WAS PROBABLY BASING ON A GUN FROM CONTRA GAME BY KONAMJI.\""},
-	{"name": "BIG DA ROCKA", "type": "SINGLE SHOT WEAPON", "fp": 10.0, "oh": 1.0, "fr": 250.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 1500000, "upcost": 100000.0, "fp_per": 1.0, "oh_per": 0.0, "fr_per": 1.0, "desc": "OHH MY GOD! THIS ROCKET IS SO BIG! # MOMMA HOW AM I SUPPOSED TO SHOT THIS THING WITH MY SHIP?\""},
+	{"name": "MARIO'S DEVASTATOR", "type": "SINGLE SHOT WEAPON", "fp": 5.0, "oh": 150.0, "fr": 20.0, "multi": 5, "rate": 0.0, "add": "N/A", "cost": 10000000, "upcost": 40000.0, "fp_per": 1.0, "oh_per": 30.0, "fr_per": 1.0, "desc": "THIS IS THE REAL KILLER. NO ONE WILL JUMP AT YOU NOW! # ONLY MARIO BROS CAN JUMP SO HIGH."},
 ]
+
+## Super-weapons — ids 1000..1009, the original's charge/rocket series.
+## Same shop stat fields as WEAPONS plus "proj", the projectile behaviour
+## ported from objects/bullets/bullet_rockets_*.gd (fired via
+## script_laser_1000..1008). Weapon 1009 (BIG DA ROCKA) exists in the
+## catalog but the original has NO script_laser_1009 — it cannot fire.
+const SUPER_WEAPONS := {
+	1000: {"name": "SMALL ROCKETS", "type": "SINGLE SHOT WEAPON", "fp": 2.0, "oh": 2.0, "fr": 120.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 25000, "upcost": 500.0, "fp_per": 1.2, "oh_per": 0.5, "fr_per": 1.0, "proj": "HOMING", "desc": "SMALL ROCKETS## SMALL HOMMING MISSILES WITH SMALL FIREPOWER."},
+	1001: {"name": "RODEO ROCKET", "type": "SINGLE SHOT WEAPON", "fp": 5.0, "oh": 2.0, "fr": 80.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 25000, "upcost": 500.0, "fp_per": 1.0, "oh_per": 0.5, "fr_per": 1.0, "proj": "RODEO", "desc": "RODEO ROCKET## DRUNK ROCKETS FOR SOBER PILOTS."},
+	1002: {"name": "BALLISTIC ROCKET", "type": "SINGLE SHOT WEAPON", "fp": 12.0, "oh": 2.0, "fr": 120.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 35000, "upcost": 500.0, "fp_per": 1.2, "oh_per": 0.5, "fr_per": 1.0, "proj": "HOMING_SLOW", "desc": "BALLISTIC ROCKET## ROCKET WITH IMPLOZION CHARGE - BIG FIREPOWER BUT SMALL AGILITY."},
+	1003: {"name": "ROCKET SWARMS", "type": "SINGLE SHOT WEAPON", "fp": 2.0, "oh": 2.0, "fr": 60.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 40000, "upcost": 500.0, "fp_per": 0.6, "oh_per": 0.5, "fr_per": 1.0, "proj": "SWARM", "desc": "ROCKET SWARMS## YOU HAVE THOUGHT ABOUT SHOOTING FROM AUTOMATIC ROCKET GUN? YOU CAN TRY!"},
+	1004: {"name": "BOUNCING WAR BALL", "type": "SINGLE SHOT WEAPON", "fp": 20.0, "oh": 1.0, "fr": 60.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 50000, "upcost": 1000.0, "fp_per": 2.0, "oh_per": 1.0, "fr_per": 1.0, "proj": "GRAVITY", "desc": "BOUNCING WAR BALL##A QUITE NON-CONVENTIONAL WEAPON."},
+	1005: {"name": "SPREAD ROCKETS", "type": "SINGLE SHOT WEAPON", "fp": 15.0, "oh": 1.0, "fr": 50.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 70000, "upcost": 1500.0, "fp_per": 2.0, "oh_per": 1.0, "fr_per": 1.0, "proj": "HOMING_SHRAPNEL", "desc": "SPREAD ROCKETS## ROCKET WHICH MAKES A LOT BOOM WHEN IT HITS THE TARGET."},
+	1006: {"name": "SHOOTING BALL", "type": "SINGLE SHOT WEAPON", "fp": 20.0, "oh": 1.0, "fr": 40.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 100000, "upcost": 2000.0, "fp_per": 2.0, "oh_per": 1.0, "fr_per": 1.0, "proj": "GRAVITY_BOUNCE", "desc": "SHOOTING BALL## NON-CONVENTIONAL WEAPON WHICH SHOOTS YOUR ENEMY ITSELF!"},
+	1007: {"name": "SENTINEL", "type": "SINGLE SHOT WEAPON", "fp": 20.0, "oh": 1.0, "fr": 40.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 500000, "upcost": 5000.0, "fp_per": 2.0, "oh_per": 1.0, "fr_per": 1.0, "proj": "SENTINEL", "desc": "SENTINEL## IF YOU NEED WEAPON WHICH WILL THINK INSTEAD OF YOU JUST BUY THAT."},
+	1008: {"name": "GUARDIAN", "type": "SINGLE SHOT WEAPON", "fp": 10.0, "oh": 1.0, "fr": 250.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 750000, "upcost": 5000.0, "fp_per": 1.0, "oh_per": 0.0, "fr_per": 1.0, "proj": "GUARDIAN", "desc": "GUARDIAN## LIKE SENTINEL BUT IT'S BETTER."},
+	1009: {"name": "BIG DA ROCKA", "type": "SINGLE SHOT WEAPON", "fp": 10.0, "oh": 1.0, "fr": 250.0, "multi": 1, "rate": 0.0, "add": "N/A", "cost": 1500000, "upcost": 100000.0, "fp_per": 1.0, "oh_per": 0.0, "fr_per": 1.0, "proj": "NONE", "desc": "BIG DA ROCKA## OHH MY GOD! THIS ROCKET IS SO BIG! # MOMMA HOW AM I SUPPOSED TO SHOT THIS THING WITH MY SHIP?"},
+}
 
 ## Max upgrade level per slot � the original shop caps at 10.
 const MAX_LEVEL := 10
 
 
 static func at(id: int) -> Dictionary:
+	if id >= 1000:
+		return SUPER_WEAPONS.get(id, {})
 	if id < 0 or id >= WEAPONS.size():
 		return {}
 	return WEAPONS[id]
+
+
+## Every purchasable weapon id — standard catalog then the 1000-series,
+## matching the original shop's armory page order.
+static func catalog_ids() -> Array[int]:
+	var ids: Array[int] = []
+	for i in WEAPONS.size():
+		ids.append(i)
+	for id in SUPER_WEAPONS:
+		ids.append(id)
+	return ids
 
 
 ## Effective stats for a slot: base weapon stats scaled by the
@@ -83,6 +114,8 @@ static func slot_stats(slot_level: int, weapon_id: int) -> Dictionary:
 		return {}
 	var lv := float(slot_level)
 	return {
+		"id": weapon_id,
+		"proj": w.get("proj", ""),
 		"damage": w["fp"] + lv * w["fp_per"],
 		"overheat": w["oh"] + lv * w["oh_per"],
 		"delay": maxf(1.0, w["fr"] - lv * w["fr_per"]),

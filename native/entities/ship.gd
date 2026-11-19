@@ -311,6 +311,18 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 			aim = (target.global_position - spawn_pos).normalized()
 
 	var wtype: String = st.get("type", "")
+
+	# Weapon ids >= 1000 are the rocket/super series — the original's
+	# script_laser_1000..1008 each spawn a distinct projectile object
+	# (homing missiles, drunk/weaving rockets, arcing war balls, the
+	# SENTINEL auto-turret and the GUARDIAN orbiting shooter) instead of
+	# the standard fan patterns.
+	if int(st.get("id", -1)) >= 1000:
+		_fire_super_weapon(st, spawn_pos, aim)
+		NativeGame.overheating += st["overheat"]
+		_play_shot_sound()
+		return
+
 	var count: int = maxi(1, int(st.get("multi", 1)))
 	var dirs: Array[Vector2] = []
 	match wtype:
@@ -342,12 +354,117 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += st["overheat"]
-	# Muzzle report — sound id 29 from the original sampel table.
+	_play_shot_sound()
+
+
+## Muzzle report — sound id 29 from the original sampel table.
+func _play_shot_sound() -> void:
 	var stream := NativeAssets.sound(29)
 	if stream != null and NativeGame.dzwiek == 1:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
+
+
+## Spawn the projectile for a weapon-1000-series slot. `st["proj"]` is
+## the behaviour tag from NativeWeaponTable.SUPER_WEAPONS; each maps to
+## the object the matching script_laser_100x created:
+##   HOMING / HOMING_SLOW — steer toward the nearest enemy
+##   RODEO            — drunk heading oscillation
+##   SWARM            — twin homing missiles with random spawn jitter
+##   GRAVITY(+BOUNCE) — arcing war ball that detonates on impact
+##   HOMING_SHRAPNEL  — homing rocket bursting into a 10-bolt fan
+##   SENTINEL         — falling auto-turret that lobs aimed shots
+##   GUARDIAN         — orbiting satellite shooter (harmless body)
+##   NONE             — BIG DA ROCKA: the original has no
+##                      script_laser_1009, so it fires nothing.
+func _fire_super_weapon(st: Dictionary, spawn_pos: Vector2, aim: Vector2) -> void:
+	var proj: String = st.get("proj", "NONE")
+	if proj == "NONE":
+		return
+	var dmg: float = st["damage"]
+
+	# SWARM fires two missiles per trigger with ±20px spawn jitter
+	# (script_laser_1003 creates obj 203 twice).
+	var shots := 2 if proj == "SWARM" else 1
+	for _s in shots:
+		var bolt := NativeBullet.new()
+		bolt.global_position = spawn_pos + Vector2(
+			randf_range(-20.0, 20.0), randf_range(-20.0, 20.0)) \
+			if proj == "SWARM" else spawn_pos
+		bolt.damage = dmg
+		bolt.sprite_id = _proj_sprite(proj)
+		bolt.sprite2_id = _proj_sprite2(proj)
+		bolt.scale0 = _proj_scale(proj)
+		match proj:
+			"HOMING", "HOMING_SLOW", "HOMING_SHRAPNEL", "SWARM":
+				# Direction 90 in the original = up; homing bolts steer to
+				# the target anyway, so aim is only the launch heading.
+				bolt.velocity = aim * 2.0
+				bolt.max_speed = 20.0
+				bolt.accel_per_frame = \
+					0.32 if proj == "SWARM" else \
+					(0.12 if proj == "HOMING_SLOW" else 0.09)
+				bolt.homing = 0.5 if proj == "HOMING_SLOW" else 3.0
+				if proj == "HOMING_SHRAPNEL":
+					bolt.shrapnel = 10
+			"RODEO":
+				bolt.velocity = aim * 2.0
+				bolt.max_speed = 9.0
+				bolt.accel_per_frame = 0.09
+				bolt.weave = 1.4
+				bolt.weave_speed = 0.1
+			"GRAVITY", "GRAVITY_BOUNCE":
+				# War balls lob forward with a random ±15° spread and fall.
+				var dir := aim.rotated(deg_to_rad(randf_range(-15.0, 15.0)))
+				bolt.velocity = dir * 8.0
+				bolt.max_speed = 8.0
+				bolt.accel_per_frame = 0.0
+				bolt.gravity = 0.2
+				bolt.bounce_floor = proj == "GRAVITY_BOUNCE"
+			"SENTINEL":
+				var dir := aim.rotated(deg_to_rad(randf_range(-15.0, 15.0)))
+				bolt.velocity = dir * 8.0
+				bolt.max_speed = 8.0
+				bolt.accel_per_frame = 0.0
+				bolt.gravity = 0.2
+				bolt.bounce_floor = true
+				bolt.life_frames = 600
+				bolt.auto_shot_every = 40
+				bolt.auto_shot_damage = dmg / 20.0
+			"GUARDIAN":
+				bolt.orbit_mode = true
+				bolt.life_frames = 650
+				bolt.orbit_shot_every = 6
+				bolt.orbit_shot_damage = dmg
+		get_parent().add_child(bolt)
+
+
+## Sprite indices the original rocket objects draw (draw_sprite_ext calls
+## in bullet_rockets_*.gd / buddy_1.gd). sprite2 is the additive-glow
+## second layer where the original used blend mode 1.
+func _proj_sprite(proj: String) -> int:
+	match proj:
+		"HOMING_SLOW": return 41      # s_bullet8 — big ballistic rocket
+		"HOMING_SHRAPNEL": return 218 # s_bullet_minigun6
+		"GRAVITY", "GRAVITY_BOUNCE", "SENTINEL": return 217  # s_bullet_minigun5
+		"GUARDIAN": return 221        # sprite221 — orbiting pod
+		_: return 24                  # s_bullet_5 — small rocket
+
+
+func _proj_sprite2(proj: String) -> int:
+	match proj:
+		"GRAVITY_BOUNCE": return 219  # s_bullet_minigun7 glow
+		"SENTINEL": return 220        # s_bullet_minigun8 glow
+		"GUARDIAN": return 222        # sprite222 — far pod
+		_: return -1
+
+
+func _proj_scale(proj: String) -> float:
+	match proj:
+		"GUARDIAN": return 0.5
+		"GRAVITY", "GRAVITY_BOUNCE", "SENTINEL", "HOMING_SHRAPNEL": return 0.6
+		_: return 0.5
 
 
 # ---------------------------------------------------------------------------

@@ -42,6 +42,11 @@ const BUDDY_PRICES := [100000, 500000]
 ## levelup, not the weapon's). -1 = slot empty.
 static var weapons: Array[int] = [-1, -1, -1, -1, -1]
 static var weapon_level: Array[int] = [0, 0, 0, 0, 0]
+## G.weaponslot1..4 — the four paid gun-slot unlocks. Gun slot index 0
+## (G.weapon[1]) is always available; slots 1..4 cost 10,000 coins each
+## on the shop's armory page until unlocked (choose_hero.gd sets all
+## four for hero 2 only).
+static var gun_slots: Array[bool] = [false, false, false, false]
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var special_heal_rate: float = 0.0  ## hull/sec from a heal special
@@ -62,9 +67,10 @@ static var special_slots: Array[int] = [0, 0, 0, 0]
 ## Playable ships — ports the four `g_hero` loadouts from choose_hero.gd.
 ## Each hero gets a starter weapon on the centre gun (slot index 1 =
 ## G.weapon[2]), different starting upgrades, and stat quirks. Weapon
-## ids index NativeWeaponTable.WEAPONS. The original hero-2 also gets
-## two special-weapon slots (G.weapon[4..5] = 1000) — that charge-weapon
-## system isn't ported yet, so those slots start empty.
+## ids index NativeWeaponTable (0..42 standard, 1000..1009 the rocket
+## series). The original hero-2 also gets two special-weapon slots
+## (G.weapon[4..5] = 1000 = SMALL ROCKETS) plus all four paid gun-slot
+## unlocks (G.weaponslot1..4 = 1).
 const HEROES := [
 	{"name": "CLASSIC", "desc": "LIGHT MUSHROOM GUN — the every-plumber starter",
 		"firerate": 0.0, "slower": 1.0, "tint": Color.WHITE,
@@ -79,7 +85,8 @@ const HEROES := [
 		"specials": [8, 7, 5, 4], "bonus_chance": 5.0},
 	{"name": "SPECIALIST", "desc": "Extra spare ship, no special items",
 		"firerate": 0.0, "slower": 1.1, "tint": Color(0.6, 0.9, 1.0),
-		"loadout": {1: [1, 5]}, "upgrades": {}, "lives": 4,
+		"loadout": {1: [1, 5], 3: [1000, 0], 4: [1000, 0]}, "upgrades": {},
+		"lives": 2, "gun_slots": true,
 		"specials": [0, 0, 0, 0]},
 	{"name": "HEAVY", "desc": "LINEAR SHOTGUN + double freezer, sluggish",
 		"firerate": 0.1, "slower": 1.8, "tint": Color(1.0, 0.85, 0.4),
@@ -228,6 +235,9 @@ static func apply_hero() -> void:
 	upgrade_balls = int(up.get("upgrade_balls", 0))
 	for i in 4:
 		special_slots[i] = int(h.get("specials", [0, 0, 0, 0])[i])
+	# G.weaponslot1..4 — hero 2 starts with every gun slot unlocked.
+	for i in 4:
+		gun_slots[i] = bool(h.get("gun_slots", false))
 	lives = int(h.get("lives", 3))
 	save()
 
@@ -266,11 +276,33 @@ static func weapon_sell_price(slot: int) -> int:
 	return weapon_buy_price(wid) + upgrades
 
 
+## Is gun slot `slot` (0..4) usable? Slot 0 is always free; slots 1..4
+## are the G.weaponslot1..4 paid unlocks.
+static func gun_slot_unlocked(slot: int) -> bool:
+	return slot == 0 or (slot >= 1 and slot <= 4 and gun_slots[slot - 1])
+
+
+## Coin price of a gun-slot unlock — the original charges a flat
+## 10,000 coins per weaponslot on the shop's armory page.
+const GUN_SLOT_PRICE := 10000
+
+
+## Buy the unlock for gun slot `slot` (1..4). Returns true on success.
+static func buy_gun_slot(slot: int) -> bool:
+	if slot < 1 or slot > 4 or gun_slots[slot - 1] or coins < GUN_SLOT_PRICE:
+		return false
+	coins -= GUN_SLOT_PRICE
+	gun_slots[slot - 1] = true
+	save()
+	return true
+
+
 ## Buy catalog weapon `weapon_id` into `slot` (replaces any weapon there,
 ## refunding the old one first — same net effect as sell-then-buy).
 ## Returns true on success.
 static func equip_weapon(slot: int, weapon_id: int) -> bool:
-	if slot < 0 or slot >= 5 or weapon_id < 0 or weapon_id >= NativeWeaponTable.WEAPONS.size():
+	if slot < 0 or slot >= 5 or not gun_slot_unlocked(slot) \
+			or NativeWeaponTable.at(weapon_id).is_empty():
 		return false
 	var price := weapon_buy_price(weapon_id)
 	if weapons[slot] >= 0:
@@ -405,6 +437,7 @@ static func save() -> void:
 	cfg.set_value("profile", "buddy_right", buddy_right)
 	cfg.set_value("profile", "weapons", weapons)
 	cfg.set_value("profile", "weapon_level", weapon_level)
+	cfg.set_value("profile", "gun_slots", gun_slots)
 	cfg.set_value("profile", "special_slots", special_slots)
 	cfg.set_value("profile", "hero", hero)
 	cfg.set_value("profile", "hero_tint", hero_tint)
@@ -482,6 +515,9 @@ static func load_save() -> bool:
 	var saved_levels: Array = cfg.get_value("profile", "weapon_level", [])
 	for i in mini(5, saved_levels.size()):
 		weapon_level[i] = int(saved_levels[i])
+	var saved_guns: Array = cfg.get_value("profile", "gun_slots", [])
+	for i in mini(4, saved_guns.size()):
+		gun_slots[i] = bool(saved_guns[i])
 	var saved_specials: Array = cfg.get_value("profile", "special_slots", [])
 	for i in mini(4, saved_specials.size()):
 		special_slots[i] = int(saved_specials[i])

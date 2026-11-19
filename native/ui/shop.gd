@@ -44,8 +44,9 @@ var _tab := "upgrades"          # "upgrades" | "weapons" | "specials"
 var _weapon_panel: Control
 var _slot_rows: Array = []      # per-slot UI state
 var _catalog: ItemList
+var _catalog_ids: Array[int] = []  # list row -> weapon id (1000-series too)
 var _sel_slot := -1             # slot the catalog BUY equips into
-var _sel_weapon := -1           # catalog index highlighted in the list
+var _sel_weapon := -1           # catalog weapon id highlighted in the list
 var _special_panel: Control
 var _special_list: ItemList
 var _sel_special := -1          # catalog index highlighted in the list
@@ -243,10 +244,17 @@ func _build_weapons_panel() -> void:
 		sell.add_theme_font_size_override("font_size", 14)
 		sell.pressed.connect(_on_sell_weapon.bind(i))
 		btns.add_child(sell)
+		var unlock := Button.new()
+		unlock.name = "Unlock"
+		unlock.text = "UNLOCK"
+		unlock.custom_minimum_size = Vector2(120, 34)
+		unlock.add_theme_font_size_override("font_size", 14)
+		unlock.pressed.connect(_on_unlock_slot.bind(i))
+		btns.add_child(unlock)
 		# Clicking anywhere on the panel selects this slot for BUY.
 		slot.gui_input.connect(_on_slot_pick.bind(i))
 		_slot_rows.append({"panel": slot, "title": title, "lvl": lvl,
-			"desc": desc, "upgrade": up, "sell": sell})
+			"desc": desc, "upgrade": up, "sell": sell, "unlock": unlock})
 
 	# --- Right: catalog list + detail ----------------------------------
 	_catalog = ItemList.new()
@@ -254,9 +262,10 @@ func _build_weapons_panel() -> void:
 	_catalog.size = Vector2(440, 340)
 	_catalog.add_theme_font_size_override("font_size", 15)
 	_catalog.item_selected.connect(_on_catalog_pick)
-	for i in NativeWeaponTable.WEAPONS.size():
-		var w: Dictionary = NativeWeaponTable.WEAPONS[i]
-		_catalog.add_item("%02d  %s" % [i, w["name"]])
+	_catalog_ids = NativeWeaponTable.catalog_ids()
+	for wid in _catalog_ids:
+		var w: Dictionary = NativeWeaponTable.at(wid)
+		_catalog.add_item("%04d  %s" % [wid, w["name"]])
 	_weapon_panel.add_child(_catalog)
 
 	var detail := Label.new()
@@ -377,7 +386,8 @@ func _on_slot_pick(event: InputEvent, slot: int) -> void:
 
 
 func _on_catalog_pick(index: int) -> void:
-	_sel_weapon = index
+	# List row -> catalog weapon id (standard ids then the 1000-series).
+	_sel_weapon = _catalog_ids[index] if index < _catalog_ids.size() else -1
 	NativeAssets.play_sound(62)
 
 
@@ -395,6 +405,12 @@ func _on_upgrade_weapon(slot: int) -> void:
 func _on_sell_weapon(slot: int) -> void:
 	NativeGame.sell_weapon(slot)
 	NativeAssets.play_sound(62)
+
+
+## G.weaponslot1..4 — buy the paid unlock for gun slot `slot` (1..4).
+func _on_unlock_slot(slot: int) -> void:
+	if NativeGame.buy_gun_slot(slot):
+		NativeAssets.play_sound(62)
 
 
 func _build_footer() -> void:
@@ -496,8 +512,29 @@ func _refresh_weapons() -> void:
 		var row: Dictionary = _slot_rows[i]
 		var wid := NativeGame.weapons[i]
 		var panel: PanelContainer = row["panel"]
-		# Highlight the slot selected as the BUY target.
-		panel.modulate = Color(1.0, 0.9, 0.5) if i == _sel_slot else Color.WHITE
+		var unlock: Button = row["unlock"]
+		# Gun slots 1..4 are the G.weaponslot1..4 paid unlocks. A locked
+		# EMPTY slot shows the 10,000-coin UNLOCK button; a locked slot
+		# that already holds a weapon (e.g. the hero starter gun) still
+		# shows its arm controls plus the unlock offer.
+		var locked := i > 0 and not NativeGame.gun_slot_unlocked(i)
+		if locked and wid < 0:
+			(row["title"] as Label).text = "GUN %d — LOCKED" % (i + 1)
+			(row["lvl"] as Label).text = ""
+			(row["desc"] as Label).text = "Buy this gun slot to arm it."
+			(row["upgrade"] as Button).disabled = true
+			(row["sell"] as Button).disabled = true
+			unlock.visible = true
+			unlock.text = "UNLOCK %d" % NativeGame.GUN_SLOT_PRICE
+			unlock.disabled = NativeGame.coins < NativeGame.GUN_SLOT_PRICE
+			continue
+		unlock.visible = locked
+		if locked:
+			unlock.text = "UNLOCK %d" % NativeGame.GUN_SLOT_PRICE
+			unlock.disabled = NativeGame.coins < NativeGame.GUN_SLOT_PRICE
+		# Highlight the slot selected as the BUY target (only armed slots).
+		panel.modulate = Color(1.0, 0.9, 0.5) \
+			if i == _sel_slot and NativeGame.gun_slot_unlocked(i) else Color.WHITE
 		if wid < 0:
 			(row["title"] as Label).text = "GUN %d — EMPTY" % (i + 1)
 			(row["lvl"] as Label).text = ""
@@ -533,6 +570,9 @@ func _refresh_weapons() -> void:
 		if buy != null:
 			if _sel_slot < 0:
 				buy.text = "SELECT A SLOT FIRST"
+				buy.disabled = true
+			elif not NativeGame.gun_slot_unlocked(_sel_slot):
+				buy.text = "GUN %d IS LOCKED" % (_sel_slot + 1)
 				buy.disabled = true
 			else:
 				var price := NativeGame.weapon_buy_price(_sel_weapon)
