@@ -390,6 +390,22 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		if int(st.get("id", -1)) == 22:
 			bullet.max_speed = 14.0
 			bullet.accel_per_frame = 0.06
+		# Unique projectile objects — charge bolts that ride the muzzle
+		# (bullet_200 family, laser_u6/15/16/19), frozen-ball wobble,
+		# fast-growing laser_u88 shots, LASER TRACKER homing.
+		var beh := NativeWeaponTable.projectile_behavior(int(st.get("id", -1)))
+		if not beh.is_empty():
+			bullet.wobble = beh.get("wobble", 0.0)
+			bullet.grow_rate = beh.get("grow", NativeBullet.SCALE_GROWTH)
+			bullet.life_frames = beh.get("life", 0)
+			bullet.homing = beh.get("homing", 0.0)
+			var charge := int(beh.get("charge", 0))
+			if charge > 0:
+				bullet.charge_frames = charge
+				bullet.owner_ship = self
+				bullet.charge_offset = bullet.global_position - global_position
+				bullet.charge_dir = dir
+				bullet.velocity = Vector2.ZERO
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += st["overheat"]

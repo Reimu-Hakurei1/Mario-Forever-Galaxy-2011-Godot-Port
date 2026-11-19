@@ -40,6 +40,18 @@ var orbit_shot_damage := 0.0
 var sprite_id := 95             # s_bulletprof_1
 var sprite2_id := -1            # optional additive second sprite
 var scale0 := 0.2               # base sprite scale (rockets differ)
+# Regular-weapon projectile quirks ported from the laser_u*/bullet_2xx
+# objects: `charge_frames` bolts ride the ship's muzzle while they grow
+# (o_bullet_200/201/202/203, laser_u6/15/16/19 follow the parent until
+# g_wielkoscx reaches its threshold), `wobble` is the frozen_ball's
+# ±0.5°/frame heading weave, `grow_rate` replaces the default visual
+# stretch for the laser_u88 family's fast-growing shots.
+var charge_frames := 0
+var charge_offset := Vector2.ZERO
+var charge_dir := Vector2.UP
+var owner_ship: Node2D = null
+var wobble := 0.0               # deg/frame heading oscillation
+var grow_rate := SCALE_GROWTH
 
 const START_SPEED := 4.0         # px/frame — original ramps +0.4/frame
 const MAX_SPEED := 9.0
@@ -95,6 +107,20 @@ func _physics_process(_delta: float) -> void:
 		_tick_orbit()
 		return
 
+	# Charge phase — the bolt is still "in the gun": it tracks the ship's
+	# muzzle offset and grows instead of flying (g_wielkoscy < 0.4 gate).
+	if charge_frames > 0:
+		charge_frames -= 1
+		if is_instance_valid(owner_ship):
+			position = owner_ship.global_position + charge_offset
+		_scale = minf(_scale + grow_rate * 4.0, 0.6)
+		_sprite.scale = Vector2(_scale, _scale)
+		_sprite.rotation = charge_dir.angle()
+		if charge_frames <= 0:
+			velocity = charge_dir * START_SPEED * 1.5
+		else:
+			return
+
 	# Accelerate like the original (speed += accel/frame up to the cap).
 	var speed := velocity.length()
 	if speed > 0.0 and speed < max_speed:
@@ -118,6 +144,11 @@ func _physics_process(_delta: float) -> void:
 			var diff := wrapf(want - velocity.angle(), -PI, PI)
 			var turn := deg_to_rad(homing)
 			velocity = velocity.rotated(clampf(diff, -turn, turn))
+
+	# frozen_ball / frozen_ball_2 — the plasma ball wobbles its heading
+	# ±0.5° per frame while it drifts (g_testuj 1/2 direction nudge).
+	if wobble > 0.0:
+		velocity = velocity.rotated(deg_to_rad(sin(_age * 0.35) * wobble))
 
 	# War balls fall — gravity pulls vspeed down every frame; SENTINEL
 	# and SHOOTING BALL bounce off the room bottom (vspeed = -10).
@@ -163,8 +194,9 @@ func _physics_process(_delta: float) -> void:
 				queue_free()
 				return
 
-	# Slight visual stretch as the bolt travels.
-	_scale += SCALE_GROWTH
+	# Slight visual stretch as the bolt travels (laser_u88 family's
+	# shots grow much faster — grow_rate overrides the default).
+	_scale += grow_rate
 	_sprite.scale = Vector2(_scale, _scale)
 	_sprite.rotation = velocity.angle()
 	if _sprite2 != null:

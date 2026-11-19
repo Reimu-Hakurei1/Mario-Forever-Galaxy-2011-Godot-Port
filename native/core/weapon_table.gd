@@ -100,9 +100,42 @@ const WEAPON_SPRITES := {
 }
 
 
+## Per-weapon projectile quirks, keyed by catalog id and taken from the
+## projectile object each script_laser_<id> spawns (objects/bullets/):
+##   wobble   — frozen_ball/frozen_ball_2 heading weave (deg/frame)
+##   grow     — laser_u88/888/8888 scale growth per frame (default is
+##              the shared 0.005 bolt stretch)
+##   charge   — frames the bolt rides the muzzle before launch
+##              (bullet_200/201/202/203, laser_u6/6plus/15/16/19)
+##   homing   — LASER TRACKER's "absolute auto-targeting" phase beam
+##   life     — frozen balls self-destruct after ~300 frames
+const WEAPON_BEHAVIORS := {
+	4: {"grow": 0.03},                          # TRIPLER -> laser_u88
+	7: {"wobble": 0.5, "life": 300},            # FROZEN BALL GUN
+	8: {"wobble": 0.5, "life": 300},            # FROZEN BALL GUN MK2
+	13: {"grow": 0.05},                         # CHAOTICUS -> laser_u888
+	14: {"grow": 0.05},                         # MOSQUITO KILLER -> u8888
+	18: {"charge": 18},                         # LIGHT MINIGUN -> b_200
+	21: {"charge": 12},                         # SIDE GUN -> laser_u6 x2
+	26: {"charge": 12},                         # SIDE GUN MK2 -> u6plus
+	27: {"charge": 18},                         # HEAVY MINIGUN -> b_201
+	29: {"homing": 2.0},                        # LASER TRACKER SYSTEM
+	36: {"charge": 18},                         # DOUBLE ASSAULT -> b_202
+	39: {"charge": 15},                         # SUPER AUTOBEAM -> u19
+	40: {"charge": 18},                         # GIANT MINIGUN -> b_203
+	41: {"charge": 15},                         # SPREADUS -> laser_u15
+	42: {"charge": 15},                         # MARIO'S DEVASTATOR -> u16
+}
+
+
 ## Sprite id for a weapon's projectile, or -1 for the default bolt.
 static func projectile_sprite(weapon_id: int) -> int:
 	return WEAPON_SPRITES.get(weapon_id, -1)
+
+
+## Projectile behavior flags for a catalog weapon id (empty = standard).
+static func projectile_behavior(weapon_id: int) -> Dictionary:
+	return WEAPON_BEHAVIORS.get(weapon_id, {})
 
 
 static func at(id: int) -> Dictionary:
