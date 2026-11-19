@@ -13,13 +13,18 @@ class_name NativeGame
 static var score: int = 0            ## G.punkty — level score
 static var coins: int = 0            ## G.coins — currency from coins/gems
 static var lives: int = 3            ## G.zycia — spare lives
-static var level_index: int = 0      ## G.poziom — world/level progression
+static var level_index: int = 0      ## G.poziom — highest unlocked level
+static var active_level: int = 0     ## level currently being played
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
 static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
+
+# Level handoff — the star map writes the chosen level's config here and
+# the arena reads it on _ready. Keeps scenes decoupled (no direct refs).
+static var pending_level: Dictionary = {}
 static var efekty: int = 2           ## G.efekty — particle quality setting
 static var dzwiek: int = 1           ## G.dzwiek — sound enabled
 static var muzyka: int = 1           ## G.muzyka — music enabled

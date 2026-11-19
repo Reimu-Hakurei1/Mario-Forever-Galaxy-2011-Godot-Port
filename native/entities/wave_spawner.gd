@@ -40,9 +40,19 @@ var _done := false
 
 func _ready() -> void:
 	# Copy the export so runtime state never mutates the inspector value.
+	set_waves(waves)
+	add_to_group("spawners")
+
+
+## Replace the wave schedule at runtime — used when a level scene loads
+## a config staged by the star map. Safe to call before the first tick.
+func set_waves(new_waves: Array) -> void:
+	waves = new_waves
 	_pending = waves.duplicate(true)
 	_pending.sort_custom(func(a, b): return a["delay"] < b["delay"])
-	add_to_group("spawners")
+	_active.clear()
+	_done = false
+	_clock = 0.0
 
 
 func _physics_process(delta: float) -> void:

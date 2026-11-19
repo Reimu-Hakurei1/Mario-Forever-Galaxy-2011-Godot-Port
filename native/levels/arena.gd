@@ -21,6 +21,10 @@ const LEVEL_CLEAR_DELAY := 3.0
 @onready var _spawner: NativeWaveSpawner = $WaveSpawner
 @onready var _hud: NativeHUD = $HUD
 
+# Level config handed over by the star map (background/music/waves).
+# Falls back to the scene defaults when empty (direct F6 testing).
+var _level_cfg: Dictionary = {}
+
 var _respawn_timer := -1.0          # <0 means "ship alive / not pending"
 var _death_pending := false
 var _level_cleared := false
@@ -32,10 +36,18 @@ func _ready() -> void:
 	# settings) and Galaxy arenas are single-screen — no camera work needed.
 	Engine.max_fps = 60
 
-	# Backdrop: original levels tile background sprites; our first slice
-	# uses a single full-screen texture stretched to the room.
+	# Apply the level config the star map staged (if any).
+	_level_cfg = NativeGame.pending_level
+	NativeGame.pending_level = {}
+	var bg_id: int = _level_cfg.get("background", BACKGROUND_ID)
+	var music_track: String = _level_cfg.get("music", MUSIC_TRACK)
+	if not _level_cfg.get("waves", []).is_empty():
+		_spawner.set_waves(_level_cfg["waves"])
+
+	# Backdrop: original levels tile background sprites; our slice uses a
+	# single full-screen texture stretched to the room.
 	var bg := Sprite2D.new()
-	var tex := NativeAssets.background(BACKGROUND_ID)
+	var tex := NativeAssets.background(bg_id)
 	if tex != null:
 		bg.texture = tex
 		bg.centered = false
@@ -48,7 +60,7 @@ func _ready() -> void:
 
 	# Level music — loops for the duration of the scene.
 	if NativeGame.muzyka == 1:
-		var music := NativeAssets.music(MUSIC_TRACK)
+		var music := NativeAssets.music(music_track)
 		if music != null:
 			var player := AudioStreamPlayer.new()
 			player.stream = music
@@ -86,9 +98,9 @@ func _process(delta: float) -> void:
 func _on_player_died() -> void:
 	NativeGame.lives -= 1
 	if NativeGame.lives < 0:
-		# TODO(native): proper game-over screen / return to star map.
+		# Out of lives — back to the star map (game-over screen is a TODO).
 		print("GAME OVER — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
-		get_tree().quit()
+		_go_to_map()
 		return
 	_respawn_timer = RESPAWN_DELAY
 
@@ -109,13 +121,16 @@ func _on_level_cleared() -> void:
 	_clear_timer = LEVEL_CLEAR_DELAY
 
 
-## Temporary stand-in for the star-map transition: advance the level
-## counter and reload the arena with a fresh run. The real flow will route
-## through the map screen once it's ported.
+## Level cleared — unlock the next node and return to the star map,
+## matching the original's flow (level → map → next level).
 func _next_level() -> void:
-	NativeGame.level_index += 1
-	NativeGame.reset_run()
-	get_tree().reload_current_scene()
+	# Unlock the node after the one just cleared, then head back to the map.
+	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
+	_go_to_map()
+
+
+func _go_to_map() -> void:
+	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")
 
 
 func _show_banner(text: String) -> void:
