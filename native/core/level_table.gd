@@ -211,96 +211,98 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 			], t, 8.5)
 
 
-## Scripted wave catalogue — translations of the original's ~130
-## o_wave_* spawner objects (objects/spawners/). Each family below
-## corresponds to a real legacy script family:
+## Scripted waves — the original's ~115 named o_wave_* spawner objects,
+## pre-extracted to data/levels/native/wave_scripts.json (pattern,
+## count, per-spawn interval in frames, enemy kinds). Each level draws
+## two entries so the whole catalogue is scheduled across the campaign.
 ##
-##   asteroids   — o_wave_4_asteroids: rock clumps drifting in from top
-##   divers      — o_perioder_*: kamikaze streams dropping from above
-##   piranhas    — o_wave_map_6_piranhasus: swarm rising from below
-##   ghosts      — o_wave_ghost_*: shy phantoms dripping from top corners
-##   zigzag      — o_wave_9_zigzag: alternating side entries
-##   grid        — wave_map_4_grouping_*: 30-slot 3-row formations
-##   swarm       — o_wave_11_spikey_swarm: tight kamikaze clouds
-##   gunship     — o_wave_14_gun_range: shooter streams
-##   heavy       — heavyweight escorts (tank/eye/elite mixes)
-##   ufo_stream  — UFO streams crossing the arena
-##   circle      — o_wave_*_circle*: whole wave released as one ring
-##   bonus/loot  — o_wave_6_bonus_wave / wave_funny_bonus_catch: pickups
-##
-## `interval_s` is the original's per-spawn tick (~15-20 frames ≈ 0.3s).
-## Counts are scaled down from the originals' 100-200 where needed to
-## keep native HP/damage pacing fair.
+## Legacy kind names that have no native equivalent are aliased to the
+## closest ported behaviour; "boss" entries become sky-eye mini-bosses.
+const _KIND_ALIASES := {
+	"shy_ghost": "ghost", "warlock": "shooter",
+	"castle_enemy": "shooter", "fat_boy": "elite", "boss": "eye",
+}
+const _MAX_WAVE_COUNT := 40   # originals run 100-200; cap for pacing
+
+static var _wave_scripts: Dictionary = {}
+
+
 static func _scripted_for(world: int, level: int, difficulty: int,
 		start_delay: float) -> Array:
+	var scripts := _load_wave_scripts()
+	var names := scripts.keys()
+	if names.is_empty():
+		return []
+	names.sort()
 	var hp := minf(8.0 + difficulty * 0.4, 40.0)
 	var waves: Array = []
 	var t := start_delay
-	# Two scripted waves per level, chosen deterministically per world
-	# so every world shows its signature spawner families.
-	var pool: Array = _SCRIPTED_FAMILIES[world]
-	var first: int = pool[level % pool.size()]
-	var pool2: Array = _SCRIPTED_FAMILIES[(world + 3) % _SCRIPTED_FAMILIES.size()]
-	var second: int = pool2[(level + 1) % pool2.size()]
-	for spec_index in [first, second]:
-		waves.append(_scripted_wave(_SCRIPTED_SPECS[spec_index], t, hp))
+	# Stride through the catalogue so consecutive levels get different
+	# families and all 115 scripts appear across the 80-level campaign.
+	var base: int = level * names.size() / LEVELS_PER_WORLD / WORLDS
+	for offset in [0, 1]:
+		var entry: Dictionary = scripts[names[(base + offset) % names.size()]]
+		var wave := _scripted_wave(str(names[(base + offset) % names.size()]),
+			entry, t, hp)
+		if not wave.is_empty():
+			waves.append(wave)
 		t += 9.0
 	return waves
 
 
-## Per-world scripted wave pools — indices into _SCRIPTED_SPECS.
-const _SCRIPTED_FAMILIES := [
-	[0, 1, 9, 7],   # world 1: asteroids, divers, bonus, swarm
-	[2, 3, 8, 6],   # world 2: piranhas, ghosts, ufo stream, gunship
-	[5, 4, 6, 10],  # world 3: grid, zigzag, gunship, circle
-	[2, 11, 7, 9],  # world 4: piranhas, loot, swarm, bonus
-	[8, 1, 6, 4],   # world 5: ufo stream, divers, gunship, zigzag
-	[5, 10, 3, 2],  # world 6: grid, circle, ghosts, piranhas
-	[4, 6, 1, 11],  # world 7: zigzag, gunship, divers, loot
-	[10, 5, 7, 0],  # world 8: circle, grid, swarm, asteroids
-]
+static func _load_wave_scripts() -> Dictionary:
+	if not _wave_scripts.is_empty():
+		return _wave_scripts
+	var path := "res://data/levels/native/wave_scripts.json"
+	if FileAccess.file_exists(path):
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
+		if typeof(parsed) == TYPE_DICTIONARY:
+			_wave_scripts = parsed
+	return _wave_scripts
 
 
-## Pattern specs: [pattern, kinds, count, edge].
-const _SCRIPTED_SPECS := [
-	["asteroids", ["ros", "crab", "jumbo"], 8, "top"],
-	["divers", ["kamikaze", "ufo_b", "dart"], 20, "top"],
-	["piranhas", ["weaver", "dart", "mini"], 16, "bottom"],
-	["ghosts", ["ghost", "ghost", "eye"], 10, "top"],
-	["zigzag", ["goomba", "shooter", "kamikaze"], 14, "left"],
-	["grid", ["shooter", "goomba", "mini"], 30, "top"],
-	["swarm", ["mini", "kamikaze", "dart"], 18, "top"],
-	["gunship", ["rocket_ufo", "ufo_a", "shooter"], 8, "right"],
-	["heavy", ["tank", "eye", "elite"], 6, "top"],
-	["ufo_stream", ["ufo_a", "ufo_b", "ros"], 12, "top"],
-	["circle", ["goomba", "mini", "shooter"], 10, "top"],
-	["loot", [], 5, "top"],
-	["bonus", ["bonus_fall", "ducher_fall"], 6, "top"],
-]
-
-
-static func _scripted_wave(spec: Array, delay: float, hp: float) -> Dictionary:
-	var pattern: String = spec[0]
-	var kinds: Array = spec[1]
-	var count: int = spec[2]
-	var edge: String = spec[3]
+## Translate one extracted spawner entry into a spawner wave dict.
+## Returns {} for entries with no usable enemies (pure boss cues etc.).
+static func _scripted_wave(script_name: String, entry: Dictionary,
+		delay: float, hp: float) -> Dictionary:
+	var kinds: Array = []
+	for k in entry.get("kinds", []):
+		var mapped: String = _KIND_ALIASES.get(str(k), str(k))
+		if mapped in KINDS and mapped not in kinds:
+			kinds.append(mapped)
+	if kinds.is_empty():
+		return {}
+	var pattern: String = str(entry.get("pattern", "stream"))
+	var count: int = mini(int(entry.get("count", 10)), _MAX_WAVE_COUNT)
+	# Legacy interval is in 60fps frames; floor at ~7 frames so waves
+	# don't dump their whole count in one tick.
+	var interval_s: float = maxf(float(entry.get("interval", 15)) / 60.0, 0.12)
+	var edge := "top"
+	match pattern:
+		"piranhas": edge = "bottom"
+		"zigzag": edge = "left" if script_name.hash() % 2 == 0 else "right"
+		"gunship", "ufo_stream": edge = "right"
 	var wave := {
 		"delay": delay, "count": count, "edge": edge,
 		"mode": "formation", "health": hp,
-		"pattern": pattern, "interval_s": 0.3,
+		"pattern": pattern, "interval_s": interval_s,
+		"kind": kinds[0], "kinds": kinds,
+		"script": script_name,
 	}
-	if not kinds.is_empty():
-		wave["kinds"] = kinds
-		wave["kind"] = kinds[0]
-	# Circle waves release as one ring — count is orbiter count.
+	# Pattern-specific massaging.
 	if pattern == "circle":
-		wave["count"] = count
+		wave["count"] = clampi(count, 4, 16)   # orbiter count, not enemies
 		wave["interval_s"] = 0.05
-	# Loot/bonus waves drop pickups, not enemies.
-	if pattern == "loot":
-		wave["pattern"] = "loot"
-	if pattern == "bonus":
-		wave["pattern"] = "bonus"
+	elif pattern == "grid":
+		# Original grids run 200 across ~30 slots; native caps at 40.
+		wave["count"] = mini(count, 40)
+	elif pattern == "loot":
+		wave["count"] = mini(count, 8)
+	elif pattern == "bonus":
+		# Bonus waves drop bonus_fall/ducher_fall targets.
+		if "bonus_fall" not in kinds and "ducher_fall" not in kinds:
+			kinds.append("bonus_fall")
+			wave["kinds"] = kinds
 	return wave
 
 

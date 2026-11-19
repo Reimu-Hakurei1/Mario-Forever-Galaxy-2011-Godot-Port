@@ -142,12 +142,10 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	match script_pattern:
 		"divers", "kamikaze_spikeys":
 			enemy.mode = NativeEnemy.Mode.KAMIKAZE
-		"piranhas":
+		"piranhas", "stream", "gunship", "swarm", "asteroids", "zigzag", "ghosts", "ufo_stream":
 			enemy.mode = NativeEnemy.Mode.CHASE
 		"grid":
 			enemy.mode = NativeEnemy.Mode.SPAWN   # glides to its grid slot
-		"zigzag", "ghosts", "ufo_stream":
-			enemy.mode = NativeEnemy.Mode.CHASE
 		_:
 			match wave.get("mode", "formation"):
 				"chase": enemy.mode = NativeEnemy.Mode.CHASE
