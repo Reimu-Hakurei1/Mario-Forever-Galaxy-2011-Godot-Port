@@ -148,7 +148,7 @@ func _on_player_died() -> void:
 		print("GAME OVER — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
 		NativeGame.lives = 3
 		NativeGame.save()
-		_go_to_map()
+		get_tree().change_scene_to_file("res://native/ui/game_over.tscn")
 		return
 	_respawn_timer = RESPAWN_DELAY
 

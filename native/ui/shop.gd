@@ -59,6 +59,19 @@ func _build_header() -> void:
 	coins.offset_bottom = 110
 	add_child(coins)
 
+	# Results line — the shop doubles as the level-clear report.
+	var result := Label.new()
+	result.name = "Result"
+	result.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	result.add_theme_font_size_override("font_size", 16)
+	result.add_theme_color_override("font_color", Color(0.7, 1.0, 0.7))
+	result.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	result.offset_top = 110
+	result.offset_bottom = 134
+	result.text = "LEVEL %d CLEAR — SCORE %d" % [
+		NativeGame.active_level + 1, NativeGame.score]
+	add_child(result)
+
 
 func _build_row(i: int) -> void:
 	var u: Dictionary = UPGRADES[i]

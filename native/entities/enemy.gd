@@ -21,16 +21,34 @@ class_name NativeEnemy
 ## Movement/behaviour modes.
 enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
 ## Enemy families — each maps to objects in the original registry.
-enum Kind { GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE }
+## Sprite ids come from data/assets.json (s_enemy_*/s_ufo_* sheets).
+enum Kind {
+	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
+	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
+}
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
-## kill award; shooter-ish kinds get `shoot_interval`/`spread`.
+## kill award; shooter-ish kinds get `shoot_interval`/`spread`; `chase`
+## overrides chase_speed and `dive` overrides kamikaze_speed.
 const KIND_PROFILES := {
 	Kind.GOOMBA: {"sprite": 11, "score": 100},
 	Kind.SHOOTER: {"sprite": 174, "score": 150, "shoot_interval": 170.0, "spread": 1},
 	Kind.KAMIKAZE: {"sprite": 11, "score": 120, "tint": Color(1.0, 0.55, 0.5)},
 	Kind.TANK: {"sprite": 178, "score": 300, "shoot_interval": 240.0, "spread": 3, "scale": 0.55},
 	Kind.EYE: {"sprite": 185, "score": 200, "shoot_interval": 110.0, "spread": 1, "burst": 3},
+	# Small swarm dart — fast, fragile, cheap kill.
+	Kind.MINI: {"sprite": 70, "score": 50, "chase": 2.6, "scale": 0.7},
+	# UFO variants — the original's iconic fighters.
+	Kind.UFO_A: {"sprite": 174, "score": 180, "shoot_interval": 200.0, "spread": 2},
+	Kind.UFO_B: {"sprite": 110, "score": 160, "dive": 2.8, "tint": Color(0.7, 1.0, 0.8)},
+	# Long worm-like enemy — slow, armored, lobs shots.
+	Kind.ROS: {"sprite": 296, "score": 250, "shoot_interval": 260.0, "spread": 1, "scale": 0.8},
+	# Heavy crab — wide spread barrage.
+	Kind.CRAB: {"sprite": 73, "score": 350, "shoot_interval": 220.0, "spread": 5, "scale": 0.6},
+	# Jumbo brute — big sprite, slow heavy chaser.
+	Kind.JUMBO: {"sprite": 50, "score": 400, "chase": 0.9, "scale": 0.5},
+	# Elite goomba — the armored 'aup' variant, tanky mid-tier.
+	Kind.ELITE: {"sprite": 479, "score": 220, "chase": 1.5},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -111,20 +129,26 @@ func _apply_profile() -> void:
 	burst = p.get("burst", 1)
 	_scale_factor = p.get("scale", 1.0)
 	_tint = p.get("tint", Color.WHITE)
-	if kind == Kind.KAMIKAZE:
+	if p.has("chase"):
+		chase_speed = p["chase"]
+	if p.has("dive"):
+		kamikaze_speed = p["dive"]
+	# Behaviour family routing: shooters hold station and fire, kamikaze
+	# variants dive, everything else uses the goomba pattern. The new
+	# kinds join the family that matches their profile.
+	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B:
 		mode = Mode.KAMIKAZE
-		kamikaze_speed = 2.4
+		kamikaze_speed = p.get("dive", 2.4)
 
 
 func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
 		return
 
-	# Shooter-ish kinds share the hold-position-and-fire behaviour; tanks
-	# and eyes get their own entries via kind checks below.
-	if kind == Kind.SHOOTER or kind == Kind.EYE or kind == Kind.TANK:
+	# Shooter-ish kinds share the hold-position-and-fire behaviour.
+	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS, Kind.CRAB]:
 		_behave_shooter()
-	elif kind == Kind.KAMIKAZE:
+	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B:
 		_behave_kamikaze()
 	else:
 		_behave_goomba()

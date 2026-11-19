@@ -21,14 +21,54 @@ var _nodes: Array = []           # Button per level, index = level id
 
 
 func _ready() -> void:
-	# Deep-space backdrop — flat color keeps the nodes readable.
-	var bg := ColorRect.new()
-	bg.color = Color(0.03, 0.04, 0.12)
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(bg)
+	_build_backdrop()
 
 	_build_header()
 	_build_grid()
+
+
+## Deep-space backdrop: a generated starfield over a dim galaxy image.
+## Stars are random pixels baked into one ImageTexture — cheap and it
+## gives the map the "fly between stars" feel of the original.
+func _build_backdrop() -> void:
+	# Galaxy plate underneath (falls back to flat space color).
+	var tex := NativeAssets.background(48)
+	if tex == null:
+		tex = NativeAssets.background(0)
+	if tex != null:
+		var plate := Sprite2D.new()
+		plate.texture = tex
+		plate.centered = false
+		plate.scale = Vector2(1024.0 / tex.get_width(), 768.0 / tex.get_height())
+		plate.modulate = Color(0.5, 0.5, 0.65)
+		plate.z_index = -100
+		add_child(plate)
+	else:
+		var bg := ColorRect.new()
+		bg.color = Color(0.03, 0.04, 0.12)
+		bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+		add_child(bg)
+
+	# Starfield — random dots baked into a single texture.
+	var img := Image.create(1024, 768, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for i in 220:
+		var x := randi() % 1024
+		var y := randi() % 768
+		var bright := randf()
+		var c := Color(1, 1, 1, 0.3 + bright * 0.7)
+		img.set_pixel(x, y, c)
+		if bright > 0.92:   # a few brighter stars get a plus-shape
+			for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
+				var p := Vector2i(x, y) + d
+				if p.x >= 0 and p.x < 1024 and p.y >= 0 and p.y < 768:
+					img.set_pixel(p.x, p.y, c)
+	var stars := TextureRect.new()
+	stars.texture = ImageTexture.create_from_image(img)
+	stars.set_anchors_preset(Control.PRESET_FULL_RECT)
+	stars.stretch_mode = TextureRect.STRETCH_SCALE
+	stars.z_index = -99
+	add_child(stars)
 
 
 func _build_header() -> void:
@@ -53,6 +93,15 @@ func _build_header() -> void:
 	stats.offset_top = 70
 	stats.offset_bottom = 96
 	add_child(stats)
+
+	# Options shortcut — overlay, same as the title screen's.
+	var opts := Button.new()
+	opts.text = "OPTIONS"
+	opts.custom_minimum_size = Vector2(140, 40)
+	opts.add_theme_font_size_override("font_size", 16)
+	opts.position = Vector2(884, 20)
+	opts.pressed.connect(func(): add_child(load("res://native/ui/options.tscn").instantiate()))
+	add_child(opts)
 
 
 func _build_grid() -> void:

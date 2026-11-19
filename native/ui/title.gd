@@ -49,6 +49,14 @@ func _ready() -> void:
 		fresh.pressed.connect(_on_new_game)
 		add_child(fresh)
 
+	var opts := Button.new()
+	opts.text = "OPTIONS"
+	opts.custom_minimum_size = Vector2(280, 50)
+	opts.add_theme_font_size_override("font_size", 20)
+	opts.position = Vector2(372, has_save and 550 or 470)
+	opts.pressed.connect(_on_options)
+	add_child(opts)
+
 	var hint := Label.new()
 	hint.text = "ENTER to continue"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -73,3 +81,8 @@ func _on_continue() -> void:
 func _on_new_game() -> void:
 	NativeGame.reset_profile()
 	get_tree().change_scene_to_file(MAP_SCENE)
+
+
+## Options opens as an overlay — it frees itself on close, no scene swap.
+func _on_options() -> void:
+	add_child(load("res://native/ui/options.tscn").instantiate())

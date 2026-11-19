@@ -90,12 +90,20 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	enemy.health = wave.get("health", 100.0)
 	enemy.global_position = pos
 
-	# Enemy variant — "goomba" | "shooter"/"ufo" | "kamikaze" | "tank" | "eye".
+	# Enemy variant — string name → Kind enum. Keep in sync with
+	# NativeLevelTable.KINDS and enemy.gd's KIND_PROFILES.
 	match wave.get("kind", "goomba"):
 		"shooter", "ufo": enemy.kind = NativeEnemy.Kind.SHOOTER
 		"kamikaze": enemy.kind = NativeEnemy.Kind.KAMIKAZE
 		"tank": enemy.kind = NativeEnemy.Kind.TANK
 		"eye": enemy.kind = NativeEnemy.Kind.EYE
+		"mini": enemy.kind = NativeEnemy.Kind.MINI
+		"ufo_a": enemy.kind = NativeEnemy.Kind.UFO_A
+		"ufo_b": enemy.kind = NativeEnemy.Kind.UFO_B
+		"ros": enemy.kind = NativeEnemy.Kind.ROS
+		"crab": enemy.kind = NativeEnemy.Kind.CRAB
+		"jumbo": enemy.kind = NativeEnemy.Kind.JUMBO
+		"elite": enemy.kind = NativeEnemy.Kind.ELITE
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
