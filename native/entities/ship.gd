@@ -70,6 +70,7 @@ var _sfx: AudioStreamPlayer
 var _weapon_levels := PackedInt32Array()  # g_levelup per slot
 var _shield_sprite: Sprite2D          # bubble shown while shielded
 var _shielded := false                # invulnerable came from SHIELD pickup
+var _trail_timer := 0.0               # engine-exhaust emitter clock
 
 
 func _ready() -> void:
@@ -134,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	_apply_movement(delta)
 	_apply_firing(delta)
 	_update_visuals(delta)
+	_emit_trail(delta)
 
 
 ## Shield pickup timer — while active the hull is invulnerable and the
@@ -151,6 +153,42 @@ func _tick_shield(delta: float) -> void:
 		_shielded = false
 		invulnerable = false
 		_shield_sprite.visible = false
+
+
+## Engine exhaust — faint dots shed behind the hull while it moves fast.
+## Purely cosmetic; spawned as world-space sprites so they don't rotate
+## with the ship and fade out on their own.
+func _emit_trail(delta: float) -> void:
+	_trail_timer -= delta
+	if _trail_timer > 0.0 or vel.length() < 1.5 or not is_visible_in_tree():
+		return
+	_trail_timer = 0.045
+	var dot := Sprite2D.new()
+	dot.texture = _make_dot_texture()
+	dot.global_position = global_position \
+		- vel.normalized() * 34.0 + Vector2(randf_range(-3, 3), randf_range(-3, 3))
+	dot.modulate = Color(0.5, 0.8, 1.0, 0.55)
+	get_parent().add_child(dot)
+	var tw := dot.create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(dot, "modulate:a", 0.0, 0.35)
+	tw.tween_property(dot, "scale", Vector2(0.2, 0.2), 0.35)
+	tw.chain().tween_callback(dot.queue_free)
+
+
+static var _dot_tex: Texture2D = null
+static func _make_dot_texture() -> Texture2D:
+	if _dot_tex != null:
+		return _dot_tex
+	var img := Image.create(16, 16, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for y in 16:
+		for x in 16:
+			var d := Vector2(x - 7.5, y - 7.5).length() / 8.0
+			if d < 1.0:
+				img.set_pixel(x, y, Color(1, 1, 1, 1.0 - d))
+	_dot_tex = ImageTexture.create_from_image(img)
+	return _dot_tex
 
 
 ## 64px ring texture generated once — cyan bubble outline.
