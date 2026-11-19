@@ -32,7 +32,7 @@ const DEFENSE_KINDS := [
 	NativeEnemy.Kind.FAT_CANNON,
 ]
 
-var _next_y := -120.0           # next spawn row's y (local space)
+var _scroll_acc := 0.0            # px scrolled since last row spawn
 var _chunk := 0
 var _level_index := 0
 var _path_tiles: Array[Sprite2D] = []
@@ -40,17 +40,20 @@ var _path_tiles: Array[Sprite2D] = []
 
 func _ready() -> void:
 	_level_index = NativeGame.active_level
-	# Seed a few rows already above the screen so the stage starts busy.
-	_next_y = -120.0
+	# Pre-seed rows above the screen so the stage starts busy.
+	for i in 5:
+		_spawn_row(-40.0 - i * ROW_GAP)
+		_chunk += 1
 
 
 func _physics_process(_delta: float) -> void:
 	if NativeGame.paused:
 		return
-	# Spawn rows until the next one is inside the visible band.
-	while _next_y < NativeGame.room_size().y + 100.0:
-		_spawn_row(_next_y)
-		_next_y += ROW_GAP
+	# Conveyor: a new row enters at the top every ROW_GAP px scrolled.
+	_scroll_acc += 2.0
+	if _scroll_acc >= ROW_GAP:
+		_scroll_acc -= ROW_GAP
+		_spawn_row(-40.0)
 		_chunk += 1
 	# o_pather_1 — castle floor/path tiles (sprite 306) scroll down
 	# with the stage between the obstacle rows.
