@@ -69,6 +69,7 @@ var _minion_timer := 300.0
 var _pattern := 0
 var _spiral_angle := 0.0           # rotation offset for spiral barrages
 var _hp_bar: ProgressBar
+var _dialogue: NativeBossDialogue
 
 
 func _ready() -> void:
@@ -108,6 +109,18 @@ func _ready() -> void:
 	add_child(_anim)
 
 	_build_hp_bar()
+	_start_intro_speech()
+
+
+## The original boss objects play their g_dialogue typewriter speech
+## while the boss descends (o_boss_*_talk), then the fight starts.
+func _start_intro_speech() -> void:
+	var hero_name: String = NativeGame.HEROES[clampi(NativeGame.hero, 0,
+		NativeGame.HEROES.size() - 1)]["name"]
+	_dialogue = NativeBossDialogue.new()
+	_dialogue.finished.connect(func(): pass)
+	add_child(_dialogue)
+	_dialogue.play(NativeDialogueTable.for_boss(tier, variant, hero_name))
 
 
 func _physics_process(_delta: float) -> void:
