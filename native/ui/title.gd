@@ -8,7 +8,10 @@ extends Control
 ## Scene: native/ui/title.tscn — make it the main scene to boot the
 ## native game instead of the legacy compatibility runtime.
 
-const MAP_SCENE := "res://native/levels/star_map.tscn"
+const HERO_SCENE := "res://native/ui/hero_select.tscn"
+const INTRO_SCENE := "res://native/ui/intro.tscn"
+
+var _has_save := false
 
 
 func _ready() -> void:
@@ -31,6 +34,7 @@ func _ready() -> void:
 	add_child(title)
 
 	var has_save := NativeGame.load_save()
+	_has_save = has_save
 
 	var cont := Button.new()
 	cont.text = "CONTINUE" if has_save else "START"
@@ -75,12 +79,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_continue() -> void:
-	get_tree().change_scene_to_file(MAP_SCENE)
+	# First boot (no save) plays the intro story; afterwards the player
+	# goes straight to ship select — same as the original's flow.
+	get_tree().change_scene_to_file(HERO_SCENE if _has_save else INTRO_SCENE)
 
 
 func _on_new_game() -> void:
 	NativeGame.reset_profile()
-	get_tree().change_scene_to_file(MAP_SCENE)
+	# New game plays the opening story first.
+	get_tree().change_scene_to_file(INTRO_SCENE)
 
 
 ## Options opens as an overlay — it frees itself on close, no scene swap.

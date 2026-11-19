@@ -54,11 +54,15 @@ const KIND_PROFILES := {
 # Drop table rolled on death (from the original o_drop logic): most kills
 # drop nothing, coins are common, gems rare, health very rare.
 const DROP_TABLE := [
-	[0.55, null],
-	[0.25, NativePickup.Kind.COIN],
-	[0.12, null],
-	[0.06, NativePickup.Kind.GEM],
-	[0.02, NativePickup.Kind.HEALTH],
+	[0.50, null],
+	[0.22, NativePickup.Kind.COIN],      # 0.72
+	[0.10, null],                        # 0.82
+	[0.05, NativePickup.Kind.GEM],       # 0.87
+	[0.04, NativePickup.Kind.POWER],     # 0.91 — overdrive star
+	[0.03, NativePickup.Kind.COOLING],   # 0.94 — heat purge
+	[0.03, null],                        # 0.97
+	[0.02, NativePickup.Kind.HEALTH],    # 0.99
+	[0.01, NativePickup.Kind.LIFE],      # 1.00 — extra ship, very rare
 ]
 
 var kind := Kind.GOOMBA

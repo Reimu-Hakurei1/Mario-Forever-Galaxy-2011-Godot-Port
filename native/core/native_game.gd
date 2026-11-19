@@ -21,6 +21,25 @@ static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
+static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
+static var hero: int = 0               ## selected ship index (HEROES table)
+static var damage_mult: float = 1.0    ## hero bullet damage multiplier
+static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
+
+## Playable ships — the original offered several hulls with different
+## handling. Only one hull sprite exists in the assets, so heroes differ
+## by stats and tint: firerate/slowdown feed the existing samus_* fields,
+## damage scales bullet damage, tint recolours the hull.
+const HEROES := [
+	{"name": "CLASSIC", "desc": "Balanced all-rounder",
+		"firerate": 0.0, "slower": 1.0, "damage": 1.0, "tint": Color.WHITE},
+	{"name": "SAMUS", "desc": "Rapid fire, sluggish handling",
+		"firerate": 0.5, "slower": 1.2, "damage": 1.0, "tint": Color(1.0, 0.6, 0.6)},
+	{"name": "COMET", "desc": "Fast and fragile",
+		"firerate": 0.1, "slower": 0.8, "damage": 0.8, "tint": Color(0.6, 0.9, 1.0)},
+	{"name": "TITAN", "desc": "Heavy hitter, slow turn",
+		"firerate": 0.0, "slower": 1.15, "damage": 1.5, "tint": Color(1.0, 0.85, 0.4)},
+]
 
 # Level handoff — the star map writes the chosen level's config here and
 # the arena reads it on _ready. Keeps scenes decoupled (no direct refs).
@@ -54,6 +73,7 @@ static func room_size() -> Vector2:
 static func reset_run() -> void:
 	energy = 100.0
 	overheating = 0.0
+	overdrive_time = 0.0
 	enemies_killed = 0
 	enemies_missed = 0
 
@@ -80,6 +100,16 @@ static func heal_player(amount: float) -> void:
 	energy = minf(energy + amount, 100.0)
 
 
+## Apply the selected hero's stat line — call after picking a ship.
+static func apply_hero() -> void:
+	var h: Dictionary = HEROES[clampi(hero, 0, HEROES.size() - 1)]
+	samus_firerate = h["firerate"]
+	samus_slower = h["slower"]
+	damage_mult = h["damage"]
+	hero_tint = h["tint"]
+	save()
+
+
 # ---------------------------------------------------------------------------
 # Save / load — persists the profile fields (not per-run state) to
 # user://native_save.cfg. The original used GameMaker .ini saves in the
@@ -101,6 +131,9 @@ static func save() -> void:
 	cfg.set_value("profile", "weapon_power", weapon_power)
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
+	cfg.set_value("profile", "hero", hero)
+	cfg.set_value("profile", "damage_mult", damage_mult)
+	cfg.set_value("profile", "hero_tint", hero_tint)
 	cfg.set_value("settings", "efekty", efekty)
 	cfg.set_value("settings", "dzwiek", dzwiek)
 	cfg.set_value("settings", "muzyka", muzyka)
@@ -121,6 +154,9 @@ static func reset_profile() -> void:
 	weapon_power = 0
 	samus_firerate = 0.0
 	samus_slower = 1.0
+	hero = 0
+	damage_mult = 1.0
+	hero_tint = Color.WHITE
 	save()
 
 
@@ -139,6 +175,9 @@ static func load_save() -> bool:
 	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
+	hero = int(cfg.get_value("profile", "hero", hero))
+	damage_mult = float(cfg.get_value("profile", "damage_mult", damage_mult))
+	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
 	efekty = int(cfg.get_value("settings", "efekty", efekty))
 	dzwiek = int(cfg.get_value("settings", "dzwiek", dzwiek))
 	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))

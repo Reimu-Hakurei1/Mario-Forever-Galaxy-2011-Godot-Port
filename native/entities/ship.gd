@@ -90,6 +90,8 @@ func _ready() -> void:
 	_muzzle_sprite.sprite_frames = frames
 	_muzzle_sprite.play("bank")
 	_muzzle_sprite.offset = -NativeAssets.sprite_origin(SPRITE_ID)
+	# Hero tint — recolours the hull so ship choice is visible.
+	_muzzle_sprite.modulate = NativeGame.hero_tint
 	add_child(_muzzle_sprite)
 
 	# Hurtbox — a generous circle covering the hull. The original relies on
@@ -192,13 +194,18 @@ func _apply_movement(delta: float) -> void:
 # ---------------------------------------------------------------------------
 
 func _apply_firing(delta: float) -> void:
+	# Overdrive star countdown — while active, weapons cycle faster.
+	if NativeGame.overdrive_time > 0.0:
+		NativeGame.overdrive_time = maxf(0.0, NativeGame.overdrive_time - delta)
+
 	# Guns only work with hull integrity and while not overheated.
 	var can_fire: bool = NativeGame.energy > 0.0 and not NativeGame.paused \
 		and NativeGame.overheating < NativeGame.overheat_max()
+	var rate_mult := 1.5 if NativeGame.overdrive_time > 0.0 else 1.0
 
 	for i in MUZZLES.size():
 		# Charge builds every frame regardless of trigger state.
-		_charge[i] += (1.0 + NativeGame.samus_firerate) * delta * 60.0
+		_charge[i] += (1.0 + NativeGame.samus_firerate) * rate_mult * delta * 60.0
 		if can_fire and fire_held and _charge[i] >= FIRE_DELAY[i]:
 			_charge[i] = 0.0
 			_fire_muzzle(i)
@@ -223,14 +230,17 @@ func _fire_muzzle(index: int) -> void:
 	var base_angle := base_dir.angle()
 
 	# weapon_power 0 = single bolt, 1 = 3-way fan, 2 = 5-way fan.
-	var bolts := 1 + NativeGame.weapon_power * 2
+	# Overdrive adds 2 bolts and widens the fan for its duration.
+	var overdrive := NativeGame.overdrive_time > 0.0
+	var bolts := 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
+	var fan_step := 0.26 if overdrive else 0.18
 	for i in bolts:
-		var fan := (i - (bolts - 1) / 2.0) * 0.18   # ~10° spread per bolt
+		var fan := (i - (bolts - 1) / 2.0) * fan_step
 		var dir := Vector2.RIGHT.rotated(base_angle + fan)
 		var bullet := NativeBullet.new()
 		bullet.global_position = spawn_pos
 		bullet.velocity = dir * NativeBullet.START_SPEED
-		bullet.damage = SHOT_DAMAGE
+		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += OVERHEAT_PER_SHOT
