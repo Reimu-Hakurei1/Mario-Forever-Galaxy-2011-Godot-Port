@@ -62,7 +62,7 @@ func _ready() -> void:
 	add_child(opts)
 
 	var hint := Label.new()
-	hint.text = "ENTER to continue"
+	hint.name = "Hint"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hint.add_theme_font_size_override("font_size", 14)
 	hint.add_theme_color_override("font_color", Color(0.6, 0.6, 0.6))
@@ -70,12 +70,22 @@ func _ready() -> void:
 	hint.offset_top = -40
 	hint.offset_bottom = -16
 	add_child(hint)
+	_refresh_hint()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo \
 			and event.keycode == KEY_ENTER:
 		_on_continue()
+
+
+## Bottom hint shows best score once a save exists.
+func _refresh_hint() -> void:
+	var hint := get_node_or_null("Hint") as Label
+	if hint == null:
+		return
+	hint.text = "BEST %d    —    ENTER to continue" % NativeGame.best_score \
+		if _has_save else "ENTER to start"
 
 
 func _on_continue() -> void:

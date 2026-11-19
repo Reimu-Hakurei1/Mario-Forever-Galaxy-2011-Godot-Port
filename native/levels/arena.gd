@@ -169,6 +169,8 @@ func _respawn() -> void:
 
 func _on_level_cleared() -> void:
 	print("LEVEL CLEAR — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
+	# Victory sting — rising chime (the original's upgrade/fanfare sfx).
+	NativeAssets.play_sound(105)   # snd_upgrade_up
 	_show_banner("LEVEL CLEAR!")
 	_clear_timer = LEVEL_CLEAR_DELAY
 

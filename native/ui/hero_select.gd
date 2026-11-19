@@ -54,12 +54,23 @@ func _build_card(i: int, x: float) -> void:
 	box.add_theme_constant_override("separation", 12)
 	card.add_child(box)
 
-	# Tinted hull swatch — stands in for a ship portrait.
-	var swatch := ColorRect.new()
-	swatch.color = h["tint"]
-	swatch.custom_minimum_size = Vector2(180, 120)
-	swatch.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	box.add_child(swatch)
+	# Ship preview — the real hull sprite tinted per hero.
+	var ship_tex := NativeAssets.sprite_frame(543, 1)
+	if ship_tex != null:
+		var preview := TextureRect.new()
+		preview.texture = ship_tex
+		preview.custom_minimum_size = Vector2(120, 90)
+		preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		preview.modulate = h["tint"]
+		preview.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		box.add_child(preview)
+	else:
+		var swatch := ColorRect.new()
+		swatch.color = h["tint"]
+		swatch.custom_minimum_size = Vector2(180, 120)
+		swatch.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		box.add_child(swatch)
 
 	var name_l := Label.new()
 	name_l.text = h["name"]

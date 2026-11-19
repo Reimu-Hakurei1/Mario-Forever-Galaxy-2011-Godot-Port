@@ -13,6 +13,7 @@ var _energy_bar: ProgressBar
 var _heat_bar: ProgressBar
 var _lives_label: Label
 var _coins_label: Label
+var _buffs_label: Label          # active powerup timers (shield/overdrive)
 
 
 func _ready() -> void:
@@ -51,6 +52,14 @@ func _build() -> void:
 	_heat_bar = _make_bar(Color(0.9, 0.5, 0.1), "HEAT")
 	top_right.add_child(_heat_bar)
 
+	# --- Bottom-center: active powerup timers ---
+	_buffs_label = _make_label("", 16)
+	_buffs_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	_buffs_label.position = Vector2(-200, -40)
+	_buffs_label.custom_minimum_size = Vector2(400, 0)
+	_buffs_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	add_child(_buffs_label)
+
 
 func _process(_delta: float) -> void:
 	_score_label.text = "SCORE %d" % NativeGame.score
@@ -63,6 +72,20 @@ func _process(_delta: float) -> void:
 	# coming before it happens.
 	_heat_bar.max_value = NativeGame.overheat_max()
 	_heat_bar.value = NativeGame.overheating
+
+	# Powerup timers — shown only while a buff is running so the bar
+	# area stays clean during normal play.
+	var buffs: Array[String] = []
+	if NativeGame.shield_time > 0.0:
+		buffs.append("SHIELD %ds" % ceili(NativeGame.shield_time))
+	if NativeGame.overdrive_time > 0.0:
+		buffs.append("OVERDRIVE %ds" % ceili(NativeGame.overdrive_time))
+	_buffs_label.text = "   ".join(buffs)
+	_buffs_label.visible = not buffs.is_empty()
+	if NativeGame.shield_time > 0.0:
+		_buffs_label.add_theme_color_override("font_color", Color(0.5, 0.85, 1.0))
+	else:
+		_buffs_label.add_theme_color_override("font_color", Color(1.0, 0.55, 0.45))
 
 
 func _make_label(text: String, size: int) -> Label:
