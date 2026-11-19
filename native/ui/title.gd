@@ -1,0 +1,75 @@
+extends Control
+## NativeTitle — boot/title screen for the native game.
+##
+## Ports the role of the GameMaker title/menu rooms: the first thing the
+## player sees. CONTINUE loads the saved profile and opens the star map;
+## NEW GAME wipes it. ENTER shortcuts to CONTINUE.
+##
+## Scene: native/ui/title.tscn — make it the main scene to boot the
+## native game instead of the legacy compatibility runtime.
+
+const MAP_SCENE := "res://native/levels/star_map.tscn"
+
+
+func _ready() -> void:
+	var bg := ColorRect.new()
+	bg.color = Color(0.02, 0.03, 0.1)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(bg)
+
+	var title := Label.new()
+	title.text = "MARIO FOREVER\nGALAXY"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	title.set_anchors_preset(Control.PRESET_FULL_RECT)
+	title.offset_top = -140
+	title.offset_bottom = -40
+	title.add_theme_font_size_override("font_size", 56)
+	title.add_theme_color_override("font_color", Color(1, 0.85, 0.3))
+	title.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	title.add_theme_constant_override("outline_size", 8)
+	add_child(title)
+
+	var has_save := NativeGame.load_save()
+
+	var cont := Button.new()
+	cont.text = "CONTINUE" if has_save else "START"
+	cont.custom_minimum_size = Vector2(280, 60)
+	cont.add_theme_font_size_override("font_size", 24)
+	cont.position = Vector2(372, 400)
+	cont.pressed.connect(_on_continue)
+	add_child(cont)
+
+	if has_save:
+		var fresh := Button.new()
+		fresh.text = "NEW GAME"
+		fresh.custom_minimum_size = Vector2(280, 60)
+		fresh.add_theme_font_size_override("font_size", 24)
+		fresh.position = Vector2(372, 480)
+		fresh.pressed.connect(_on_new_game)
+		add_child(fresh)
+
+	var hint := Label.new()
+	hint.text = "ENTER to continue"
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 14)
+	hint.add_theme_color_override("font_color", Color(0.6, 0.6, 0.6))
+	hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	hint.offset_top = -40
+	hint.offset_bottom = -16
+	add_child(hint)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo \
+			and event.keycode == KEY_ENTER:
+		_on_continue()
+
+
+func _on_continue() -> void:
+	get_tree().change_scene_to_file(MAP_SCENE)
+
+
+func _on_new_game() -> void:
+	NativeGame.reset_profile()
+	get_tree().change_scene_to_file(MAP_SCENE)

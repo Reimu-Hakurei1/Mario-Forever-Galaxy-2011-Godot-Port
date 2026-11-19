@@ -164,8 +164,10 @@ func _on_buy(i: int) -> void:
 		return
 	NativeGame.coins -= cost
 	_set_lvl(u["field"], lvl + 1)
-	NativeAssets.sound(62)
+	NativeGame.save()
+	NativeAssets.play_sound(62)
 
 
 func _on_continue() -> void:
+	NativeGame.save()
 	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")

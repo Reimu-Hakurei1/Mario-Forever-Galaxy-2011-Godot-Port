@@ -110,8 +110,11 @@ func _process(delta: float) -> void:
 func _on_player_died() -> void:
 	NativeGame.lives -= 1
 	if NativeGame.lives < 0:
-		# Out of lives — back to the star map (game-over screen is a TODO).
+		# Out of lives — game over. Spare lives refill for the next run;
+		# score/coins/upgrades persist.
 		print("GAME OVER — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
+		NativeGame.lives = 3
+		NativeGame.save()
 		_go_to_map()
 		return
 	_respawn_timer = RESPAWN_DELAY
@@ -139,6 +142,7 @@ func _next_level() -> void:
 	# Unlock the node after the one just cleared, then visit the shop —
 	# the original flow is level → results → shop → map.
 	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
+	NativeGame.save()
 	get_tree().change_scene_to_file("res://native/ui/shop.tscn")
 
 

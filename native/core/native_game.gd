@@ -78,3 +78,69 @@ static func damage_player(amount: float) -> void:
 
 static func heal_player(amount: float) -> void:
 	energy = minf(energy + amount, 100.0)
+
+
+# ---------------------------------------------------------------------------
+# Save / load — persists the profile fields (not per-run state) to
+# user://native_save.cfg. The original used GameMaker .ini saves in the
+# same spirit: unlocked level, currency, upgrades, settings.
+# ---------------------------------------------------------------------------
+
+const SAVE_PATH := "user://native_save.cfg"
+
+
+static func save() -> void:
+	var cfg := ConfigFile.new()
+	cfg.set_value("profile", "score", score)
+	cfg.set_value("profile", "coins", coins)
+	cfg.set_value("profile", "lives", lives)
+	cfg.set_value("profile", "level_index", level_index)
+	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
+	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
+	cfg.set_value("profile", "upgrade_freezer", upgrade_freezer)
+	cfg.set_value("profile", "weapon_power", weapon_power)
+	cfg.set_value("profile", "samus_firerate", samus_firerate)
+	cfg.set_value("profile", "samus_slower", samus_slower)
+	cfg.set_value("settings", "efekty", efekty)
+	cfg.set_value("settings", "dzwiek", dzwiek)
+	cfg.set_value("settings", "muzyka", muzyka)
+	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
+	cfg.save(SAVE_PATH)
+
+
+## Wipe the profile back to defaults — the title screen's NEW GAME.
+static func reset_profile() -> void:
+	score = 0
+	coins = 0
+	lives = 3
+	level_index = 0
+	active_level = 0
+	upgrade_wing = 0
+	upgrade_boost = 0
+	upgrade_freezer = 0
+	weapon_power = 0
+	samus_firerate = 0.0
+	samus_slower = 1.0
+	save()
+
+
+## Load the profile if a save exists; missing keys keep defaults.
+static func load_save() -> bool:
+	var cfg := ConfigFile.new()
+	if cfg.load(SAVE_PATH) != OK:
+		return false
+	score = int(cfg.get_value("profile", "score", score))
+	coins = int(cfg.get_value("profile", "coins", coins))
+	lives = int(cfg.get_value("profile", "lives", lives))
+	level_index = int(cfg.get_value("profile", "level_index", level_index))
+	upgrade_wing = int(cfg.get_value("profile", "upgrade_wing", upgrade_wing))
+	upgrade_boost = int(cfg.get_value("profile", "upgrade_boost", upgrade_boost))
+	upgrade_freezer = int(cfg.get_value("profile", "upgrade_freezer", upgrade_freezer))
+	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
+	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
+	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
+	efekty = int(cfg.get_value("settings", "efekty", efekty))
+	dzwiek = int(cfg.get_value("settings", "dzwiek", dzwiek))
+	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))
+	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
+	return true
