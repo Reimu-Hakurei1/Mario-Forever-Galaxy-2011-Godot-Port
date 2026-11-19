@@ -57,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 			continue   # pierce: don't strike the same enemy twice
 		if position.distance_to(enemy.global_position) < 34.0:
 			_hit_ids[eid] = true
-			var killed := enemy.take_damage(damage)
+			var killed: bool = enemy.take_damage(damage)
 			# Impact spark — tiny fast explosion at the hit point. Skipped
 			# on kills since die() already spawns the big one.
 			if not killed:
