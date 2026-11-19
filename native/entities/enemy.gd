@@ -761,6 +761,8 @@ func _roll_drop() -> void:
 
 func _spawn_explosion(points: int = -1) -> void:
 	var boom := NativeExplosion.new()
+	# Heavy enemies get a bigger burst — scale follows the hit radius.
+	boom.burst_scale = clampf(_hit_radius / 30.0, 0.8, 2.4)
 	boom.global_position = position
 	get_parent().add_child(boom)
 

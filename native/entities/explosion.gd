@@ -10,18 +10,23 @@ const SPRITE_ID := 14             # s_explo_1 — 37 frame explosion
 const ANIM_FPS := 30.0
 const SCALE := 1.4
 
+# Configurable before add_child — boss kills use the original's
+# s_special_kaboom (236); big enemies scale the standard burst up.
+var sprite_id := SPRITE_ID
+var burst_scale := SCALE
+
 
 func _ready() -> void:
 	var anim := AnimatedSprite2D.new()
 	var frames := SpriteFrames.new()
 	frames.remove_animation("default")
 	frames.add_animation("boom")
-	for tex in NativeAssets.sprite_frames(SPRITE_ID):
+	for tex in NativeAssets.sprite_frames(sprite_id):
 		frames.add_frame("boom", tex)
 	frames.set_animation_speed("boom", ANIM_FPS)
 	anim.sprite_frames = frames
 	anim.play("boom")
-	anim.offset = -NativeAssets.sprite_origin(SPRITE_ID)
-	anim.scale = Vector2(SCALE, SCALE)
+	anim.offset = -NativeAssets.sprite_origin(sprite_id)
+	anim.scale = Vector2(burst_scale, burst_scale)
 	anim.animation_finished.connect(queue_free)
 	add_child(anim)

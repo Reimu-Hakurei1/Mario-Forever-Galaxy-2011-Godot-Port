@@ -291,6 +291,13 @@ func die() -> void:
 
 
 func _spawn_explosion() -> void:
+	# Boss kills get the original's kaboom effect (sprite 236,
+	# s_special_kaboom) plus the standard burst.
+	var kaboom := NativeExplosion.new()
+	kaboom.sprite_id = 236
+	kaboom.burst_scale = 2.2
+	kaboom.global_position = position
+	get_parent().add_child(kaboom)
 	for i in 5:
 		var boom := NativeExplosion.new()
 		boom.global_position = position + Vector2(randf_range(-80, 80), randf_range(-50, 50))
