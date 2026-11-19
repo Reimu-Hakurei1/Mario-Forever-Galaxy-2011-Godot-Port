@@ -299,6 +299,22 @@ func _on_level_pressed(idx: int) -> void:
 	NativeGame.active_level = idx
 	NativeGame.pending_level = NativeLevelTable.config_for(idx)
 	NativeGame.reset_run()
+	# Entering a new world's first level plays the inter-map briefing
+	# (objects/ui/next_map_obj.gd) before the flight — only on the
+	# frontier node, not when replaying old levels.
+	var world := NativeLevelTable.world_of(idx)
+	if world > 0 and NativeLevelTable.level_of(idx) == 0 \
+			and idx == NativeGame.level_index:
+		var lines: Array = NativeDialogueTable.NEXT_MAP.get(world, [])
+		if not lines.is_empty():
+			var talk := NativeBossDialogue.new()
+			add_child(talk)
+			talk.finished.connect(func():
+				if is_instance_valid(talk):
+					talk.queue_free()
+				_fade_to_arena())
+			talk.play(lines)
+			return
 	_fade_to_arena()
 
 
