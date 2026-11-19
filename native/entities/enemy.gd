@@ -37,7 +37,7 @@ const KIND_PROFILES := {
 	Kind.SHOOTER: {"sprite": 174, "score": 150, "shoot_interval": 170.0, "spread": 1},
 	Kind.KAMIKAZE: {"sprite": 11, "score": 120, "tint": Color(1.0, 0.55, 0.5)},
 	Kind.TANK: {"sprite": 178, "score": 300, "shoot_interval": 240.0, "spread": 3, "scale": 0.55},
-	Kind.EYE: {"sprite": 185, "score": 200, "shoot_interval": 110.0, "spread": 1, "burst": 3},
+	Kind.EYE: {"sprite": 185, "score": 1500, "shoot_interval": 110.0, "spread": 1, "burst": 3},
 	# Small swarm dart — fast, fragile, cheap kill.
 	Kind.MINI: {"sprite": 70, "score": 50, "chase": 2.6, "scale": 0.7},
 	# UFO variants — the original's iconic fighters.
@@ -107,8 +107,25 @@ var _dead := false
 var _shoot_timer := 0.0
 var _burst_left := 0
 var _score := DEATH_SCORE_DEFAULT
+var _hit_radius := 20.0            # contact radius — derived from sprite size
+
+# Sky-eye laser state machine (o_sky_eye celownik phases):
+# AIM reticle tracks the player → FIRE locks the beam → COOLDOWN → repeat.
+var _eye_state := 0                # 0 aim, 1 fire, 2 cooldown
+var _eye_timer := 0.0
+var _eye_target := Vector2.ZERO    # locked beam endpoint
+var _eye_lock := Vector2.ZERO      # point the reticle currently tracks
+var _aim_line: Line2D              # thin reticle line (aim phase)
+var _beam_line: Line2D             # thick damage beam (fire phase)
 
 const DEATH_SCORE_DEFAULT := 100
+# Sky-eye timings in frames — ported from g_sekwencja/g_ladowanie in
+# objects/enemies/sky_eye.gd: the reticle tracks for ~140f, the beam
+# stays lit ~100f, then a short cooldown before the next cycle.
+const EYE_AIM_TIME := 140.0
+const EYE_FIRE_TIME := 100.0
+const EYE_COOLDOWN := 50.0
+const EYE_BEAM_HALF_WIDTH := 22.0  # px corridor that hurts the ship
 
 
 func _ready() -> void:
@@ -125,6 +142,12 @@ func _ready() -> void:
 	_anim.sprite_frames = frames
 	_anim.play("fly")
 	_anim.offset = -NativeAssets.sprite_origin(_sprite_id)
+	# Contact radius follows the real sprite bounds — the sky-eye sprite
+	# is 201x154, so a fixed radius let the ship fly through it.
+	var texs := NativeAssets.sprite_frames(_sprite_id)
+	if not texs.is_empty():
+		var ts := texs[0].get_size()
+		_hit_radius = maxf(18.0, minf(ts.x, ts.y) * 0.45 * _scale_factor)
 	if _scale_factor != 1.0:
 		_anim.scale = Vector2(_scale_factor, _scale_factor)
 	if _tint != Color.WHITE:
@@ -133,6 +156,8 @@ func _ready() -> void:
 
 	sway_phase = randf() * TAU
 	_shoot_timer = shoot_interval * randf_range(0.5, 1.0)
+	if kind == Kind.EYE:
+		_eye_timer = EYE_AIM_TIME
 
 
 var _sprite_id := 11
@@ -175,8 +200,10 @@ func _physics_process(_delta: float) -> void:
 	if scroll_down > 0.0:
 		position.y += scroll_down
 
-	# Shooter-ish kinds share the hold-position-and-fire behaviour.
-	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
+	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
+	if kind == Kind.EYE:
+		_behave_skyeye()
+	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO]:
 		_behave_shooter()
@@ -258,6 +285,76 @@ func _tick_shooter() -> void:
 			_shoot_timer = shoot_interval
 		else:
 			_shoot_timer = 30.0   # re-check soon rather than full interval
+
+
+## o_sky_eye — the big eye. Holds its slot, then cycles a telegraphed
+## laser: AIM shows a thin reticle tracking the ship, FIRE locks the
+## endpoint and burns a wide beam, COOLDOWN, repeat. Ported from
+## objects/enemies/sky_eye.gd (g_sekwencja / g_ladowanie / g_celownik).
+func _behave_skyeye() -> void:
+	if mode == Mode.SPAWN:
+		var to_slot := formation_slot - position
+		if to_slot.length() < 8.0:
+			mode = Mode.FORMATION
+		else:
+			position += to_slot.normalized() * drift_speed
+		return
+	_sway_and_track()
+	_ensure_eye_lines()
+
+	var ship := get_tree().get_first_node_in_group("player")
+	_eye_timer -= 1.0
+	match _eye_state:
+		0:  # AIM — reticle chases the ship
+			if ship != null:
+				_eye_lock = ship.global_position
+				_anim.rotation = (ship.global_position - position).angle()
+			_aim_line.visible = true
+			_aim_line.points = [Vector2.ZERO, to_local(_eye_lock)]
+			if _eye_timer <= 0.0:
+				_eye_state = 1
+				_eye_timer = EYE_FIRE_TIME
+				_eye_target = _eye_lock       # beam locks where it aimed
+				_beam_line.visible = true
+				_aim_line.visible = false
+		1:  # FIRE — beam is live; the corridor hurts the ship
+			_beam_line.points = [Vector2.ZERO, to_local(_eye_target)]
+			if ship != null and not ship.invulnerable \
+					and _point_segment_distance(ship.global_position,
+						position, _eye_target) < EYE_BEAM_HALF_WIDTH:
+				NativeGame.damage_player(15.0)
+			if _eye_timer <= 0.0:
+				_eye_state = 2
+				_eye_timer = EYE_COOLDOWN
+				_beam_line.visible = false
+		2:  # COOLDOWN
+			if _eye_timer <= 0.0:
+				_eye_state = 0
+				_eye_timer = EYE_AIM_TIME
+
+
+## Lazily build the reticle + beam Line2Ds (children, freed with the eye).
+func _ensure_eye_lines() -> void:
+	if _aim_line == null:
+		_aim_line = Line2D.new()
+		_aim_line.width = 2.0
+		_aim_line.default_color = Color(1.0, 0.25, 0.25, 0.8)
+		_aim_line.z_index = 5
+		add_child(_aim_line)
+	if _beam_line == null:
+		_beam_line = Line2D.new()
+		_beam_line.width = EYE_BEAM_HALF_WIDTH * 2.0
+		_beam_line.default_color = Color(1.0, 0.35, 0.1, 0.9)
+		_beam_line.z_index = 6
+		_beam_line.visible = false
+		add_child(_beam_line)
+
+
+## Distance from `p` to the segment a→b (for the beam hit corridor).
+static func _point_segment_distance(p: Vector2, a: Vector2, b: Vector2) -> float:
+	var ab := b - a
+	var t := clampf((p - a).dot(ab) / maxf(ab.length_squared(), 0.001), 0.0, 1.0)
+	return p.distance_to(a + ab * t)
 
 
 ## Relentless dive — beelines for the player the whole time.
@@ -410,7 +507,9 @@ func _check_player_collision() -> void:
 		return
 	var to_enemy: Vector2 = position - ship.global_position
 	var dist: float = to_enemy.length()
-	if dist < 40.0 and dist > 0.01:
+	# Radius comes from the sprite bounds — big enemies (eye, tanks)
+	# can't be flown through anymore.
+	if dist < _hit_radius + 18.0 and dist > 0.01:
 		NativeGame.damage_player(15.0)
 		# Bounce the player away from the enemy — negate the ship→enemy
 		# vector so contact on the left drives the ship right, etc.

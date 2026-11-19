@@ -179,7 +179,7 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 			return _waves_from([
 				["shooter", "top", "formation", 4, hp * 1.4],
 				["tank", "top", "formation", 2, hp * 2.5],
-				["eye", "top", "formation", 3, hp * 1.6],
+				["eye", "top", "formation", 1, hp * 6.0],
 				["ufo_a", "right", "formation", 4, hp * 1.4],
 				["ros", "top", "formation", 3, hp * 2.0],
 			], t, 8.0)
@@ -197,7 +197,7 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 				["jumbo", "top", "chase", 3, hp * 2.5],
 				["crab", "top", "formation", 2, hp * 2.0],
 				["ufo_a", "right", "formation", 4, hp * 1.4],
-				["eye", "top", "formation", 3, hp * 1.6],
+				["eye", "top", "formation", 1, hp * 6.0],
 			], t, 8.5)
 
 
@@ -248,7 +248,7 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			"mini": hp = hp * 0.4
 			"kamikaze", "ufo_b": hp = hp * 0.6
 			"tank", "jumbo": hp = hp * 2.5
-			"eye": hp = hp * 1.6
+			"eye": hp = hp * 6.0
 			"shooter", "ufo_a": hp = hp * 1.4
 			"ros": hp = hp * 2.0
 			"crab": hp = hp * 2.0
