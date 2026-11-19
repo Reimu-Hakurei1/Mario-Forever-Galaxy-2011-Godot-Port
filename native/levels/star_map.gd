@@ -350,6 +350,12 @@ func _center_on_frontier() -> void:
 ## glides the camera back to the frontier node — the original's pad
 ## behaviour (hold to inspect, release to return).
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_C:
+		# Card game — the original's card_game_1/2 rooms. No in-game
+		# trigger was ever wired in the source, so it's a free-play
+		# bonus reachable from the map.
+		get_tree().change_scene_to_file("res://native/ui/card_game.tscn")
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			_panning = event.pressed
