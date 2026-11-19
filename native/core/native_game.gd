@@ -58,6 +58,8 @@ static var overheating: float = 0.0  ## G.overheating — gun heat
 static var paused: bool = false      ## G.pauza
 static var enemies_killed: int = 0
 static var enemies_missed: int = 0
+static var kill_streak: int = 0          ## consecutive kills within the window
+static var streak_expiry: int = 0        ## msec timestamp when the streak dies
 
 # Overheat ceiling from the original: 500 base + 500 per freezer upgrade.
 const OVERHEAT_BASE := 500.0
@@ -78,6 +80,7 @@ static func reset_run() -> void:
 	overheating = 0.0
 	overdrive_time = 0.0
 	shield_time = 0.0
+	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0
 
@@ -94,6 +97,21 @@ static func add_score(points: int) -> void:
 
 static func kill_enemy() -> void:
 	enemies_killed += 1
+	# Kill streak — kills within 3s of each other chain into a score
+	# multiplier (score_mult). The timestamp approach needs no ticking.
+	var now := Time.get_ticks_msec()
+	if now > streak_expiry:
+		kill_streak = 0
+	kill_streak += 1
+	streak_expiry = now + 3000
+
+
+## Score multiplier from the current streak — +5% per chained kill,
+## capped at x2 (21+ streak).
+static func score_mult() -> float:
+	if kill_streak < 2 or Time.get_ticks_msec() > streak_expiry:
+		return 1.0
+	return 1.0 + minf(kill_streak - 1, 20) * 0.05
 
 
 static func damage_player(amount: float) -> void:

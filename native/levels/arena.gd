@@ -209,10 +209,15 @@ func _respawn() -> void:
 
 
 func _on_level_cleared() -> void:
-	print("LEVEL CLEAR — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
+	# Flawless bonus — no enemy escaped the arena this level.
+	var flawless := NativeGame.enemies_missed == 0
+	if flawless:
+		NativeGame.add_score(500)
+	print("LEVEL CLEAR — score=%d coins=%d%s" % [
+		NativeGame.score, NativeGame.coins, " FLAWLESS+500" if flawless else ""])
 	# Victory sting — rising chime (the original's upgrade/fanfare sfx).
 	NativeAssets.play_sound(105)   # snd_upgrade_up
-	_show_banner("LEVEL CLEAR!")
+	_show_banner("LEVEL CLEAR!" + ("\nFLAWLESS +500" if flawless else ""))
 	_clear_timer = LEVEL_CLEAR_DELAY
 
 

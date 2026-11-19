@@ -76,6 +76,9 @@ func _process(_delta: float) -> void:
 	# Powerup timers — shown only while a buff is running so the bar
 	# area stays clean during normal play.
 	var buffs: Array[String] = []
+	if NativeGame.kill_streak >= 3 \
+			and Time.get_ticks_msec() <= NativeGame.streak_expiry:
+		buffs.append("STREAK x%d" % NativeGame.kill_streak)
 	if NativeGame.shield_time > 0.0:
 		buffs.append("SHIELD %ds" % ceili(NativeGame.shield_time))
 	if NativeGame.overdrive_time > 0.0:

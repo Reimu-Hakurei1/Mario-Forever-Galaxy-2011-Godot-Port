@@ -306,9 +306,11 @@ func die() -> void:
 		return
 	_dead = true
 	NativeGame.kill_enemy()
-	NativeGame.add_score(_score)
+	# Streak multiplier applies to the kill score — chained kills pay more.
+	var points := int(_score * NativeGame.score_mult())
+	NativeGame.add_score(points)
 	_roll_drop()
-	_spawn_explosion()
+	_spawn_explosion(points)
 	queue_free()
 
 
@@ -326,14 +328,15 @@ func _roll_drop() -> void:
 			return
 
 
-func _spawn_explosion() -> void:
+func _spawn_explosion(points: int = -1) -> void:
 	var boom := NativeExplosion.new()
 	boom.global_position = position
 	get_parent().add_child(boom)
 
 	# Floating score popup — the "+100" the original draws on kills.
+	# Shows the streak-multiplied amount actually awarded.
 	var popup := Label.new()
-	popup.text = "+%d" % _score
+	popup.text = "+%d" % (points if points >= 0 else _score)
 	popup.add_theme_font_size_override("font_size", 18)
 	popup.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
 	popup.add_theme_color_override("font_outline_color", Color(0, 0, 0))

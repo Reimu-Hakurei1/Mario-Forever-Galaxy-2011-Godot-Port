@@ -134,7 +134,8 @@ func _build_grid() -> void:
 	for w in worlds:
 		# World label on the left of each row — name + number.
 		var wl := Label.new()
-		wl.text = "W%d %s" % [w + 1, WORLD_NAMES[w]]
+		wl.text = "W%d %s%s" % [w + 1, WORLD_NAMES[w],
+			" ✓" if (w + 1) * NativeLevelTable.LEVELS_PER_WORLD - 1 <= NativeGame.level_index else ""]
 		wl.add_theme_font_size_override("font_size", 14)
 		wl.add_theme_color_override("font_color", WORLD_COLORS[w])
 		wl.position = Vector2(start_x - 90, start_y + w * ROW_HEIGHT + NODE_SIZE / 2 - 10)
@@ -198,11 +199,11 @@ func _build_ship_cursor(start_x: float, start_y: float, _per_world: int) -> void
 
 
 ## One level node — a star button showing world/level and lock state.
-func _make_node(idx: int, w: int, _l: int) -> Button:
+func _make_node(idx: int, w: int, l: int) -> Button:
 	var btn := Button.new()
 	btn.custom_minimum_size = Vector2(NODE_SIZE, NODE_SIZE)
 	btn.size = Vector2(NODE_SIZE, NODE_SIZE)
-	btn.text = "%d-%d" % [w + 1, _l + 1]
+	btn.text = "%d-%d" % [w + 1, l + 1]
 	btn.add_theme_font_size_override("font_size", 13)
 
 	var unlocked: bool = idx <= NativeGame.level_index
@@ -213,6 +214,8 @@ func _make_node(idx: int, w: int, _l: int) -> Button:
 	else:
 		btn.modulate = Color(0.25, 0.25, 0.3)
 	btn.disabled = not unlocked
+	btn.tooltip_text = "WORLD %d — LEVEL %d%s" % [w + 1, l + 1,
+		" — BOSS" if l % 5 == 4 else ""]
 
 	if unlocked:
 		btn.pressed.connect(_on_level_pressed.bind(idx))
