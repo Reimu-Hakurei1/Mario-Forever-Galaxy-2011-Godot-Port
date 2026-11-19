@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
+[ext_resource type="Script" path="res://engine/wave_editing_guide.gd" id="wave_guide"]
 
 [ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
 [ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="editable_setting"]
@@ -229,6 +230,9 @@ text = "o_bonusho [room_create_2]"
 script = ExtResource("editable_waves")
 z_index = 100
 
+
+[node name="WaveEditingGuide" type="Node2D" parent="Waves"]
+script = ExtResource("wave_guide")
 [node name="Timing" type="Node" parent="Waves"]
 
 [node name="Enemies" type="Node2D" parent="Waves"]
