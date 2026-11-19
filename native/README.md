@@ -30,11 +30,14 @@ native/
                         grunts (goomba/mini/dart/weaver/ghost/ghost2/
                         ghost3/ducher_fall/bonus), shooters (shooter/
                         ufo_a/ufo_a2/ufo_b/ros/crab/stinger/drone/hunter/
-                        lancer/rocket_ufo), divers (kamikaze/ace),
-                        heavies (tank/jumbo/elite/warlord), the sky-eye
-                        laser boss (+blue EYE2 phase), castle defenses
-                        (cannon/flame_cannon/rotary/fat_cannon/flame/fan),
-                        sprite-derived contact radii, drop table
+                        lancer/rocket_ufo/flame_shooter), divers
+                        (kamikaze/ace/runner — the accelerating suicide
+                        runner), heavies (tank/jumbo/elite/warlord/
+                        fat_boy), the sky-eye laser boss (+blue EYE2
+                        phase), castle defenses (cannon/flame_cannon/
+                        rotary/fat_cannon/flame/fan), indestructible
+                        bonus-stage blockers, sprite-derived contact
+                        radii, original o_drop table
     enemy_ring.gd      Orbiting swarm + team fighters — o_enemy_around/
                         ducher_around rings, o_*_team squads (mixed
                         members, screen drift, mother volleys)
