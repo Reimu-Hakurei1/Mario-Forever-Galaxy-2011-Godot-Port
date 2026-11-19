@@ -65,12 +65,16 @@ static func config_for(level_index: int) -> Dictionary:
 	var difficulty := level_index  # 0-based progression drives wave size
 
 	# Hand-authored blueprint gives each level its signature opening;
-	# procedural waves tail it off so the ending still varies per level.
+	# scripted o_wave_* patterns fill the middle; procedural waves tail
+	# it off so the ending still varies per level.
 	var waves := _blueprint_for(world, level, difficulty)
+	var scripted := _scripted_for(world, level, difficulty,
+		waves[waves.size() - 1]["delay"] + 5.0)
+	waves.append_array(scripted)
 	var tail := _generate_waves(difficulty, world)
 	# Take only the last two procedural waves as the finale, re-spaced
-	# after the blueprint's last wave (their own delays are absolute to
-	# the procedural schedule, so they can't be reused directly).
+	# after the scripted block (their own delays are absolute to the
+	# procedural schedule, so they can't be reused directly).
 	var finale_start: float = waves[waves.size() - 1]["delay"] + 5.0
 	var picked := 0
 	for i in range(maxi(0, tail.size() - 2), tail.size()):
@@ -205,6 +209,99 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 				["ufo_a", "right", "formation", 4, hp * 1.4],
 				["eye", "top", "formation", 1, hp * 6.0],
 			], t, 8.5)
+
+
+## Scripted wave catalogue — translations of the original's ~130
+## o_wave_* spawner objects (objects/spawners/). Each family below
+## corresponds to a real legacy script family:
+##
+##   asteroids   — o_wave_4_asteroids: rock clumps drifting in from top
+##   divers      — o_perioder_*: kamikaze streams dropping from above
+##   piranhas    — o_wave_map_6_piranhasus: swarm rising from below
+##   ghosts      — o_wave_ghost_*: shy phantoms dripping from top corners
+##   zigzag      — o_wave_9_zigzag: alternating side entries
+##   grid        — wave_map_4_grouping_*: 30-slot 3-row formations
+##   swarm       — o_wave_11_spikey_swarm: tight kamikaze clouds
+##   gunship     — o_wave_14_gun_range: shooter streams
+##   heavy       — heavyweight escorts (tank/eye/elite mixes)
+##   ufo_stream  — UFO streams crossing the arena
+##   circle      — o_wave_*_circle*: whole wave released as one ring
+##   bonus/loot  — o_wave_6_bonus_wave / wave_funny_bonus_catch: pickups
+##
+## `interval_s` is the original's per-spawn tick (~15-20 frames ≈ 0.3s).
+## Counts are scaled down from the originals' 100-200 where needed to
+## keep native HP/damage pacing fair.
+static func _scripted_for(world: int, level: int, difficulty: int,
+		start_delay: float) -> Array:
+	var hp := minf(8.0 + difficulty * 0.4, 40.0)
+	var waves: Array = []
+	var t := start_delay
+	# Two scripted waves per level, chosen deterministically per world
+	# so every world shows its signature spawner families.
+	var pool: Array = _SCRIPTED_FAMILIES[world]
+	var first: int = pool[level % pool.size()]
+	var pool2: Array = _SCRIPTED_FAMILIES[(world + 3) % _SCRIPTED_FAMILIES.size()]
+	var second: int = pool2[(level + 1) % pool2.size()]
+	for spec_index in [first, second]:
+		waves.append(_scripted_wave(_SCRIPTED_SPECS[spec_index], t, hp))
+		t += 9.0
+	return waves
+
+
+## Per-world scripted wave pools — indices into _SCRIPTED_SPECS.
+const _SCRIPTED_FAMILIES := [
+	[0, 1, 9, 7],   # world 1: asteroids, divers, bonus, swarm
+	[2, 3, 8, 6],   # world 2: piranhas, ghosts, ufo stream, gunship
+	[5, 4, 6, 10],  # world 3: grid, zigzag, gunship, circle
+	[2, 11, 7, 9],  # world 4: piranhas, loot, swarm, bonus
+	[8, 1, 6, 4],   # world 5: ufo stream, divers, gunship, zigzag
+	[5, 10, 3, 2],  # world 6: grid, circle, ghosts, piranhas
+	[4, 6, 1, 11],  # world 7: zigzag, gunship, divers, loot
+	[10, 5, 7, 0],  # world 8: circle, grid, swarm, asteroids
+]
+
+
+## Pattern specs: [pattern, kinds, count, edge].
+const _SCRIPTED_SPECS := [
+	["asteroids", ["ros", "crab", "jumbo"], 8, "top"],
+	["divers", ["kamikaze", "ufo_b", "dart"], 20, "top"],
+	["piranhas", ["weaver", "dart", "mini"], 16, "bottom"],
+	["ghosts", ["ghost", "ghost", "eye"], 10, "top"],
+	["zigzag", ["goomba", "shooter", "kamikaze"], 14, "left"],
+	["grid", ["shooter", "goomba", "mini"], 30, "top"],
+	["swarm", ["mini", "kamikaze", "dart"], 18, "top"],
+	["gunship", ["rocket_ufo", "ufo_a", "shooter"], 8, "right"],
+	["heavy", ["tank", "eye", "elite"], 6, "top"],
+	["ufo_stream", ["ufo_a", "ufo_b", "ros"], 12, "top"],
+	["circle", ["goomba", "mini", "shooter"], 10, "top"],
+	["loot", [], 5, "top"],
+	["bonus", ["bonus_fall", "ducher_fall"], 6, "top"],
+]
+
+
+static func _scripted_wave(spec: Array, delay: float, hp: float) -> Dictionary:
+	var pattern: String = spec[0]
+	var kinds: Array = spec[1]
+	var count: int = spec[2]
+	var edge: String = spec[3]
+	var wave := {
+		"delay": delay, "count": count, "edge": edge,
+		"mode": "formation", "health": hp,
+		"pattern": pattern, "interval_s": 0.3,
+	}
+	if not kinds.is_empty():
+		wave["kinds"] = kinds
+		wave["kind"] = kinds[0]
+	# Circle waves release as one ring — count is orbiter count.
+	if pattern == "circle":
+		wave["count"] = count
+		wave["interval_s"] = 0.05
+	# Loot/bonus waves drop pickups, not enemies.
+	if pattern == "loot":
+		wave["pattern"] = "loot"
+	if pattern == "bonus":
+		wave["pattern"] = "bonus"
+	return wave
 
 
 ## Build wave dicts from compact [kind, edge, mode, count, health] rows.

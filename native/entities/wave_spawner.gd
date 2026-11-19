@@ -71,8 +71,9 @@ func _physics_process(delta: float) -> void:
 	# Tick each active wave: spawn one enemy per interval until count is met.
 	for wave in _active:
 		wave["spawn_timer"] += delta
-		while wave["spawned"] < wave["count"] and wave["spawn_timer"] >= spawn_interval:
-			wave["spawn_timer"] -= spawn_interval
+		var gap: float = wave.get("interval_s", spawn_interval)
+		while wave["spawned"] < wave["count"] and wave["spawn_timer"] >= gap:
+			wave["spawn_timer"] -= gap
 			wave["spawned"] += 1
 			_spawn_enemy(wave)
 
@@ -84,7 +85,17 @@ func _physics_process(delta: float) -> void:
 ## Spawn one enemy at the wave's entry edge, aimed at a formation slot.
 func _spawn_enemy(wave: Dictionary) -> void:
 	var edge: String = wave["edge"]
-	var pos := _edge_position(edge, wave.get("spawned", 0))
+	# Scripted waves (ported o_wave_* spawner objects) carry a `pattern`
+	# and a `kinds` mix — position/kind come from the choreography.
+	var script_pattern: String = wave.get("pattern", "")
+	if script_pattern == "loot":
+		_maybe_spawn_loot(wave)
+		return
+	if script_pattern == "circle":
+		_spawn_ring_wave(wave, edge)
+		return
+	var pos := _scripted_position(script_pattern, edge,
+		wave.get("spawned", 0))
 
 	# The orbiting swarm is a spawner object, not a single enemy —
 	# o_enemy_around_1 releases ten grunts on a rotating ring.
@@ -114,50 +125,145 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	enemy.health = wave.get("health", 10.0)
 	enemy.global_position = pos
 
-	# Enemy variant — string name → Kind enum. Keep in sync with
-	# NativeLevelTable.KINDS and enemy.gd's KIND_PROFILES.
-	match wave.get("kind", "goomba"):
-		"shooter", "ufo": enemy.kind = NativeEnemy.Kind.SHOOTER
-		"kamikaze": enemy.kind = NativeEnemy.Kind.KAMIKAZE
-		"tank": enemy.kind = NativeEnemy.Kind.TANK
-		"eye": enemy.kind = NativeEnemy.Kind.EYE
-		"mini": enemy.kind = NativeEnemy.Kind.MINI
-		"ufo_a": enemy.kind = NativeEnemy.Kind.UFO_A
-		"ufo_b": enemy.kind = NativeEnemy.Kind.UFO_B
-		"ros": enemy.kind = NativeEnemy.Kind.ROS
-		"crab": enemy.kind = NativeEnemy.Kind.CRAB
-		"jumbo": enemy.kind = NativeEnemy.Kind.JUMBO
-		"elite": enemy.kind = NativeEnemy.Kind.ELITE
-		"dart": enemy.kind = NativeEnemy.Kind.DART
-		"stinger": enemy.kind = NativeEnemy.Kind.STINGER
-		"weaver": enemy.kind = NativeEnemy.Kind.WEAVER
-		"drone": enemy.kind = NativeEnemy.Kind.DRONE
-		"hunter": enemy.kind = NativeEnemy.Kind.HUNTER
-		"warlord": enemy.kind = NativeEnemy.Kind.WARLORD
-		"lancer": enemy.kind = NativeEnemy.Kind.LANCER
-		"ace": enemy.kind = NativeEnemy.Kind.ACE
-		"ghost": enemy.kind = NativeEnemy.Kind.GHOST
-		"rocket_ufo": enemy.kind = NativeEnemy.Kind.ROCKET_UFO
-		"cannon": enemy.kind = NativeEnemy.Kind.CANNON
-		"flame_cannon": enemy.kind = NativeEnemy.Kind.FLAME_CANNON
-		"rotary": enemy.kind = NativeEnemy.Kind.ROTARY
-		"fat_cannon": enemy.kind = NativeEnemy.Kind.FAT_CANNON
-		"flame": enemy.kind = NativeEnemy.Kind.FLAME
-		"fan": enemy.kind = NativeEnemy.Kind.FAN
-		"ducher_fall": enemy.kind = NativeEnemy.Kind.FALLER
-		"bonus_fall": enemy.kind = NativeEnemy.Kind.BONUS
-		_: enemy.kind = NativeEnemy.Kind.GOOMBA
+	# Scripted waves mix several kinds — cycle the `kinds` list by spawn
+	# index; plain waves use the single `kind` string.
+	var kind_name: String = wave.get("kind", "goomba")
+	var kinds: Array = wave.get("kinds", [])
+	if not kinds.is_empty():
+		kind_name = str(kinds[wave.get("spawned", 0) % kinds.size()])
+	enemy.kind = _kind_from_name(kind_name)
 
 	# Formation slots are laid out in the upper half of the room — enemies
 	# enter, take a slot, and sway there while the player fights through.
 	var slot_index: int = wave["spawned"]
 	enemy.formation_slot = _formation_slot(slot_index)
-	match wave.get("mode", "formation"):
-		"chase": enemy.mode = NativeEnemy.Mode.CHASE
-		"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
-		_: enemy.mode = NativeEnemy.Mode.SPAWN
+	# Pattern-driven mode overrides: divers kamikaze, piranhas chase
+	# from below, castle streams scroll with the world.
+	match script_pattern:
+		"divers", "kamikaze_spikeys":
+			enemy.mode = NativeEnemy.Mode.KAMIKAZE
+		"piranhas":
+			enemy.mode = NativeEnemy.Mode.CHASE
+		"grid":
+			enemy.mode = NativeEnemy.Mode.SPAWN   # glides to its grid slot
+		"zigzag", "ghosts", "ufo_stream":
+			enemy.mode = NativeEnemy.Mode.CHASE
+		_:
+			match wave.get("mode", "formation"):
+				"chase": enemy.mode = NativeEnemy.Mode.CHASE
+				"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
+				_: enemy.mode = NativeEnemy.Mode.SPAWN
+	if script_pattern == "castle_stream":
+		enemy.scroll_down = 2.0
+		enemy.mode = NativeEnemy.Mode.CHASE
+	# Grid slots come from the original's dox/doy layout (10 columns,
+	# 80px pitch, three rows at y=64/128/196) instead of sway slots.
+	if script_pattern == "grid":
+		var col := slot_index % 10
+		var row := slot_index / 10
+		enemy.formation_slot = Vector2(60 + col * 80, 96 + row * 72)
 
 	get_parent().add_child(enemy)
+
+
+## Position for a scripted spawn — the o_wave_* choreography reduced
+## to entry edge + pattern offset.
+func _scripted_position(pattern: String, edge: String, index: int) -> Vector2:
+	var room := NativeGame.room_size()
+	match pattern:
+		"piranhas":
+			# Piranha waves rise from below the arena.
+			return Vector2(randf_range(60, room.x - 60), room.y + 60.0)
+		"ghosts":
+			# Ghost waves drip in from the top corners alternately.
+			var side := -1.0 if index % 2 == 0 else 1.0
+			return Vector2(room.x / 2.0 + side * randf_range(200, 460),
+				-(60.0 + randf() * 200.0))
+		"zigzag":
+			# Alternating side entries crossing the screen.
+			var left := index % 2 == 0
+			return Vector2(-40.0 if left else room.x + 40.0,
+				randf_range(80, room.y * 0.6))
+		"grid":
+			# Enter above the grid slot and glide down to it.
+			var col := index % 10
+			var row := index / 10
+			return Vector2(60 + col * 80, -(40.0 + row * 30.0))
+		"asteroids", "swarm":
+			# Clumps — several enemies share a spawn x.
+			var clump := index / 5
+			return Vector2(80 + int((clump * 173) % int(room.x - 160))
+				+ randf_range(-30, 30), -(80.0 + randf() * 200.0))
+		_:
+			return _edge_position(edge, index)
+
+
+## Circle waves (o_wave_*_circle*) release their whole count as one
+## orbiting ring — reuse the ring-mother with a bigger orbiter count.
+func _spawn_ring_wave(wave: Dictionary, edge: String) -> void:
+	var count: int = int(wave.get("count", 10))
+	# Only the first spawn of the wave creates the ring; the rest are
+	# no-ops so the wave completes right after.
+	if wave.get("ring_done", false):
+		return
+	wave["ring_done"] = true
+	var ring := NativeEnemyRing.new()
+	ring.orbiters_count = clampi(count, 4, 16)
+	ring.start_radius = 190.0
+	ring.shrink_delay = 600.0
+	ring.orbiter_kind = _kind_from_name(
+		str(wave.get("kinds", ["goomba"])[0]))
+	ring.orbiter_health = wave.get("health", 10.0)
+	ring.global_position = _edge_position(edge, 0)
+	get_parent().add_child(ring)
+
+
+## Bonus/loot waves (o_wave_6_bonus_wave, wave_funny_bonus_catch) drop
+## pickups instead of enemies — the original's "catch the bonus" waves.
+func _maybe_spawn_loot(wave: Dictionary) -> void:
+	var pickup := NativePickup.new()
+	var roll := randf()
+	pickup.kind = NativePickup.Kind.GEM if roll < 0.4 \
+		else (NativePickup.Kind.COIN if roll < 0.8 else NativePickup.Kind.HEALTH)
+	pickup.global_position = Vector2(randf_range(80, 944),
+		randf_range(80, 400))
+	get_parent().add_child(pickup)
+
+
+## String wave-kind name → NativeEnemy.Kind (single source of truth —
+## used by both regular and scripted/circle waves).
+static func _kind_from_name(kind_name: String) -> int:
+	match kind_name:
+		"shooter", "ufo": return NativeEnemy.Kind.SHOOTER
+		"kamikaze": return NativeEnemy.Kind.KAMIKAZE
+		"tank": return NativeEnemy.Kind.TANK
+		"eye": return NativeEnemy.Kind.EYE
+		"mini": return NativeEnemy.Kind.MINI
+		"ufo_a": return NativeEnemy.Kind.UFO_A
+		"ufo_b": return NativeEnemy.Kind.UFO_B
+		"ros": return NativeEnemy.Kind.ROS
+		"crab": return NativeEnemy.Kind.CRAB
+		"jumbo": return NativeEnemy.Kind.JUMBO
+		"elite": return NativeEnemy.Kind.ELITE
+		"dart": return NativeEnemy.Kind.DART
+		"stinger": return NativeEnemy.Kind.STINGER
+		"weaver": return NativeEnemy.Kind.WEAVER
+		"drone": return NativeEnemy.Kind.DRONE
+		"hunter": return NativeEnemy.Kind.HUNTER
+		"warlord": return NativeEnemy.Kind.WARLORD
+		"lancer": return NativeEnemy.Kind.LANCER
+		"ace": return NativeEnemy.Kind.ACE
+		"ghost": return NativeEnemy.Kind.GHOST
+		"rocket_ufo": return NativeEnemy.Kind.ROCKET_UFO
+		"cannon": return NativeEnemy.Kind.CANNON
+		"flame_cannon": return NativeEnemy.Kind.FLAME_CANNON
+		"rotary": return NativeEnemy.Kind.ROTARY
+		"fat_cannon": return NativeEnemy.Kind.FAT_CANNON
+		"flame": return NativeEnemy.Kind.FLAME
+		"fan": return NativeEnemy.Kind.FAN
+		"ducher_fall": return NativeEnemy.Kind.FALLER
+		"bonus_fall": return NativeEnemy.Kind.BONUS
+		_: return NativeEnemy.Kind.GOOMBA
 
 
 ## Pick a spawn point just outside the requested room edge.

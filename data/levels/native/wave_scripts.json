@@ -1,0 +1,937 @@
+{
+ "ghost_wave": {
+  "pattern": "ghosts",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "ghost"
+  ]
+ },
+ "wave_1": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_10_circle_wait": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_11_spikey_swarm": {
+  "pattern": "swarm",
+  "count": 60,
+  "interval": 10,
+  "kinds": [
+   "mini"
+  ]
+ },
+ "wave_12_castle_2": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "castle_enemy",
+   "fat_boy"
+  ]
+ },
+ "wave_12_key_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "castle_enemy"
+  ]
+ },
+ "wave_14_gun_range": {
+  "pattern": "gunship",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_15": {
+  "pattern": "stream",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "rocket_ufo"
+  ]
+ },
+ "wave_16": {
+  "pattern": "stream",
+  "count": 8,
+  "interval": 10,
+  "kinds": [
+   "rocket_ufo"
+  ]
+ },
+ "wave_16_better": {
+  "pattern": "stream",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "ghost"
+  ]
+ },
+ "wave_16_better_2": {
+  "pattern": "stream",
+  "count": 30,
+  "interval": 10,
+  "kinds": [
+   "stinger"
+  ]
+ },
+ "wave_16_better_3": {
+  "pattern": "stream",
+  "count": 3,
+  "interval": 20,
+  "kinds": [
+   "ufo_a",
+   "ufo_b"
+  ]
+ },
+ "wave_17": {
+  "pattern": "stream",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "mini",
+   "shooter"
+  ]
+ },
+ "wave_18_circle_1": {
+  "pattern": "circle",
+  "count": 9,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_18_circle_2": {
+  "pattern": "circle",
+  "count": 9,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_18_circle_3": {
+  "pattern": "circle",
+  "count": 9,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_18_circle_4": {
+  "pattern": "circle",
+  "count": 30,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_18_circle_5": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_2": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_20_kamikaze_spikeys": {
+  "pattern": "divers",
+  "count": 30,
+  "interval": 20,
+  "kinds": [
+   "kamikaze"
+  ]
+ },
+ "wave_20_troopa_circles_1": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_20_troopa_circles_2": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_20_troopa_circles_3": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_21_big_circle": {
+  "pattern": "circle",
+  "count": 50,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "crab"
+  ]
+ },
+ "wave_22_goomba_revenge": {
+  "pattern": "stream",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "elite",
+   "warlock",
+   "rocket_ufo"
+  ]
+ },
+ "wave_3": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_4_asteroids": {
+  "pattern": "asteroids",
+  "count": 40,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_4_asteroids_1": {
+  "pattern": "asteroids",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_5_circle": {
+  "pattern": "circle",
+  "count": 10,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_6_bonus_wave": {
+  "pattern": "bonus",
+  "count": 40,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_6_bonus_wave_2": {
+  "pattern": "bonus",
+  "count": 40,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_7_castle_1": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "boss",
+   "cannon"
+  ]
+ },
+ "wave_7_castle_2": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon",
+   "boss"
+  ]
+ },
+ "wave_8": {
+  "pattern": "stream",
+  "count": 60,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_9_zigzag": {
+  "pattern": "zigzag",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_funny_bonus_catch": {
+  "pattern": "bonus",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "bonus_fall"
+  ]
+ },
+ "wave_ghost_1": {
+  "pattern": "ghosts",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "ghost"
+  ]
+ },
+ "wave_ghost_2": {
+  "pattern": "ghosts",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "ghost",
+   "shy_ghost"
+  ]
+ },
+ "wave_ghost_2_castle": {
+  "pattern": "ghosts",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "boss",
+   "cannon"
+  ]
+ },
+ "wave_guardians_1": {
+  "pattern": "gunship",
+  "count": 6,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_help_1": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_3_asteroids": {
+  "pattern": "asteroids",
+  "count": 100,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_3_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_3_two_fire_cans": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_castle_rush": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_4_castle_rush_2": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_4_crates": {
+  "pattern": "castle_stream",
+  "count": 5,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_4_fat_boy": {
+  "pattern": "heavy",
+  "count": 10,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_fat_boy_2": {
+  "pattern": "heavy",
+  "count": 10,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_1": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_10": {
+  "pattern": "grid",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_11": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_12": {
+  "pattern": "grid",
+  "count": 5,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_13": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_14": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_15": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_16": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_16_plus": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_17": {
+  "pattern": "grid",
+  "count": 350,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_18": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_19": {
+  "pattern": "grid",
+  "count": 400,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_2": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_20": {
+  "pattern": "grid",
+  "count": 400,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_21": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_22": {
+  "pattern": "grid",
+  "count": 300,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_23": {
+  "pattern": "grid",
+  "count": 5,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_24": {
+  "pattern": "grid",
+  "count": 300,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_25": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_26": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_27": {
+  "pattern": "grid",
+  "count": 100,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_28": {
+  "pattern": "grid",
+  "count": 100,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_29": {
+  "pattern": "grid",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_3": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_30": {
+  "pattern": "grid",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_31": {
+  "pattern": "grid",
+  "count": 10,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_32": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_33": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "kamikaze"
+  ]
+ },
+ "wave_map_4_grouping_34": {
+  "pattern": "grid",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "kamikaze"
+  ]
+ },
+ "wave_map_4_grouping_35": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "kamikaze"
+  ]
+ },
+ "wave_map_4_grouping_36": {
+  "pattern": "grid",
+  "count": 300,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "kamikaze"
+  ]
+ },
+ "wave_map_4_grouping_37": {
+  "pattern": "grid",
+  "count": 500,
+  "interval": 10,
+  "kinds": [
+   "goomba",
+   "kamikaze"
+  ]
+ },
+ "wave_map_4_grouping_38": {
+  "pattern": "grid",
+  "count": 10,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_4": {
+  "pattern": "grid",
+  "count": 120,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_5": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_6": {
+  "pattern": "grid",
+  "count": 150,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_7": {
+  "pattern": "grid",
+  "count": 200,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_8": {
+  "pattern": "grid",
+  "count": 450,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_grouping_9": {
+  "pattern": "grid",
+  "count": 240,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_4_ufos_light": {
+  "pattern": "ufo_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_5_asteroids": {
+  "pattern": "asteroids",
+  "count": 150,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_5_big_bad": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_5_chests": {
+  "pattern": "loot",
+  "count": 20,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_5_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_5_spikeys": {
+  "pattern": "swarm",
+  "count": 30,
+  "interval": 20,
+  "kinds": [
+   "kamikaze"
+  ]
+ },
+ "wave_map_6_asteroids_1": {
+  "pattern": "asteroids",
+  "count": 100,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_6_asteroids_x": {
+  "pattern": "asteroids",
+  "count": 300,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_6_berserkerous": {
+  "pattern": "divers",
+  "count": 150,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_6_castle_rush_3": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_6_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "castle_enemy"
+  ]
+ },
+ "wave_map_6_grouping_1": {
+  "pattern": "grid",
+  "count": 80,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_6_piranha_castle_1": {
+  "pattern": "piranhas",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_6_piranha_castle_2": {
+  "pattern": "piranhas",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_6_piranhasus_1": {
+  "pattern": "piranhas",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "rocket_ufo"
+  ]
+ },
+ "wave_map_6_piranhasus_2": {
+  "pattern": "piranhas",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "rocket_ufo"
+  ]
+ },
+ "wave_map_6_piranhasus_3": {
+  "pattern": "piranhas",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "rocket_ufo"
+  ]
+ },
+ "wave_map_7_asteroids_1": {
+  "pattern": "asteroids",
+  "count": 220,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_7_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_7_racing_1": {
+  "pattern": "divers",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_8_asteroids_1": {
+  "pattern": "asteroids",
+  "count": 300,
+  "interval": 10,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_8_end_castle": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_8_end_castle_2": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_8_end_castle_22": {
+  "pattern": "castle_stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "cannon"
+  ]
+ },
+ "wave_map_8_ufoses_1": {
+  "pattern": "ufo_stream",
+  "count": 100,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ },
+ "wave_map_completer": {
+  "pattern": "stream",
+  "count": 20,
+  "interval": 20,
+  "kinds": [
+   "goomba"
+  ]
+ }
+}
