@@ -144,22 +144,23 @@ func _spawn_enemy(wave: Dictionary) -> void:
 			enemy.mode = NativeEnemy.Mode.KAMIKAZE
 		"piranhas", "stream", "gunship", "swarm", "asteroids", "zigzag", "ghosts", "ufo_stream":
 			enemy.mode = NativeEnemy.Mode.CHASE
-		"grid":
+		"grid", "castle_stream":
 			enemy.mode = NativeEnemy.Mode.SPAWN   # glides to its grid slot
 		_:
 			match wave.get("mode", "formation"):
 				"chase": enemy.mode = NativeEnemy.Mode.CHASE
 				"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
 				_: enemy.mode = NativeEnemy.Mode.SPAWN
-	if script_pattern == "castle_stream":
-		enemy.scroll_down = 2.0
-		enemy.mode = NativeEnemy.Mode.CHASE
+	# castle_stream releases are the o_castle_enemier phalanx grids —
+	# same 30-slot layout as `grid`, handled above.
 	# Grid slots come from the original's dox/doy layout (10 columns,
-	# 80px pitch, three rows at y=64/128/196) instead of sway slots.
-	if script_pattern == "grid":
+	# 80px pitch, three rows at y=64/128/196 — o_castle_enemier /
+	# wave_map_4_grouping_*) instead of sway slots.
+	if script_pattern == "grid" or script_pattern == "castle_stream":
 		var col := slot_index % 10
 		var row := slot_index / 10
-		enemy.formation_slot = Vector2(60 + col * 80, 96 + row * 72)
+		enemy.formation_slot = Vector2(60 + col * 80,
+			[64.0, 128.0, 196.0][mini(row, 2)])
 
 	get_parent().add_child(enemy)
 
@@ -182,11 +183,13 @@ func _scripted_position(pattern: String, edge: String, index: int) -> Vector2:
 			var left := index % 2 == 0
 			return Vector2(-40.0 if left else room.x + 40.0,
 				randf_range(80, room.y * 0.6))
-		"grid":
-			# Enter above the grid slot and glide down to it.
+		"grid", "castle_stream":
+			# Enter above the grid slot and glide down to it — the
+			# original drops each phalanx member from y=-200-rand(200).
 			var col := index % 10
 			var row := index / 10
-			return Vector2(60 + col * 80, -(40.0 + row * 30.0))
+			return Vector2(60 + col * 80,
+				-(200.0 + randf() * 200.0) - row * 30.0)
 		"asteroids", "swarm":
 			# Clumps — several enemies share a spawn x.
 			var clump := index / 5

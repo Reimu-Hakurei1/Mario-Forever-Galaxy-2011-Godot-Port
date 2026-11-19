@@ -14,6 +14,7 @@ const CHARS_PER_SEC := 28.0
 const HOLD_EXTRA := 0.9        # seconds a finished line lingers
 
 var _label: Label
+var _name_label: Label
 var _box: PanelContainer
 var _lines: Array = []
 var _line_idx := 0
@@ -52,19 +53,38 @@ func _build_ui() -> void:
 	_box.add_theme_stylebox_override("panel", style)
 	add_child(_box)
 
+	var vbox := VBoxContainer.new()
+	_box.add_child(vbox)
+
+	# Optional speaker tag — lines written "NAME|text" show the name
+	# above the dialogue like the original's name plates.
+	_name_label = Label.new()
+	_name_label.add_theme_font_size_override("font_size", 18)
+	_name_label.add_theme_color_override("font_color", Color(0.6, 0.9, 1.0))
+	_name_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	_name_label.add_theme_constant_override("outline_size", 4)
+	vbox.add_child(_name_label)
+
 	_label = Label.new()
 	_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_label.add_theme_font_size_override("font_size", 26)
 	_label.add_theme_color_override("font_color", Color(1, 0.92, 0.75))
 	_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 	_label.add_theme_constant_override("outline_size", 6)
-	_box.add_child(_label)
+	vbox.add_child(_label)
 
 
 func _process(delta: float) -> void:
 	if _done or _lines.is_empty() or NativeGame.paused:
 		return
-	var text: String = _lines[_line_idx].replace("#", "\n")
+	var raw: String = _lines[_line_idx]
+	var speaker := ""
+	var text := raw.replace("#", "\n")
+	var bar := raw.find("|")
+	if bar >= 0:
+		speaker = raw.substr(0, bar)
+		text = raw.substr(bar + 1).replace("#", "\n")
+	_name_label.text = speaker
 	var total := text.length()
 
 	if _shown < total:

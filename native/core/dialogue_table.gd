@@ -64,6 +64,32 @@ const BY_VARIANT := {
 }
 
 
+## Post-fight speeches — the o_boss_*_end_talk objects that play as
+## the boss dies, before g_end_level fires. Only bosses 5-8 (and the
+## boss_55 bonus fight) authored end lines; earlier tiers go silent.
+const END_TALK := {
+	4: ["NO! NO! NO!", "ARGHHHHH!#I WILL BACK!"],                    # boss_5_end_talk
+	5: ["I DON'T HAVE#TIME TO TALK#WITH YOU!", "SEE YOU SOON#IN MAP 7!"],  # boss_6_end_talk
+	6: ["YOU THINK#IS THIS AN#END?", "TIME TO REAL#BATTLE!"],        # boss_7_end_talk
+	7: ["OHHHH NOOOOO!", "NOOOOO!!!!", "ARGHHHHH!!"],                # boss_8_end_talk_2
+}
+
+const END_TALK_55 := [   # boss_55_end_talk — the bonus rematch boss
+	"WHAT THE HELL?!",
+	"AGAIN?!",
+	"I'VE BEEN#DEFEATED#FOR THE FIVTH#TIME!!!#ARGHHH!",
+	"#WE SHALL MEET#AGAIN ON THE#NEXT MAP AND#MY ARMY WILL#CRUSH YOU#LIKE A BUG",
+	"SEE YOU SOON#",
+]
+
+
+## Defeat lines for a boss — empty for tiers without authored end talk.
+static func for_end(tier: int, variant: String) -> Array:
+	if variant == "flame_cans" and tier >= 5:
+		return END_TALK_55
+	return END_TALK.get(tier, [])
+
+
 ## Lines for a boss fight — variant speech wins, else the tier's
 ## clown dialogue. Missing tiers reuse the closest authored script.
 static func for_boss(tier: int, variant: String, hero_name: String) -> Array:

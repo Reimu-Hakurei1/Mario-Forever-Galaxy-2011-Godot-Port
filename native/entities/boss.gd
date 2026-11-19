@@ -277,6 +277,14 @@ func die() -> void:
 	NativeGame.add_score(5000 + tier * 1000)
 	NativeGame.coins += 20 + tier * 5
 	_spawn_explosion()
+	# Post-fight villain line (o_boss_*_end_talk) plays while the
+	# wreckage burns, then the level-end sequence resumes.
+	var end_lines := NativeDialogueTable.for_end(tier, variant)
+	if not end_lines.is_empty():
+		var talk := NativeBossDialogue.new()
+		add_child(talk)
+		talk.play(end_lines)
+		await talk.finished
 	# Boss death sequence: brief pause then free.
 	await get_tree().create_timer(1.2).timeout
 	queue_free()
