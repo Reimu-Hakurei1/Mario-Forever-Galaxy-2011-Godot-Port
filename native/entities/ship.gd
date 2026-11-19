@@ -402,6 +402,9 @@ func _update_visuals(delta: float) -> void:
 	# Hit flash — red pulse for a split second after taking damage.
 	# The ship ticks the timer down itself (static state has no process).
 	var hull_color := NativeGame.hero_tint
+	# Overdrive tints the hull electric blue so the buff reads at a glance.
+	if NativeGame.overdrive_time > 0.0:
+		hull_color = hull_color.lerp(Color(0.5, 0.85, 1.0), 0.65)
 	if NativeGame.hurt_flash > 0.0:
 		NativeGame.hurt_flash = maxf(0.0, NativeGame.hurt_flash - delta)
 		hull_color = Color(3.0, 0.7, 0.7)
