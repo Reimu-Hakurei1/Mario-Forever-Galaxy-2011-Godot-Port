@@ -78,8 +78,8 @@ func _build_header() -> void:
 	result.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	result.offset_top = 110
 	result.offset_bottom = 134
-	result.text = "LEVEL %d CLEAR — SCORE %d" % [
-		NativeGame.active_level + 1, NativeGame.score]
+	result.text = "LEVEL %d CLEAR — SCORE %d — KILLS %d" % [
+		NativeGame.active_level + 1, NativeGame.score, NativeGame.enemies_killed]
 	add_child(result)
 
 

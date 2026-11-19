@@ -171,7 +171,9 @@ static func _make_shield_texture() -> Texture2D:
 # ---------------------------------------------------------------------------
 
 func _poll_input() -> void:
-	fire_held = fire_override or Input.is_key_pressed(KEY_SPACE)
+	# Space or Left Ctrl fires; fire_override is the headless test hook.
+	fire_held = fire_override or Input.is_key_pressed(KEY_SPACE) \
+		or Input.is_key_pressed(KEY_CTRL)
 
 
 # ---------------------------------------------------------------------------
@@ -183,10 +185,11 @@ func _apply_movement(delta: float) -> void:
 	var wing := float(NativeGame.upgrade_wing)
 	var boost := float(NativeGame.upgrade_boost)
 
-	var left := Input.is_key_pressed(KEY_LEFT)
-	var right := Input.is_key_pressed(KEY_RIGHT)
-	var up := Input.is_key_pressed(KEY_UP)
-	var down := Input.is_key_pressed(KEY_DOWN)
+	# Arrows are primary; WASD works as an alternate scheme.
+	var left := Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A)
+	var right := Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D)
+	var up := Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W)
+	var down := Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S)
 
 	# --- Horizontal: accelerate toward max speed, drag when coasting ---
 	if left and vel.x > 0.0:

@@ -17,6 +17,12 @@ const ROW_HEIGHT := 84.0
 const MARGIN := 60.0
 const MAX_LEVELS := 80           # 8 worlds x 10 (NativeLevelTable)
 
+## Display names for each world row — the Galaxy map names its regions.
+const WORLD_NAMES := [
+	"COMET COAST", "STARDUST HOLLOW", "VOID MAW", "NEBULA DRIFT",
+	"METEOR BELT", "STARFORGE", "OBSIDIAN REACH", "MUSHROOM KINGDOM",
+]
+
 ## Per-world accent colours — the Galaxy map tints each region.
 const WORLD_COLORS := [
 	Color(1.0, 0.75, 0.3),    # W1 gold
@@ -126,11 +132,11 @@ func _build_grid() -> void:
 	var start_y := 120.0
 
 	for w in worlds:
-		# World label on the left of each row.
+		# World label on the left of each row — name + number.
 		var wl := Label.new()
-		wl.text = "WORLD %d" % (w + 1)
+		wl.text = "W%d %s" % [w + 1, WORLD_NAMES[w]]
 		wl.add_theme_font_size_override("font_size", 14)
-		wl.add_theme_color_override("font_color", Color(0.6, 0.7, 1.0))
+		wl.add_theme_color_override("font_color", WORLD_COLORS[w])
 		wl.position = Vector2(start_x - 90, start_y + w * ROW_HEIGHT + NODE_SIZE / 2 - 10)
 		add_child(wl)
 

@@ -331,6 +331,22 @@ func _spawn_explosion() -> void:
 	boom.global_position = position
 	get_parent().add_child(boom)
 
+	# Floating score popup — the "+100" the original draws on kills.
+	var popup := Label.new()
+	popup.text = "+%d" % _score
+	popup.add_theme_font_size_override("font_size", 18)
+	popup.add_theme_color_override("font_color", Color(1.0, 0.9, 0.3))
+	popup.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	popup.add_theme_constant_override("outline_size", 4)
+	popup.position = position + Vector2(-20, -30)
+	popup.z_index = 50
+	get_parent().add_child(popup)
+	var tw := popup.create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(popup, "position:y", popup.position.y - 40.0, 0.8)
+	tw.tween_property(popup, "modulate:a", 0.0, 0.8)
+	tw.chain().tween_callback(popup.queue_free)
+
 
 ## Original destroys enemies that stray far outside the room; we do the
 ## same so escaped enemies don't accumulate.

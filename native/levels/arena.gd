@@ -75,21 +75,50 @@ func _ready() -> void:
 			add_child(player)
 			player.play()
 
+	# First level gets a controls hint so new players learn the scheme.
+	if NativeGame.active_level == 0:
+		var hint := Label.new()
+		hint.text = "ARROWS — MOVE      SPACE — FIRE      ESC — PAUSE"
+		hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		hint.add_theme_font_size_override("font_size", 18)
+		hint.add_theme_color_override("font_color", Color(1, 1, 1, 0.85))
+		hint.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		hint.add_theme_constant_override("outline_size", 5)
+		hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+		hint.offset_top = -140
+		hint.offset_bottom = -110
+		var hlayer := CanvasLayer.new()
+		hlayer.layer = 24
+		hlayer.add_child(hint)
+		add_child(hlayer)
+		var htw := create_tween()
+		htw.tween_interval(6.0)
+		htw.tween_property(hint, "modulate:a", 0.0, 1.0)
+		htw.tween_callback(hlayer.queue_free)
+
 	_show_level_intro()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	# ESC / P toggles pause — every entity checks NativeGame.paused.
-	if event is InputEventKey and event.pressed and not event.echo \
-			and (event.keycode == KEY_ESCAPE or event.keycode == KEY_P):
-		_set_paused(not NativeGame.paused)
+	if event is InputEventKey and event.pressed and not event.echo:
+		match event.keycode:
+			KEY_ESCAPE, KEY_P:
+				_set_paused(not NativeGame.paused)
+			KEY_Q:
+				# Quit to map mid-level — progress this level is lost but
+				# coins/score/upgrades already earned stay in the profile.
+				if NativeGame.paused:
+					NativeGame.paused = false
+					NativeGame.save()
+					_go_to_map()
 
 
 func _set_paused(on: bool) -> void:
 	NativeGame.paused = on
 	if _pause_label == null:
 		_pause_label = Label.new()
-		_pause_label.text = "PAUSED"
+		_pause_label.text = "PAUSED — ESC resume · Q quit to map"
 		_pause_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_pause_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		_pause_label.set_anchors_preset(Control.PRESET_FULL_RECT)
