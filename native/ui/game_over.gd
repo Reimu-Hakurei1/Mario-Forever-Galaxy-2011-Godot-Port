@@ -90,7 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _refresh_entry() -> void:
 	_entry_label.text = "NEW HIGH SCORE!\nENTER INITIALS: %s" % \
-		(_initials.ljust(3, "_"))
+		(_initials + "___").substr(0, 3)
 
 
 func _finish_entry() -> void:
