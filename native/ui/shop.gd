@@ -28,6 +28,14 @@ const UPGRADES := [
 	# and sold for coins between levels, capped at a few extras).
 	{"field": "lives", "name": "LIVES", "desc": "+1 spare ship",
 		"base": 300, "growth": 1.8, "max": 5},
+	# Companion buddies (G.jakikumpel) — flat cena_kumpla prices,
+	# two independent tracks for the left/right creatures.
+	{"field": "buddy_left", "name": "BUDDY L", "desc": "left companion tier",
+		"base": 0, "growth": 1.0, "max": 2,
+		"prices": NativeGame.BUDDY_PRICES},
+	{"field": "buddy_right", "name": "BUDDY R", "desc": "right companion tier",
+		"base": 0, "growth": 1.0, "max": 2,
+		"prices": NativeGame.BUDDY_PRICES},
 ]
 const MAX_LEVEL := 5               # original caps upgrades around here
 
@@ -141,15 +149,16 @@ func _set_tab(tab: String) -> void:
 
 func _build_row(i: int) -> void:
 	var u: Dictionary = UPGRADES[i]
-	# Two-column grid — 8 upgrade tracks don't fit in one vertical list.
+	# Three-column grid — nine tracks (7 upgrades + 2 buddy tiers)
+	# don't fit in the old two-column layout.
 	var row := HBoxContainer.new()
-	row.position = Vector2(70 + (i / 4) * 470, 195 + (i % 4) * 108)
-	row.add_theme_constant_override("separation", 16)
+	row.position = Vector2(60 + (i % 3) * 335, 190 + (i / 3) * 160)
+	row.add_theme_constant_override("separation", 10)
 	add_child(row)
 
 	# Name + current level + effect description.
 	var info := VBoxContainer.new()
-	info.custom_minimum_size = Vector2(250, 0)
+	info.custom_minimum_size = Vector2(210, 0)
 	row.add_child(info)
 	var name_l := Label.new()
 	name_l.name = "Name"
@@ -170,7 +179,7 @@ func _build_row(i: int) -> void:
 	# Buy button showing the next-level cost.
 	var buy := Button.new()
 	buy.name = "Buy"
-	buy.custom_minimum_size = Vector2(140, 50)
+	buy.custom_minimum_size = Vector2(120, 50)
 	buy.add_theme_font_size_override("font_size", 18)
 	buy.pressed.connect(_on_buy.bind(i))
 	row.add_child(buy)
@@ -420,6 +429,8 @@ func _get_lvl(field: String) -> int:
 		"upgrade_orbit": return NativeGame.upgrade_orbit
 		"upgrade_balls": return NativeGame.upgrade_balls
 		"lives": return NativeGame.lives
+		"buddy_left": return NativeGame.buddy_left
+		"buddy_right": return NativeGame.buddy_right
 		_: return 0
 
 
@@ -432,6 +443,8 @@ func _set_lvl(field: String, value: int) -> void:
 		"upgrade_orbit": NativeGame.upgrade_orbit = value
 		"upgrade_balls": NativeGame.upgrade_balls = value
 		"lives": NativeGame.lives = value
+		"buddy_left": NativeGame.buddy_left = value
+		"buddy_right": NativeGame.buddy_right = value
 
 
 ## Repair cost — the original charges ~10 coins per missing hull point
@@ -573,6 +586,10 @@ func _refresh_specials() -> void:
 
 
 func _cost(u: Dictionary, lvl: int) -> int:
+	# Flat price lists (buddy tiers) override the growth formula.
+	if u.has("prices"):
+		var prices: Array = u["prices"]
+		return int(prices[mini(lvl, prices.size() - 1)])
 	return int(u["base"] * pow(u["growth"], lvl))
 
 

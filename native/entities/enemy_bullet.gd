@@ -43,6 +43,15 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 		return
 
+	# Companion buddies soak fire too — the original's bullet mask
+	# includes object 26 (o_kumpel_a).
+	for buddy in get_tree().get_nodes_in_group("buddies"):
+		if is_instance_valid(buddy) and buddy.alive \
+				and position.distance_to(buddy.global_position) < 30.0:
+			buddy.take_damage(DAMAGE)
+			queue_free()
+			return
+
 	var room := NativeGame.room_size()
 	if position.x < -MARGIN or position.x > room.x + MARGIN \
 			or position.y < -MARGIN or position.y > room.y + MARGIN:

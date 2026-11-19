@@ -31,6 +31,12 @@ static var mushroom_gives_more: float = 0.0   ## G.mushroom_gives_more — healt
 static var better_cooling_mushroom: float = 0.0  ## G.better_cooling_mushroom — cooling pickup power
 static var coins_booster: float = 1.0          ## G.coins_booster — coin value multiplier
 static var better_chance_of_bonus: float = 0.0 ## G.better_chance_of_bonus — rare-drop luck
+## G.jakikumpel[0..1] — the two companion buddies flanking the ship.
+## 0 = none, 1-2 = upgraded tiers (sprites 459/460/461). The original
+## sells upgrades for cena_kumpla = [100000, 500000] coins.
+static var buddy_left: int = 0
+static var buddy_right: int = 0
+const BUDDY_PRICES := [100000, 500000]
 ## G.weapon[1..5] / G.levelup[1..5] — one weapon per muzzle slot, each
 ## independently upgradeable (shop upgrade cost scales off the slot's
 ## levelup, not the weapon's). -1 = slot empty.
@@ -40,6 +46,10 @@ static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var special_heal_rate: float = 0.0  ## hull/sec from a heal special
 static var special_heal_left: float = 0.0  ## seconds of heal-special left
+## g_energion — the health-mushroom's regen reserve. The original
+## trickles it into hull at 1 unit/frame (script_odnawianie_kumpli)
+## instead of healing instantly.
+static var energy_reserve: float = 0.0
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
@@ -131,6 +141,7 @@ static func reset_run() -> void:
 	shield_time = 0.0
 	special_heal_rate = 0.0
 	special_heal_left = 0.0
+	energy_reserve = 0.0
 	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0
@@ -388,6 +399,8 @@ static func save() -> void:
 	cfg.set_value("profile", "better_cooling_mushroom", better_cooling_mushroom)
 	cfg.set_value("profile", "coins_booster", coins_booster)
 	cfg.set_value("profile", "better_chance_of_bonus", better_chance_of_bonus)
+	cfg.set_value("profile", "buddy_left", buddy_left)
+	cfg.set_value("profile", "buddy_right", buddy_right)
 	cfg.set_value("profile", "weapons", weapons)
 	cfg.set_value("profile", "weapon_level", weapon_level)
 	cfg.set_value("profile", "special_slots", special_slots)
@@ -423,6 +436,8 @@ static func reset_profile() -> void:
 	better_cooling_mushroom = 0.0
 	coins_booster = 1.0
 	better_chance_of_bonus = 0.0
+	buddy_left = 0
+	buddy_right = 0
 	for i in 5:
 		weapons[i] = -1
 		weapon_level[i] = 0
@@ -457,6 +472,8 @@ static func load_save() -> bool:
 	better_cooling_mushroom = float(cfg.get_value("profile", "better_cooling_mushroom", better_cooling_mushroom))
 	coins_booster = float(cfg.get_value("profile", "coins_booster", coins_booster))
 	better_chance_of_bonus = float(cfg.get_value("profile", "better_chance_of_bonus", better_chance_of_bonus))
+	buddy_left = int(cfg.get_value("profile", "buddy_left", buddy_left))
+	buddy_right = int(cfg.get_value("profile", "buddy_right", buddy_right))
 	var saved_weapons: Array = cfg.get_value("profile", "weapons", [])
 	for i in mini(5, saved_weapons.size()):
 		weapons[i] = int(saved_weapons[i])

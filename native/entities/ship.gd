@@ -124,6 +124,16 @@ func _ready() -> void:
 	# Spawn in the middle of the playfield.
 	position = Vector2(435, 425)
 
+	# Companion buddies — the original creates both in the player create
+	# event (o_kumpel_a x2). They follow on side offsets and soak fire.
+	# Deferred: the ship is still inside the arena's own add_child when
+	# _ready runs, and Godot rejects nested adds at that moment.
+	for s in [-1, 1]:
+		var buddy := NativeBuddy.new()
+		buddy.side = s
+		buddy.global_position = position + Vector2(95.0 * s, 55.0)
+		get_parent().add_child.call_deferred(buddy)
+
 
 func _physics_process(delta: float) -> void:
 	if NativeGame.paused:
@@ -134,6 +144,7 @@ func _physics_process(delta: float) -> void:
 	_apply_firing(delta)
 	_update_visuals(delta)
 	_tick_orbit(delta)
+	_tick_reserve()
 	_tick_balls()
 	_tick_special(delta)
 
@@ -448,6 +459,17 @@ func _tick_orbit(delta: float) -> void:
 			or NativeGame.energy >= NativeGame.max_energy():
 		return
 	NativeGame.heal_player(NativeGame.upgrade_orbit * 0.5 * delta)
+
+
+## g_energion reserve — health mushrooms don't heal instantly; the
+## reserve trickles 1 unit/frame into hull while the ship is alive
+## (script_odnawianie_kumpli). Our hull is ~10x smaller, so each
+## reserve point restores 0.1 hull per physics frame.
+func _tick_reserve() -> void:
+	if NativeGame.energy_reserve <= 0.0 or NativeGame.energy <= 0.0:
+		return
+	NativeGame.energy_reserve = maxf(0.0, NativeGame.energy_reserve - 1.0)
+	NativeGame.heal_player(0.1)
 
 
 ## BALLS upgrade — orbiting weapon orbs. Each orb circles the hull and

@@ -25,9 +25,10 @@ const OVERDRIVE_TIME := 12.0 # seconds of boosted fire
 const VALUES := {
 	Kind.COIN: {"coins": 1, "score": 10},
 	Kind.GEM: {"coins": 5, "score": 50},
-	# Health mushroom heals 200 orig units + mushroom_gives_more hero
-	# bonus (special_weapon_1.gd) — our bar is ~10x smaller.
-	Kind.HEALTH: {"heal_base": 20.0, "score": 0},
+	# Health mushroom — special_weapon_1.gd adds (200 +
+	# mushroom_gives_more) to g_energion in ORIGINAL units; the reserve
+	# trickles 1 unit/frame into hull (~0.1 ours per frame).
+	Kind.HEALTH: {"heal_reserve": 200.0, "score": 0},
 	Kind.POWER: {"overdrive": OVERDRIVE_TIME, "score": 100},
 	Kind.LIFE: {"life": 1, "score": 250},
 	Kind.COOLING: {"cool": true, "score": 50},
@@ -124,9 +125,9 @@ func _collect() -> void:
 	if v.has("coins"):
 		# coins_booster — hero 0's +2% coin value (coin_drop.gd).
 		NativeGame.coins += int(round(v["coins"] * NativeGame.coins_booster))
-	if v.has("heal_base"):
-		NativeGame.heal_player(v["heal_base"]
-			+ NativeGame.mushroom_gives_more / 10.0)
+	if v.has("heal_reserve"):
+		NativeGame.energy_reserve += v["heal_reserve"] \
+			+ NativeGame.mushroom_gives_more
 	if v.has("overdrive"):
 		NativeGame.overdrive_time = v["overdrive"]
 	if v.has("life"):

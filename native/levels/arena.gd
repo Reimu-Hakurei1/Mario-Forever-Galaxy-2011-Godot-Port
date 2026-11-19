@@ -216,6 +216,11 @@ func _respawn() -> void:
 	NativeGame.energy = 100.0
 	NativeGame.overheating = 0.0
 	_death_pending = false
+	# script_odnawianie_kumpli — buddies revive with bonus hull when
+	# the player comes back.
+	for buddy in get_tree().get_nodes_in_group("buddies"):
+		if is_instance_valid(buddy):
+			buddy.revive()
 	_ship.visible = true
 	_ship.global_position = PLAYER_SPAWN
 	_ship.vel = Vector2.ZERO
