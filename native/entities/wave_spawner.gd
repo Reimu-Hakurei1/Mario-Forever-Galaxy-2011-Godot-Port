@@ -11,15 +11,21 @@ class_name NativeWaveSpawner
 ## `NativeWaveSpawner` children with different `waves` arrays, which is the
 ## native equivalent of editing the Waves/Enemies nodes in the old editor.
 
-## One wave entry: [delay_seconds, count, spawn_edge, mode, health].
-## spawn_edge: "top" | "left" | "right" | "bottom" — where the group enters.
-## mode: "formation" | "chase".
+## One wave entry: {delay, count, edge, mode, kind, health}.
+##   delay  — seconds before the wave starts
+##   count  — enemies in the group
+##   edge   — "top" | "left" | "right" | "bottom" entry side
+##   mode   — "formation" | "chase" | "kamikaze"
+##   kind   — "goomba" | "shooter" | "kamikaze" (enemy variant)
+##   health — hit points per enemy
 @export var waves: Array = [
-	{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "health": 100.0},
-	{"delay": 6.0, "count": 5, "edge": "right", "mode": "formation", "health": 100.0},
-	{"delay": 12.0, "count": 6, "edge": "top", "mode": "chase", "health": 100.0},
-	{"delay": 20.0, "count": 8, "edge": "left", "mode": "formation", "health": 100.0},
-	{"delay": 30.0, "count": 10, "edge": "top", "mode": "chase", "health": 100.0},
+	{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "kind": "goomba", "health": 100.0},
+	{"delay": 6.0, "count": 5, "edge": "right", "mode": "formation", "kind": "goomba", "health": 100.0},
+	{"delay": 12.0, "count": 4, "edge": "top", "mode": "formation", "kind": "shooter", "health": 120.0},
+	{"delay": 18.0, "count": 5, "edge": "left", "mode": "kamikaze", "kind": "kamikaze", "health": 60.0},
+	{"delay": 26.0, "count": 8, "edge": "top", "mode": "chase", "kind": "goomba", "health": 100.0},
+	{"delay": 36.0, "count": 6, "edge": "right", "mode": "formation", "kind": "shooter", "health": 120.0},
+	{"delay": 46.0, "count": 8, "edge": "top", "mode": "kamikaze", "kind": "kamikaze", "health": 60.0},
 ]
 
 @export var spawn_interval := 0.5     # seconds between enemies in a wave
@@ -73,14 +79,20 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	enemy.health = wave.get("health", 100.0)
 	enemy.global_position = pos
 
+	# Enemy variant — "goomba" | "shooter" | "kamikaze".
+	match wave.get("kind", "goomba"):
+		"shooter": enemy.kind = NativeEnemy.Kind.SHOOTER
+		"kamikaze": enemy.kind = NativeEnemy.Kind.KAMIKAZE
+		_: enemy.kind = NativeEnemy.Kind.GOOMBA
+
 	# Formation slots are laid out in the upper half of the room — enemies
 	# enter, take a slot, and sway there while the player fights through.
-	var slot_index: int = wave.get("spawned", 0)
+	var slot_index: int = wave["spawned"]
 	enemy.formation_slot = _formation_slot(slot_index)
-	if wave.get("mode", "formation") == "chase":
-		enemy.mode = NativeEnemy.Mode.CHASE
-	else:
-		enemy.mode = NativeEnemy.Mode.SPAWN
+	match wave.get("mode", "formation"):
+		"chase": enemy.mode = NativeEnemy.Mode.CHASE
+		"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
+		_: enemy.mode = NativeEnemy.Mode.SPAWN
 
 	get_parent().add_child(enemy)
 

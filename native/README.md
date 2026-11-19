@@ -18,7 +18,10 @@ native/
   entities/
     ship.gd            Player ship — inertia movement, hull tilt, 5 gun muzzles
     bullet.gd          Player projectile
-    enemy.gd           Basic enemy — HP, formation slots, player tracking
+    enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
+    enemy.gd           Enemy — goomba/shooter/kamikaze variants, drops, knockback
+    pickup.gd          Collectibles — coin / gem / health with magnet
+    explosion.gd       Death burst effect
     wave_spawner.gd    Wave scheduler — data-driven spawn groups
   ui/
     hud.gd             Score / hull / heat / lives display
@@ -47,6 +50,9 @@ Controls: **Arrow keys** move · **Space** fires.
 | Level `Waves/Enemies` editor nodes     | `wave_spawner.gd` `waves` array         |
 | Sprite frames `s_name.id.frame.png`    | `NativeAssets.sprite_frames()`          |
 | Sound/music index tables               | `NativeAssets.sound()` / `.music()`     |
+| `o_coindrop` / `o_diamonddrop`         | `NativePickup` (coin/gem/health)        |
+| `o_bullet_*` enemy shots               | `NativeEnemyBullet`                     |
+| `o_explosion_*` death effects          | `NativeExplosion`                       |
 
 ## Design rules
 

@@ -68,3 +68,7 @@ static func damage_player(amount: float) -> void:
 	if paused:
 		return
 	energy = maxf(0.0, energy - amount)
+
+
+static func heal_player(amount: float) -> void:
+	energy = minf(energy + amount, 100.0)
