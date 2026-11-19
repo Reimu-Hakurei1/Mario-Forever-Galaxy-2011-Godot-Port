@@ -35,6 +35,8 @@ var _death_pending := false
 var _level_cleared := false
 var _clear_timer := -1.0
 var _pause_label: Label = null
+var _last_energy := 100.0
+var _shake := 0.0                   # screenshake timer after hull hits
 
 
 func _ready() -> void:
@@ -132,6 +134,16 @@ func _set_paused(on: bool) -> void:
 
 
 func _process(delta: float) -> void:
+	# Screenshake — a sharp jolt whenever hull energy drops.
+	if NativeGame.energy < _last_energy - 0.01:
+		_shake = 0.25
+	_last_energy = NativeGame.energy
+	if _shake > 0.0:
+		_shake -= delta
+		position = Vector2(randf_range(-4, 4), randf_range(-4, 4)) * (_shake / 0.25)
+	else:
+		position = Vector2.ZERO
+
 	# Death flow — NativeGame.energy hits 0 when the ship is destroyed.
 	# _death_pending guards against retriggering during the respawn delay.
 	if NativeGame.energy <= 0.0 and not _death_pending and not _level_cleared:
@@ -207,11 +219,14 @@ func _on_level_cleared() -> void:
 ## Level cleared — unlock the next node and return to the star map,
 ## matching the original's flow (level → map → next level).
 func _next_level() -> void:
-	# Unlock the node after the one just cleared, then visit the shop —
-	# the original flow is level → results → shop → map.
+	# Unlock the node after the one just cleared. The final level routes
+	# to the campaign ending instead of the shop.
 	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
 	NativeGame.save()
-	get_tree().change_scene_to_file("res://native/ui/shop.tscn")
+	if NativeGame.active_level >= NativeLevelTable.level_count() - 1:
+		get_tree().change_scene_to_file("res://native/ui/ending.tscn")
+	else:
+		get_tree().change_scene_to_file("res://native/ui/shop.tscn")
 
 
 func _go_to_map() -> void:

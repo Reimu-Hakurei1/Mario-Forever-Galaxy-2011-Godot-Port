@@ -24,6 +24,7 @@ static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
+static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
 static var damage_mult: float = 1.0    ## hero bullet damage multiplier
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
@@ -98,7 +99,10 @@ static func kill_enemy() -> void:
 static func damage_player(amount: float) -> void:
 	if paused:
 		return
+	var before := energy
 	energy = maxf(0.0, energy - amount)
+	if energy < before:
+		hurt_flash = 0.18
 
 
 static func heal_player(amount: float) -> void:

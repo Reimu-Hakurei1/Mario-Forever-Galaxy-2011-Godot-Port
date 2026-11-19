@@ -301,11 +301,13 @@ func _fire_muzzle(index: int) -> void:
 # ---------------------------------------------------------------------------
 
 func _update_visuals(delta: float) -> void:
-	# Hull tilt: arrow keys bank the ship, release returns to level flight.
-	if Input.is_key_pressed(KEY_LEFT):
+	# Hull tilt: arrows/WASD bank the ship, release returns to level flight.
+	var key_left := Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A)
+	var key_right := Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D)
+	if key_left:
 		tilt += 1.0
 		bank_frame = FRAME_BANK_LEFT
-	elif Input.is_key_pressed(KEY_RIGHT):
+	elif key_right:
 		tilt -= 1.0
 		bank_frame = FRAME_BANK_RIGHT
 	else:
@@ -323,5 +325,14 @@ func _update_visuals(delta: float) -> void:
 	rotation = deg_to_rad(-tilt)
 	_muzzle_sprite.frame = bank_frame
 
-	# Spawn protection blink.
-	_muzzle_sprite.modulate.a = 0.4 if invulnerable and int(Time.get_ticks_msec() / 90) % 2 == 0 else 1.0
+	# Hit flash — red pulse for a split second after taking damage.
+	# The ship ticks the timer down itself (static state has no process).
+	var hull_color := NativeGame.hero_tint
+	if NativeGame.hurt_flash > 0.0:
+		NativeGame.hurt_flash = maxf(0.0, NativeGame.hurt_flash - delta)
+		hull_color = Color(3.0, 0.7, 0.7)
+	_muzzle_sprite.modulate = hull_color
+
+	# Spawn protection / shield blink — alpha strobes while invulnerable.
+	if invulnerable and int(Time.get_ticks_msec() / 90) % 2 == 0:
+		_muzzle_sprite.modulate.a = 0.4
