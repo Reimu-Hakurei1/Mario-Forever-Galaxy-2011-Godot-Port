@@ -133,6 +133,7 @@ var _world := 0
 
 var kind := Kind.GOOMBA
 var scroll_down := 0.0           # px/frame — castle stages drift enemies
+var phalanx := false             # castle_enemy grid — scrolls, no AI
 var orbit_around: Node2D = null  # ring-mother — slot on a circle around it
 var orbit_radius := 0.0
 var orbit_angle := 0.0
@@ -302,6 +303,18 @@ func _physics_process(_delta: float) -> void:
 	# Castle stages: the whole world scrolls down past the ship.
 	if scroll_down > 0.0:
 		position.y += scroll_down
+
+	# Phalanx grid members (o_castle_enemy slots) hold their formation —
+	# the scroll carries them, they don't hunt or sway.
+	if phalanx:
+		if _flash > 0:
+			_flash -= 1
+			_anim.modulate = Color(3, 3, 3)
+		else:
+			_anim.modulate = _tint if _tint != Color.WHITE else Color.WHITE
+		_check_player_collision()
+		_cull_offscreen()
+		return
 
 	# Ring-mother orbiters are positioned absolutely by their parent —
 	# they don't run their own movement AI.

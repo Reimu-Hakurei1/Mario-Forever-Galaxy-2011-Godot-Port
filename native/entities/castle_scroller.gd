@@ -101,6 +101,11 @@ func _spawn_row(y: float) -> void:
 	if randf() < 0.45 + diff * 0.3:
 		_maybe_add_enemy(y - randf_range(120, 200), diff)
 
+	# castle_enemy phalanx — the original's signature castle wave: a
+	# 3x10 grid of grunts released from above in formation. ~10% of rows.
+	if randf() < 0.10:
+		_spawn_phalanx(y)
+
 	# Windmill hazards (o_fan) spin through the corridor — unkillable,
 	# they just punish sloppy flying. More common deeper in the stage.
 	if randf() < 0.18 + diff * 0.15:
@@ -132,6 +137,25 @@ func _spawn_row(y: float) -> void:
 			tile.position = Vector2(randf_range(60, 964), y + randf_range(-60, 60))
 		add_child(tile)
 		_path_tiles.append(tile)
+
+
+## o_castle_enemy — releases a 30-slot phalanx: 3 rows of 10 grunts at
+## dox 60+i*80 / doy 64,128,196, entering from y=-200..-400 and riding
+## the stage scroll down in perfect formation.
+func _spawn_phalanx(row_y: float) -> void:
+	var kind: int = ENEMY_KINDS[randi() % ENEMY_KINDS.size()]
+	for row in 3:
+		for col in 10:
+			var enemy := NativeEnemy.new()
+			enemy.kind = kind
+			enemy.phalanx = true
+			enemy.scroll_down = 2.0
+			# Center the original's 60..780 grid on the 1024 room.
+			enemy.position = Vector2(
+				182.0 + col * 80.0,
+				row_y - 160.0 - row * 68.0 - randf_range(0, 60))
+			add_child(enemy)
+			enemy.health *= 1.0 + clampf(float(_level_index) / 40.0, 0.0, 1.0)
 
 
 func _maybe_add_enemy(y: float, diff: float) -> void:
