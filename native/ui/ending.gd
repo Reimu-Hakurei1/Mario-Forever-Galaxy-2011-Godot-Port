@@ -41,6 +41,11 @@ var _talk: NativeBossDialogue
 var _epilogue: Label
 var _stats: Label
 var _btn: Button
+var _ship: TextureRect
+var _toad: TextureRect
+var _ship_frame := 0
+var _toad_frame := 0
+var _anim_t := 0.0
 
 
 func _ready() -> void:
@@ -49,9 +54,54 @@ func _ready() -> void:
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 	_add_starfield()
+	_build_characters()
 	_build_epilogue()
 	_build_stats()
 	_play_scene()
+
+
+## The original ending room shows the hero ship and Toad on stage
+## (objects/ui/ending_player.gd sprite 543, ending_toad.gd sprite 511)
+## while the princess dialogue plays.
+func _build_characters() -> void:
+	_ship = _make_sprite(543)
+	_ship.position = Vector2(300, 480)
+	_ship.custom_minimum_size = Vector2(96, 96)
+	add_child(_ship)
+	_toad = _make_sprite(511)
+	_toad.position = Vector2(640, 430)
+	_toad.custom_minimum_size = Vector2(96, 96)
+	add_child(_toad)
+
+
+func _make_sprite(sid: int) -> TextureRect:
+	var tr := TextureRect.new()
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	var tex := NativeAssets.sprite_frame(sid, 0)
+	if tex != null:
+		tr.texture = tex
+	return tr
+
+
+func _process(delta: float) -> void:
+	if _phase != 0:
+		return
+	_anim_t += delta
+	# Ship engine animation — cycle the s_player_a frames.
+	if _anim_t > 0.12:
+		_anim_t = 0.0
+		_ship_frame = (_ship_frame + 1) % 8
+		var tex := NativeAssets.sprite_frame(543, _ship_frame)
+		if tex != null:
+			_ship.texture = tex
+		_toad_frame = (_toad_frame + 1) % 3
+		var ttex := NativeAssets.sprite_frame(511, _toad_frame)
+		if ttex != null:
+			_toad.texture = ttex
+	# Gentle hover like the original's floating sprites.
+	_ship.position.y = 480.0 + sin(Time.get_ticks_msec() / 900.0) * 8.0
+	_toad.position.y = 430.0 + sin(Time.get_ticks_msec() / 700.0 + 1.5) * 6.0
 
 
 ## Phase 1 — the rescue dialogue, auto-advancing typewriter.
@@ -66,6 +116,11 @@ func _on_scene_done() -> void:
 	if is_instance_valid(_talk):
 		_talk.queue_free()
 	_phase = 1
+	# The characters leave stage for the epilogue crawl.
+	if is_instance_valid(_ship):
+		_ship.queue_free()
+	if is_instance_valid(_toad):
+		_toad.queue_free()
 	_epilogue.modulate.a = 0.0
 	var tw := create_tween()
 	tw.tween_property(_epilogue, "modulate:a", 1.0, 2.0)

@@ -534,16 +534,21 @@ func _use_special(id: int) -> void:
 		5:  # RED SHOT — seq 5000: single heavy slug
 			_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false,
 				{"sprite": 480, "tint": Color(1.0, 0.35, 0.3), "scale": 0.5})
-		6:  # TRIPLE MISSILE — seq 30000 x3: three heavy bolts fanned
+		6:  # TRIPLE MISSILE — seq 30000: three photon_laser31 bolts
+			# (obj 304, sprite 411) fanned around the nose
 			for i in 3:
 				_special_bolt(Vector2(0, -1).rotated((i - 1) * 0.28) * 3.2,
 					item["damage"], false,
-					{"sprite": 480, "tint": Color(1.0, 0.75, 0.3), "scale": 0.45})
-		8:  # BOMB RING — seq 80000: eleven bombs burst outward
+					{"sprite": 411, "tint": Color(0.6, 0.9, 1.0), "scale": 0.45})
+		8:  # BOMB RING — seq 80000: eleven cool_explosion_bullets (obj
+			# 302, sprite 490) spiral outward from the ship
 			for i in 11:
 				var dir := Vector2.RIGHT.rotated(i * TAU / 11.0)
-				_special_bolt(dir * 2.8, item["damage"], false,
-					{"sprite": 32, "tint": Color(0.9, 0.5, 0.4), "scale": 0.4})
+				var bolt := _special_bolt_ret(dir * 2.8, item["damage"], false,
+					{"sprite": 490, "tint": Color(1.0, 0.6, 0.4), "scale": 0.4})
+				if bolt != null:
+					bolt.weave = 2.0
+					bolt.weave_speed = 0.15
 		9:  # CHRONO — seq 100000 zwolnij_gre: clears enemy fire + shield
 			for bullet in get_tree().get_nodes_in_group("enemy_bullets"):
 				if is_instance_valid(bullet):
@@ -574,6 +579,12 @@ func _flash_special_fx(sprite_id: int) -> void:
 ## original's special_weapon_* artwork.
 func _special_bolt(dir: Vector2, dmg: float, pierce: bool,
 		fx: Dictionary = {}) -> void:
+	_special_bolt_ret(dir, dmg, pierce, fx)
+
+
+## Same as _special_bolt but returns the spawned bullet for tweak-ups.
+func _special_bolt_ret(dir: Vector2, dmg: float, pierce: bool,
+		fx: Dictionary = {}) -> NativeBullet:
 	var bullet := NativeBullet.new()
 	bullet.global_position = global_position
 	bullet.velocity = dir
@@ -586,6 +597,7 @@ func _special_bolt(dir: Vector2, dmg: float, pierce: bool,
 	if fx.has("tint"):
 		bullet.modulate = fx["tint"]
 	get_parent().add_child(bullet)
+	return bullet
 
 
 ## Closest living enemy to the ship — the auto-targeting weapons'

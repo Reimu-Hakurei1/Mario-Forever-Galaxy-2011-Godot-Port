@@ -15,6 +15,7 @@ const CONTACT_DAMAGE := 3.0
 
 var hp := BASE_HP
 var max_hp := BASE_HP
+var variant := -1               # <0 = random castle_obj piece
 var _sprite: Sprite2D
 var _t := 0.0
 
@@ -24,14 +25,26 @@ func _ready() -> void:
 	# Blocks are NOT enemies: no kill score, no enemy AI.
 	add_to_group("blocks")
 	_sprite = Sprite2D.new()
-	# Castle block sprites: 293 frames are the destructible blocks;
-	# vary the frame per instance for visual variety.
+	# Castle pieces — o_castle_obj draws sprite 293 (frames = breakable
+	# chunks) plus 294/295 rotated/mirrored orientations (rodzaj 2-7).
+	if variant < 0:
+		variant = randi_range(0, 7)
+	var sid := 293
 	var frame := randi_range(0, 5)
-	var tex := NativeAssets.sprite_frame(293, frame)
+	var rot := 0.0
+	match variant:
+		2: sid = 294; rot = PI        # flipped horizontal
+		3: sid = 294
+		4: sid = 294; rot = -PI / 2.0 # vertical, mirrored
+		5: sid = 294; rot = PI / 2.0
+		6: sid = 295
+		7: sid = 295; rot = PI / 2.0
+	var tex := NativeAssets.sprite_frame(sid, frame if sid == 293 else 0)
 	if tex != null:
 		_sprite.texture = tex
-		_sprite.offset = -NativeAssets.sprite_origin(293)
+		_sprite.offset = -NativeAssets.sprite_origin(sid)
 	_sprite.scale = Vector2(0.8, 0.8)
+	_sprite.rotation = rot
 	add_child(_sprite)
 
 
