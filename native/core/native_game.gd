@@ -47,8 +47,10 @@ static var weapon_level: Array[int] = [0, 0, 0, 0, 0]
 ## on the shop's armory page until unlocked (choose_hero.gd sets all
 ## four for hero 2 only).
 static var gun_slots: Array[bool] = [false, false, false, false]
-static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
-static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
+## g_bron_etapowa[0/1] — seconds of FLOWER OF FIRE / STAR OF FIREBALLS
+## booster fire remaining (special_weapon_3/4 set it to 1200 frames).
+static var booster_fire_time: float = 0.0
+static var booster_boom_time: float = 0.0
 static var special_heal_rate: float = 0.0  ## hull/sec from a heal special
 static var special_heal_left: float = 0.0  ## seconds of heal-special left
 ## g_energion — the health-mushroom's regen reserve. The original
@@ -145,8 +147,8 @@ static func ensure_weapons() -> void:
 static func reset_run() -> void:
 	energy = max_energy()
 	overheating = 0.0
-	overdrive_time = 0.0
-	shield_time = 0.0
+	booster_fire_time = 0.0
+	booster_boom_time = 0.0
 	special_heal_rate = 0.0
 	special_heal_left = 0.0
 	energy_reserve = 0.0

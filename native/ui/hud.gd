@@ -99,16 +99,13 @@ func _process(_delta: float) -> void:
 	if NativeGame.kill_streak >= 3 \
 			and Time.get_ticks_msec() <= NativeGame.streak_expiry:
 		buffs.append("STREAK x%d" % NativeGame.kill_streak)
-	if NativeGame.shield_time > 0.0:
-		buffs.append("SHIELD %ds" % ceili(NativeGame.shield_time))
-	if NativeGame.overdrive_time > 0.0:
-		buffs.append("OVERDRIVE %ds" % ceili(NativeGame.overdrive_time))
+	if NativeGame.booster_fire_time > 0.0:
+		buffs.append("FLOWER %ds" % ceili(NativeGame.booster_fire_time))
+	if NativeGame.booster_boom_time > 0.0:
+		buffs.append("FIREBALLS %ds" % ceili(NativeGame.booster_boom_time))
 	_buffs_label.text = "   ".join(buffs)
 	_buffs_label.visible = not buffs.is_empty()
-	if NativeGame.shield_time > 0.0:
-		_buffs_label.add_theme_color_override("font_color", Color(0.5, 0.85, 1.0))
-	else:
-		_buffs_label.add_theme_color_override("font_color", Color(1.0, 0.55, 0.45))
+	_buffs_label.add_theme_color_override("font_color", Color(1.0, 0.75, 0.4))
 
 	# Special ring — rebuild the short text each frame (4 slots, cheap).
 	var parts: Array[String] = []

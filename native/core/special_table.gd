@@ -19,7 +19,7 @@ class_name NativeSpecialTable
 ##   7  seq 50000 — big trickle heal (+2/frame ~10s)
 ##   8  seq 80000 — ring of 11 bomb objects (starter_boom staggered)
 ##   9  seq 100000— zwolnij_gre (bullet-time); approximated as
-##                enemy-bullet clear + brief shield
+##                enemy-bullet clear + bullet-time slow-mo
 ##
 ## "heal_rate" ticks hull per second while active_seconds lasts.
 ## "damage"/"count"/"spread" describe the attack payloads.
@@ -42,8 +42,8 @@ const ITEMS := [
 		"heal_rate": 120.0, "heal_time": 10.0, "icon": 7},
 	{"name": "BOMB RING", "desc": "Eleven bombs burst outward",
 		"damage": 25.0, "count": 11, "icon": 8},
-	{"name": "CHRONO", "desc": "Bullet-time: clears enemy fire, brief shield",
-		"clear_bullets": true, "shield": 4.0, "icon": 9},
+	{"name": "CHRONO", "desc": "Bullet-time: clears enemy fire, slows the game",
+		"clear_bullets": true, "slowmo": 3.0, "icon": 9},
 ]
 
 ## Shop price for a duplicate special — the original only stocks

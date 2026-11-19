@@ -119,20 +119,17 @@ const KIND_PROFILES := {
 		"tint": Color(1.0, 0.75, 0.6)},
 }
 
-# Drop table rolled on death (from the original o_drop logic): most kills
-# drop nothing, coins are common, gems rare, health very rare.
-const DROP_TABLE := [
-	[0.50, null],
-	[0.22, NativePickup.Kind.COIN],      # 0.72
-	[0.10, null],                        # 0.82
-	[0.05, NativePickup.Kind.GEM],       # 0.87
-	[0.04, NativePickup.Kind.POWER],     # 0.91 — overdrive star
-	[0.03, NativePickup.Kind.COOLING],   # 0.94 — heat purge
-	[0.03, null],                        # 0.95
-	[0.02, NativePickup.Kind.HEALTH],    # 0.97
-	[0.02, NativePickup.Kind.SHIELD],    # 0.99 — bubble, rare
-	[0.01, NativePickup.Kind.LIFE],      # 1.00 — extra ship, very rare
-]
+# Drop table — ports objects/items/drop.gd (o_drop): every kill rolls a
+# drop object; ~2% of those become a special-item star (o_specjaldrop1),
+# the rest pay coins or gems in `sizeof` tiers. The special_weapon_*
+# pickups (energy/cooling mushrooms, flower of fire, star of fireballs,
+# cool star of explosions) come out of the same roll, gated by world.
+const DROP_CHANCE := 0.55      # g_szansa baseline — most kills drop
+const SPECIAL_STAR_CHANCE := 0.02   # g_bonus_czy_specjal > 98
+const SPECIAL_PICKUP_CHANCE := 0.06 # special_weapon_* branch
+# World index (0-7) gates the stronger pickups, like the original's
+# map_number ranges in drop.gd.
+var _world := 0
 
 var kind := Kind.GOOMBA
 var scroll_down := 0.0           # px/frame — castle stages drift enemies
@@ -717,46 +714,68 @@ func die() -> void:
 	queue_free()
 
 
-## Roll the drop table — coins common, gems rare, health very rare.
+## Roll the drop — o_drop pays coins (sila_monet) or gems
+## (sila_diamentow) in sizeof tiers, with rare special pickups.
 func _roll_drop() -> void:
 	if _hazard:
 		return
+	_world = clampi(NativeGame.active_level / 10, 0, 7) \
+		if NativeGame.active_level >= 0 else 0
 	# Castle defenses always spill coins in the original (g_drop with
 	# szansa 1000, sila_monet/diamentow 3) — guarantee a couple.
 	if kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY, Kind.FAT_CANNON]:
 		for i in randi_range(2, 3):
 			var coin := NativePickup.new()
 			coin.kind = NativePickup.Kind.COIN
+			coin.tier = randi_range(2, 4)
 			coin.global_position = position + Vector2(
 				randf_range(-24, 24), randf_range(-24, 24))
 			get_parent().add_child(coin)
 		if randf() < 0.3:
 			var gem := NativePickup.new()
 			gem.kind = NativePickup.Kind.GEM
+			gem.tier = randi_range(1, 3)
 			gem.global_position = position
 			get_parent().add_child(gem)
 		return
-	# Rare special-item drop — the original's o_specjaldrop1 objects are
-	# placed by level scripts; here any kill has a small chance to spill
-	# one so the system stays reachable on every stage.
-	# better_chance_of_bonus (VETERAN hero) improves the odds ~10%.
-	var special_chance := 0.02 * (1.0 + NativeGame.better_chance_of_bonus / 50.0)
-	if randf() < special_chance:
+	if randf() > DROP_CHANCE:
+		return
+	# ~2% of drops are special-item stars (o_specjaldrop1).
+	# better_chance_of_bonus (VETERAN) widens the special pickup gate,
+	# like zmniejsz_szansze50proc > (50 - better_chance_of_bonus).
+	var bonus := 1.0 + NativeGame.better_chance_of_bonus / 50.0
+	if randf() < SPECIAL_STAR_CHANCE * bonus:
 		var drop := NativePickup.new()
 		drop.special_id = randi_range(1, 9)
 		drop.global_position = position
 		get_parent().add_child(drop)
 		return
-	var roll := randf()
-	var acc := 0.0
-	for entry in DROP_TABLE:
-		acc += entry[0]
-		if roll <= acc and entry[1] != null:
-			var pickup := NativePickup.new()
-			pickup.kind = entry[1]
-			pickup.global_position = position
-			get_parent().add_child(pickup)
-			return
+	# special_weapon_* pickups — energy/cooling mushrooms always,
+	# the fire boosters gated by campaign world like drop.gd's
+	# map_number ranges.
+	if randf() < SPECIAL_PICKUP_CHANCE * bonus:
+		var pk := NativePickup.new()
+		var pool: Array = [NativePickup.Kind.HEALTH, NativePickup.Kind.COOLING]
+		if _world >= 1:
+			pool.append(NativePickup.Kind.FLOWER)
+		if _world >= 2:
+			pool.append(NativePickup.Kind.FIRESTAR)
+		if _world >= 3:
+			pool.append(NativePickup.Kind.BOMBSTAR)
+		pk.kind = pool[randi() % pool.size()]
+		pk.global_position = position
+		get_parent().add_child(pk)
+		return
+	# Currency — coin vs gem by the original's moneta_vs_diament roll
+	# (~2:1 coins), sizeof tier uniform 1-10 (jackpot at 10).
+	var pickup := NativePickup.new()
+	pickup.tier = randi_range(1, 10)
+	if randf() < 0.67:
+		pickup.kind = NativePickup.Kind.COIN
+	else:
+		pickup.kind = NativePickup.Kind.GEM
+	pickup.global_position = position
+	get_parent().add_child(pickup)
 
 
 func _spawn_explosion(points: int = -1) -> void:

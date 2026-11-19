@@ -65,8 +65,6 @@ var _muzzle_sprite: AnimatedSprite2D
 var _hurtbox: Area2D
 var _sfx: AudioStreamPlayer
 var _weapon_levels := PackedInt32Array()  # g_levelup per slot
-var _shield_sprite: Sprite2D          # bubble shown while shielded
-var _shielded := false                # invulnerable came from SHIELD pickup
 var _orbit_balls: Array[Sprite2D] = []  # upgradeBALLS weapon orbs
 var _ball_hits := {}                  # ball index -> {enemy_id: last_hit_frame}
 
@@ -113,14 +111,6 @@ func _ready() -> void:
 	_sfx = AudioStreamPlayer.new()
 	add_child(_sfx)
 
-	# Shield bubble — a generated ring texture around the hull. Shown
-	# only while a SHIELD pickup is active (NativeGame.shield_time).
-	_shield_sprite = Sprite2D.new()
-	_shield_sprite.texture = _make_shield_texture()
-	_shield_sprite.modulate = Color(0.5, 0.8, 1.0, 0.8)
-	_shield_sprite.visible = false
-	add_child(_shield_sprite)
-
 	# Spawn in the middle of the playfield.
 	position = Vector2(435, 425)
 
@@ -135,10 +125,18 @@ func _ready() -> void:
 		get_parent().add_child.call_deferred(buddy)
 
 
+func _exit_tree() -> void:
+	# Never leave the scene running slowed after the ship is gone.
+	Engine.time_scale = 1.0
+
+
 func _physics_process(delta: float) -> void:
 	if NativeGame.paused:
 		return
-	_tick_shield(delta)
+	# CHRONO bullet-time — Engine.time_scale drives the whole scene.
+	var want_scale := 0.35 if Time.get_ticks_msec() < _slowmo_until else 1.0
+	if not is_equal_approx(Engine.time_scale, want_scale):
+		Engine.time_scale = want_scale
 	_poll_input()
 	_apply_movement(delta)
 	_apply_firing(delta)
@@ -147,36 +145,6 @@ func _physics_process(delta: float) -> void:
 	_tick_reserve()
 	_tick_balls()
 	_tick_special(delta)
-
-
-## Shield pickup timer — while active the hull is invulnerable and the
-## bubble ring shows. Spawn-protection invulnerability is separate: the
-## shield flag only releases what the shield itself set.
-func _tick_shield(delta: float) -> void:
-	if NativeGame.shield_time > 0.0:
-		NativeGame.shield_time = maxf(0.0, NativeGame.shield_time - delta)
-		invulnerable = true
-		_shielded = true
-		_shield_sprite.visible = true
-		_shield_sprite.rotation += delta * 2.5
-		_shield_sprite.modulate.a = 0.55 + sin(Time.get_ticks_msec() / 120.0) * 0.25
-	elif _shielded:
-		_shielded = false
-		invulnerable = false
-		_shield_sprite.visible = false
-
-
-## 64px ring texture generated once — cyan bubble outline.
-static func _make_shield_texture() -> Texture2D:
-	var img := Image.create(64, 64, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0, 0, 0, 0))
-	var c := Vector2(32, 32)
-	for y in 64:
-		for x in 64:
-			var d := Vector2(x, y).distance_to(c)
-			if d > 26.0 and d < 30.0:
-				img.set_pixel(x, y, Color(0.5, 0.85, 1.0, 0.9))
-	return ImageTexture.create_from_image(img)
 
 
 # ---------------------------------------------------------------------------
@@ -251,14 +219,16 @@ func _apply_movement(delta: float) -> void:
 # ---------------------------------------------------------------------------
 
 func _apply_firing(delta: float) -> void:
-	# Overdrive star countdown — while active, weapons cycle faster.
-	if NativeGame.overdrive_time > 0.0:
-		NativeGame.overdrive_time = maxf(0.0, NativeGame.overdrive_time - delta)
+	# Booster timers — g_bron_etapowa counts down in frames (1200 = 20s).
+	if NativeGame.booster_fire_time > 0.0:
+		NativeGame.booster_fire_time = maxf(0.0, NativeGame.booster_fire_time - delta)
+	if NativeGame.booster_boom_time > 0.0:
+		NativeGame.booster_boom_time = maxf(0.0, NativeGame.booster_boom_time - delta)
+	_tick_boosters(delta)
 
 	# Guns only work with hull integrity and while not overheated.
 	var can_fire: bool = NativeGame.energy > 0.0 and not NativeGame.paused \
 		and NativeGame.overheating < NativeGame.overheat_max()
-	var rate_mult := 1.5 if NativeGame.overdrive_time > 0.0 else 1.0
 
 	for i in MUZZLES.size():
 		var wid := NativeGame.weapons[i] if i < NativeGame.weapons.size() else -1
@@ -269,7 +239,7 @@ func _apply_firing(delta: float) -> void:
 			NativeGame.weapon_level[i], wid)
 		# Charge builds every frame (g_ladowanie), fires when it reaches
 		# the weapon's firerate threshold minus upgrade shaving.
-		_charge[i] += (1.0 + NativeGame.samus_firerate) * rate_mult * delta * 60.0
+		_charge[i] += (1.0 + NativeGame.samus_firerate) * delta * 60.0
 		if can_fire and fire_held and _charge[i] >= st["delay"]:
 			_charge[i] = 0.0
 			_fire_slot(i, st)
@@ -279,6 +249,58 @@ func _apply_firing(delta: float) -> void:
 	if not (can_fire and fire_held):
 		NativeGame.overheating = maxf(0.0, NativeGame.overheating \
 			- (OVERHEAT_COOLING + NativeGame.samus_cooling) * delta * 60.0)
+
+
+# ---------------------------------------------------------------------------
+# Weapon boosters — g_bron_etapowa (FLOWER OF FIRE / STAR OF FIREBALLS).
+# While the timer runs and the trigger is held, the ship lobs homing
+# booster orbs: booster_weapon_1 every ~30 frames (damage 2),
+# booster_weapon_2 every ~60 frames (damage 5). Both accelerate to
+# speed 20/30, lock the nearest enemy after 10 frames and steer ±3°/f.
+# ---------------------------------------------------------------------------
+
+var _booster_t := 0.0
+
+
+func _tick_boosters(delta: float) -> void:
+	if NativeGame.paused or NativeGame.energy <= 0.0:
+		return
+	if not fire_held:
+		_booster_t = 0.0
+		return
+	var interval := -1.0
+	var damage := 0.0
+	if NativeGame.booster_fire_time > 0.0:
+		interval = 0.5    # 30 frames at 60fps
+		damage = 5.0
+	elif NativeGame.booster_boom_time > 0.0:
+		interval = 1.0    # 60 frames
+		damage = 12.0
+	if interval < 0.0:
+		_booster_t = 0.0
+		return
+	_booster_t += delta
+	if _booster_t < interval:
+		return
+	_booster_t = 0.0
+	_spawn_booster_orb(damage)
+
+
+## One homing orb — sprite 480 glow, blue-tinted like the original's
+## additive draw. Homing strength 3°/frame matches the ±3 steering.
+func _spawn_booster_orb(damage: float) -> void:
+	var bolt := NativeBullet.new()
+	bolt.global_position = global_position + Vector2(0, -30)
+	bolt.velocity = Vector2(0, -1) * 2.0
+	bolt.max_speed = 20.0 if damage < 10.0 else 30.0
+	bolt.accel_per_frame = 0.09 if damage < 10.0 else 0.2
+	bolt.homing = 3.0
+	bolt.life_frames = 240 if damage < 10.0 else 180
+	bolt.damage = damage
+	bolt.sprite_id = 480
+	bolt.scale0 = 0.35
+	bolt.modulate = Color(0.4, 0.6, 1.0)
+	get_parent().add_child(bolt)
 
 
 ## Spawn the weapon in slot `index`. Bolt count/arc come from the weapon's
@@ -321,6 +343,7 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		_fire_super_weapon(st, spawn_pos, aim)
 		NativeGame.overheating += st["overheat"]
 		_play_shot_sound()
+		_muzzle_flash(spawn_pos, aim)
 		return
 
 	var count: int = maxi(1, int(st.get("multi", 1)))
@@ -371,6 +394,29 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 
 	NativeGame.overheating += st["overheat"]
 	_play_shot_sound()
+	_muzzle_flash(spawn_pos, aim)
+
+
+## o_laserflash (obj 171) — additive muzzle flash at the gun tip:
+## sprite 21 random frame + sprite 138 glow, fades in ~6 frames.
+func _muzzle_flash(pos: Vector2, aim: Vector2) -> void:
+	var flash := Sprite2D.new()
+	# s_flash_1 ships a single frame in the extracted assets.
+	var tex := NativeAssets.sprite_frame(21, 0)
+	if tex == null:
+		flash.queue_free()
+		return
+	flash.texture = tex
+	flash.offset = -NativeAssets.sprite_origin(21)
+	flash.material = CanvasItemMaterial.new()
+	flash.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	flash.scale = Vector2(0.3, 0.3)
+	flash.global_position = pos + aim * 6.0
+	flash.rotation = aim.angle() + PI / 2.0
+	get_parent().add_child(flash)
+	var tw := flash.create_tween()
+	tw.tween_property(flash, "modulate:a", 0.0, 0.12)
+	tw.tween_callback(flash.queue_free)
 
 
 ## Muzzle report — sound id 29 from the original sampel table.
@@ -495,6 +541,7 @@ var _charge_id := 0
 var _charge_item: Dictionary = {}
 var _charge_t := 0.0
 var _charge_bubble: Sprite2D
+var _slowmo_until := 0
 
 
 func _tick_special(delta: float) -> void:
@@ -633,11 +680,12 @@ func _use_special(id: int) -> void:
 				if bolt != null:
 					bolt.weave = 2.0
 					bolt.weave_speed = 0.15
-		9:  # CHRONO — seq 100000 zwolnij_gre: clears enemy fire + shield
+		9:  # CHRONO — seq 100000 zwolnij_gre: bullet-time slow-mo
+			# (~3s at 35% speed) after clearing enemy fire.
 			for bullet in get_tree().get_nodes_in_group("enemy_bullets"):
 				if is_instance_valid(bullet):
 					bullet.queue_free()
-			NativeGame.shield_time = item["shield"]
+			_slowmo_until = Time.get_ticks_msec() + 3000
 			_flash_special_fx(480)
 
 

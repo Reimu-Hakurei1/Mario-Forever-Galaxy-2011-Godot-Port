@@ -100,6 +100,7 @@ func _spawn_row(y: float) -> void:
 		var coin := NativePickup.new()
 		coin.kind = NativePickup.Kind.COIN if randf() < 0.8 \
 			else NativePickup.Kind.GEM
+		coin.tier = randi_range(1, 4)
 		coin.position = Vector2(corridor_x + randf_range(-60, 60), y - 100)
 		add_child(coin)
 

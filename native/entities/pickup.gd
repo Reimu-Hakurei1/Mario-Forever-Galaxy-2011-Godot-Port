@@ -1,41 +1,51 @@
 extends Node2D
 class_name NativePickup
-## NativePickup — collectible drops (ports `o_coindrop`, `o_diamonddrop`).
+## NativePickup — collectible drops (ports `o_coindrop`, `o_diamonddrop`,
+## `o_drop` and the special_weapon_1..6 / level_weapon_1 pickups).
 ##
 ## The original drops coins/gems when enemies die; they drift, then magnet
 ## toward the player when close and award currency/score on contact.
 ## This port keeps that loop: drift → magnet → collect.
 
-enum Kind { COIN, GEM, HEALTH, POWER, LIFE, COOLING, SHIELD }
+enum Kind { COIN, GEM, HEALTH, LIFE, COOLING, FLOWER, FIRESTAR, BOMBSTAR, LEVELGUN }
 
 const SPRITES := {
 	Kind.COIN: 229,       # s_bonus_coin
 	Kind.GEM: 231,        # s_bonus_diamond
-	Kind.HEALTH: 136,     # s_spikey (health capsule stand-in)
-	Kind.POWER: 489,      # s_bonus_redstar — weapon overdrive star
+	Kind.HEALTH: 481,     # special_weapon_1 — energy mushroom sprite
 	Kind.LIFE: 155,       # s_bonuslives — extra ship
-	Kind.COOLING: 488,    # s_bonus_cooling — overheat purge
-	Kind.SHIELD: 490,     # s_bonus_coolstar — invulnerability bubble
+	Kind.COOLING: 488,    # special_weapon_2 — cooling mushroom
+	Kind.FLOWER: 482,     # special_weapon_3 — flower of fire (booster 1)
+	Kind.FIRESTAR: 489,   # special_weapon_4 — star of fireballs (booster 2)
+	Kind.BOMBSTAR: 490,   # special_weapon_5 — cool star of explosions
+	Kind.LEVELGUN: 424,   # level_weapon_1 — free weapon upgrade
 }
 const DRIFT_SPEED := 0.5     # px/frame downward drift
 const MAGNET_RANGE := 90.0   # px — starts homing inside this radius
 const MAGNET_SPEED := 4.0    # px/frame toward player
 const COLLECT_RANGE := 26.0
-const OVERDRIVE_TIME := 12.0 # seconds of boosted fire
+## o_coindrop sizeof tiers — coins paid per pickup (x coins_booster).
+## sizeof 1 also has a "daj_jeden_kasy" variant paying 2; we use 10.
+const COIN_VALUES := [10, 100, 500, 1000, 2000, 5000, 7500, 10000, 15000, 100000]
+## o_diamonddrop pays SCORE (naliczator), not coins — same tier curve.
 const VALUES := {
-	Kind.COIN: {"coins": 1, "score": 10},
-	Kind.GEM: {"coins": 5, "score": 50},
+	Kind.COIN: {"score": 10},
+	Kind.GEM: {"score": 10},
 	# Health mushroom — special_weapon_1.gd adds (200 +
 	# mushroom_gives_more) to g_energion in ORIGINAL units; the reserve
 	# trickles 1 unit/frame into hull (~0.1 ours per frame).
 	Kind.HEALTH: {"heal_reserve": 200.0, "score": 0},
-	Kind.POWER: {"overdrive": OVERDRIVE_TIME, "score": 100},
 	Kind.LIFE: {"life": 1, "score": 250},
 	Kind.COOLING: {"cool": true, "score": 50},
-	Kind.SHIELD: {"shield": 8.0, "score": 150},
+	Kind.FLOWER: {"booster_fire": 20.0, "score": 100},
+	Kind.FIRESTAR: {"booster_boom": 20.0, "score": 100},
+	Kind.BOMBSTAR: {"bomb_ring": true, "score": 150},
+	Kind.LEVELGUN: {"level_gun": true, "score": 500},
 }
 
 var kind := Kind.COIN
+## Coin/gem size tier 1..10 (o_coindrop/o_diamonddrop `sizeof`).
+var tier := 1
 ## Special-item id (1..9) when this drop carries a special — ports
 ## o_specjaldrop1. 0 = a normal currency/powerup pickup.
 var special_id := 0
@@ -59,25 +69,21 @@ func _ready() -> void:
 		if tex != null:
 			_sprite.texture = tex
 			_sprite.offset = -NativeAssets.sprite_origin(SPRITES[kind])
-	# The health sprite (s_spikey) is a huge powerup graphic — shrink it so
-	# it reads as a small collectible like the coin and gem.
-	if kind == Kind.HEALTH:
-		_sprite.scale = Vector2(0.3, 0.3)
-	# Gems shimmer in the original via HSV cycling — a gentle hue pulse
-	# reads the same at a fraction of the cost.
-	if kind == Kind.GEM:
-		_sprite.modulate = Color(0.6, 0.9, 1.0)
 	# Powerup sprites get a colour cue so they read differently from
 	# currency drops at a glance.
 	match kind:
-		Kind.POWER:
-			_sprite.modulate = Color(1.0, 0.5, 0.5)
 		Kind.LIFE:
 			_sprite.modulate = Color(1.0, 0.4, 0.6)
 		Kind.COOLING:
 			_sprite.modulate = Color(0.5, 0.9, 1.0)
-		Kind.SHIELD:
-			_sprite.modulate = Color(0.5, 0.8, 1.0)
+		Kind.FLOWER:
+			_sprite.modulate = Color(1.0, 0.6, 0.3)
+		Kind.FIRESTAR:
+			_sprite.modulate = Color(1.0, 0.8, 0.3)
+		Kind.BOMBSTAR:
+			_sprite.modulate = Color(0.9, 0.5, 0.9)
+		Kind.LEVELGUN:
+			_sprite.modulate = Color(0.6, 1.0, 0.6)
 	add_child(_sprite)
 
 
@@ -97,7 +103,7 @@ func _physics_process(_delta: float) -> void:
 	var dist: float = to_ship.length()
 
 	if dist < COLLECT_RANGE:
-		_collect()
+		_collect(ship)
 		queue_free()
 	elif dist < MAGNET_RANGE:
 		# Magnetize — the original's homing behaviour.
@@ -111,7 +117,7 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 
 
-func _collect() -> void:
+func _collect(ship: Node2D = null) -> void:
 	# Special drop — fills the first empty G.specialslot ring slot.
 	# If the ring is full the item salvages for a coin refund.
 	if special_id > 0:
@@ -122,14 +128,16 @@ func _collect() -> void:
 			NativeAssets.play_sound(62)
 		return
 	var v: Dictionary = VALUES[kind]
-	if v.has("coins"):
-		# coins_booster — hero 0's +2% coin value (coin_drop.gd).
-		NativeGame.coins += int(round(v["coins"] * NativeGame.coins_booster))
+	var t := clampi(tier, 1, COIN_VALUES.size()) - 1
+	if kind == Kind.COIN:
+		# coin_drop.gd sizeof payout x coins_booster (CLASSIC +2%).
+		NativeGame.coins += int(round(COIN_VALUES[t] * NativeGame.coins_booster))
+	if kind == Kind.GEM:
+		# diamond_drop.gd pays score points on the same tier curve.
+		NativeGame.add_score(COIN_VALUES[t])
 	if v.has("heal_reserve"):
 		NativeGame.energy_reserve += v["heal_reserve"] \
 			+ NativeGame.mushroom_gives_more
-	if v.has("overdrive"):
-		NativeGame.overdrive_time = v["overdrive"]
 	if v.has("life"):
 		NativeGame.lives += v["life"]
 	if v.has("cool"):
@@ -137,7 +145,37 @@ func _collect() -> void:
 		# hero bonus (special_weapon_2.gd) — not a full purge.
 		NativeGame.overheating = maxf(0.0, NativeGame.overheating
 			- (200.0 + NativeGame.better_cooling_mushroom))
-	if v.has("shield"):
-		NativeGame.shield_time = v["shield"]
+	if v.has("booster_fire"):
+		NativeGame.booster_fire_time = v["booster_fire"]
+	if v.has("booster_boom"):
+		NativeGame.booster_boom_time = v["booster_boom"]
+	if v.has("bomb_ring"):
+		_fire_bomb_ring(ship)
+	if v.has("level_gun"):
+		# level_weapon_1.gd — grants weapon id 4 (TRIPLER) at level 8
+		# into G.weapon[2] (the second gun slot).
+		var slot := 1 if NativeGame.gun_slots[0] else 0
+		NativeGame.weapons[slot] = 4
+		NativeGame.weapon_level[slot] = 8
 	NativeGame.add_score(v.get("score", 0))
 	NativeAssets.play_sound(62)  # pickup chime (original sampel id)
+
+
+## COOL STAR OF EXPLOSIONS — special_weapon_5.gd spawns 11
+## cool_explosion_bullets (obj 302) in a ring, starter_boom staggered
+## 36 degrees apart. Here they burst outward from the pickup.
+func _fire_bomb_ring(ship: Node2D) -> void:
+	var parent := get_parent()
+	if parent == null:
+		return
+	for i in 11:
+		var bolt := NativeBullet.new()
+		bolt.global_position = global_position
+		bolt.velocity = Vector2.RIGHT.rotated(i * TAU / 11.0) * 2.8
+		bolt.damage = 20.0
+		bolt.sprite_id = 490
+		bolt.scale0 = 0.4
+		bolt.life_frames = 240
+		bolt.weave = 2.0
+		bolt.weave_speed = 0.15
+		parent.add_child(bolt)
