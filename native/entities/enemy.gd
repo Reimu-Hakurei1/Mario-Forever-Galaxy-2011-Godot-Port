@@ -24,7 +24,7 @@ enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
 ## Sprite ids come from data/assets.json (s_enemy_*/s_ufo_* sheets).
 enum Kind {
 	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
-	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
+	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE, SPLIT,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -49,6 +49,9 @@ const KIND_PROFILES := {
 	Kind.JUMBO: {"sprite": 50, "score": 400, "chase": 0.9, "scale": 0.5},
 	# Elite goomba — the armored 'aup' variant, tanky mid-tier.
 	Kind.ELITE: {"sprite": 479, "score": 220, "chase": 1.5},
+	# Splitter — bursts into a pod of minis on death (the original's
+	# divide-and-conquer enemy).
+	Kind.SPLIT: {"sprite": 30, "score": 180, "chase": 1.1, "scale": 0.8},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -311,6 +314,17 @@ func die() -> void:
 	NativeGame.add_score(points)
 	_roll_drop()
 	_spawn_explosion(points)
+	# Splitters burst into minis — the payoff (and threat) of the kill.
+	if kind == Kind.SPLIT:
+		for i in 3:
+			var mini := NativeEnemy.new()
+			mini.kind = Kind.MINI
+			mini.health = 40.0
+			mini.global_position = position + Vector2(
+				(i - 1) * 36.0, randf_range(-16, 16))
+			mini.formation_slot = mini.global_position
+			mini.mode = Mode.CHASE
+			get_parent().add_child(mini)
 	queue_free()
 
 

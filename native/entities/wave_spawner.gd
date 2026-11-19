@@ -104,6 +104,7 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"crab": enemy.kind = NativeEnemy.Kind.CRAB
 		"jumbo": enemy.kind = NativeEnemy.Kind.JUMBO
 		"elite": enemy.kind = NativeEnemy.Kind.ELITE
+		"split": enemy.kind = NativeEnemy.Kind.SPLIT
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies

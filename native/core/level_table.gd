@@ -37,7 +37,7 @@ const BOSS_MUSIC := {
 # Enemy kinds available to the generator — must match the spawner's
 # string→Kind mapping and enemy.gd's KIND_PROFILES.
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
-	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite"]
+	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite", "split"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -188,7 +188,7 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		elif w >= 3 and roll >= 12:
 			kind = ["ufo_a", "ufo_b", "shooter"][roll % 3]
 		elif w >= 2 and roll >= 8:
-			kind = ["kamikaze", "mini", "shooter"][roll % 3]
+			kind = ["kamikaze", "mini", "shooter", "split"][roll % 4]
 		elif w >= 2 and roll == 7:
 			mode = "chase"
 		if kind == "kamikaze" or kind == "ufo_b":
@@ -207,6 +207,7 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			"ros": hp = hp * 2.0
 			"crab": hp = hp * 2.0
 			"elite": hp = hp * 1.8
+			"split": hp = hp * 0.9
 
 		waves.append({
 			"delay": t,

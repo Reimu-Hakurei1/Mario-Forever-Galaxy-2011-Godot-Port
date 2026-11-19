@@ -15,10 +15,12 @@ const MARGIN := 200.0            # original kills bolts 200px outside the room
 
 var velocity := Vector2.ZERO     # world px/frame
 var damage := 34.0
+var pierce := false              # max weapon power — bolt passes through foes
 
 var _sprite: Sprite2D
 var _scale := 0.2
 var _dead := false
+var _hit_ids := {}               # enemies already struck (pierce bookkeeping)
 
 
 func _ready() -> void:
@@ -47,12 +49,19 @@ func _physics_process(_delta: float) -> void:
 	# object; a group scan is the same check in native terms. Bullets are
 	# small and few, so the scan is cheap.
 	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if is_instance_valid(enemy) and position.distance_to(enemy.global_position) < 34.0:
-			if enemy.take_damage(damage):
-				pass  # enemy.die() already scored the kill
-			_dead = true
-			queue_free()
-			return
+		if not is_instance_valid(enemy):
+			continue
+		var eid := enemy.get_instance_id()
+		if _hit_ids.has(eid):
+			continue   # pierce: don't strike the same enemy twice
+		if position.distance_to(enemy.global_position) < 34.0:
+			_hit_ids[eid] = true
+			enemy.take_damage(damage)
+			if not pierce:
+				_dead = true
+				queue_free()
+				return
+			# Piercing bolts keep flying through the target.
 
 	# Slight visual stretch as the bolt travels.
 	_scale += SCALE_GROWTH

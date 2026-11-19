@@ -39,12 +39,32 @@ var _nodes: Array = []           # Button per level, index = level id
 var _ship_cursor: Sprite2D = null
 var _cursor_base_y := 0.0
 
+# Camera pan/zoom — the original map screen lets you drag a view pad
+# and scroll to inspect distant stars. Here: hold RIGHT mouse to drag,
+# wheel to zoom, release returns the camera to the frontier node.
+var _world: Node2D = null
+var _cam: Camera2D = null
+var _panning := false
+var _cam_tween: Tween = null
+var _node_centers: Dictionary = {}   # level idx -> world-space node center
+
 
 func _ready() -> void:
 	_build_backdrop()
 
+	# World container — everything positional (labels, nodes, paths,
+	# ship cursor) lives here so the camera can pan/zoom it as one layer.
+	# Header, stats, options and backdrop stay screen-fixed.
+	_world = Node2D.new()
+	add_child(_world)
+	_cam = Camera2D.new()
+	_cam.zoom = Vector2(1.35, 1.35)
+	_world.add_child(_cam)
+
 	_build_header()
 	_build_grid()
+	_cam.make_current()
+	_center_on_frontier()
 
 
 ## Deep-space backdrop: a generated starfield over a dim galaxy image.
@@ -139,7 +159,7 @@ func _build_grid() -> void:
 		wl.add_theme_font_size_override("font_size", 14)
 		wl.add_theme_color_override("font_color", WORLD_COLORS[w])
 		wl.position = Vector2(start_x - 90, start_y + w * ROW_HEIGHT + NODE_SIZE / 2 - 10)
-		add_child(wl)
+		_world.add_child(wl)
 
 		for l in per_world:
 			var idx := w * per_world + l
@@ -147,8 +167,10 @@ func _build_grid() -> void:
 			btn.position = Vector2(
 				start_x + l * (NODE_SIZE + NODE_GAP),
 				start_y + w * ROW_HEIGHT)
-			add_child(btn)
+			_world.add_child(btn)
 			_nodes.append(btn)
+			# Node center in world space — the camera's pan/zoom target.
+			_node_centers[idx] = btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
 
 	_draw_paths(start_x, start_y, per_world)
 	_build_ship_cursor(start_x, start_y, per_world)
@@ -173,7 +195,7 @@ func _draw_paths(start_x: float, start_y: float, per_world: int) -> void:
 			line.default_color = unlocked_color \
 				if b_idx <= NativeGame.level_index else locked_color
 			line.width = 3.0
-			add_child(line)
+			_world.add_child(line)
 
 
 ## The player's ship parked on the frontier node — pulses gently to
@@ -195,7 +217,7 @@ func _build_ship_cursor(start_x: float, start_y: float, _per_world: int) -> void
 	_ship_cursor.position = Vector2(
 		start_x + l * (NODE_SIZE + NODE_GAP) + NODE_SIZE / 2.0,
 		_cursor_base_y)
-	add_child(_ship_cursor)
+	_world.add_child(_ship_cursor)
 
 
 ## One level node — a star button showing world/level and lock state.
@@ -243,6 +265,48 @@ func _fade_to_arena() -> void:
 	tw.tween_property(fade, "modulate:a", 1.0, 0.35)
 	tw.tween_callback(func():
 		get_tree().change_scene_to_file("res://native/levels/arena.tscn"))
+
+
+## Snap the camera onto the frontier (highest unlocked) node.
+func _center_on_frontier() -> void:
+	if _cam == null:
+		return
+	var idx: int = mini(NativeGame.level_index, _node_centers.size() - 1)
+	_cam.position = _node_centers.get(idx, Vector2(512, 384))
+
+
+## Right-drag pans the map view; mouse wheel zooms; releasing the button
+## glides the camera back to the frontier node — the original's pad
+## behaviour (hold to inspect, release to return).
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			_panning = event.pressed
+			if not _panning:
+				_return_camera()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			_set_zoom(_cam.zoom.x * 1.15)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			_set_zoom(_cam.zoom.x / 1.15)
+	elif event is InputEventMouseMotion and _panning and _cam != null:
+		# Dragging moves the camera opposite the cursor, scaled by zoom.
+		_cam.position -= event.relative / _cam.zoom.x
+
+
+func _set_zoom(z: float) -> void:
+	var clamped := clampf(z, 0.8, 2.2)
+	_cam.zoom = Vector2(clamped, clamped)
+
+
+## Glide back to the frontier node after a pan.
+func _return_camera() -> void:
+	if _cam_tween != null and _cam_tween.is_running():
+		_cam_tween.kill()
+	var idx: int = mini(NativeGame.level_index, _node_centers.size() - 1)
+	var target: Vector2 = _node_centers.get(idx, _cam.position)
+	_cam_tween = create_tween()
+	_cam_tween.tween_property(_cam, "position", target, 0.6) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 func _process(_delta: float) -> void:

@@ -285,6 +285,8 @@ func _fire_muzzle(index: int) -> void:
 		bullet.global_position = spawn_pos
 		bullet.velocity = dir * NativeBullet.START_SPEED
 		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult
+		# Top weapon tier fires piercing rounds — the original's lance.
+		bullet.pierce = NativeGame.weapon_power >= 2
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += OVERHEAT_PER_SHOT
