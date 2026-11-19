@@ -68,6 +68,8 @@ var _muzzle_sprite: AnimatedSprite2D
 var _hurtbox: Area2D
 var _sfx: AudioStreamPlayer
 var _weapon_levels := PackedInt32Array()  # g_levelup per slot
+var _shield_sprite: Sprite2D          # bubble shown while shielded
+var _shielded := false                # invulnerable came from SHIELD pickup
 
 
 func _ready() -> void:
@@ -112,6 +114,14 @@ func _ready() -> void:
 	_sfx = AudioStreamPlayer.new()
 	add_child(_sfx)
 
+	# Shield bubble — a generated ring texture around the hull. Shown
+	# only while a SHIELD pickup is active (NativeGame.shield_time).
+	_shield_sprite = Sprite2D.new()
+	_shield_sprite.texture = _make_shield_texture()
+	_shield_sprite.modulate = Color(0.5, 0.8, 1.0, 0.8)
+	_shield_sprite.visible = false
+	add_child(_shield_sprite)
+
 	# Spawn in the middle of the playfield.
 	position = Vector2(435, 425)
 
@@ -119,10 +129,41 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if NativeGame.paused:
 		return
+	_tick_shield(delta)
 	_poll_input()
 	_apply_movement(delta)
 	_apply_firing(delta)
 	_update_visuals(delta)
+
+
+## Shield pickup timer — while active the hull is invulnerable and the
+## bubble ring shows. Spawn-protection invulnerability is separate: the
+## shield flag only releases what the shield itself set.
+func _tick_shield(delta: float) -> void:
+	if NativeGame.shield_time > 0.0:
+		NativeGame.shield_time = maxf(0.0, NativeGame.shield_time - delta)
+		invulnerable = true
+		_shielded = true
+		_shield_sprite.visible = true
+		_shield_sprite.rotation += delta * 2.5
+		_shield_sprite.modulate.a = 0.55 + sin(Time.get_ticks_msec() / 120.0) * 0.25
+	elif _shielded:
+		_shielded = false
+		invulnerable = false
+		_shield_sprite.visible = false
+
+
+## 64px ring texture generated once — cyan bubble outline.
+static func _make_shield_texture() -> Texture2D:
+	var img := Image.create(64, 64, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	var c := Vector2(32, 32)
+	for y in 64:
+		for x in 64:
+			var d := Vector2(x, y).distance_to(c)
+			if d > 26.0 and d < 30.0:
+				img.set_pixel(x, y, Color(0.5, 0.85, 1.0, 0.9))
+	return ImageTexture.create_from_image(img)
 
 
 # ---------------------------------------------------------------------------

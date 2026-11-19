@@ -17,7 +17,21 @@ const ROW_HEIGHT := 84.0
 const MARGIN := 60.0
 const MAX_LEVELS := 80           # 8 worlds x 10 (NativeLevelTable)
 
+## Per-world accent colours — the Galaxy map tints each region.
+const WORLD_COLORS := [
+	Color(1.0, 0.75, 0.3),    # W1 gold
+	Color(0.4, 0.9, 1.0),     # W2 ice
+	Color(0.7, 0.5, 1.0),     # W3 violet
+	Color(0.4, 1.0, 0.6),     # W4 green
+	Color(1.0, 0.5, 0.4),     # W5 ember
+	Color(1.0, 0.9, 0.4),     # W6 yellow
+	Color(0.9, 0.4, 0.8),     # W7 magenta
+	Color(1.0, 0.45, 0.35),   # W8 red — final world
+]
+
 var _nodes: Array = []           # Button per level, index = level id
+var _ship_cursor: Sprite2D = null
+var _cursor_base_y := 0.0
 
 
 func _ready() -> void:
@@ -60,7 +74,7 @@ func _build_backdrop() -> void:
 		img.set_pixel(x, y, c)
 		if bright > 0.92:   # a few brighter stars get a plus-shape
 			for d in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-				var p := Vector2i(x, y) + d
+				var p: Vector2i = Vector2i(x, y) + d
 				if p.x >= 0 and p.x < 1024 and p.y >= 0 and p.y < 768:
 					img.set_pixel(p.x, p.y, c)
 	var stars := TextureRect.new()
@@ -129,20 +143,67 @@ func _build_grid() -> void:
 			add_child(btn)
 			_nodes.append(btn)
 
+	_draw_paths(start_x, start_y, per_world)
+	_build_ship_cursor(start_x, start_y, per_world)
+
+
+## Connect consecutive nodes in each world row with a dim path line —
+## the Galaxy map's flight lanes between stars.
+func _draw_paths(start_x: float, start_y: float, per_world: int) -> void:
+	for w in NativeLevelTable.WORLDS:
+		var unlocked_color: Color = WORLD_COLORS[w] * 0.55
+		var locked_color := Color(0.2, 0.2, 0.28)
+		for l in per_world - 1:
+			var a_idx := w * per_world + l
+			var b_idx := a_idx + 1
+			var line := Line2D.new()
+			var y := start_y + w * ROW_HEIGHT + NODE_SIZE / 2.0
+			line.points = PackedVector2Array([
+				Vector2(start_x + l * (NODE_SIZE + NODE_GAP) + NODE_SIZE, y),
+				Vector2(start_x + (l + 1) * (NODE_SIZE + NODE_GAP), y),
+			])
+			# The lane glows once both ends are unlocked.
+			line.default_color = unlocked_color \
+				if b_idx <= NativeGame.level_index else locked_color
+			line.width = 3.0
+			add_child(line)
+
+
+## The player's ship parked on the frontier node — pulses gently to
+## invite the next flight, like the Galaxy map cursor.
+func _build_ship_cursor(start_x: float, start_y: float, _per_world: int) -> void:
+	if NativeGame.level_index >= _nodes.size():
+		return    # campaign complete — no frontier to mark
+	var idx := NativeGame.level_index
+	var w := NativeLevelTable.world_of(idx)
+	var l := NativeLevelTable.level_of(idx)
+	var tex := NativeAssets.sprite_frame(543, 1)   # upright ship frame
+	if tex == null:
+		return
+	_ship_cursor = Sprite2D.new()
+	_ship_cursor.texture = tex
+	_ship_cursor.offset = -NativeAssets.sprite_origin(543)
+	_ship_cursor.scale = Vector2(0.28, 0.28)
+	_cursor_base_y = start_y + w * ROW_HEIGHT + NODE_SIZE / 2.0
+	_ship_cursor.position = Vector2(
+		start_x + l * (NODE_SIZE + NODE_GAP) + NODE_SIZE / 2.0,
+		_cursor_base_y)
+	add_child(_ship_cursor)
+
 
 ## One level node — a star button showing world/level and lock state.
-func _make_node(idx: int, _w: int, _l: int) -> Button:
+func _make_node(idx: int, w: int, _l: int) -> Button:
 	var btn := Button.new()
 	btn.custom_minimum_size = Vector2(NODE_SIZE, NODE_SIZE)
 	btn.size = Vector2(NODE_SIZE, NODE_SIZE)
-	btn.text = "%d-%d" % [_w + 1, _l + 1]
+	btn.text = "%d-%d" % [w + 1, _l + 1]
 	btn.add_theme_font_size_override("font_size", 13)
 
 	var unlocked: bool = idx <= NativeGame.level_index
 	if unlocked:
-		# Unlocked = warm gold; the frontier level pulses to invite a click.
+		# Unlocked = world accent; the frontier node pulses gold.
 		btn.modulate = Color(1.0, 0.85, 0.35) if idx == NativeGame.level_index \
-			else Color(0.75, 0.8, 1.0)
+			else Color(WORLD_COLORS[w]) * 0.85
 	else:
 		btn.modulate = Color(0.25, 0.25, 0.3)
 	btn.disabled = not unlocked
@@ -163,9 +224,14 @@ func _process(_delta: float) -> void:
 	# Refresh the stats line and pulse the frontier node.
 	var stats := get_node_or_null("Stats") as Label
 	if stats != null:
-		stats.text = "SCORE %d    COINS %d    LIVES x%d" % [
-			NativeGame.score, NativeGame.coins, NativeGame.lives]
+		stats.text = "SCORE %d    BEST %d    COINS %d    LIVES x%d" % [
+			NativeGame.score, NativeGame.best_score,
+			NativeGame.coins, NativeGame.lives]
 	if _nodes.size() > NativeGame.level_index:
 		var frontier: Button = _nodes[NativeGame.level_index]
 		var s := 1.0 + sin(Time.get_ticks_msec() / 300.0) * 0.08
 		frontier.scale = Vector2(s, s)
+	# Ship cursor bob — gentle hover over the frontier node.
+	if _ship_cursor != null:
+		_ship_cursor.position.y = _cursor_base_y \
+			+ sin(Time.get_ticks_msec() / 400.0) * 4.0

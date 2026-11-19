@@ -11,6 +11,7 @@ class_name NativeGame
 
 # --- Persistent profile (survives level changes; save-file candidate) ---
 static var score: int = 0            ## G.punkty — level score
+static var best_score: int = 0       ## highest cumulative score ever reached
 static var coins: int = 0            ## G.coins — currency from coins/gems
 static var lives: int = 3            ## G.zycia — spare lives
 static var level_index: int = 0      ## G.poziom — highest unlocked level
@@ -22,6 +23,7 @@ static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
+static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var hero: int = 0               ## selected ship index (HEROES table)
 static var damage_mult: float = 1.0    ## hero bullet damage multiplier
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
@@ -74,6 +76,7 @@ static func reset_run() -> void:
 	energy = 100.0
 	overheating = 0.0
 	overdrive_time = 0.0
+	shield_time = 0.0
 	enemies_killed = 0
 	enemies_missed = 0
 
@@ -84,6 +87,8 @@ static func overheat_max() -> float:
 
 static func add_score(points: int) -> void:
 	score += points
+	if score > best_score:
+		best_score = score
 
 
 static func kill_enemy() -> void:
@@ -122,6 +127,7 @@ const SAVE_PATH := "user://native_save.cfg"
 static func save() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("profile", "score", score)
+	cfg.set_value("profile", "best_score", best_score)
 	cfg.set_value("profile", "coins", coins)
 	cfg.set_value("profile", "lives", lives)
 	cfg.set_value("profile", "level_index", level_index)
@@ -144,6 +150,7 @@ static func save() -> void:
 ## Wipe the profile back to defaults — the title screen's NEW GAME.
 static func reset_profile() -> void:
 	score = 0
+	best_score = 0
 	coins = 0
 	lives = 3
 	level_index = 0
@@ -166,6 +173,7 @@ static func load_save() -> bool:
 	if cfg.load(SAVE_PATH) != OK:
 		return false
 	score = int(cfg.get_value("profile", "score", score))
+	best_score = int(cfg.get_value("profile", "best_score", best_score))
 	coins = int(cfg.get_value("profile", "coins", coins))
 	lives = int(cfg.get_value("profile", "lives", lives))
 	level_index = int(cfg.get_value("profile", "level_index", level_index))

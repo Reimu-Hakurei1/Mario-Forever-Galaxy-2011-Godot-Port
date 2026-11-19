@@ -15,15 +15,23 @@ const LEVELS_PER_WORLD := 10
 const WORLDS := 8
 
 # Background/music pools per world — picked from data/assets.json ids.
+# `music` is a per-level pool: config_for rotates through it so levels
+# in the same world don't all share one track.
 const WORLD_THEME := {
-	0: {"bg": 0, "music": "mixed_battle"},     # asteroid belt
-	1: {"bg": 2, "music": "hard_squad"},       # rocky world
-	2: {"bg": 4, "music": "castle_fly2"},      # castle approach
-	3: {"bg": 5, "music": "dark"},             # dark space
-	4: {"bg": 6, "music": "brutal_force"},     # brutal zone
-	5: {"bg": 44, "music": "hard_life"},       # hard life
-	6: {"bg": 48, "music": "rage"},            # rage
-	7: {"bg": 41, "music": "last_boss"},       # final world
+	0: {"bg": 0, "bg_pool": [0, 44], "music": ["mixed_battle", "real_battle", "training"]},
+	1: {"bg": 2, "music": ["hard_squad", "brutal_force", "castle_fly2"]},
+	2: {"bg": 4, "music": ["castle_dungeon", "hard_castle", "dark"]},
+	3: {"bg": 5, "music": ["dark", "ghosts", "evil_castle"]},
+	4: {"bg": 6, "music": ["brutal_force", "violence", "riot"]},
+	5: {"bg": 44, "music": ["hard_life", "violation", "rage"]},
+	6: {"bg": 48, "music": ["rage", "death_star", "real_battle"]},
+	7: {"bg": 41, "bg_pool": [41, 52], "music": ["last_boss", "boss_bowser", "finishing"]},
+}
+
+# Boss levels override the world pool with these tracks.
+const BOSS_MUSIC := {
+	0: "real_battle", 1: "brutal_force", 2: "hard_castle", 3: "evil_castle",
+	4: "violence", 5: "violation", 6: "death_star", 7: "last_boss",
 }
 
 # Enemy kinds available to the generator — must match the spawner's
@@ -55,9 +63,21 @@ static func config_for(level_index: int) -> Dictionary:
 		waves.append(w)
 		picked += 1
 
+	# Music: boss levels get the world's boss track; normal levels rotate
+	# through the world pool by level number.
+	var is_boss := level % 5 == 4
+	var pool: Array = theme["music"]
+	var music := str(BOSS_MUSIC.get(world, str(pool[0]))) if is_boss \
+		else str(pool[level % pool.size()])
+
+	# Background rotates within the world for variety (bg 52 = cave set,
+	# unused until now — slots into the final world).
+	var bg_pool: Array = theme.get("bg_pool", [theme["bg"]])
+	var bg_id: int = int(bg_pool[level % bg_pool.size()])
+
 	return {
-		"background": theme["bg"],
-		"music": theme["music"],
+		"background": bg_id,
+		"music": music,
 		"waves": waves,
 		# Every 5th level ends with a boss fight once the waves are clear.
 		"boss": {"tier": world} if level % 5 == 4 else {},

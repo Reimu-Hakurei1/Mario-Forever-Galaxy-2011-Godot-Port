@@ -6,7 +6,7 @@ class_name NativePickup
 ## toward the player when close and award currency/score on contact.
 ## This port keeps that loop: drift → magnet → collect.
 
-enum Kind { COIN, GEM, HEALTH, POWER, LIFE, COOLING }
+enum Kind { COIN, GEM, HEALTH, POWER, LIFE, COOLING, SHIELD }
 
 const SPRITES := {
 	Kind.COIN: 229,       # s_bonus_coin
@@ -15,6 +15,7 @@ const SPRITES := {
 	Kind.POWER: 489,      # s_bonus_redstar — weapon overdrive star
 	Kind.LIFE: 155,       # s_bonuslives — extra ship
 	Kind.COOLING: 488,    # s_bonus_cooling — overheat purge
+	Kind.SHIELD: 490,     # s_bonus_coolstar — invulnerability bubble
 }
 const DRIFT_SPEED := 0.5     # px/frame downward drift
 const MAGNET_RANGE := 90.0   # px — starts homing inside this radius
@@ -28,6 +29,7 @@ const VALUES := {
 	Kind.POWER: {"overdrive": OVERDRIVE_TIME, "score": 100},
 	Kind.LIFE: {"life": 1, "score": 250},
 	Kind.COOLING: {"cool": true, "score": 50},
+	Kind.SHIELD: {"shield": 8.0, "score": 150},
 }
 
 var kind := Kind.COIN
@@ -59,6 +61,8 @@ func _ready() -> void:
 			_sprite.modulate = Color(1.0, 0.4, 0.6)
 		Kind.COOLING:
 			_sprite.modulate = Color(0.5, 0.9, 1.0)
+		Kind.SHIELD:
+			_sprite.modulate = Color(0.5, 0.8, 1.0)
 	add_child(_sprite)
 
 
@@ -104,5 +108,7 @@ func _collect() -> void:
 		NativeGame.lives += v["life"]
 	if v.has("cool"):
 		NativeGame.overheating = 0.0
+	if v.has("shield"):
+		NativeGame.shield_time = v["shield"]
 	NativeGame.add_score(v.get("score", 0))
 	NativeAssets.play_sound(62)  # pickup chime (original sampel id)

@@ -36,8 +36,9 @@ func _ready() -> void:
 	stats.offset_right = 250
 	stats.offset_top = -40
 	stats.offset_bottom = 60
-	stats.text = "SCORE %d\nCOINS %d\nLEVEL %d" % [
-		NativeGame.score, NativeGame.coins, NativeGame.level_index]
+	stats.text = "SCORE %d\nBEST %d\nCOINS %d\nLEVEL %d" % [
+		NativeGame.score, NativeGame.best_score,
+		NativeGame.coins, NativeGame.level_index]
 	add_child(stats)
 
 	var btn := Button.new()

@@ -27,10 +27,20 @@ var _rows: Array = []
 
 
 func _ready() -> void:
+	# Shop backdrop — the original room_shop uses its own background.
 	var bg := ColorRect.new()
 	bg.color = Color(0.08, 0.05, 0.12)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+	var shop_bg := NativeAssets.background(45)
+	if shop_bg != null:
+		var plate := Sprite2D.new()
+		plate.texture = shop_bg
+		plate.centered = false
+		plate.scale = Vector2(1024.0 / shop_bg.get_width(), 768.0 / shop_bg.get_height())
+		plate.modulate = Color(0.8, 0.8, 0.9)
+		plate.z_index = -1
+		add_child(plate)
 
 	_build_header()
 	for i in UPGRADES.size():

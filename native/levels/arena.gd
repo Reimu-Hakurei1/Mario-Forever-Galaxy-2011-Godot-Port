@@ -75,6 +75,8 @@ func _ready() -> void:
 			add_child(player)
 			player.play()
 
+	_show_level_intro()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	# ESC / P toggles pause — every entity checks NativeGame.paused.
@@ -192,6 +194,36 @@ func _spawn_boss() -> void:
 	var boss := NativeBoss.new()
 	boss.tier = _boss_cfg.get("tier", 0)
 	add_child(boss)
+
+
+## Level intro card — world/level name for a few seconds, plus a boss
+## warning on boss levels. Purely cosmetic; gameplay starts immediately.
+func _show_level_intro() -> void:
+	var world := NativeLevelTable.world_of(NativeGame.active_level) + 1
+	var level := NativeLevelTable.level_of(NativeGame.active_level) + 1
+	var text := "WORLD %d — LEVEL %d" % [world, level]
+	if not _boss_cfg.is_empty():
+		text += "\n\n! BOSS APPROACHES !"
+	var label := Label.new()
+	label.text = text
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	label.offset_top = -60
+	label.offset_bottom = 60
+	label.add_theme_font_size_override("font_size", 44)
+	label.add_theme_color_override("font_color", Color(1, 0.9, 0.3))
+	label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	label.add_theme_constant_override("outline_size", 8)
+	var layer := CanvasLayer.new()
+	layer.layer = 25
+	layer.add_child(label)
+	add_child(layer)
+	# Fade out after a beat.
+	var tw := create_tween()
+	tw.tween_interval(2.2)
+	tw.tween_property(label, "modulate:a", 0.0, 0.8)
+	tw.tween_callback(layer.queue_free)
 
 
 func _show_banner(text: String) -> void:

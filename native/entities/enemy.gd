@@ -60,8 +60,9 @@ const DROP_TABLE := [
 	[0.05, NativePickup.Kind.GEM],       # 0.87
 	[0.04, NativePickup.Kind.POWER],     # 0.91 — overdrive star
 	[0.03, NativePickup.Kind.COOLING],   # 0.94 — heat purge
-	[0.03, null],                        # 0.97
-	[0.02, NativePickup.Kind.HEALTH],    # 0.99
+	[0.03, null],                        # 0.95
+	[0.02, NativePickup.Kind.HEALTH],    # 0.97
+	[0.02, NativePickup.Kind.SHIELD],    # 0.99 — bubble, rare
 	[0.01, NativePickup.Kind.LIFE],      # 1.00 — extra ship, very rare
 ]
 

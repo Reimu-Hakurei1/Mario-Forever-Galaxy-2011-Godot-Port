@@ -12,7 +12,16 @@ class_name NativeBoss
 
 enum Phase { ENTER, FIGHT, ENRAGE, DYING }
 
-const SPRITE_ID := 328            # s_enemy_h_2 — big enemy hull (2 frames)
+## Boss looks escalate with world tier — later worlds field angrier,
+## meaner variants of the same hull (the original swaps boss sprites
+## per stage the same way).
+const TIER_PROFILES := [
+	{"sprite": 328, "scale": 0.8, "tint": Color.WHITE},
+	{"sprite": 328, "scale": 0.85, "tint": Color(1.0, 0.9, 0.8)},
+	{"sprite": 332, "scale": 0.8, "tint": Color(1.0, 0.85, 0.7)},
+	{"sprite": 332, "scale": 0.85, "tint": Color(1.0, 0.75, 0.7)},
+	{"sprite": 332, "scale": 0.9, "tint": Color(1.0, 0.65, 0.6)},
+]
 const ANIM_FPS := 6.0
 const ENTER_SPEED := 0.8          # px/frame descent
 const FIGHT_Y := 160.0            # hover line at the top of the arena
@@ -45,17 +54,23 @@ func _ready() -> void:
 	var room := NativeGame.room_size()
 	position = Vector2(room.x / 2.0, -120.0)
 
+	# Tier picks the visual profile (sprite/scale/tint) and tightens the
+	# attack clock — deeper worlds mean faster, angrier bosses.
+	var profile: Dictionary = TIER_PROFILES[mini(tier, TIER_PROFILES.size() - 1)]
+	var sprite_id: int = profile["sprite"]
+
 	_anim = AnimatedSprite2D.new()
 	var frames := SpriteFrames.new()
 	frames.remove_animation("default")
 	frames.add_animation("fight")
-	for tex in NativeAssets.sprite_frames(SPRITE_ID):
+	for tex in NativeAssets.sprite_frames(sprite_id):
 		frames.add_frame("fight", tex)
 	frames.set_animation_speed("fight", ANIM_FPS)
 	_anim.sprite_frames = frames
 	_anim.play("fight")
-	_anim.offset = -NativeAssets.sprite_origin(SPRITE_ID)
-	_anim.scale = Vector2(0.8, 0.8)
+	_anim.offset = -NativeAssets.sprite_origin(sprite_id)
+	_anim.scale = Vector2.ONE * profile["scale"]
+	_anim.modulate = profile["tint"]
 	add_child(_anim)
 
 	_build_hp_bar()
@@ -99,11 +114,12 @@ func _hover_and_attack() -> void:
 	if _pattern_timer <= 0.0:
 		_fire_pattern()
 		_pattern += 1
-		# Enrage shortens the cycle as health drops.
-		var interval := BURST_INTERVAL
+		# Enrage shortens the cycle as health drops; higher tiers start
+		# angrier (attack interval shrinks ~8% per world).
+		var interval := BURST_INTERVAL * maxf(0.5, 1.0 - tier * 0.08)
 		if health < max_health * 0.35:
 			phase = Phase.ENRAGE
-			interval = BURST_INTERVAL * 0.6
+			interval *= 0.6
 		_pattern_timer = interval
 
 	_minion_timer -= 1.0
