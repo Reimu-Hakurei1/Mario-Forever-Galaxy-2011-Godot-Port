@@ -215,7 +215,8 @@ func _spawn_ring_wave(wave: Dictionary, edge: String) -> void:
 		return
 	wave["ring_done"] = true
 	var ring := NativeEnemyRing.new()
-	ring.orbiters_count = clampi(count, 4, 16)
+	# enemy_around_1 uses 10, ducher_around 12, enemy_around_2 20.
+	ring.orbiters_count = clampi(count, 4, 24)
 	ring.start_radius = 190.0
 	ring.shrink_delay = 600.0
 	ring.orbiter_kind = _kind_from_name(
@@ -306,6 +307,7 @@ static func _kind_from_name(kind_name: String) -> int:
 		"ufo_a2": return NativeEnemy.Kind.UFO_A2
 		"ghost2", "shy_ghost_2": return NativeEnemy.Kind.GHOST2
 		"ghost3", "shy_ghost_3": return NativeEnemy.Kind.GHOST3
+		"runner", "enemy_9": return NativeEnemy.Kind.RUNNER
 		_: return NativeEnemy.Kind.GOOMBA
 
 

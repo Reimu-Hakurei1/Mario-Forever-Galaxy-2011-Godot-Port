@@ -344,10 +344,10 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		elif w >= 3 and roll >= 12:
 			kind = ["ufo_a", "ufo_a2", "ufo_b", "shooter", "stinger", "drone", "lancer", "rocket_ufo"][roll % 8]
 		elif w >= 2 and roll >= 8:
-			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ghost2", "ghost3", "ducher_fall", "bonus_fall"][roll % 11]
+			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ghost2", "ghost3", "ducher_fall", "bonus_fall", "runner"][roll % 12]
 		elif w >= 2 and roll == 7:
 			mode = "chase"
-		if kind in ["kamikaze", "ufo_b", "weaver", "ace", "ghost", "ghost2", "ghost3"]:
+		if kind in ["kamikaze", "ufo_b", "weaver", "ace", "ghost", "ghost2", "ghost3", "runner"]:
 			mode = "kamikaze"
 		elif kind in ["shooter", "ufo_a", "tank", "eye", "ros", "crab",
 				"stinger", "drone", "hunter", "lancer", "rocket_ufo"]:

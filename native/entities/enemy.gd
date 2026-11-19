@@ -29,7 +29,7 @@ enum Kind {
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
 	FLAME, FAN, FALLER, BONUS,
-	EYE2, UFO_A2, GHOST2, GHOST3,
+	EYE2, UFO_A2, GHOST2, GHOST3, RUNNER,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -97,6 +97,11 @@ const KIND_PROFILES := {
 	# it's a `hazard`, not a shootable enemy.
 	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
 		"contact_damage": 8.0, "hazard": true},
+	# o_enemy_9 — the suicide runner: accelerates from a crawl up to
+	# ~5 px/frame while steering at the ship, and self-destructs after
+	# 300 frames if it hasn't connected.
+	Kind.RUNNER: {"sprite": 41, "score": 250, "dive": 0.5, "ramp": 0.05,
+		"life": 300, "contact_damage": 30.0, "tint": Color(1.0, 0.7, 0.5)},
 	# o_ducher_falling — a spirit that drops straight down past the
 	# ship with a slight sway (the original's g_lolo spawn at y=-300).
 	Kind.FALLER: {"sprite": 493, "score": 100, "health": 8.0,
@@ -147,6 +152,10 @@ var sway_speed := 0.05            # radians per frame
 var chase_speed := 1.2            # px/frame toward the player
 var drift_speed := 0.4            # px/frame toward formation slot
 var kamikaze_speed := 2.2         # px/frame — kamikaze dive speed
+var speed_ramp := 0.0             # enemy_9 accelerates each frame
+var speed_cap := 5.0
+var life_limit := 0               # frames before self-destruct (0 = never)
+var _age_frames := 0
 var shoot_interval := 180.0       # frames between shots
 var shoot_range := 620.0          # px — only fires when player is in range
 var spread := 1                   # bullets per volley
@@ -287,17 +296,24 @@ func _apply_profile() -> void:
 		chase_speed = p["chase"]
 	if p.has("dive"):
 		kamikaze_speed = p["dive"]
+	speed_ramp = p.get("ramp", 0.0)
+	life_limit = p.get("life", 0)
 	# Behaviour family routing: shooters hold station and fire, kamikaze
 	# variants dive, everything else uses the goomba pattern. The new
 	# kinds join the family that matches their profile.
 	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
-			or kind == Kind.ACE or kind == Kind.GHOST:
+			or kind == Kind.ACE or kind == Kind.GHOST or kind == Kind.RUNNER:
 		mode = Mode.KAMIKAZE
 		kamikaze_speed = p.get("dive", 2.4)
 
 
 func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
+		return
+	_age_frames += 1
+	# enemy_9 burns out after 300 frames if it never reached the ship.
+	if life_limit > 0 and _age_frames > life_limit:
+		die()
 		return
 
 	# Castle stages: the whole world scrolls down past the ship.
@@ -652,6 +668,10 @@ func _behave_kamikaze() -> void:
 		return
 	var to_player: Vector2 = ship.global_position - position
 	if to_player.length() > 4.0:
+		# enemy_9's signature: it starts slow and accelerates every frame
+		# up to ~5 px/frame (R.set_speed += 0.5 while speed < 5).
+		if speed_ramp > 0.0:
+			kamikaze_speed = minf(kamikaze_speed + speed_ramp, speed_cap)
 		position += to_player.normalized() * kamikaze_speed
 	_anim.rotation = to_player.angle()
 
