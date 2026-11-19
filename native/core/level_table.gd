@@ -46,7 +46,8 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"lancer", "ace", "ghost", "rocket_ufo",
 	"cannon", "flame_cannon", "rotary", "fat_cannon", "flame", "fan",
 	"ring", "ducher_ring", "ducher_fall", "bonus_fall",
-	"goomba_team", "ufo_team", "ufos_team", "cyber_team", "hammer_team"]
+	"goomba_team", "ufo_team", "ufos_team", "cyber_team", "hammer_team",
+	"eye2", "ufo_a2", "ghost2", "ghost3"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -339,14 +340,14 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		if w >= 5 and roll >= 20:
 			kind = ["jumbo", "crab", "ros", "warlord", "ring"][roll % 5]
 		elif w >= 4 and roll >= 16:
-			kind = ["tank", "eye", "elite", "hunter"][roll % 4]
+			kind = ["tank", "eye", "eye2", "elite", "hunter"][roll % 5]
 		elif w >= 3 and roll >= 12:
-			kind = ["ufo_a", "ufo_b", "shooter", "stinger", "drone", "lancer", "rocket_ufo"][roll % 7]
+			kind = ["ufo_a", "ufo_a2", "ufo_b", "shooter", "stinger", "drone", "lancer", "rocket_ufo"][roll % 8]
 		elif w >= 2 and roll >= 8:
-			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ducher_fall", "bonus_fall"][roll % 9]
+			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ghost2", "ghost3", "ducher_fall", "bonus_fall"][roll % 11]
 		elif w >= 2 and roll == 7:
 			mode = "chase"
-		if kind in ["kamikaze", "ufo_b", "weaver", "ace", "ghost"]:
+		if kind in ["kamikaze", "ufo_b", "weaver", "ace", "ghost", "ghost2", "ghost3"]:
 			mode = "kamikaze"
 		elif kind in ["shooter", "ufo_a", "tank", "eye", "ros", "crab",
 				"stinger", "drone", "hunter", "lancer", "rocket_ufo"]:
@@ -361,7 +362,9 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			"mini": hp = hp * 0.4
 			"kamikaze", "ufo_b": hp = hp * 0.6
 			"tank", "jumbo": hp = hp * 2.5
-			"eye": hp = hp * 6.0
+			"eye", "eye2": hp = hp * 6.0
+			"ghost2": hp = hp * 2.5
+			"ghost3": hp = hp * 3.0
 			"shooter", "ufo_a": hp = hp * 1.4
 			"ros": hp = hp * 2.0
 			"crab": hp = hp * 2.0

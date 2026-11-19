@@ -29,6 +29,7 @@ enum Kind {
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
 	FLAME, FAN, FALLER, BONUS,
+	EYE2, UFO_A2, GHOST2, GHOST3,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -104,6 +105,18 @@ const KIND_PROFILES := {
 	# one awards big score and destroys it WITHOUT hurting the ship.
 	Kind.BONUS: {"sprite": 493, "score": 400, "health": 1.0,
 		"contact_damage": 0.0, "tint": Color(1.0, 0.9, 0.4)},
+	# Remaining authored variants — o_sky_eye_2 (blue phase of the
+	# sky eye, same laser cycle), o_ufo_a2 (the cracked ufo_a sprite
+	# 175 — the original swaps to it under 50% hull), o_shy_ghost_2/3
+	# (elite 10k-energy ghosts from the later maps).
+	Kind.EYE2: {"sprite": 185, "score": 1500, "shoot_interval": 110.0,
+		"spread": 1, "burst": 3, "tint": Color(0.55, 0.7, 1.0)},
+	Kind.UFO_A2: {"sprite": 175, "score": 140, "shoot_interval": 180.0,
+		"spread": 2, "scale": 0.65},
+	Kind.GHOST2: {"sprite": 493, "score": 500, "dive": 3.0, "scale": 0.9,
+		"tint": Color(0.6, 1.0, 0.75)},
+	Kind.GHOST3: {"sprite": 493, "score": 600, "dive": 3.4, "scale": 0.9,
+		"tint": Color(1.0, 0.75, 0.6)},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -242,7 +255,7 @@ func _ready() -> void:
 
 	sway_phase = randf() * TAU
 	_shoot_timer = shoot_interval * randf_range(0.5, 1.0)
-	if kind == Kind.EYE:
+	if kind == Kind.EYE or kind == Kind.EYE2:
 		_eye_timer = EYE_AIM_TIME
 
 
@@ -308,7 +321,7 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
-	if kind == Kind.EYE:
+	if kind == Kind.EYE or kind == Kind.EYE2:
 		_behave_skyeye()
 	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY,
 			Kind.FAT_CANNON]:
@@ -378,7 +391,7 @@ func _behave_shooter() -> void:
 		return
 	_sway_and_track()
 	# Eye turrets slowly rotate to face the player — reads as tracking.
-	if kind == Kind.EYE:
+	if kind == Kind.EYE or kind == Kind.EYE2:
 		var ship := get_tree().get_first_node_in_group("player")
 		if ship != null:
 			_anim.rotation = (ship.global_position - position).angle()

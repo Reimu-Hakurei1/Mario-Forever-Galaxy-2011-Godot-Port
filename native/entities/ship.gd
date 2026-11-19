@@ -520,37 +520,71 @@ func _use_special(id: int) -> void:
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				if is_instance_valid(enemy):
 					enemy.take_damage(item["damage"])
+			# The original flashes the special_weapon sprite on cast.
+			_flash_special_fx(480)
 		3:  # PIERCER SLUG — seq 1000: huge bolt straight up, pierces
-			_special_bolt(Vector2(0, -1) * 2.5, item["damage"], true)
+			_special_bolt(Vector2(0, -1) * 2.5, item["damage"], true,
+				{"sprite": 411, "tint": Color(0.5, 0.9, 1.0), "scale": 0.45})
 		4:  # NOVA RING — seq 1: damage nova around the ship
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				if is_instance_valid(enemy) \
 						and global_position.distance_to(enemy.global_position) < 320.0:
 					enemy.take_damage(item["damage"])
+			_flash_special_fx(480)
 		5:  # RED SHOT — seq 5000: single heavy slug
-			_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false)
+			_special_bolt(Vector2(0, -1) * 3.0, item["damage"], false,
+				{"sprite": 480, "tint": Color(1.0, 0.35, 0.3), "scale": 0.5})
 		6:  # TRIPLE MISSILE — seq 30000 x3: three heavy bolts fanned
 			for i in 3:
 				_special_bolt(Vector2(0, -1).rotated((i - 1) * 0.28) * 3.2,
-					item["damage"], false)
+					item["damage"], false,
+					{"sprite": 480, "tint": Color(1.0, 0.75, 0.3), "scale": 0.45})
 		8:  # BOMB RING — seq 80000: eleven bombs burst outward
 			for i in 11:
 				var dir := Vector2.RIGHT.rotated(i * TAU / 11.0)
-				_special_bolt(dir * 2.8, item["damage"], false)
+				_special_bolt(dir * 2.8, item["damage"], false,
+					{"sprite": 32, "tint": Color(0.9, 0.5, 0.4), "scale": 0.4})
 		9:  # CHRONO — seq 100000 zwolnij_gre: clears enemy fire + shield
 			for bullet in get_tree().get_nodes_in_group("enemy_bullets"):
 				if is_instance_valid(bullet):
 					bullet.queue_free()
 			NativeGame.shield_time = item["shield"]
+			_flash_special_fx(480)
+
+
+## Brief muzzle flash using the original's special_weapon sprite
+## (o_special_weapon_1-6 all draw sprite 480/481 on cast).
+func _flash_special_fx(sprite_id: int) -> void:
+	var flash := Sprite2D.new()
+	flash.texture = NativeAssets.sprite_frame(sprite_id, 0)
+	if flash.texture == null:
+		flash.queue_free()
+		return
+	flash.offset = -NativeAssets.sprite_origin(sprite_id)
+	flash.scale = Vector2(0.6, 0.6)
+	flash.global_position = global_position
+	get_parent().add_child(flash)
+	var tw := flash.create_tween()
+	tw.tween_property(flash, "modulate:a", 0.0, 0.35)
+	tw.tween_callback(flash.queue_free)
 
 
 ## Spawn one special bolt — same parent/group conventions as _fire_slot.
-func _special_bolt(dir: Vector2, dmg: float, pierce: bool) -> void:
+## `fx` optionally overrides the projectile sprite/tint/scale with the
+## original's special_weapon_* artwork.
+func _special_bolt(dir: Vector2, dmg: float, pierce: bool,
+		fx: Dictionary = {}) -> void:
 	var bullet := NativeBullet.new()
 	bullet.global_position = global_position
 	bullet.velocity = dir
 	bullet.damage = dmg
 	bullet.pierce = pierce
+	if fx.has("sprite"):
+		bullet.sprite_id = int(fx["sprite"])
+	if fx.has("scale"):
+		bullet.scale0 = float(fx["scale"])
+	if fx.has("tint"):
+		bullet.modulate = fx["tint"]
 	get_parent().add_child(bullet)
 
 
