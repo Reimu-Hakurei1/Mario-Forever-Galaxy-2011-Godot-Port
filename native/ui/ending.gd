@@ -9,10 +9,12 @@ const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 
 func _ready() -> void:
+	# Deep-space backdrop with a slow starfield — victory deserves a sky.
 	var bg := ColorRect.new()
 	bg.color = Color(0.02, 0.06, 0.15)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+	_add_starfield()
 
 	var title := Label.new()
 	title.text = "GALAXY SAVED!"
@@ -69,3 +71,22 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_map() -> void:
 	get_tree().change_scene_to_file(MAP_SCENE)
+
+
+## Drifting starfield, same generated-dot technique as title/intro.
+func _add_starfield() -> void:
+	var img := Image.create(1024, 768, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for i in 180:
+		img.set_pixel(randi() % 1024, randi() % 768,
+			Color(1, 1, 1, 0.25 + randf() * 0.6))
+	var tex := ImageTexture.create_from_image(img)
+	var stars := TextureRect.new()
+	stars.texture = tex
+	stars.set_anchors_preset(Control.PRESET_FULL_RECT)
+	stars.stretch_mode = TextureRect.STRETCH_TILE
+	stars.modulate = Color(1, 1, 1, 0.7)
+	add_child(stars)
+	var tw := create_tween().set_loops()
+	tw.tween_property(stars, "position:x", -1024.0, 70.0) \
+		.from(0.0).set_trans(Tween.TRANS_LINEAR)
