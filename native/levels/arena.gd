@@ -37,6 +37,7 @@ var _clear_timer := -1.0
 var _pause_label: Label = null
 var _last_energy := 100.0
 var _shake := 0.0                   # screenshake timer after hull hits
+var _stars: Sprite2D = null         # parallax starfield layer
 
 
 func _ready() -> void:
@@ -63,6 +64,14 @@ func _ready() -> void:
 		bg.scale = Vector2(WORLD_SIZE.x / tex.get_width(), WORLD_SIZE.y / tex.get_height())
 	bg.z_index = -100
 	add_child(bg)
+
+	# Parallax starfield — a generated dot texture drifting behind the
+	# level art so the arena feels like it's moving through space.
+	_stars = Sprite2D.new()
+	_stars.texture = _make_starfield_texture()
+	_stars.centered = false
+	_stars.z_index = -99
+	add_child(_stars)
 
 	# Run state resets each time a level scene starts.
 	NativeGame.reset_run()
@@ -134,6 +143,12 @@ func _set_paused(on: bool) -> void:
 
 
 func _process(delta: float) -> void:
+	# Parallax drift — stars slide left and wrap; frozen while paused.
+	if _stars != null and not NativeGame.paused:
+		_stars.position.x -= delta * 12.0
+		if _stars.position.x <= -1024.0:
+			_stars.position.x += 1024.0
+
 	# Screenshake — a sharp jolt whenever hull energy drops.
 	if NativeGame.energy < _last_energy - 0.01:
 		_shake = 0.25
@@ -242,6 +257,8 @@ func _go_to_map() -> void:
 func _spawn_boss() -> void:
 	_boss_spawned = true
 	print("BOSS incoming — tier %d" % _boss_cfg.get("tier", 0))
+	# Boss entrance sting — bowser growl family from the original sfx.
+	NativeAssets.play_sound(90 + randi() % 3)
 	var boss := NativeBoss.new()
 	boss.tier = _boss_cfg.get("tier", 0)
 	add_child(boss)
@@ -275,6 +292,20 @@ func _show_level_intro() -> void:
 	tw.tween_interval(2.2)
 	tw.tween_property(label, "modulate:a", 0.0, 0.8)
 	tw.tween_callback(layer.queue_free)
+
+
+## 2048x768 starfield — the right half duplicates the left so the
+## parallax wrap at -1024 is seamless (same stars re-enter).
+static func _make_starfield_texture() -> Texture2D:
+	var img := Image.create(2048, 768, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for i in 160:
+		var x := randi() % 1024
+		var y := randi() % 768
+		var c := Color(1, 1, 1, 0.2 + randf() * 0.55)
+		img.set_pixel(x, y, c)
+		img.set_pixel(x + 1024, y, c)   # mirrored tile for seamless wrap
+	return ImageTexture.create_from_image(img)
 
 
 func _show_banner(text: String) -> void:

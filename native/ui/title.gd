@@ -19,6 +19,7 @@ func _ready() -> void:
 	bg.color = Color(0.02, 0.03, 0.1)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+	_add_starfield()
 
 	var title := Label.new()
 	title.text = "MARIO FOREVER\nGALAXY"
@@ -80,6 +81,27 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 ## Bottom hint shows best score once a save exists.
+## Slow-drifting starfield behind the title — generated dots on a
+## texture that scrolls, same trick as the star map backdrop.
+func _add_starfield() -> void:
+	var img := Image.create(1024, 768, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0, 0, 0, 0))
+	for i in 160:
+		var x := randi() % 1024
+		var y := randi() % 768
+		img.set_pixel(x, y, Color(1, 1, 1, 0.25 + randf() * 0.6))
+	var tex := ImageTexture.create_from_image(img)
+	var stars := TextureRect.new()
+	stars.texture = tex
+	stars.set_anchors_preset(Control.PRESET_FULL_RECT)
+	stars.stretch_mode = TextureRect.STRETCH_TILE
+	stars.modulate = Color(1, 1, 1, 0.7)
+	add_child(stars)
+	var tw := create_tween().set_loops()
+	tw.tween_property(stars, "position:x", -1024.0, 60.0) \
+		.from(0.0).set_trans(Tween.TRANS_LINEAR)
+
+
 func _refresh_hint() -> void:
 	var hint := get_node_or_null("Hint") as Label
 	if hint == null:

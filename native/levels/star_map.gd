@@ -226,7 +226,23 @@ func _on_level_pressed(idx: int) -> void:
 	NativeGame.active_level = idx
 	NativeGame.pending_level = NativeLevelTable.config_for(idx)
 	NativeGame.reset_run()
-	get_tree().change_scene_to_file("res://native/levels/arena.tscn")
+	_fade_to_arena()
+
+
+## Fade to black, then swap scenes — the Galaxy map "flies" transition.
+func _fade_to_arena() -> void:
+	var fade := ColorRect.new()
+	fade.color = Color.BLACK
+	fade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	fade.modulate.a = 0.0
+	var layer := CanvasLayer.new()
+	layer.layer = 40
+	layer.add_child(fade)
+	add_child(layer)
+	var tw := create_tween()
+	tw.tween_property(fade, "modulate:a", 1.0, 0.35)
+	tw.tween_callback(func():
+		get_tree().change_scene_to_file("res://native/levels/arena.tscn"))
 
 
 func _process(_delta: float) -> void:

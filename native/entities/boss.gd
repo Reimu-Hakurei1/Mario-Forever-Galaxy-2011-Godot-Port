@@ -42,6 +42,7 @@ var _dead := false
 var _pattern_timer := 90.0
 var _minion_timer := 300.0
 var _pattern := 0
+var _spiral_angle := 0.0           # rotation offset for spiral barrages
 var _hp_bar: ProgressBar
 
 
@@ -128,22 +129,25 @@ func _hover_and_attack() -> void:
 		_minion_timer = MINION_INTERVAL
 
 
-## Rotate through attack patterns: aimed burst → radial spread →
-## aimed burst again, escalating in ENRAGE.
+## Rotate through attack patterns: aimed burst → radial ring → fan →
+## spiral stream, escalating in ENRAGE.
 func _fire_pattern() -> void:
 	var ship := get_tree().get_first_node_in_group("player")
 	if ship == null:
 		return
-	match _pattern % 3:
+	match _pattern % 4:
 		0:
 			# Aimed 3-shot burst at the player.
 			_fire_aimed(ship.global_position, 3, 0.15)
 		1:
 			# Radial ring of bullets in all directions.
 			_fire_radial(10)
-		_:
+		2:
 			# Sweeping fan downward toward the player's half.
 			_fire_fan(ship.global_position, 5)
+		_:
+			# Spiral stream — bullets fan out rotating each volley.
+			_fire_spiral()
 	if phase == Phase.ENRAGE:
 		_fire_aimed(ship.global_position, 2, 0.1)   # bonus shot when enraged
 
@@ -167,6 +171,16 @@ func _fire_fan(target: Vector2, count: int) -> void:
 	var base := (target - position).normalized().angle()
 	for i in count:
 		var dir := Vector2.RIGHT.rotated(base + (i - (count - 1) / 2.0) * 0.3)
+		_spawn_bullet(dir)
+	NativeAssets.play_sound(79)
+
+
+## Spiral barrage — a rotating fan of bullets sprayed downward. Each
+## volley advances the spiral angle so the stream curls around the arena.
+func _fire_spiral() -> void:
+	_spiral_angle += 0.5
+	for i in 5:
+		var dir := Vector2.DOWN.rotated(_spiral_angle + (i - 2) * 0.22)
 		_spawn_bullet(dir)
 	NativeAssets.play_sound(79)
 
