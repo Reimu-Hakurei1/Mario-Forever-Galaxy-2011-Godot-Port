@@ -28,6 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
+	FLAME, FAN,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -85,6 +86,16 @@ const KIND_PROFILES := {
 	# longer 90px muzzle, heavier cannonball.
 	Kind.FAT_CANNON: {"sprite": 178, "score": 350, "health": 90.0,
 		"contact_damage": 40.0, "barrel": 301, "fire_interval": 300.0},
+	# o_flame_cans — the flame-throwing can: drifts to a random point,
+	# tilts, charges (~300f), then streams a flame jet. Weak on ram
+	# (original: -5 hull) but the stream is the real threat.
+	Kind.FLAME: {"sprite": 29, "score": 200, "health": 60.0,
+		"contact_damage": 8.0, "tint": Color(1.0, 0.6, 0.3)},
+	# o_fan — castle windmill hazard (s_wiatrak_center + blade sprites):
+	# scrolls down spinning, small contact damage, can't be killed —
+	# it's a `hazard`, not a shootable enemy.
+	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
+		"contact_damage": 8.0, "hazard": true},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -141,10 +152,19 @@ var _beam_line: Line2D             # thick damage beam (fire phase)
 # flame-burst / rotary-spin queues from the original g_taktyka vars.
 var _barrel: Sprite2D = null
 var _barrel_angle := 0.0
+var _rotor: Node2D = null          # FAN's spinning blade assembly
+var _hazard := false               # can't be killed or scored (o_fan)
 var _cannon_timer := 0.0
 var _flame_left := 0
 var _flame_timer := 0.0
 var _spin_left := 0
+
+# Flame-can attack cycle (o_flame_cans g_ladowanie phases):
+# 0 drift to point → 1 charge → 2 flame jet → 3 cooldown.
+var _flame_state := 0
+var _flame_target := Vector2.ZERO
+var _flame_dir := Vector2.DOWN
+var _flame_jet_left := 0
 
 const DEATH_SCORE_DEFAULT := 100
 # Sky-eye timings in frames — ported from g_sekwencja/g_ladowanie in
@@ -194,6 +214,19 @@ func _ready() -> void:
 			_barrel.offset = -NativeAssets.sprite_origin(p["barrel"])
 			_barrel.z_index = 1
 			add_child(_barrel)
+	# o_fan draws six blade sprites (123) orbiting the hub (312) — a
+	# rotor node spins them all together.
+	if kind == Kind.FAN:
+		_rotor = Node2D.new()
+		for i in 6:
+			var blade := Sprite2D.new()
+			var btex := NativeAssets.sprite_frame(123, 0)
+			if btex != null:
+				blade.texture = btex
+				blade.offset = -NativeAssets.sprite_origin(123)
+			blade.position = Vector2.RIGHT.rotated(i * TAU / 6.0) * 30.0
+			_rotor.add_child(blade)
+		add_child(_rotor)
 
 	sway_phase = randf() * TAU
 	_shoot_timer = shoot_interval * randf_range(0.5, 1.0)
@@ -222,6 +255,7 @@ func _apply_profile() -> void:
 	_tint = p.get("tint", Color.WHITE)
 	contact_damage = p.get("contact_damage", contact_damage)
 	fire_interval = p.get("fire_interval", fire_interval)
+	_hazard = p.get("hazard", false)
 	# Profile health is only a default — a wave that assigned health
 	# explicitly (anything above the untouched 10.0) keeps its value.
 	if p.has("health") and health <= 10.0:
@@ -253,6 +287,10 @@ func _physics_process(_delta: float) -> void:
 	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY,
 			Kind.FAT_CANNON]:
 		_behave_cannon()
+	elif kind == Kind.FLAME:
+		_behave_flame()
+	elif kind == Kind.FAN:
+		_behave_fan()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO]:
@@ -481,6 +519,62 @@ func _fire_castle_shot(sprite_id: int, speed: float, angle: float,
 	NativeAssets.play_sound(79)
 
 
+## o_flame_cans — drifts to a random point (g_dox/g_doy), charges up
+## (~300f), then streams a flame jet for ~4s before cooling down. The
+## original's jet is a particle stream; here it's a stream of fast
+## fireballs — same dodge-the-stream gameplay.
+func _behave_flame() -> void:
+	_flame_timer += 1.0
+	match _flame_state:
+		0:  # DRIFT — seek a random anchor like g_dox/g_doy
+			if _flame_target == Vector2.ZERO:
+				_flame_target = position + Vector2(
+					randf_range(-200, 200), randf_range(-120, 120))
+			var to := _flame_target - position
+			if to.length() < 10.0:
+				_flame_state = 1
+				_flame_timer = 0.0
+			else:
+				position += to.normalized() * 1.5
+				_anim.rotation = to.angle() * 0.08   # slight tilt into drift
+		1:  # CHARGE — track the ship, then lock the jet direction
+			var ship := get_tree().get_first_node_in_group("player")
+			if ship != null:
+				var to_ship: Vector2 = ship.global_position - position
+				_anim.rotation = to_ship.angle() * 0.12
+			if _flame_timer >= 300.0:
+				_flame_state = 2
+				_flame_timer = 0.0
+				_flame_jet_left = 240
+				if ship != null:
+					var to_ship: Vector2 = ship.global_position - position
+					_flame_dir = to_ship.normalized()
+				_anim.rotation = _flame_dir.angle()
+		2:  # JET — stream fireballs along the locked direction
+			if int(_flame_timer) % 3 == 0:
+				var shot := NativeEnemyBullet.new()
+				shot.sprite_id = 166     # s_superfireball
+				shot.damage = 8.0
+				shot.global_position = position + _flame_dir * 30.0
+				shot.velocity = _flame_dir * 5.5
+				get_parent().add_child(shot)
+			_flame_jet_left -= 1
+			if _flame_jet_left <= 0:
+				_flame_state = 3
+				_flame_timer = 0.0
+		3:  # COOLDOWN
+			if _flame_timer >= 200.0:
+				_flame_state = 0
+				_flame_timer = 0.0
+				_flame_target = Vector2.ZERO
+
+
+## o_fan — the windmill just spins; scroll_down carries it down-screen.
+func _behave_fan() -> void:
+	if _rotor != null:
+		_rotor.rotation += deg_to_rad(3.0)
+
+
 ## Relentless dive — beelines for the player the whole time.
 func _behave_kamikaze() -> void:
 	var ship := get_tree().get_first_node_in_group("player")
@@ -540,7 +634,7 @@ func _fire_volley(target: Vector2) -> void:
 
 ## Called by bullets on hit. Returns true if the hit killed the enemy.
 func take_damage(amount: float) -> bool:
-	if _dead:
+	if _dead or _hazard:
 		return false
 	health -= amount
 	_flash = HIT_FLASH_TIME
@@ -565,6 +659,8 @@ func die() -> void:
 
 ## Roll the drop table — coins common, gems rare, health very rare.
 func _roll_drop() -> void:
+	if _hazard:
+		return
 	# Castle defenses always spill coins in the original (g_drop with
 	# szansa 1000, sila_monet/diamentow 3) — guarantee a couple.
 	if kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY, Kind.FAT_CANNON]:
@@ -660,6 +756,9 @@ func _check_player_collision() -> void:
 	# Bounce the player away from the enemy — negate the ship→enemy
 	# vector so contact on the left drives the ship right, etc.
 	ship.vel -= to_enemy.normalized() * 4.0
+	# Hazards (o_fan) only hurt — they don't die or score.
+	if _hazard:
+		return
 	# Rammed enemies die but award no score — only kills do.
 	_dead = true
 	NativeGame.kill_enemy()

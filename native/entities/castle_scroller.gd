@@ -21,6 +21,7 @@ const ENEMY_KINDS := [
 	NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.SHOOTER,
 	NativeEnemy.Kind.KAMIKAZE, NativeEnemy.Kind.TANK,
 	NativeEnemy.Kind.GHOST, NativeEnemy.Kind.ROCKET_UFO,
+	NativeEnemy.Kind.FLAME,
 ]
 # Castle defenses are the rooms' signature threats — the original
 # stages are built around script_castle_cannon/flame/rotary. Weighted
@@ -84,6 +85,15 @@ func _spawn_row(y: float) -> void:
 	# Enemies drift in behind the blocks — shootable targets.
 	if randf() < 0.45 + diff * 0.3:
 		_maybe_add_enemy(y - randf_range(120, 200), diff)
+
+	# Windmill hazards (o_fan) spin through the corridor — unkillable,
+	# they just punish sloppy flying. More common deeper in the stage.
+	if randf() < 0.18 + diff * 0.15:
+		var fan := NativeEnemy.new()
+		fan.kind = NativeEnemy.Kind.FAN
+		fan.scroll_down = 2.0
+		fan.position = Vector2(randf_range(140, 884), y - randf_range(60, 160))
+		add_child(fan)
 
 	# Occasional coin/gem in the corridor — rewards risky lines.
 	if randf() < 0.3:

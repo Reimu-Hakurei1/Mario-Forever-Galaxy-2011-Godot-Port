@@ -40,7 +40,7 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
 	"lancer", "ace", "ghost", "rocket_ufo",
-	"cannon", "flame_cannon", "rotary", "fat_cannon"]
+	"cannon", "flame_cannon", "rotary", "fat_cannon", "flame", "fan"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary

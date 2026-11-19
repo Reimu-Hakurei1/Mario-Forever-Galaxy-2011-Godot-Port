@@ -118,6 +118,8 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"flame_cannon": enemy.kind = NativeEnemy.Kind.FLAME_CANNON
 		"rotary": enemy.kind = NativeEnemy.Kind.ROTARY
 		"fat_cannon": enemy.kind = NativeEnemy.Kind.FAT_CANNON
+		"flame": enemy.kind = NativeEnemy.Kind.FLAME
+		"fan": enemy.kind = NativeEnemy.Kind.FAN
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
