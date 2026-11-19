@@ -13,29 +13,46 @@ unchanged. The two coexist until the native version reaches feature parity.
 ```
 native/
   core/
-    native_game.gd     Global run state (score, lives, hull, heat, upgrades)
-    native_assets.gd   Asset manifest loader — sprites, backgrounds, audio
+    native_game.gd     Global run state + save/load (score, lives, hull,
+                        heat, upgrades, settings) — static class
+    native_assets.gd   Asset manifest loader — sprites, audio, play_sound()
+    level_table.gd     Campaign catalogue — 8 worlds x 10 levels, procedural
+                        wave generation, boss flags, per-world theme
   entities/
     ship.gd            Player ship — inertia movement, hull tilt, 5 gun muzzles
     bullet.gd          Player projectile
     enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
-    enemy.gd           Enemy — goomba/shooter/kamikaze variants, drops, knockback
+    enemy.gd           Enemy — goomba/shooter/kamikaze/tank/eye variants,
+                        drops, directional knockback
+    boss.gd            Level boss — hover, attack patterns, enrage, minions,
+                        health bar
     pickup.gd          Collectibles — coin / gem / health with magnet
     explosion.gd       Death burst effect
     wave_spawner.gd    Wave scheduler — data-driven spawn groups
   ui/
     hud.gd             Score / hull / heat / lives display
+    shop.gd            Upgrade shop — wings/boosters/freezer/weapon for coins
+    title.gd           Boot screen — CONTINUE (save) / NEW GAME
   levels/
-    arena.tscn/.gd     Playable single-screen arena (1024x768)
+    star_map.gd/.tscn  Level select — 8x10 campaign grid with unlocks
+    arena.gd/.tscn     Playable single-screen arena (1024x768)
 ```
 
 ## Running it
 
-Open `native/levels/arena.tscn` and press F6 (or F5 for the whole project —
-the native scene can be wired as `run/main_scene` once it replaces the
-legacy boot).
+The native game boots at `native/ui/title.tscn`:
 
-Controls: **Arrow keys** move · **Space** fires.
+```
+title → star map → arena → (level clear) → shop → star map
+                 └→ (game over) → star map
+```
+
+- **title.tscn** — CONTINUE loads `user://native_save.cfg`; NEW GAME wipes it
+- **star_map.tscn** — click an unlocked level node; every 5th level ends in a boss
+- **arena.tscn** — the gameplay scene; ESC/P pauses, Space fires, arrows move
+- **shop.tscn** — reached automatically after each level clear
+
+Controls: **Arrow keys** move · **Space** fires · **ESC/P** pause.
 
 ## How GameMaker concepts map to Godot
 
@@ -53,6 +70,10 @@ Controls: **Arrow keys** move · **Space** fires.
 | `o_coindrop` / `o_diamonddrop`         | `NativePickup` (coin/gem/health)        |
 | `o_bullet_*` enemy shots               | `NativeEnemyBullet`                     |
 | `o_explosion_*` death effects          | `NativeExplosion`                       |
+| `room_map*` level select               | `star_map.gd` (NativeLevelTable grid)   |
+| `room_shop` upgrades                   | `shop.gd` (coins → upgrade tracks)      |
+| Title/menu rooms                       | `title.gd`                              |
+| `.ini` save files                      | `NativeGame.save()` → `user://native_save.cfg` |
 
 ## Design rules
 
