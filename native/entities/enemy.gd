@@ -28,7 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
-	FLAME, FAN, FALLER,
+	FLAME, FAN, FALLER, BONUS,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -100,6 +100,10 @@ const KIND_PROFILES := {
 	# ship with a slight sway (the original's g_lolo spawn at y=-300).
 	Kind.FALLER: {"sprite": 493, "score": 100, "health": 8.0,
 		"contact_damage": 12.0, "tint": Color(0.8, 0.9, 1.0)},
+	# o_enemy_17g/h/i — bonus targets: they fall fast, and touching
+	# one awards big score and destroys it WITHOUT hurting the ship.
+	Kind.BONUS: {"sprite": 493, "score": 400, "health": 1.0,
+		"contact_damage": 0.0, "tint": Color(1.0, 0.9, 0.4)},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -315,6 +319,8 @@ func _physics_process(_delta: float) -> void:
 		_behave_fan()
 	elif kind == Kind.FALLER:
 		_behave_faller()
+	elif kind == Kind.BONUS:
+		_behave_bonus()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO]:
@@ -607,6 +613,15 @@ func _behave_faller() -> void:
 	_anim.rotation = PI * 0.5
 
 
+## o_enemy_17* — bonus target: plummets fast with a wobble; touching
+## it is pure profit (original awards 2000 x g_nabijacz points).
+func _behave_bonus() -> void:
+	sway_phase += 0.15
+	position.y += 3.5
+	position.x += sin(sway_phase) * 0.8
+	_anim.rotation = sway_phase
+
+
 ## Relentless dive — beelines for the player the whole time.
 func _behave_kamikaze() -> void:
 	var ship := get_tree().get_first_node_in_group("player")
@@ -782,6 +797,16 @@ func _check_player_collision() -> void:
 	# Never overlap — shove the ship out of the enemy's body even while
 	# invulnerable, so nothing can be flown through.
 	ship.global_position += to_enemy.normalized() * (body - dist)
+	# Bonus targets (o_enemy_17*) — touching awards score and pops
+	# them; the ship takes no damage and isn't knocked back.
+	if kind == Kind.BONUS:
+		var pts := int(400 * NativeGame.score_mult())
+		NativeGame.add_score(pts)
+		_spawn_explosion(pts)
+		_dead = true
+		NativeGame.kill_enemy()
+		queue_free()
+		return
 	if ship.invulnerable:
 		return
 	NativeGame.damage_player(contact_damage)

@@ -41,7 +41,7 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
 	"lancer", "ace", "ghost", "rocket_ufo",
 	"cannon", "flame_cannon", "rotary", "fat_cannon", "flame", "fan",
-	"ring", "ducher_ring", "ducher_fall"]
+	"ring", "ducher_ring", "ducher_fall", "bonus_fall"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -235,7 +235,7 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		elif w >= 3 and roll >= 12:
 			kind = ["ufo_a", "ufo_b", "shooter", "stinger", "drone", "lancer", "rocket_ufo"][roll % 7]
 		elif w >= 2 and roll >= 8:
-			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ducher_fall"][roll % 8]
+			kind = ["kamikaze", "mini", "shooter", "dart", "weaver", "ace", "ghost", "ducher_fall", "bonus_fall"][roll % 9]
 		elif w >= 2 and roll == 7:
 			mode = "chase"
 		if kind in ["kamikaze", "ufo_b", "weaver", "ace", "ghost"]:

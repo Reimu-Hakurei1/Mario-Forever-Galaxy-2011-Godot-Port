@@ -145,6 +145,7 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"flame": enemy.kind = NativeEnemy.Kind.FLAME
 		"fan": enemy.kind = NativeEnemy.Kind.FAN
 		"ducher_fall": enemy.kind = NativeEnemy.Kind.FALLER
+		"bonus_fall": enemy.kind = NativeEnemy.Kind.BONUS
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
