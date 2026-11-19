@@ -16,41 +16,55 @@ native/
     native_game.gd     Global run state + save/load (score, lives, hull,
                         heat, upgrades, settings) — static class
     native_assets.gd   Asset manifest loader — sprites, audio, play_sound()
-    level_table.gd     Campaign catalogue — 8 worlds x 10 levels, procedural
-                        wave generation, boss flags, per-world theme
+    level_table.gd     Campaign catalogue — 8 worlds x 10 levels,
+                        5 wave blueprints + procedural finales, boss flags
   entities/
-    ship.gd            Player ship — inertia movement, hull tilt, 5 gun muzzles
+    ship.gd            Player ship — inertia movement, hull tilt, 5 gun muzzles,
+                        hero stats, overdrive powerup
     bullet.gd          Player projectile
     enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
-    enemy.gd           Enemy — goomba/shooter/kamikaze/tank/eye variants,
-                        drops, directional knockback
+    enemy.gd           Enemy — 12 kinds (goomba/shooter/kamikaze/tank/eye/
+                        mini/ufo_a/ufo_b/ros/crab/jumbo/elite), drops,
+                        directional knockback
     boss.gd            Level boss — hover, attack patterns, enrage, minions,
                         health bar
-    pickup.gd          Collectibles — coin / gem / health with magnet
+    pickup.gd          Collectibles — coin/gem/health + power/life/cooling
+                        powerups with magnet
     explosion.gd       Death burst effect
     wave_spawner.gd    Wave scheduler — data-driven spawn groups
   ui/
     hud.gd             Score / hull / heat / lives display
     shop.gd            Upgrade shop — wings/boosters/freezer/weapon for coins
     title.gd           Boot screen — CONTINUE (save) / NEW GAME
+    intro.gd           Opening story pages (first boot)
+    hero_select.gd     Ship select — CLASSIC/SAMUS/COMET/TITAN
+    options.gd         Settings overlay — music/sfx/effects/volume
+    game_over.gd       Final stats screen on game over
   levels/
-    star_map.gd/.tscn  Level select — 8x10 campaign grid with unlocks
+    star_map.gd/.tscn  Level select — 8x10 campaign grid with unlocks,
+                        starfield backdrop
     arena.gd/.tscn     Playable single-screen arena (1024x768)
 ```
 
 ## Running it
 
-The native game boots at `native/ui/title.tscn`:
+The native game boots at `native/ui/title.tscn` (it's the project main
+scene — press F5):
 
 ```
-title → star map → arena → (level clear) → shop → star map
-                 └→ (game over) → star map
+title → intro (new game only) → hero select → star map
+      → arena → (level clear) → shop → star map
+                 └→ (game over) → game over screen → star map
 ```
 
 - **title.tscn** — CONTINUE loads `user://native_save.cfg`; NEW GAME wipes it
+- **intro.tscn** — fading story pages, any key advances (first boot only)
+- **hero_select.tscn** — CLASSIC / SAMUS / COMET / TITAN stat variants
 - **star_map.tscn** — click an unlocked level node; every 5th level ends in a boss
 - **arena.tscn** — the gameplay scene; ESC/P pauses, Space fires, arrows move
-- **shop.tscn** — reached automatically after each level clear
+- **shop.tscn** — reached automatically after each level clear (also shows results)
+- **game_over.tscn** — final stats when lives run out
+- **options.tscn** — overlay from title or star map (music/sfx/effects/volume)
 
 Controls: **Arrow keys** move · **Space** fires · **ESC/P** pause.
 
