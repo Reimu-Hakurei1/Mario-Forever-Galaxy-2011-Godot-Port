@@ -20,6 +20,7 @@ const KEY_EVERY := 4            # a key appears every Nth chunk
 const ENEMY_KINDS := [
 	NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.SHOOTER,
 	NativeEnemy.Kind.KAMIKAZE, NativeEnemy.Kind.TANK,
+	NativeEnemy.Kind.GHOST, NativeEnemy.Kind.ROCKET_UFO,
 ]
 
 var _next_y := -120.0           # next spawn row's y (local space)

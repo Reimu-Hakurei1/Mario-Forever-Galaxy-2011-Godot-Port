@@ -26,6 +26,7 @@ enum Kind {
 	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
 	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
+	GHOST, ROCKET_UFO,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -61,6 +62,12 @@ const KIND_PROFILES := {
 	Kind.LANCER: {"sprite": 68, "score": 220, "shoot_interval": 170.0, "spread": 3},
 	Kind.ACE: {"sprite": 332, "score": 240, "dive": 3.4, "scale": 0.7,
 		"tint": Color(1.0, 0.6, 0.6)},
+	# Shy ghost (o_shyghost) — a fast charger that beelines for the hull.
+	Kind.GHOST: {"sprite": 493, "score": 300, "dive": 3.2, "scale": 0.8,
+		"tint": Color(0.7, 0.85, 1.0)},
+	# Rocket UFO (o_rocketufo_a) — hovering gunship that lobs shots.
+	Kind.ROCKET_UFO: {"sprite": 176, "score": 220, "shoot_interval": 160.0,
+		"spread": 2, "scale": 0.7},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -155,7 +162,7 @@ func _apply_profile() -> void:
 	# variants dive, everything else uses the goomba pattern. The new
 	# kinds join the family that matches their profile.
 	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
-			or kind == Kind.ACE:
+			or kind == Kind.ACE or kind == Kind.GHOST:
 		mode = Mode.KAMIKAZE
 		kamikaze_speed = p.get("dive", 2.4)
 
@@ -170,10 +177,11 @@ func _physics_process(_delta: float) -> void:
 
 	# Shooter-ish kinds share the hold-position-and-fire behaviour.
 	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
-			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER]:
+			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
+			Kind.ROCKET_UFO]:
 		_behave_shooter()
 	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
-			or kind == Kind.ACE:
+			or kind == Kind.ACE or kind == Kind.GHOST:
 		_behave_kamikaze()
 	else:
 		_behave_goomba()
