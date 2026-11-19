@@ -334,7 +334,9 @@ func _roll_drop() -> void:
 	# Rare special-item drop — the original's o_specjaldrop1 objects are
 	# placed by level scripts; here any kill has a small chance to spill
 	# one so the system stays reachable on every stage.
-	if randf() < 0.02:
+	# better_chance_of_bonus (VETERAN hero) improves the odds ~10%.
+	var special_chance := 0.02 * (1.0 + NativeGame.better_chance_of_bonus / 50.0)
+	if randf() < special_chance:
 		var drop := NativePickup.new()
 		drop.special_id = randi_range(1, 9)
 		drop.global_position = position

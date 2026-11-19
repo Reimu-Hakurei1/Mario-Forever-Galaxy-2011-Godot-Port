@@ -26,6 +26,11 @@ static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var samus_overpriced: float = 0.0  ## G.samus_overpriced — weapon price markup
 static var samus_cooling: float = 0.0   ## G.samus_cooling — extra overheat venting
+## Hero-specific item quirks from choose_hero.gd:
+static var mushroom_gives_more: float = 0.0   ## G.mushroom_gives_more — health pickup bonus (orig units)
+static var better_cooling_mushroom: float = 0.0  ## G.better_cooling_mushroom — cooling pickup power
+static var coins_booster: float = 1.0          ## G.coins_booster — coin value multiplier
+static var better_chance_of_bonus: float = 0.0 ## G.better_chance_of_bonus — rare-drop luck
 ## G.weapon[1..5] / G.levelup[1..5] — one weapon per muzzle slot, each
 ## independently upgradeable (shop upgrade cost scales off the slot's
 ## levelup, not the weapon's). -1 = slot empty.
@@ -54,13 +59,14 @@ const HEROES := [
 	{"name": "CLASSIC", "desc": "LIGHT MUSHROOM GUN — the every-plumber starter",
 		"firerate": 0.0, "slower": 1.0, "tint": Color.WHITE,
 		"loadout": {1: [1, 5]}, "upgrades": {},
-		"specials": [1, 2, 3, 4]},
+		"specials": [1, 2, 3, 4],
+		"mushroom_more": 150.0, "coins_booster": 1.02},
 	{"name": "VETERAN", "desc": "Mushroom gun + WING/BOOST/ARMOUR/BALLS pre-installed",
 		"firerate": 0.0, "slower": 1.0, "tint": Color(1.0, 0.6, 0.6),
 		"loadout": {1: [1, 5]},
 		"upgrades": {"upgrade_boost": 1, "upgrade_wing": 1,
 			"upgrade_armour": 1, "upgrade_balls": 1},
-		"specials": [8, 7, 5, 4]},
+		"specials": [8, 7, 5, 4], "bonus_chance": 5.0},
 	{"name": "SPECIALIST", "desc": "Extra spare ship, no special items",
 		"firerate": 0.0, "slower": 1.1, "tint": Color(0.6, 0.9, 1.0),
 		"loadout": {1: [1, 5]}, "upgrades": {}, "lives": 4,
@@ -69,7 +75,7 @@ const HEROES := [
 		"firerate": 0.1, "slower": 1.8, "tint": Color(1.0, 0.85, 0.4),
 		"loadout": {1: [6, 5]}, "upgrades": {"upgrade_freezer": 2},
 		"overpriced": 0.05, "cooling": 1.0,
-		"specials": [2, 2, 2, 0]},
+		"specials": [2, 2, 2, 0], "cooling_mushroom": 300.0},
 ]
 
 # Level handoff — the star map writes the chosen level's config here and
@@ -188,6 +194,10 @@ static func apply_hero() -> void:
 	samus_slower = h.get("slower", 1.0)
 	samus_overpriced = h.get("overpriced", 0.0)
 	samus_cooling = h.get("cooling", 0.0)
+	mushroom_gives_more = h.get("mushroom_more", 0.0)
+	better_cooling_mushroom = h.get("cooling_mushroom", 0.0)
+	coins_booster = h.get("coins_booster", 1.0)
+	better_chance_of_bonus = h.get("bonus_chance", 0.0)
 	hero_tint = h["tint"]
 	for i in 5:
 		weapons[i] = -1
@@ -374,6 +384,10 @@ static func save() -> void:
 	cfg.set_value("profile", "samus_slower", samus_slower)
 	cfg.set_value("profile", "samus_overpriced", samus_overpriced)
 	cfg.set_value("profile", "samus_cooling", samus_cooling)
+	cfg.set_value("profile", "mushroom_gives_more", mushroom_gives_more)
+	cfg.set_value("profile", "better_cooling_mushroom", better_cooling_mushroom)
+	cfg.set_value("profile", "coins_booster", coins_booster)
+	cfg.set_value("profile", "better_chance_of_bonus", better_chance_of_bonus)
 	cfg.set_value("profile", "weapons", weapons)
 	cfg.set_value("profile", "weapon_level", weapon_level)
 	cfg.set_value("profile", "special_slots", special_slots)
@@ -405,6 +419,10 @@ static func reset_profile() -> void:
 	samus_slower = 1.0
 	samus_overpriced = 0.0
 	samus_cooling = 0.0
+	mushroom_gives_more = 0.0
+	better_cooling_mushroom = 0.0
+	coins_booster = 1.0
+	better_chance_of_bonus = 0.0
 	for i in 5:
 		weapons[i] = -1
 		weapon_level[i] = 0
@@ -435,6 +453,10 @@ static func load_save() -> bool:
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
 	samus_overpriced = float(cfg.get_value("profile", "samus_overpriced", samus_overpriced))
 	samus_cooling = float(cfg.get_value("profile", "samus_cooling", samus_cooling))
+	mushroom_gives_more = float(cfg.get_value("profile", "mushroom_gives_more", mushroom_gives_more))
+	better_cooling_mushroom = float(cfg.get_value("profile", "better_cooling_mushroom", better_cooling_mushroom))
+	coins_booster = float(cfg.get_value("profile", "coins_booster", coins_booster))
+	better_chance_of_bonus = float(cfg.get_value("profile", "better_chance_of_bonus", better_chance_of_bonus))
 	var saved_weapons: Array = cfg.get_value("profile", "weapons", [])
 	for i in mini(5, saved_weapons.size()):
 		weapons[i] = int(saved_weapons[i])

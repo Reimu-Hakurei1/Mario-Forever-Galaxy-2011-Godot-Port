@@ -25,7 +25,9 @@ const OVERDRIVE_TIME := 12.0 # seconds of boosted fire
 const VALUES := {
 	Kind.COIN: {"coins": 1, "score": 10},
 	Kind.GEM: {"coins": 5, "score": 50},
-	Kind.HEALTH: {"heal": 25.0, "score": 0},
+	# Health mushroom heals 200 orig units + mushroom_gives_more hero
+	# bonus (special_weapon_1.gd) — our bar is ~10x smaller.
+	Kind.HEALTH: {"heal_base": 20.0, "score": 0},
 	Kind.POWER: {"overdrive": OVERDRIVE_TIME, "score": 100},
 	Kind.LIFE: {"life": 1, "score": 250},
 	Kind.COOLING: {"cool": true, "score": 50},
@@ -120,15 +122,20 @@ func _collect() -> void:
 		return
 	var v: Dictionary = VALUES[kind]
 	if v.has("coins"):
-		NativeGame.coins += v["coins"]
-	if v.has("heal"):
-		NativeGame.heal_player(v["heal"])
+		# coins_booster — hero 0's +2% coin value (coin_drop.gd).
+		NativeGame.coins += int(round(v["coins"] * NativeGame.coins_booster))
+	if v.has("heal_base"):
+		NativeGame.heal_player(v["heal_base"]
+			+ NativeGame.mushroom_gives_more / 10.0)
 	if v.has("overdrive"):
 		NativeGame.overdrive_time = v["overdrive"]
 	if v.has("life"):
 		NativeGame.lives += v["life"]
 	if v.has("cool"):
-		NativeGame.overheating = 0.0
+		# Cooling mushroom removes 200 overheat + better_cooling_mushroom
+		# hero bonus (special_weapon_2.gd) — not a full purge.
+		NativeGame.overheating = maxf(0.0, NativeGame.overheating
+			- (200.0 + NativeGame.better_cooling_mushroom))
 	if v.has("shield"):
 		NativeGame.shield_time = v["shield"]
 	NativeGame.add_score(v.get("score", 0))
