@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 	_coins_label.text = "o %d" % NativeGame.coins
 
 	_energy_bar.value = NativeGame.energy
-	_energy_bar.max_value = 100.0
+	_energy_bar.max_value = NativeGame.max_energy()
 	# Heat bar fills toward the overheat cap so players see the lockout
 	# coming before it happens.
 	_heat_bar.max_value = NativeGame.overheat_max()

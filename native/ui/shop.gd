@@ -18,6 +18,12 @@ const UPGRADES := [
 		"base": 75, "growth": 1.7},
 	{"field": "upgrade_freezer", "name": "FREEZER", "desc": "+overheat capacity",
 		"base": 60, "growth": 1.6},
+	{"field": "upgrade_armour", "name": "ARMOUR", "desc": "+max hull",
+		"base": 150, "growth": 1.7},
+	{"field": "upgrade_orbit", "name": "ORBIT", "desc": "hull regeneration",
+		"base": 200, "growth": 1.8},
+	{"field": "upgrade_balls", "name": "BALLS", "desc": "orbiting weapon balls",
+		"base": 180, "growth": 1.9},
 	{"field": "weapon_power", "name": "WEAPON", "desc": "+bolts per muzzle",
 		"base": 120, "growth": 2.0},
 	# Spare ships are a shop purchase in the original (zycia is bought
@@ -89,14 +95,15 @@ func _build_header() -> void:
 
 func _build_row(i: int) -> void:
 	var u: Dictionary = UPGRADES[i]
+	# Two-column grid — 8 upgrade tracks don't fit in one vertical list.
 	var row := HBoxContainer.new()
-	row.position = Vector2(140, 140 + i * 96)
-	row.add_theme_constant_override("separation", 24)
+	row.position = Vector2(70 + (i / 4) * 470, 130 + (i % 4) * 118)
+	row.add_theme_constant_override("separation", 16)
 	add_child(row)
 
 	# Name + current level + effect description.
 	var info := VBoxContainer.new()
-	info.custom_minimum_size = Vector2(300, 0)
+	info.custom_minimum_size = Vector2(250, 0)
 	row.add_child(info)
 	var name_l := Label.new()
 	name_l.name = "Name"
@@ -117,7 +124,7 @@ func _build_row(i: int) -> void:
 	# Buy button showing the next-level cost.
 	var buy := Button.new()
 	buy.name = "Buy"
-	buy.custom_minimum_size = Vector2(160, 56)
+	buy.custom_minimum_size = Vector2(140, 50)
 	buy.add_theme_font_size_override("font_size", 18)
 	buy.pressed.connect(_on_buy.bind(i))
 	row.add_child(buy)
@@ -125,6 +132,16 @@ func _build_row(i: int) -> void:
 
 
 func _build_footer() -> void:
+	# Hull repair — the original shop sells missing hull back for coins
+	# (energia < max → buy full repair). Hidden when already at full.
+	var repair := Button.new()
+	repair.name = "Repair"
+	repair.custom_minimum_size = Vector2(240, 60)
+	repair.add_theme_font_size_override("font_size", 18)
+	repair.position = Vector2(120, 640)
+	repair.pressed.connect(_on_repair)
+	add_child(repair)
+
 	var cont := Button.new()
 	cont.text = "CONTINUE"
 	cont.custom_minimum_size = Vector2(240, 60)
@@ -142,6 +159,9 @@ func _get_lvl(field: String) -> int:
 		"upgrade_wing": return NativeGame.upgrade_wing
 		"upgrade_boost": return NativeGame.upgrade_boost
 		"upgrade_freezer": return NativeGame.upgrade_freezer
+		"upgrade_armour": return NativeGame.upgrade_armour
+		"upgrade_orbit": return NativeGame.upgrade_orbit
+		"upgrade_balls": return NativeGame.upgrade_balls
 		"weapon_power": return NativeGame.weapon_power
 		"lives": return NativeGame.lives
 		_: return 0
@@ -152,11 +172,27 @@ func _set_lvl(field: String, value: int) -> void:
 		"upgrade_wing": NativeGame.upgrade_wing = value
 		"upgrade_boost": NativeGame.upgrade_boost = value
 		"upgrade_freezer": NativeGame.upgrade_freezer = value
+		"upgrade_armour": NativeGame.upgrade_armour = value
+		"upgrade_orbit": NativeGame.upgrade_orbit = value
+		"upgrade_balls": NativeGame.upgrade_balls = value
 		"weapon_power": NativeGame.weapon_power = value
 		"lives": NativeGame.lives = value
 
 
+## Repair cost — the original charges ~10 coins per missing hull point
+## on its 1000-point bar; on our 100-point bar that's ~1 coin per point,
+## rounded up to keep it meaningful.
+func _repair_cost() -> int:
+	return maxi(1, int(ceil(NativeGame.max_energy() - NativeGame.energy)))
+
+
 func _process(_delta: float) -> void:
+	var repair := get_node_or_null("Repair") as Button
+	if repair != null:
+		var missing := NativeGame.max_energy() - NativeGame.energy
+		repair.visible = missing > 0.5
+		repair.text = "REPAIR %d" % _repair_cost()
+		repair.disabled = NativeGame.coins < _repair_cost()
 	_refresh()
 
 
@@ -193,6 +229,16 @@ func _on_buy(i: int) -> void:
 		return
 	NativeGame.coins -= cost
 	_set_lvl(u["field"], lvl + 1)
+	NativeGame.save()
+	NativeAssets.play_sound(62)
+
+
+func _on_repair() -> void:
+	var cost := _repair_cost()
+	if NativeGame.coins < cost:
+		return
+	NativeGame.coins -= cost
+	NativeGame.energy = NativeGame.max_energy()
 	NativeGame.save()
 	NativeAssets.play_sound(62)
 

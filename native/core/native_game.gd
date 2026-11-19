@@ -19,6 +19,9 @@ static var active_level: int = 0     ## level currently being played
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
 static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
+static var upgrade_armour: int = 0   ## G.upgradeARMOUR — +max hull per level
+static var upgrade_orbit: int = 0    ## G.upgradeORBIT — hull regeneration
+static var upgrade_balls: int = 0    ## G.upgradeBALLS — orbiting weapon balls
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
@@ -77,7 +80,7 @@ static func room_size() -> Vector2:
 
 
 static func reset_run() -> void:
-	energy = 100.0
+	energy = max_energy()
 	overheating = 0.0
 	overdrive_time = 0.0
 	shield_time = 0.0
@@ -88,6 +91,12 @@ static func reset_run() -> void:
 
 static func overheat_max() -> float:
 	return OVERHEAT_BASE + upgrade_freezer * OVERHEAT_PER_UPGRADE
+
+
+## Max hull — the original scales energia as 1000 + ARMOUR*200, i.e.
+## +20% per armour level on a 100-point bar.
+static func max_energy() -> float:
+	return 100.0 + upgrade_armour * 20.0
 
 
 static func add_score(points: int) -> void:
@@ -125,7 +134,7 @@ static func damage_player(amount: float) -> void:
 
 
 static func heal_player(amount: float) -> void:
-	energy = minf(energy + amount, 100.0)
+	energy = minf(energy + amount, max_energy())
 
 
 ## Apply the selected hero's stat line — call after picking a ship.
@@ -157,6 +166,9 @@ static func save() -> void:
 	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
 	cfg.set_value("profile", "upgrade_freezer", upgrade_freezer)
+	cfg.set_value("profile", "upgrade_armour", upgrade_armour)
+	cfg.set_value("profile", "upgrade_orbit", upgrade_orbit)
+	cfg.set_value("profile", "upgrade_balls", upgrade_balls)
 	cfg.set_value("profile", "weapon_power", weapon_power)
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
@@ -182,6 +194,9 @@ static func reset_profile() -> void:
 	upgrade_wing = 0
 	upgrade_boost = 0
 	upgrade_freezer = 0
+	upgrade_armour = 0
+	upgrade_orbit = 0
+	upgrade_balls = 0
 	weapon_power = 0
 	samus_firerate = 0.0
 	samus_slower = 1.0
@@ -204,6 +219,9 @@ static func load_save() -> bool:
 	upgrade_wing = int(cfg.get_value("profile", "upgrade_wing", upgrade_wing))
 	upgrade_boost = int(cfg.get_value("profile", "upgrade_boost", upgrade_boost))
 	upgrade_freezer = int(cfg.get_value("profile", "upgrade_freezer", upgrade_freezer))
+	upgrade_armour = int(cfg.get_value("profile", "upgrade_armour", upgrade_armour))
+	upgrade_orbit = int(cfg.get_value("profile", "upgrade_orbit", upgrade_orbit))
+	upgrade_balls = int(cfg.get_value("profile", "upgrade_balls", upgrade_balls))
 	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))

@@ -70,6 +70,8 @@ var _sfx: AudioStreamPlayer
 var _weapon_levels := PackedInt32Array()  # g_levelup per slot
 var _shield_sprite: Sprite2D          # bubble shown while shielded
 var _shielded := false                # invulnerable came from SHIELD pickup
+var _orbit_balls: Array[Sprite2D] = []  # upgradeBALLS weapon orbs
+var _ball_hits := {}                  # ball index -> {enemy_id: last_hit_frame}
 
 
 func _ready() -> void:
@@ -134,6 +136,8 @@ func _physics_process(delta: float) -> void:
 	_apply_movement(delta)
 	_apply_firing(delta)
 	_update_visuals(delta)
+	_tick_orbit(delta)
+	_tick_balls()
 
 
 ## Shield pickup timer — while active the hull is invulnerable and the
@@ -294,6 +298,63 @@ func _fire_muzzle(index: int) -> void:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
+
+
+## ORBIT upgrade — steady hull regeneration while alive (the original's
+## script_regeneracja_od_specjala adds energia each tick).
+func _tick_orbit(delta: float) -> void:
+	if NativeGame.upgrade_orbit <= 0 or NativeGame.energy <= 0.0 \
+			or NativeGame.energy >= NativeGame.max_energy():
+		return
+	NativeGame.heal_player(NativeGame.upgrade_orbit * 0.5 * delta)
+
+
+## BALLS upgrade — orbiting weapon orbs. Each orb circles the hull and
+## damages enemies it touches, with a short per-target cooldown so a
+## parked orb can't melt a single enemy instantly.
+const BALL_RADIUS := 58.0
+const BALL_DAMAGE := 20.0
+const BALL_HIT_COOLDOWN := 25      # physics frames between hits per orb/foe
+
+func _tick_balls() -> void:
+	_sync_balls()
+	if _orbit_balls.is_empty():
+		return
+	var n := _orbit_balls.size()
+	var angle0 := Time.get_ticks_msec() / 1000.0 * 2.2
+	var frame := Engine.get_physics_frames()
+	for i in n:
+		var ball := _orbit_balls[i]
+		var ang := angle0 + i * TAU / n
+		ball.global_position = global_position + Vector2.RIGHT.rotated(ang) * BALL_RADIUS
+		# Contact damage — same group scan the bullets use.
+		var hits: Dictionary = _ball_hits.get(i, {})
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			if not is_instance_valid(enemy):
+				continue
+			var eid := enemy.get_instance_id()
+			if frame - int(hits.get(eid, -9999)) < BALL_HIT_COOLDOWN:
+				continue
+			if ball.global_position.distance_to(enemy.global_position) < 26.0:
+				hits[eid] = frame
+				enemy.take_damage(BALL_DAMAGE * NativeGame.damage_mult)
+		_ball_hits[i] = hits
+
+
+## Keep the orb count in sync with upgrade_balls — bought in the shop.
+func _sync_balls() -> void:
+	var want := NativeGame.upgrade_balls
+	while _orbit_balls.size() < want:
+		var ball := Sprite2D.new()
+		var tex := NativeAssets.sprite_frame(406, 0)   # s_bullet_mini
+		if tex != null:
+			ball.texture = tex
+		ball.modulate = Color(1.0, 0.85, 0.3)
+		ball.scale = Vector2(0.6, 0.6)
+		get_parent().add_child(ball)
+		_orbit_balls.append(ball)
+	while _orbit_balls.size() > want:
+		_orbit_balls.pop_back().queue_free()
 
 
 # ---------------------------------------------------------------------------
