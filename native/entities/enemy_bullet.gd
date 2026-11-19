@@ -12,16 +12,24 @@ const DAMAGE := 12.0
 const MARGIN := 80.0
 
 var velocity := Vector2.ZERO
+var sprite_id := -1             # >=0 overrides SPRITE_ID (cannonballs etc.)
+var damage := -1.0              # >0 overrides DAMAGE
 var _sprite: Sprite2D
+var _sprite_id := SPRITE_ID
+var _dmg := DAMAGE
 
 
 func _ready() -> void:
 	add_to_group("enemy_bullets")   # CHRONO special clears this group
+	if sprite_id >= 0:
+		_sprite_id = sprite_id
+	if damage > 0.0:
+		_dmg = damage
 	_sprite = Sprite2D.new()
-	var tex := NativeAssets.sprite_frame(SPRITE_ID, 0)
+	var tex := NativeAssets.sprite_frame(_sprite_id, 0)
 	if tex != null:
 		_sprite.texture = tex
-		_sprite.offset = -NativeAssets.sprite_origin(SPRITE_ID)
+		_sprite.offset = -NativeAssets.sprite_origin(_sprite_id)
 	# Reddish tint separates enemy fire from the player's cyan bolts.
 	_sprite.modulate = Color(1.0, 0.45, 0.4)
 	add_child(_sprite)
@@ -39,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 	var ship := get_tree().get_first_node_in_group("player")
 	if ship != null and not ship.invulnerable \
 			and position.distance_to(ship.global_position) < 30.0:
-		NativeGame.damage_player(DAMAGE)
+		NativeGame.damage_player(_dmg)
 		queue_free()
 		return
 
@@ -48,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 	for buddy in get_tree().get_nodes_in_group("buddies"):
 		if is_instance_valid(buddy) and buddy.alive \
 				and position.distance_to(buddy.global_position) < 30.0:
-			buddy.take_damage(DAMAGE)
+			buddy.take_damage(_dmg)
 			queue_free()
 			return
 

@@ -251,7 +251,11 @@ func _check_player_collision() -> void:
 		return
 	var to_boss: Vector2 = position - ship.global_position
 	var dist: float = to_boss.length()
-	if dist < 90.0 and dist > 0.01:
+	# Solid body — shove the ship out of the boss hull like castle
+	# blocks do, so the player can't fly through the sprite.
+	const BODY := 85.0
+	if dist < BODY + 18.0 and dist > 0.01:
+		ship.global_position += to_boss.normalized() * (BODY + 18.0 - dist)
 		NativeGame.damage_player(30.0)
 		ship.vel -= to_boss.normalized() * 6.0
 

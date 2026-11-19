@@ -27,6 +27,7 @@ enum Kind {
 	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
+	CANNON, FLAME_CANNON, ROTARY,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -68,6 +69,18 @@ const KIND_PROFILES := {
 	# Rocket UFO (o_rocketufo_a) — hovering gunship that lobs shots.
 	Kind.ROCKET_UFO: {"sprite": 176, "score": 220, "shoot_interval": 160.0,
 		"spread": 2, "scale": 0.7},
+	# Castle defenses (script_castle_cannon / _flame_cannon /
+	# _rotary_cannon) — stationary-ish turrets that scroll with the
+	# stage, track the ship with a rotating barrel, and lob shots.
+	# `health` is the profile default the wave may still override;
+	# `barrel` is the rotating overlay sprite; `contact_damage` is the
+	# ram penalty (original: -400/-300/-500 hull).
+	Kind.CANNON: {"sprite": 300, "score": 250, "health": 60.0,
+		"contact_damage": 30.0, "barrel": 301},
+	Kind.FLAME_CANNON: {"sprite": 306, "score": 250, "health": 50.0,
+		"contact_damage": 25.0, "barrel": 307},
+	Kind.ROTARY: {"sprite": 300, "score": 300, "health": 80.0,
+		"contact_damage": 35.0, "barrel": 301},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -100,6 +113,7 @@ var shoot_interval := 180.0       # frames between shots
 var shoot_range := 620.0          # px — only fires when player is in range
 var spread := 1                   # bullets per volley
 var burst := 1                    # shots per volley trigger (eye)
+var contact_damage := 15.0        # hull lost on ram (cannons hit harder)
 
 var _anim: AnimatedSprite2D
 var _flash := 0
@@ -117,6 +131,15 @@ var _eye_target := Vector2.ZERO    # locked beam endpoint
 var _eye_lock := Vector2.ZERO      # point the reticle currently tracks
 var _aim_line: Line2D              # thin reticle line (aim phase)
 var _beam_line: Line2D             # thick damage beam (fire phase)
+
+# Castle cannon state — barrel angle, fire cadence, and the pending
+# flame-burst / rotary-spin queues from the original g_taktyka vars.
+var _barrel: Sprite2D = null
+var _barrel_angle := 0.0
+var _cannon_timer := 0.0
+var _flame_left := 0
+var _flame_timer := 0.0
+var _spin_left := 0
 
 const DEATH_SCORE_DEFAULT := 100
 # Sky-eye timings in frames — ported from g_sekwencja/g_ladowanie in
@@ -154,6 +177,19 @@ func _ready() -> void:
 		_anim.modulate = _tint
 	add_child(_anim)
 
+	# Castle cannons draw a second sprite for the rotating barrel
+	# (original draws sprite 301/307 at the entity's direction on top
+	# of the static base sprite).
+	var p: Dictionary = KIND_PROFILES.get(kind, {})
+	if p.has("barrel"):
+		_barrel = Sprite2D.new()
+		var btex := NativeAssets.sprite_frame(p["barrel"], 0)
+		if btex != null:
+			_barrel.texture = btex
+			_barrel.offset = -NativeAssets.sprite_origin(p["barrel"])
+			_barrel.z_index = 1
+			add_child(_barrel)
+
 	sway_phase = randf() * TAU
 	_shoot_timer = shoot_interval * randf_range(0.5, 1.0)
 	if kind == Kind.EYE:
@@ -179,6 +215,11 @@ func _apply_profile() -> void:
 	burst = p.get("burst", 1)
 	_scale_factor = p.get("scale", 1.0)
 	_tint = p.get("tint", Color.WHITE)
+	contact_damage = p.get("contact_damage", contact_damage)
+	# Profile health is only a default — a wave that assigned health
+	# explicitly (anything above the untouched 10.0) keeps its value.
+	if p.has("health") and health <= 10.0:
+		health = p["health"]
 	if p.has("chase"):
 		chase_speed = p["chase"]
 	if p.has("dive"):
@@ -203,6 +244,8 @@ func _physics_process(_delta: float) -> void:
 	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
 	if kind == Kind.EYE:
 		_behave_skyeye()
+	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY]:
+		_behave_cannon()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO]:
@@ -357,6 +400,70 @@ static func _point_segment_distance(p: Vector2, a: Vector2, b: Vector2) -> float
 	return p.distance_to(a + ab * t)
 
 
+## Castle defenses — ported from script_castle_cannon /
+## script_castle_flame_cannon / script_castle_rotary_cannon. All three
+## scroll with the stage (scroll_down), track the ship with a rotating
+## barrel, and fire on the original's ~200-frame cadence:
+##   CANNON       — one cannonball every 200f, barrel slews ±0.5°/frame
+##   FLAME_CANNON — a 10-shot flame burst (one per 4f, ±5° spread)
+##   ROTARY       — 4 shots at 90° apart, then the barrel spins 4.5°/frame
+func _behave_cannon() -> void:
+	var ship := get_tree().get_first_node_in_group("player")
+	# Barrel slews toward the ship — the original turns at 0.5°/frame.
+	if ship != null:
+		var to_ship: Vector2 = ship.global_position - position
+		var want: float = to_ship.angle()
+		var diff := wrapf(want - _barrel_angle, -PI, PI)
+		_barrel_angle += clampf(diff, -deg_to_rad(0.5), deg_to_rad(0.5))
+	if _barrel != null:
+		_barrel.rotation = _barrel_angle
+
+	# Rotary spin continues between volleys (g_bodzio countdown).
+	if _spin_left > 0:
+		_barrel_angle += deg_to_rad(4.5)
+		_spin_left -= 1
+		if _barrel != null:
+			_barrel.rotation = _barrel_angle
+
+	_cannon_timer += 1.0
+	# Flame cannon's burst queue runs one shot every 4 frames.
+	if _flame_left > 0:
+		_flame_timer += 1.0
+		if _flame_timer >= 4.0:
+			_flame_timer = 0.0
+			_flame_left -= 1
+			_fire_castle_shot(166, 6.5, _barrel_angle + randf_range(
+				-deg_to_rad(5), deg_to_rad(5)), 8.0)
+		return
+	if _cannon_timer < 200.0:
+		return
+	_cannon_timer = 0.0
+	match kind:
+		Kind.CANNON:
+			_fire_castle_shot(158, 4.5, _barrel_angle, 12.0)
+		Kind.FLAME_CANNON:
+			_flame_left = 10
+			_flame_timer = 0.0
+		Kind.ROTARY:
+			for i in 4:
+				_fire_castle_shot(158, 4.5,
+					_barrel_angle + i * PI * 0.5, 12.0)
+			_spin_left = 10
+
+
+## Spawn one hostile shot from the barrel muzzle. `sprite_id` 158 is the
+## original's animated cannonball, 166 the superfireball for flames.
+func _fire_castle_shot(sprite_id: int, speed: float, angle: float,
+		dmg: float) -> void:
+	var bullet := NativeEnemyBullet.new()
+	bullet.sprite_id = sprite_id
+	bullet.damage = dmg
+	bullet.global_position = position + Vector2.RIGHT.rotated(angle) * 50.0
+	bullet.velocity = Vector2.RIGHT.rotated(angle) * speed
+	get_parent().add_child(bullet)
+	NativeAssets.play_sound(79)
+
+
 ## Relentless dive — beelines for the player the whole time.
 func _behave_kamikaze() -> void:
 	var ship := get_tree().get_first_node_in_group("player")
@@ -441,6 +548,21 @@ func die() -> void:
 
 ## Roll the drop table — coins common, gems rare, health very rare.
 func _roll_drop() -> void:
+	# Castle defenses always spill coins in the original (g_drop with
+	# szansa 1000, sila_monet/diamentow 3) — guarantee a couple.
+	if kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY]:
+		for i in randi_range(2, 3):
+			var coin := NativePickup.new()
+			coin.kind = NativePickup.Kind.COIN
+			coin.global_position = position + Vector2(
+				randf_range(-24, 24), randf_range(-24, 24))
+			get_parent().add_child(coin)
+		if randf() < 0.3:
+			var gem := NativePickup.new()
+			gem.kind = NativePickup.Kind.GEM
+			gem.global_position = position
+			get_parent().add_child(gem)
+		return
 	# Rare special-item drop — the original's o_specjaldrop1 objects are
 	# placed by level scripts; here any kill has a small chance to spill
 	# one so the system stays reachable on every stage.
@@ -503,18 +625,25 @@ func _cull_offscreen() -> void:
 ## enemy on the left shoves the ship right, enemy above drops it down, etc.
 func _check_player_collision() -> void:
 	var ship := get_tree().get_first_node_in_group("player")
-	if ship == null or ship.invulnerable:
+	if ship == null:
 		return
 	var to_enemy: Vector2 = position - ship.global_position
 	var dist: float = to_enemy.length()
 	# Radius comes from the sprite bounds — big enemies (eye, tanks)
 	# can't be flown through anymore.
-	if dist < _hit_radius + 18.0 and dist > 0.01:
-		NativeGame.damage_player(15.0)
-		# Bounce the player away from the enemy — negate the ship→enemy
-		# vector so contact on the left drives the ship right, etc.
-		ship.vel -= to_enemy.normalized() * 4.0
-		# Rammed enemies die but award no score — only kills do.
-		_dead = true
-		NativeGame.kill_enemy()
-		queue_free()
+	var body := _hit_radius + 18.0
+	if dist >= body or dist <= 0.01:
+		return
+	# Never overlap — shove the ship out of the enemy's body even while
+	# invulnerable, so nothing can be flown through.
+	ship.global_position += to_enemy.normalized() * (body - dist)
+	if ship.invulnerable:
+		return
+	NativeGame.damage_player(contact_damage)
+	# Bounce the player away from the enemy — negate the ship→enemy
+	# vector so contact on the left drives the ship right, etc.
+	ship.vel -= to_enemy.normalized() * 4.0
+	# Rammed enemies die but award no score — only kills do.
+	_dead = true
+	NativeGame.kill_enemy()
+	queue_free()

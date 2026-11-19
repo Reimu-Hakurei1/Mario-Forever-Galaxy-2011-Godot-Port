@@ -22,6 +22,13 @@ const ENEMY_KINDS := [
 	NativeEnemy.Kind.KAMIKAZE, NativeEnemy.Kind.TANK,
 	NativeEnemy.Kind.GHOST, NativeEnemy.Kind.ROCKET_UFO,
 ]
+# Castle defenses are the rooms' signature threats — the original
+# stages are built around script_castle_cannon/flame/rotary. Weighted
+# so roughly half of spawned hostiles are guns.
+const DEFENSE_KINDS := [
+	NativeEnemy.Kind.CANNON, NativeEnemy.Kind.CANNON,
+	NativeEnemy.Kind.FLAME_CANNON, NativeEnemy.Kind.ROTARY,
+]
 
 var _next_y := -120.0           # next spawn row's y (local space)
 var _chunk := 0
@@ -89,7 +96,8 @@ func _spawn_row(y: float) -> void:
 func _maybe_add_enemy(y: float, diff: float) -> void:
 	if y < -150.0 or y > NativeGame.room_size().y + 150.0:
 		return
-	var kind: int = ENEMY_KINDS[randi() % ENEMY_KINDS.size()]
+	var pool: Array = DEFENSE_KINDS if randf() < 0.5 else ENEMY_KINDS
+	var kind: int = pool[randi() % pool.size()]
 	var enemy := NativeEnemy.new()
 	enemy.kind = kind
 	# Castle enemies drift down with the world scroll and hunt the ship
@@ -97,5 +105,7 @@ func _maybe_add_enemy(y: float, diff: float) -> void:
 	enemy.scroll_down = 2.0
 	enemy.mode = NativeEnemy.Mode.CHASE
 	enemy.position = Vector2(randf_range(100, 924), y)
-	enemy.health = enemy.health * (1.0 + diff)
 	add_child(enemy)
+	# Scale AFTER add_child — _ready/_apply_profile sets the kind's
+	# profile health (cannons are tanky), then difficulty multiplies it.
+	enemy.health *= (1.0 + diff)
