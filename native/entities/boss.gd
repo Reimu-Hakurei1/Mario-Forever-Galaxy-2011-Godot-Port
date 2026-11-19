@@ -285,8 +285,16 @@ func die() -> void:
 		add_child(talk)
 		talk.play(end_lines)
 		await talk.finished
-	# Boss death sequence: brief pause then free.
-	await get_tree().create_timer(1.2).timeout
+	# Boss death sequence: the wreck tumbles down-screen (the original's
+	# anim_bowser_* death spin) while the end-talk plays, then frees.
+	var wreck := _anim
+	var tw := create_tween().set_parallel()
+	tw.tween_property(wreck, "rotation", TAU * 1.5, 1.6) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(self, "position:y", position.y + 500.0, 1.6) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(wreck, "modulate:a", 0.0, 1.6)
+	await get_tree().create_timer(1.7).timeout
 	queue_free()
 
 
