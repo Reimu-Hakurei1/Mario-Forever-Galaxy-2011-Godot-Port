@@ -28,7 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
-	FLAME, FAN,
+	FLAME, FAN, FALLER,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -96,6 +96,10 @@ const KIND_PROFILES := {
 	# it's a `hazard`, not a shootable enemy.
 	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
 		"contact_damage": 8.0, "hazard": true},
+	# o_ducher_falling — a spirit that drops straight down past the
+	# ship with a slight sway (the original's g_lolo spawn at y=-300).
+	Kind.FALLER: {"sprite": 493, "score": 100, "health": 8.0,
+		"contact_damage": 12.0, "tint": Color(0.8, 0.9, 1.0)},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -309,6 +313,8 @@ func _physics_process(_delta: float) -> void:
 		_behave_flame()
 	elif kind == Kind.FAN:
 		_behave_fan()
+	elif kind == Kind.FALLER:
+		_behave_faller()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
 			Kind.ROCKET_UFO]:
@@ -591,6 +597,14 @@ func _behave_flame() -> void:
 func _behave_fan() -> void:
 	if _rotor != null:
 		_rotor.rotation += deg_to_rad(3.0)
+
+
+## o_ducher_falling — drops from above the arena with a gentle sway.
+func _behave_faller() -> void:
+	sway_phase += sway_speed * 2.0
+	position.y += 1.6
+	position.x += sin(sway_phase) * 0.4
+	_anim.rotation = PI * 0.5
 
 
 ## Relentless dive — beelines for the player the whole time.

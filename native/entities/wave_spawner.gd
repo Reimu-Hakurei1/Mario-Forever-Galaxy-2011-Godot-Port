@@ -88,11 +88,27 @@ func _spawn_enemy(wave: Dictionary) -> void:
 
 	# The orbiting swarm is a spawner object, not a single enemy —
 	# o_enemy_around_1 releases ten grunts on a rotating ring.
-	if wave.get("kind", "") == "ring":
-		var ring := NativeEnemyRing.new()
-		ring.global_position = pos
-		get_parent().add_child(ring)
-		return
+	match wave.get("kind", ""):
+		"ring":
+			var ring := NativeEnemyRing.new()
+			ring.global_position = pos
+			get_parent().add_child(ring)
+			return
+		"ducher_ring":
+			# o_ducher_around — 12 spirits glued to the player, tight
+			# fast-shrinking ring, self-destructs after the assault.
+			var ring2 := NativeEnemyRing.new()
+			ring2.orbiters_count = 12
+			ring2.start_radius = 320.0
+			ring2.shrink_delay = 0.0
+			ring2.shrink_rate = 10.0
+			ring2.glue_to_player = true
+			ring2.lifetime = 1400.0
+			ring2.orbiter_kind = NativeEnemy.Kind.GHOST
+			ring2.orbiter_health = 12.0
+			ring2.global_position = pos
+			get_parent().add_child(ring2)
+			return
 
 	var enemy := NativeEnemy.new()
 	enemy.health = wave.get("health", 10.0)
@@ -128,6 +144,7 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"fat_cannon": enemy.kind = NativeEnemy.Kind.FAT_CANNON
 		"flame": enemy.kind = NativeEnemy.Kind.FLAME
 		"fan": enemy.kind = NativeEnemy.Kind.FAN
+		"ducher_fall": enemy.kind = NativeEnemy.Kind.FALLER
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
