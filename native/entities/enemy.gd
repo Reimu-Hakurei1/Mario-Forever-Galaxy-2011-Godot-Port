@@ -28,7 +28,7 @@ enum Kind {
 	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 	GHOST, ROCKET_UFO,
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
-	FLAME, FAN, FALLER, BONUS,
+	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER,
 	EYE2, UFO_A2, GHOST2, GHOST3, RUNNER,
 }
 
@@ -97,6 +97,11 @@ const KIND_PROFILES := {
 	# it's a `hazard`, not a shootable enemy.
 	Kind.FAN: {"sprite": 312, "score": 0, "health": 99999.0,
 		"contact_damage": 8.0, "hazard": true},
+	# flame_cans_shooter — the hovering can that parks on an anchor and
+	# bursts 10-shot volleys (g_ilosc_pociskow = 10, sekwencer 2).
+	Kind.FLAME_SHOOTER: {"sprite": 182, "score": 300, "health": 100.0,
+		"shoot_interval": 220.0, "spread": 10, "contact_damage": 8.0,
+		"tint": Color(1.0, 0.6, 0.3)},
 	# o_enemy_9 — the suicide runner: accelerates from a crawl up to
 	# ~5 px/frame while steering at the ship, and self-destructs after
 	# 300 frames if it hasn't connected.
@@ -362,7 +367,7 @@ func _physics_process(_delta: float) -> void:
 		_behave_bonus()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
-			Kind.ROCKET_UFO]:
+			Kind.ROCKET_UFO, Kind.FLAME_SHOOTER]:
 		_behave_shooter()
 	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
 			or kind == Kind.ACE or kind == Kind.GHOST:

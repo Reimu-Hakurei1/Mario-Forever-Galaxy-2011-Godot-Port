@@ -22,6 +22,7 @@ const ENEMY_KINDS := [
 	NativeEnemy.Kind.KAMIKAZE, NativeEnemy.Kind.TANK,
 	NativeEnemy.Kind.GHOST, NativeEnemy.Kind.ROCKET_UFO,
 	NativeEnemy.Kind.FLAME, NativeEnemy.Kind.RUNNER,
+	NativeEnemy.Kind.FLAME_SHOOTER,
 ]
 # Castle defenses are the rooms' signature threats — the original
 # stages are built around script_castle_cannon/flame/rotary. Weighted
