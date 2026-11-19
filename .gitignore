@@ -15,3 +15,8 @@ user_data/
 export_credentials.cfg
 .env
 .env.*
+
+# Test artifacts (regenerable)
+_shots/
+_test_saves/
+build_tmp/
