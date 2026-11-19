@@ -87,13 +87,25 @@ func _build_card(i: int, x: float) -> void:
 	desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(desc)
 
-	# Stat line.
+	# Stat line — weapon loadout + quirks from the original hero table.
 	var stats := Label.new()
-	stats.text = "DMG x%.1f\nSPD %s\nROF %s" % [
-		h["damage"],
+	var wname := "—"
+	for slot in h.get("loadout", {}):
+		var wid: int = h["loadout"][slot][0]
+		if wid >= 0:
+			wname = NativeWeaponTable.at(wid).get("name", "?")
+	var extras: Array = []
+	for field in h.get("upgrades", {}):
+		extras.append(field.trim_prefix("upgrade_").to_upper())
+	if h.has("lives"):
+		extras.append("+1 SHIP")
+	stats.text = "%s\nSPD %s\nROF %s\n%s" % [
+		wname,
 		"FAST" if h["slower"] < 1.0 else ("SLOW" if h["slower"] > 1.1 else "NORM"),
-		"HIGH" if h["firerate"] > 0.3 else ("LOW" if h["firerate"] < 0 else "NORM")]
+		"HIGH" if h["firerate"] > 0.05 else "NORM",
+		", ".join(extras) if not extras.is_empty() else ""]
 	stats.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	stats.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stats.add_theme_font_size_override("font_size", 14)
 	stats.add_theme_color_override("font_color", Color(0.6, 0.9, 1.0))
 	box.add_child(stats)

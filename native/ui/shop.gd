@@ -24,8 +24,6 @@ const UPGRADES := [
 		"base": 200, "growth": 1.8},
 	{"field": "upgrade_balls", "name": "BALLS", "desc": "orbiting weapon balls",
 		"base": 180, "growth": 1.9},
-	{"field": "weapon_power", "name": "WEAPON", "desc": "+bolts per muzzle",
-		"base": 120, "growth": 2.0},
 	# Spare ships are a shop purchase in the original (zycia is bought
 	# and sold for coins between levels, capped at a few extras).
 	{"field": "lives", "name": "LIVES", "desc": "+1 spare ship",
@@ -34,6 +32,12 @@ const UPGRADES := [
 const MAX_LEVEL := 5               # original caps upgrades around here
 
 var _rows: Array = []
+var _tab := "upgrades"          # "upgrades" | "weapons"
+var _weapon_panel: Control
+var _slot_rows: Array = []      # per-slot UI state
+var _catalog: ItemList
+var _sel_slot := -1             # slot the catalog BUY equips into
+var _sel_weapon := -1           # catalog index highlighted in the list
 
 
 func _ready() -> void:
@@ -53,8 +57,10 @@ func _ready() -> void:
 		add_child(plate)
 
 	_build_header()
+	_build_tabs()
 	for i in UPGRADES.size():
 		_build_row(i)
+	_build_weapons_panel()
 	_build_footer()
 
 
@@ -93,11 +99,38 @@ func _build_header() -> void:
 	add_child(result)
 
 
+## UPGRADES / WEAPONS tab switch — the original shop has separate
+## weapon and support pages (G.bron_albo_support toggles them).
+func _build_tabs() -> void:
+	var up := Button.new()
+	up.name = "TabUpgrades"
+	up.text = "UPGRADES"
+	up.position = Vector2(300, 136)
+	up.custom_minimum_size = Vector2(200, 40)
+	up.pressed.connect(_set_tab.bind("upgrades"))
+	add_child(up)
+	var wp := Button.new()
+	wp.name = "TabWeapons"
+	wp.text = "WEAPONS"
+	wp.position = Vector2(524, 136)
+	wp.custom_minimum_size = Vector2(200, 40)
+	wp.pressed.connect(_set_tab.bind("weapons"))
+	add_child(wp)
+
+
+func _set_tab(tab: String) -> void:
+	_tab = tab
+	for row in _rows:
+		(row["row"] as Control).visible = tab == "upgrades"
+	_weapon_panel.visible = tab == "weapons"
+	NativeAssets.play_sound(62)
+
+
 func _build_row(i: int) -> void:
 	var u: Dictionary = UPGRADES[i]
 	# Two-column grid — 8 upgrade tracks don't fit in one vertical list.
 	var row := HBoxContainer.new()
-	row.position = Vector2(70 + (i / 4) * 470, 130 + (i % 4) * 118)
+	row.position = Vector2(70 + (i / 4) * 470, 195 + (i % 4) * 108)
 	row.add_theme_constant_override("separation", 16)
 	add_child(row)
 
@@ -128,7 +161,136 @@ func _build_row(i: int) -> void:
 	buy.add_theme_font_size_override("font_size", 18)
 	buy.pressed.connect(_on_buy.bind(i))
 	row.add_child(buy)
-	_rows.append({"buy": buy, "info": info})
+	_rows.append({"buy": buy, "info": info, "row": row})
+
+
+## WEAPONS tab — the original shop's armory page: your five gun slots on
+## the left (click to select), the full 43-weapon catalog on the right.
+## BUY equips the highlighted catalog weapon into the selected slot
+## (NativeGame.equip_weapon refunds a replaced weapon automatically);
+## UPGRADE/SELL act on the selected slot.
+func _build_weapons_panel() -> void:
+	_weapon_panel = Control.new()
+	_weapon_panel.name = "WeaponPanel"
+	_weapon_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_weapon_panel.visible = false
+	add_child(_weapon_panel)
+
+	# --- Left: the five gun slots -------------------------------------
+	for i in 5:
+		var slot := PanelContainer.new()
+		slot.position = Vector2(70, 190 + i * 92)
+		slot.custom_minimum_size = Vector2(400, 80)
+		_weapon_panel.add_child(slot)
+		var box := VBoxContainer.new()
+		slot.add_child(box)
+		var head := HBoxContainer.new()
+		box.add_child(head)
+		var title := Label.new()
+		title.name = "Title"
+		title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		title.add_theme_font_size_override("font_size", 18)
+		title.add_theme_color_override("font_color", Color(0.6, 0.9, 1.0))
+		head.add_child(title)
+		var lvl := Label.new()
+		lvl.name = "Level"
+		lvl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		lvl.add_theme_font_size_override("font_size", 16)
+		lvl.add_theme_color_override("font_color", Color(1.0, 0.85, 0.4))
+		head.add_child(lvl)
+		var desc := Label.new()
+		desc.name = "Desc"
+		desc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		desc.add_theme_font_size_override("font_size", 13)
+		desc.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7))
+		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(desc)
+		var btns := HBoxContainer.new()
+		box.add_child(btns)
+		var up := Button.new()
+		up.name = "Upgrade"
+		up.text = "UPGRADE"
+		up.custom_minimum_size = Vector2(150, 34)
+		up.add_theme_font_size_override("font_size", 14)
+		up.pressed.connect(_on_upgrade_weapon.bind(i))
+		btns.add_child(up)
+		var sell := Button.new()
+		sell.name = "Sell"
+		sell.text = "SELL"
+		sell.custom_minimum_size = Vector2(110, 34)
+		sell.add_theme_font_size_override("font_size", 14)
+		sell.pressed.connect(_on_sell_weapon.bind(i))
+		btns.add_child(sell)
+		# Clicking anywhere on the panel selects this slot for BUY.
+		slot.gui_input.connect(_on_slot_pick.bind(i))
+		_slot_rows.append({"panel": slot, "title": title, "lvl": lvl,
+			"desc": desc, "upgrade": up, "sell": sell})
+
+	# --- Right: catalog list + detail ----------------------------------
+	_catalog = ItemList.new()
+	_catalog.position = Vector2(510, 190)
+	_catalog.size = Vector2(440, 340)
+	_catalog.add_theme_font_size_override("font_size", 15)
+	_catalog.item_selected.connect(_on_catalog_pick)
+	for i in NativeWeaponTable.WEAPONS.size():
+		var w: Dictionary = NativeWeaponTable.WEAPONS[i]
+		_catalog.add_item("%02d  %s" % [i, w["name"]])
+	_weapon_panel.add_child(_catalog)
+
+	var detail := Label.new()
+	detail.name = "Detail"
+	detail.position = Vector2(510, 540)
+	detail.size = Vector2(440, 80)
+	detail.add_theme_font_size_override("font_size", 14)
+	detail.add_theme_color_override("font_color", Color(0.85, 0.85, 0.9))
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_weapon_panel.add_child(detail)
+
+	var buy := Button.new()
+	buy.name = "BuyWeapon"
+	buy.text = "SELECT A SLOT, THEN BUY"
+	buy.position = Vector2(510, 630)
+	buy.custom_minimum_size = Vector2(440, 44)
+	buy.add_theme_font_size_override("font_size", 17)
+	buy.pressed.connect(_on_buy_weapon)
+	_weapon_panel.add_child(buy)
+
+	# Hint line under the slot list.
+	var hint := Label.new()
+	hint.text = "Click a gun slot to arm it, then BUY a catalog weapon."
+	hint.position = Vector2(70, 650)
+	hint.add_theme_font_size_override("font_size", 14)
+	hint.add_theme_color_override("font_color", Color(0.6, 0.6, 0.7))
+	_weapon_panel.add_child(hint)
+
+
+func _on_slot_pick(event: InputEvent, slot: int) -> void:
+	# Only left-clicks select the slot — gui_input fires for every event.
+	if event is InputEventMouseButton and event.pressed \
+			and event.button_index == MOUSE_BUTTON_LEFT:
+		_sel_slot = slot
+		NativeAssets.play_sound(62)
+
+
+func _on_catalog_pick(index: int) -> void:
+	_sel_weapon = index
+	NativeAssets.play_sound(62)
+
+
+func _on_buy_weapon() -> void:
+	if _sel_slot < 0 or _sel_weapon < 0:
+		return
+	if NativeGame.equip_weapon(_sel_slot, _sel_weapon):
+		NativeAssets.play_sound(62)
+
+
+func _on_upgrade_weapon(slot: int) -> void:
+	NativeGame.upgrade_weapon(slot)
+
+
+func _on_sell_weapon(slot: int) -> void:
+	NativeGame.sell_weapon(slot)
+	NativeAssets.play_sound(62)
 
 
 func _build_footer() -> void:
@@ -162,7 +324,6 @@ func _get_lvl(field: String) -> int:
 		"upgrade_armour": return NativeGame.upgrade_armour
 		"upgrade_orbit": return NativeGame.upgrade_orbit
 		"upgrade_balls": return NativeGame.upgrade_balls
-		"weapon_power": return NativeGame.weapon_power
 		"lives": return NativeGame.lives
 		_: return 0
 
@@ -175,7 +336,6 @@ func _set_lvl(field: String, value: int) -> void:
 		"upgrade_armour": NativeGame.upgrade_armour = value
 		"upgrade_orbit": NativeGame.upgrade_orbit = value
 		"upgrade_balls": NativeGame.upgrade_balls = value
-		"weapon_power": NativeGame.weapon_power = value
 		"lives": NativeGame.lives = value
 
 
@@ -201,6 +361,9 @@ func _refresh() -> void:
 	var coins_lbl := get_node_or_null("Coins") as Label
 	if coins_lbl != null:
 		coins_lbl.text = "COINS: %d" % NativeGame.coins
+	if _weapon_panel != null and _weapon_panel.visible:
+		_refresh_weapons()
+		return
 	for i in _rows.size():
 		var u: Dictionary = UPGRADES[i]
 		var lvl := _get_lvl(u["field"])
@@ -213,6 +376,65 @@ func _refresh() -> void:
 		var buy: Button = row["buy"]
 		buy.text = "MAX" if maxed else str(cost)
 		buy.disabled = maxed or NativeGame.coins < cost
+
+
+## Repaint the WEAPONS tab — slot contents, upgrade/sell affordability,
+## and the catalog detail line for the highlighted weapon.
+func _refresh_weapons() -> void:
+	for i in _slot_rows.size():
+		var row: Dictionary = _slot_rows[i]
+		var wid := NativeGame.weapons[i]
+		var panel: PanelContainer = row["panel"]
+		# Highlight the slot selected as the BUY target.
+		panel.modulate = Color(1.0, 0.9, 0.5) if i == _sel_slot else Color.WHITE
+		if wid < 0:
+			(row["title"] as Label).text = "GUN %d — EMPTY" % (i + 1)
+			(row["lvl"] as Label).text = ""
+			(row["desc"] as Label).text = ""
+			(row["upgrade"] as Button).text = "—"
+			(row["upgrade"] as Button).disabled = true
+			(row["sell"] as Button).text = "—"
+			(row["sell"] as Button).disabled = true
+			continue
+		var w: Dictionary = NativeWeaponTable.at(wid)
+		var lv: int = NativeGame.weapon_level[i]
+		(row["title"] as Label).text = "%s  Lv%d" % [w["name"], lv]
+		(row["lvl"] as Label).text = "DMG %.1f  OH %.1f" % [
+			w["fp"] + lv * w["fp_per"], w["oh"] + lv * w["oh_per"]]
+		(row["desc"] as Label).text = "%s  (%s)" % [w["type"], w["desc"]]
+		var up: Button = row["upgrade"]
+		var maxed := lv >= NativeWeaponTable.MAX_LEVEL
+		up.text = "MAX" if maxed else "UPGRADE %d" % NativeGame.weapon_upgrade_price(i)
+		up.disabled = maxed or NativeGame.coins < NativeGame.weapon_upgrade_price(i)
+		var sell: Button = row["sell"]
+		sell.text = "SELL +%d" % NativeGame.weapon_sell_price(i)
+		sell.disabled = false
+
+	# Catalog detail + BUY button state.
+	var detail := _weapon_panel.get_node_or_null("Detail") as Label
+	var buy := _weapon_panel.get_node_or_null("BuyWeapon") as Button
+	if _sel_weapon >= 0:
+		var w: Dictionary = NativeWeaponTable.at(_sel_weapon)
+		if detail != null:
+			detail.text = "%s — %s\nDMG %.1f  OH %.1f  DELAY %.0f  x%d bolts\nCost %d coins" % [
+				w["name"], w["type"], w["fp"], w["oh"], w["fr"], w["multi"],
+				NativeGame.weapon_buy_price(_sel_weapon)]
+		if buy != null:
+			if _sel_slot < 0:
+				buy.text = "SELECT A SLOT FIRST"
+				buy.disabled = true
+			else:
+				var price := NativeGame.weapon_buy_price(_sel_weapon)
+				if NativeGame.weapons[_sel_slot] >= 0:
+					price -= NativeGame.weapon_sell_price(_sel_slot)
+				buy.text = "BUY %s → GUN %d  (%+d coins)" % [
+					w["name"], _sel_slot + 1, price]
+				buy.disabled = NativeGame.coins < price
+	elif detail != null:
+		detail.text = ""
+	if buy != null and _sel_weapon < 0:
+		buy.text = "SELECT A WEAPON"
+		buy.disabled = true
 
 
 func _cost(u: Dictionary, lvl: int) -> int:

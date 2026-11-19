@@ -3,11 +3,11 @@
 	"background": 0,
 	"music": "mixed_battle",
 	"waves": [
-		{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "kind": "goomba", "health": 100},
-		{"delay": 8.0, "count": 4, "edge": "right", "mode": "formation", "kind": "goomba", "health": 100},
-		{"delay": 15.0, "count": 3, "edge": "top", "mode": "formation", "kind": "shooter", "health": 140},
-		{"delay": 22.0, "count": 5, "edge": "left", "mode": "chase", "kind": "goomba", "health": 100},
-		{"delay": 30.0, "count": 6, "edge": "top", "mode": "formation", "kind": "mini", "health": 45}
+		{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "kind": "goomba", "health": 10},
+		{"delay": 8.0, "count": 4, "edge": "right", "mode": "formation", "kind": "goomba", "health": 10},
+		{"delay": 15.0, "count": 3, "edge": "top", "mode": "formation", "kind": "shooter", "health": 14},
+		{"delay": 22.0, "count": 5, "edge": "left", "mode": "chase", "kind": "goomba", "health": 10},
+		{"delay": 30.0, "count": 6, "edge": "top", "mode": "formation", "kind": "mini", "health": 5}
 	],
 	"boss": {}
 }

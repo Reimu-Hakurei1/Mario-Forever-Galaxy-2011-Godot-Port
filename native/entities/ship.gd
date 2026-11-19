@@ -45,11 +45,8 @@ const MUZZLES := [
 	[315.0, 60.0, 1],    # bottom-right gun
 ]
 
-# Per-slot reload thresholds (frames of charge needed). The original reads
-# these from shop upgrade tables; these are the stock-weapon values.
-const FIRE_DELAY := [18, 14, 18, 22, 22]
-const SHOT_DAMAGE := 34.0
-const OVERHEAT_PER_SHOT := 8.0
+# Per-slot charge thresholds come from the weapon catalog
+# (NativeWeaponTable.slot_stats()["delay"]) — higher "fr" = slower gun.
 const OVERHEAT_COOLING := 0.6   # heat dissipated per frame when not firing
 
 signal died
@@ -252,52 +249,108 @@ func _apply_firing(delta: float) -> void:
 	var rate_mult := 1.5 if NativeGame.overdrive_time > 0.0 else 1.0
 
 	for i in MUZZLES.size():
-		# Charge builds every frame regardless of trigger state.
-		_charge[i] += (1.0 + NativeGame.samus_firerate) * rate_mult * delta * 60.0
-		if can_fire and fire_held and _charge[i] >= FIRE_DELAY[i]:
+		var wid := NativeGame.weapons[i] if i < NativeGame.weapons.size() else -1
+		if wid < 0:
 			_charge[i] = 0.0
-			_fire_muzzle(i)
+			continue    # empty slot — G.weapon[slot] == -1 in the original
+		var st := NativeWeaponTable.slot_stats(
+			NativeGame.weapon_level[i], wid)
+		# Charge builds every frame (g_ladowanie), fires when it reaches
+		# the weapon's firerate threshold minus upgrade shaving.
+		_charge[i] += (1.0 + NativeGame.samus_firerate) * rate_mult * delta * 60.0
+		if can_fire and fire_held and _charge[i] >= st["delay"]:
+			_charge[i] = 0.0
+			_fire_slot(i, st)
 
 	# Heat bleeds off whenever the trigger isn't cycling weapons.
+	# samus_cooling is the original's extra vent rate (hero 3 quirk).
 	if not (can_fire and fire_held):
-		NativeGame.overheating = maxf(0.0, NativeGame.overheating - OVERHEAT_COOLING * delta * 60.0)
+		NativeGame.overheating = maxf(0.0, NativeGame.overheating \
+			- (OVERHEAT_COOLING + NativeGame.samus_cooling) * delta * 60.0)
 
 
-## Spawn bolts at muzzle `index`. The offset direction (ship → muzzle)
-## becomes each bolt's flight direction, matching how script_laser_* stored
-## unx/uny on the spawned bolt. Weapon upgrades fan extra bolts around the
-## center shot — the native stand-in for the original's weapon levels.
-func _fire_muzzle(index: int) -> void:
+## Spawn the weapon in slot `index`. Bolt count/arc come from the weapon's
+## catalog type (the original's script_laser_<id> functions each hard-code
+## a pattern; we group them by shoptype):
+##   SINGLE   — `multi` bolts in a tight fan (multi>1 = burst spread)
+##   MULTI / MULTISHOT / MULTI-SIDE — symmetric fan of `multi` bolts
+##   SPREAD   — wide shotgun arc of `multi` bolts
+##   SIDE     — forward bolt plus `multi-1` bolts perpendicular to the hull
+##   MISC     — single bolt (GOLD GUN's CREATE COINS flag handled per-bolt)
+## Flags in `add` (AUTO-TARGETING, ONLY FORWARD SHOTS, EXPLOSIVE AMMO,
+## CREATE COINS) tweak aim or bolt behaviour.
+func _fire_slot(index: int, st: Dictionary) -> void:
 	var m: Array = MUZZLES[index]
 	var muzzle_angle := float(m[0]) + tilt - 90.0
 	var rad := deg_to_rad(muzzle_angle)
 	# Original formula: x uses sin, y uses cos — compass-style degrees.
 	var offset := Vector2(sin(rad), cos(rad)) * float(m[1])
 	var spawn_pos := position + offset
-	var base_dir := offset.normalized()
-	var base_angle := base_dir.angle()
+	var aim := offset.normalized()
+	var add: String = st.get("add", "N/A")
 
-	# weapon_power 0 = single bolt, 1 = 3-way fan, 2 = 5-way fan.
-	# Overdrive adds 2 bolts and widens the fan for its duration.
-	var overdrive := NativeGame.overdrive_time > 0.0
-	var bolts := 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
-	var fan_step := 0.26 if overdrive else 0.18
-	for i in bolts:
-		var fan := (i - (bolts - 1) / 2.0) * fan_step
-		var dir := Vector2.RIGHT.rotated(base_angle + fan)
+	# ONLY FORWARD SHOTS — phase weapons ignore hull aim and shoot up.
+	if "ONLY FORWARD" in add:
+		aim = Vector2(0, -1)
+	# AUTO-TARGETING — bend the aim at the nearest enemy.
+	elif "AUTO-TARGETING" in add:
+		var target := _nearest_enemy()
+		if target != null:
+			aim = (target.global_position - spawn_pos).normalized()
+
+	var wtype: String = st.get("type", "")
+	var count: int = maxi(1, int(st.get("multi", 1)))
+	var dirs: Array[Vector2] = []
+	match wtype:
+		"SPREAD SHOT WEAPON":
+			for i in count:
+				dirs.append(aim.rotated((i - (count - 1) / 2.0) * 0.42))
+		"SIDE SHOT WEAPON":
+			var perp := Vector2(-aim.y, aim.x)
+			dirs.append(aim)
+			for i in count - 1:
+				var side := 1.0 if i % 2 == 0 else -1.0
+				dirs.append((aim * 0.4 + perp * side * 0.9).normalized())
+		"MULTI SHOT WEAPON", "MULTISHOT SHOT WEAPON", \
+		"MULTISHOT WEAPON", "MULTI-SIDE SHOT WEAPON":
+			for i in count:
+				dirs.append(aim.rotated((i - (count - 1) / 2.0) * 0.3))
+		_:
+			# SINGLE SHOT (+ MISC): tight fan when multi > 1.
+			for i in count:
+				dirs.append(aim.rotated((i - (count - 1) / 2.0) * 0.14))
+
+	for dir in dirs:
 		var bullet := NativeBullet.new()
 		bullet.global_position = spawn_pos
 		bullet.velocity = dir * NativeBullet.START_SPEED
-		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult
+		bullet.damage = st["damage"]
+		bullet.explosive = "EXPLOSIVE AMMO" in add
+		bullet.coin_on_hit = "CREATE COINS" in add
 		get_parent().add_child(bullet)
 
-	NativeGame.overheating += OVERHEAT_PER_SHOT
+	NativeGame.overheating += st["overheat"]
 	# Muzzle report — sound id 29 from the original sampel table.
 	var stream := NativeAssets.sound(29)
 	if stream != null and NativeGame.dzwiek == 1:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
+
+
+## Closest living enemy to the ship — the auto-targeting weapons'
+## "nearest target" pick (script_laser_* aimed at g_x/g_y similarly).
+func _nearest_enemy() -> Node2D:
+	var best: Node2D = null
+	var best_d := INF
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if not is_instance_valid(enemy):
+			continue
+		var d := global_position.distance_squared_to(enemy.global_position)
+		if d < best_d:
+			best_d = d
+			best = enemy
+	return best
 
 
 ## ORBIT upgrade — steady hull regeneration while alive (the original's
@@ -313,7 +366,7 @@ func _tick_orbit(delta: float) -> void:
 ## damages enemies it touches, with a short per-target cooldown so a
 ## parked orb can't melt a single enemy instantly.
 const BALL_RADIUS := 58.0
-const BALL_DAMAGE := 20.0
+const BALL_DAMAGE := 6.0
 const BALL_HIT_COOLDOWN := 25      # physics frames between hits per orb/foe
 
 func _tick_balls() -> void:
@@ -337,7 +390,7 @@ func _tick_balls() -> void:
 				continue
 			if ball.global_position.distance_to(enemy.global_position) < 26.0:
 				hits[eid] = frame
-				enemy.take_damage(BALL_DAMAGE * NativeGame.damage_mult)
+				enemy.take_damage(BALL_DAMAGE)
 		_ball_hits[i] = hits
 
 

@@ -33,8 +33,10 @@ const ANIM_FPS := 6.0
 const ENTER_SPEED := 0.8          # px/frame descent
 const FIGHT_Y := 160.0            # hover line at the top of the arena
 const HIT_FLASH := 4
-const BASE_HP := 3000.0
-const HP_PER_TIER := 1500.0
+# Boss hull — the original's boss_*.gd scripts set g_energia 1000-50000
+# per world tier; ours spans the same range across 8 world tiers.
+const BASE_HP := 1000.0
+const HP_PER_TIER := 700.0
 const BURST_INTERVAL := 150.0     # frames between attack patterns
 const MINION_INTERVAL := 600.0    # frames between minion summons
 
@@ -204,7 +206,7 @@ func _summon_minions() -> void:
 	for i in 2:
 		var minion := NativeEnemy.new()
 		minion.kind = NativeEnemy.Kind.GOOMBA
-		minion.health = 60.0
+		minion.health = 10.0
 		minion.mode = NativeEnemy.Mode.CHASE
 		minion.global_position = position + Vector2(-40 + i * 80, 40)
 		minion.formation_slot = minion.global_position

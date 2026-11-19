@@ -24,27 +24,41 @@ static var upgrade_orbit: int = 0    ## G.upgradeORBIT — hull regeneration
 static var upgrade_balls: int = 0    ## G.upgradeBALLS — orbiting weapon balls
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
-static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
+static var samus_overpriced: float = 0.0  ## G.samus_overpriced — weapon price markup
+static var samus_cooling: float = 0.0   ## G.samus_cooling — extra overheat venting
+## G.weapon[1..5] / G.levelup[1..5] — one weapon per muzzle slot, each
+## independently upgradeable (shop upgrade cost scales off the slot's
+## levelup, not the weapon's). -1 = slot empty.
+static var weapons: Array[int] = [-1, -1, -1, -1, -1]
+static var weapon_level: Array[int] = [0, 0, 0, 0, 0]
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
-static var damage_mult: float = 1.0    ## hero bullet damage multiplier
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
 
-## Playable ships — the original offered several hulls with different
-## handling. Only one hull sprite exists in the assets, so heroes differ
-## by stats and tint: firerate/slowdown feed the existing samus_* fields,
-## damage scales bullet damage, tint recolours the hull.
+## Playable ships — ports the four `g_hero` loadouts from choose_hero.gd.
+## Each hero gets a starter weapon on the centre gun (slot index 1 =
+## G.weapon[2]), different starting upgrades, and stat quirks. Weapon
+## ids index NativeWeaponTable.WEAPONS. The original hero-2 also gets
+## two special-weapon slots (G.weapon[4..5] = 1000) — that charge-weapon
+## system isn't ported yet, so those slots start empty.
 const HEROES := [
-	{"name": "CLASSIC", "desc": "Balanced all-rounder",
-		"firerate": 0.0, "slower": 1.0, "damage": 1.0, "tint": Color.WHITE},
-	{"name": "SAMUS", "desc": "Rapid fire, sluggish handling",
-		"firerate": 0.5, "slower": 1.2, "damage": 1.0, "tint": Color(1.0, 0.6, 0.6)},
-	{"name": "COMET", "desc": "Fast and fragile",
-		"firerate": 0.1, "slower": 0.8, "damage": 0.8, "tint": Color(0.6, 0.9, 1.0)},
-	{"name": "TITAN", "desc": "Heavy hitter, slow turn",
-		"firerate": 0.0, "slower": 1.15, "damage": 1.5, "tint": Color(1.0, 0.85, 0.4)},
+	{"name": "CLASSIC", "desc": "LIGHT MUSHROOM GUN — the every-plumber starter",
+		"firerate": 0.0, "slower": 1.0, "tint": Color.WHITE,
+		"loadout": {1: [1, 5]}, "upgrades": {}},
+	{"name": "VETERAN", "desc": "Mushroom gun + WING/BOOST/ARMOUR/BALLS pre-installed",
+		"firerate": 0.0, "slower": 1.0, "tint": Color(1.0, 0.6, 0.6),
+		"loadout": {1: [1, 5]},
+		"upgrades": {"upgrade_boost": 1, "upgrade_wing": 1,
+			"upgrade_armour": 1, "upgrade_balls": 1}},
+	{"name": "SPECIALIST", "desc": "Extra spare ship — special slots pending",
+		"firerate": 0.0, "slower": 1.1, "tint": Color(0.6, 0.9, 1.0),
+		"loadout": {1: [1, 5]}, "upgrades": {}, "lives": 4},
+	{"name": "HEAVY", "desc": "LINEAR SHOTGUN + double freezer, sluggish",
+		"firerate": 0.1, "slower": 1.8, "tint": Color(1.0, 0.85, 0.4),
+		"loadout": {1: [6, 5]}, "upgrades": {"upgrade_freezer": 2},
+		"overpriced": 0.05, "cooling": 1.0},
 ]
 
 # Level handoff — the star map writes the chosen level's config here and
@@ -77,6 +91,20 @@ const ROOM_SIZE := Vector2(1024, 768)
 
 static func room_size() -> Vector2:
 	return ROOM_SIZE
+
+
+## Fallback for entry points that skip hero select (direct scene launches,
+## headless tests): if every slot is empty, arm the current hero's
+## starter loadout. Does NOT touch upgrades — only fills empty slots.
+static func ensure_weapons() -> void:
+	for i in 5:
+		if weapons[i] >= 0:
+			return
+	var h: Dictionary = HEROES[clampi(hero, 0, HEROES.size() - 1)]
+	for slot in h.get("loadout", {}):
+		var w: Array = h["loadout"][slot]
+		weapons[slot] = w[0]
+		weapon_level[slot] = w[1]
 
 
 static func reset_run() -> void:
@@ -137,14 +165,111 @@ static func heal_player(amount: float) -> void:
 	energy = minf(energy + amount, max_energy())
 
 
-## Apply the selected hero's stat line — call after picking a ship.
+## Apply the selected hero's loadout — ports the choose_hero.gd block:
+## starter weapon on the centre gun, hero-specific starting upgrades,
+## samus_* quirks, and (for hero 2) an extra spare ship. Picking a hero
+## starts a fresh run, so weapons/upgrades reset to the hero defaults.
 static func apply_hero() -> void:
 	var h: Dictionary = HEROES[clampi(hero, 0, HEROES.size() - 1)]
-	samus_firerate = h["firerate"]
-	samus_slower = h["slower"]
-	damage_mult = h["damage"]
+	samus_firerate = h.get("firerate", 0.0)
+	samus_slower = h.get("slower", 1.0)
+	samus_overpriced = h.get("overpriced", 0.0)
+	samus_cooling = h.get("cooling", 0.0)
 	hero_tint = h["tint"]
+	for i in 5:
+		weapons[i] = -1
+		weapon_level[i] = 0
+	for slot in h.get("loadout", {}):
+		var w: Array = h["loadout"][slot]
+		weapons[slot] = w[0]
+		weapon_level[slot] = w[1]
+	var up: Dictionary = h.get("upgrades", {})
+	upgrade_wing = int(up.get("upgrade_wing", 0))
+	upgrade_boost = int(up.get("upgrade_boost", 0))
+	upgrade_freezer = int(up.get("upgrade_freezer", 0))
+	upgrade_armour = int(up.get("upgrade_armour", 0))
+	upgrade_orbit = int(up.get("upgrade_orbit", 0))
+	upgrade_balls = int(up.get("upgrade_balls", 0))
+	lives = int(h.get("lives", 3))
 	save()
+
+
+# ---------------------------------------------------------------------------
+# Weapon shop math — ports the buy/upgrade/sell formulas from
+# objects/items/shop.gd. Prices scale by (1 + samus_overpriced); upgrades
+# are per SLOT (weapon_level) and capped at NativeWeaponTable.MAX_LEVEL.
+# ---------------------------------------------------------------------------
+
+## Coin price to buy a catalog weapon into an empty slot.
+static func weapon_buy_price(weapon_id: int) -> int:
+	var w := NativeWeaponTable.at(weapon_id)
+	return int(w.get("cost", 0) * (1.0 + samus_overpriced))
+
+
+## Coin price for the next upgrade level of a slot's current weapon.
+static func weapon_upgrade_price(slot: int) -> int:
+	var wid := weapons[slot]
+	if wid < 0:
+		return 0
+	var w := NativeWeaponTable.at(wid)
+	return int(w.get("upcost", 0) * (weapon_level[slot] + 1))
+
+
+## Refund for selling a slot's weapon — the original returns the base
+## price plus the triangular sum of all upgrade costs paid
+## (shop.gd: ((level*(level+1)*0.5)*upgradecost) + shopcost).
+static func weapon_sell_price(slot: int) -> int:
+	var wid := weapons[slot]
+	if wid < 0:
+		return 0
+	var w := NativeWeaponTable.at(wid)
+	var lv := weapon_level[slot]
+	var upgrades := int(w.get("upcost", 0) * (lv * (lv + 1) / 2.0))
+	return weapon_buy_price(wid) + upgrades
+
+
+## Buy catalog weapon `weapon_id` into `slot` (replaces any weapon there,
+## refunding the old one first — same net effect as sell-then-buy).
+## Returns true on success.
+static func equip_weapon(slot: int, weapon_id: int) -> bool:
+	if slot < 0 or slot >= 5 or weapon_id < 0 or weapon_id >= NativeWeaponTable.WEAPONS.size():
+		return false
+	var price := weapon_buy_price(weapon_id)
+	if weapons[slot] >= 0:
+		price -= weapon_sell_price(slot)
+	if coins < price:
+		return false
+	coins -= price
+	weapons[slot] = weapon_id
+	save()
+	return true
+
+
+## Upgrade a slot's weapon one level. Max level from the original shop.
+static func upgrade_weapon(slot: int) -> bool:
+	if slot < 0 or slot >= 5 or weapons[slot] < 0:
+		return false
+	if weapon_level[slot] >= NativeWeaponTable.MAX_LEVEL:
+		return false
+	var price := weapon_upgrade_price(slot)
+	if coins < price:
+		return false
+	coins -= price
+	weapon_level[slot] += 1
+	save()
+	return true
+
+
+## Sell a slot's weapon for its refund and empty the slot.
+static func sell_weapon(slot: int) -> int:
+	var refund := weapon_sell_price(slot)
+	if weapons[slot] < 0:
+		return 0
+	coins += refund
+	weapons[slot] = -1
+	weapon_level[slot] = 0
+	save()
+	return refund
 
 
 # ---------------------------------------------------------------------------
@@ -169,11 +294,13 @@ static func save() -> void:
 	cfg.set_value("profile", "upgrade_armour", upgrade_armour)
 	cfg.set_value("profile", "upgrade_orbit", upgrade_orbit)
 	cfg.set_value("profile", "upgrade_balls", upgrade_balls)
-	cfg.set_value("profile", "weapon_power", weapon_power)
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
+	cfg.set_value("profile", "samus_overpriced", samus_overpriced)
+	cfg.set_value("profile", "samus_cooling", samus_cooling)
+	cfg.set_value("profile", "weapons", weapons)
+	cfg.set_value("profile", "weapon_level", weapon_level)
 	cfg.set_value("profile", "hero", hero)
-	cfg.set_value("profile", "damage_mult", damage_mult)
 	cfg.set_value("profile", "hero_tint", hero_tint)
 	cfg.set_value("settings", "efekty", efekty)
 	cfg.set_value("settings", "dzwiek", dzwiek)
@@ -197,11 +324,14 @@ static func reset_profile() -> void:
 	upgrade_armour = 0
 	upgrade_orbit = 0
 	upgrade_balls = 0
-	weapon_power = 0
 	samus_firerate = 0.0
 	samus_slower = 1.0
+	samus_overpriced = 0.0
+	samus_cooling = 0.0
+	for i in 5:
+		weapons[i] = -1
+		weapon_level[i] = 0
 	hero = 0
-	damage_mult = 1.0
 	hero_tint = Color.WHITE
 	save()
 
@@ -222,11 +352,17 @@ static func load_save() -> bool:
 	upgrade_armour = int(cfg.get_value("profile", "upgrade_armour", upgrade_armour))
 	upgrade_orbit = int(cfg.get_value("profile", "upgrade_orbit", upgrade_orbit))
 	upgrade_balls = int(cfg.get_value("profile", "upgrade_balls", upgrade_balls))
-	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
+	samus_overpriced = float(cfg.get_value("profile", "samus_overpriced", samus_overpriced))
+	samus_cooling = float(cfg.get_value("profile", "samus_cooling", samus_cooling))
+	var saved_weapons: Array = cfg.get_value("profile", "weapons", [])
+	for i in mini(5, saved_weapons.size()):
+		weapons[i] = int(saved_weapons[i])
+	var saved_levels: Array = cfg.get_value("profile", "weapon_level", [])
+	for i in mini(5, saved_levels.size()):
+		weapon_level[i] = int(saved_levels[i])
 	hero = int(cfg.get_value("profile", "hero", hero))
-	damage_mult = float(cfg.get_value("profile", "damage_mult", damage_mult))
 	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
 	efekty = int(cfg.get_value("settings", "efekty", efekty))
 	dzwiek = int(cfg.get_value("settings", "dzwiek", dzwiek))

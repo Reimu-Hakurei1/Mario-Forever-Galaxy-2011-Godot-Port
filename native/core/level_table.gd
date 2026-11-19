@@ -148,9 +148,11 @@ static func level_of(level_index: int) -> int:
 ##   elitewing — heavy hitters: elites, jumbos, crabs, ros
 static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 	var t := 1.0
-	# Base HP grows gently and caps — late-game enemies get tougher but
-	# never bullet-sponges (a maxed goomba is ~400hp ≈ 80 hits).
-	var hp := minf(80.0 + difficulty * 4.0, 400.0)
+	# Base HP grows gently and caps — scaled to the weapon catalog's damage
+	# values (script_set_weapons firepower ~2-80/hit). A maxed goomba is
+	# ~40hp ≈ 16 starter-gun hits, matching the original's 3-30 energia
+	# weak enemies vs 2-4 firepower shots.
+	var hp := minf(8.0 + difficulty * 0.4, 40.0)
 	match level % 5:
 		0:  # opener — readable, teaches the loop
 			return _waves_from([
@@ -235,7 +237,7 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			mode = "formation"
 
 		var count := 3 + w + (difficulty / 3)
-		var hp := minf(80.0 + difficulty * 4.0, 400.0)
+		var hp := minf(8.0 + difficulty * 0.4, 40.0)
 		match kind:
 			"mini": hp = hp * 0.4
 			"kamikaze", "ufo_b": hp = hp * 0.6

@@ -19,14 +19,14 @@ class_name NativeWaveSpawner
 ##   kind   — "goomba" | "shooter"/"ufo" | "kamikaze" | "tank" | "eye"
 ##   health — hit points per enemy
 @export var waves: Array = [
-	{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "kind": "goomba", "health": 100.0},
-	{"delay": 6.0, "count": 5, "edge": "right", "mode": "formation", "kind": "goomba", "health": 100.0},
-	{"delay": 12.0, "count": 3, "edge": "top", "mode": "formation", "kind": "shooter", "health": 140.0},
-	{"delay": 18.0, "count": 4, "edge": "left", "mode": "kamikaze", "kind": "kamikaze", "health": 60.0},
-	{"delay": 26.0, "count": 6, "edge": "top", "mode": "chase", "kind": "goomba", "health": 100.0},
-	{"delay": 34.0, "count": 2, "edge": "top", "mode": "formation", "kind": "tank", "health": 400.0},
-	{"delay": 42.0, "count": 3, "edge": "top", "mode": "formation", "kind": "eye", "health": 160.0},
-	{"delay": 52.0, "count": 8, "edge": "right", "mode": "kamikaze", "kind": "kamikaze", "health": 60.0},
+	{"delay": 1.0, "count": 4, "edge": "top", "mode": "formation", "kind": "goomba", "health": 10.0},
+	{"delay": 6.0, "count": 5, "edge": "right", "mode": "formation", "kind": "goomba", "health": 10.0},
+	{"delay": 12.0, "count": 3, "edge": "top", "mode": "formation", "kind": "shooter", "health": 14.0},
+	{"delay": 18.0, "count": 4, "edge": "left", "mode": "kamikaze", "kind": "kamikaze", "health": 6.0},
+	{"delay": 26.0, "count": 6, "edge": "top", "mode": "chase", "kind": "goomba", "health": 10.0},
+	{"delay": 34.0, "count": 2, "edge": "top", "mode": "formation", "kind": "tank", "health": 40.0},
+	{"delay": 42.0, "count": 3, "edge": "top", "mode": "formation", "kind": "eye", "health": 16.0},
+	{"delay": 52.0, "count": 8, "edge": "right", "mode": "kamikaze", "kind": "kamikaze", "health": 6.0},
 ]
 
 @export var spawn_interval := 0.5     # seconds between enemies in a wave
@@ -87,7 +87,7 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	var pos := _edge_position(edge, wave.get("spawned", 0))
 
 	var enemy := NativeEnemy.new()
-	enemy.health = wave.get("health", 100.0)
+	enemy.health = wave.get("health", 10.0)
 	enemy.global_position = pos
 
 	# Enemy variant — string name → Kind enum. Keep in sync with

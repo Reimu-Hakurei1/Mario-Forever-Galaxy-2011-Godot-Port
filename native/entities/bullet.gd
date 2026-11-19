@@ -15,6 +15,8 @@ const MARGIN := 200.0            # original kills bolts 200px outside the room
 
 var velocity := Vector2.ZERO     # world px/frame
 var damage := 34.0
+var explosive := false          # EXPLOSIVE AMMO — splash damage on hit
+var coin_on_hit := false        # CREATE COINS — GOLD GUN drops a coin
 
 var _sprite: Sprite2D
 var _scale := 0.2
@@ -50,6 +52,10 @@ func _physics_process(_delta: float) -> void:
 		if is_instance_valid(enemy) \
 				and position.distance_to(enemy.global_position) < 34.0:
 			enemy.take_damage(damage)
+			if explosive:
+				_splash(enemy)
+			if coin_on_hit:
+				_drop_coin()
 			_dead = true
 			queue_free()
 			return
@@ -65,3 +71,21 @@ func _physics_process(_delta: float) -> void:
 	if position.x < -MARGIN or position.x > room.x + MARGIN \
 			or position.y < -MARGIN or position.y > room.y + MARGIN:
 		queue_free()
+
+
+## EXPLOSIVE AMMO — the ISOMATIC CANNON's warhead: on impact it also
+## damages every other enemy within splash range for half damage.
+func _splash(primary: Node2D) -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(enemy) and enemy != primary \
+				and position.distance_to(enemy.global_position) < 70.0:
+			enemy.take_damage(damage * 0.5)
+
+
+## CREATE COINS — the GOLD GUN literally mints currency: each hit drops
+## a coin pickup where the bolt landed.
+func _drop_coin() -> void:
+	var coin := NativePickup.new()
+	coin.kind = NativePickup.Kind.COIN
+	coin.global_position = position
+	get_parent().add_child(coin)

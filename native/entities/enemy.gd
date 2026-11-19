@@ -79,7 +79,7 @@ const DROP_TABLE := [
 ]
 
 var kind := Kind.GOOMBA
-var health := 100.0               # g_energia
+var health := 10.0                # g_energia — scaled to weapon firepower
 var mode := Mode.SPAWN
 var formation_slot := Vector2.ZERO
 var sway_phase := 0.0

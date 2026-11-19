@@ -75,6 +75,7 @@ func _ready() -> void:
 
 	# Run state resets each time a level scene starts.
 	NativeGame.reset_run()
+	NativeGame.ensure_weapons()
 
 	# Level music — loops for the duration of the scene.
 	if NativeGame.muzyka == 1:

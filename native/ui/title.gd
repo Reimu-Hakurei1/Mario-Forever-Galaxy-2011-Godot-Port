@@ -10,6 +10,7 @@ extends Control
 
 const HERO_SCENE := "res://native/ui/hero_select.tscn"
 const INTRO_SCENE := "res://native/ui/intro.tscn"
+const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 var _has_save := false
 
@@ -115,9 +116,10 @@ func _refresh_hint() -> void:
 
 
 func _on_continue() -> void:
-	# First boot (no save) plays the intro story; afterwards the player
-	# goes straight to ship select — same as the original's flow.
-	get_tree().change_scene_to_file(HERO_SCENE if _has_save else INTRO_SCENE)
+	# Continue resumes the saved run straight on the map — picking a hero
+	# resets weapons/upgrades (choose_hero semantics), so it must only
+	# happen on a NEW GAME via the intro story.
+	get_tree().change_scene_to_file(MAP_SCENE if _has_save else INTRO_SCENE)
 
 
 func _on_new_game() -> void:
