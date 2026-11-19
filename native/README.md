@@ -19,9 +19,12 @@ native/
     level_table.gd     Campaign catalogue — 8 worlds x 10 levels,
                         5 wave blueprints + procedural finales, boss flags
   entities/
-    ship.gd            Player ship — inertia movement, hull tilt, 5 gun muzzles,
-                        hero stats, overdrive powerup
-    bullet.gd          Player projectile
+    ship.gd            Player ship — inertia movement, hull tilt, 5 gun
+                        muzzles with per-slot weapons (43-weapon catalog +
+                        1000-series super weapons), special-item ring,
+                        buddy companions, booster orbs, CHRONO slow-mo
+    bullet.gd          Player projectile — per-weapon sprites, homing /
+                        weave / arcing / bounce / turret behaviors
     enemy_bullet.gd    Enemy projectile (shooter/kamikaze return fire)
     enemy.gd           Enemy — 34 kinds ported from the original objects:
                         grunts (goomba/mini/dart/weaver/ghost/ghost2/
@@ -39,23 +42,31 @@ native/
                         attack patterns, enrage, tiered minions, named
                         health bar, alternate variants (ufo_mega/fat_boy/
                         flame_cans)
-    pickup.gd          Collectibles — coin/gem/health + power/life/cooling
-                        powerups with magnet
+    pickup.gd          Collectibles — coin/gem sizeof tiers, health/lives,
+                        special items, weapon boosters (original o_drop)
     explosion.gd       Death burst effect — sprite/scale variants
                         (boss kaboom, radius-scaled enemy bursts)
     death_wreck.gd    o_death — the tumbling ship wreck on player death
+    castle_block.gd    Destructible castle block (sprite 293/294/295/306)
+    castle_key.gd     Stage key — touch = castle level clear
+    castle_scroller.gd Castle conveyor — scroll-distance row spawner with
+                        blocks, defenses, enemies, fans, coins, path tiles
     wave_spawner.gd    Wave scheduler — delayed groups plus scripted
                         o_wave_* patterns (grid phalanxes, circles,
                         streams, piranhas, ghosts, zigzag, loot)
   ui/
     hud.gd             Score / hull / heat / lives display
-    shop.gd            Upgrade shop — wings/boosters/freezer/weapon/lives
+    shop.gd            Upgrade shop — support upgrades, WEAPONS tab (5 gun
+                        slots + 53-weapon catalog), SPECIALS tab, buddy
+                        tracks, LIVES, hull repair
     title.gd           Boot screen — CONTINUE (save) / NEW GAME
     intro.gd           Opening story pages (first boot)
     hero_select.gd     Ship select — CLASSIC/SAMUS/COMET/TITAN
     options.gd         Settings overlay — music/sfx/effects/volume
     game_over.gd       Final stats screen on game over
     boss_dialogue.gd   Typewriter overlay — boss speeches, NAME| tags
+    ending.gd          Victory sequence — character sprites, epilogue,
+                        stats (o_ending_* objects)
   core/
     dialogue_table.gd Boss intro/end talks + inter-map briefings
                         (o_boss_*_talk/end_talk, next_map_obj)
@@ -63,6 +74,7 @@ native/
     star_map.gd/.tscn  Level select — 8x10 campaign grid with unlocks,
                         starfield backdrop
     arena.gd/.tscn     Playable single-screen arena (1024x768)
+    castle.gd/.tscn    Castle crawl — scrolling stage, blocks/keys/defenses
 ```
 
 ## Running it
