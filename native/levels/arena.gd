@@ -25,6 +25,11 @@ const LEVEL_CLEAR_DELAY := 3.0
 # Falls back to the scene defaults when empty (direct F6 testing).
 var _level_cfg: Dictionary = {}
 
+# Boss state — boss levels spawn NativeBoss once the regular waves are
+# cleared; the level only completes when the boss (and its minions) die.
+var _boss_cfg: Dictionary = {}
+var _boss_spawned := false
+
 var _respawn_timer := -1.0          # <0 means "ship alive / not pending"
 var _death_pending := false
 var _level_cleared := false
@@ -43,6 +48,7 @@ func _ready() -> void:
 	var music_track: String = _level_cfg.get("music", MUSIC_TRACK)
 	if not _level_cfg.get("waves", []).is_empty():
 		_spawner.set_waves(_level_cfg["waves"])
+	_boss_cfg = _level_cfg.get("boss", {})
 
 	# Backdrop: original levels tile background sprites; our slice uses a
 	# single full-screen texture stretched to the room.
@@ -77,10 +83,16 @@ func _process(delta: float) -> void:
 		_on_player_died()
 
 	# Level-clear check: every wave launched AND the field is clean.
+	# On boss levels, a clean field first summons the boss — the level
+	# only clears once the boss itself is dead (it joins the "enemies"
+	# group, so this check naturally waits for it and its minions).
 	if not _level_cleared and _spawner.is_finished() \
 			and get_tree().get_nodes_in_group("enemies").is_empty():
-		_level_cleared = true
-		_on_level_cleared()
+		if not _boss_cfg.is_empty() and not _boss_spawned:
+			_spawn_boss()
+		elif _boss_cfg.is_empty() or _boss_spawned:
+			_level_cleared = true
+			_on_level_cleared()
 
 	# Respawn flow after death.
 	if _respawn_timer >= 0.0:
@@ -132,6 +144,15 @@ func _next_level() -> void:
 
 func _go_to_map() -> void:
 	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")
+
+
+## Boss levels — drop the boss in once the field is clear.
+func _spawn_boss() -> void:
+	_boss_spawned = true
+	print("BOSS incoming — tier %d" % _boss_cfg.get("tier", 0))
+	var boss := NativeBoss.new()
+	boss.tier = _boss_cfg.get("tier", 0)
+	add_child(boss)
 
 
 func _show_banner(text: String) -> void:

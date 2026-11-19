@@ -257,7 +257,7 @@ func _fire_volley(target: Vector2) -> void:
 		bullet.global_position = position
 		bullet.velocity = dir * NativeEnemyBullet.SPEED
 		get_parent().add_child(bullet)
-	NativeAssets.sound(79)  # enemy shot (original sampel id)
+	NativeAssets.play_sound(79)  # enemy shot (original sampel id)
 
 
 ## Called by bullets on hit. Returns true if the hit killed the enemy.

@@ -81,4 +81,4 @@ func _collect() -> void:
 	if v.has("heal"):
 		NativeGame.heal_player(v["heal"])
 	NativeGame.add_score(v.get("score", 0))
-	NativeAssets.sound(62)  # pickup chime (original sampel id)
+	NativeAssets.play_sound(62)  # pickup chime (original sampel id)

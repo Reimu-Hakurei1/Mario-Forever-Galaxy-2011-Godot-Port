@@ -42,6 +42,8 @@ static func config_for(level_index: int) -> Dictionary:
 		"background": theme["bg"],
 		"music": theme["music"],
 		"waves": _generate_waves(difficulty, world),
+		# Every 5th level ends with a boss fight once the waves are clear.
+		"boss": {"tier": world} if level % 5 == 4 else {},
 		"label": "W%d-%02d" % [world + 1, level + 1],
 	}
 

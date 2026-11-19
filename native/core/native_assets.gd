@@ -111,6 +111,25 @@ static func sound(sound_id: int) -> AudioStream:
 	return _stream_cache[path]
 
 
+## Fire-and-forget sound effect. Entities don't each own an
+## AudioStreamPlayer, so this spawns a temporary one on the scene root
+## that frees itself when the stream finishes. Respects the
+## NativeGame.dzwiek / glosnosc_dzwieku settings.
+static func play_sound(sound_id: int) -> void:
+	var stream := sound(sound_id)
+	if stream == null or NativeGame.dzwiek != 1:
+		return
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return
+	var player := AudioStreamPlayer.new()
+	player.stream = stream
+	player.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
+	tree.root.add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
+
+
 ## Music tracks live in res://data/m/<name>.ogg, referenced by name.
 static func music(track_name: String) -> AudioStream:
 	var path := "res://data/m/%s.ogg" % track_name
