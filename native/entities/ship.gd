@@ -273,20 +273,40 @@ func _fire_muzzle(index: int) -> void:
 	var base_dir := offset.normalized()
 	var base_angle := base_dir.angle()
 
-	# weapon_power 0 = single bolt, 1 = 3-way fan, 2 = 5-way fan.
-	# Overdrive adds 2 bolts and widens the fan for its duration.
+	# Weapon types (cycle with X):
+	#   PULSE  — the standard fan; top upgrade tier pierces (the lance).
+	#   SPREAD — wide suppressing fan, lighter bolts, never pierces.
+	#   LANCE  — one heavy bolt per muzzle, always pierces, hits hard.
 	var overdrive := NativeGame.overdrive_time > 0.0
-	var bolts := 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
-	var fan_step := 0.26 if overdrive else 0.18
+	var bolts := 0
+	var fan_step := 0.18
+	var damage_mult := 1.0
+	var pierce := false
+	var sprite := NativeBullet.DEFAULT_SPRITE
+	match NativeGame.weapon_type:
+		1:  # SPREAD
+			bolts = 5 + NativeGame.weapon_power
+			fan_step = 0.34 if overdrive else 0.30
+			damage_mult = 0.55
+			sprite = 207      # s_bullet_minigun
+		2:  # LANCE
+			bolts = 1 + (1 if overdrive else 0)
+			damage_mult = 2.2 * (1.5 if overdrive else 1.0)
+			pierce = true
+			sprite = 411      # s_heavylaser
+		_:  # PULSE
+			bolts = 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
+			fan_step = 0.26 if overdrive else 0.18
+			pierce = NativeGame.weapon_power >= 2
 	for i in bolts:
 		var fan := (i - (bolts - 1) / 2.0) * fan_step
 		var dir := Vector2.RIGHT.rotated(base_angle + fan)
 		var bullet := NativeBullet.new()
 		bullet.global_position = spawn_pos
 		bullet.velocity = dir * NativeBullet.START_SPEED
-		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult
-		# Top weapon tier fires piercing rounds — the original's lance.
-		bullet.pierce = NativeGame.weapon_power >= 2
+		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult * damage_mult
+		bullet.pierce = pierce
+		bullet.sprite_id = sprite
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += OVERHEAT_PER_SHOT
@@ -296,6 +316,20 @@ func _fire_muzzle(index: int) -> void:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
+
+
+# Weapon type names for the HUD/cycle feedback.
+const WEAPON_NAMES := ["PULSE", "SPREAD", "LANCE"]
+
+
+## X cycles the weapon type — the original swapped shot patterns via
+## weapon pickups; a hotkey keeps all three available for testing.
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo \
+			and event.keycode == KEY_X and not NativeGame.paused:
+		NativeGame.weapon_type = (NativeGame.weapon_type + 1) % WEAPON_NAMES.size()
+		NativeAssets.play_sound(104)   # weapon-change blip
+		print("WEAPON -> %s" % WEAPON_NAMES[NativeGame.weapon_type])
 
 
 # ---------------------------------------------------------------------------

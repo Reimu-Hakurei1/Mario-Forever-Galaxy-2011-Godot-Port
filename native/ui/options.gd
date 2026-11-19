@@ -40,7 +40,7 @@ func _ready() -> void:
 	box.add_child(_volume_row())
 
 	var controls := Label.new()
-	controls.text = "ARROWS/WASD move · SPACE/Ctrl fire\nESC/P pause · Q quit to map"
+	controls.text = "ARROWS/WASD move · SPACE/Ctrl fire\nX cycle weapon · ESC/P pause · Q quit to map"
 	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	controls.add_theme_font_size_override("font_size", 13)
 	controls.add_theme_color_override("font_color", Color(0.6, 0.7, 0.8))

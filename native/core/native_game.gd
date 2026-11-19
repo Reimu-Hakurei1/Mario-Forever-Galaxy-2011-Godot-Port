@@ -22,6 +22,7 @@ static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
+static var weapon_type: int = 0         ## 0 PULSE / 1 SPREAD / 2 LANCE — cycle with X
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
@@ -157,6 +158,7 @@ static func save() -> void:
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
 	cfg.set_value("profile", "upgrade_freezer", upgrade_freezer)
 	cfg.set_value("profile", "weapon_power", weapon_power)
+	cfg.set_value("profile", "weapon_type", weapon_type)
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
 	cfg.set_value("profile", "hero", hero)
@@ -181,6 +183,7 @@ static func reset_profile() -> void:
 	upgrade_boost = 0
 	upgrade_freezer = 0
 	weapon_power = 0
+	weapon_type = 0
 	samus_firerate = 0.0
 	samus_slower = 1.0
 	hero = 0
@@ -203,6 +206,7 @@ static func load_save() -> bool:
 	upgrade_boost = int(cfg.get_value("profile", "upgrade_boost", upgrade_boost))
 	upgrade_freezer = int(cfg.get_value("profile", "upgrade_freezer", upgrade_freezer))
 	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
+	weapon_type = int(cfg.get_value("profile", "weapon_type", weapon_type))
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
 	hero = int(cfg.get_value("profile", "hero", hero))

@@ -6,7 +6,7 @@ class_name NativeBullet
 ## and grows slightly as it travels. It dies when it leaves the room or
 ## hits an enemy, dealing its `damage` to the target's energy.
 
-const SPRITE_ID := 95            # s_bulletprof_1
+const DEFAULT_SPRITE := 95       # s_bulletprof_1
 const START_SPEED := 4.0         # px/frame — original ramps +0.4/frame
 const MAX_SPEED := 9.0
 const ACCEL := 0.4
@@ -16,6 +16,7 @@ const MARGIN := 200.0            # original kills bolts 200px outside the room
 var velocity := Vector2.ZERO     # world px/frame
 var damage := 34.0
 var pierce := false              # max weapon power — bolt passes through foes
+var sprite_id := DEFAULT_SPRITE  # bolt skin — minigun/heavylaser per weapon type
 
 var _sprite: Sprite2D
 var _scale := 0.2
@@ -25,10 +26,10 @@ var _hit_ids := {}               # enemies already struck (pierce bookkeeping)
 
 func _ready() -> void:
 	_sprite = Sprite2D.new()
-	var tex := NativeAssets.sprite_frame(SPRITE_ID, 0)
+	var tex := NativeAssets.sprite_frame(sprite_id, 0)
 	if tex != null:
 		_sprite.texture = tex
-		_sprite.offset = -NativeAssets.sprite_origin(SPRITE_ID)
+		_sprite.offset = -NativeAssets.sprite_origin(sprite_id)
 	_sprite.scale = Vector2(_scale, _scale)
 	# Bullets fly toward enemies — mark them so the ship's hurtbox ignores
 	# friendly fire and enemies can detect them via group scan.
