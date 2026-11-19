@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
 [ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
 [ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
 [ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="editable_setting"]
@@ -27,7 +28,7 @@ metadata/gm_bg_colour = 0
 script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 300)
+position = Vector2(512, 384)
 limit_left = 0
 limit_top = 0
 limit_right = 1024
@@ -499,3 +500,6 @@ match_enemy_kind = -1
 preview_layers = [{"texture": "res://images/sprites/s_bossbul_1.115.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 20, "oy": 20, "blend": 0}]
 source_key = "o_bossbul_2:-1"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_boss_6_fight/event_8_0/action_0"
+
+[node name="LevelBoundsGuide" type="Node2D" parent="."]
+script = ExtResource("bounds_guide")

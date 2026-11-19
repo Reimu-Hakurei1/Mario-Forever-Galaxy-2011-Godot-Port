@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
 [node name="level_23_shop" type="Node2D"]
 metadata/gm_room = "room_shop"
@@ -13,7 +14,7 @@ metadata/gm_bg_colour = 0
 script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 300)
+position = Vector2(512, 384)
 limit_left = 0
 limit_top = 0
 limit_right = 1024
@@ -90,3 +91,6 @@ theme_override_font_sizes/font_size = 16
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "LOGIC / DRAW-DRIVEN ROOM | EDITOR PREVIEW\nNo static gameplay artwork is available in the placed instances.\nRuntime Draw/controller output is not reproduced here."
+
+[node name="LevelBoundsGuide" type="Node2D" parent="."]
+script = ExtResource("bounds_guide")

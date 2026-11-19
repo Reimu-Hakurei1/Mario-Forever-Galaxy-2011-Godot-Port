@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
 [ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
 
 [ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
@@ -28,7 +29,7 @@ metadata/gm_bg_colour = 0
 script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 300)
+position = Vector2(512, 384)
 limit_left = 0
 limit_top = 0
 limit_right = 1024
@@ -270,3 +271,6 @@ source_value = 100
 activation = 0
 source_key = "0:sekwencus:0:0:299"
 source_expression = "original runtime: 100"
+
+[node name="LevelBoundsGuide" type="Node2D" parent="."]
+script = ExtResource("bounds_guide")

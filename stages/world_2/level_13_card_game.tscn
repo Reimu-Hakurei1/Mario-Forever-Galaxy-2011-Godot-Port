@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.3.png" id="9_s3os0"]
 [ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.2.png" id="10_2q6c5"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 [ext_resource type="Texture2D" path="res://images/backgrounds/background0.0.jpg" id="t1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3rqoo"]
@@ -3999,3 +4000,6 @@ rotation = -1.5253903
 scale = Vector2(1, 0.8)
 texture = ExtResource("10_2q6c5")
 centered = false
+
+[node name="LevelBoundsGuide" type="Node2D" parent="."]
+script = ExtResource("bounds_guide")
