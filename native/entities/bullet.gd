@@ -57,7 +57,15 @@ func _physics_process(_delta: float) -> void:
 			continue   # pierce: don't strike the same enemy twice
 		if position.distance_to(enemy.global_position) < 34.0:
 			_hit_ids[eid] = true
-			enemy.take_damage(damage)
+			var killed := enemy.take_damage(damage)
+			# Impact spark — tiny fast explosion at the hit point. Skipped
+			# on kills since die() already spawns the big one.
+			if not killed:
+				var spark := NativeExplosion.new()
+				spark.global_position = position
+				spark.scale_factor = 0.3
+				spark.anim_fps = 45.0
+				get_parent().add_child(spark)
 			if not pierce:
 				_dead = true
 				queue_free()

@@ -10,6 +10,9 @@ const SPRITE_ID := 14             # s_explo_1 — 37 frame explosion
 const ANIM_FPS := 30.0
 const SCALE := 1.4
 
+var scale_factor := SCALE        # callers shrink it for bullet sparks
+var anim_fps := ANIM_FPS         # callers speed it up for sparks
+
 
 func _ready() -> void:
 	var anim := AnimatedSprite2D.new()
@@ -18,10 +21,10 @@ func _ready() -> void:
 	frames.add_animation("boom")
 	for tex in NativeAssets.sprite_frames(SPRITE_ID):
 		frames.add_frame("boom", tex)
-	frames.set_animation_speed("boom", ANIM_FPS)
+	frames.set_animation_speed("boom", anim_fps)
 	anim.sprite_frames = frames
 	anim.play("boom")
 	anim.offset = -NativeAssets.sprite_origin(SPRITE_ID)
-	anim.scale = Vector2(SCALE, SCALE)
+	anim.scale = Vector2(scale_factor, scale_factor)
 	anim.animation_finished.connect(queue_free)
 	add_child(anim)
