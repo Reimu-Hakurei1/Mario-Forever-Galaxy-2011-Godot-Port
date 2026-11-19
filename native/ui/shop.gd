@@ -20,6 +20,10 @@ const UPGRADES := [
 		"base": 60, "growth": 1.6},
 	{"field": "weapon_power", "name": "WEAPON", "desc": "+bolts per muzzle",
 		"base": 120, "growth": 2.0},
+	# Spare ships are a shop purchase in the original (zycia is bought
+	# and sold for coins between levels, capped at a few extras).
+	{"field": "lives", "name": "LIVES", "desc": "+1 spare ship",
+		"base": 300, "growth": 1.8, "max": 5},
 ]
 const MAX_LEVEL := 5               # original caps upgrades around here
 
@@ -139,6 +143,7 @@ func _get_lvl(field: String) -> int:
 		"upgrade_boost": return NativeGame.upgrade_boost
 		"upgrade_freezer": return NativeGame.upgrade_freezer
 		"weapon_power": return NativeGame.weapon_power
+		"lives": return NativeGame.lives
 		_: return 0
 
 
@@ -148,6 +153,7 @@ func _set_lvl(field: String, value: int) -> void:
 		"upgrade_boost": NativeGame.upgrade_boost = value
 		"upgrade_freezer": NativeGame.upgrade_freezer = value
 		"weapon_power": NativeGame.weapon_power = value
+		"lives": NativeGame.lives = value
 
 
 func _process(_delta: float) -> void:
@@ -162,7 +168,7 @@ func _refresh() -> void:
 	for i in _rows.size():
 		var u: Dictionary = UPGRADES[i]
 		var lvl := _get_lvl(u["field"])
-		var maxed: bool = lvl >= MAX_LEVEL
+		var maxed: bool = lvl >= int(u.get("max", MAX_LEVEL))
 		var cost := _cost(u, lvl)
 		var row: Dictionary = _rows[i]
 		(row["info"].get_node("Name") as Label).text = "%s  Lv%d" % [u["name"], lvl]
@@ -180,7 +186,7 @@ func _cost(u: Dictionary, lvl: int) -> int:
 func _on_buy(i: int) -> void:
 	var u: Dictionary = UPGRADES[i]
 	var lvl := _get_lvl(u["field"])
-	if lvl >= MAX_LEVEL:
+	if lvl >= int(u.get("max", MAX_LEVEL)):
 		return
 	var cost := _cost(u, lvl)
 	if NativeGame.coins < cost:

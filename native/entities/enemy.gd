@@ -24,8 +24,8 @@ enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
 ## Sprite ids come from data/assets.json (s_enemy_*/s_ufo_* sheets).
 enum Kind {
 	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
-	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE, SPLIT,
-	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE, CAPSULE,
+	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE,
+	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -50,9 +50,6 @@ const KIND_PROFILES := {
 	Kind.JUMBO: {"sprite": 50, "score": 400, "chase": 0.9, "scale": 0.5},
 	# Elite goomba — the armored 'aup' variant, tanky mid-tier.
 	Kind.ELITE: {"sprite": 479, "score": 220, "chase": 1.5},
-	# Splitter — bursts into a pod of minis on death (the original's
-	# divide-and-conquer enemy).
-	Kind.SPLIT: {"sprite": 30, "score": 180, "chase": 1.1, "scale": 0.8},
 	# Second-wave variants — sprites pulled straight from the original's
 	# enemy catalog (s_enemy_b/l/m/u, s_enemy_h_*, s_enemy_aup2).
 	Kind.DART: {"sprite": 29, "score": 130, "chase": 2.2, "scale": 0.7},
@@ -64,10 +61,6 @@ const KIND_PROFILES := {
 	Kind.LANCER: {"sprite": 68, "score": 220, "shoot_interval": 170.0, "spread": 3},
 	Kind.ACE: {"sprite": 332, "score": 240, "dive": 3.4, "scale": 0.7,
 		"tint": Color(1.0, 0.6, 0.6)},
-	# Bonus capsule — destructible supply pod (s_bonuschest). Harmless:
-	# no movement, no contact damage, no return fire. Guaranteed drop.
-	Kind.CAPSULE: {"sprite": 243, "score": 0, "capsule": true,
-		"scale": 0.7, "tint": Color(1.0, 0.85, 0.4)},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -99,7 +92,6 @@ var shoot_interval := 180.0       # frames between shots
 var shoot_range := 620.0          # px — only fires when player is in range
 var spread := 1                   # bullets per volley
 var burst := 1                    # shots per volley trigger (eye)
-var harmless := false             # capsules: no move, no collide, no fire
 
 var _anim: AnimatedSprite2D
 var _flash := 0
@@ -154,7 +146,6 @@ func _apply_profile() -> void:
 	burst = p.get("burst", 1)
 	_scale_factor = p.get("scale", 1.0)
 	_tint = p.get("tint", Color.WHITE)
-	harmless = p.get("capsule", false)
 	if p.has("chase"):
 		chase_speed = p["chase"]
 	if p.has("dive"):
@@ -172,16 +163,15 @@ func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
 		return
 
-	# Capsules just sit and bob — no behaviour, no player collision.
-	if not harmless:
-		if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
-				Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER]:
-			_behave_shooter()
-		elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
-				or kind == Kind.ACE:
-			_behave_kamikaze()
-		else:
-			_behave_goomba()
+	# Shooter-ish kinds share the hold-position-and-fire behaviour.
+	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
+			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER]:
+		_behave_shooter()
+	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
+			or kind == Kind.ACE:
+		_behave_kamikaze()
+	else:
+		_behave_goomba()
 
 	if _flash > 0:
 		_flash -= 1
@@ -191,8 +181,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		_anim.modulate = Color.WHITE
 
-	if not harmless:
-		_check_player_collision()
+	_check_player_collision()
 	_cull_offscreen()
 
 
@@ -332,35 +321,11 @@ func die() -> void:
 		return
 	_dead = true
 	NativeGame.kill_enemy()
-	if harmless:
-		# Supply pod — guaranteed useful drop, no score, small boom.
-		var pickup := NativePickup.new()
-		pickup.kind = [NativePickup.Kind.HEALTH, NativePickup.Kind.POWER,
-			NativePickup.Kind.SHIELD, NativePickup.Kind.COOLING,
-			NativePickup.Kind.GEM][randi() % 5]
-		pickup.global_position = position
-		get_parent().add_child(pickup)
-		var boom := NativeExplosion.new()
-		boom.global_position = position
-		get_parent().add_child(boom)
-		queue_free()
-		return
 	# Streak multiplier applies to the kill score — chained kills pay more.
 	var points := int(_score * NativeGame.score_mult())
 	NativeGame.add_score(points)
 	_roll_drop()
 	_spawn_explosion(points)
-	# Splitters burst into minis — the payoff (and threat) of the kill.
-	if kind == Kind.SPLIT:
-		for i in 3:
-			var mini := NativeEnemy.new()
-			mini.kind = Kind.MINI
-			mini.health = 40.0
-			mini.global_position = position + Vector2(
-				(i - 1) * 36.0, randf_range(-16, 16))
-			mini.formation_slot = mini.global_position
-			mini.mode = Mode.CHASE
-			get_parent().add_child(mini)
 	queue_free()
 
 

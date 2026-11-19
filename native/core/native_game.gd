@@ -22,12 +22,10 @@ static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
 static var samus_firerate: float = 0.0  ## G.samus_firerate — fire-rate bonus
 static var samus_slower: float = 1.0    ## G.samus_slower — speed divisor
 static var weapon_power: int = 0        ## weapon upgrade tier — extra bolts per muzzle
-static var weapon_type: int = 0         ## 0 PULSE / 1 SPREAD / 2 LANCE — cycle with X
 static var overdrive_time: float = 0.0  ## seconds of POWER-star boost remaining
 static var shield_time: float = 0.0     ## seconds of SHIELD-bubble invulnerability
 static var hurt_flash: float = 0.0      ## seconds of red hit-flash remaining
 static var hero: int = 0               ## selected ship index (HEROES table)
-static var hiscore_name: String = "ACE"  ## initials shown beside best score
 static var damage_mult: float = 1.0    ## hero bullet damage multiplier
 static var hero_tint: Color = Color.WHITE  ## hull tint for the chosen hero
 
@@ -54,7 +52,6 @@ static var dzwiek: int = 1           ## G.dzwiek — sound enabled
 static var muzyka: int = 1           ## G.muzyka — music enabled
 static var glosnosc_dzwieku: float = 1.0  ## G.glosnosc_dzwieku — sfx volume
 static var fullscreen: bool = false     ## borderless fullscreen toggle
-static var difficulty: int = 1          ## 0 EASY / 1 NORMAL / 2 HARD
 
 # --- Per-run state (reset when a level starts) ---
 static var energy: float = 100.0     ## G.energia — hull; 0 = death
@@ -64,7 +61,6 @@ static var enemies_killed: int = 0
 static var enemies_missed: int = 0
 static var kill_streak: int = 0          ## consecutive kills within the window
 static var streak_expiry: int = 0        ## msec timestamp when the streak dies
-static var next_life_score: int = 50000  ## score milestone for the next bonus life
 
 # Overheat ceiling from the original: 500 base + 500 per freezer upgrade.
 const OVERHEAT_BASE := 500.0
@@ -88,7 +84,6 @@ static func reset_run() -> void:
 	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0
-	next_life_score = 50000
 
 
 static func overheat_max() -> float:
@@ -99,11 +94,6 @@ static func add_score(points: int) -> void:
 	score += points
 	if score > best_score:
 		best_score = score
-	# Milestone bonus life — classic shmup reward for a big score.
-	while score >= next_life_score:
-		next_life_score += 50000
-		lives += 1
-		print("EXTRA LIFE at %d — lives=%d" % [score, lives])
 
 
 static func kill_enemy() -> void:
@@ -128,18 +118,10 @@ static func score_mult() -> float:
 static func damage_player(amount: float) -> void:
 	if paused:
 		return
-	# HARD hits ~30% harder, EASY ~25% softer.
-	amount *= [0.75, 1.0, 1.3][clampi(difficulty, 0, 2)]
 	var before := energy
 	energy = maxf(0.0, energy - amount)
 	if energy < before:
 		hurt_flash = 0.18
-
-
-## Enemy HP multiplier for the current difficulty — waves scale their
-## health values by this when spawning.
-static func enemy_hp_mult() -> float:
-	return [0.7, 1.0, 1.4][clampi(difficulty, 0, 2)]
 
 
 static func heal_player(amount: float) -> void:
@@ -176,11 +158,9 @@ static func save() -> void:
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
 	cfg.set_value("profile", "upgrade_freezer", upgrade_freezer)
 	cfg.set_value("profile", "weapon_power", weapon_power)
-	cfg.set_value("profile", "weapon_type", weapon_type)
 	cfg.set_value("profile", "samus_firerate", samus_firerate)
 	cfg.set_value("profile", "samus_slower", samus_slower)
 	cfg.set_value("profile", "hero", hero)
-	cfg.set_value("profile", "hiscore_name", hiscore_name)
 	cfg.set_value("profile", "damage_mult", damage_mult)
 	cfg.set_value("profile", "hero_tint", hero_tint)
 	cfg.set_value("settings", "efekty", efekty)
@@ -188,7 +168,6 @@ static func save() -> void:
 	cfg.set_value("settings", "muzyka", muzyka)
 	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
 	cfg.set_value("settings", "fullscreen", fullscreen)
-	cfg.set_value("settings", "difficulty", difficulty)
 	cfg.save(SAVE_PATH)
 
 
@@ -204,11 +183,9 @@ static func reset_profile() -> void:
 	upgrade_boost = 0
 	upgrade_freezer = 0
 	weapon_power = 0
-	weapon_type = 0
 	samus_firerate = 0.0
 	samus_slower = 1.0
 	hero = 0
-	hiscore_name = "ACE"
 	damage_mult = 1.0
 	hero_tint = Color.WHITE
 	save()
@@ -228,11 +205,9 @@ static func load_save() -> bool:
 	upgrade_boost = int(cfg.get_value("profile", "upgrade_boost", upgrade_boost))
 	upgrade_freezer = int(cfg.get_value("profile", "upgrade_freezer", upgrade_freezer))
 	weapon_power = int(cfg.get_value("profile", "weapon_power", weapon_power))
-	weapon_type = int(cfg.get_value("profile", "weapon_type", weapon_type))
 	samus_firerate = float(cfg.get_value("profile", "samus_firerate", samus_firerate))
 	samus_slower = float(cfg.get_value("profile", "samus_slower", samus_slower))
 	hero = int(cfg.get_value("profile", "hero", hero))
-	hiscore_name = str(cfg.get_value("profile", "hiscore_name", hiscore_name))
 	damage_mult = float(cfg.get_value("profile", "damage_mult", damage_mult))
 	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
 	efekty = int(cfg.get_value("settings", "efekty", efekty))
@@ -240,5 +215,4 @@ static func load_save() -> bool:
 	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))
 	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
 	fullscreen = bool(cfg.get_value("settings", "fullscreen", fullscreen))
-	difficulty = int(cfg.get_value("settings", "difficulty", difficulty))
 	return true

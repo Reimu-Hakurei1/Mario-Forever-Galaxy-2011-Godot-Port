@@ -110,8 +110,7 @@ func _refresh_hint() -> void:
 	var hint := get_node_or_null("Hint") as Label
 	if hint == null:
 		return
-	hint.text = "%s  BEST %d    —    ENTER to continue" % [
-		NativeGame.hiscore_name, NativeGame.best_score] \
+	hint.text = "BEST %d    —    ENTER to continue" % NativeGame.best_score \
 		if _has_save else "ENTER to start"
 
 

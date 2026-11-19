@@ -34,7 +34,7 @@ native/
     wave_spawner.gd    Wave scheduler — data-driven spawn groups
   ui/
     hud.gd             Score / hull / heat / lives display
-    shop.gd            Upgrade shop — wings/boosters/freezer/weapon for coins
+    shop.gd            Upgrade shop — wings/boosters/freezer/weapon/lives
     title.gd           Boot screen — CONTINUE (save) / NEW GAME
     intro.gd           Opening story pages (first boot)
     hero_select.gd     Ship select — CLASSIC/SAMUS/COMET/TITAN
@@ -124,8 +124,8 @@ fall back to the world's theme defaults.
 - `waves` — `delay` (seconds), `count`, `edge` (top/left/right/bottom),
   `mode` (formation/chase/kamikaze), `kind` (see KINDS in
   `level_table.gd` — goomba, shooter, kamikaze, tank, eye, mini, ufo_a,
-  ufo_b, ros, crab, jumbo, elite, split, dart, stinger, weaver, drone,
-  hunter, warlord), `health`.
+  ufo_b, ros, crab, jumbo, elite, dart, stinger, weaver, drone,
+  hunter, warlord, lancer, ace), `health`.
 - `boss` — `{}` for none, `{"tier": N}` for a boss fight after the waves.
 - `00.json` ships as a working example of a hand-authored opener.
 

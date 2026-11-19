@@ -70,7 +70,6 @@ var _sfx: AudioStreamPlayer
 var _weapon_levels := PackedInt32Array()  # g_levelup per slot
 var _shield_sprite: Sprite2D          # bubble shown while shielded
 var _shielded := false                # invulnerable came from SHIELD pickup
-var _trail_timer := 0.0               # engine-exhaust emitter clock
 
 
 func _ready() -> void:
@@ -135,7 +134,6 @@ func _physics_process(delta: float) -> void:
 	_apply_movement(delta)
 	_apply_firing(delta)
 	_update_visuals(delta)
-	_emit_trail(delta)
 
 
 ## Shield pickup timer — while active the hull is invulnerable and the
@@ -153,42 +151,6 @@ func _tick_shield(delta: float) -> void:
 		_shielded = false
 		invulnerable = false
 		_shield_sprite.visible = false
-
-
-## Engine exhaust — faint dots shed behind the hull while it moves fast.
-## Purely cosmetic; spawned as world-space sprites so they don't rotate
-## with the ship and fade out on their own.
-func _emit_trail(delta: float) -> void:
-	_trail_timer -= delta
-	if _trail_timer > 0.0 or vel.length() < 1.5 or not is_visible_in_tree():
-		return
-	_trail_timer = 0.045
-	var dot := Sprite2D.new()
-	dot.texture = _make_dot_texture()
-	dot.global_position = global_position \
-		- vel.normalized() * 34.0 + Vector2(randf_range(-3, 3), randf_range(-3, 3))
-	dot.modulate = Color(0.5, 0.8, 1.0, 0.55)
-	get_parent().add_child(dot)
-	var tw := dot.create_tween()
-	tw.set_parallel(true)
-	tw.tween_property(dot, "modulate:a", 0.0, 0.35)
-	tw.tween_property(dot, "scale", Vector2(0.2, 0.2), 0.35)
-	tw.chain().tween_callback(dot.queue_free)
-
-
-static var _dot_tex: Texture2D = null
-static func _make_dot_texture() -> Texture2D:
-	if _dot_tex != null:
-		return _dot_tex
-	var img := Image.create(16, 16, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0, 0, 0, 0))
-	for y in 16:
-		for x in 16:
-			var d := Vector2(x - 7.5, y - 7.5).length() / 8.0
-			if d < 1.0:
-				img.set_pixel(x, y, Color(1, 1, 1, 1.0 - d))
-	_dot_tex = ImageTexture.create_from_image(img)
-	return _dot_tex
 
 
 ## 64px ring texture generated once — cyan bubble outline.
@@ -311,40 +273,18 @@ func _fire_muzzle(index: int) -> void:
 	var base_dir := offset.normalized()
 	var base_angle := base_dir.angle()
 
-	# Weapon types (cycle with X):
-	#   PULSE  — the standard fan; top upgrade tier pierces (the lance).
-	#   SPREAD — wide suppressing fan, lighter bolts, never pierces.
-	#   LANCE  — one heavy bolt per muzzle, always pierces, hits hard.
+	# weapon_power 0 = single bolt, 1 = 3-way fan, 2 = 5-way fan.
+	# Overdrive adds 2 bolts and widens the fan for its duration.
 	var overdrive := NativeGame.overdrive_time > 0.0
-	var bolts := 0
-	var fan_step := 0.18
-	var damage_mult := 1.0
-	var pierce := false
-	var sprite := NativeBullet.DEFAULT_SPRITE
-	match NativeGame.weapon_type:
-		1:  # SPREAD
-			bolts = 5 + NativeGame.weapon_power
-			fan_step = 0.34 if overdrive else 0.30
-			damage_mult = 0.55
-			sprite = 207      # s_bullet_minigun
-		2:  # LANCE
-			bolts = 1 + (1 if overdrive else 0)
-			damage_mult = 2.2 * (1.5 if overdrive else 1.0)
-			pierce = true
-			sprite = 411      # s_heavylaser
-		_:  # PULSE
-			bolts = 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
-			fan_step = 0.26 if overdrive else 0.18
-			pierce = NativeGame.weapon_power >= 2
+	var bolts := 1 + NativeGame.weapon_power * 2 + (2 if overdrive else 0)
+	var fan_step := 0.26 if overdrive else 0.18
 	for i in bolts:
 		var fan := (i - (bolts - 1) / 2.0) * fan_step
 		var dir := Vector2.RIGHT.rotated(base_angle + fan)
 		var bullet := NativeBullet.new()
 		bullet.global_position = spawn_pos
 		bullet.velocity = dir * NativeBullet.START_SPEED
-		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult * damage_mult
-		bullet.pierce = pierce
-		bullet.sprite_id = sprite
+		bullet.damage = SHOT_DAMAGE * NativeGame.damage_mult
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += OVERHEAT_PER_SHOT
@@ -354,20 +294,6 @@ func _fire_muzzle(index: int) -> void:
 		_sfx.stream = stream
 		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
 		_sfx.play()
-
-
-# Weapon type names for the HUD/cycle feedback.
-const WEAPON_NAMES := ["PULSE", "SPREAD", "LANCE"]
-
-
-## X cycles the weapon type — the original swapped shot patterns via
-## weapon pickups; a hotkey keeps all three available for testing.
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo \
-			and event.keycode == KEY_X and not NativeGame.paused:
-		NativeGame.weapon_type = (NativeGame.weapon_type + 1) % WEAPON_NAMES.size()
-		NativeAssets.play_sound(104)   # weapon-change blip
-		print("WEAPON -> %s" % WEAPON_NAMES[NativeGame.weapon_type])
 
 
 # ---------------------------------------------------------------------------
@@ -402,9 +328,6 @@ func _update_visuals(delta: float) -> void:
 	# Hit flash — red pulse for a split second after taking damage.
 	# The ship ticks the timer down itself (static state has no process).
 	var hull_color := NativeGame.hero_tint
-	# Overdrive tints the hull electric blue so the buff reads at a glance.
-	if NativeGame.overdrive_time > 0.0:
-		hull_color = hull_color.lerp(Color(0.5, 0.85, 1.0), 0.65)
 	if NativeGame.hurt_flash > 0.0:
 		NativeGame.hurt_flash = maxf(0.0, NativeGame.hurt_flash - delta)
 		hull_color = Color(3.0, 0.7, 0.7)

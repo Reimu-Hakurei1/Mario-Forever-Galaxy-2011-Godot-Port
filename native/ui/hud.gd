@@ -83,8 +83,6 @@ func _process(_delta: float) -> void:
 		buffs.append("SHIELD %ds" % ceili(NativeGame.shield_time))
 	if NativeGame.overdrive_time > 0.0:
 		buffs.append("OVERDRIVE %ds" % ceili(NativeGame.overdrive_time))
-	# Weapon type is always shown — it's a persistent choice, not a buff.
-	buffs.append("WPN %s" % NativeShip.WEAPON_NAMES[NativeGame.weapon_type])
 	_buffs_label.text = "   ".join(buffs)
 	_buffs_label.visible = not buffs.is_empty()
 	if NativeGame.shield_time > 0.0:

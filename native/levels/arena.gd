@@ -38,7 +38,6 @@ var _pause_label: Label = null
 var _last_energy := 100.0
 var _shake := 0.0                   # screenshake timer after hull hits
 var _stars: Sprite2D = null         # parallax starfield layer
-var _vignette: TextureRect = null   # red edge glow at low hull
 
 
 func _ready() -> void:
@@ -73,18 +72,6 @@ func _ready() -> void:
 	_stars.centered = false
 	_stars.z_index = -99
 	add_child(_stars)
-
-	# Low-hull vignette — a radial-gradient texture whose alpha follows
-	# hull energy below 35%, so damage is felt at the screen edge.
-	_vignette = TextureRect.new()
-	_vignette.texture = _make_vignette_texture()
-	_vignette.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_vignette.stretch_mode = TextureRect.STRETCH_SCALE
-	_vignette.modulate.a = 0.0
-	var vlayer := CanvasLayer.new()
-	vlayer.layer = 15
-	vlayer.add_child(_vignette)
-	add_child(vlayer)
 
 	# Run state resets each time a level scene starts.
 	NativeGame.reset_run()
@@ -161,11 +148,6 @@ func _process(delta: float) -> void:
 		_stars.position.x -= delta * 12.0
 		if _stars.position.x <= -1024.0:
 			_stars.position.x += 1024.0
-
-	# Low-hull warning — vignette fades in under 35% energy and pulses.
-	if _vignette != null:
-		var danger := 1.0 - clampf(NativeGame.energy / 35.0, 0.0, 1.0)
-		_vignette.modulate.a = danger * (0.35 + 0.2 * sin(Time.get_ticks_msec() / 180.0))
 
 	# Screenshake — a sharp jolt whenever hull energy drops.
 	if NativeGame.energy < _last_energy - 0.01:
@@ -323,19 +305,6 @@ static func _make_starfield_texture() -> Texture2D:
 		var c := Color(1, 1, 1, 0.2 + randf() * 0.55)
 		img.set_pixel(x, y, c)
 		img.set_pixel(x + 1024, y, c)   # mirrored tile for seamless wrap
-	return ImageTexture.create_from_image(img)
-
-
-## 512x512 radial vignette — transparent centre fading to red edges.
-## Scaled to full screen by the TextureRect.
-static func _make_vignette_texture() -> Texture2D:
-	var img := Image.create(512, 512, false, Image.FORMAT_RGBA8)
-	var c := Vector2(256, 256)
-	for y in 512:
-		for x in 512:
-			var d := Vector2(x, y).distance_to(c) / 256.0
-			var a := smoothstep(0.45, 1.0, d)
-			img.set_pixel(x, y, Color(0.8, 0.05, 0.05, a))
 	return ImageTexture.create_from_image(img)
 
 

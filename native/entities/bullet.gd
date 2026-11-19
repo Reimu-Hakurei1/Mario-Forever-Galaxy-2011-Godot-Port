@@ -6,7 +6,7 @@ class_name NativeBullet
 ## and grows slightly as it travels. It dies when it leaves the room or
 ## hits an enemy, dealing its `damage` to the target's energy.
 
-const DEFAULT_SPRITE := 95       # s_bulletprof_1
+const SPRITE_ID := 95            # s_bulletprof_1
 const START_SPEED := 4.0         # px/frame — original ramps +0.4/frame
 const MAX_SPEED := 9.0
 const ACCEL := 0.4
@@ -15,21 +15,18 @@ const MARGIN := 200.0            # original kills bolts 200px outside the room
 
 var velocity := Vector2.ZERO     # world px/frame
 var damage := 34.0
-var pierce := false              # max weapon power — bolt passes through foes
-var sprite_id := DEFAULT_SPRITE  # bolt skin — minigun/heavylaser per weapon type
 
 var _sprite: Sprite2D
 var _scale := 0.2
 var _dead := false
-var _hit_ids := {}               # enemies already struck (pierce bookkeeping)
 
 
 func _ready() -> void:
 	_sprite = Sprite2D.new()
-	var tex := NativeAssets.sprite_frame(sprite_id, 0)
+	var tex := NativeAssets.sprite_frame(SPRITE_ID, 0)
 	if tex != null:
 		_sprite.texture = tex
-		_sprite.offset = -NativeAssets.sprite_origin(sprite_id)
+		_sprite.offset = -NativeAssets.sprite_origin(SPRITE_ID)
 	_sprite.scale = Vector2(_scale, _scale)
 	# Bullets fly toward enemies — mark them so the ship's hurtbox ignores
 	# friendly fire and enemies can detect them via group scan.
@@ -50,27 +47,12 @@ func _physics_process(_delta: float) -> void:
 	# object; a group scan is the same check in native terms. Bullets are
 	# small and few, so the scan is cheap.
 	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if not is_instance_valid(enemy):
-			continue
-		var eid := enemy.get_instance_id()
-		if _hit_ids.has(eid):
-			continue   # pierce: don't strike the same enemy twice
-		if position.distance_to(enemy.global_position) < 34.0:
-			_hit_ids[eid] = true
-			var killed: bool = enemy.take_damage(damage)
-			# Impact spark — tiny fast explosion at the hit point. Skipped
-			# on kills since die() already spawns the big one.
-			if not killed:
-				var spark := NativeExplosion.new()
-				spark.global_position = position
-				spark.scale_factor = 0.3
-				spark.anim_fps = 45.0
-				get_parent().add_child(spark)
-			if not pierce:
-				_dead = true
-				queue_free()
-				return
-			# Piercing bolts keep flying through the target.
+		if is_instance_valid(enemy) \
+				and position.distance_to(enemy.global_position) < 34.0:
+			enemy.take_damage(damage)
+			_dead = true
+			queue_free()
+			return
 
 	# Slight visual stretch as the bolt travels.
 	_scale += SCALE_GROWTH

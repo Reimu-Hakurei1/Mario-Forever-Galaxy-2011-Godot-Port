@@ -87,8 +87,7 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	var pos := _edge_position(edge, wave.get("spawned", 0))
 
 	var enemy := NativeEnemy.new()
-	# Difficulty scales wave HP — EASY enemies are frailer, HARD tankier.
-	enemy.health = wave.get("health", 100.0) * NativeGame.enemy_hp_mult()
+	enemy.health = wave.get("health", 100.0)
 	enemy.global_position = pos
 
 	# Enemy variant — string name → Kind enum. Keep in sync with
@@ -105,7 +104,6 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"crab": enemy.kind = NativeEnemy.Kind.CRAB
 		"jumbo": enemy.kind = NativeEnemy.Kind.JUMBO
 		"elite": enemy.kind = NativeEnemy.Kind.ELITE
-		"split": enemy.kind = NativeEnemy.Kind.SPLIT
 		"dart": enemy.kind = NativeEnemy.Kind.DART
 		"stinger": enemy.kind = NativeEnemy.Kind.STINGER
 		"weaver": enemy.kind = NativeEnemy.Kind.WEAVER
@@ -114,17 +112,12 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"warlord": enemy.kind = NativeEnemy.Kind.WARLORD
 		"lancer": enemy.kind = NativeEnemy.Kind.LANCER
 		"ace": enemy.kind = NativeEnemy.Kind.ACE
-		"capsule": enemy.kind = NativeEnemy.Kind.CAPSULE
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies
 	# enter, take a slot, and sway there while the player fights through.
 	var slot_index: int = wave["spawned"]
 	enemy.formation_slot = _formation_slot(slot_index)
-	# Capsules materialise directly at their slot — they never move, so
-	# an offscreen edge spawn would just get culled.
-	if enemy.kind == NativeEnemy.Kind.CAPSULE:
-		enemy.global_position = enemy.formation_slot
 	match wave.get("mode", "formation"):
 		"chase": enemy.mode = NativeEnemy.Mode.CHASE
 		"kamikaze": enemy.mode = NativeEnemy.Mode.KAMIKAZE
