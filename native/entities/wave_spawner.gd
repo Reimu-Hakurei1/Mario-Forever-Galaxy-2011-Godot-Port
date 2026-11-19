@@ -111,6 +111,8 @@ func _spawn_enemy(wave: Dictionary) -> void:
 		"drone": enemy.kind = NativeEnemy.Kind.DRONE
 		"hunter": enemy.kind = NativeEnemy.Kind.HUNTER
 		"warlord": enemy.kind = NativeEnemy.Kind.WARLORD
+		"lancer": enemy.kind = NativeEnemy.Kind.LANCER
+		"ace": enemy.kind = NativeEnemy.Kind.ACE
 		_: enemy.kind = NativeEnemy.Kind.GOOMBA
 
 	# Formation slots are laid out in the upper half of the room — enemies

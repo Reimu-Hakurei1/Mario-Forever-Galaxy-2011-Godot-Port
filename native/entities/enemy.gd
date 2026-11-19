@@ -25,7 +25,7 @@ enum Mode { SPAWN, FORMATION, CHASE, KAMIKAZE, DYING }
 enum Kind {
 	GOOMBA, SHOOTER, KAMIKAZE, TANK, EYE,
 	MINI, UFO_A, UFO_B, ROS, CRAB, JUMBO, ELITE, SPLIT,
-	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD,
+	DART, STINGER, WEAVER, DRONE, HUNTER, WARLORD, LANCER, ACE,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -61,6 +61,9 @@ const KIND_PROFILES := {
 	Kind.DRONE: {"sprite": 112, "score": 190, "shoot_interval": 150.0, "spread": 2},
 	Kind.HUNTER: {"sprite": 328, "score": 260, "shoot_interval": 130.0, "spread": 1, "burst": 2},
 	Kind.WARLORD: {"sprite": 478, "score": 380, "chase": 1.3, "scale": 0.6},
+	Kind.LANCER: {"sprite": 68, "score": 220, "shoot_interval": 170.0, "spread": 3},
+	Kind.ACE: {"sprite": 332, "score": 240, "dive": 3.4, "scale": 0.7,
+		"tint": Color(1.0, 0.6, 0.6)},
 }
 
 # Drop table rolled on death (from the original o_drop logic): most kills
@@ -153,7 +156,8 @@ func _apply_profile() -> void:
 	# Behaviour family routing: shooters hold station and fire, kamikaze
 	# variants dive, everything else uses the goomba pattern. The new
 	# kinds join the family that matches their profile.
-	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER:
+	if kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
+			or kind == Kind.ACE:
 		mode = Mode.KAMIKAZE
 		kamikaze_speed = p.get("dive", 2.4)
 
@@ -166,7 +170,8 @@ func _physics_process(_delta: float) -> void:
 	if kind in [Kind.SHOOTER, Kind.EYE, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER]:
 		_behave_shooter()
-	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER:
+	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \
+			or kind == Kind.ACE:
 		_behave_kamikaze()
 	else:
 		_behave_goomba()
