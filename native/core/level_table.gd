@@ -45,7 +45,8 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
 	"lancer", "ace", "ghost", "rocket_ufo",
 	"cannon", "flame_cannon", "rotary", "fat_cannon", "flame", "fan",
-	"ring", "ducher_ring", "ducher_fall", "bonus_fall"]
+	"ring", "ducher_ring", "ducher_fall", "bonus_fall",
+	"goomba_team", "ufo_team", "ufos_team", "cyber_team", "hammer_team"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
@@ -331,6 +332,10 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 		var kind := "goomba"
 		var mode := "formation"
 		var roll := (w * 7 + difficulty * 3 + world) % 24
+		# Team fighters are squad spawns — one ring per wave tick, so
+		# they only appear as deliberate set pieces on later waves.
+		if w >= 4 and roll == 3:
+			kind = ["goomba_team", "ufo_team", "cyber_team", "hammer_team"][w % 4]
 		if w >= 5 and roll >= 20:
 			kind = ["jumbo", "crab", "ros", "warlord", "ring"][roll % 5]
 		elif w >= 4 and roll >= 16:
@@ -348,8 +353,9 @@ static func _generate_waves(difficulty: int, world: int) -> Array:
 			mode = "formation"
 
 		var count := 3 + w + (difficulty / 3)
-		if kind == "ring" or kind == "ducher_ring":
-			count = 1   # the ring IS the wave
+		if kind == "ring" or kind == "ducher_ring" \
+				or kind.ends_with("_team"):
+			count = 1   # the squad/ring IS the wave
 		var hp := minf(8.0 + difficulty * 0.4, 40.0)
 		match kind:
 			"mini": hp = hp * 0.4

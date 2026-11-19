@@ -174,6 +174,57 @@ func _build_grid() -> void:
 
 	_draw_paths(start_x, start_y, per_world)
 	_build_ship_cursor(start_x, start_y, per_world)
+	_build_map_decor(start_x, start_y, per_world)
+
+
+## Map secrets — the original's hidden map goodies (o_map_goodie_*)
+## and loot panels (o_map_panel_loot_2): twinkling galactic sprites
+## and pulsing panels scattered between the level nodes. Decorative
+## only; they need efekty >= 1 like the original's G.efekty check.
+var _decor: Array = []   # {sprite, base_pos, phase, kind}
+
+func _build_map_decor(start_x: float, start_y: float, per_world: int) -> void:
+	if NativeGame.efekty < 1:
+		return
+	var grid_w := per_world * (NODE_SIZE + NODE_GAP) - NODE_GAP
+	# A handful of twinkling sprites tucked between rows — the
+	# "find the hidden goodie" treasure of the Galaxy map.
+	var spots := [
+		Vector2(start_x + grid_w * 0.5, start_y - 46),
+		Vector2(start_x - 60, start_y + 1 * ROW_HEIGHT + NODE_SIZE / 2),
+		Vector2(start_x + grid_w + 60, start_y + 3 * ROW_HEIGHT + NODE_SIZE / 2),
+		Vector2(start_x + grid_w * 0.3, start_y + 7 * ROW_HEIGHT + NODE_SIZE / 2 + 40),
+		Vector2(start_x + grid_w * 0.7, start_y - 30),
+	]
+	for i in spots.size():
+		var sid: int = [255, 256, 255, 256, 255][i]
+		var tex := NativeAssets.sprite_frame(sid, 0)
+		if tex == null:
+			continue
+		var sp := Sprite2D.new()
+		sp.texture = tex
+		sp.offset = -NativeAssets.sprite_origin(sid)
+		sp.scale = Vector2(0.8, 0.8)
+		sp.position = spots[i]
+		_world.add_child(sp)
+		_decor.append({"sprite": sp, "base": spots[i],
+			"phase": randf() * TAU, "kind": "goodie"})
+	# Pulsing loot panels beside a few world rows (sprite 278/279 —
+	# s_map_pannel_dir glow, the original's map_panel_loot).
+	for w in [1, 4, 6]:
+		var sid: int = 278 if w % 2 == 0 else 279
+		var tex := NativeAssets.sprite_frame(sid, 0)
+		if tex == null:
+			continue
+		var sp := Sprite2D.new()
+		sp.texture = tex
+		sp.offset = -NativeAssets.sprite_origin(sid)
+		sp.scale = Vector2(0.55, 0.55)
+		sp.position = Vector2(start_x - 46,
+			start_y + w * ROW_HEIGHT + NODE_SIZE / 2)
+		_world.add_child(sp)
+		_decor.append({"sprite": sp, "base": sp.position,
+			"phase": randf() * TAU, "kind": "panel"})
 
 
 ## Connect consecutive nodes in each world row with a dim path line —
@@ -328,3 +379,18 @@ func _process(_delta: float) -> void:
 	if _ship_cursor != null:
 		_ship_cursor.position.y = _cursor_base_y \
 			+ sin(Time.get_ticks_msec() / 400.0) * 4.0
+	# Map decor — goodies twinkle on Lissajous paths, panels pulse
+	# (ports the sin-based drift in o_map_goodie_* / map_panel_loot_2).
+	var t := Time.get_ticks_msec() / 1000.0
+	for d in _decor:
+		var sp: Sprite2D = d["sprite"]
+		var ph: float = d["phase"]
+		if d["kind"] == "goodie":
+			sp.position = d["base"] + Vector2(
+				sin(t / 5.0 + ph) * 10.0 + sin(t / 5.0 + ph * 2.0) * 20.0,
+				sin(t + ph) * 20.0 + sin(t + ph * 2.0) * 20.0)
+			sp.modulate.a = 0.55 + sin(t * 2.0 + ph) * 0.35
+		else:
+			var pulse: float = 1.0 + abs(sin(t * 3.0 + ph)) * 0.25
+			sp.scale = Vector2(0.55, 0.55) * pulse
+			sp.modulate.a = 0.6 + sin(t * 2.5 + ph) * 0.3

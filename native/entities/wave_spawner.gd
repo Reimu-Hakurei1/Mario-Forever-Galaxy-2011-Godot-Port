@@ -97,6 +97,13 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	var pos := _scripted_position(script_pattern, edge,
 		wave.get("spawned", 0))
 
+	# Scripted waves mix several kinds — cycle the `kinds` list by spawn
+	# index; plain waves use the single `kind` string.
+	var kind_name: String = wave.get("kind", "goomba")
+	var kinds: Array = wave.get("kinds", [])
+	if not kinds.is_empty():
+		kind_name = str(kinds[wave.get("spawned", 0) % kinds.size()])
+
 	# The orbiting swarm is a spawner object, not a single enemy —
 	# o_enemy_around_1 releases ten grunts on a rotating ring.
 	match wave.get("kind", ""):
@@ -121,16 +128,15 @@ func _spawn_enemy(wave: Dictionary) -> void:
 			get_parent().add_child(ring2)
 			return
 
+	# Team fighters (o_goomba_team/o_ufo_team/o_ufos_team/o_cyber_team/
+	# o_hammer_team) — mixed squads crossing the screen and firing.
+	if kind_name.ends_with("_team"):
+		_spawn_team(wave, kind_name, pos)
+		return
+
 	var enemy := NativeEnemy.new()
 	enemy.health = wave.get("health", 10.0)
 	enemy.global_position = pos
-
-	# Scripted waves mix several kinds — cycle the `kinds` list by spawn
-	# index; plain waves use the single `kind` string.
-	var kind_name: String = wave.get("kind", "goomba")
-	var kinds: Array = wave.get("kinds", [])
-	if not kinds.is_empty():
-		kind_name = str(kinds[wave.get("spawned", 0) % kinds.size()])
 	enemy.kind = _kind_from_name(kind_name)
 
 	# Formation slots are laid out in the upper half of the room — enemies
@@ -229,6 +235,38 @@ func _maybe_spawn_loot(wave: Dictionary) -> void:
 	pickup.global_position = Vector2(randf_range(80, 944),
 		randf_range(80, 400))
 	get_parent().add_child(pickup)
+
+
+## Team fighter squads — ports o_goomba_team/o_ufo_team/o_ufos_team/
+## o_cyber_team/o_hammer_team: a mother carries 5 mixed members on a
+## loose orbit while crossing the screen and firing volleys.
+func _spawn_team(wave: Dictionary, team_name: String, pos: Vector2) -> void:
+	var squads := {
+		"goomba_team": [NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.GOOMBA,
+			NativeEnemy.Kind.KAMIKAZE],
+		"ufo_team": [NativeEnemy.Kind.UFO_A, NativeEnemy.Kind.SHOOTER,
+			NativeEnemy.Kind.UFO_B],
+		"ufos_team": [NativeEnemy.Kind.UFO_A, NativeEnemy.Kind.UFO_B,
+			NativeEnemy.Kind.SHOOTER, NativeEnemy.Kind.UFO_A],
+		"cyber_team": [NativeEnemy.Kind.DRONE, NativeEnemy.Kind.STINGER,
+			NativeEnemy.Kind.WEAVER],
+		"hammer_team": [NativeEnemy.Kind.WARLORD, NativeEnemy.Kind.LANCER,
+			NativeEnemy.Kind.TANK],
+	}
+	var ring := NativeEnemyRing.new()
+	ring.orbiters_count = 5
+	ring.orbiter_kinds = squads.get(team_name,
+		[NativeEnemy.Kind.GOOMBA, NativeEnemy.Kind.SHOOTER])
+	ring.orbiter_health = wave.get("health", 10.0) * 0.5
+	ring.start_radius = 95.0
+	ring.shrink_delay = 999999.0     # squads hold formation — no shrink
+	ring.global_position = pos
+	# Cross the screen horizontally, direction set by entry edge.
+	var dir := 1.0 if wave.get("edge", "left") in ["left", "top"] else -1.0
+	ring.drift = Vector2(dir * 1.5, dir * 0.12)
+	ring.shoot_interval = 2.4
+	ring.volley_count = 3
+	get_parent().add_child(ring)
 
 
 ## String wave-kind name → NativeEnemy.Kind (single source of truth —
