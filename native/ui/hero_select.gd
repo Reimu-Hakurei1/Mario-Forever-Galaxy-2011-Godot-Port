@@ -9,6 +9,11 @@ const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	NativeAssets.play_music("choose_hero")
 	var bg := ColorRect.new()
 	bg.color = Color(0.03, 0.04, 0.12)

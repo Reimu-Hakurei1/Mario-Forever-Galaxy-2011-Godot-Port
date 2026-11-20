@@ -10,6 +10,11 @@ signal closed
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	var bg := ColorRect.new()
 	bg.color = Color(0, 0, 0, 0.85)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)

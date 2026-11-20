@@ -49,6 +49,11 @@ var _node_centers: Dictionary = {}   # level idx -> world-space node center
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	_build_backdrop()
 
 	# World container — everything positional (labels, nodes, paths,

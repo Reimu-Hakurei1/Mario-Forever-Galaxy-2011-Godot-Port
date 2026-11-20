@@ -29,6 +29,11 @@ var _ship_vx := 0.6
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	# --- starfield backdrop (same generated-dot trick as title/arena) ---
 	var img := Image.create(1024, 768, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0.01, 0.01, 0.05, 1.0))

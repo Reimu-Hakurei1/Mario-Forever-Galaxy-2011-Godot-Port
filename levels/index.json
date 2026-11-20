@@ -264,9 +264,9 @@
   "fps": 60
  },
  {
-  "name": "room_sekwencja_nowej_mapy",
-  "scene": "res://stages/room_sekwencja_nowej_mapy.tscn",
-  "data": "res://levels/room_sekwencja_nowej_mapy.json",
+  "name": "room_new_map_sequence",
+  "scene": "res://stages/room_new_map_sequence.tscn",
+  "data": "res://levels/room_new_map_sequence.json",
   "width": 1024,
   "height": 768,
   "fps": 60

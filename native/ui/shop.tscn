@@ -2,9 +2,204 @@
 
 [ext_resource type="Script" path="res://native/ui/shop.gd" id="1"]
 
-[node name="NativeShop" type="Control"]
+[node name="Shop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
+
+[node name="Preview" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04,0.03,0.08,1)
+[node name="Title" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 462.0
+offset_top = 50.0
+offset_right = 562.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_color = Color(1,0.85,0.3,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="Coins" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1,0.9,0.4,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "COINS: 12,345"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="Item1" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 190.0
+offset_right = 492.0
+offset_bottom = 300.0
+color = Color(0.12,0.1,0.2,0.95)
+[node name="Item2" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 320.0
+offset_right = 492.0
+offset_bottom = 430.0
+color = Color(0.12,0.1,0.2,0.95)
+[node name="Item3" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 450.0
+offset_right = 492.0
+offset_bottom = 560.0
+color = Color(0.12,0.1,0.2,0.95)
+[node name="Item4" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 580.0
+offset_right = 492.0
+offset_bottom = 690.0
+color = Color(0.12,0.1,0.2,0.95)
+[node name="I1" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 210.0
+offset_right = 400.0
+offset_bottom = 245.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1,1,1,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "WEAPON UPGRADE"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I1p" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 250.0
+offset_right = 300.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.6,0.6,0.7,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "500 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I2" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 340.0
+offset_right = 400.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1,1,1,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "EXTRA LIFE"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I2p" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 380.0
+offset_right = 320.0
+offset_bottom = 410.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.6,0.6,0.7,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "1,000 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I3" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 470.0
+offset_right = 400.0
+offset_bottom = 505.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1,1,1,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "SPECIAL ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I3p" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 510.0
+offset_right = 320.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.6,0.6,0.7,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "2,500 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I4" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 600.0
+offset_right = 400.0
+offset_bottom = 635.0
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1,1,1,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "HULL REPAIR"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="I4p" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 82.0
+offset_top = 640.0
+offset_right = 320.0
+offset_bottom = 670.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.6,0.6,0.7,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "250 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="BtnLeave" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 812.0
+offset_top = 330.0
+offset_right = 962.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 22
+text = "LEAVE"
+

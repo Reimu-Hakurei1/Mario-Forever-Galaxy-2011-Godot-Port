@@ -43,6 +43,11 @@ var _clear_banner := "KEY FOUND!"
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	Engine.max_fps = 60
 
 	_level_cfg = NativeGame.pending_level

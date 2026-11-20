@@ -2,9 +2,78 @@
 
 [ext_resource type="Script" path="res://native/ui/title.gd" id="1"]
 
-[node name="NativeTitle" type="Control"]
+[node name="Title" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
+
+[node name="Preview" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="ColorRect" parent="Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02,0.03,0.1,1)
+[node name="Logo" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 212.0
+offset_top = 140.0
+offset_right = 812.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(1,0.85,0.3,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "MARIO FOREVER\nGALAXY"
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="BtnContinue" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 372.0
+offset_top = 400.0
+offset_right = 652.0
+offset_bottom = 456.0
+theme_override_font_sizes/font_size = 22
+text = "CONTINUE"
+[node name="BtnNewGame" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 372.0
+offset_top = 480.0
+offset_right = 652.0
+offset_bottom = 536.0
+theme_override_font_sizes/font_size = 22
+text = "NEW GAME"
+[node name="BtnOptions" type="Button" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 372.0
+offset_top = 560.0
+offset_right = 652.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 22
+text = "OPTIONS"
+[node name="Hint" type="Label" parent="Preview"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 312.0
+offset_top = 660.0
+offset_right = 712.0
+offset_bottom = 690.0
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.6,0.6,0.7,1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "press ENTER to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+

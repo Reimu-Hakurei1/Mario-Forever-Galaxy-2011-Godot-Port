@@ -55,6 +55,11 @@ var _stars: Sprite2D = null         # parallax starfield layer
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	# The project already renders at 1024x768 (project.godot display
 	# settings) and Galaxy arenas are single-screen — no camera work needed.
 	Engine.max_fps = 60

@@ -9,6 +9,11 @@ const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 
 func _ready() -> void:
+
+	var _preview := get_node_or_null("Preview")
+	if _preview != null:
+		remove_child(_preview)
+		_preview.free()
 	# script_ktora_mapa_skusil — the death tax: coins earned since the
 	# stage-entry snapshot (cashsuck) are cut to 10%. The original
 	# clamps cashsuckamount to 1, so the kept fraction is always 10%;
