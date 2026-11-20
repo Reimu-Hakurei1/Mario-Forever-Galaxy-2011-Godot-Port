@@ -157,6 +157,8 @@ const MAP_GAP := 60.0
 
 var _map_nodes: Dictionary = {}    # map idx -> [[x,y],...] authored coords
 var _node_rank: Dictionary = {}    # "m:n" -> playable level index
+var _node_pos: Dictionary = {}     # "m:n" -> world-space center (all nodes)
+var _map_meta: Dictionary = {}     # "m:n" -> {name, map_nextlev, ...}
 
 
 func _load_map_data() -> void:
@@ -173,6 +175,11 @@ func _load_map_data() -> void:
 				_map_nodes[int(k)] = arr
 	for i in NativeLevelTable.level_count():
 		_node_rank[NativeLevelTable.stage_key(i)] = i
+	var mpath := "res://data/levels/native/map_meta.json"
+	if FileAccess.file_exists(mpath):
+		var mparsed = JSON.parse_string(FileAccess.get_file_as_string(mpath))
+		if typeof(mparsed) == TYPE_DICTIONARY:
+			_map_meta = mparsed
 
 
 func _build_grid() -> void:
@@ -211,7 +218,9 @@ func _build_grid() -> void:
 				btn.position = pos - Vector2(NODE_SIZE, NODE_SIZE) / 2
 				_world.add_child(btn)
 				_nodes.append(btn)
-				_node_centers[idx] = btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
+				var center := btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
+				_node_centers[idx] = center
+				_node_pos[key] = center
 			else:
 				# Connector/path node — a dim star, not a level.
 				var dot := ColorRect.new()
@@ -219,6 +228,8 @@ func _build_grid() -> void:
 				dot.size = Vector2(10, 10)
 				dot.position = pos - Vector2(5, 5)
 				_world.add_child(dot)
+				_node_pos[key] = pos
+	_draw_flight_lanes()
 	_build_ship_cursor()
 	if count > 0:
 		_build_map_decor()
@@ -262,6 +273,42 @@ func _build_map_decor() -> void:
 		_world.add_child(sp)
 		_decor.append({"sprite": sp, "base": spots[i],
 			"phase": randf() * TAU, "kind": "goodie"})
+
+
+## Flight lanes — the original draws dotted paths between linked map
+## nodes (script_map_algo, sprite 250 stretched between node orbits).
+## Links come from the extracted map_nextlev adjacency: each node's
+## outgoing edges to sibling node indices in the same map. Lanes glow
+## once both endpoints are unlocked, dim otherwise.
+func _draw_flight_lanes() -> void:
+	for key in _map_meta:
+		var meta: Dictionary = _map_meta[key]
+		var nxt: Dictionary = meta.get("map_nextlev", {})
+		var a: Vector2 = _node_pos.get(key, Vector2.ZERO)
+		if a == Vector2.ZERO:
+			continue
+		var parts: PackedStringArray = str(key).split(":")
+		var map_idx := str(parts[0])
+		for _dir in nxt:
+			var target := str(nxt[_dir])
+			# 0 = no link (the original checks nextlev > 0).
+			if target == "0" or target == "-1" or target == "":
+				continue
+			var bkey := "%s:%s" % [map_idx, target]
+			var b: Vector2 = _node_pos.get(bkey, Vector2.ZERO)
+			if b == Vector2.ZERO or b == a:
+				continue
+			var line := Line2D.new()
+			line.points = PackedVector2Array([a, b])
+			var a_rank := int(_node_rank.get(key, -1))
+			var b_rank := int(_node_rank.get(bkey, -1))
+			var both_open := a_rank >= 0 and b_rank >= 0 \
+				and a_rank <= NativeGame.level_index \
+				and b_rank <= NativeGame.level_index
+			line.default_color = Color(0.5, 0.7, 1.0, 0.5) if both_open \
+				else Color(0.25, 0.25, 0.35, 0.6)
+			line.width = 2.0
+			_world.add_child(line)
 
 
 ## Connect consecutive nodes in each world row with a dim path line —
