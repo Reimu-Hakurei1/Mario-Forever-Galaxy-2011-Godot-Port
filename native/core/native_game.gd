@@ -426,7 +426,10 @@ static func buy_special(id: int) -> bool:
 # same spirit: unlocked level, currency, upgrades, settings.
 # ---------------------------------------------------------------------------
 
-const SAVE_PATH := "user://native_save.cfg"
+const SAVE_PATH := "user://native_save.cfg"   # slot 0 keeps the legacy path
+const SLOT_COUNT := 3                          # original's 3 save slots
+
+static var save_slot := 0                      ## G.save_slot — active slot
 
 
 static func save() -> void:
@@ -468,7 +471,33 @@ static func save() -> void:
 	cfg.set_value("settings", "muzyka", muzyka)
 	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
 	cfg.set_value("settings", "fullscreen", fullscreen)
-	cfg.save(SAVE_PATH)
+	cfg.save(slot_path(save_slot))
+
+
+static func slot_path(slot: int) -> String:
+	return SAVE_PATH if slot == 0 		else "user://native_save_%d.cfg" % slot
+
+
+## Read-only peek at a slot for the picker UI — {} when empty.
+static func peek_slot(slot: int) -> Dictionary:
+	var cfg := ConfigFile.new()
+	if cfg.load(slot_path(slot)) != OK:
+		return {}
+	return {
+		"score": int(cfg.get_value("profile", "score", 0)),
+		"coins": int(cfg.get_value("profile", "coins", 0)),
+		"level": int(cfg.get_value("profile", "level_index", 0)),
+		"map": str(cfg.get_value("profile", "map_current", "0:0")),
+		"hero": int(cfg.get_value("profile", "hero", 0)),
+	}
+
+
+## True when any of the three slots holds a profile.
+static func any_save() -> bool:
+	for i in SLOT_COUNT:
+		if not peek_slot(i).is_empty():
+			return true
+	return false
 
 
 ## Wipe the profile back to defaults — the title screen's NEW GAME.
@@ -513,7 +542,7 @@ static func reset_profile() -> void:
 ## Load the profile if a save exists; missing keys keep defaults.
 static func load_save() -> bool:
 	var cfg := ConfigFile.new()
-	if cfg.load(SAVE_PATH) != OK:
+	if cfg.load(slot_path(save_slot)) != OK:
 		return false
 	score = int(cfg.get_value("profile", "score", score))
 	best_score = int(cfg.get_value("profile", "best_score", best_score))

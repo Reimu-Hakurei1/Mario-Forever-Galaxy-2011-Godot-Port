@@ -36,7 +36,7 @@ func _ready() -> void:
 	title.add_theme_constant_override("outline_size", 8)
 	add_child(title)
 
-	var has_save := NativeGame.load_save()
+	var has_save := NativeGame.any_save()
 	# Apply the saved display mode before the first frame is shown.
 	DisplayServer.window_set_mode(
 		DisplayServer.WINDOW_MODE_FULLSCREEN if NativeGame.fullscreen
@@ -117,13 +117,67 @@ func _refresh_hint() -> void:
 
 
 func _on_continue() -> void:
-	# Continue resumes the saved run straight on the map — picking a hero
-	# resets weapons/upgrades (choose_hero semantics), so it must only
-	# happen on a NEW GAME via the intro story.
-	get_tree().change_scene_to_file(MAP_SCENE if _has_save else INTRO_SCENE)
+	# The original's room_savegame: pick one of the three save slots.
+	# Picking a hero resets weapons/upgrades (choose_hero semantics),
+	# so hero select only happens on NEW GAME via the intro story.
+	_open_slot_picker(true)
 
 
 func _on_new_game() -> void:
+	_open_slot_picker(false)
+
+
+## Save-slot picker — ports room_savegame / o_savegame_draw: three
+## slots showing score/coins/level for occupied ones.
+func _open_slot_picker(continue_only: bool) -> void:
+	var overlay := ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0.85)
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(overlay)
+	var box := VBoxContainer.new()
+	box.set_anchors_preset(Control.PRESET_CENTER)
+	box.offset_left = -320
+	box.offset_right = 320
+	box.offset_top = -220
+	box.offset_bottom = 220
+	box.add_theme_constant_override("separation", 18)
+	overlay.add_child(box)
+	var head := Label.new()
+	head.text = "CONTINUE — SELECT SAVE" if continue_only else "NEW GAME — SELECT SAVE"
+	head.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	head.add_theme_font_size_override("font_size", 28)
+	head.add_theme_color_override("font_color", Color(1, 0.85, 0.3))
+	box.add_child(head)
+	for i in NativeGame.SLOT_COUNT:
+		var info := NativeGame.peek_slot(i)
+		var btn := Button.new()
+		btn.custom_minimum_size = Vector2(640, 90)
+		btn.add_theme_font_size_override("font_size", 20)
+		if info.is_empty():
+			btn.text = "SLOT %d — EMPTY" % (i + 1)
+			btn.disabled = continue_only
+		else:
+			var hero_name: String = NativeGame.HEROES[clampi(
+				int(info.get("hero", 0)), 0, NativeGame.HEROES.size() - 1)]["name"]
+			btn.text = "SLOT %d — %s   SCORE %d   COINS %d   LEVEL %d   MAP %s" % [
+				i + 1, hero_name, int(info["score"]), int(info["coins"]),
+				int(info["level"]), str(info["map"])]
+		btn.pressed.connect(_on_slot_picked.bind(i, continue_only, overlay))
+		box.add_child(btn)
+	var cancel := Button.new()
+	cancel.text = "CANCEL"
+	cancel.custom_minimum_size = Vector2(200, 44)
+	cancel.pressed.connect(overlay.queue_free)
+	box.add_child(cancel)
+
+
+func _on_slot_picked(slot: int, continue_only: bool, overlay: Control) -> void:
+	overlay.queue_free()
+	NativeGame.save_slot = slot
+	if continue_only:
+		NativeGame.load_save()
+		get_tree().change_scene_to_file(MAP_SCENE)
+		return
 	NativeGame.reset_profile()
 	# New game plays the opening story cinematic (room_animation_1)
 	# before the intro pages — the original's room order is logo →
