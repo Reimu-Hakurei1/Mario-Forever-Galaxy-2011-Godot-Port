@@ -117,7 +117,25 @@ static var efekty: int = 2           ## G.efekty — particle quality setting
 static var dzwiek: int = 1           ## G.dzwiek — sound enabled
 static var muzyka: int = 1           ## G.muzyka — music enabled
 static var glosnosc_dzwieku: float = 1.0  ## G.glosnosc_dzwieku — sfx volume
+static var glosnosc_muzyki: float = 1.0   ## G.glosnosc_muzyki — music volume
 static var fullscreen: bool = false     ## borderless fullscreen toggle
+
+# Rebindable controls — the original's ster1..ster9 (objects/ui/title.gd
+# options screen, persisted to the ini "options" section). Defaults are
+# the original's key codes: arrows, Space, Enter, Z, X, P.
+const KEY_ACTIONS := ["up", "down", "left", "right", "fire",
+	"special", "special_prev", "special_next", "pause"]
+static var key_bindings: Dictionary = {
+	"up": KEY_UP, "down": KEY_DOWN, "left": KEY_LEFT, "right": KEY_RIGHT,
+	"fire": KEY_SPACE, "special": KEY_ENTER,
+	"special_prev": KEY_Z, "special_next": KEY_X, "pause": KEY_P,
+}
+
+
+## True while the action's bound key is held — the original's
+## G.buttonup/down/left/right/fire/special/prev/next checks.
+static func key_down(action: String) -> bool:
+	return Input.is_key_pressed(int(key_bindings.get(action, 0)))
 
 # --- Per-run state (reset when a level starts) ---
 static var energy: float = 100.0     ## G.energia — hull; 0 = death
@@ -473,6 +491,8 @@ static func save() -> void:
 	cfg.set_value("settings", "dzwiek", dzwiek)
 	cfg.set_value("settings", "muzyka", muzyka)
 	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
+	cfg.set_value("settings", "glosnosc_muzyki", glosnosc_muzyki)
+	cfg.set_value("settings", "key_bindings", key_bindings)
 	cfg.set_value("settings", "fullscreen", fullscreen)
 	cfg.save(slot_path(save_slot))
 
@@ -612,6 +632,11 @@ static func load_save() -> bool:
 	dzwiek = int(cfg.get_value("settings", "dzwiek", dzwiek))
 	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))
 	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
+	glosnosc_muzyki = float(cfg.get_value("settings", "glosnosc_muzyki", glosnosc_muzyki))
+	var kb: Dictionary = cfg.get_value("settings", "key_bindings", {})
+	for a in KEY_ACTIONS:
+		if kb.has(a):
+			key_bindings[a] = int(kb[a])
 	fullscreen = bool(cfg.get_value("settings", "fullscreen", fullscreen))
 	return true
 

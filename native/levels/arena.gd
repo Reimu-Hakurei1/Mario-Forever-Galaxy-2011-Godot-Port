@@ -410,13 +410,13 @@ func _tutorial_tick(delta: float) -> void:
 		1:
 			# Hold each direction ~20 frames (the original adds +4/frame
 			# and wants >80 per direction); 180f fallback shows topic 2.
-			if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W):
+			if NativeGame.key_down("up") or Input.is_key_pressed(KEY_W):
 				_tut_dirs[0] += 1
-			if Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
+			if NativeGame.key_down("down") or Input.is_key_pressed(KEY_S):
 				_tut_dirs[1] += 1
-			if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
+			if NativeGame.key_down("left") or Input.is_key_pressed(KEY_A):
 				_tut_dirs[2] += 1
-			if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+			if NativeGame.key_down("right") or Input.is_key_pressed(KEY_D):
 				_tut_dirs[3] += 1
 			if _tut_dirs.all(func(d): return d > 20):
 				_tut_timer = 0.0
@@ -433,7 +433,7 @@ func _tutorial_tick(delta: float) -> void:
 		3:
 			# Fire accumulates +10/frame held; >150 ends the tutorial and
 			# releases the real waves. 180f shows topic 5 once.
-			if Input.is_key_pressed(KEY_SPACE) or Input.is_key_pressed(KEY_CTRL):
+			if NativeGame.key_down("fire") or Input.is_key_pressed(KEY_CTRL):
 				_tut_fired += 10.0
 			if _tut_fired > 150.0:
 				NativeGame.help_topic = 6

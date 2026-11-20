@@ -157,7 +157,7 @@ static func play_music(track_name: String) -> void:
 	_music_player = AudioStreamPlayer.new()
 	_music_player.stream = stream
 	_music_player.volume_db = linear_to_db(
-		maxf(0.01, NativeGame.glosnosc_dzwieku))
+		maxf(0.01, NativeGame.glosnosc_muzyki))
 	# Deferred — play_music is usually called from _ready while the
 	# scene root is still busy parenting its children.
 	tree.root.add_child.call_deferred(_music_player)

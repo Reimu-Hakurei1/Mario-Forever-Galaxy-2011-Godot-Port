@@ -152,8 +152,8 @@ func _physics_process(delta: float) -> void:
 # ---------------------------------------------------------------------------
 
 func _poll_input() -> void:
-	# Space or Left Ctrl fires; fire_override is the headless test hook.
-	fire_held = fire_override or Input.is_key_pressed(KEY_SPACE) \
+	# Bound fire key (ster5, default Space); Ctrl stays as an alias.
+	fire_held = fire_override or NativeGame.key_down("fire") \
 		or Input.is_key_pressed(KEY_CTRL)
 
 
@@ -166,11 +166,12 @@ func _apply_movement(delta: float) -> void:
 	var wing := float(NativeGame.upgrade_wing)
 	var boost := float(NativeGame.upgrade_boost)
 
-	# Arrows are primary; WASD works as an alternate scheme.
-	var left := Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A)
-	var right := Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D)
-	var up := Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W)
-	var down := Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S)
+	# Bound movement keys (ster1..ster4); WASD stays as an alternate
+	# scheme for convenience.
+	var left := NativeGame.key_down("left") or Input.is_key_pressed(KEY_A)
+	var right := NativeGame.key_down("right") or Input.is_key_pressed(KEY_D)
+	var up := NativeGame.key_down("up") or Input.is_key_pressed(KEY_W)
+	var down := NativeGame.key_down("down") or Input.is_key_pressed(KEY_S)
 
 	# --- Horizontal: accelerate toward max speed, drag when coasting ---
 	if left and vel.x > 0.0:
@@ -555,7 +556,8 @@ func _proj_scale(proj: String) -> float:
 # g_sekwencja_special outcome — see NativeSpecialTable for the mapping.
 # ---------------------------------------------------------------------------
 
-var _special_prev := {KEY_X: false, KEY_Z: false, KEY_C: false}
+var _special_prev := {"special": false, "special_prev": false,
+	"special_next": false}
 var _charge_id := 0
 var _charge_item: Dictionary = {}
 var _charge_t := 0.0
@@ -571,19 +573,20 @@ func _tick_special(delta: float) -> void:
 		if NativeGame.special_heal_left > 0.0 and NativeGame.energy > 0.0:
 			NativeGame.heal_player(NativeGame.special_heal_rate * delta)
 
-	# Edge-triggered special buttons (keyboard_check in the original).
-	var use := Input.is_key_pressed(KEY_X)
-	if use and not _special_prev[KEY_X]:
+	# Edge-triggered special buttons — ster6 use (Enter), ster7 prev
+	# (Z), ster8 next (X), all rebindable in the options screen.
+	var use := NativeGame.key_down("special")
+	if use and not _special_prev["special"]:
 		_use_special(NativeGame.special_active())
-	_special_prev[KEY_X] = use
-	var prev := Input.is_key_pressed(KEY_Z)
-	if prev and not _special_prev[KEY_Z]:
+	_special_prev["special"] = use
+	var prev := NativeGame.key_down("special_prev")
+	if prev and not _special_prev["special_prev"]:
 		NativeGame.rotate_special(-1)
-	_special_prev[KEY_Z] = prev
-	var next := Input.is_key_pressed(KEY_C)
-	if next and not _special_prev[KEY_C]:
+	_special_prev["special_prev"] = prev
+	var next := NativeGame.key_down("special_next")
+	if next and not _special_prev["special_next"]:
 		NativeGame.rotate_special(1)
-	_special_prev[KEY_C] = next
+	_special_prev["special_next"] = next
 
 
 ## Charge-up for seq 1000/5000 specials — the o_ship_special bubble
