@@ -1369,9 +1369,9 @@ static func ev_8_0_2(S, A: Array) -> Variant:
     var L_scroolery = 0
     L_scroolerx = R.aget(R.view_xview, 0)
     L_scroolery = R.aget(R.view_yview, 0)
-    if ((((((((R.eqv(S, R.aget(S.g_rodzaj_pokonania, S.g_etap), 0) and R.eqv(S, S.g_end_level, 0)) and R.eqv(S, R.instance_number(S, 12), 0)) and R.eqv(S, R.instance_number(S, 146), 0)) and (S.g_ilosc_przeciwnikow <= 0)) and R.eqv(S, R.instance_number(S, 214), 0)) and R.eqv(S, R.instance_number(S, 215), 0)) and R.eqv(S, R.instance_number(S, 216), 0)) and R.eqv(S, R.instance_number(S, 305), 0)):
+    if ((((((((R.eqv(S, R.aget(S.g_rodzaj_pokonania, S.g_etap), 0) and R.eqv(S, S.g_end_level, 0)) and R.eqv(S, R.instance_number(S, 12), 0)) and R.eqv(S, R.instance_number(S, 146), 0)) and (S.g_ilosc_przeciwnikow <= 0)) and R.eqv(S, R.instance_number(S, 214), 0)) and R.eqv(S, R.instance_number(S, 215), 0)) and R.eqv(S, R.instance_number(S, 216), 0)) and R.eqv(S, R.instance_number(S, 305), 0)) and (not R.level_waves.blocks_completion(R, S)):
         S.g_end_level = 1
-    if (((((((((R.eqv(S, R.aget(S.g_rodzaj_pokonania, S.g_etap), 1) and (R.aget(S.g_kiedy_pokona, 0) < S.g_periodtime)) and R.eqv(S, S.g_end_level, 0)) and R.eqv(S, R.instance_number(S, 12), 0)) and R.eqv(S, R.instance_number(S, 146), 0)) and (S.g_ilosc_przeciwnikow <= 0)) and R.eqv(S, R.instance_number(S, 214), 0)) and R.eqv(S, R.instance_number(S, 215), 0)) and R.eqv(S, R.instance_number(S, 216), 0)) and R.eqv(S, R.instance_number(S, 305), 0)):
+    if (((((((((R.eqv(S, R.aget(S.g_rodzaj_pokonania, S.g_etap), 1) and (R.aget(S.g_kiedy_pokona, 0) < S.g_periodtime)) and R.eqv(S, S.g_end_level, 0)) and R.eqv(S, R.instance_number(S, 12), 0)) and R.eqv(S, R.instance_number(S, 146), 0)) and (S.g_ilosc_przeciwnikow <= 0)) and R.eqv(S, R.instance_number(S, 214), 0)) and R.eqv(S, R.instance_number(S, 215), 0)) and R.eqv(S, R.instance_number(S, 216), 0)) and R.eqv(S, R.instance_number(S, 305), 0)) and (not R.level_waves.blocks_completion(R, S)):
         S.g_end_level = 1
     if R.eqv(S, S.g_end_level, 1):
         if (R.eqv(S, S.g_niszcz_monety, 1) and R.instance_exists(S, 214)):
