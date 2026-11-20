@@ -180,7 +180,8 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 	var node := int(parts[1])
 	# Minigame nodes — the original's map_minigame routing: 1/3 = card
 	# game rooms, 2 = shop. Value 10 (GUN_RANGE) is a live-fire training
-	# stage with a real wave schedule, so it falls through to normal.
+	# stage — g_nastaw_trening_zone sets g_kiedy_pokona=1000000 so it
+	# never "clears"; the player leaves via ESC.
 	var mg := int(st.get("minigame", 0))
 	if bool(st.get("is_minigame", false)) and mg in [1, 2, 3]:
 		return {
@@ -217,6 +218,7 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 		"boss": {"tier": world,
 			"variant": BOSS_VARIANTS.get(world, "")} if is_boss else {},
 		"mode": "castle" if bool(st.get("is_castle", false)) else "arena",
+		"training": mg == 10,
 		"label": str(st.get("title", "")) if str(st.get("title", "")) != "" \
 			else "M%d-%02d" % [world + 1, node + 1],
 	}

@@ -5,13 +5,13 @@ extends Control
 ## row (sprite 335), pairs swap places in accelerating rounds
 ## (g_losowania = 17, interval shrinks via przyspieszacz_losowania),
 ## then the player clicks a card to flip it. Picking the target card
-## face pays the prize (g_dodaj_kase = 10000 coins). ESC/Q quits back
+## face pays the prize (g_dodaj_kase = 10000/100000 coins). ESC/Q quits back
 ## to the star map.
 
 const CARD_SPRITE := 335
 const CARD_SPACING := 200.0
 const ROUNDS := 17
-const PRIZE_COINS := 10000
+var prize_coins := 10000   # card_game_1=10k, card_game_2=100k (o_card_2 g_dodaj_kase)
 
 var _cards: Array[TextureRect] = []
 var _faces: Array[int] = []        # card face index per slot (0/1)
@@ -23,6 +23,9 @@ var _done := false
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	# map_minigame 3 routes to card_game_2 — o_card_2 pays 100,000.
+	if int(NativeGame.pending_level.get("minigame", 1)) == 3:
+		prize_coins = 100000
 	# Dark felt backdrop + vignette like the original's blanker.
 	var bg := ColorRect.new()
 	bg.color = Color(0.02, 0.05, 0.12, 1.0)
@@ -129,7 +132,7 @@ func _on_card_input(event: InputEvent, index: int) -> void:
 			_cards[i].texture = _card_tex(3 if _faces[i] == 0 else 2)
 	var won := face == _target_face
 	var msg := Label.new()
-	msg.text = "+%d COINS!" % PRIZE_COINS if won else "NOT THIS ONE..."
+	msg.text = "+%d COINS!" % prize_coins if won else "NOT THIS ONE..."
 	msg.add_theme_font_size_override("font_size", 34)
 	msg.add_theme_color_override("font_color",
 		Color(0.4, 1, 0.5) if won else Color(1, 0.5, 0.4))
@@ -137,7 +140,7 @@ func _on_card_input(event: InputEvent, index: int) -> void:
 	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(msg)
 	if won:
-		NativeGame.coins += PRIZE_COINS
+		NativeGame.coins += prize_coins
 		NativeGame.add_score(5000)
 	await get_tree().create_timer(1.6).timeout
 	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")

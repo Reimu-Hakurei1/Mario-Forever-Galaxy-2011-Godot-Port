@@ -53,6 +53,8 @@ func _ready() -> void:
 	if not _level_cfg.get("waves", []).is_empty():
 		_spawner.set_waves(_level_cfg["waves"])
 	_boss_cfg = _level_cfg.get("boss", {})
+	if bool(_level_cfg.get("training", false)):
+		_show_banner("TRAINING RANGE\nESC TO QUIT")
 
 	# Backdrop: original levels tile background sprites; our slice uses a
 	# single full-screen texture stretched to the room.
@@ -170,7 +172,11 @@ func _process(delta: float) -> void:
 	# On boss levels, a clean field first summons the boss — the level
 	# only clears once the boss itself is dead (it joins the "enemies"
 	# group, so this check naturally waits for it and its minions).
-	if not _level_cleared and _spawner.is_finished() \
+	# Training range (map_minigame 10 / g_nastaw_trening_zone): the
+	# original sets g_kiedy_pokona=1000000 — it never clears; leave via ESC.
+	if bool(_level_cfg.get("training", false)):
+		pass
+	elif not _level_cleared and _spawner.is_finished() \
 			and get_tree().get_nodes_in_group("enemies").is_empty():
 		if not _boss_cfg.is_empty() and not _boss_spawned:
 			_spawn_boss()
