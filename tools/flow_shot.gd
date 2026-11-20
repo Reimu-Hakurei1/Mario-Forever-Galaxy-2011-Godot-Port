@@ -22,6 +22,11 @@ var intro_skipped := false
 var map_jumped := false
 var level_frame := -1
 var level_room := -1
+var tick_at: Array[int] = []
+var level_tick := -1
+var shot_room := -1
+var shot_room_tick := 60
+var room_tick := -1
 var done := false
 
 
@@ -40,8 +45,17 @@ func _initialize() -> void:
 			savedir = a.substr(10).replace("\\", "/")
 		elif a.begins_with("--frames="):
 			limit = int(a.substr(9))
+		elif a.begins_with("--ticks="):
+			for s in a.substr(8).split(","):
+				tick_at.append(int(s))
+		elif a.begins_with("--shotroom="):
+			var parts := a.substr(11).split("@")
+			shot_room = int(parts[0])
+			if parts.size() > 1:
+				shot_room_tick = int(parts[1])
 	DirAccess.make_dir_recursive_absolute(outdir)
 	DirAccess.make_dir_recursive_absolute(savedir)
+	seed(12345)
 	var game: Node = load("res://scenes/game.tscn").instantiate()
 	root.add_child(game)
 
@@ -72,6 +86,7 @@ func _process(_delta: float) -> bool:
 	if R.game_running and R.room != last_room:
 		last_room = R.room
 		room_frames = 0
+		room_tick = R.tick_count
 		var meta: Dictionary = R.room_data.get("rooms", {}).get(str(R.room), {})
 		print("ROOM %d %s frame=%d inst=%d" % [R.room, meta.get("name", "?"),
 			frames, R.instances.size()])
@@ -95,12 +110,40 @@ func _process(_delta: float) -> bool:
 					map_jumped = true
 					level_room = int(target)
 					R.pending_room = int(target)
+	if shot_room >= 0 and R.room == shot_room and room_tick >= 0 \
+			and R.tick_count - room_tick == shot_room_tick:
+		var img := root.get_viewport().get_texture().get_image()
+		img.save_png(outdir.path_join("room%d.png" % shot_room))
+		print("ROOMSHOT room=%d frame=%d" % [R.room, frames])
+		done = true
+		quit()
+		return true
 	if level_room >= 0 and R.room == level_room:
 		if level_frame < 0:
 			level_frame = frames
+			level_tick = R.tick_count
 			print("LEVEL enter room=%d scene=%s" % [R.room, str(R.active_scene_path)])
 		var t := frames - level_frame
-		if t in at:
+		var tick_t := R.tick_count - level_tick
+		if tick_at.size() > 0:
+			if tick_t in tick_at:
+				var img := root.get_viewport().get_texture().get_image()
+				img.save_png(outdir.path_join("k%04d.png" % tick_t))
+				var f := FileAccess.open(outdir.path_join("k%04d.state" % tick_t), FileAccess.WRITE)
+				var rows := []
+				for inst in R.instances:
+					rows.append("%d,%d,%d,%d" % [int(inst.g_object_index),
+						int(inst.position.x), int(inst.position.y),
+						int(inst.image_index) if inst.get("image_index") != null else -1])
+				rows.sort()
+				f.store_string("\n".join(rows))
+				f.close()
+				print("SHOT k=%d frame=%d" % [tick_t, frames])
+			if tick_t >= tick_at[tick_at.size() - 1]:
+				done = true
+				quit()
+				return true
+		elif t in at:
 			var img := root.get_viewport().get_texture().get_image()
 			img.save_png(outdir.path_join("t%04d.png" % t))
 			var by := {}

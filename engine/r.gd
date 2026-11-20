@@ -230,7 +230,6 @@ static func _replay_raw(target: CanvasItem, c: Array) -> void:
 # True while a subtract layer replays its buffered draws. GM8 subtract ignores
 # black pixels entirely; Godot's reverse-subtract also subtracts their alpha,
 # which punches the destination transparent, so black becomes a color key.
-static var drawing_subtract: bool = false
 static var _additive_material: CanvasItemMaterial = null
 static var _subtractive_material: CanvasItemMaterial = null
 static var _keysub_tex_cache: Dictionary = {}
@@ -2614,17 +2613,6 @@ static func step() -> void:
 	perf_views_usec = Time.get_ticks_usec() - _t
 
 
-# GM8 runs every draw event once per logic step, but Godot only renders once per
-# frame. High-speed system rooms (the 1000 Hz loading screen) advance their state
-# from the draw event, so replay it for the extra steps. draw_ci stays null here,
-# which makes all draw_* calls no-ops while the event's side effects still run.
-static func draw_state_passes(count: int) -> void:
-	for _p in count:
-		for inst in instances.duplicate():
-			if inst.alive and inst.has_draw:
-				run_event(inst, 8, 0)
-
-
 static func _update_views() -> void:
 	if not view_enabled:
 		return
@@ -2926,10 +2914,6 @@ static func draw_sprite_ext(S, spr: int, subimg: float, x: float, y: float,
 	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
-	if _records_draw():
-		_blend_cmds(draw_blend).append([0, S, spr, subimg, x, y, xscale, yscale,
-			rot, color, alpha])
-		return 0
 	var f := _sprite_frame(int(spr), float(subimg), S)
 	if f.is_empty():
 		return 0
@@ -2938,8 +2922,6 @@ static func draw_sprite_ext(S, spr: int, subimg: float, x: float, y: float,
 	draw_ci.draw_set_transform(Vector2(x, y) + _draw_offset(), -deg_to_rad(float(rot)),
 		Vector2(float(xscale), float(yscale)))
 	var tex: Texture2D = f["tex"]
-	if drawing_subtract:
-		tex = _subtract_texture(tex)
 	_capture_texture(tex, Transform2D(-deg_to_rad(rot), Vector2(xscale, yscale), 0.0, Vector2(x, y)), Rect2(-f["origin"], tex.get_size()), c)
 	draw_ci.draw_texture(tex, -f["origin"], c)
 	_restore_xform()
@@ -2995,23 +2977,6 @@ static func _subtract_texture(tex: Texture2D) -> Texture2D:
 	return out
 
 
-# bm_max has no direct Godot material; additive is the closest match because
-# both leave black untouched and brighten where the sprite is lit.
-static func _blend_cmds(mode: int) -> Array:
-	if not (draw_ci is GMInstance):
-		return []
-	var segs: Array = (draw_ci as GMInstance).blend_segs
-	var m := 1 if mode == 3 else mode
-	if segs.is_empty() or int(segs[-1][0]) != m:
-		segs.append([m, []])
-	return segs[-1][1]
-
-
-static func _records_draw() -> bool:
-	return draw_ci is GMInstance and (draw_blend != 0
-		or not (draw_ci as GMInstance).blend_segs.is_empty())
-
-
 static func blend_material(mode: int) -> Material:
 	if mode == 2:
 		return subtractive_material()
@@ -3020,62 +2985,11 @@ static func blend_material(mode: int) -> Material:
 	return additive_material()
 
 
-static func replay_additive(S, cmd: Array) -> Variant:
-	match int(cmd[0]):
-		0:
-			return draw_sprite_ext(cmd[1], cmd[2], cmd[3], cmd[4], cmd[5], cmd[6],
-				cmd[7], cmd[8], cmd[9], cmd[10])
-		1:
-			var saved_col := draw_color
-			var saved_alpha := draw_alpha
-			var saved_font: Variant = draw_font
-			var saved_h := draw_halign
-			var saved_v := draw_valign
-			draw_color = cmd[7]
-			draw_alpha = cmd[8]
-			draw_font = cmd[9]
-			draw_halign = int(cmd[10])
-			draw_valign = int(cmd[11])
-			draw_text_transformed(null, cmd[2], cmd[3], cmd[1], cmd[4], cmd[5],
-				cmd[6])
-			draw_color = saved_col
-			draw_alpha = saved_alpha
-			draw_font = saved_font
-			draw_halign = saved_h
-			draw_valign = saved_v
-		2:
-			var sc := draw_color
-			var sa := draw_alpha
-			var sf2: Variant = draw_font
-			var sh := draw_halign
-			var sv := draw_valign
-			draw_color = cmd[9]
-			draw_alpha = cmd[10]
-			draw_font = cmd[11]
-			draw_halign = int(cmd[12])
-			draw_valign = int(cmd[13])
-			draw_text_ext_transformed(null, cmd[1], cmd[2], cmd[3], cmd[4], cmd[5],
-				cmd[6], cmd[7], cmd[8])
-			draw_color = sc
-			draw_alpha = sa
-			draw_font = sf2
-			draw_halign = sh
-			draw_valign = sv
-		3:
-			return draw_sprite_part_ext(cmd[1], cmd[2], cmd[3], cmd[4], cmd[5], cmd[6],
-				cmd[7], cmd[8], cmd[9], cmd[10], cmd[11], cmd[12], cmd[13])
-	return 0
-
-
 static func draw_sprite_part_ext(S, spr: int, subimg: float, left: float, top: float,
 		width: float, height: float, x: float, y: float, xscale: float, yscale: float,
 		color: Variant, alpha: float) -> Variant:
 	draw_cmd_count += 1
 	if draw_ci == null:
-		return 0
-	if _records_draw():
-		_blend_cmds(draw_blend).append([3, S, spr, subimg, left, top, width, height,
-			x, y, xscale, yscale, color, alpha])
 		return 0
 	var f := _sprite_frame(int(spr), float(subimg), S)
 	if f.is_empty():
@@ -3085,8 +2999,6 @@ static func draw_sprite_part_ext(S, spr: int, subimg: float, left: float, top: f
 	draw_ci.draw_set_transform(Vector2(x, y) + _draw_offset(), 0.0,
 		Vector2(float(xscale), float(yscale)))
 	var tex: Texture2D = f["tex"]
-	if drawing_subtract:
-		tex = _subtract_texture(tex)
 	_capture_texture(tex, Transform2D(0.0, Vector2(xscale, yscale), 0.0, Vector2(x, y)), Rect2(0, 0, width, height), c, Rect2(left, top, width, height))
 	draw_ci.draw_texture_rect_region(tex, Rect2(0, 0, width, height),
 		Rect2(left, top, width, height), c)
@@ -3437,8 +3349,6 @@ static func _draw_text_line(x: float, y: float, text: String, xs: float, ys: flo
 			if fi >= 0 and fi < frames.size() and frames[fi] != null:
 				var mm: Vector2i = metrics[fi]
 				var glyph: Texture2D = frames[fi]
-				if drawing_subtract:
-					glyph = _subtract_texture(glyph)
 				_capture_texture(glyph, Transform2D(-deg_to_rad(rot), Vector2(xs, ys), 0.0, Vector2(x, y)), Rect2(Vector2(cx - mm.x, oy) - info["origin"], glyph.get_size()), col)
 				draw_ci.draw_texture(glyph, Vector2(cx - mm.x, oy) - info["origin"], col)
 				cx += float(mm.y)
@@ -3455,8 +3365,6 @@ static func _draw_text_line(x: float, y: float, text: String, xs: float, ys: flo
 static func draw_text(S, x: float, y: float, text: Variant) -> Variant:
 	if draw_ci == null:
 		return 0
-	if _records_draw():
-		return draw_text_transformed(S, x, y, text, 1, 1, 0)
 	_draw_text_block(float(x), float(y), gm_string(S, text), 0.0, 0.0,
 		1.0, 1.0, 0.0)
 	return 0
@@ -3468,10 +3376,6 @@ static func draw_text_transformed(S, x: float, y: float, text: Variant,
 	if draw_ci == null:
 		return 0
 	var s := gm_string(S, text)
-	if _records_draw():
-		_blend_cmds(draw_blend).append([1, s, x, y, xscale, yscale, rot,
-			draw_color, draw_alpha, draw_font, draw_halign, draw_valign])
-		return 0
 	_draw_text_block(float(x), float(y), s, 0.0, 0.0,
 		float(xscale), float(yscale), float(rot))
 	return 0
@@ -3483,10 +3387,6 @@ static func draw_text_ext_transformed(S, x: float, y: float, text: Variant,
 	if draw_ci == null:
 		return 0
 	var s := gm_string(S, text)
-	if _records_draw():
-		_blend_cmds(draw_blend).append([2, x, y, s, sep, w, xscale, yscale, rot,
-			draw_color, draw_alpha, draw_font, draw_halign, draw_valign])
-		return 0
 	_draw_text_block(float(x), float(y), s, float(sep), float(w),
 		float(xscale), float(yscale), float(rot))
 	return 0
