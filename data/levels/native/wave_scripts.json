@@ -4,8 +4,11 @@
   "count": 20,
   "interval": 10,
   "kinds": [
-   "ghost"
-  ]
+   "ghost",
+   "ghost3",
+   "ghost2"
+  ],
+  "kind": "ghost"
  },
  "wave_1": {
   "pattern": "stream",
@@ -36,9 +39,9 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "castle_enemy",
-   "fat_boy"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_12_key_castle": {
   "pattern": "castle_stream",
@@ -61,41 +64,47 @@
   "count": 120,
   "interval": 10,
   "kinds": [
-   "rocket_ufo"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_16": {
   "pattern": "stream",
   "count": 8,
   "interval": 10,
   "kinds": [
-   "rocket_ufo"
-  ]
+   "ufo_a",
+   "ufo_a2"
+  ],
+  "kind": "ufo_a"
  },
  "wave_16_better": {
   "pattern": "stream",
   "count": 10,
   "interval": 10,
   "kinds": [
-   "ghost"
-  ]
+   "ufo_a",
+   "ufo_a2"
+  ],
+  "kind": "ufo_a"
  },
  "wave_16_better_2": {
   "pattern": "stream",
   "count": 30,
   "interval": 10,
   "kinds": [
-   "stinger"
-  ]
+   "goomba_team"
+  ],
+  "kind": "goomba_team"
  },
  "wave_16_better_3": {
   "pattern": "stream",
   "count": 3,
   "interval": 20,
   "kinds": [
-   "ufo_a",
-   "ufo_b"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_17": {
   "pattern": "stream",
@@ -103,8 +112,9 @@
   "interval": 10,
   "kinds": [
    "mini",
-   "shooter"
-  ]
+   "goomba"
+  ],
+  "kind": "mini"
  },
  "wave_18_circle_1": {
   "pattern": "circle",
@@ -159,8 +169,9 @@
   "count": 30,
   "interval": 20,
   "kinds": [
-   "kamikaze"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_20_troopa_circles_1": {
   "pattern": "circle",
@@ -192,18 +203,18 @@
   "interval": 10,
   "kinds": [
    "goomba",
-   "crab"
-  ]
+   "flame"
+  ],
+  "kind": "goomba"
  },
  "wave_22_goomba_revenge": {
   "pattern": "stream",
   "count": 120,
   "interval": 10,
   "kinds": [
-   "elite",
-   "warlock",
-   "rocket_ufo"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_3": {
   "pattern": "stream",
@@ -258,18 +269,18 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "boss",
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_7_castle_2": {
   "pattern": "castle_stream",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon",
-   "boss"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_8": {
   "pattern": "stream",
@@ -284,8 +295,10 @@
   "count": 20,
   "interval": 10,
   "kinds": [
+   "ufos_orbiter",
    "goomba"
-  ]
+  ],
+  "kind": "ufos_orbiter"
  },
  "wave_funny_bonus_catch": {
   "pattern": "bonus",
@@ -300,34 +313,42 @@
   "count": 20,
   "interval": 10,
   "kinds": [
-   "ghost"
-  ]
+   "ghost",
+   "ghost3",
+   "ghost2"
+  ],
+  "kind": "ghost"
  },
  "wave_ghost_2": {
   "pattern": "ghosts",
   "count": 20,
   "interval": 10,
   "kinds": [
+   "ghost3",
    "ghost",
-   "shy_ghost"
-  ]
+   "ducher_fall",
+   "ghost2"
+  ],
+  "kind": "ghost3"
  },
  "wave_ghost_2_castle": {
   "pattern": "ghosts",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "boss",
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_guardians_1": {
   "pattern": "gunship",
   "count": 6,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "eye",
+   "eye2"
+  ],
+  "kind": "eye"
  },
  "wave_help_1": {
   "pattern": "stream",
@@ -350,12 +371,13 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_3_two_fire_cans": {
   "pattern": "stream",
-  "count": 20,
+  "count": 0,
   "interval": 20,
   "kinds": [
    "goomba"
@@ -366,16 +388,18 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_4_castle_rush_2": {
   "pattern": "castle_stream",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_4_crates": {
   "pattern": "castle_stream",
@@ -390,8 +414,9 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_4_fat_boy": {
   "pattern": "heavy",
@@ -430,80 +455,104 @@
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_12": {
   "pattern": "grid",
   "count": 5,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "mini"
+  ],
+  "kind": "mini"
  },
  "wave_map_4_grouping_13": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_14": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "flame"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_15": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
+   "mini",
    "goomba"
-  ]
+  ],
+  "kind": "mini"
  },
  "wave_map_4_grouping_16": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "cyber_team",
+   "flame_shooter"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_16_plus": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "cyber_team",
+   "flame_shooter"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_17": {
   "pattern": "grid",
   "count": 350,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "hammer_team",
+   "flame_shooter"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_18": {
   "pattern": "grid",
   "count": 200,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter",
+   "hammer_team"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_19": {
   "pattern": "grid",
   "count": 400,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter",
+   "cyber_team"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_2": {
   "pattern": "grid",
@@ -518,80 +567,103 @@
   "count": 400,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter",
+   "cyber_team"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_21": {
   "pattern": "grid",
   "count": 200,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter",
+   "cyber_team"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_22": {
   "pattern": "grid",
   "count": 300,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "cyber_team",
+   "goomba",
+   "goomba_team",
+   "hammer_team"
+  ],
+  "kind": "cyber_team"
  },
  "wave_map_4_grouping_23": {
   "pattern": "grid",
   "count": 5,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "mini"
+  ],
+  "kind": "mini"
  },
  "wave_map_4_grouping_24": {
   "pattern": "grid",
   "count": 300,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_25": {
   "pattern": "grid",
   "count": 200,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "ufos_orbiter"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_26": {
   "pattern": "grid",
   "count": 200,
   "interval": 10,
   "kinds": [
+   "ufos_orbiter",
    "goomba"
-  ]
+  ],
+  "kind": "ufos_orbiter"
  },
  "wave_map_4_grouping_27": {
   "pattern": "grid",
   "count": 100,
   "interval": 10,
   "kinds": [
+   "flame_map7",
    "goomba"
-  ]
+  ],
+  "kind": "flame_map7"
  },
  "wave_map_4_grouping_28": {
   "pattern": "grid",
   "count": 100,
   "interval": 10,
   "kinds": [
+   "flame_map7",
    "goomba"
-  ]
+  ],
+  "kind": "flame_map7"
  },
  "wave_map_4_grouping_29": {
   "pattern": "grid",
   "count": 120,
   "interval": 10,
   "kinds": [
+   "flame_map7",
    "goomba"
-  ]
+  ],
+  "kind": "flame_map7"
  },
  "wave_map_4_grouping_3": {
   "pattern": "grid",
@@ -606,24 +678,29 @@
   "count": 20,
   "interval": 10,
   "kinds": [
+   "ufos_orbiter",
    "goomba"
-  ]
+  ],
+  "kind": "ufos_orbiter"
  },
  "wave_map_4_grouping_31": {
   "pattern": "grid",
   "count": 10,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "fat_boy_heavy"
+  ],
+  "kind": "fat_boy_heavy"
  },
  "wave_map_4_grouping_32": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
+   "flame_map7",
    "goomba"
-  ]
+  ],
+  "kind": "flame_map7"
  },
  "wave_map_4_grouping_33": {
   "pattern": "grid",
@@ -631,26 +708,29 @@
   "interval": 10,
   "kinds": [
    "goomba",
-   "kamikaze"
-  ]
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_34": {
   "pattern": "grid",
   "count": 20,
   "interval": 10,
   "kinds": [
-   "goomba",
-   "kamikaze"
-  ]
+   "mini",
+   "goomba"
+  ],
+  "kind": "mini"
  },
  "wave_map_4_grouping_35": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba",
-   "kamikaze"
-  ]
+   "mini",
+   "goomba"
+  ],
+  "kind": "mini"
  },
  "wave_map_4_grouping_36": {
   "pattern": "grid",
@@ -658,8 +738,9 @@
   "interval": 10,
   "kinds": [
    "goomba",
-   "kamikaze"
-  ]
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_37": {
   "pattern": "grid",
@@ -667,16 +748,19 @@
   "interval": 10,
   "kinds": [
    "goomba",
-   "kamikaze"
-  ]
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_38": {
   "pattern": "grid",
   "count": 10,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "eye",
+   "fat_boy_heavy"
+  ],
+  "kind": "eye"
  },
  "wave_map_4_grouping_4": {
   "pattern": "grid",
@@ -707,32 +791,40 @@
   "count": 200,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "goomba_team"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_8": {
   "pattern": "grid",
   "count": 450,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_4_grouping_9": {
   "pattern": "grid",
   "count": 240,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "ufo_gunship",
+   "goomba",
+   "mini"
+  ],
+  "kind": "ufo_gunship"
  },
  "wave_map_4_ufos_light": {
   "pattern": "ufo_stream",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "ufo_a"
+  ],
+  "kind": "ufo_a"
  },
  "wave_map_5_asteroids": {
   "pattern": "asteroids",
@@ -747,8 +839,11 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "ufo_gunship",
+   "flame_map",
+   "mini"
+  ],
+  "kind": "ufo_gunship"
  },
  "wave_map_5_chests": {
   "pattern": "loot",
@@ -763,16 +858,18 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_5_spikeys": {
   "pattern": "swarm",
   "count": 30,
   "interval": 20,
   "kinds": [
-   "kamikaze"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_6_asteroids_1": {
   "pattern": "asteroids",
@@ -795,16 +892,19 @@
   "count": 150,
   "interval": 10,
   "kinds": [
-   "goomba"
-  ]
+   "goomba",
+   "mini"
+  ],
+  "kind": "goomba"
  },
  "wave_map_6_castle_rush_3": {
   "pattern": "castle_stream",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_6_end_castle": {
   "pattern": "castle_stream",
@@ -827,48 +927,55 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_6_piranha_castle_2": {
   "pattern": "piranhas",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_6_piranhasus_1": {
   "pattern": "piranhas",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "rocket_ufo"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_map_6_piranhasus_2": {
   "pattern": "piranhas",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "rocket_ufo"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_map_6_piranhasus_3": {
   "pattern": "piranhas",
   "count": 20,
   "interval": 20,
   "kinds": [
-   "rocket_ufo"
-  ]
+   "goomba"
+  ],
+  "kind": "goomba"
  },
  "wave_map_7_asteroids_1": {
   "pattern": "asteroids",
   "count": 220,
   "interval": 10,
   "kinds": [
+   "ufos_orbiter",
    "goomba"
-  ]
+  ],
+  "kind": "ufos_orbiter"
  },
  "wave_map_7_end_castle": {
   "pattern": "castle_stream",
@@ -891,8 +998,10 @@
   "count": 300,
   "interval": 10,
   "kinds": [
+   "ufo_gunship",
    "goomba"
-  ]
+  ],
+  "kind": "ufo_gunship"
  },
  "wave_map_8_end_castle": {
   "pattern": "castle_stream",
@@ -915,16 +1024,18 @@
   "count": 20,
   "interval": 20,
   "kinds": [
-   "cannon"
-  ]
+   "castle_enemy"
+  ],
+  "kind": "castle_enemy"
  },
  "wave_map_8_ufoses_1": {
   "pattern": "ufo_stream",
   "count": 100,
   "interval": 20,
   "kinds": [
-   "goomba"
-  ]
+   "ufo_gunship2"
+  ],
+  "kind": "ufo_gunship2"
  },
  "wave_map_completer": {
   "pattern": "stream",

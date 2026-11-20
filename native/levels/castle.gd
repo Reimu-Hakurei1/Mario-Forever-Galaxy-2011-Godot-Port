@@ -240,7 +240,8 @@ func _spawn_stage_boss(cfg: Dictionary) -> void:
 	boss.tier = int(cfg.get("tier", 0))
 	boss.variant = str(cfg.get("variant", ""))
 	add_child(boss)
-	boss.global_position = Vector2(512, -120)
+	boss.global_position = Vector2(
+		float(cfg.get("x", 512.0)), float(cfg.get("y", -120.0)))
 	_bosses_seen = true
 	_alive_bosses += 1
 	var chain := int(cfg.get("chain", -1))

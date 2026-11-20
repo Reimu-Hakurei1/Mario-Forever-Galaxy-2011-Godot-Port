@@ -234,7 +234,15 @@ static func for_end(tier: int, variant: String, hero_name: String = "") -> Array
 ## clown dialogue. Missing tiers reuse the closest authored script.
 static func for_boss(tier: int, variant: String, hero_name: String) -> Array:
 	var lines: Array = BY_VARIANT.get(variant, [])
-	if lines.is_empty():
+	if lines.is_empty() and variant != "":
+		# The *_2..*_7 variant objects are the same fights on different
+		# hulls — reuse the family speech (the original's talk objects
+		# play it before the variant spawns).
+		for fam in BY_VARIANT.keys():
+			if variant == fam or variant.begins_with(fam + "_"):
+				lines = BY_VARIANT[fam]
+				break
+	if lines.is_empty() and variant == "":
 		# Verified talk→fight chains from the corpus: each o_boss_*_talk
 		# object spawns its paired *_fight on dialogue end —
 		# boss_2→boss_1_fight, boss_4_talk→boss_3_fight,

@@ -94,7 +94,10 @@ func _spawn_script_boss(cfg: Dictionary) -> void:
 	boss.tier = int(cfg.get("tier", 0))
 	boss.variant = str(cfg.get("variant", ""))
 	get_parent().add_child(boss)
-	boss.global_position = Vector2(512, -120)
+	# Entries may pin an absolute spawn x (the two_fire_cans brothers
+	# enter at 250/700); default is the standard top-center drop.
+	boss.global_position = Vector2(
+		float(cfg.get("x", 512.0)), float(cfg.get("y", -120.0)))
 
 
 ## Spawn one enemy at the wave's entry edge, aimed at a formation slot.
@@ -169,6 +172,11 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	enemy.health = wave.get("health", 10.0)
 	enemy.global_position = pos
 	enemy.kind = _kind_from_name(kind_name)
+	# Boss-family enemies carry absolute g_energia in the original —
+	# `health_abs` in the kind profile overrides the wave health.
+	var prof: Dictionary = NativeEnemy.KIND_PROFILES.get(enemy.kind, {})
+	if prof.has("health_abs"):
+		enemy.health = float(prof["health_abs"])
 
 	# Formation slots are laid out in the upper half of the room — enemies
 	# enter, take a slot, and sway there while the player fights through.
@@ -366,6 +374,13 @@ static func _kind_from_name(kind_name: String) -> int:
 		"ghost2", "shy_ghost_2": return NativeEnemy.Kind.GHOST2
 		"ghost3", "shy_ghost_3": return NativeEnemy.Kind.GHOST3
 		"runner", "enemy_9": return NativeEnemy.Kind.RUNNER
+		"flame_map", "flamecans_map5": return NativeEnemy.Kind.FLAME_MAP
+		"flame_map7", "flamecans_map7": return NativeEnemy.Kind.FLAME_MAP7
+		"fat_boy_heavy", "fatboy_boss6": return NativeEnemy.Kind.FAT_BOY_HEAVY
+		"ufo_gunship", "ufoteam": return NativeEnemy.Kind.UFO_GUNSHIP
+		"ufo_gunship2", "ufoteam2": return NativeEnemy.Kind.UFO_GUNSHIP2
+		"ufos_orbiter", "ufos_team", "ufos_team_dolny", "ufos_team2":
+			return NativeEnemy.Kind.UFOS_ORBITER
 		_: return NativeEnemy.Kind.GOOMBA
 
 

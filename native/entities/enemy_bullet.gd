@@ -20,6 +20,7 @@ var damage := -1.0              # >0 overrides DAMAGE
 ## "fast_home" = bossbul_33 (speed 10 +0.1/f, ±10° jitter).
 var move_kind := ""
 var _accel := 0.0
+var life_frames := 0           # >0 self-destructs after N frames (obj 59)
 var _sprite: Sprite2D
 var _sprite_id := SPRITE_ID
 var _dmg := DAMAGE
@@ -47,6 +48,11 @@ func _physics_process(delta: float) -> void:
 	if NativeGame.paused:
 		return
 	_f = delta * 60.0
+	if life_frames > 0:
+		life_frames -= 1
+		if life_frames <= 0:
+			queue_free()
+			return
 	if move_kind != "":
 		_boss_bullet_tick()
 	position += velocity
@@ -96,6 +102,15 @@ func _boss_bullet_tick() -> void:
 					if ship != null else PI / 2.0
 				velocity = Vector2.RIGHT.rotated(d) * 4.0
 				_sprite.rotation = d
+		"fatboy":          # o_bullet_fatboy2 — speed 4 +0.02/f, 200 dmg
+			if velocity == Vector2.ZERO and ship != null:
+				var d: float = (ship.global_position - position).angle()
+				velocity = Vector2.RIGHT.rotated(d) * 4.0
+				_sprite.rotation = d
+			else:
+				var sp := velocity.length()
+				if sp > 0.01:
+					velocity = velocity.normalized() * minf(sp + 0.02 * f, 12.0)
 		"fast_home":        # bossbul_33 — speed 10 +0.1/frame
 			_accel += 0.1 * f
 			if velocity == Vector2.ZERO and ship != null:

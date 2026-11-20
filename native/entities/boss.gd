@@ -112,16 +112,53 @@ const SMIERC_FRACS := [0.5333, 0.2667, 0.0667]
 const SMIERC_OFFSETS := [Vector2(122, 0), Vector2(-122, 0),
 	Vector2(50, -50), Vector2(-50, -50), Vector2(50, 40), Vector2(-50, 40)]
 
-# Alternate boss encounters from objects/bosses/ — the original fields
-# ufo_mega / fat_boy_boss / flame_cans_boss in specific stages instead
-# of the clown. Each overrides the hull sprite, HP and bar name.
+# Alternate boss encounters from objects/bosses/ — keyed by the exact
+# GameMaker object each stage script instance_creates. `hp` is the
+# original's absolute g_energia (the *_2..*_7 scripts are separate
+# difficulty objects, not reskins): flame_cans 600/1200/1200/2000,
+# fat_boy 8000/8000/3000/1500/7000/9000/12000, ufo_mega 800.
+# fat_boy variants also carry cannon `adders`, a periodic obj-116 dart
+# fan (`rockets` = frame period; `side` = wing pair at x±100), and
+# six-coin death drops (`coins`). flame_cans variants carry volley
+# size `ilosc` and charge-cycle head start `lad0`.
 const VARIANTS := {
 	"ufo_mega": {"name": "UFO MEGA", "sprite": 174, "scale": 1.1,
-		"tint": Color(0.8, 0.9, 1.0), "hp_mult": 0.7},
+		"tint": Color(0.8, 0.9, 1.0), "hp": 800.0},
+	"flame_cans": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
+		"tint": Color(1.0, 0.6, 0.3), "hp": 600.0,
+		"ilosc": 10.0, "lad0": 800.0},
+	"flame_cans_2": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
+		"tint": Color(1.0, 0.6, 0.3), "hp": 1200.0,
+		"ilosc": 4.0, "lad0": 800.0},
+	"flame_cans_3": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
+		"tint": Color(1.0, 0.6, 0.3), "hp": 1200.0,
+		"ilosc": 10.0, "lad0": 200.0},
+	"flame_cans_4": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
+		"tint": Color(1.0, 0.6, 0.3), "hp": 2000.0,
+		"ilosc": 20.0, "lad0": 800.0},
 	"fat_boy": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
-		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp_mult": 3.0},
-	"flame_cans": {"name": "FLAME CANS", "sprite": 306, "scale": 1.0,
-		"tint": Color(1.0, 0.6, 0.3), "hp_mult": 1.5},
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 8000.0,
+		"adders": [1.0, 1.3, 1.7]},
+	"fat_boy_2": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 8000.0,
+		"adders": [1.0, 1.3, 1.7], "rockets": 420.0},
+	"fat_boy_3": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 3000.0,
+		"adders": [1.0, 1.3, 1.7], "rockets": 620.0},
+	"fat_boy_4": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 1500.0,
+		"adders": [1.0, 1.3, 1.7], "coins": true},
+	"fat_boy_5": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
+		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 7000.0,
+		"adders": [1.0, 2.5, 1.0], "rockets": 520.0, "coins": true},
+	"fat_boy_6": {"name": "UPGRADED_KOOPA_TROOPA'S_FAT_BOY",
+		"sprite": 178, "scale": 0.9, "tint": Color(1.0, 0.85, 0.6),
+		"hp": 9000.0, "adders": [1.0, 1.1, 1.2], "rockets": 520.0,
+		"side": true, "coins": true},
+	"fat_boy_7": {"name": "UPGRADED_KOOPA_TROOPA'S_FAT_BOY",
+		"sprite": 178, "scale": 0.9, "tint": Color(1.0, 0.85, 0.6),
+		"hp": 12000.0, "adders": [1.0, 1.1, 1.2], "rockets": 520.0,
+		"side": true, "coins": true},
 }
 
 var tier := 0                     # world index — scales HP and aggression
@@ -192,7 +229,17 @@ func _ready() -> void:
 	add_to_group("enemies")
 	max_health = BASE_HP * TIER_HP_MULT[mini(tier, TIER_HP_MULT.size() - 1)]
 	if VARIANTS.has(variant):
-		max_health *= VARIANTS[variant]["hp_mult"]
+		# Variant objects carry their own absolute g_energia — they
+		# don't scale with the clown tier table.
+		max_health = float(VARIANTS[variant]["hp"])
+		if VARIANTS[variant].has("adders"):
+			_fb_adders = VARIANTS[variant]["adders"]
+		if VARIANTS[variant].has("rockets"):
+			_fb_rocket_period = float(VARIANTS[variant]["rockets"])
+			_fb_side = bool(VARIANTS[variant].get("side", false))
+		if VARIANTS[variant].has("ilosc"):
+			_fc_ilosc_max = float(VARIANTS[variant]["ilosc"])
+		_ladowanie = float(VARIANTS[variant].get("lad0", 0.0))
 	health = max_health
 	# g_giga starts at -300 in most scripts (first orb ~600f in); boss_2
 	# starts at 0.
@@ -216,7 +263,7 @@ func _ready() -> void:
 		profile = {"sprite": sprite_id, "scale": v["scale"],
 			"tint": v["tint"]}
 	# fat_boy_boss_2.gd — first FAT_BOY warns about the fat-boy enemies.
-	if variant == "fat_boy":
+	if variant.begins_with("fat_boy"):
 		NativeGame.trigger_help(28, 28)
 
 	_anim = AnimatedSprite2D.new()
@@ -247,6 +294,8 @@ func _ready() -> void:
 			var c := _sprite_layer(self, 109, Vector2(ox, 32), true)
 			c.visible = false
 			_laser_charge.append(c)
+	if variant.begins_with("fat_boy"):
+		_build_fatboy_cannons()
 
 	_build_hp_bar()
 	_start_intro_speech()
@@ -373,6 +422,17 @@ func _physics_process(_delta: float) -> void:
 ## extras (sweep, teams, orbit pair, rockets, boss_8 hell).
 func _fight_tick() -> void:
 	var cfg: Dictionary = FIGHT_CFG[mini(tier, FIGHT_CFG.size() - 1)]
+	# Variant bosses run their own object AI, not the clown choreography.
+	# The *_2..*_7 objects share the family script — match by prefix.
+	if variant == "ufo_mega":
+		_ufo_tick()
+		return
+	if variant.begins_with("fat_boy"):
+		_fatboy_tick()
+		return
+	if variant.begins_with("flame_cans"):
+		_flame_cans_tick()
+		return
 	if cfg.get("hell", false):
 		_boss8_tick(cfg)
 	else:
@@ -560,6 +620,269 @@ func _barrage_tick(cfg: Dictionary) -> void:
 			if _sq2_n <= 0.0:
 				_sq2 = 1
 				_sq2_t = 0.0
+
+
+## o_ufo_mega — a strafing gunship, not a dancer: it hard-tracks the
+## player's x (position.x = target + decaying offset), and whenever it
+## settles within 25px it spends ~200f charging (g_strzal 50 +
+## delayshot 150) then drops an o_bullet_5 orb (sprite 54, dmg 10)
+## from y-24. It repeats until killed; below half HP it swaps to the
+## cracked sprite 175.
+var _ufo_seq := 0
+var _ufo_tx := 0.0
+var _ufo_off := 0.0
+var _ufo_strzal := 0.0
+var _ufo_delayshot := 0.0
+var _ufo_cracked := false
+var _ufo_init := false
+
+func _ufo_tick() -> void:
+	var ship := get_tree().get_first_node_in_group("player")
+	if ship == null:
+		return
+	# Create event: g_gdzie_jest_gracz = player.x +-60, dodawaczuj =
+	# x - target — the ship may not exist yet at _ready, so init lazily.
+	if not _ufo_init:
+		_ufo_init = true
+		_ufo_tx = ship.global_position.x + randf_range(-60.0, 60.0)
+		_ufo_off = position.x - _ufo_tx
+	if _ufo_seq == 0:
+		position.x = _ufo_tx + _ufo_off
+		_ufo_off /= 1.05
+		if absf(position.x - ship.global_position.x) <= 25.0:
+			_ufo_seq = 2
+			_ufo_strzal = 50.0
+			_ufo_delayshot = 0.0
+	else:
+		_ufo_strzal -= 1.0
+		_ufo_delayshot += 1.0
+		if _ufo_strzal <= 0.0 and _ufo_delayshot >= 150.0:
+			var b := NativeEnemyBullet.new()
+			b.sprite_id = 54
+			b.global_position = position + Vector2(0, -24)
+			# o_bullet_5 drops ~24px then dies after ~10f.
+			b.velocity = Vector2.DOWN * 1.6
+			b.damage = 10.0
+			b.life_frames = 15
+			get_parent().add_child(b)
+			# Next run: re-aim at the player's current x +/-30.
+			_ufo_tx = ship.global_position.x + randf_range(-30.0, 30.0)
+			_ufo_off = position.x - _ufo_tx
+			_ufo_seq = 0
+			_ufo_delayshot = 0.0
+	# g_podniszczony — the original cracks the hull at energia < 50
+	# (absolute, not a fraction): sprite swaps 174 -> 175.
+	if not _ufo_cracked and health < 50.0:
+		_ufo_cracked = true
+		var frames := SpriteFrames.new()
+		frames.remove_animation("default")
+		frames.add_animation("fight")
+		for tex in NativeAssets.sprite_frames(175):
+			frames.add_frame("fight", tex)
+		frames.set_animation_speed("fight", ANIM_FPS)
+		_anim.sprite_frames = frames
+		_anim.play("fight")
+		_anim.offset = -NativeAssets.sprite_origin(175)
+
+
+## o_fatboy_boss — dances the top band (dox 100-850, doy 100-200) while
+## its barrel tracks the player at 0.5deg/frame. Three cannon pods
+## (obj 370, sprite 179) sit at the barrel tip 90px out at aim+90deg;
+## each reloads on its own adder (1.0/1.3/1.7) — zaladuj>150 fires an
+## o_bullet_fatboy2 (sprite 180, speed 4 +0.02/f, 200 dmg) and the pod
+## squashes (xscale 0.2 -> 1). Contact is lethal: it drags the ship in
+## and burns 500 hull.
+var _fb_seq := 0
+var _fb_v := Vector2.ZERO
+var _fb_dir := 0.0
+var _fb_cannons: Array = []        # {sprite, timer, adder, squash}
+var _fb_zaladuj := [-270.0, -340.0, -350.0]
+var _fb_adders := [1.0, 1.3, 1.7]
+# fat_boy_boss_2+ periodic obj-116 dart barrages: `rockets` is the frame
+# period, `side` variants fire a wing pair at x+-100 first, and every
+# barrage is followed 40f later by a second 90/45/135 fan (g_podwujne).
+var _fb_rocket_period := 0.0
+var _fb_side := false
+var _fb_rakieta := 0.0
+var _fb_podwujne := 0.0
+
+func _fatboy_tick() -> void:
+	var ship := get_tree().get_first_node_in_group("player")
+	# g_sekwencja: 1-99 count, 100 picks a target, 201 moves.
+	if _fb_seq >= 1 and _fb_seq < 100:
+		_fb_seq += 1
+	elif _fb_seq == 100:
+		_dox = randf_range(100.0, 850.0)
+		_doy = randf_range(100.0, 200.0)
+		_fb_seq = 201
+	elif _fb_seq == 201:
+		for axis in 2:
+			var pos := position.x if axis == 0 else position.y
+			var tgt := _dox if axis == 0 else _doy
+			var v := _fb_v.x if axis == 0 else _fb_v.y
+			if pos < tgt - 40.0:
+				v += 0.05
+			elif pos > tgt + 40.0:
+				v -= 0.05
+			else:
+				v /= 1.055
+			if absf(v) < 0.005:
+				v = 0.0
+			if axis == 0:
+				_fb_v.x = v
+			else:
+				_fb_v.y = v
+		if _fb_v == Vector2.ZERO \
+				and absf(position.x - _dox) <= 40.0 \
+				and absf(position.y - _doy) <= 40.0:
+			_fb_seq = 1
+		rotation = deg_to_rad(-_fb_v.x * 5.0)
+		position += _fb_v
+	else:
+		_fb_seq = 1
+	# Barrel tracks the player at 0.5deg/frame.
+	if ship != null:
+		var want: float = (ship.global_position - position).angle()
+		_fb_dir = rotate_toward(_fb_dir, want, deg_to_rad(0.5))
+	# Cannon pods at the barrel tip — radius 90 at aim+90deg.
+	var tip := position + Vector2.RIGHT.rotated(_fb_dir + PI / 2.0) * 90.0
+	for i in _fb_cannons.size():
+		var c: Dictionary = _fb_cannons[i]
+		var sp: Sprite2D = c["sprite"]
+		sp.position = tip - position
+		sp.rotation = _fb_dir
+		if float(c["squash"]) > 0.0:
+			c["squash"] = maxf(0.0, float(c["squash"]) - 0.01)
+			sp.scale.x = 0.2 + (1.0 - float(c["squash"])) * 0.8
+		else:
+			sp.scale.x = 1.0
+		c["timer"] = float(c["timer"]) + float(c["adder"])
+		if float(c["timer"]) > 150.0:
+			c["timer"] = 0.0
+			c["squash"] = 1.0
+			var b := NativeEnemyBullet.new()
+			b.move_kind = "fatboy"
+			b.sprite_id = 180
+			b.global_position = tip
+			b.damage = 200.0
+			get_parent().add_child(b)
+	# fat_boy_boss_2+ rocket barrages (obj 116 = o_dodatkowy_3_b,
+	# sprite 41): every `rockets` frames a first volley, then g_podwujne
+	# repeats a 90/45/135 fan 40f later. Side variants lead with a
+	# wing pair at x+-100 instead of the center fan.
+	if _fb_rocket_period > 0.0:
+		_fb_rakieta += 1.0
+		if _fb_rakieta > _fb_rocket_period:
+			if _fb_side:
+				_spawn_dart(116, 90.0, Vector2(-100, 0))
+				_spawn_dart(116, 90.0, Vector2(100, 0))
+			else:
+				for dg in [90.0, 45.0, 135.0]:
+					_spawn_dart(116, dg)
+			_fb_rakieta = 0.0
+			_fb_podwujne = 1.0
+		if _fb_podwujne > 0.0:
+			_fb_podwujne += 1.0
+			if _fb_podwujne > 40.0:
+				for dg in [90.0, 45.0, 135.0]:
+					_spawn_dart(116, dg)
+				_fb_podwujne = 0.0
+
+
+func _build_fatboy_cannons() -> void:
+	for i in 3:
+		var s := _sprite_layer(self, 179, Vector2.ZERO, false)
+		s.visible = true
+		_fb_cannons.append({"sprite": s, "timer": _fb_zaladuj[i],
+			"adder": _fb_adders[i], "squash": 0.0})
+
+
+## o_flamecans_boss (251) — waypoint drifter with a charge-up volley:
+## picks random targets in [200,650]x[100,500], banks into turns
+## (image_angle = -ixor*5), then runs an 800f cannon cycle — smolder
+## 0-300, charge 300-600 (screen shake), vent 600-800, and at 800
+## spits 10 aimed flame bolts (obj 250, speed 5, +-10deg, dmg 20)
+## every 10f before a ~77f cooldown resets the cycle.
+var _fc_seq := 0
+var _fc_v := Vector2.ZERO
+var _ladowanie := 0.0
+var _fc_sekwencer := 2
+var _fc_strzelacz := 0.0
+var _fc_ilosc := 10.0
+var _fc_ilosc_max := 10.0   # variant volley size (4/10/20)
+var _fc_podniszczony := false
+
+func _flame_cans_tick() -> void:
+	# g_sekwencja 1-199 counts up, 200 picks a new target, 201 moves.
+	if _fc_seq >= 1 and _fc_seq < 200:
+		_fc_seq += 1
+	elif _fc_seq == 200:
+		_dox = randf_range(200.0, 650.0)
+		_doy = randf_range(100.0, 500.0)
+		_fc_seq = 201
+	elif _fc_seq == 201:
+		# Inertial drift: accelerate 0.11/frame outside a +-40px box,
+		# damp /1.11 inside it; sub-0.005 velocities snap to zero.
+		for axis in 2:
+			var pos := position.x if axis == 0 else position.y
+			var tgt := _dox if axis == 0 else _doy
+			var v := _fc_v.x if axis == 0 else _fc_v.y
+			if pos < tgt - 40.0:
+				v += 0.11
+			elif pos > tgt + 40.0:
+				v -= 0.11
+			else:
+				v /= 1.11
+			if absf(v) < 0.005:
+				v = 0.0
+			if axis == 0:
+				_fc_v.x = v
+			else:
+				_fc_v.y = v
+		if _fc_v == Vector2.ZERO \
+				and absf(position.x - _dox) <= 40.0 \
+				and absf(position.y - _doy) <= 40.0:
+			_fc_seq = 1
+		# Bank into the turn like the original's image_angle.
+		rotation = deg_to_rad(-_fc_v.x * 5.0)
+		position += _fc_v
+	else:
+		_fc_seq = 1
+	# g_ladowanie charge cycle — smolder/charge/vent then the volley.
+	_ladowanie += 1.0
+	if _ladowanie >= 800.0 and _fc_sekwencer < 2:
+		_fc_strzelacz = 0.0
+		_fc_sekwencer += 1
+		_fc_ilosc = _fc_ilosc_max
+		if _fc_sekwencer < 2:
+			_ladowanie = 0.0
+	if _fc_sekwencer == 2 and _fc_seq > 0:
+		_fc_strzelacz += 1.0
+		if _fc_strzelacz > 10.0:
+			_fc_strzelacz = 0.0
+			_fc_ilosc -= 1.0
+			var b := NativeEnemyBullet.new()
+			b.move_kind = "aimed"
+			b.sprite_id = 25
+			b.global_position = position
+			b.damage = 20.0
+			get_parent().add_child(b)
+		if _fc_ilosc <= 0.0:
+			_fc_sekwencer = 3
+			_fc_ilosc = _fc_ilosc_max
+	elif _fc_sekwencer >= 3 and _fc_sekwencer < 80:
+		_fc_sekwencer += 1.0
+		if _fc_sekwencer == 80:
+			_fc_sekwencer = 0
+			_fc_ilosc = 0.0
+			_ladowanie = 0.0
+	# podniszczony — below half health it takes heavy damage once.
+	if not _fc_podniszczony and health < max_health * 0.5:
+		_fc_podniszczony = true
+		var boom := NativeExplosion.new()
+		boom.variant = "burst"
+		boom.global_position = position
+		get_parent().add_child(boom)
 
 
 ## g_giga cycle — inside the arena box the counter climbs; at 300 the
@@ -785,14 +1108,15 @@ func _etap() -> int:
 ## boss_8 "dodatkowy" additions — objects 509/510/512/513 are enemy
 ## fighters (parent o_enemy_1) launched on fixed GM directions; sprite
 ## 502 for 509/512, sprite 41 (enemy_9) for 510/513.
-func _spawn_dart(obj_id: int, gm_dir_deg: float) -> void:
+func _spawn_dart(obj_id: int, gm_dir_deg: float,
+		offset := Vector2.ZERO) -> void:
 	var d := NativeEnemy.new()
 	d.kind = NativeEnemy.Kind.RUNNER
 	d.sprite_id_override = 502 if obj_id in [509, 512] else 41
 	d.dart_dir = Vector2.RIGHT.rotated(deg_to_rad(gm_dir_deg)) * 3.5
 	d.dart_speed = 3.5
 	d.health = 15.0
-	d.global_position = position
+	d.global_position = position + offset
 	get_parent().add_child(d)
 
 
@@ -851,6 +1175,26 @@ func die() -> void:
 	else:
 		NativeGame.add_score(100000)
 	NativeGame.coins += 20 + tier * 5
+	# fat_boy_boss_2+ drop six o_coindrop pickups (obj 214) on death —
+	# two at y-200, two at y-400, two at hull level, all ~300/600px
+	# to the boss's right.
+	if VARIANTS.has(variant) and VARIANTS[variant].get("coins", false):
+		for spec in [[300.0, -200.0], [600.0, -200.0],
+				[300.0, -400.0], [600.0, -400.0],
+				[300.0, 0.0], [600.0, 0.0]]:
+			var drop := NativePickup.new()
+			drop.kind = NativePickup.Kind.COIN
+			drop.global_position = position + Vector2(
+				spec[0] + randf_range(-30.0, 30.0),
+				spec[1] + randf_range(-30.0, 30.0))
+			get_parent().add_child(drop)
+	# ufo_mega death drops five o_coindrop pickups at (x, y-40).
+	if variant == "ufo_mega":
+		for i in 5:
+			var drop := NativePickup.new()
+			drop.kind = NativePickup.Kind.COIN
+			drop.global_position = position + Vector2(0, -40)
+			get_parent().add_child(drop)
 	_spawn_explosion()
 	# Post-fight villain line (o_boss_*_end_talk) plays while the
 	# wreckage burns, then the level-end sequence resumes.
@@ -903,6 +1247,12 @@ func _check_player_collision() -> void:
 	const BODY := 85.0
 	if dist < BODY + 18.0 and dist > 0.01:
 		ship.global_position += to_boss.normalized() * (BODY + 18.0 - dist)
+		# fat_boy_boss contact is a kill move — it hauls the ship in and
+		# burns 500 hull (g_energia -= 500).
+		if variant.begins_with("fat_boy"):
+			ship.vel += to_boss.normalized() * -10.0
+			NativeGame.damage_player(500.0)
+			return
 		# boss_N_fight place_meeting: grazing the hull costs only 5
 		# energy and knocks the ship down (g_iyor += 3).
 		NativeGame.damage_player(5.0)

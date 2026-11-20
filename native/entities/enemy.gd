@@ -30,6 +30,8 @@ enum Kind {
 	CANNON, FLAME_CANNON, ROTARY, FAT_CANNON,
 	FLAME, FAN, FALLER, BONUS, FLAME_SHOOTER, FAT_BOY, BONUS_BLOCK,
 	EYE2, UFO_A2, GHOST2, GHOST3, RUNNER,
+	FLAME_MAP, FLAME_MAP7, FAT_BOY_HEAVY, UFO_GUNSHIP, UFO_GUNSHIP2,
+	UFOS_ORBITER,
 }
 
 ## Per-kind tuning. `sprite` is the GameMaker sprite index; `score` is the
@@ -139,6 +141,29 @@ const KIND_PROFILES := {
 		"tint": Color(0.6, 1.0, 0.75)},
 	Kind.GHOST3: {"sprite": 493, "score": 600, "dive": 3.4, "scale": 0.9,
 		"tint": Color(1.0, 0.75, 0.6)},
+	# Heavy variant enemies — the wave scripts field the boss-family
+	# objects as regular enemies with their own absolute g_energia
+	# (`health_abs` overrides the wave's health in the spawner).
+	# o_flamecans_map5/map7 — the flame-can boss AI as a mook (600/1100).
+	Kind.FLAME_MAP: {"sprite": 182, "score": 800, "health_abs": 600.0,
+		"contact_damage": 15.0, "tint": Color(1.0, 0.6, 0.3)},
+	Kind.FLAME_MAP7: {"sprite": 182, "score": 1200, "health_abs": 1100.0,
+		"contact_damage": 20.0, "tint": Color(1.0, 0.5, 0.25)},
+	# o_fatboy_boss6 spawned by the map4 grouping waves — a 9000hp
+	# cannon bruiser that lumbers in like fat_boy_a.
+	Kind.FAT_BOY_HEAVY: {"sprite": 178, "score": 5000,
+		"health_abs": 9000.0, "shoot_interval": 200.0, "spread": 5,
+		"chase": 0.8, "contact_damage": 50.0, "scale": 0.6},
+	# o_ufoteam/o_ufoteam2 — gunship that parks and lobs obj-25 shots
+	# (200hp / 1200hp elite).
+	Kind.UFO_GUNSHIP: {"sprite": 174, "score": 400,
+		"health_abs": 200.0, "shoot_interval": 170.0, "spread": 1},
+	Kind.UFO_GUNSHIP2: {"sprite": 174, "score": 2000,
+		"health_abs": 1200.0, "shoot_interval": 150.0, "spread": 2},
+	# o_ufos_team/o_ufos_team_dolny/o_ufos_team2 — 450hp ufo that orbits
+	# a radius-50 ring while spawning orbiting rocket objects (446/443).
+	Kind.UFOS_ORBITER: {"sprite": 112, "score": 500,
+		"health_abs": 450.0, "shoot_interval": 160.0, "spread": 3},
 }
 
 # Drop table — ports objects/items/drop.gd (o_drop): every kill rolls a
@@ -387,7 +412,8 @@ func _physics_process(_delta: float) -> void:
 	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY,
 			Kind.FAT_CANNON]:
 		_behave_cannon()
-	elif kind == Kind.FLAME:
+	elif kind == Kind.FLAME or kind == Kind.FLAME_MAP \
+			or kind == Kind.FLAME_MAP7:
 		_behave_flame()
 	elif kind == Kind.FAN:
 		_behave_fan()
@@ -397,9 +423,10 @@ func _physics_process(_delta: float) -> void:
 		_behave_bonus()
 	elif kind in [Kind.SHOOTER, Kind.TANK, Kind.UFO_A, Kind.ROS,
 			Kind.CRAB, Kind.STINGER, Kind.DRONE, Kind.HUNTER, Kind.LANCER,
-			Kind.ROCKET_UFO, Kind.FLAME_SHOOTER]:
+			Kind.ROCKET_UFO, Kind.FLAME_SHOOTER, Kind.UFO_GUNSHIP,
+			Kind.UFO_GUNSHIP2, Kind.UFOS_ORBITER]:
 		_behave_shooter()
-	elif kind == Kind.FAT_BOY:
+	elif kind == Kind.FAT_BOY or kind == Kind.FAT_BOY_HEAVY:
 		_chase_player_slow()
 		_tick_shooter()
 	elif kind == Kind.KAMIKAZE or kind == Kind.UFO_B or kind == Kind.WEAVER \

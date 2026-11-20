@@ -71,24 +71,55 @@ const BOSS_VARIANTS := {1: "ufo_mega", 3: "fat_boy", 5: "flame_cans"}
 ## "chain" spawns the next fight when this one dies (boss_7_endtalk →
 ## boss_8_fight on the last castle).
 const SCRIPT_BOSSES := {
-	# o_boss_1 (169) talks then spawns o_flamecans_boss (251).
+	# o_boss_1 (169) talks then spawns o_flamecans_boss (251, 600hp).
 	"wave_7_castle_1": [{"tier": 0, "variant": "flame_cans"}],
 	"wave_ghost_2_castle": [{"tier": 0, "variant": "flame_cans"}],
+	# o_perioder_map3_two_fire_cans spawns BOTH cans at create —
+	# o_flamecans_boss2 (345, 1200hp) at x=250 and o_flamecans_boss3
+	# (347, 1200hp) at x=700, sharing one combined HP bar; the stage
+	# only ends when both are dead.
+	"wave_map_3_two_fire_cans": [
+		{"tier": 0, "variant": "flame_cans_2", "x": 250.0},
+		{"tier": 0, "variant": "flame_cans_3", "x": 700.0}],
 	"wave_12_castle_2": [{"tier": 0}],
 	"wave_7_castle_2": [{"tier": 2}],
 	"wave_map_3_end_castle": [{"tier": 3}],
 	"wave_map_4_castle_rush": [{"tier": 3}],
 	"wave_map_4_castle_rush_2": [{"tier": 3}],
 	"wave_map_6_castle_rush_3": [{"tier": 3}],
-	"wave_map_4_end_castle": [{"tier": 3, "variant": "fat_boy"}],
-	"wave_map_5_end_castle": [{"tier": 4}, {"tier": 4, "variant": "flame_cans"}],
+	# o_boss_map4_talk (375) chains straight into o_fatboy_boss3
+	# (377, 3000hp) — no clown fight on this stage.
+	"wave_map_4_end_castle": [{"tier": 3, "variant": "fat_boy_3"}],
+	# o_perioder_map4_fat_boy fields o_fatboy_boss (369, 8000hp);
+	# _fat_boy_2 fields the weaker o_fatboy_boss4 (389, 1500hp).
+	"wave_map_4_fat_boy": [{"tier": 3, "variant": "fat_boy"}],
+	"wave_map_4_fat_boy_2": [{"tier": 3, "variant": "fat_boy_4"}],
+	# grouping_7 drops a fatboy_boss4 mid-stage (~frame 1200 and again
+	# ~7500) alongside the goomba grid.
+	"wave_map_4_grouping_7": [{"tier": 3, "variant": "fat_boy_4"}],
+	# grouping_24/25 run recurring o_ufo_mega (461, 800hp) strafing
+	# runs entered from the screen edge while ufo squads fill the sky.
+	"wave_map_4_grouping_24": [{"tier": 1, "variant": "ufo_mega"}],
+	"wave_map_4_grouping_25": [{"tier": 1, "variant": "ufo_mega"}],
+	# wave_map_8_ufoses_1 runs the same recurring o_ufo_mega strafing
+	# boss alongside its ufoteam2 squads.
+	"wave_map_8_ufoses_1": [{"tier": 1, "variant": "ufo_mega"}],
+	# wave_map_5_end_castle's o_flamecans_boss4 spawns are gated on
+	# g_ileuf which is never set >0 — dead code in the original, so
+	# only the boss_55_talk -> boss_5_fight chain is real here.
+	# wave_map_5_big_bad's sekwencja-6 step fields o_fatboy_boss4
+	# (389, 1500hp) between ufoteam waves — gated on the field being
+	# clear, approximated as a wave-delay spawn.
+	"wave_map_5_big_bad": [{"tier": 3, "variant": "fat_boy_4"}],
+	"wave_map_5_end_castle": [{"tier": 4}],
 	"wave_map_6_piranha_castle_1": [{"tier": 4}],
-	"wave_map_6_piranha_castle_2": [{"tier": 4}, {"tier": 4, "variant": "fat_boy"}],
+	# piranha_castle_2's g_dodawacz_assign==104 trigger is live — it
+	# fields o_fatboy_boss5 (429, 7000hp) after the talk chain.
+	"wave_map_6_piranha_castle_2": [{"tier": 4},
+		{"tier": 4, "variant": "fat_boy_5"}],
 	"wave_map_6_end_castle": [{"tier": 5}],
-	"wave_map_8_end_castle_22": [{"tier": 6, "chain": 7}, {"tier": 4, "variant": "flame_cans"}],
-	# Arena "big bad" waves — mid-stage boss spawns.
-	"wave_map_4_grouping_7": [{"tier": 3, "variant": "fat_boy"}],
-	"wave_map_5_big_bad": [{"tier": 4, "variant": "fat_boy"}],
+	# Same dead g_ileuf gate as map_5 — boss_6/7 chain only.
+	"wave_map_8_end_castle_22": [{"tier": 6, "chain": 7}],
 }
 
 ## Scripts whose boss object is talk-only — the clown flies in, taunts,
@@ -104,7 +135,9 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"cannon", "flame_cannon", "rotary", "fat_cannon", "flame", "fan",
 	"ring", "ducher_ring", "ducher_fall", "bonus_fall",
 	"goomba_team", "ufo_team", "ufos_team", "cyber_team", "hammer_team",
-	"eye2", "ufo_a2", "ghost2", "ghost3"]
+	"eye2", "ufo_a2", "ghost2", "ghost3",
+	"flame_map", "flame_map7", "fat_boy_heavy", "ufo_gunship",
+	"ufo_gunship2", "ufos_orbiter"]
 
 
 ## Build the arena config for a flat level index. Returns a Dictionary
