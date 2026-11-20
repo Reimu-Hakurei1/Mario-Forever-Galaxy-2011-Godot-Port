@@ -407,8 +407,13 @@ func _seq_tick(cfg: Dictionary) -> void:
 				if _rozstrzelywywuj >= 20.0:
 					_rozstrzelywywuj = 0.0
 					var kind: String = cfg["sweep"]
-					var pos := Vector2(position.x + randf_range(-8, 8),
-						position.y + (16.0 if kind == "slow_home" else 80.0))
+					# boss_3-6 sweep fires obj 119 dead-center at
+					# (x, y+16); boss_7's obj 506 scatters ±16 around
+					# (x, y+80) — matching the original spawn points.
+					var pos := Vector2(position.x, position.y + 16.0) \
+						if kind == "slow_home" else Vector2(
+							position.x + randf_range(-16.0, 16.0),
+							position.y + 80.0 + randf_range(-16.0, 16.0))
 					_fire_boss_bullet(kind, pos)
 			_:
 				if _seq >= 102 and _seq < 200:
@@ -514,9 +519,10 @@ func _barrage_tick(cfg: Dictionary) -> void:
 					and _seq < 9 and _rozstrzel < 1000.0:
 				_sq2_n -= 1.0
 				_sq2_t = 0.0
+				# obj 121 (bossbul_3) at (x±16, y+80±16), rodzaj=20.
 				_fire_boss_bullet("aimed", Vector2(
-					position.x + randf_range(-8.0, 8.0),
-					position.y + 80.0 + randf_range(-8.0, 8.0)))
+					position.x + randf_range(-16.0, 16.0),
+					position.y + 80.0 + randf_range(-16.0, 16.0)))
 			if _sq2_n <= 0.0:
 				_sq2 += 1
 		3, 5, 7, 9, 11:
@@ -527,7 +533,10 @@ func _barrage_tick(cfg: Dictionary) -> void:
 				_sq2 += 1
 		12:
 			_sq2_t += 1.0
-			if _sq2_t > float(cfg["ring_gap"]) and _sq2_n > 0.0:
+			# obj 120 (bossbul_2) at (x,y), direction -90 — gated only
+			# on the sweep timer, no g_sekwencja check.
+			if _sq2_t > float(cfg["ring_gap"]) and _sq2_n > 0.0 \
+					and _rozstrzel < 1000.0:
 				_sq2_n -= 1.0
 				_sq2_t = 0.0
 				_fire_boss_bullet("down_accel", position)
@@ -541,7 +550,9 @@ func _barrage_tick(cfg: Dictionary) -> void:
 				_sq2 = 14
 		14:
 			_sq2_t += 1.0
-			if _sq2_t > float(cfg["tail_gap"]) and _sq2_n > 0.0:
+			# obj 119 (bossbul_1) at (x, y+16), rodzaj=0.
+			if _sq2_t > float(cfg["tail_gap"]) and _sq2_n > 0.0 \
+					and _rozstrzel < 1000.0:
 				_sq2_n -= 1.0
 				_sq2_t = 0.0
 				_fire_boss_bullet("slow_home",
@@ -788,6 +799,9 @@ func _spawn_dart(obj_id: int, gm_dir_deg: float) -> void:
 func _fire_boss_bullet(kind: String, pos: Vector2) -> void:
 	var b := NativeEnemyBullet.new()
 	b.move_kind = kind
+	# Original hull sprites: bossbul_1/3/33 draw sprite 25, bossbul_2
+	# draws sprite 115.
+	b.sprite_id = 115 if kind == "down_accel" else 25
 	b.global_position = pos
 	b.damage = 15.0
 	get_parent().add_child(b)

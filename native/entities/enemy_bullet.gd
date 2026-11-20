@@ -90,7 +90,7 @@ func _boss_bullet_tick() -> void:
 		"down_accel":       # bossbul_2 — starts ~3, +0.05/frame, down
 			_accel += 0.05 * f
 			velocity = Vector2.DOWN * minf(3.0 + _accel, 12.0)
-		"slow_home":        # bossbul_1 — speed 4 locked at player ±10°
+		"slow_home":        # bossbul_1 — speed 4, exact aim at player
 			if velocity == Vector2.ZERO:
 				var d: float = (ship.global_position - position).angle() \
 					if ship != null else PI / 2.0
