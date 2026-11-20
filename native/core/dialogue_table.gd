@@ -229,14 +229,22 @@ static func for_end(tier: int, variant: String, hero_name: String = "") -> Array
 static func for_boss(tier: int, variant: String, hero_name: String) -> Array:
 	var lines: Array = BY_VARIANT.get(variant, [])
 	if lines.is_empty():
+		# Verified talk→fight chains from the corpus: each o_boss_*_talk
+		# object spawns its paired *_fight on dialogue end —
+		# boss_2→boss_1_fight, boss_4_talk→boss_3_fight,
+		# boss_5_talk→boss_4_fight, boss_55_talk→boss_5_fight,
+		# boss_6_talk→boss_6_fight, boss_8_end_talk→boss_7_fight.
+		# boss_8_fight gets no intro — boss_7_endtalk already played its
+		# "TIME TO REAL BATTLE!" lines as boss_7's death talk.
 		match tier:
-			0: lines = CLOWN_1
-			1: lines = BOSS_2_TALK
-			2: lines = BOSS_3_TALK
-			4: lines = CLOWN_5
+			0: lines = BOSS_2_TALK
+			1: lines = CLOWN_1      # boss_2_fight — no authored intro found
+			2: lines = CLOWN_4
+			3: lines = CLOWN_5
+			4: lines = CLOWN_UPGRADED
 			5: lines = CLOWN_6
-			3: lines = CLOWN_4
-			7: lines = CASTLE_LORD
+			6: lines = CASTLE_LORD
+			7: lines = []
 			_: lines = CLOWN_1
 	var out: Array = []
 	for line in lines:

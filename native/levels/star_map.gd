@@ -455,7 +455,8 @@ func _maybe_map_transition() -> void:
 	NativeGame.save()
 	# The original plays the room-44 warp cinematic (next_map_obj.gd)
 	# — hero + Toad banter in dual balloons, then boost off-screen.
-	var cine := (load("res://native/ui/next_map.gd") as GDScript).new()
+	var cine: CanvasLayer = (load("res://native/ui/next_map.gd")
+		as GDScript).new()
 	cine.destination = m
 	cine.hero_index = NativeGame.hero
 	add_child(cine)

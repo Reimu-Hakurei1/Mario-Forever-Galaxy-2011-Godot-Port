@@ -252,7 +252,11 @@ func _play_talk_only() -> void:
 		NativeGame.HEROES.size() - 1)]["name"]
 	var talk := NativeBossDialogue.new()
 	add_child(talk)
-	talk.play(NativeDialogueTable.for_boss(0, "", hero_name))
+	# o_boss_1's own speech (CLOWN_1) — not a tier-0 fight intro.
+	var lines: Array = []
+	for line in NativeDialogueTable.CLOWN_1:
+		lines.append(str(line) % hero_name if "%s" in str(line) else str(line))
+	talk.play(lines)
 	talk.finished.connect(func():
 		if not _level_cleared:
 			_level_cleared = true
