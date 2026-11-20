@@ -37,6 +37,33 @@ const CLOWN_6 := [          # boss_6_talk
 	"WELL...#IT'S TIME#TO FIX IT UP!",
 ]
 
+const BOSS_2_TALK := [      # boss_2.gd — the mechanical clown
+	"GRRRR# HOW DARE YOU!!!",
+	"AGAIN YOU#DISTURBING#MY EVIL PLAN#TO CONQUER#THE MUSCHROOM#LAND!",
+	"WELL, YOU'VE#DEFEATED MY#SERVANT LAST#TIME",
+	"BUT NOW#I'LL DEAL WITH#YOU BY MYSELF!",
+	"MY MECHANIQUE#FLYING CLOWN#IS MUCH BETTER#THEN YOUR#FUNNY SHIP!",
+	"IT'S WELL ARMORED#AND PREPARED#TO CRUSH YOU!",
+	"HAHAHA! SHOW ME#WHAT YOU'VE GOT!",
+]
+
+const BOSS_3_TALK := [      # boss_3.gd — after the vessel is destroyed
+	"ARRRRRGGHH!!!",
+	"YOU'VE DESTROYED#MY VESSEL!#YOU WILL PAY#FOR THAT!",
+	"NOW I'M LEAVING#WATCH YOUR BACK!#NEXT TIME I'LL#CRUSH YOU!",
+	"BEWARE OF ME AND#MY MINIONS!",
+]
+
+const CLOWN_4 := [          # boss_4_talk — the rematch taunt
+	"WHAT THE HECK?!#YOU'RE STILL #ALIVE? #IT CAN'T BE.",
+	"YOU SHOULD BE#DEAD AFTER# LAST BATTLE#WITH MY MINIONS!",
+	"AGAIN, I MUST# DEAL WITH YOU# MYSELF!",
+	"THIS TIME I'VE#PREPARED A SUPER#ULTRA ULTIMATE# HIPER WEAPON!",
+	"MUAHAHAHAH!#HAHAHAHAH!",
+	"HMMM?! WHAT HAVE#I JUST SAID?#",
+	"HMMM THINK...# HMM NEVER MIND# FIGHT AND DIE!",
+]
+
 const CASTLE_LORD := [      # boss_8_end_talk — the final villain
 	"WELCOME TO#MY BEAURIFUL#CASTE!",
 	"SO,YOU'VE MANAGED#TO COME HERE.#YOU'RE A LUCKY#ONE BUT#THINKING IS#NOT YOUR#STRONG SIDE IF#YOU'VE COME HERE",
@@ -165,9 +192,11 @@ static func for_boss(tier: int, variant: String, hero_name: String) -> Array:
 	if lines.is_empty():
 		match tier:
 			0: lines = CLOWN_1
-			1, 2: lines = CLOWN_UPGRADED
+			1: lines = BOSS_2_TALK
+			2: lines = BOSS_3_TALK
 			4: lines = CLOWN_5
 			5: lines = CLOWN_6
+			3: lines = CLOWN_4
 			7: lines = CASTLE_LORD
 			_: lines = CLOWN_1
 	var out: Array = []
