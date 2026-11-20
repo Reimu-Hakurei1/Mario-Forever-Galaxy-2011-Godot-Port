@@ -4701,12 +4701,16 @@ static func path_add(S) -> Variant:
 static func path_add_point(S, id: int, x: float, y: float, speed: float) -> Variant:
 	if paths.has(int(id)):
 		paths[int(id)]["points"].append(Vector3(x, y, speed))
+		paths[int(id)].erase("seg_lens")
+		paths[int(id)].erase("total")
 	return 0
 
 
 static func path_set_closed(S, id: int, closed: Variant) -> Variant:
 	if paths.has(int(id)):
 		paths[int(id)]["closed"] = float(closed) != 0
+		paths[int(id)].erase("seg_lens")
+		paths[int(id)].erase("total")
 	return 0
 
 
@@ -4748,6 +4752,46 @@ static func _path_length(pts: Array, closed: bool) -> float:
 	return total
 
 
+# Path geometry is static once created, but _path_move runs every tick for
+# every pathed instance and used to recompute all segment lengths twice per
+# call. Cache them on the path dict the first time.
+static func _path_metrics(p: Dictionary) -> void:
+	if p.has("seg_lens"):
+		return
+	var pts: Array = p["points"]
+	var closed: bool = bool(p["closed"])
+	var lens: Array = []
+	var total := 0.0
+	var count := pts.size() if closed else pts.size() - 1
+	for i in count:
+		var a: Vector3 = pts[i]
+		var b: Vector3 = pts[(i + 1) % pts.size()]
+		var seg := Vector2(a.x, a.y).distance_to(Vector2(b.x, b.y))
+		lens.append(seg)
+		total += seg
+	p["seg_lens"] = lens
+	p["total"] = total
+
+
+static func _path_point_p(p: Dictionary, frac: float) -> Vector3:
+	_path_metrics(p)
+	var pts: Array = p["points"]
+	var closed: bool = bool(p["closed"])
+	var lens: Array = p["seg_lens"]
+	var total: float = p["total"]
+	if total <= 0 or pts.is_empty():
+		return pts[0] if pts.size() > 0 else Vector3(0, 0, 100)
+	var want := frac * total
+	for i in lens.size():
+		var seg: float = lens[i]
+		if want <= seg:
+			var a: Vector3 = pts[i]
+			var b: Vector3 = pts[(i + 1) % pts.size()]
+			return a.lerp(b, want / seg if seg > 0 else 0.0)
+		want -= seg
+	return pts[0] if closed else pts[-1]
+
+
 # x/y is the position, z the point speed (percent) interpolated along the path.
 static func _path_point(pts: Array, closed: bool, frac: float) -> Vector3:
 	var total := _path_length(pts, closed)
@@ -4773,11 +4817,11 @@ static func _path_move(inst: GMInstance) -> void:
 	var pts: Array = p["points"]
 	if pts.size() < 2:
 		return
-	var total := _path_length(pts, bool(p["closed"]))
+	_path_metrics(p)
+	var total: float = p["total"]
 	if total <= 0:
 		return
-	var closed: bool = bool(p["closed"])
-	var here := _path_point(pts, closed, float(inst.g_path_position))
+	var here := _path_point_p(p, float(inst.g_path_position))
 	var pos: float = float(inst.g_path_position) + float(inst.g_path_speed) * here.z / 100.0 / total
 	var origin: Vector2 = path_origins.get(inst.inst_id, Vector2.ZERO)
 	if pos >= 1.0 or pos < 0.0:
@@ -4787,15 +4831,15 @@ static func _path_move(inst: GMInstance) -> void:
 				inst.g_path_index = -1
 				pos = clampf(pos, 0.0, 1.0)
 				inst.g_path_position = pos
-				var last := _path_point(pts, closed, pos)
+				var last := _path_point_p(p, pos)
 				inst.position = origin + Vector2(last.x, last.y)
 				_mark_moved(int(inst.g_object_index))
 				return
 			1:
 				pos = fposmod(pos, 1.0)
 			2:
-				var a := _path_point(pts, closed, 0.0)
-				var b := _path_point(pts, closed, 1.0)
+				var a := _path_point_p(p, 0.0)
+				var b := _path_point_p(p, 1.0)
 				var shift := Vector2(b.x - a.x, b.y - a.y)
 				origin += shift if pos >= 1.0 else -shift
 				path_origins[inst.inst_id] = origin
@@ -4806,7 +4850,7 @@ static func _path_move(inst: GMInstance) -> void:
 			_:
 				pos = clampf(pos, 0.0, 1.0)
 	inst.g_path_position = pos
-	var at := _path_point(pts, closed, pos)
+	var at := _path_point_p(p, pos)
 	inst.position = origin + Vector2(at.x, at.y)
 	_mark_moved(int(inst.g_object_index))
 
