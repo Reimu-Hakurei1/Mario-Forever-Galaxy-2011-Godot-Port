@@ -409,6 +409,9 @@ func _fire_slot(index: int, st: Dictionary) -> void:
 		get_parent().add_child(bullet)
 
 	NativeGame.overheating += st["overheat"]
+	# part_5_8.gd — first time the heat gauge fills, warn the player.
+	if NativeGame.overheating >= NativeGame.overheat_max():
+		NativeGame.trigger_help(16, 25)
 	_play_shot_sound()
 	_muzzle_flash(spawn_pos, aim)
 

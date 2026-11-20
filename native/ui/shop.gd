@@ -401,6 +401,9 @@ func _on_buy_weapon() -> void:
 
 func _on_upgrade_weapon(slot: int) -> void:
 	NativeGame.upgrade_weapon(slot)
+	# enemy_controller.gd perioder 1001 — first weapon upgrade pops the
+	# "learn about weapons" topic on the next stage.
+	NativeGame.trigger_help(23, 23)
 
 
 func _on_sell_weapon(slot: int) -> void:

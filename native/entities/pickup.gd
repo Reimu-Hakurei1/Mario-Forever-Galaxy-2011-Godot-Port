@@ -118,9 +118,30 @@ func _physics_process(_delta: float) -> void:
 
 
 func _collect(ship: Node2D = null) -> void:
+	# First-time tutorial popups — the original's G.pierwsze_zdobycie
+	# → G.help pattern (coin_drop/diamond_drop/special_weapon_*).
+	match kind:
+		Kind.COIN:
+			NativeGame.trigger_help(1, 8)
+		Kind.GEM:
+			NativeGame.trigger_help(0, 7)
+		Kind.HEALTH:
+			NativeGame.trigger_help(3, 11)   # special_weapon_1
+		Kind.COOLING:
+			NativeGame.trigger_help(6, 10)   # special_weapon_2
+		Kind.FLOWER:
+			NativeGame.trigger_help(2, 9)    # special_weapon_3
+		Kind.FIRESTAR:
+			NativeGame.trigger_help(5, 13)   # special_weapon_4
+		Kind.BOMBSTAR:
+			NativeGame.trigger_help(4, 12)   # special_weapon_5
+		Kind.LEVELGUN:
+			NativeGame.trigger_help(24, 24)  # level_weapon_1
 	# Special drop — fills the first empty G.specialslot ring slot.
 	# If the ring is full the item salvages for a coin refund.
 	if special_id > 0:
+		# special_weapon_6.gd maps each special to topics 14..22.
+		NativeGame.trigger_help(13 + special_id, 13 + special_id)
 		if NativeGame.add_special(special_id) >= 0:
 			NativeAssets.play_sound(62)
 		else:

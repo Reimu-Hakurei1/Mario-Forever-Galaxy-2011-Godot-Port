@@ -96,6 +96,9 @@ func _ready() -> void:
 		sprite_id = v["sprite"]
 		profile = {"sprite": sprite_id, "scale": v["scale"],
 			"tint": v["tint"]}
+	# fat_boy_boss_2.gd — first FAT_BOY warns about the fat-boy enemies.
+	if variant == "fat_boy":
+		NativeGame.trigger_help(28, 28)
 
 	_anim = AnimatedSprite2D.new()
 	var frames := SpriteFrames.new()

@@ -24,6 +24,8 @@ var _death_pending := false
 var _level_cleared := false
 var _clear_timer := -1.0
 var _pause_label: Label = null
+var _help_label: Label = null
+var _help_topic_shown := -1
 var _last_energy := 100.0
 var _shake := 0.0
 
@@ -48,6 +50,8 @@ func _ready() -> void:
 	add_child(bg)
 
 	NativeGame.reset_run()
+	# enemy_controller.gd perioder code 1002 — the castle intro topic.
+	NativeGame.trigger_help(27, 27)
 	NativeGame.ensure_weapons()
 	NativeGame.castle_key_found = false
 
@@ -64,6 +68,13 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Fire button dismisses the tutorial popup.
+	if event is InputEventKey and event.pressed and not event.echo \
+			and NativeGame.help_topic != 0 \
+			and event.keycode in [KEY_SPACE, KEY_CTRL, KEY_Z, KEY_X, KEY_C]:
+		NativeGame.help_topic = 0
+		_help_topic_shown = -1
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_ESCAPE, KEY_P:
@@ -103,6 +114,11 @@ func _process(delta: float) -> void:
 		position = Vector2(randf_range(-4, 4), randf_range(-4, 4)) * (_shake / 0.25)
 	else:
 		position = Vector2.ZERO
+
+	# G.help tutorial popup — same overlay as the arena.
+	if NativeGame.help_topic != _help_topic_shown:
+		_help_topic_shown = NativeGame.help_topic
+		_refresh_help_label()
 
 	# Death flow.
 	if NativeGame.energy <= 0.0 and not _death_pending and not _level_cleared:
@@ -219,3 +235,27 @@ func _show_banner(text: String) -> void:
 	layer.layer = 20
 	layer.add_child(label)
 	add_child(layer)
+
+
+## G.help popup — identical overlay to the arena's.
+func _refresh_help_label() -> void:
+	if _help_label == null:
+		_help_label = Label.new()
+		_help_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_help_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_help_label.add_theme_font_size_override("font_size", 20)
+		_help_label.add_theme_color_override("font_color", Color(1, 0.95, 0.6))
+		_help_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		_help_label.add_theme_constant_override("outline_size", 6)
+		_help_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+		_help_label.offset_left = -460
+		_help_label.offset_right = 460
+		_help_label.offset_top = -190
+		_help_label.offset_bottom = -60
+		var layer := CanvasLayer.new()
+		layer.layer = 26
+		layer.add_child(_help_label)
+		add_child(layer)
+	var txt := NativeHelpTable.text(NativeGame.help_topic)
+	_help_label.text = txt + "\n\n[SPACE]" if NativeGame.help_topic != 0 else ""
+	_help_label.visible = NativeGame.help_topic != 0

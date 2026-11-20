@@ -26,6 +26,8 @@ static var map_done: Array = []          ## completed "m:n" node keys
 static var map_backdoor: String = ""      ## node we travelled from (G.map_backdoor_lev)
 static var cashsuck_coins: int = 0        ## G.game_overus_cashsuck — coins at stage entry
 static var cashsuck_amount: int = 10      ## G.game_overus_cashsuckamount — hero death-tax msg %
+static var pierwsze_zdobycie: Dictionary = {}  ## G.pierwsze_zdobycie — seen-once help flags
+static var help_topic: int = 0             ## G.help — active tutorial topic (0 = none)
 static var map_transition: int = -1      ## map to advance to (-1 = none)
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
@@ -443,6 +445,7 @@ static func save() -> void:
 	cfg.set_value("profile", "map_done", map_done)
 	cfg.set_value("profile", "map_backdoor", map_backdoor)
 	cfg.set_value("profile", "cashsuck_coins", cashsuck_coins)
+	cfg.set_value("profile", "pierwsze_zdobycie", pierwsze_zdobycie)
 	cfg.set_value("profile", "map_transition", map_transition)
 	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
@@ -500,6 +503,15 @@ static func any_save() -> bool:
 	return false
 
 
+## First-time tutorial trigger — ports the G.pierwsze_zdobycie →
+## G.help pattern: fires the topic only the first time per save.
+static func trigger_help(flag: int, topic: int) -> void:
+	if pierwsze_zdobycie.get(flag, 0) == 0:
+		pierwsze_zdobycie[flag] = 1
+		help_topic = topic
+		save()
+
+
 ## Wipe the profile back to defaults — the title screen's NEW GAME.
 static func reset_profile() -> void:
 	score = 0
@@ -513,6 +525,9 @@ static func reset_profile() -> void:
 	map_done = []
 	map_backdoor = ""
 	map_transition = -1
+	cashsuck_coins = 0
+	pierwsze_zdobycie = {}
+	help_topic = 0
 	upgrade_wing = 0
 	upgrade_boost = 0
 	upgrade_freezer = 0
@@ -553,6 +568,7 @@ static func load_save() -> bool:
 	map_done = cfg.get_value("profile", "map_done", map_done)
 	map_backdoor = str(cfg.get_value("profile", "map_backdoor", map_backdoor))
 	cashsuck_coins = int(cfg.get_value("profile", "cashsuck_coins", cashsuck_coins))
+	pierwsze_zdobycie = cfg.get_value("profile", "pierwsze_zdobycie", pierwsze_zdobycie)
 	map_transition = int(cfg.get_value("profile", "map_transition", map_transition))
 	# Legacy saves only stored a linear level_index — reconstruct an
 	# approximate done-set from the first N stage keys so the graph

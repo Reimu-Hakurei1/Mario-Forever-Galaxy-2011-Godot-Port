@@ -33,6 +33,20 @@ var _boss_spawned := false
 var _respawn_timer := -1.0          # <0 means "ship alive / not pending"
 var _death_pending := false
 var _level_cleared := false
+
+# wave_help_1.gd tutorial — gates wave spawning on level 0 until the
+# player has moved in all four directions and fired.
+var _tut_active := false
+var _tut_waves: Array = []
+var _tut_step := 0
+var _tut_timer := 0.0
+var _tut_dirs := [0, 0, 0, 0]       # up/down/left/right hold frames
+var _tut_fired := 0.0
+var _tut_tip5_shown := false
+
+# G.help tutorial popup — CanvasLayer label refreshed on topic change.
+var _help_label: Label = null
+var _help_topic_shown := -1
 var _clear_timer := -1.0
 var _pause_label: Label = null
 var _last_energy := 100.0
@@ -50,8 +64,14 @@ func _ready() -> void:
 	NativeGame.pending_level = {}
 	var bg_id: int = _level_cfg.get("background", BACKGROUND_ID)
 	var music_track: String = _level_cfg.get("music", MUSIC_TRACK)
-	if not _level_cfg.get("waves", []).is_empty():
-		_spawner.set_waves(_level_cfg["waves"])
+	# wave_help_1.gd — the first stage runs a scripted tutorial before
+	# enemies spawn: welcome → move all directions → shoot → live waves.
+	if NativeGame.active_level == 0:
+		_tut_active = true
+		_tut_waves = _level_cfg.get("waves", [])
+	else:
+		if not _level_cfg.get("waves", []).is_empty():
+			_spawner.set_waves(_level_cfg["waves"])
 	_boss_cfg = _level_cfg.get("boss", {})
 	if bool(_level_cfg.get("training", false)):
 		_show_banner("TRAINING RANGE\nESC TO QUIT")
@@ -89,31 +109,24 @@ func _ready() -> void:
 			add_child(player)
 			player.play()
 
-	# First level gets a controls hint so new players learn the scheme.
-	if NativeGame.active_level == 0:
-		var hint := Label.new()
-		hint.text = "ARROWS — MOVE      SPACE — FIRE      ESC — PAUSE"
-		hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		hint.add_theme_font_size_override("font_size", 18)
-		hint.add_theme_color_override("font_color", Color(1, 1, 1, 0.85))
-		hint.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-		hint.add_theme_constant_override("outline_size", 5)
-		hint.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-		hint.offset_top = -140
-		hint.offset_bottom = -110
-		var hlayer := CanvasLayer.new()
-		hlayer.layer = 24
-		hlayer.add_child(hint)
-		add_child(hlayer)
-		var htw := create_tween()
-		htw.tween_interval(6.0)
-		htw.tween_property(hint, "modulate:a", 0.0, 1.0)
-		htw.tween_callback(hlayer.queue_free)
+	# wave_14_gun_range.gd — first entry into the training range pops
+	# the gun-range help topic after ~3s.
+	if bool(_level_cfg.get("training", false)):
+		get_tree().create_timer(3.3).timeout.connect(func():
+			NativeGame.trigger_help(17, 26))
 
 	_show_level_intro()
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Fire button dismisses the tutorial popup (G.help clears on
+	# buttonfire in the original).
+	if event is InputEventKey and event.pressed and not event.echo \
+			and NativeGame.help_topic != 0 \
+			and event.keycode in [KEY_SPACE, KEY_CTRL, KEY_Z, KEY_X, KEY_C]:
+		NativeGame.help_topic = 0
+		_help_topic_shown = -1
+		return
 	# ESC / P toggles pause — every entity checks NativeGame.paused.
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
@@ -176,13 +189,22 @@ func _process(delta: float) -> void:
 	# original sets g_kiedy_pokona=1000000 — it never clears; leave via ESC.
 	if bool(_level_cfg.get("training", false)):
 		pass
-	elif not _level_cleared and _spawner.is_finished() \
+	elif not _level_cleared and not _tut_active \
+			and _spawner.is_finished() \
 			and get_tree().get_nodes_in_group("enemies").is_empty():
 		if not _boss_cfg.is_empty() and not _boss_spawned:
 			_spawn_boss()
 		elif _boss_cfg.is_empty() or _boss_spawned:
 			_level_cleared = true
 			_on_level_cleared()
+
+	# First-time tutorial popup (G.help) — refresh when the topic
+	# changes; the fire button dismisses it.
+	if NativeGame.help_topic != _help_topic_shown:
+		_help_topic_shown = NativeGame.help_topic
+		_refresh_help_label()
+	if _tut_active and not NativeGame.paused:
+		_tutorial_tick(delta)
 
 	# Respawn flow after death.
 	if _respawn_timer >= 0.0:
@@ -347,3 +369,78 @@ func _show_banner(text: String) -> void:
 	layer.layer = 20
 	layer.add_child(label)
 	add_child(layer)
+
+
+## G.help popup — bottom-center panel with the extracted tutorial
+## text; created lazily, hidden when no topic is active.
+func _refresh_help_label() -> void:
+	if _help_label == null:
+		_help_label = Label.new()
+		_help_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_help_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_help_label.add_theme_font_size_override("font_size", 20)
+		_help_label.add_theme_color_override("font_color", Color(1, 0.95, 0.6))
+		_help_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		_help_label.add_theme_constant_override("outline_size", 6)
+		_help_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+		_help_label.offset_left = -460
+		_help_label.offset_right = 460
+		_help_label.offset_top = -190
+		_help_label.offset_bottom = -60
+		var layer := CanvasLayer.new()
+		layer.layer = 26
+		layer.add_child(_help_label)
+		add_child(layer)
+	var txt := NativeHelpTable.text(NativeGame.help_topic)
+	_help_label.text = txt + "\n\n[SPACE]" if NativeGame.help_topic != 0 else ""
+	_help_label.visible = NativeGame.help_topic != 0
+
+
+## wave_help_1.gd — the scripted first-level tutorial. Timings are the
+## original's frame counts at 60fps (200/180/120/150/180 frames).
+func _tutorial_tick(delta: float) -> void:
+	_tut_timer += delta
+	match _tut_step:
+		0:
+			# ~200f pause, then the welcome topic.
+			if _tut_timer > 200.0 / 60.0:
+				_tut_timer = 0.0
+				_tut_step = 1
+				NativeGame.help_topic = 1
+		1:
+			# Hold each direction ~20 frames (the original adds +4/frame
+			# and wants >80 per direction); 180f fallback shows topic 2.
+			if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W):
+				_tut_dirs[0] += 1
+			if Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
+				_tut_dirs[1] += 1
+			if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
+				_tut_dirs[2] += 1
+			if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+				_tut_dirs[3] += 1
+			if _tut_dirs.all(func(d): return d > 20):
+				_tut_timer = 0.0
+				_tut_step = 2
+				NativeGame.help_topic = 3
+			elif _tut_timer > 180.0 / 60.0 and NativeGame.help_topic != 2:
+				NativeGame.help_topic = 2
+		2:
+			# ~120f beat, then "try to shoot".
+			if _tut_timer > 120.0 / 60.0:
+				_tut_timer = 0.0
+				_tut_step = 3
+				NativeGame.help_topic = 4
+		3:
+			# Fire accumulates +10/frame held; >150 ends the tutorial and
+			# releases the real waves. 180f shows topic 5 once.
+			if Input.is_key_pressed(KEY_SPACE) or Input.is_key_pressed(KEY_CTRL):
+				_tut_fired += 10.0
+			if _tut_fired > 150.0:
+				NativeGame.help_topic = 6
+				_tut_active = false
+				if not _tut_waves.is_empty():
+					_spawner.set_waves(_tut_waves)
+				_tut_waves = []
+			elif _tut_timer > 180.0 / 60.0 and not _tut_tip5_shown:
+				_tut_tip5_shown = true
+				NativeGame.help_topic = 5
