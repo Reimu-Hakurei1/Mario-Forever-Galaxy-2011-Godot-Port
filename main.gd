@@ -19,18 +19,25 @@ func _ready() -> void:
 		var room_name := FileAccess.get_file_as_string(temp_path).strip_edges()
 		DirAccess.remove_absolute(temp_path)
 		if room_name != "":
-			# Load rooms.json to find the room index by name
-			var rooms_text: String = FileAccess.get_file_as_string("res://game/rooms.json")
-			var rooms_data: Dictionary = JSON.parse_string(rooms_text) as Dictionary
-			if not rooms_data.is_empty():
-				var rooms: Dictionary = rooms_data.get("rooms", {})
-				for idx in rooms.keys():
-					var room: Dictionary = rooms[idx]
-					if room.get("name", "") == room_name:
-						R.room_order.clear()
-						R.room_order.append(int(idx))
-						R._load_room(int(idx))
-						break
+			# Defer the room load to after boot completes
+			_load_stage_room.call_deferred(room_name)
+
+
+func _load_stage_room(room_name: String) -> void:
+	# Load rooms.json to find the room index by name
+	var rooms_text: String = FileAccess.get_file_as_string("res://game/rooms.json")
+	var rooms_data: Dictionary = JSON.parse_string(rooms_text) as Dictionary
+	if rooms_data.is_empty():
+		print("StageLaunch: failed to load rooms.json")
+		return
+	var rooms: Dictionary = rooms_data.get("rooms", {})
+	for idx in rooms.keys():
+		var room: Dictionary = rooms[idx]
+		if room.get("name", "") == room_name:
+			R.room_order.clear()
+			R.room_order.append(int(idx))
+			R._load_room(int(idx))
+			break
 
 
 func _process(delta: float) -> void:

@@ -21,5 +21,9 @@ func _launch_room() -> void:
 	if f:
 		f.store_string(room_name)
 		f.close()
-	# Change to the main game scene, which will load the requested room
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	# Wait one frame then change scene to avoid loading issues
+	await get_tree().process_frame
+	var main_scene: PackedScene = load("res://scenes/game.tscn")
+	var instance: Node = main_scene.instantiate()
+	get_tree().root.add_child(instance)
+	queue_free()
