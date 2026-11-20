@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bix7ufihjggjv"
-path="res://.godot/imported/snd_list_od_peach.ogg-b7b822ebb5cd1713339ce36065fc12fb.oggvorbisstr"
+path="res://.godot/imported/snd_letter_from_peach.ogg-c36121dcb6c8c90a02acb7c68321d4e5.oggvorbisstr"
 
 [deps]
 
 source_file="res://sfx/snd_letter_from_peach.ogg"
-dest_files=["res://.godot/imported/snd_list_od_peach.ogg-b7b822ebb5cd1713339ce36065fc12fb.oggvorbisstr"]
+dest_files=["res://.godot/imported/snd_letter_from_peach.ogg-c36121dcb6c8c90a02acb7c68321d4e5.oggvorbisstr"]
 
 [params]
 

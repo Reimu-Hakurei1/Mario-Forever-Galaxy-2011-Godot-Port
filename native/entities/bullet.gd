@@ -140,7 +140,7 @@ func _physics_process(_delta: float) -> void:
 	if homing > 0.0:
 		var target := _nearest_enemy()
 		if target != null:
-			var want := (target.global_position - global_position).angle()
+			var want: float = (target.global_position - global_position).angle()
 			var diff := wrapf(want - velocity.angle(), -PI, PI)
 			var turn := deg_to_rad(homing)
 			velocity = velocity.rotated(clampf(diff, -turn, turn))
@@ -168,11 +168,11 @@ func _physics_process(_delta: float) -> void:
 	# small and few, so the scan is cheap. Castle blocks share the scan —
 	# they're destructible but aren't enemies (no score on break).
 	for group in ["enemies", "blocks"]:
-		for target in get_tree().get_nodes_in_group(group):
+		for target in NativeGame.group_roster(group):
 			if not is_instance_valid(target) \
 					or position.distance_to(target.global_position) >= 34.0:
 				continue
-			var tid := target.get_instance_id()
+			var tid: int = target.get_instance_id()
 			var frame := Engine.get_physics_frames()
 			# Piercing bolts keep flying — a per-target cooldown stops one
 			# enemy eating the whole volley in a single frame.
@@ -331,7 +331,7 @@ func _orbit_shot() -> void:
 ## EXPLOSIVE AMMO — the ISOMATIC CANNON's warhead: on impact it also
 ## damages every other enemy within splash range for half damage.
 func _splash(primary: Node2D) -> void:
-	for enemy in get_tree().get_nodes_in_group("enemies"):
+	for enemy in NativeGame.group_roster("enemies"):
 		if is_instance_valid(enemy) and enemy != primary \
 				and position.distance_to(enemy.global_position) < 70.0:
 			enemy.take_damage(damage * 0.5)
@@ -351,10 +351,10 @@ func _drop_coin() -> void:
 func _nearest_enemy() -> Node2D:
 	var best: Node2D = null
 	var best_d := INF
-	for enemy in get_tree().get_nodes_in_group("enemies"):
+	for enemy in NativeGame.group_roster("enemies"):
 		if not is_instance_valid(enemy):
 			continue
-		var d := global_position.distance_squared_to(enemy.global_position)
+		var d: float = global_position.distance_squared_to(enemy.global_position)
 		if d < best_d:
 			best_d = d
 			best = enemy

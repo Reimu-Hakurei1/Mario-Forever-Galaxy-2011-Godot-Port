@@ -196,7 +196,7 @@ func _process(delta: float) -> void:
 		pass
 	elif not _level_cleared and not _tut_active \
 			and _spawner.is_finished() \
-			and get_tree().get_nodes_in_group("enemies").is_empty():
+			and NativeGame.group_roster("enemies").is_empty():
 		if not _boss_cfg.is_empty() and not _boss_spawned:
 			_spawn_boss()
 		elif _boss_cfg.is_empty() or _boss_spawned:
@@ -270,7 +270,7 @@ func _respawn() -> void:
 	_death_pending = false
 	# script_odnawianie_kumpli — buddies revive with bonus hull when
 	# the player comes back.
-	for buddy in get_tree().get_nodes_in_group("buddies"):
+	for buddy in NativeGame.group_roster("buddies"):
 		if is_instance_valid(buddy):
 			buddy.revive()
 	_ship.visible = true

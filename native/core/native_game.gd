@@ -162,6 +162,33 @@ static func room_size() -> Vector2:
 	return ROOM_SIZE
 
 
+# --- Per-frame group cache -------------------------------------------------
+# get_nodes_in_group()/get_first_node_in_group() walk the whole tree on
+# every call — with hundreds of enemies and bullets each doing several
+# lookups per frame that alone can halve the frame rate. Cache the group
+# rosters once per physics frame and share them.
+static var _group_cache: Dictionary = {}
+static var _group_cache_frame := -1
+
+
+static func group_roster(group_name: String) -> Array:
+	var frame := Engine.get_physics_frames()
+	if frame != _group_cache_frame:
+		_group_cache_frame = frame
+		_group_cache.clear()
+	if not _group_cache.has(group_name):
+		var tree := Engine.get_main_loop() as SceneTree
+		_group_cache[group_name] = tree.get_nodes_in_group(group_name) \
+			if tree != null else []
+	return _group_cache[group_name]
+
+
+## The player ship — cached roster lookup, re-validated cheaply.
+static func player() -> Node2D:
+	var roster := group_roster("player")
+	return roster[0] if not roster.is_empty() else null
+
+
 ## Fallback for entry points that skip hero select (direct scene launches,
 ## headless tests): if every slot is empty, arm the current hero's
 ## starter loadout. Does NOT touch upgrades — only fills empty slots.

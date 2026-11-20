@@ -25,9 +25,16 @@ var _sprite: Sprite2D
 var _sprite_id := SPRITE_ID
 var _dmg := DAMAGE
 
+const MAX_LIVE_BULLETS := 220
+
 
 func _ready() -> void:
 	add_to_group("enemy_bullets")   # CHRONO special clears this group
+	# Bullet-hell stages (boss_8 rings, sweeping volleys) can stack
+	# hundreds of live shots — cap the pool so the frame rate holds.
+	if NativeGame.group_roster("enemy_bullets").size() >= MAX_LIVE_BULLETS:
+		queue_free()
+		return
 	if sprite_id >= 0:
 		_sprite_id = sprite_id
 	if damage > 0.0:
@@ -59,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	# Contact with the ship = damage. The ship's invulnerable flag covers
 	# spawn protection, same as enemy ramming.
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship != null and not ship.invulnerable \
 			and position.distance_to(ship.global_position) < 30.0:
 		NativeGame.damage_player(_dmg)
@@ -68,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 	# Companion buddies soak fire too — the original's bullet mask
 	# includes object 26 (o_kumpel_a).
-	for buddy in get_tree().get_nodes_in_group("buddies"):
+	for buddy in NativeGame.group_roster("buddies"):
 		if is_instance_valid(buddy) and buddy.alive \
 				and position.distance_to(buddy.global_position) < 30.0:
 			buddy.take_damage(_dmg)
@@ -85,7 +92,7 @@ func _physics_process(delta: float) -> void:
 ## Speeds are px/frame like the original; _delta*60 converts to frames.
 func _boss_bullet_tick() -> void:
 	var f := _f
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	match move_kind:
 		"aimed":            # bossbul_3 — speed 6 at player ±10° once
 			if ship != null and velocity == Vector2.ZERO:

@@ -95,7 +95,7 @@ func _physics_process(_delta: float) -> void:
 	_sprite.rotation = sin(_t) * 0.35
 	_sprite.position.y = sin(_t * 1.7) * 3.0
 
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 

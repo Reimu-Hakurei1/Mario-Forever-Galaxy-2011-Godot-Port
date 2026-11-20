@@ -37,6 +37,10 @@ var _pending: Array = []              # waves waiting for their delay
 var _active: Array = []               # wave groups currently spawning
 var _done := false
 
+# Live-enemy ceiling — dense authored schedules plus boss minion swarms
+# can otherwise stack hundreds of entities and tank the frame rate.
+const MAX_LIVE_ENEMIES := 140
+
 
 func _ready() -> void:
 	# Copy the export so runtime state never mutates the inspector value.
@@ -74,13 +78,20 @@ func _physics_process(delta: float) -> void:
 			_spawn_script_boss(b)
 
 	# Tick each active wave: spawn one enemy per interval until count is met.
+	# Cap the live population — original schedules field 100+ enemies and
+	# boss minion swarms stack on top; without a ceiling the per-frame
+	# entity cost tanks the frame rate on dense stages.
+	var live_enemies := NativeGame.group_roster("enemies").size()
 	for wave in _active:
+		if live_enemies >= MAX_LIVE_ENEMIES:
+			continue
 		wave["spawn_timer"] += delta
 		var gap: float = wave.get("interval_s", spawn_interval)
 		while wave["spawned"] < wave["count"] and wave["spawn_timer"] >= gap:
 			wave["spawn_timer"] -= gap
 			wave["spawned"] += 1
 			_spawn_enemy(wave)
+			live_enemies += 1
 
 	_active = _active.filter(func(w): return w["spawned"] < w["count"])
 	if _pending.is_empty() and _active.is_empty():

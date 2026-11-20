@@ -225,7 +225,7 @@ func _respawn() -> void:
 	NativeGame.overheating = 0.0
 	_death_pending = false
 	# script_odnawianie_kumpli — buddies revive with the player.
-	for buddy in get_tree().get_nodes_in_group("buddies"):
+	for buddy in NativeGame.group_roster("buddies"):
 		if is_instance_valid(buddy):
 			buddy.revive()
 	_ship.visible = true

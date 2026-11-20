@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dbh2y5sy7q7an"
-path="res://.godot/imported/snd_fosforus.ogg-c3fb64542b466279d6a9c7dc4fd2f1f8.oggvorbisstr"
+path="res://.godot/imported/snd_phosphorus.ogg-9ad01e8b6504c07c1ff3791997b1e331.oggvorbisstr"
 
 [deps]
 
 source_file="res://sfx/snd_phosphorus.ogg"
-dest_files=["res://.godot/imported/snd_fosforus.ogg-c3fb64542b466279d6a9c7dc4fd2f1f8.oggvorbisstr"]
+dest_files=["res://.godot/imported/snd_phosphorus.ogg-9ad01e8b6504c07c1ff3791997b1e331.oggvorbisstr"]
 
 [params]
 

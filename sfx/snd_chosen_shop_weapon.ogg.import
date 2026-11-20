@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://dqjkc4flnsbbl"
-path="res://.godot/imported/snd_choosed_shop_weapon.ogg-ce049d946ff30eb9362a275512aed570.oggvorbisstr"
+path="res://.godot/imported/snd_chosen_shop_weapon.ogg-bee697bb95f1ab00ebe4d7372016fbe0.oggvorbisstr"
 
 [deps]
 
 source_file="res://sfx/snd_chosen_shop_weapon.ogg"
-dest_files=["res://.godot/imported/snd_choosed_shop_weapon.ogg-ce049d946ff30eb9362a275512aed570.oggvorbisstr"]
+dest_files=["res://.godot/imported/snd_chosen_shop_weapon.ogg-bee697bb95f1ab00ebe4d7372016fbe0.oggvorbisstr"]
 
 [params]
 

@@ -208,6 +208,7 @@ var _smierc_done := [false, false, false]   # boss_2 HP milestone bursts
 var _laser_charge: Array = []               # sprite-109 charge effects
 var hero_name := ""                 # set in _ready for end-talk lines
 var _hp_bar: ProgressBar
+var _body_radius := 85.0          # hull block radius — set from sprite size
 var _dialogue: NativeBossDialogue
 # Clown render stack — boss_N_fight draw events compose sprite 328
 # (hull) over fixed overlays: 332 glow, 329 body, 330 rotor (5 additive
@@ -296,6 +297,15 @@ func _ready() -> void:
 			_laser_charge.append(c)
 	if variant.begins_with("fat_boy"):
 		_build_fatboy_cannons()
+
+	# Hull block radius from the real sprite bounds (0.45 · longest
+	# side · scale, same rule as NativeEnemy) — keeps the ship from
+	# overlapping the boss sprite at any rotation.
+	var hull_tex := NativeAssets.sprite_frame(sprite_id, 0)
+	if hull_tex != null:
+		var hs := hull_tex.get_size()
+		_body_radius = maxf(85.0,
+			maxf(hs.x, hs.y) * 0.45 * float(profile["scale"]))
 
 	_build_hp_bar()
 	_start_intro_speech()
@@ -637,7 +647,7 @@ var _ufo_cracked := false
 var _ufo_init := false
 
 func _ufo_tick() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	# Create event: g_gdzie_jest_gracz = player.x +-60, dodawaczuj =
@@ -707,7 +717,7 @@ var _fb_rakieta := 0.0
 var _fb_podwujne := 0.0
 
 func _fatboy_tick() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	# g_sekwencja: 1-99 count, 100 picks a target, 201 moves.
 	if _fb_seq >= 1 and _fb_seq < 100:
 		_fb_seq += 1
@@ -941,7 +951,7 @@ func _team_tick(cfg: Dictionary) -> void:
 		_kiedy_team += 1.0
 		if _kiedy_team > 400.0:
 			_kiedy_team = -400.0
-			var ship := get_tree().get_first_node_in_group("player")
+			var ship := NativeGame.player()
 			var ring := NativeEnemyRing.new()
 			ring.orbiters_count = 6
 			ring.orbiter_kinds = [NativeEnemy.Kind.GOOMBA,
@@ -1237,16 +1247,17 @@ func _spawn_explosion() -> void:
 
 
 func _check_player_collision() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null or ship.invulnerable:
 		return
 	var to_boss: Vector2 = position - ship.global_position
 	var dist: float = to_boss.length()
-	# Solid body — shove the ship out of the boss hull like castle
-	# blocks do, so the player can't fly through the sprite.
-	const BODY := 85.0
-	if dist < BODY + 18.0 and dist > 0.01:
-		ship.global_position += to_boss.normalized() * (BODY + 18.0 - dist)
+	# Solid body sized from the hull sprite — the fixed 85px radius let
+	# the ship overlap the clown's rotor tips and the fat-boy/flame-can
+	# variant hulls. Same 0.45·longest-side rule as NativeEnemy.
+	var body := _body_radius + 18.0
+	if dist < body and dist > 0.01:
+		ship.global_position += to_boss.normalized() * (body - dist)
 		# fat_boy_boss contact is a kill move — it hauls the ship in and
 		# burns 500 hull (g_energia -= 500).
 		if variant.begins_with("fat_boy"):
@@ -1269,7 +1280,7 @@ func _build_hp_bar() -> void:
 	_hp_bar = ProgressBar.new()
 	_hp_bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	_hp_bar.offset_left = 312.0
-	_hp_bar.offset_right = 712.0
+	_hp_bar.offset_right = -312.0
 	_hp_bar.offset_top = 12.0
 	_hp_bar.offset_bottom = 30.0
 	_hp_bar.max_value = max_health
@@ -1292,7 +1303,7 @@ func _build_hp_bar() -> void:
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	name_label.offset_left = 312.0
-	name_label.offset_right = 712.0
+	name_label.offset_right = -312.0
 	name_label.offset_top = -2.0
 	name_label.offset_bottom = 16.0
 	name_label.add_theme_font_size_override("font_size", 16)

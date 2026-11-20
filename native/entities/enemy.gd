@@ -282,7 +282,7 @@ func _ready() -> void:
 	var texs := NativeAssets.sprite_frames(_sprite_id)
 	if not texs.is_empty():
 		var ts := texs[0].get_size()
-		_hit_radius = maxf(18.0, minf(ts.x, ts.y) * 0.45 * _scale_factor)
+		_hit_radius = maxf(18.0, maxf(ts.x, ts.y) * 0.45 * _scale_factor)
 	if _scale_factor != 1.0:
 		_anim.scale = Vector2(_scale_factor, _scale_factor)
 	if _tint != Color.WHITE:
@@ -485,7 +485,7 @@ func _behave_shooter() -> void:
 	_sway_and_track()
 	# Eye turrets slowly rotate to face the player — reads as tracking.
 	if kind == Kind.EYE or kind == Kind.EYE2:
-		var ship := get_tree().get_first_node_in_group("player")
+		var ship := NativeGame.player()
 		if ship != null:
 			_anim.rotation = (ship.global_position - position).angle()
 	_tick_shooter()
@@ -496,13 +496,13 @@ func _tick_shooter() -> void:
 	# Burst enemies fire `burst` shots `spread` apart on each trigger.
 	if _burst_left > 0:
 		_burst_left -= 1
-		var ship := get_tree().get_first_node_in_group("player")
+		var ship := NativeGame.player()
 		if ship != null:
 			_fire_volley(ship.global_position)
 		return
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if _shoot_timer <= 0.0 and ship != null:
-		var dist := position.distance_to(ship.global_position)
+		var dist: float = position.distance_to(ship.global_position)
 		if dist < shoot_range:
 			_fire_volley(ship.global_position)
 			_burst_left = burst - 1
@@ -526,7 +526,7 @@ func _behave_skyeye() -> void:
 	_sway_and_track()
 	_ensure_eye_lines()
 
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	_eye_timer -= 1.0
 	match _eye_state:
 		0:  # AIM — reticle chases the ship
@@ -589,7 +589,7 @@ static func _point_segment_distance(p: Vector2, a: Vector2, b: Vector2) -> float
 ##   FLAME_CANNON — a 10-shot flame burst (one per 4f, ±5° spread)
 ##   ROTARY       — 4 shots at 90° apart, then the barrel spins 4.5°/frame
 func _behave_cannon() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	# Barrel slews toward the ship — the original turns at 0.5°/frame.
 	if ship != null:
 		var to_ship: Vector2 = ship.global_position - position
@@ -674,7 +674,7 @@ func _behave_flame() -> void:
 				position += to.normalized() * 1.5
 				_anim.rotation = to.angle() * 0.08   # slight tilt into drift
 		1:  # CHARGE — track the ship, then lock the jet direction
-			var ship := get_tree().get_first_node_in_group("player")
+			var ship := NativeGame.player()
 			if ship != null:
 				var to_ship: Vector2 = ship.global_position - position
 				_anim.rotation = to_ship.angle() * 0.12
@@ -688,7 +688,7 @@ func _behave_flame() -> void:
 				_anim.rotation = _flame_dir.angle()
 		2:  # JET — volley of aimed o_bullet_flamecans (obj 250) shots,
 			# one every 10f like the original's strzelacz cadence.
-			var ship := get_tree().get_first_node_in_group("player")
+			var ship := NativeGame.player()
 			if ship != null and int(_flame_timer) % 10 == 0:
 				var base: float = (ship.global_position - position).angle()
 				var shot := NativeEnemyBullet.new()
@@ -734,7 +734,7 @@ func _behave_bonus() -> void:
 
 ## Relentless dive — beelines for the player the whole time.
 func _behave_kamikaze() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	var to_player: Vector2 = ship.global_position - position
@@ -767,7 +767,7 @@ func _sway_and_track() -> void:
 
 
 func _chase_player() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	var to_player: Vector2 = ship.global_position - position
@@ -778,7 +778,7 @@ func _chase_player() -> void:
 
 ## Tanks move like chasers but at a third of the speed.
 func _chase_player_slow() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	var to_player: Vector2 = ship.global_position - position
@@ -941,7 +941,7 @@ func _cull_offscreen() -> void:
 ## the player is pushed away from the enemy along the contact direction:
 ## enemy on the left shoves the ship right, enemy above drops it down, etc.
 func _check_player_collision() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	var to_enemy: Vector2 = position - ship.global_position

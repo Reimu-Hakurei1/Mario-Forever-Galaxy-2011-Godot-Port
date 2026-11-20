@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ccl2t5cetg3cm"
-path="res://.godot/imported/snd_apporach_1.wav-1e0ee3b89ce3c37ef14e1713a30ce0b5.sample"
+path="res://.godot/imported/snd_approach_1.wav-2b372210783860d54e57520a8c48457c.sample"
 
 [deps]
 
 source_file="res://sfx/snd_approach_1.wav"
-dest_files=["res://.godot/imported/snd_apporach_1.wav-1e0ee3b89ce3c37ef14e1713a30ce0b5.sample"]
+dest_files=["res://.godot/imported/snd_approach_1.wav-2b372210783860d54e57520a8c48457c.sample"]
 
 [params]
 

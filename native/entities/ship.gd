@@ -672,7 +672,7 @@ func _use_special(id: int) -> void:
 	match id:
 		2:  # NOVA BLAST — seq 22000: obj 218 (o_kaboom, sprite 236)
 			# grows over the ship while the blast damages everything
-			for enemy in get_tree().get_nodes_in_group("enemies"):
+			for enemy in NativeGame.group_roster("enemies"):
 				if is_instance_valid(enemy):
 					enemy.take_damage(item["damage"])
 			_flash_special_fx(480)
@@ -682,7 +682,7 @@ func _use_special(id: int) -> void:
 			kaboom.global_position = global_position
 			get_parent().add_child(kaboom)
 		4:  # NOVA RING — seq 1: damage nova around the ship
-			for enemy in get_tree().get_nodes_in_group("enemies"):
+			for enemy in NativeGame.group_roster("enemies"):
 				if is_instance_valid(enemy) \
 						and global_position.distance_to(enemy.global_position) < 320.0:
 					enemy.take_damage(item["damage"])
@@ -704,7 +704,7 @@ func _use_special(id: int) -> void:
 					bolt.weave_speed = 0.15
 		9:  # CHRONO — seq 100000 zwolnij_gre: bullet-time slow-mo
 			# (~3s at 35% speed) after clearing enemy fire.
-			for bullet in get_tree().get_nodes_in_group("enemy_bullets"):
+			for bullet in NativeGame.group_roster("enemy_bullets"):
 				if is_instance_valid(bullet):
 					bullet.queue_free()
 			_slowmo_until = Time.get_ticks_msec() + 3000
@@ -759,10 +759,10 @@ func _special_bolt_ret(dir: Vector2, dmg: float, pierce: bool,
 func _nearest_enemy() -> Node2D:
 	var best: Node2D = null
 	var best_d := INF
-	for enemy in get_tree().get_nodes_in_group("enemies"):
+	for enemy in NativeGame.group_roster("enemies"):
 		if not is_instance_valid(enemy):
 			continue
-		var d := global_position.distance_squared_to(enemy.global_position)
+		var d: float = global_position.distance_squared_to(enemy.global_position)
 		if d < best_d:
 			best_d = d
 			best = enemy
@@ -809,10 +809,10 @@ func _tick_balls() -> void:
 		ball.global_position = global_position + Vector2.RIGHT.rotated(ang) * BALL_RADIUS
 		# Contact damage — same group scan the bullets use.
 		var hits: Dictionary = _ball_hits.get(i, {})
-		for enemy in get_tree().get_nodes_in_group("enemies"):
+		for enemy in NativeGame.group_roster("enemies"):
 			if not is_instance_valid(enemy):
 				continue
-			var eid := enemy.get_instance_id()
+			var eid: int = enemy.get_instance_id()
 			if frame - int(hits.get(eid, -9999)) < BALL_HIT_COOLDOWN:
 				continue
 			if ball.global_position.distance_to(enemy.global_position) < 26.0:

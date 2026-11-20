@@ -42,7 +42,7 @@ var _dead := false
 ## Aimed volley from the ring's center — the team fighters' bullet
 ## patterns in the original are straight shots at the player.
 func _fire_volley() -> void:
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null:
 		return
 	var base_angle: float = (ship.global_position - global_position).angle()
@@ -82,7 +82,7 @@ func _physics_process(_delta: float) -> void:
 	if drift != Vector2.ZERO:
 		position += drift * _delta * 60.0
 	else:
-		var ship0 := get_tree().get_first_node_in_group("player")
+		var ship0 := NativeGame.player()
 		if ship0 != null:
 			var to_player: Vector2 = ship0.global_position - position
 			if glue_to_player:

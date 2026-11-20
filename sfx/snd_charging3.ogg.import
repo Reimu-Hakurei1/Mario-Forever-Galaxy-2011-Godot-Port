@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://ynwhs1wutd03"
-path="res://.godot/imported/snd_ladowanie3.ogg-96889edb28c148a6220ac39ed0740873.oggvorbisstr"
+path="res://.godot/imported/snd_charging3.ogg-dd9b4fa79e3b27fad445c100abfb636e.oggvorbisstr"
 
 [deps]
 
 source_file="res://sfx/snd_charging3.ogg"
-dest_files=["res://.godot/imported/snd_ladowanie3.ogg-96889edb28c148a6220ac39ed0740873.oggvorbisstr"]
+dest_files=["res://.godot/imported/snd_charging3.ogg-dd9b4fa79e3b27fad445c100abfb636e.oggvorbisstr"]
 
 [params]
 

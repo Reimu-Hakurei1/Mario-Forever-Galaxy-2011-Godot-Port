@@ -39,7 +39,7 @@ func _ready() -> void:
 	add_to_group("buddies")
 	_sprite = Sprite2D.new()
 	add_child(_sprite)
-	_ship = get_tree().get_first_node_in_group("player")
+	_ship = NativeGame.player()
 	_sync_tier()
 
 
@@ -49,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 	# Re-read the purchased tier every frame — shop upgrades apply live.
 	_sync_tier()
 	if _ship == null or not is_instance_valid(_ship):
-		_ship = get_tree().get_first_node_in_group("player")
+		_ship = NativeGame.player()
 		if _ship == null:
 			return
 

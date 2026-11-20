@@ -55,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 	# World scroll — everything in a castle stage drifts downward.
 	position.y += SCROLL_SPEED
 
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship == null or not is_instance_valid(ship):
 		return
 	var to_ship: Vector2 = ship.global_position - global_position

@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	position.y += SCROLL_SPEED
 	_sprite.rotation = sin(_t) * 0.25
 
-	var ship := get_tree().get_first_node_in_group("player")
+	var ship := NativeGame.player()
 	if ship != null and is_instance_valid(ship) \
 			and position.distance_to(ship.global_position) < 34.0:
 		# Key reached — level complete. The arena listens for this.
