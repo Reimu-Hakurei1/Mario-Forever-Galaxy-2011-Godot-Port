@@ -300,7 +300,8 @@ static func boot(scene_root: Node2D) -> void:
 	bg_front.front = true
 	bg_front.z_index = 4095
 	root.add_child(bg_front)
-	if room_order.size() > 0:
+	# If a stage room override is pending, skip the default first_room load
+	if pending_stage_room == "" and room_order.size() > 0:
 		_load_room(int(room_order[0]))
 	print("BOOT first_room=%dms total=%dms" % [Time.get_ticks_msec() - _bt2, Time.get_ticks_msec() - _bt])
 
@@ -2573,6 +2574,7 @@ static func set_room_speed(v: float) -> Variant:
 
 static var trace_room_goto: bool = false
 static var debug_draw: bool = false
+static var pending_stage_room: String = ""
 
 
 static func room_goto(S, target: Variant) -> Variant:

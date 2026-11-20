@@ -12,15 +12,14 @@ func _ready() -> void:
 		if a.begins_with("--savedir="):
 			_savedir = a.substr(10).replace("\\", "/")
 			DirAccess.make_dir_recursive_absolute(_savedir)
+	# Boot the runtime - it will check pending_stage_room internally
 	R.boot(self)
-	# Check for stage_launch temp file to override the first room
-	var temp_path := "user://stage_launch_room.txt"
-	if FileAccess.file_exists(temp_path):
-		var room_name := FileAccess.get_file_as_string(temp_path).strip_edges()
-		DirAccess.remove_absolute(temp_path)
-		if room_name != "":
-			# Defer the room load to after boot completes
-			_load_stage_room.call_deferred(room_name)
+	# If a stage room was requested, load it after boot
+	# R.boot does NOT clear pending_stage_room, so we check it here
+	if R.pending_stage_room != "":
+		var room_name := R.pending_stage_room
+		R.pending_stage_room = ""
+		_load_stage_room.call_deferred(room_name)
 
 
 func _load_stage_room(room_name: String) -> void:

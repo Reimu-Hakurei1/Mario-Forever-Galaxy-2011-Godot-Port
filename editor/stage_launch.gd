@@ -15,13 +15,9 @@ func _launch_room() -> void:
 	var room_name: String = get_meta("gm_room", "")
 	if room_name == "":
 		return
-	# Write the target room to a temp file; main.gd will read it on boot
-	var temp_path := "user://stage_launch_room.txt"
-	var f := FileAccess.open(temp_path, FileAccess.WRITE)
-	if f:
-		f.store_string(room_name)
-		f.close()
-	# Wait one frame then change scene to avoid loading issues
+	# Set a global override for the room name before booting the main scene
+	R.pending_stage_room = room_name
+	# Wait one frame then instantiate the main game scene
 	await get_tree().process_frame
 	var main_scene: PackedScene = load("res://scenes/game.tscn")
 	var instance: Node = main_scene.instantiate()
