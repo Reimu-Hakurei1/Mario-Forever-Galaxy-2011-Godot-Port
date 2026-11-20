@@ -51,7 +51,7 @@ var _clear_timer := -1.0
 var _pause_label: Label = null
 var _last_energy := 100.0
 var _shake := 0.0                   # screenshake timer after hull hits
-var _stars: Sprite2D = null         # parallax starfield layer
+var _stars: Sprite2D = null         # unused — kept for save compat
 
 # Two-plane background state — wave scripts switch scenarios mid-level
 # (g_ktora_sceneria); _bg_timer drives the original's ~1.6s crossfade.
@@ -119,14 +119,6 @@ func _ready() -> void:
 			_bg_overlay = bg2
 			_bg_ids[1] = bg2_id
 			add_child(bg2)
-
-	# Parallax starfield — a generated dot texture drifting behind the
-	# level art so the arena feels like it's moving through space.
-	_stars = Sprite2D.new()
-	_stars.texture = _make_starfield_texture()
-	_stars.centered = false
-	_stars.z_index = -99
-	add_child(_stars)
 
 	# Run state resets each time a level scene starts.
 	NativeGame.reset_run()
@@ -209,12 +201,6 @@ func _process(delta: float) -> void:
 		if _bg_timer >= FADE_OUT + FADE_IN:
 			_bg_timer = -1.0
 			_set_bg_alpha(1.0)
-
-	# Parallax drift — stars slide left and wrap; frozen while paused.
-	if _stars != null and not NativeGame.paused:
-		_stars.position.x -= delta * 12.0
-		if _stars.position.x <= -1024.0:
-			_stars.position.x += 1024.0
 
 	# Screenshake — a sharp jolt whenever hull energy drops.
 	if NativeGame.energy < _last_energy - 0.01:
@@ -400,20 +386,6 @@ func _show_level_intro() -> void:
 	tw.tween_interval(2.2)
 	tw.tween_property(label, "modulate:a", 0.0, 0.8)
 	tw.tween_callback(layer.queue_free)
-
-
-## 2048x768 starfield — the right half duplicates the left so the
-## parallax wrap at -1024 is seamless (same stars re-enter).
-static func _make_starfield_texture() -> Texture2D:
-	var img := Image.create(2048, 768, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0, 0, 0, 0))
-	for i in 160:
-		var x := randi() % 1024
-		var y := randi() % 768
-		var c := Color(1, 1, 1, 0.2 + randf() * 0.55)
-		img.set_pixel(x, y, c)
-		img.set_pixel(x + 1024, y, c)   # mirrored tile for seamless wrap
-	return ImageTexture.create_from_image(img)
 
 
 ## Wave-script scenario switch — queues a crossfade to the new
