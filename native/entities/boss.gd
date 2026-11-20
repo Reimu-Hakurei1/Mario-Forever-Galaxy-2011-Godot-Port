@@ -97,11 +97,20 @@ const FIGHT_CFG := [
 const ORIG_MAX_HP := [1000.0, 15000.0, 1000.0, 1500.0, 3500.0,
 	15000.0, 35000.0, 50000.0]
 ## 12 launch offsets from the boss_N_fight missile block (obj 49).
-const MISSILE_OFFSETS := [
-	Vector2(-69, -115), Vector2(50, -115), Vector2(-101, -115),
-	Vector2(18, -115), Vector2(-37, -147), Vector2(82, -147),
-	Vector2(-101, -115), Vector2(18, -115), Vector2(50, -115),
-	Vector2(-37, -147), Vector2(82, -147), Vector2(50, -147)]
+## boss_N_fight missile swarm (obj 49 = enemy_9) — volley size/positions
+## scale with g_etap, the stage's slot in the map perioder schedule
+## (<10 early, 10-19 mid, >=20 late game).
+const MISSILE_VOLLEYS := [
+	[Vector2(-69, -115), Vector2(50, -115)],
+	[Vector2(-101, -115), Vector2(18, -115), Vector2(-37, -147),
+		Vector2(82, -147)],
+	[Vector2(-101, -115), Vector2(18, -115), Vector2(50, -115),
+		Vector2(-37, -147), Vector2(82, -147), Vector2(50, -147)]]
+## boss_2 g_smierc milestone thresholds as fractions of its 15000 HP —
+## each crossing sheds a wing burst and awards +1000 score.
+const SMIERC_FRACS := [0.5333, 0.2667, 0.0667]
+const SMIERC_OFFSETS := [Vector2(122, 0), Vector2(-122, 0),
+	Vector2(50, -50), Vector2(-50, -50), Vector2(50, 40), Vector2(-50, 40)]
 
 # Alternate boss encounters from objects/bosses/ — the original fields
 # ufo_mega / fat_boy_boss / flame_cans_boss in specific stages instead
@@ -158,6 +167,8 @@ var _ilosc_rakiet := 0
 var _strzelaj_rakiet := 0.0
 var _gigarandom := 0.0
 var _rakietnice := 0.0
+var _smierc_done := [false, false, false]   # boss_2 HP milestone bursts
+var _laser_charge: Array = []               # sprite-109 charge effects
 var hero_name := ""                 # set in _ready for end-talk lines
 var _hp_bar: ProgressBar
 var _dialogue: NativeBossDialogue
@@ -228,6 +239,14 @@ func _ready() -> void:
 		_build_clown_layers()
 	else:
 		add_child(_anim)
+
+	# boss_2 laser charge effects (o_bosefe, sprite 109) — parked at the
+	# wingtips, revealed during the g_laser 800-1000 charge window.
+	if FIGHT_CFG[mini(tier, FIGHT_CFG.size() - 1)].get("laser", false):
+		for ox in [-122.0, 122.0]:
+			var c := _sprite_layer(self, 109, Vector2(ox, 32), true)
+			c.visible = false
+			_laser_charge.append(c)
 
 	_build_hp_bar()
 	_start_intro_speech()
@@ -669,19 +688,24 @@ func _spawn_team_squad() -> void:
 
 
 func _extras_tick(cfg: Dictionary) -> void:
-	# boss_2 wing lasers — g_laser counts while energia>8000; past
-	# 1000 it vents twin bolts (obj 112) from the wingtips.
+	# boss_2 wing lasers — g_laser only counts while energia>8000
+	# (frac > 8000/15000); frames 800-1000 show the sprite-109 charge
+	# effects at the wingtips, past 1000 it vents twin sprite-108 bolts.
 	if cfg.get("laser", false):
-		if health / max_health > 0.53:
+		var laser_on := health / max_health > 8000.0 / 15000.0
+		if laser_on:
 			_laser_t += 1.0
-			if _laser_t > 1000.0:
-				_laser_t = 0.0
-				for ox in [-122.0, 122.0]:
-					var b := NativeEnemyBullet.new()
-					b.sprite_id = 108
-					b.global_position = position + Vector2(ox, 0)
-					b.velocity = Vector2.DOWN * 6.0
-					get_parent().add_child(b)
+		for c in _laser_charge:
+			c.visible = laser_on and _laser_t > 800.0 \
+				and _laser_t < 1000.0
+		if laser_on and _laser_t > 1000.0:
+			_laser_t = 0.0
+			for ox in [-122.0, 122.0]:
+				var b := NativeEnemyBullet.new()
+				b.sprite_id = 108
+				b.global_position = position + Vector2(ox, 0)
+				b.velocity = Vector2.DOWN * 6.0
+				get_parent().add_child(b)
 	# boss_2 bonus drops — g_ulatwiacz>400 releases a pickup up top.
 	if cfg.get("bonus", false):
 		_ulatwiacz += 1.0
@@ -692,21 +716,53 @@ func _extras_tick(cfg: Dictionary) -> void:
 			p.tier = 3
 			p.global_position = Vector2(randf_range(16, 666), -64)
 			get_parent().add_child(p)
-	# Missile swarm — obj 49 launches while energia>4000 (only the
-	# last three original bosses qualify) and seq<=9.
+	# boss_2 g_smierc milestones — crossing 8000/4000/1000 HP sheds an
+	# explosion + 30 flash particles (obj 15/35) at the wing hardpoints
+	# and awards +1000 score each.
+	if tier == 1:
+		var frac := health / max_health
+		for i in SMIERC_FRACS.size():
+			if not _smierc_done[i] and frac <= SMIERC_FRACS[i]:
+				_smierc_done[i] = true
+				NativeGame.add_score(1000)
+				for j in 2:
+					var off: Vector2 = SMIERC_OFFSETS[i * 2 + j]
+					var at := position + off
+					var burst := NativeExplosion.new()
+					burst.variant = "burst"
+					burst.global_position = at
+					get_parent().add_child(burst)
+					for k in 15:
+						var spark := NativeExplosion.new()
+						spark.variant = "spark"
+						spark.global_position = at + Vector2(
+							randf_range(-20, 20),
+							randf_range(-20, 20))
+						get_parent().add_child(spark)
+	# Missile swarm — obj 49 launches while energia>4000 (only bosses
+	# whose HP cap exceeds 4000 qualify) and seq<=9; volley size and
+	# spread follow g_etap (the stage's perioder slot on the map).
 	var orig_max: float = ORIG_MAX_HP[mini(tier, 7)]
 	if orig_max > 4000.0 and health / max_health > 4000.0 / orig_max \
 			and _seq <= 9:
 		_rakiety += 1.0
 		if _rakiety > 500.0:
 			_rakiety = 0.0
-			var pairs: int = [2, 4, 6][_fight_phase()]
-			for i in mini(pairs * 2, MISSILE_OFFSETS.size()):
+			var volley: Array = MISSILE_VOLLEYS[_etap()]
+			for off in volley:
 				var m := NativeEnemy.new()
 				m.kind = NativeEnemy.Kind.RUNNER
-				m.health = 8.0
-				m.global_position = position + MISSILE_OFFSETS[i]
+				m.health = 10.0
+				m.global_position = position + off
 				get_parent().add_child(m)
+
+
+## g_etap — the stage's index within its map region ("m:n" node key).
+func _etap() -> int:
+	if NativeGame.active_node == "":
+		return 0
+	var parts := NativeGame.active_node.split(":")
+	return int(parts[1]) if parts.size() > 1 else 0
 
 
 ## boss_8 "dodatkowy" additions — objects 509/510/512/513 are enemy
@@ -758,8 +814,14 @@ func die() -> void:
 	_dead = true
 	phase = Phase.DYING
 	NativeGame.kill_enemy()
-	# boss_8_fight.gd awards +100000 score (g_naliczator) on the kill.
-	NativeGame.add_score(5000 + tier * 1000 + (100000 if tier == 7 else 0))
+	# Kill score — every boss_N_fight awards g_naliczator += 100000,
+	# except boss_2 which pays 1000 * g_boss_strenght and then raises
+	# the multiplier by 3 (rematch scaling, reset per run).
+	if tier == 1:
+		NativeGame.add_score(1000 * NativeGame.boss_strenght)
+		NativeGame.boss_strenght += 3
+	else:
+		NativeGame.add_score(100000)
 	NativeGame.coins += 20 + tier * 5
 	_spawn_explosion()
 	# Post-fight villain line (o_boss_*_end_talk) plays while the

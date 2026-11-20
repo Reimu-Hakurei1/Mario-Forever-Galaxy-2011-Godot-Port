@@ -145,6 +145,7 @@ static var castle_key_found: bool = false  ## castle stage: key touched
 static var enemies_killed: int = 0
 static var enemies_missed: int = 0
 static var kill_streak: int = 0          ## consecutive kills within the window
+static var boss_strenght: int = 3        ## G.boss_strenght — boss_2 kill-score ramp
 static var streak_expiry: int = 0        ## msec timestamp when the streak dies
 
 # Overheat ceiling from the original: 500 base + 500 per freezer upgrade.
@@ -187,6 +188,7 @@ static func reset_run() -> void:
 	kill_streak = 0
 	enemies_killed = 0
 	enemies_missed = 0
+	boss_strenght = 3
 
 
 static func overheat_max() -> float:
