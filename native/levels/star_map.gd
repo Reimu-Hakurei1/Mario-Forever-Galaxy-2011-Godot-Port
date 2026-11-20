@@ -178,7 +178,9 @@ var _node_rank: Dictionary = {}    # "m:n" -> playable level index
 var _node_pos: Dictionary = {}     # "m:n" -> world-space base center
 var _orbit_nodes: Array = []       # [{key, base, btn|dot}] — 20px orbit
 var _lanes: Array = []             # [{line, a, b}] orbiting flight lanes
-var _promien := 0.0                # shared orbit phase (g_promien += 0.05/f)
+var _promien := 0.0                # orbit clock — each node adds its own
+								   # g_promien phase offset (random 0-3 init)
+var _phase_off := {}               # node key -> orbit phase offset
 var _node_btns: Dictionary = {}    # "m:n" -> node Button
 var _map_meta: Dictionary = {}     # "m:n" -> {name, map_nextlev, ...}
 
@@ -256,6 +258,10 @@ func _build_grid() -> void:
 				_node_pos[key] = pos
 				_orbit_nodes.append({"key": key, "base": pos, "dot": dot})
 	_draw_flight_lanes()
+	# Each map_level object seeds g_promien = random(0,3) — nodes orbit
+	# desynchronized, not in lockstep.
+	for n in _orbit_nodes:
+		_phase_off[n["key"]] = randf() * 3.0
 	_build_ship_cursor()
 	if count > 0:
 		_build_map_decor()
@@ -396,15 +402,34 @@ func _current_done() -> bool:
 		or NativeLevelTable.node_precompleted(cur)
 
 
-func _node_selectable(key: String) -> bool:
-	var clickable := NativeLevelTable.is_stage_node(key) or _is_waypoint(key)
-	if not clickable:
-		return false
+## Travel targets — lane neighbours of the completed current node
+## (the original's map_nextlev/map_prevlev hover+click travel).
+func _node_travelable(key: String) -> bool:
 	if key == NativeGame.map_current:
-		return true
-	if not _current_done():
+		return false
+	var clickable := NativeLevelTable.is_stage_node(key) or _is_waypoint(key)
+	if not clickable or not _current_done():
 		return false
 	return NativeLevelTable.node_neighbors(NativeGame.map_current).has(key)
+
+
+## Launch targets — only the parked node itself. The original's engage
+## ring fires on the current node: incomplete stages launch their
+## room, minigame nodes (shop/card/gun range) stay replayable, and
+## cleared normal stages lock (complev=1 blocks re-entry).
+func _node_launchable(key: String) -> bool:
+	if key != NativeGame.map_current \
+			or not NativeLevelTable.is_stage_node(key):
+		return false
+	if not _node_cleared(key):
+		return true
+	var mode := str(NativeLevelTable.config_for_key(key).get("mode", ""))
+	return mode == "minigame" \
+		or bool(NativeLevelTable.config_for_key(key).get("training", false))
+
+
+func _node_selectable(key: String) -> bool:
+	return _node_travelable(key) or _node_launchable(key)
 
 
 ## Node was cleared — stage nodes live in map_done; waypoint/special
@@ -473,22 +498,32 @@ func _make_node(key: String, rank: int, w: int, l: int) -> Button:
 
 
 func _on_node_pressed(key: String) -> void:
-	if not _node_selectable(key):
-		return
-	# G.map_backdoor_lev — remember where we flew from so the return
-	# lane stays identifiable (persisted in the save file).
+	# Two-step like the original: clicking a lane neighbour only TRAVELS
+	# (map_backdoor_lev = where we left, camera pans, ship flies over);
+	# clicking the parked node itself launches its stage/minigame.
 	if key != NativeGame.map_current:
+		if not _node_travelable(key):
+			return
+		# G.map_backdoor_lev — remember where we flew from so the return
+		# lane stays identifiable (persisted in the save file).
 		NativeGame.map_backdoor = NativeGame.map_current
-	var rank := NativeLevelTable.node_rank(key)
-	if rank < 0:
-		# Waypoint — fly the cursor there; lanes beyond it open up.
 		NativeGame.map_current = key
 		NativeGame.save()
 		_fly_cursor_to(key)
 		return
+	if not _node_launchable(key):
+		return
+	_launch_current()
+
+
+## Enter the stage/minigame hosted by the parked node.
+func _launch_current() -> void:
+	var key := NativeGame.map_current
+	var rank := NativeLevelTable.node_rank(key)
+	if rank < 0:
+		return
 	NativeGame.active_level = rank
 	NativeGame.active_node = key
-	NativeGame.map_current = key
 	NativeGame.pending_level = NativeLevelTable.config_for_key(key)
 	# G.game_overus_cashsuck — the original snapshots coins on every
 	# normal stage entry (map_minigame==0 branch); dying later keeps
@@ -508,24 +543,67 @@ func _on_node_pressed(key: String) -> void:
 ## (20·sin(promien/5), 20·cos(promien)) each frame (part_7 map draw).
 func _orbit_pos(key: String) -> Vector2:
 	var base: Vector2 = _node_pos.get(key, Vector2.ZERO)
-	return base + Vector2(sin(_promien / 5.0) * 20.0,
-		cos(_promien) * 20.0)
+	var ph: float = _promien + float(_phase_off.get(key, 0.0))
+	return base + Vector2(sin(ph / 5.0) * 20.0,
+		cos(ph) * 20.0)
 
+
+## Node-to-node flight — ports o_nextmap_player's g_ixor/g_iyor model:
+## per-axis acceleration 0.1px/frame² (≈360px/s²), speed cap 20px/frame
+## (1200px/s), banking roll from horizontal velocity. Waypoint hops and
+## stage launches share the same flight; `then` runs on arrival.
+var _flight_key := ""
+var _flight_vel := Vector2.ZERO
+var _flight_then := Callable()
 
 func _fly_cursor_to(key: String, then: Callable = Callable()) -> void:
-	var target: Vector2 = _orbit_pos(key)
-	_cursor_base_y = target.y
 	if _ship_cursor == null:
 		if then.is_valid():
 			then.call()
 		return
+	_flight_key = key
+	_flight_vel = Vector2.ZERO
+	_flight_then = then
 	if _cam_tween != null and _cam_tween.is_running():
 		_cam_tween.kill()
-	_cam_tween = create_tween()
-	_cam_tween.tween_property(_ship_cursor, "position", target, 0.45) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	if then.is_valid():
-		_cam_tween.tween_callback(then)
+
+
+func _flight_tick(delta: float) -> void:
+	if _ship_cursor == null or _flight_key == "":
+		return
+	var target: Vector2 = _orbit_pos(_flight_key)
+	var p: Vector2 = _ship_cursor.position
+	const ACCEL := 360.0      # 0.1 px/frame² at 60fps
+	const MAXV := 1200.0      # 20 px/frame at 60fps
+	_flight_vel.x = _approach_axis(p.x, target.x, _flight_vel.x,
+		ACCEL, MAXV, delta)
+	_flight_vel.y = _approach_axis(p.y, target.y, _flight_vel.y,
+		ACCEL, MAXV, delta)
+	p += _flight_vel * delta
+	_ship_cursor.position = p
+	# Banking — the ship rolls into horizontal velocity (g_directional
+	# += ixor/10 in the original), levelling out on arrival.
+	var target_rot := clampf(_flight_vel.x / MAXV, -1.0, 1.0) * 0.45
+	_ship_cursor.rotation = lerpf(_ship_cursor.rotation, target_rot, 0.18)
+	if p.distance_to(target) < 6.0 \
+			or (_flight_vel.length() < 40.0 and p.distance_to(target) < 40.0):
+		_ship_cursor.position = target
+		_flight_key = ""
+		_flight_vel = Vector2.ZERO
+		_return_camera()
+		if _flight_then.is_valid():
+			var cb := _flight_then
+			_flight_then = Callable()
+			cb.call()
+
+
+func _approach_axis(pos: float, target: float, vel: float,
+		accel: float, maxv: float, delta: float) -> float:
+	if pos > target:
+		return maxf(vel - accel * delta, -maxv)
+	if pos < target:
+		return minf(vel + accel * delta, maxv)
+	return move_toward(vel, 0.0, accel * delta)
 
 
 ## Flight complete — enter the staged level. Inter-map briefings are
@@ -621,8 +699,9 @@ func _process(_delta: float) -> void:
 	# (g_promien += 0.05/frame in the original's map draw).
 	_promien += _delta * 60.0 * 0.05
 	for n in _orbit_nodes:
-		var off := Vector2(sin(_promien / 5.0) * 20.0,
-			cos(_promien) * 20.0)
+		var ph: float = _promien + float(_phase_off.get(n["key"], 0.0))
+		var off := Vector2(sin(ph / 5.0) * 20.0,
+			cos(ph) * 20.0)
 		var p: Vector2 = n["base"] + off
 		if n.has("btn"):
 			(n["btn"] as Button).position = \
@@ -632,12 +711,13 @@ func _process(_delta: float) -> void:
 	for l in _lanes:
 		(l["line"] as Line2D).set_point_position(0, _orbit_pos(l["a"]))
 		(l["line"] as Line2D).set_point_position(1, _orbit_pos(l["b"]))
-	# Ship cursor — parked on the orbiting current node when idle.
-	if _ship_cursor != null and NativeGame.map_current != "":
-		var idle := _cam_tween == null or not _cam_tween.is_running()
-		if idle:
-			_ship_cursor.position = _orbit_pos(NativeGame.map_current) \
-				+ Vector2(0, sin(Time.get_ticks_msec() / 400.0) * 4.0)
+	# Ship cursor flight physics + idle park on the orbiting node.
+	_flight_tick(_delta)
+	if _ship_cursor != null and NativeGame.map_current != "" \
+			and _flight_key == "":
+		_ship_cursor.position = _orbit_pos(NativeGame.map_current) \
+			+ Vector2(0, sin(Time.get_ticks_msec() / 400.0) * 4.0)
+		_ship_cursor.rotation = lerpf(_ship_cursor.rotation, 0.0, 0.1)
 	# Map decor — goodies twinkle on Lissajous paths, panels pulse
 	# (ports the sin-based drift in o_map_goodie_* / map_panel_loot_2).
 	var t := Time.get_ticks_msec() / 1000.0
