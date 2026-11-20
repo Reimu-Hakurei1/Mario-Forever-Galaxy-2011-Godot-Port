@@ -18,11 +18,19 @@ func _ready() -> void:
 	# R.boot does NOT clear pending_stage_room, so we check it here
 	if R.pending_stage_room != "":
 		var room_name := R.pending_stage_room
+		var map_idx := R.pending_stage_map
+		var lev_idx := R.pending_stage_lev
 		R.pending_stage_room = ""
-		_load_stage_room.call_deferred(room_name)
+		R.pending_stage_map = 0
+		R.pending_stage_lev = 0
+		_load_stage_room.call_deferred(room_name, map_idx, lev_idx)
 
 
-func _load_stage_room(room_name: String) -> void:
+func _load_stage_room(room_name: String, map_idx: int, lev_idx: int) -> void:
+	print("StageLaunch: loading room=", room_name, " map=", map_idx, " lev=", lev_idx)
+	# Set the map/level globals BEFORE loading the room so scripts see correct state
+	G.map_number = [map_idx]
+	G.aktualny_lev = lev_idx
 	# Load rooms.json to find the room index by name
 	var rooms_text: String = FileAccess.get_file_as_string("res://game/rooms.json")
 	var rooms_data: Dictionary = JSON.parse_string(rooms_text) as Dictionary
@@ -30,13 +38,18 @@ func _load_stage_room(room_name: String) -> void:
 		print("StageLaunch: failed to load rooms.json")
 		return
 	var rooms: Dictionary = rooms_data.get("rooms", {})
+	var found := false
 	for idx in rooms.keys():
 		var room: Dictionary = rooms[idx]
 		if room.get("name", "") == room_name:
+			print("StageLaunch: found room idx=", idx)
 			R.room_order.clear()
 			R.room_order.append(int(idx))
 			R._load_room(int(idx))
+			found = true
 			break
+	if not found:
+		print("StageLaunch: room not found: ", room_name)
 
 
 func _process(delta: float) -> void:

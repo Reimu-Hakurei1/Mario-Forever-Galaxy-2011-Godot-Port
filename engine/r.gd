@@ -2575,6 +2575,8 @@ static func set_room_speed(v: float) -> Variant:
 static var trace_room_goto: bool = false
 static var debug_draw: bool = false
 static var pending_stage_room: String = ""
+static var pending_stage_map: int = 0
+static var pending_stage_lev: int = 0
 
 
 static func room_goto(S, target: Variant) -> Variant:
