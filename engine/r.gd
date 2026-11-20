@@ -70,6 +70,7 @@ static var profile_event_usec: Dictionary = {}
 static var profile_event_calls: Dictionary = {}
 static var perf_step_usec: int = 0
 static var perf_begin_usec: int = 0
+static var perf_drawlogic_usec: int = 0
 static var perf_keys_usec: int = 0
 static var perf_logic_usec: int = 0
 static var perf_motion_usec: int = 0
@@ -77,6 +78,9 @@ static var perf_anim_usec: int = 0
 static var perf_end_usec: int = 0
 static var perf_vis_usec: int = 0
 static var perf_views_usec: int = 0
+static var perf_draw_usec: int = 0
+static var perf_draw_count: int = 0
+static var draw_cmd_count: int = 0
 static var debug_load: bool = false
 static var debug_step: bool = false
 static var debug_kill: bool = OS.get_environment("GMP_DEBUG_KILL") == "1"
@@ -150,7 +154,7 @@ static var keys_released: Dictionary = {}
 static var joy_buttons: Dictionary = {}
 
 # ---------------------------------------------------------------- draw state
-static var draw_ci: CanvasItem = null
+static var draw_ci = null
 static var draw_color: Color = Color.WHITE
 static var draw_alpha: float = 1.0
 static var draw_halign: int = 0
@@ -161,6 +165,68 @@ static var draw_blend: int = 0
 # materials; the draw event buffers them here because Godot 4 has no per-draw
 # blend mode on one canvas item. GM8: 0 normal, 1 add, 2 subtract, 3 max.
 static var draw_offset_override: Variant = null
+
+
+## Records the raw CanvasItem calls a draw event emits so the event itself can
+## run once per logic step (frame-rate independent) while _draw only replays
+## the recorded commands at render rate.
+class DrawRec extends RefCounted:
+	var inst = null
+
+	func _push(mid: int, args: Array) -> void:
+		var m := R.draw_blend
+		if m == 3:
+			m = 1
+		var cmd := [mid]
+		cmd.append_array(args)
+		if m == 2 and mid >= 1 and mid <= 3:
+			cmd[1] = R._subtract_texture(cmd[1])
+		if m == 0:
+			inst.draw_cmds0.append(cmd)
+			return
+		var segs: Array = inst.blend_segs
+		if segs.is_empty() or int(segs[-1][0]) != m:
+			segs.append([m, []])
+		segs[-1][1].append(cmd)
+
+	func draw_set_transform(o: Vector2, r: float, s: Vector2) -> void:
+		_push(0, [o, r, s])
+
+	func draw_texture(t: Texture2D, p: Vector2, c: Color) -> void:
+		_push(1, [t, p, c])
+
+	func draw_texture_rect(t: Texture2D, r: Rect2, tile: bool, c: Color) -> void:
+		_push(2, [t, r, tile, c])
+
+	func draw_texture_rect_region(t: Texture2D, r: Rect2, src: Rect2, c: Color) -> void:
+		_push(3, [t, r, src, c])
+
+	func draw_rect(r: Rect2, c: Color, filled: bool, width: float = -1.0) -> void:
+		_push(4, [r, c, filled, width])
+
+	func draw_string(f: Font, p: Vector2, text: String, align: int,
+			w: float, size: int, c: Color) -> void:
+		_push(5, [f, p, text, align, w, size, c])
+
+
+static var _draw_rec := DrawRec.new()
+
+
+## Replays one recorded canvas call on a real CanvasItem.
+static func _replay_raw(target: CanvasItem, c: Array) -> void:
+	match int(c[0]):
+		0:
+			target.draw_set_transform(c[1], c[2], c[3])
+		1:
+			target.draw_texture(c[1], c[2], c[3])
+		2:
+			target.draw_texture_rect(c[1], c[2], c[3], c[4])
+		3:
+			target.draw_texture_rect_region(c[1], c[2], c[3], c[4])
+		4:
+			target.draw_rect(c[1], c[2], c[3], c[4])
+		5:
+			target.draw_string(c[1], c[2], c[3], c[4], c[5], c[6], c[7])
 # True while a subtract layer replays its buffered draws. GM8 subtract ignores
 # black pixels entirely; Godot's reverse-subtract also subtracts their alpha,
 # which punches the destination transparent, so black becomes a color key.
@@ -314,7 +380,10 @@ static func boot(scene_root: Node2D) -> void:
 			if target_idx >= 0:
 				# Set globals for the stage
 				var globals: GDScript = load("res://game/globals.gd")
-				globals.map_number = pending_stage_map
+				if globals.map_number is Array and globals.map_number.size() > 0:
+					globals.map_number[0] = pending_stage_map
+				else:
+					globals.map_number = [pending_stage_map]
 				globals.aktualny_lev = pending_stage_lev
 				_load_room(target_idx)
 				pending_stage_room = ""
@@ -2402,12 +2471,16 @@ static func step() -> void:
 	for inst in instances:
 		inst.g_xprevious = inst.position.x
 		inst.g_yprevious = inst.position.y
-	for inst in instances.duplicate():
+	# One snapshot for every phase: instances created mid-step must not run
+	# events until the next step (GM8 semantics), and this avoids seven full
+	# array copies per tick.
+	var snap: Array = instances.duplicate()
+	for inst in snap:
 		if inst.alive and inst.has_begin:
 			run_event(inst, 3, 1)
 	perf_begin_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
-	for inst in instances.duplicate():
+	for inst in snap:
 		if not inst.alive:
 			continue
 		for eid in inst.key_events:
@@ -2430,7 +2503,7 @@ static func step() -> void:
 				return
 	perf_keys_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
-	for inst in instances.duplicate():
+	for inst in snap:
 		if inst.alive and inst.has_step:
 			if debug_step:
 				printerr("STEP begin id=%d obj=%d" % [inst.inst_id, int(inst.g_object_index)])
@@ -2439,7 +2512,7 @@ static func step() -> void:
 				printerr("STEP end id=%d obj=%d" % [inst.inst_id, int(inst.g_object_index)])
 	perf_logic_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
-	for inst in instances.duplicate():
+	for inst in snap:
 		if not inst.alive:
 			continue
 		if int(inst.g_path_index) >= 0:
@@ -2461,7 +2534,7 @@ static func step() -> void:
 			_mark_moved(int(inst.g_object_index))
 	perf_motion_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
-	for inst in instances.duplicate():
+	for inst in snap:
 		if not inst.alive:
 			continue
 		var n: int = inst.frames.size()
@@ -2476,14 +2549,48 @@ static func step() -> void:
 				inst.g_image_index = ii
 	perf_anim_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
-	for inst in instances.duplicate():
+	for inst in snap:
 		if inst.alive and inst.has_end:
 			run_event(inst, 3, 2)
 	perf_end_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
+	# Draw events double as gameplay for many objects (enemy AI lives in them),
+	# so they must run once per logic step regardless of render rate. Each event
+	# is recorded through a DrawRec proxy: its canvas calls are captured and
+	# replayed by _draw at render rate. Off-screen instances run the event with
+	# drawing fully disabled instead.
+	for inst in instances.duplicate():
+		if not inst.alive:
+			inst.draw_culled = false
+			continue
+		var culled := _culled_offscreen(inst)
+		inst.draw_culled = culled
+		if not inst.has_draw:
+			continue
+		if culled:
+			inst.draw_cmds0.clear()
+			inst.blend_segs.clear()
+			run_event(inst, 8, 0)
+			continue
+		inst.draw_cmds0.clear()
+		inst.blend_segs.clear()
+		draw_blend = 0
+		draw_halign = 0
+		draw_valign = 0
+		_draw_rec.inst = inst
+		draw_ci = _draw_rec
+		draw_offset_override = -inst.position
+		run_event(inst, 8, 0)
+		draw_ci = null
+		draw_offset_override = null
+		draw_blend = 0
+	perf_drawlogic_usec = Time.get_ticks_usec() - _t
+	_t = Time.get_ticks_usec()
 	for inst in instances:
-		if inst.alive and inst.sync_visuals():
+		if inst.alive and inst.sync_visuals() and not inst.draw_culled:
 			inst.queue_redraw()
+		if inst.draw_culled:
+			inst.visible = false
 	perf_vis_usec = Time.get_ticks_usec() - _t
 	_t = Time.get_ticks_usec()
 	_update_particles()
@@ -2555,6 +2662,42 @@ static func _update_views() -> void:
 			ty = clampf(ty, cy - vs, cy + vs)
 		view_xview[i] = clampf(tx, 0.0, maxf(0.0, room_width - w))
 		view_yview[i] = clampf(ty, 0.0, maxf(0.0, room_height - h))
+
+
+# Objects that draw screen-space UI no matter where the instance sits; their
+# draw events must never be culled. 3=o_hud, 136=o_gameoverus, 365=o_bonusho,
+# 532=o_przeciwnikor (draws the weapon/score HUD elements).
+const DRAW_CULL_EXEMPT := {3: true, 136: true, 365: true, 532: true}
+static var _cull_rect := Rect2()
+static var _cull_tick := -1
+
+
+## True when a draw-event instance sits fully outside the visible area, so its
+## draw script can be skipped for this frame. Only applies to the gameplay room
+## (level_0000); every other room keeps running draw events unconditionally.
+static func _culled_offscreen(inst) -> bool:
+	if room != 2 or DRAW_CULL_EXEMPT.has(int(inst.g_object_index)):
+		return false
+	if _cull_tick != tick_count:
+		_cull_tick = tick_count
+		if view_enabled and view_visible[0]:
+			_cull_rect = Rect2(float(view_xview[0]), float(view_yview[0]),
+				float(view_wview[0]), float(view_hview[0]))
+		elif camera != null and root != null:
+			var vs := root.get_viewport_rect().size / camera.zoom
+			var c := camera.get_screen_center_position()
+			_cull_rect = Rect2(c - vs * 0.5, vs)
+		else:
+			_cull_rect = Rect2(0, 0, room_width, room_height)
+		# Generous margin: draw events legitimately paint well outside the mask
+		# (engine trails, shockwaves, screen-edge flashes).
+		_cull_rect = _cull_rect.grow(448.0)
+	var m: Rect2 = inst.mask_at(inst.position.x, inst.position.y)
+	# Instances with no collision mask may still paint screen-space effects in
+	# their draw event; never cull those.
+	if not m.has_area():
+		return false
+	return not m.intersects(_cull_rect)
 
 
 static func update_camera() -> void:
@@ -2687,6 +2830,8 @@ static func _gm_color(c: Variant) -> Color:
 static func _restore_xform() -> void:
 	if draw_ci is Node2D:
 		draw_ci.draw_set_transform(-(draw_ci as Node2D).position, 0.0, Vector2.ONE)
+	elif draw_ci is DrawRec:
+		draw_ci.draw_set_transform(-(draw_ci as DrawRec).inst.position, 0.0, Vector2.ONE)
 	else:
 		draw_ci.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
@@ -2778,6 +2923,7 @@ static func draw_sprite(S, spr: int, subimg: float, x: float, y: float) -> Varia
 
 static func draw_sprite_ext(S, spr: int, subimg: float, x: float, y: float,
 		xscale: float, yscale: float, rot: float, color: Variant, alpha: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	if _records_draw():
@@ -2924,6 +3070,7 @@ static func replay_additive(S, cmd: Array) -> Variant:
 static func draw_sprite_part_ext(S, spr: int, subimg: float, left: float, top: float,
 		width: float, height: float, x: float, y: float, xscale: float, yscale: float,
 		color: Variant, alpha: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	if _records_draw():
@@ -2977,6 +3124,7 @@ static func draw_background(S, back: int, x: float, y: float, tiled = 0) -> Vari
 
 static func draw_background_ext(S, back: int, x: float, y: float, xscale: float,
 		yscale: float, blend: Variant, color: Variant, alpha: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	var tex := _bg_texture(int(back))
@@ -3032,6 +3180,7 @@ static func draw_background_part_ext(S, back: int, left: float, top: float,
 
 static func draw_rectangle(S, x1: float, y1: float, x2: float, y2: float,
 		outline: Variant) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	var r := Rect2(Vector2(minf(x1, x2), minf(y1, y2)),
@@ -3045,6 +3194,7 @@ static func draw_rectangle(S, x1: float, y1: float, x2: float, y2: float,
 
 
 static func draw_clear_alpha(S, col: Variant, alpha: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	var c := _gm_color(col)
@@ -3063,6 +3213,7 @@ static func draw_clear_alpha(S, col: Variant, alpha: float) -> Variant:
 # commands that resample the rendered frame on a top CanvasLayer.
 static func draw_surface_ext(S, surf: int, x: float, y: float, xscale: float,
 		yscale: float, rot: float, color: Variant, alpha: float) -> Variant:
+	draw_cmd_count += 1
 	var src: Dictionary = surfaces.get(int(surf), {})
 	if src.is_empty() or not src.get("scene", false):
 		return 0
@@ -3313,6 +3464,7 @@ static func draw_text(S, x: float, y: float, text: Variant) -> Variant:
 
 static func draw_text_transformed(S, x: float, y: float, text: Variant,
 		xscale: float, yscale: float, rot: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	var s := gm_string(S, text)
@@ -3327,6 +3479,7 @@ static func draw_text_transformed(S, x: float, y: float, text: Variant,
 
 static func draw_text_ext_transformed(S, x: float, y: float, text: Variant,
 		sep: float, w: float, xscale: float, yscale: float, rot: float) -> Variant:
+	draw_cmd_count += 1
 	if draw_ci == null:
 		return 0
 	var s := gm_string(S, text)

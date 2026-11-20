@@ -65,9 +65,13 @@ func _process(delta: float) -> void:
 	if delta > 0.25:
 		delta = 0.25
 	var step_time: float = 1.0 / maxf(1.0, float(R.room_speed))
-	# Same pacing policy as the full game: one step per frame outside the fast
-	# system rooms, whose 1000 Hz loading screen needs to catch up in real time.
-	var max_steps: int = 1 if R.room_speed <= 60 else maxi(2, int(ceil(float(R.room_speed) / 30.0)))
+	# Same pacing policy as the full game: catch-up steps proportional to frame
+	# debt so logic keeps real time when the renderer cannot hold room_speed.
+	var max_steps: int
+	if R.room_speed <= 60:
+		max_steps = maxi(2, mini(8, int(ceil(delta / step_time)) + 1))
+	else:
+		max_steps = maxi(2, int(ceil(float(R.room_speed) / 30.0)))
 	_acc += delta
 	var n: int = 0
 	while _acc >= step_time and n < max_steps:
@@ -76,10 +80,7 @@ func _process(delta: float) -> void:
 		n += 1
 		_jump_to_target()
 		_navigate_map()
-	# One rendered draw covers one step; only high-speed rooms need the rest.
-	if n > 1 and R.room_speed > 60:
-		R.draw_state_passes(n - 1)
-	if _acc > step_time * 4.0:
+	if _acc > step_time * 8.0:
 		_acc = 0.0
 
 

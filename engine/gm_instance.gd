@@ -9,6 +9,7 @@ var spawn_key: String = ""
 var spawn_counts: Dictionary = {}
 var obj_script: GDScript = null
 var has_draw: bool = false
+var draw_culled: bool = false
 var has_begin: bool = false
 var has_step: bool = false
 var has_end: bool = false
@@ -27,6 +28,7 @@ var last_depth: float = 1e30
 # Draws issued under bm_add/bm_subtract, plus any normal draws that follow them, kept as
 # ordered [mode, cmds] runs so each run replays on its own child layer in GM draw order.
 var blend_segs: Array = []
+var draw_cmds0: Array = []
 var seg_layers: Array = []
 var pm_key: int = -1
 var pm_val: Dictionary = {}
@@ -175,21 +177,26 @@ func mask_at(px: float, py: float) -> Rect2:
 func _draw() -> void:
 	if not alive:
 		return
+	var _dt0 := Time.get_ticks_usec()
+	if draw_culled or R._culled_offscreen(self):
+		draw_cmds0.clear()
+		blend_segs.clear()
+		for layer in seg_layers:
+			layer.visible = false
+		R.perf_draw_usec += Time.get_ticks_usec() - _dt0
+		R.perf_draw_count += 1
+		return
 	if R.debug_draw:
 		print("DRAW begin id=%d obj=%d" % [inst_id, g_object_index])
 	if R.level_capture != null:
 		R.level_capture.begin(self)
-	R.draw_ci = self
-	R.draw_blend = 0
-	# GM keeps draw alignment global between instances, and the score popups
-	# (o_cyferkownia) leave valign=1 behind; that shifted the HUD text up after
-	# every coin or stomp. Each object's draw starts from the defaults instead.
-	R.draw_halign = 0
-	R.draw_valign = 0
-	blend_segs.clear()
+	# The draw event already ran during this tick's step; here we only replay
+	# the canvas commands it recorded (normal blend on this item, other blends
+	# on the seg child layers below).
 	draw_set_transform(-position, 0.0, Vector2.ONE)
 	if has_draw:
-		R.run_event(self, 8, 0)
+		for c in draw_cmds0:
+			R._replay_raw(self, c)
 	elif g_visible and frames.size() > 0:
 		var tex: Texture2D = frames[int(g_image_index) % frames.size()]
 		if tex != null:
@@ -200,8 +207,6 @@ func _draw() -> void:
 			R._capture_texture(tex, Transform2D(-deg_to_rad(float(g_image_angle)), Vector2(float(g_image_xscale), float(g_image_yscale)), 0.0, position), Rect2(-spr_origin, tex.get_size()), c)
 			draw_texture(tex, -spr_origin, c)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
-	R.draw_blend = 0
-	R.draw_ci = null
 	if R.level_capture != null:
 		R.level_capture.end()
 	if R.debug_draw:
@@ -210,9 +215,12 @@ func _draw() -> void:
 		_make_seg_layers.call_deferred()
 	for i in seg_layers.size():
 		var layer: Node2D = seg_layers[i]
+		layer.visible = i < blend_segs.size()
 		if i < blend_segs.size():
 			layer.material = R.blend_material(int(blend_segs[i][0]))
 		layer.queue_redraw()
+	R.perf_draw_usec += Time.get_ticks_usec() - _dt0
+	R.perf_draw_count += 1
 
 
 func _make_seg_layers() -> void:
@@ -232,17 +240,17 @@ func _make_seg_layers() -> void:
 func _replay_seg(i: int) -> void:
 	if i >= blend_segs.size():
 		return
+	var _dt0 := Time.get_ticks_usec()
 	var layer: Node2D = seg_layers[i]
 	if R.level_capture != null:
 		R.level_capture.begin(self, false, int(blend_segs[i][0]))
-	R.draw_ci = layer
-	R.draw_offset_override = -position
-	R.draw_blend = 0
-	R.drawing_subtract = int(blend_segs[i][0]) == 2
+	# Recorded transforms already carry the -position offset; seed the base
+	# transform so transform-less calls (draw_rect/draw_string) land correctly.
+	layer.draw_set_transform(-position, 0.0, Vector2.ONE)
 	for cmd in blend_segs[i][1]:
-		R.replay_additive(self, cmd)
-	R.drawing_subtract = false
-	R.draw_offset_override = null
-	R.draw_ci = null
+		R._replay_raw(layer, cmd)
+	layer.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	if R.level_capture != null:
 		R.level_capture.end()
+	R.perf_draw_usec += Time.get_ticks_usec() - _dt0
+	R.perf_draw_count += 1
