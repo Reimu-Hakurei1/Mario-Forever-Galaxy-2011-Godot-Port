@@ -16,6 +16,7 @@ const IMG_DIR := "res://data/a/"
 const BEAT := 3.2               # seconds per card
 const ANIM1_DATA := "res://data/levels/native/anim_1_slaves.json"
 const ANIM3_DATA := "res://data/levels/native/anim_3_slaves.json"
+const ANIM4_DATA := "res://data/levels/native/anim_4_slaves.json"
 
 # The four legacy sequences. "opening" is special-cased: it plays the
 # real room_animation_1 choreography (spiral text crawl, parallax
@@ -69,6 +70,22 @@ var _boom_pending: Array = []   # [[at_frame, slave_idx]] disband timeline
 var _anim_end_at := -1.0        # frame at which the cinematic hands off
 var _pan_goal := 0.0
 var _booms: Array = []          # [{rect, t}] explosion sprites
+
+# --- room_animation_4 finale choreography (objects/effects/anim_4.gd) ---
+var _a4_phase := 0
+var _a4_timer := 0.0
+var _speed_paralaxu := -0.75
+var _przesow := 1.0
+var _przesow2 := 0.0
+var _blanker_a4 := 0.0
+var _scie_hero := 1.0
+var _heart_a := 0.0            # g_dodatek_heart
+var _heart2 := 0.0             # g_dodatek2_heart
+var _a4_heart: TextureRect
+var _a4_blue: ColorRect
+var _a4_heroes: Array = []     # [{rect, file}] phases 7-11
+var _a4_koko: Array = []       # diving sprites phases 2+
+var _a4_over := false
 var _anim_frame := 0.0
 var _anim_speed := 0.0
 var _napis_y := 0.0
@@ -95,6 +112,8 @@ func _ready() -> void:
 			_play_anim1()
 		"mid":
 			_play_anim3()
+		"finale":
+			_play_anim4()
 		_:
 			var cards: Array = SEQUENCES.get(_sequence, [])
 			_play(cards)
@@ -356,26 +375,44 @@ func _process(delta: float) -> void:
 	_scroll_slaves()
 	_scroll_backgrounds()
 	_tick_booms()
-	match _anim_phase:
-		0: _anim1_spiral()
-		1: _anim1_whoosh()
-		2: _anim1_letter()
-		3: _anim3_reveal()
-		_: pass
+	if _anim_kind == "anim4" and _anim1:
+		_anim4_tick(delta)
+	if _anim_kind != "anim4":
+		match _anim_phase:
+			0: _anim1_spiral()
+			1: _anim1_whoosh()
+			2: _anim1_letter()
+			3: _anim3_reveal()
+			_: pass
 
 
 func _anim_speed_tick() -> void:
 	# ev_3_2 scroll controller — every phase moves the parade.
+	if _anim_kind == "anim4":
+		return
 	if _anim_phase == 0 and _anim_speed > -2.0:
 		_anim_speed -= 0.02
 
 
 func _scroll_slaves() -> void:
+	var a4 := _anim_kind == "anim4"
 	for s in _slaves:
 		var r: TextureRect = s["rect"]
-		s["x"] = float(s["x"]) + _anim_speed / float(s["div"])
+		var spd := _anim_speed
+		if a4:
+			# anim_4: front layer at anim_speed, back layer (idx>=100)
+			# at anim_speed/2 + paralax — no smaller-divisor, no wrap.
+			spd = _anim_speed if int(s["idx"]) < 100 \
+				else _anim_speed / 2.0 + _speed_paralaxu
+			s["x"] = float(s["x"]) + spd
+		else:
+			s["x"] = float(s["x"]) + spd / float(s["div"])
 		var x: float = s["x"]
 		var idx: int = s["idx"]
+		if a4:
+			s["x"] = x
+			r.position = Vector2(x, s["y"]) - r.size * r.scale / 2.0
+			continue
 		# Wrap rules verbatim from ev_3_2.
 		if x <= -500.0 and idx < 22:
 			x = 2000.0 if s["anim_obj_5"] else 1100.0
@@ -479,6 +516,20 @@ func _free_cinematic() -> void:
 		_bg_strip.queue_free()
 	if is_instance_valid(_bg2_strip):
 		_bg2_strip.queue_free()
+	# anim_4 extras.
+	for h in _a4_heroes:
+		(h["rect"] as TextureRect).queue_free()
+	_a4_heroes.clear()
+	for k in _a4_koko:
+		(k["rect"] as TextureRect).queue_free()
+	_a4_koko.clear()
+	if is_instance_valid(_a4_heart):
+		_a4_heart.queue_free()
+	if is_instance_valid(_a4_blue):
+		_a4_blue.queue_free()
+	if is_instance_valid(_a4_dim):
+		_a4_dim.queue_free()
+	_booms.clear()
 
 
 ## anim_3 sekwencja 2→3 transition: hide slave 21, array the toad row
@@ -588,3 +639,284 @@ func _tick_booms() -> void:
 			continue
 		r.scale = Vector2.ONE * (0.3 + k * 1.3)
 		r.modulate.a = 1.0 - k
+
+
+## --- room_animation_4 finale (objects/effects/anim_4.gd) ---
+## Castle battlefield scroll → caption cards → camera pan → creatures
+## dive → fat-boy squadron explodes → fade to blue heart beat → the
+## four heroes fly in one by one → converge and depart.
+
+func _play_anim4() -> void:
+	_anim1 = true
+	_anim_kind = "anim4"
+	_anim_phase = 0
+	_anim_frame = 0.0
+	_anim_speed = 3.0          # g_ustaw_speed forces anim_speed=3
+	_speed_paralaxu = -0.75
+	_przesow = 1.0
+	_przesow2 = 0.0
+	_blanker = 1.0
+	_blanker_a4 = 0.0
+	_scie_hero = 1.0
+	_heart_a = 0.0
+	_heart2 = 0.0
+	_a4_phase = 0
+	_a4_timer = 0.0
+	_a4_over = false
+	# Backdrop.
+	var bg := _sprite_node("background1.png")
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	bg.modulate = Color(1, 1, 1, 0.4)
+	bg.name = "a4_bg"
+	add_child(bg)
+	# Two-layer parallax parade (idx 0-11 front, 100-114 back).
+	_parade = Control.new()
+	_parade.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_parade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_parade)
+	_spawn_parade(ANIM4_DATA)
+	# Blanker overlays — _dim for the entry fade, _a4_dim for g_blanker.
+	_dim = ColorRect.new()
+	_dim.color = Color.BLACK
+	_dim.modulate.a = _blanker
+	_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(_dim)
+	_a4_blue = ColorRect.new()
+	_a4_blue.color = Color(0, 0, 0.4)
+	_a4_blue.modulate.a = 0.0
+	_a4_blue.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_a4_blue.visible = false
+	add_child(_a4_blue)
+	# txt_13 "heart" caption for phase 6.
+	_a4_heart = _sprite_node("txt_13.png")
+	_a4_heart.position = Vector2(512, 384) - _a4_heart.size / 2.0
+	_a4_heart.pivot_offset = _a4_heart.size / 2.0
+	_a4_heart.modulate.a = 0.0
+	_a4_heart.visible = false
+	add_child(_a4_heart)
+	# Entry fade-in like the other rooms (g_blanker_blank decays).
+	set_process(true)
+
+
+func _anim4_tick(_delta: float) -> void:
+	if _a4_over:
+		return
+	# Entry fade — g_blanker_blank decays like the sibling rooms.
+	_blanker = maxf(0.0, _blanker / 1.05)
+	if is_instance_valid(_dim):
+		_dim.modulate.a = _blanker
+	_a4_timer += 1.0   # approx one frame per process tick at 60fps
+	# Phase 0→1: caption objects slide in at 200f (objects 562-564 ≈
+	# txt_11/txt_12/anim_obj_7 sprites entering from the left).
+	if _a4_phase == 0 and _a4_timer > 200.0:
+		_a4_phase = 1
+		_a4_timer = 0.0
+		for i in 3:
+			var file: String = ["txt_11.png", "txt_12.png", "anim_obj_7.png"][i]
+			var r := _sprite_node(file)
+			var x := -100.0 - i * 100.0
+			var y := 650.0 - i * 32.0
+			r.position = Vector2(x, y) - r.size / 2.0
+			_parade.add_child(r)
+			_slaves.append({"rect": r, "x": x, "y": y, "idx": 50,
+				"div": 1.0, "anim_obj_5": false, "anim_obj_2": false})
+	# Phase 1: camera pans right while captions scroll; at 100f the
+	# diving creatures spawn (obj 550 "koko", dokodleci distances).
+	if _a4_phase == 1:
+		if _przesow2 > 100.0 and _przesow > 0.0:
+			_przesow = maxf(0.0, _przesow - 0.002)
+		_przesow2 += _przesow
+		_parade.position.x = -_przesow2
+		if _speed_paralaxu < 0.0:
+			_speed_paralaxu /= 1.05
+		if _a4_timer > 100.0:
+			_a4_phase = 2
+			_a4_timer = 0.0
+			var koko := [
+				[600, 0.2, 200], [700, 0.2, 300], [900, 0.4, 200],
+				[800, 0.1, 350], [500, 0.3, 100], [400, 0.25, 100],
+				[800, 0.25, 250], [850, 0.1, 50],
+			]
+			for i in koko.size():
+				var r := _sprite_node("anim_metroid_%d.png" % (i % 11))
+				var s: float = koko[i][1]
+				r.scale = Vector2(s, s)
+				r.position = Vector2(koko[i][0], -300) - r.size * s / 2.0
+				r.z_index = 400
+				add_child(r)
+				_a4_koko.append({"rect": r, "y": -300.0,
+					"v": 2.0 + float(koko[i][2]) / 300.0})
+	# Phase 2 (200f) → phase 3.
+	if _a4_phase == 2 and _a4_timer > 200.0:
+		_a4_phase = 3
+		_a4_timer = 0.0
+	# Phase 3: at 300f the fat-boy squadron (slaves 108-114) is destroyed
+	# in a centre-screen explosion with a radial-blur shake.
+	if _a4_phase == 3:
+		if _a4_timer > 300.0:
+			_a4_phase = 4
+			_a4_timer = 0.0
+			for i in range(108, 115):
+				_hide_slave(i)
+			_boom(Vector2(512, 384))
+			_shake = 200.0
+	# Phase 4: blanker fades in, paralax decays; at blanker>=1.1 the
+	# hero fade runs, then everything hides → phase 5.
+	if _a4_phase == 4:
+		if _a4_timer > 400.0:
+			_blanker_a4 = minf(1.2, _blanker_a4 + 0.01)
+		_speed_paralaxu /= 1.01
+		_a4_dim_tick()
+		if _blanker_a4 >= 1.1:
+			_scie_hero = maxf(0.0, _scie_hero - 0.01)
+			if _scie_hero <= 0.0:
+				_a4_phase = 5
+				_a4_timer = 0.0
+				for s in _slaves:
+					(s["rect"] as TextureRect).modulate.a = 0.0
+	# Phase 5 (60f) → phase 6 blue heart beat.
+	if _a4_phase == 5 and _a4_timer > 60.0:
+		_a4_phase = 6
+		_a4_timer = 0.0
+		_heart_a = 1.0
+		_heart2 = 1.0
+		_a4_blue.visible = true
+		_a4_heart.visible = true
+	# Phase 6: blue wash + beating txt_13 for ~600f.
+	if _a4_phase == 6:
+		_a4_blue.modulate.a = _heart2
+		_a4_heart.modulate.a = _heart_a
+		var hs := 0.8 - _heart2
+		_a4_heart.scale = Vector2(hs, hs)
+		_heart2 = maxf(0.0, _heart2 - 0.0005)
+		if _a4_timer > 500.0:
+			_heart_a /= 1.3
+			_heart2 /= 1.3
+		if _a4_timer > 600.0:
+			_a4_phase = 7
+			_a4_timer = 0.0
+			_heart_a = 0.0
+			_heart2 = 0.0
+			_a4_blue.visible = false
+			_a4_heart.visible = false
+	# Phases 7-10: heroes fly across one at a time (sprites 523-526).
+	if _a4_phase >= 7 and _a4_phase <= 10:
+		_a4_hero_tick()
+	# Phase 11: all four converge and depart → cinematic over.
+	if _a4_phase == 11:
+		_a4_hero_tick()
+	# Diving creatures keep falling throughout.
+	for k in _a4_koko.duplicate():
+		k["y"] = float(k["y"]) + float(k["v"])
+		var r: TextureRect = k["rect"]
+		r.position.y = float(k["y"]) - r.size.y * r.scale.y / 2.0
+		if float(k["y"]) > 820.0:
+			r.queue_free()
+			_a4_koko.erase(k)
+
+
+var _shake := 0.0
+var _a4_dim: ColorRect
+
+
+func _a4_dim_tick() -> void:
+	if _a4_dim == null:
+		_a4_dim = ColorRect.new()
+		_a4_dim.color = Color.BLACK
+		_a4_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+		_a4_dim.z_index = 800
+		add_child(_a4_dim)
+	_a4_dim.modulate.a = clampf(_blanker_a4, 0.0, 1.0)
+	# Radial-blur shake approximation: jitter the parade while _shake>0.
+	if _shake > 0.0:
+		_parade.position.x += randf_range(-_shake, _shake) * 0.02
+		_parade.position.y = randf_range(-_shake, _shake) * 0.02
+		_shake = maxf(0.0, _shake - 8.0)
+
+
+## Hero fly-in (phases 7-10) and convergence (phase 11) — the draw_sprite_ext
+## choreography from ev_8_0 verbatim.
+func _a4_hero_tick() -> void:
+	# timer += 2 per frame in the original; our _a4_timer counts frames.
+	if _a4_phase <= 10:
+		_a4_timer += 1.0   # extra +1 to approximate timer+=2
+		_heart2 += 2.0
+		if _a4_timer < 60.0 and _heart_a < 1.0:
+			_heart_a += 0.05
+		if _a4_timer > 60.0:
+			_heart_a /= 1.15
+		if not _a4_heroes.is_empty():
+			var h: Dictionary = _a4_heroes[0]
+			var r: TextureRect = h["rect"]
+			var spec: Array = h["spec"]
+			r.position = Vector2(spec[0] + spec[2] * _heart2,
+				spec[1]) - r.size * r.scale / 2.0
+			r.scale = Vector2.ONE * (1.0 + _heart2 / 300.0)
+			r.modulate.a = _heart_a
+		if _a4_timer > 100.0 and _heart_a < 0.01:
+			for h in _a4_heroes:
+				(h["rect"] as TextureRect).queue_free()
+			_a4_heroes.clear()
+			_heart_a = 0.0
+			_heart2 = 0.0
+			if _a4_phase == 10:
+				_a4_phase = 11
+				_a4_timer = 0.0
+				_a4_spawn_converge()
+			else:
+				_a4_phase += 1
+				_a4_timer = 0.0
+				_a4_spawn_flyin(_a4_phase)
+		return
+	# Phase 11 — four heroes converge then fly off.
+	_heart2 += 1.0
+	if _a4_timer < 60.0 and _heart_a < 1.0:
+		_heart_a += 0.02
+	if _a4_timer > 260.0:
+		_heart_a /= 1.05
+	for h in _a4_heroes:
+		var r: TextureRect = h["rect"]
+		var spec: Array = h["spec"]   # [base_x_expr_sign, y, dir]
+		var x: float
+		var s := 1.0 + _heart2 / 1700.0
+		match int(h["slot"]):
+			0: x = 512.0 + _heart2 / 11.0      # hero_0 right-down
+			1: x = 300.0 - _heart2 / 11.0      # hero_1 left-up
+			2: x = 700.0 + _heart2 / 11.0      # hero_2 right-up
+			_: x = 512.0 + _heart2 / 11.0      # hero_3 right-down
+		var y: float = [500.0, 350.0, 400.0, 250.0][int(h["slot"])]
+		r.position = Vector2(x, y) - r.size * s / 2.0
+		r.scale = Vector2(s, s)
+		r.modulate.a = _heart_a
+	if _a4_timer > 260.0 and _heart_a <= 0.01:
+		_anim4_done()
+
+
+func _a4_spawn_flyin(phase: int) -> void:
+	# Phases 7-10 map to hero_0..hero_3 alternating left/right entries.
+	var file: String = "hero_%d.png" % (phase - 7)
+	var r := _sprite_node(file)
+	r.modulate.a = 0.0
+	add_child(r)
+	var left := (phase == 7 or phase == 10)
+	var sx := 300.0 if left else 700.0
+	var dir := 1.0 if left else -1.0
+	var y := 400.0
+	_a4_heroes.append({"rect": r, "slot": phase - 7,
+		"spec": [sx, y, dir]})
+
+
+func _a4_spawn_converge() -> void:
+	for i in 4:
+		var r := _sprite_node("hero_%d.png" % i)
+		r.modulate.a = 0.0
+		add_child(r)
+		_a4_heroes.append({"rect": r, "slot": i, "spec": [0, 0, 0]})
+
+
+func _anim4_done() -> void:
+	_a4_over = true
+	_anim1 = false
+	_free_cinematic()
+	_play(SEQUENCES.get("finale", []))
