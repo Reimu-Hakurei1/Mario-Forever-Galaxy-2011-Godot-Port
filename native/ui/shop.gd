@@ -54,6 +54,7 @@ var _special_slots_ui: Array = []  # the four equipped-slot labels
 
 
 func _ready() -> void:
+	NativeAssets.play_music("shop%d" % (randi() % 2 + 1))
 	# Shop backdrop — the original room_shop uses its own background.
 	var bg := ColorRect.new()
 	bg.color = Color(0.08, 0.05, 0.12)

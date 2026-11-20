@@ -62,9 +62,27 @@ func _ready() -> void:
 
 	_build_header()
 	_build_grid()
+	_play_map_music()
 	_maybe_map_transition()
 	_cam.make_current()
 	_center_on_frontier()
+
+
+## Per-region map music — the original picks map_1..map_5 / map_last
+## by map_number (part_7 map init): regions 0-4 and 5→map_1, 6→map_3,
+## 7→map_last.
+const MAP_MUSIC := {
+	"0": "map_1", "1": "map_2", "2": "map_3", "3": "map_4",
+	"4": "map_5", "5": "map_1", "6": "map_3", "7": "map_last",
+}
+
+func _play_map_music() -> void:
+	if NativeGame.muzyka <= 0:
+		return
+	var region := NativeGame.map_current.get_slice(":", 0)
+	if region == "":
+		region = "0"
+	NativeAssets.play_music(MAP_MUSIC.get(region, "map_1"))
 
 
 ## Deep-space backdrop: a generated starfield over a dim galaxy image.

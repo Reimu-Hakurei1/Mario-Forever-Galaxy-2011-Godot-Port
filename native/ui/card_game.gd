@@ -21,6 +21,7 @@ var _done := false
 
 
 func _ready() -> void:
+	NativeAssets.play_music("cardgame")
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	# map_minigame 3 routes to card_game_2 — o_card_2 pays 100,000.

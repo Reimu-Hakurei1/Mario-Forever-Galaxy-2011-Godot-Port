@@ -57,6 +57,7 @@ var _anim_t := 0.0
 
 
 func _ready() -> void:
+	NativeAssets.play_music("finishing")
 	var bg := ColorRect.new()
 	bg.color = Color(0.02, 0.06, 0.15)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)

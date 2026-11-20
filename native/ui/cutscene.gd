@@ -236,6 +236,7 @@ func _sprite_node(file: String) -> TextureRect:
 
 
 func _play_anim1() -> void:
+	NativeAssets.play_music("anim_1")
 	_anim1 = true
 	_anim_kind = "anim1"
 	_slave_by_idx.clear()
@@ -339,6 +340,7 @@ func _spawn_letter_dim() -> void:
 ## a toad crowd along the bottom and runs the building-disband
 ## explosion timeline before handing off to the dialogue cards.
 func _play_anim3() -> void:
+	NativeAssets.play_music("anim_2")
 	_anim1 = true
 	_anim_kind = "anim3"
 	_anim_phase = 3
@@ -688,6 +690,7 @@ func _tick_booms() -> void:
 ## four heroes fly in one by one → converge and depart.
 
 func _play_anim4() -> void:
+	NativeAssets.play_music("anim_2")
 	_anim1 = true
 	_anim_kind = "anim4"
 	_anim_phase = 0
@@ -979,6 +982,7 @@ const A2_DIALOGUE := [
 ]
 
 func _play_anim2() -> void:
+	NativeAssets.play_music("anim_2")
 	_anim1 = true
 	_anim_kind = "anim2"
 	_anim_phase = 0

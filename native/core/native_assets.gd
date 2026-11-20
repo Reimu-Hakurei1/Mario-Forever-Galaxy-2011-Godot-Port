@@ -136,3 +136,30 @@ static func music(track_name: String) -> AudioStream:
 	if not _stream_cache.has(path):
 		_stream_cache[path] = load(path)
 	return _stream_cache[path]
+
+
+static var _music_player: AudioStreamPlayer = null
+
+## Scene music — stops whatever is playing and loops the named track.
+## Pass "" to stop music. Honors the muzyka setting.
+static func play_music(track_name: String) -> void:
+	if _music_player != null and is_instance_valid(_music_player):
+		_music_player.queue_free()
+		_music_player = null
+	if track_name == "" or NativeGame.muzyka != 1:
+		return
+	var stream := music(track_name)
+	if stream == null:
+		return
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return
+	_music_player = AudioStreamPlayer.new()
+	_music_player.stream = stream
+	_music_player.volume_db = linear_to_db(
+		maxf(0.01, NativeGame.glosnosc_dzwieku))
+	tree.root.add_child(_music_player)
+	_music_player.finished.connect(func():
+		if _music_player != null and is_instance_valid(_music_player):
+			_music_player.play())   # loop
+	_music_player.play()

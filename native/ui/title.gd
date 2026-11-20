@@ -16,6 +16,7 @@ var _has_save := false
 
 
 func _ready() -> void:
+	NativeAssets.play_music("title")
 	var bg := ColorRect.new()
 	bg.color = Color(0.02, 0.03, 0.1)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)

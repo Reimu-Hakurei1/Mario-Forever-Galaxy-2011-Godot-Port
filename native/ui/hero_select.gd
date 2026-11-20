@@ -9,6 +9,7 @@ const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 
 func _ready() -> void:
+	NativeAssets.play_music("choose_hero")
 	var bg := ColorRect.new()
 	bg.color = Color(0.03, 0.04, 0.12)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
