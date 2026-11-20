@@ -94,6 +94,22 @@ func _spawn_enemy(wave: Dictionary) -> void:
 	if script_pattern == "circle":
 		_spawn_ring_wave(wave, edge)
 		return
+	if script_pattern == "swarm_teams":
+		_spawn_swarm_team(wave)
+		return
+	if script_pattern == "drop":
+		# Scheduled item drops — o_special_weapon_6 / o_level_weapon_1
+		# appear mid-stage at fixed times in the original schedules.
+		var pickup := NativePickup.new()
+		pickup.global_position = Vector2(randf_range(120.0, 904.0),
+			-randf_range(20.0, 80.0))
+		match str(wave.get("drop", "")):
+			"special":
+				pickup.special_id = randi_range(1, 9)
+			"levelgun":
+				pickup.kind = NativePickup.Kind.LEVELGUN
+		get_parent().add_child(pickup)
+		return
 	var pos := _scripted_position(script_pattern, edge,
 		wave.get("spawned", 0))
 
@@ -268,6 +284,30 @@ func _spawn_team(wave: Dictionary, team_name: String, pos: Vector2) -> void:
 	ring.shoot_interval = 2.4
 	ring.volley_count = 3
 	get_parent().add_child(ring)
+
+
+## map_7_berserkers_creator_teams_1 — each tick releases one full team:
+## 30 enemies in a 10x3 grid entering from above at a random x, gliding
+## to their slots (the original's g_ooo loop over g_liczba=12 teams).
+func _spawn_swarm_team(wave: Dictionary) -> void:
+	var team_x := randf_range(120.0, 904.0)
+	var kind_id: int = _kind_from_name(str(wave.get("kind", "goomba")))
+	var kinds: Array = wave.get("kinds", [])
+	var team_size: int = int(wave.get("team_size", 30))
+	for i in team_size:
+		var col := i % 10
+		var row := i / 10
+		var slot := Vector2(team_x - 360.0 + col * 80.0,
+			64.0 + row * 64.0)
+		var enemy := NativeEnemy.new()
+		enemy.health = wave.get("health", 10.0)
+		enemy.global_position = Vector2(slot.x,
+			slot.y - randf_range(160.0, 320.0))
+		enemy.kind = kind_id if kinds.is_empty() \
+			else _kind_from_name(str(kinds[i % kinds.size()]))
+		enemy.mode = NativeEnemy.Mode.SPAWN
+		enemy.formation_slot = slot
+		get_parent().add_child(enemy)
 
 
 ## String wave-kind name → NativeEnemy.Kind (single source of truth —

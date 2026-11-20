@@ -196,6 +196,42 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 	var waves: Array = []
 	for w in st.get("waves", []):
 		var wave: Dictionary = (w as Dictionary).duplicate()
+		# map_7_berserkers_creator_teams_1 — the original releases 12
+		# teams of 30 enemies (g_liczba=12, ~100f between teams, 10x3
+		# grid per team). The extractor collapses it to one spawn, so
+		# rebuild the full swarm here.
+		if str(wave.get("spawn_name", "")) == "map_7_berserkers_creator_teams_1":
+			wave["pattern"] = "swarm_teams"
+			wave["count"] = 12
+			wave["team_size"] = 30
+			wave["interval_s"] = 100.0 / 60.0
+			wave["edge"] = "top"
+			wave["mode"] = "formation"
+		# Scheduled set-piece spawns the extractor flattened to a goomba —
+		# restore what each object actually is.
+		match str(wave.get("spawn_name", "")):
+			"special_weapon_6":
+				# Scheduled special-item drop (o_special_weapon_6).
+				wave["pattern"] = "drop"
+				wave["drop"] = "special"
+			"level_weapon_1":
+				# Scheduled TRIPLER gun pickup.
+				wave["pattern"] = "drop"
+				wave["drop"] = "levelgun"
+			"spikey_swarm_map_5":
+				wave["pattern"] = "kamikaze_spikeys"
+				wave["kinds"] = ["kamikaze"]
+				wave["count"] = 20
+				wave["interval_s"] = 0.35
+			"castle_enemy_3":
+				# o_castle_enemy phalanx grid release.
+				wave["pattern"] = "castle_stream"
+				wave["kinds"] = ["goomba"]
+				wave["count"] = 30
+				wave["interval_s"] = 0.12
+			"flame_cans_boss":
+				wave["kind"] = "flame_cannon"
+				wave["health"] = 300.0
 		wave["health"] = float(wave.get("health", 10.0)) * \
 			minf(8.0 + level_index * 0.4, 40.0) / 10.0
 		waves.append(wave)
