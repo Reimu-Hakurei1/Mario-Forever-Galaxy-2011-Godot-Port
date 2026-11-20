@@ -299,6 +299,20 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 			"flame_cans_boss":
 				wave["kind"] = "flame_cannon"
 				wave["health"] = 300.0
+		# stages.json stores the extractor's flattened goomba fallback —
+		# overlay the real composition catalogued in wave_scripts.json
+		# (per-object kinds, counts, patterns, intervals).
+		var script_entry := str(wave.get("script", ""))
+		var script_data: Dictionary = _load_wave_scripts().get(script_entry, {})
+		if not script_data.is_empty():
+			var real := _scripted_wave(script_entry, script_data,
+				float(wave.get("delay", 0.0)), float(wave.get("health", 10.0)))
+			if real.is_empty():
+				wave["count"] = 0
+				wave["kinds"] = []
+				wave["kind"] = ""
+			else:
+				wave = real
 		wave["health"] = float(wave.get("health", 10.0)) * \
 			minf(8.0 + level_index * 0.4, 40.0) / 10.0
 		# Boss spawns embedded in the wave script ride along on the
