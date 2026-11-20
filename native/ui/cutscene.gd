@@ -116,6 +116,24 @@ var _slaves: Array = []     # {rect, x, y, div, idx}
 var _bg_strip: TextureRect
 var _bg2_strip: TextureRect
 
+# --- anim_1 sekwencja 3 — warning scroll + villain reveal ---
+# (objects/effects/anim_1.gd ev_8_0, g_napis_ostrzezenia state machine)
+var _w_state := 0           # 0 scroll+warn1, 1 warn2, 2 quake+riser, 3 done
+var _w_t1 := 0.0            # g_napis_ostrzezenia[1] warn1 timer (→650)
+var _w_t2 := 0.0            # [5] warn2 hold counter (→400)
+var _w_t3 := 0.0            # [7] quake frame counter (→430)
+var _w_q := 0.0             # quake offset magnitude (→430)
+var _w_off := 0.0           # [8] door part offset (→150 @0.5/f)
+var _w_spawn := -1.0        # [10] riser spawn counter
+var _w_fade := 0.0          # g_sciemnij — final fade, added to blanker
+var _w_revealed := false
+var _warn1: TextureRect     # txt_11.png — sprite 562
+var _warn2: TextureRect     # txt_12.png — sprite 563
+var _door: Array = []       # 6x anim_obj_16.png gate tiles — sprite 583
+var _fx: Control
+var _risers: Array = []     # [{rect, y, vy, quaker}] bowser/fatboy fly-ins
+var _music_switched := false
+
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -321,6 +339,38 @@ func _spawn_parade(path: String) -> void:
 		}
 		_slaves.append(entry)
 		_slave_by_idx[entry["idx"]] = entry
+	# Phase-4 overlay layer (warning cards, gate doors, villain
+	# fly-ins) — sits above the parade, below the blanker like the
+	# original's draw order (dim rectangle draws last).
+	_fx = Control.new()
+	_fx.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fx.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_fx)
+	_warn1 = _sprite_node("txt_11.png")
+	_warn1.position = Vector2(512, 200) - _warn1.size / 2.0
+	_warn1.modulate.a = 0.0
+	add_child(_warn1)
+	_warn2 = _sprite_node("txt_12.png")
+	_warn2.position = Vector2(512, 200) - _warn2.size / 2.0
+	_warn2.modulate.a = 0.0
+	add_child(_warn2)
+	# The parting gate — sprite 583 drawn 6x in the original: left
+	# column tiles at x≈288/350 (minus part offset), right column
+	# mirrored at x≈692/754 (plus part offset), two rows at
+	# y≈800/990 minus the quake rise (g_napis_ostrzezenia[7]/[8]).
+	for spec in [
+		[288.0, 990.0, 1.0, -1.0], [754.0, 990.0, -1.0, 1.0],
+		[350.0, 990.0, 1.0, -1.0], [692.0, 990.0, -1.0, 1.0],
+		[350.0, 800.0, 1.0, -1.0], [692.0, 800.0, -1.0, 1.0],
+	]:
+		var d := _sprite_node("anim_obj_16.png")
+		d.modulate.a = 0.0
+		if spec[2] < 0.0:
+			d.pivot_offset = d.size / 2.0
+			d.scale.x = -1.0
+		_fx.add_child(d)
+		_door.append({"rect": d, "bx": spec[0], "by": spec[1],
+			"side": spec[3]})
 
 
 ## Peach's letter sprite + blanker overlay shared by anim_1/anim_3.
@@ -420,6 +470,7 @@ func _process(delta: float) -> void:
 			1: _anim1_whoosh()
 			2: _anim1_letter()
 			3: _anim3_reveal()
+			4: _anim1_warning_tick()
 			_: pass
 
 
@@ -522,7 +573,199 @@ func _anim1_letter() -> void:
 		if _anim_kind == "anim3":
 			_anim3_enter_reveal()
 		else:
-			_anim1_done()
+			_anim1_warning()
+
+
+## Phase 4 — anim_1 sekwencja 3 (ev_8_0 tail, g_napis_ostrzezenia
+## state machine): warning scroll + evil-castle sting, building
+## reveal, parting-gate quake, then the bowser/fatboy fly-in fleet
+## before fading to anim_2 (the original's room_goto 51).
+func _anim1_warning() -> void:
+	_anim_phase = 4
+	_anim_frame = 0.0
+	_w_state = 0
+	_w_t1 = 0.0
+	_w_t2 = 0.0
+	_w_t3 = 0.0
+	_w_q = 0.0
+	_w_off = 0.0
+	_w_spawn = -1.0
+	_w_fade = 0.0
+	_w_revealed = false
+	_music_switched = false
+	_anim_speed = -0.5
+	# g_blanker_blank decays across the whole sekwencja (/1.01 per frame).
+	_blanker = maxf(0.0, _blanker / 1.01)
+	_dim.modulate.a = _blanker
+	if _warn1 != null:
+		_warn1.modulate.a = 0.0
+	if _warn2 != null:
+		_warn2.modulate.a = 0.0
+
+
+func _anim1_warning_tick() -> void:
+	# g_blanker_blank keeps decaying every frame of sekwencja 3;
+	# g_sciemnij (the riser-phase fade) stacks on top of it.
+	_blanker = maxf(0.0, _blanker / 1.01)
+	_dim.modulate.a = minf(1.0, _blanker + _w_fade)
+	match _w_state:
+		0: _w_scroll_warn()
+		1: _w_warn2()
+		2: _w_quake_risers()
+		_: _anim1_done()
+
+
+## State 0 — scrooler ramp, txt_11 warning, evil_castle sting at
+## timer 450-650, building reveal at 650, scroll decay to -5.
+func _w_scroll_warn() -> void:
+	# g_scrooler/g_scrooler2 — anim_speed oscillates -0.5 → +1 → -1.
+	if _anim_frame < 250.0:
+		if _anim_speed < 1.0:
+			_anim_speed += 0.01
+	elif _anim_speed > -1.0:
+		_anim_speed -= 0.005
+	# Sprite 562 (txt_11) fades in once scrooler2 >= 350.
+	if _anim_frame >= 350.0:
+		_w_t1 += 1.0
+		if _warn1 != null:
+			_warn1.modulate.a = minf(1.0, _warn1.modulate.a + 0.01)
+			if _w_t1 > 300.0:
+				_warn1.modulate.a /= 1.03
+	# Timer 450-650: evil_castle.ogg sting + scroll slams to -50.
+	if _w_t1 > 450.0 and _w_t1 < 650.0:
+		if not _music_switched:
+			_music_switched = true
+			NativeAssets.play_music("evil_castle")
+		if _anim_speed > -50.0:
+			_anim_speed -= 0.5
+	# Timer >= 650: reveal slaves 46-56 (the building sprites) and
+	# let the scroll speed bleed off toward -5.
+	if _w_t1 >= 650.0:
+		if not _w_revealed:
+			_w_revealed = true
+			for idx in range(46, 57):
+				_reveal_slave(idx)
+		if _anim_speed < -5.0:
+			_anim_speed /= 1.03
+		if _anim_speed >= -5.0:
+			_w_state = 1
+			_w_t2 = 0.0
+
+
+func _reveal_slave(idx: int) -> void:
+	if _slave_by_idx.has(idx):
+		(_slave_by_idx[idx]["rect"] as TextureRect).modulate.a = 1.0
+
+
+## State 1 — sprite 563 (txt_12): 400f hold then fade; scroll relaxes.
+func _w_warn2() -> void:
+	if _warn2 != null:
+		_warn2.modulate.a = minf(1.0, _warn2.modulate.a + 0.01)
+	_w_t2 += 1.0
+	if _w_t2 > 400.0:
+		if _warn2 != null:
+			_warn2.modulate.a /= 1.1
+			if _warn2.modulate.a <= 0.01:
+				_warn2.modulate.a = 0.0
+		_w_state = 2
+		_w_t3 = 0.0
+		_w_q = 0.0
+		_w_off = 0.0
+		_w_spawn = -1.0
+	# G.anim_speed /= 1.1 until it rests at 0.
+	if _anim_speed < 0.0:
+		_anim_speed /= 1.1
+	if _anim_speed >= -0.1:
+		_anim_speed = 0.0
+
+
+## State 2 — the gate quake: 430f of ±5 shake while the gate rises
+## 430px, then the door halves part 150px over 300f; meanwhile the
+## bowser/fatboy fly-in fleet spawns on the [10] counter timeline.
+func _w_quake_risers() -> void:
+	_w_t3 += 1.0
+	var shake := randf_range(-5.0, 5.0)
+	if _w_t3 <= 430.0:
+		_w_q = minf(430.0, _w_q + 1.0)
+	elif _w_t3 <= 730.0:
+		_w_off = minf(150.0, _w_off + 0.5)
+	_parade.position.x = shake
+	if _fx != null:
+		_fx.position.x = shake
+	_update_doors()
+	# Each riser sets the shared quake var (last one wins — the
+	# original's set_obj_var overwrites, it doesn't accumulate).
+	var rshake := 0.0
+	for r in _risers:
+		if float(r["quaker"]) > 0.0:
+			rshake = randf_range(-float(r["quaker"]), float(r["quaker"]))
+	_parade.position.x = shake + rshake
+	if _fx != null:
+		_fx.position.x = shake + rshake
+	# Riser spawn milestones (g_napis_ostrzeowania[10] counter).
+	if _w_off >= 150.0 and _w_spawn < 0.0:
+		_w_spawn = 0.0
+	if _w_spawn >= 0.0:
+		_w_spawn += 1.0
+		match int(_w_spawn):
+			120: _spawn_riser("bowser")
+			220, 300, 400, 430, 460, 490, 510, 520, 580:
+				_spawn_riser("fat")
+		if _w_spawn > 450.0:
+			_w_fade = minf(1.0, _w_fade + 0.01)
+			_dim.modulate.a = minf(1.0, _blanker + _w_fade)
+			if _blanker + _w_fade >= 1.0:
+				_w_state = 3
+	_tick_risers()
+
+
+func _update_doors() -> void:
+	if _w_t3 <= 1.0:
+		for d in _door:
+			(d["rect"] as TextureRect).modulate.a = 1.0
+	for d in _door:
+		var r: TextureRect = d["rect"]
+		var x: float = float(d["bx"]) + float(d["side"]) * _w_off
+		var y: float = float(d["by"]) - _w_q
+		r.position = Vector2(x, y) - r.size * r.scale.abs() / 2.0
+
+
+## o_anim_bowser (543) / o_anim_fatboy (544) — rise from y=1300 with
+## accelerating speed (g_iyor 10, +1/frame), quaking the view.
+func _spawn_riser(kind: String) -> void:
+	var r := TextureRect.new()
+	r.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	r.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	if kind == "bowser":
+		r.texture = NativeAssets.sprite_frame(332, 0)
+	else:
+		r.texture = NativeAssets.sprite_frame(178, 0)
+	if r.texture == null:
+		r.queue_free()
+		return
+	r.size = r.texture.get_size()
+	r.position = Vector2(512, 1300) - r.size / 2.0
+	_fx.add_child(r)
+	_risers.append({"rect": r, "y": 1300.0, "vy": 10.0,
+		"quaker": 15.0})
+
+
+func _tick_risers() -> void:
+	var dead: Array = []
+	for r in _risers:
+		var rect: TextureRect = r["rect"]
+		var y := float(r["y"]) - float(r["vy"])
+		r["vy"] = float(r["vy"]) + 1.0
+		r["y"] = y
+		rect.position.y = y - rect.size.y / 2.0
+		# The fatboy draws 4 ghost echoes at ±32/±62 (ev_8_0) — skip;
+		# despawn once off the top like the original (y <= -2000 never
+		# reached before the fade, kept for completeness).
+		if y <= -2000.0:
+			dead.append(r)
+	for r in dead:
+		(r["rect"] as TextureRect).queue_free()
+		_risers.erase(r)
 
 
 func _anim1_done() -> void:
@@ -561,6 +804,15 @@ func _free_cinematic() -> void:
 		_bg_strip.queue_free()
 	if is_instance_valid(_bg2_strip):
 		_bg2_strip.queue_free()
+	# Phase-4 reveal nodes (anim_1 only).
+	for n in [_warn1, _warn2, _fx]:
+		if n != null and is_instance_valid(n):
+			n.queue_free()
+	_warn1 = null
+	_warn2 = null
+	_fx = null
+	_door.clear()
+	_risers.clear()
 	# anim_4 extras.
 	for h in _a4_heroes:
 		(h["rect"] as TextureRect).queue_free()
@@ -584,6 +836,7 @@ func _anim3_enter_reveal() -> void:
 	_anim_phase = 3
 	_anim_frame = 0.0
 	_blanker = 1.0
+	_w_fade = 0.0
 	_hide_slave(21)
 	var row := {
 		22: Vector2(650, 716), 23: Vector2(250, 711), 24: Vector2(800, 711),
@@ -631,7 +884,7 @@ func _move_slave(s: Dictionary, pos: Vector2) -> void:
 ## pans to each target like view_xview chasing g_bulding_goto_boom.
 func _anim3_reveal() -> void:
 	_blanker = maxf(0.0, _blanker / 1.01)
-	_dim.modulate.a = _blanker
+	_dim.modulate.a = minf(1.0, _blanker + _w_fade)
 	# Disband timeline.
 	while not _boom_pending.is_empty() and _anim_frame >= float(_boom_pending[0][0]) + 60.0:
 		var idx: int = _boom_pending.pop_front()[1]
@@ -650,8 +903,15 @@ func _anim3_reveal() -> void:
 			_bg_strip.position.x += dx
 		if _bg2_strip != null:
 			_bg2_strip.position.x += dx
+	# g_sciemnij_po_explozjach — after disband_time>900 the original
+	# ramps +0.02/frame (~50f) before room_goto_next. It stacks on
+	# the decaying blanker like g_sciemnij does in the draw call.
 	if _anim_frame >= _anim_end_at:
-		_anim3_done()
+		if _blanker + _w_fade < 1.0:
+			_w_fade = minf(1.0, _w_fade + 0.02)
+			_dim.modulate.a = minf(1.0, _blanker + _w_fade)
+		else:
+			_anim3_done()
 
 
 ## Explosion flash at a parade position — sprite 14 like NativeExplosion.
