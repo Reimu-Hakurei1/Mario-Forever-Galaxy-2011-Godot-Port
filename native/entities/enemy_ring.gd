@@ -135,6 +135,12 @@ func _physics_process(_delta: float) -> void:
 		_dead = true
 		NativeGame.add_score(SCORE_ON_CLEAR)
 		var boom := NativeExplosion.new()
+		boom.burst_scale = 1.8
 		boom.global_position = position
 		get_parent().add_child(boom)
+		for i in 4:
+			var debris := NativeExplosion.new()
+			debris.variant = "debris"
+			debris.global_position = position
+			get_parent().add_child(debris)
 		queue_free()

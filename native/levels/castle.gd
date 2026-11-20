@@ -186,11 +186,21 @@ func _process(delta: float) -> void:
 
 
 func _on_player_died() -> void:
+	var hull := NativeExplosion.new()
+	hull.variant = "kaboom"
+	hull.burst_scale = 1.4
+	hull.global_position = _ship.global_position
+	add_child(hull)
 	for i in 4:
 		var boom := NativeExplosion.new()
 		boom.global_position = _ship.global_position + Vector2(
 			randf_range(-30, 30), randf_range(-30, 30))
 		add_child(boom)
+	for i in 6:
+		var debris := NativeExplosion.new()
+		debris.variant = "falling"
+		debris.global_position = _ship.global_position
+		add_child(debris)
 	var wreck := NativeDeathWreck.new()
 	wreck.global_position = _ship.global_position
 	add_child(wreck)

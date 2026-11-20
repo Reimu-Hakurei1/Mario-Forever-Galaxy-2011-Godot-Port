@@ -218,8 +218,14 @@ func _physics_process(_delta: float) -> void:
 ## particle ring wherever a warhead detonates.
 func _boom() -> void:
 	var boom := NativeExplosion.new()
+	boom.burst_scale = 1.1
 	boom.global_position = global_position
 	get_parent().add_child(boom)
+	for i in 3:
+		var spark := NativeExplosion.new()
+		spark.variant = "spark"
+		spark.global_position = global_position
+		get_parent().add_child(spark)
 
 
 ## bullet_rockets_6 — SPREAD ROCKETS: on impact it bursts into ten small

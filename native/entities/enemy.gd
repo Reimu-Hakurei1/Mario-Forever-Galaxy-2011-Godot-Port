@@ -208,6 +208,13 @@ var _flame_left := 0
 var _flame_timer := 0.0
 var _spin_left := 0
 
+# Boss-8 "dodatkowy" additions (objects 509/510/512/513, parent
+# o_enemy_1): fighters launched on a fixed GameMaker direction instead
+# of AI — sprite_id_override picks their hull (41 vs 502).
+var sprite_id_override := -1
+var dart_dir := Vector2.ZERO      # px/frame velocity while >0
+var dart_speed := 0.0
+
 # Flame-can attack cycle (o_flame_cans g_ladowanie phases):
 # 0 drift to point → 1 charge → 2 flame jet → 3 cooldown.
 var _flame_state := 0
@@ -296,6 +303,8 @@ const HIT_FLASH_TIME := 4         # frames of white flash on hit (oberwanie)
 func _apply_profile() -> void:
 	var p: Dictionary = KIND_PROFILES.get(kind, KIND_PROFILES[Kind.GOOMBA])
 	_sprite_id = p.get("sprite", 11)
+	if sprite_id_override >= 0:
+		_sprite_id = sprite_id_override
 	_score = p.get("score", DEATH_SCORE_DEFAULT)
 	shoot_interval = p.get("shoot_interval", shoot_interval)
 	spread = p.get("spread", 1)
@@ -364,7 +373,9 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	# The sky-eye runs its own telegraphed laser cycle instead of volleys.
-	if kind == Kind.EYE or kind == Kind.EYE2:
+	if dart_speed > 0.0:
+		_behave_dart()
+	elif kind == Kind.EYE or kind == Kind.EYE2:
 		_behave_skyeye()
 	elif kind in [Kind.CANNON, Kind.FLAME_CANNON, Kind.ROTARY,
 			Kind.FAT_CANNON]:
@@ -696,6 +707,14 @@ func _behave_kamikaze() -> void:
 	_anim.rotation = to_player.angle()
 
 
+## boss_8_fight.gd "dodatkowy" additions — fly a fixed GM direction
+## (set via dart_dir) instead of tracking the player; still killable
+## and still rams on contact like every other enemy.
+func _behave_dart() -> void:
+	position += dart_dir
+	_anim.rotation = dart_dir.angle()
+
+
 ## Idle sway around the formation slot + gentle tracking of the player,
 ## mirroring the original `ruch` sine motion and slot-keeping.
 func _sway_and_track() -> void:
@@ -835,8 +854,17 @@ func _spawn_explosion(points: int = -1) -> void:
 	var boom := NativeExplosion.new()
 	# Heavy enemies get a bigger burst — scale follows the hit radius.
 	boom.burst_scale = clampf(_hit_radius / 30.0, 0.8, 2.4)
+	# o_fallexploder_* — falling spirits burst into raining debris.
+	if kind == Kind.FALLER:
+		boom.variant = "falling"
 	boom.global_position = position
 	get_parent().add_child(boom)
+	if kind == Kind.FALLER:
+		for i in 3:
+			var debris := NativeExplosion.new()
+			debris.variant = "debris"
+			debris.global_position = position
+			get_parent().add_child(debris)
 
 	# Floating score popup — the "+100" the original draws on kills.
 	# Shows the streak-multiplied amount actually awarded.
