@@ -67,6 +67,8 @@ var _dead := false
 var _pattern_timer := 90.0
 var _minion_timer := 300.0
 var _barrage_timer := 300.0
+var _wp_index := -1
+var _wp_timer := 0.0
 var _pattern := 0
 var _spiral_angle := 0.0           # rotation offset for spiral barrages
 var _hp_bar: ProgressBar
@@ -151,12 +153,11 @@ func _physics_process(_delta: float) -> void:
 	_check_player_collision()
 
 
-## Boss drifts side to side while rotating attack patterns.
+## Boss patrols a waypoint dance — the boss_N_fight scripts cycle
+## g_sekwencja states through dox/doy targets (center → left → right →
+## low corners) while firing, advancing on arrival or a timeout.
 func _hover_and_attack() -> void:
-	# Slow patrol across the upper arena.
-	var room := NativeGame.room_size()
-	position.x += sin(Time.get_ticks_msec() / 2400.0) * 0.5
-	position.x = clampf(position.x, 140.0, room.x - 140.0)
+	_patrol()
 
 	_pattern_timer -= 1.0
 	if _pattern_timer <= 0.0:
@@ -182,6 +183,36 @@ func _hover_and_attack() -> void:
 	if _minion_timer <= 0.0:
 		_summon_minions()
 		_minion_timer = MINION_INTERVAL
+
+
+## Waypoint patrol — boss_8_fight's 14-state dance scaled to our arena:
+## center-top, left, right, then the low corners, looping. The boss
+## accelerates toward the current target (g_ixor ramp in the original)
+## and advances to the next waypoint on arrival or after ~10s.
+func _patrol() -> void:
+	if _wp_index < 0:
+		_wp_index = 0
+		_wp_timer = 0.0
+	var room := NativeGame.room_size()
+	var cx := room.x / 2.0
+	var waypoints := [
+		Vector2(cx, 200), Vector2(200, 300), Vector2(room.x - 200, 300),
+		Vector2(cx, 350), Vector2(200, 300), Vector2(room.x - 200, 300),
+		Vector2(cx, 350), Vector2(160, 480), Vector2(room.x - 160, 480),
+		Vector2(cx, 350),
+	]
+	var target: Vector2 = waypoints[_wp_index % waypoints.size()]
+	target.y = minf(target.y, room.y * 0.62)
+	var to := target - position
+	var dist := to.length()
+	_wp_timer += 1.0
+	if dist < 18.0 or _wp_timer > 600.0:
+		_wp_index += 1
+		_wp_timer = 0.0
+		return
+	# Accelerating approach — the original ramps g_ixor ±0.3/frame.
+	var speed := minf(1.5 + _wp_timer / 240.0, 3.2)
+	position += to.normalized() * speed
 
 
 ## Fight phase 0/1/2 from remaining hull — the original's g_etap
