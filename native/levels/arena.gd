@@ -251,21 +251,24 @@ func _on_level_cleared() -> void:
 	_clear_timer = LEVEL_CLEAR_DELAY
 
 
-## Level cleared — unlock the next node and return to the star map,
-## matching the original's flow (level → map → next level).
+## Level cleared — mark the map node complete and return to the
+## star map (the original's level → map_complev → map room flow).
+## Clearing a map's exit node queues the inter-map transition; the
+## final castle routes to the campaign ending.
 func _next_level() -> void:
-	# Unlock the node after the one just cleared. The final level routes
-	# to the campaign ending instead of the shop.
-	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
-	NativeGame.save()
-	if NativeGame.active_level >= NativeLevelTable.level_count() - 1:
+	NativeGame.complete_node(NativeGame.active_node)
+	if NativeGame.campaign_complete():
+		NativeGame.save()
 		# room_animation_4 plays before the ending rooms.
 		var cs = load("res://native/ui/cutscene.gd").new()
 		cs.setup("finale")
 		cs.next_scene = "res://native/ui/ending.tscn"
 		get_tree().root.add_child(cs)
-	else:
-		get_tree().change_scene_to_file("res://native/ui/shop.tscn")
+		return
+	if NativeGame.cleared_map_exit():
+		NativeGame.map_transition = int(NativeGame.active_node.get_slice(":", 0)) + 1
+	NativeGame.save()
+	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")
 
 
 func _go_to_map() -> void:

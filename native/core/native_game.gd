@@ -14,8 +14,16 @@ static var score: int = 0            ## G.punkty — level score
 static var best_score: int = 0       ## highest cumulative score ever reached
 static var coins: int = 0            ## G.coins — currency from coins/gems
 static var lives: int = 3            ## G.zycia — spare lives
-static var level_index: int = 0      ## G.poziom — highest unlocked level
+static var level_index: int = 0      ## G.poziom — stages completed count
 static var active_level: int = 0     ## level currently being played
+## Star-map node progression — the original's G.aktualny_lev /
+## G.map_complev / G.map_number model. Nodes are "m:n" keys into the
+## extracted map graph; the ship flies lane-to-lane and only nodes
+## adjacent to the current (completed) node can be launched.
+static var active_node: String = ""      ## "m:n" of the stage being played
+static var map_current: String = ""      ## "m:n" the ship is parked on
+static var map_done: Array = []          ## completed "m:n" node keys
+static var map_transition: int = -1      ## map to advance to (-1 = none)
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
 static var upgrade_freezer: int = 0  ## G.upgradeFREEZER — overheat capacity
@@ -421,6 +429,9 @@ static func save() -> void:
 	cfg.set_value("profile", "coins", coins)
 	cfg.set_value("profile", "lives", lives)
 	cfg.set_value("profile", "level_index", level_index)
+	cfg.set_value("profile", "map_current", map_current)
+	cfg.set_value("profile", "map_done", map_done)
+	cfg.set_value("profile", "map_transition", map_transition)
 	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
 	cfg.set_value("profile", "upgrade_freezer", upgrade_freezer)
@@ -459,6 +470,10 @@ static func reset_profile() -> void:
 	lives = 3
 	level_index = 0
 	active_level = 0
+	active_node = ""
+	map_current = "0:0"
+	map_done = []
+	map_transition = -1
 	upgrade_wing = 0
 	upgrade_boost = 0
 	upgrade_freezer = 0
@@ -495,6 +510,17 @@ static func load_save() -> bool:
 	coins = int(cfg.get_value("profile", "coins", coins))
 	lives = int(cfg.get_value("profile", "lives", lives))
 	level_index = int(cfg.get_value("profile", "level_index", level_index))
+	map_current = str(cfg.get_value("profile", "map_current", map_current))
+	map_done = cfg.get_value("profile", "map_done", map_done)
+	map_transition = int(cfg.get_value("profile", "map_transition", map_transition))
+	# Legacy saves only stored a linear level_index — reconstruct an
+	# approximate done-set from the first N stage keys so the graph
+	# progression has somewhere to resume from.
+	if map_done.is_empty() and level_index > 0:
+		for i in mini(level_index, NativeLevelTable.level_count()):
+			map_done.append(NativeLevelTable.stage_key(i))
+		if map_current == "":
+			map_current = str(map_done[map_done.size() - 1])
 	upgrade_wing = int(cfg.get_value("profile", "upgrade_wing", upgrade_wing))
 	upgrade_boost = int(cfg.get_value("profile", "upgrade_boost", upgrade_boost))
 	upgrade_freezer = int(cfg.get_value("profile", "upgrade_freezer", upgrade_freezer))
@@ -531,3 +557,29 @@ static func load_save() -> bool:
 	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
 	fullscreen = bool(cfg.get_value("settings", "fullscreen", fullscreen))
 	return true
+
+
+## Mark a map node complete — the original's G.map_complev write after
+## a stage falls. level_index tracks the count for legacy displays.
+static func complete_node(key: String) -> void:
+	if key != "" and not map_done.has(key):
+		map_done.append(key)
+	level_index = map_done.size()
+
+
+## The node just cleared was its map's exit (boss castle / last castle)
+## — the original sets G.map_completed and runs the inter-map sequence.
+static func cleared_map_exit() -> bool:
+	if active_node == "":
+		return false
+	var parts := active_node.split(":")
+	if parts.size() != 2:
+		return false
+	var m := int(parts[0])
+	return NativeLevelTable.map_exit(m) == active_node \
+		and map_done.has(active_node)
+
+
+## Campaign finished — the map-7 exit (LAST_CASTLE) is down.
+static func campaign_complete() -> bool:
+	return cleared_map_exit() and active_node.split(":")[0] == "7"

@@ -170,15 +170,18 @@ func _on_level_cleared() -> void:
 
 
 func _next_level() -> void:
-	NativeGame.level_index = maxi(NativeGame.level_index, NativeGame.active_level + 1)
-	NativeGame.save()
-	if NativeGame.active_level >= NativeLevelTable.level_count() - 1:
+	NativeGame.complete_node(NativeGame.active_node)
+	if NativeGame.campaign_complete():
+		NativeGame.save()
 		var cs = load("res://native/ui/cutscene.gd").new()
 		cs.setup("finale")
 		cs.next_scene = "res://native/ui/ending.tscn"
 		get_tree().root.add_child(cs)
-	else:
-		get_tree().change_scene_to_file("res://native/ui/shop.tscn")
+		return
+	if NativeGame.cleared_map_exit():
+		NativeGame.map_transition = int(NativeGame.active_node.get_slice(":", 0)) + 1
+	NativeGame.save()
+	get_tree().change_scene_to_file("res://native/levels/star_map.tscn")
 
 
 func _show_level_intro() -> void:

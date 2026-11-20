@@ -179,12 +179,14 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 	var world := int(parts[0])
 	var node := int(parts[1])
 	# Minigame nodes — the original's map_minigame routing: 1/3 = card
-	# game rooms, 2 = shop, 10 = training stage.
-	if bool(st.get("is_minigame", false)):
+	# game rooms, 2 = shop. Value 10 (GUN_RANGE) is a live-fire training
+	# stage with a real wave schedule, so it falls through to normal.
+	var mg := int(st.get("minigame", 0))
+	if bool(st.get("is_minigame", false)) and mg in [1, 2, 3]:
 		return {
 			"background": -1, "music": "", "waves": [], "boss": {},
 			"mode": "minigame",
-			"minigame": int(st.get("minigame", 0)),
+			"minigame": mg,
 			"label": str(st.get("title", "MINIGAME")),
 		}
 	var theme: Dictionary = WORLD_THEME.get(world, WORLD_THEME[0])
@@ -243,6 +245,162 @@ static func world_of(level_index: int) -> int:
 static func level_of(level_index: int) -> int:
 	var p := stage_key(level_index).split(":")
 	return int(p[1])
+
+
+## --- Star-map node graph (G.map_nextlev / map_prevlev / map_complev) ---
+## data/levels/native/map_meta.json holds the extracted per-node
+## adjacency, names, minigame routing, and pre-completed flags.
+
+static var _map_meta: Dictionary = {}
+static var _map_meta_loaded := false
+static var _rev_links: Dictionary = {}   # "m:n" -> [sources] nextlev inverse
+
+
+static func _load_map_meta() -> void:
+	if _map_meta_loaded:
+		return
+	_map_meta_loaded = true
+	const META_PATH := "res://data/levels/native/map_meta.json"
+	if FileAccess.file_exists(META_PATH):
+		var parsed = JSON.parse_string(FileAccess.get_file_as_string(META_PATH))
+		if typeof(parsed) == TYPE_DICTIONARY:
+			_map_meta = parsed
+	# The extraction kept nextlev but not prevlev — the original writes
+	# prevlev as the inverse of nextlev (script_map_a_*), so rebuild it:
+	# every A→B forward edge also gives B a link back to A.
+	for key in _map_meta:
+		var meta: Dictionary = _map_meta[key]
+		var map := str(key).get_slice(":", 0)
+		var nxt: Dictionary = meta.get("map_nextlev", {})
+		for slot in nxt:
+			var t := str(nxt[slot])
+			if t == "" or t == "0" or t == "-1":
+				continue
+			var tk := "%s:%s" % [map, t]
+			if not _rev_links.has(tk):
+				_rev_links[tk] = []
+			if not (_rev_links[tk] as Array).has(key):
+				(_rev_links[tk] as Array).append(key)
+
+
+## Position of a node key in the playable roster (-1 = not a stage —
+## connector/hot-spot/waypoint node).
+static func node_rank(key: String) -> int:
+	_load_stages()
+	return _playable.find(key)
+
+
+## True when the key is one of the 178 scheduled stage/minigame nodes.
+static func is_stage_node(key: String) -> bool:
+	return node_rank(key) >= 0
+
+
+## Config for a specific map node — the stage schedule is keyed by
+## "m:n", so graph progression plays each node's own authored content
+## regardless of completion order. Returns {} for waypoint nodes.
+static func config_for_key(key: String) -> Dictionary:
+	_load_stages()
+	var rank := _playable.find(key)
+	if rank < 0:
+		return {}
+	return _authored_config(key, rank)
+
+
+## Lane neighbours of a node — undirected, both nextlev and prevlev,
+## matching how the original lets the cursor fly back and forth.
+static func node_neighbors(key: String) -> Array:
+	_load_map_meta()
+	var out: Array = []
+	var meta: Dictionary = _map_meta.get(key, {})
+	var map := key.get_slice(":", 0)
+	for dirn in ["map_nextlev", "map_prevlev"]:
+		var links: Dictionary = meta.get(dirn, {})
+		for slot in links:
+			var t := str(links[slot])
+			if t != "" and t != "0" and t != "-1":
+				var nk := "%s:%s" % [map, t]
+				if not out.has(nk):
+					out.append(nk)
+	# Reconstructed prevlev — nodes that point forward at us.
+	for src in _rev_links.get(key, []):
+		if not out.has(src):
+			out.append(src)
+	return out
+
+
+## Extracted map_complev flag — special nodes (START_POINT, HOT_SPOT,
+## SHOP approach nodes, LOCK_GATE) are pre-completed in the original so
+## their lanes are live from the start.
+static func node_precompleted(key: String) -> bool:
+	_load_map_meta()
+	return str(_map_meta.get(key, {}).get("map_complev", "0")) == "1"
+
+
+static var _map_exits: Dictionary = {}
+
+
+## The node that completes a map — the original sets G.map_completed
+## when the map's boss object dies, then runs the inter-map sequence.
+## Boss/castle terminal nodes are DAG sinks whose name or title marks
+## them (BOWSER_CASTLE, LAST_CASTLE, BOSS!); falls back to the highest
+## playable sink.
+static func map_exit(map: int) -> String:
+	if _map_exits.has(map):
+		return str(_map_exits[map])
+	_load_stages()
+	_load_map_meta()
+	var prefix := "%d:" % map
+	var sinks: Array = []
+	for key in _playable:
+		if not str(key).begins_with(prefix):
+			continue
+		var fwd: Array = []
+		for nk in node_neighbors(key):
+			# Only forward links gate progress — prevlev is backtracking.
+			if _is_forward_link(key, nk) and _playable.has(nk):
+				fwd.append(nk)
+		if fwd.is_empty():
+			sinks.append(key)
+	var best := ""
+	var best_score := -1.0
+	for key in sinks:
+		var st: Dictionary = _stages.get(key, {})
+		var meta: Dictionary = _map_meta.get(key, {})
+		var label := (str(st.get("title", "")) + " " \
+			+ str(meta.get("name", ""))).to_upper()
+		# The map-final stage carries the boss-castle signature: the
+		# extracted muzyka flag is 10 (boss theme) on every
+		# BOWSER_CASTLE/LAST_CASTLE node, 9 on the final BOSS! stage.
+		var music = st.get("music", 0)
+		var score := 0.0
+		if music == 10:
+			score += 100.0
+		elif music == 9:
+			score += 40.0
+		if bool(st.get("is_boss", false)):
+			score += 30.0
+		for tag in ["CASTLE", "BOSS", "LAST"]:
+			if label.contains(tag):
+				score += 50.0
+		var parts := str(key).split(":")
+		score += float(int(parts[1])) / 1000.0   # tiebreak: later node
+		if score > best_score:
+			best_score = score
+			best = key
+	_map_exits[map] = best
+	return best
+
+
+## True when `to` appears in key's map_nextlev slots.
+static func _is_forward_link(key: String, to: String) -> bool:
+	_load_map_meta()
+	var meta: Dictionary = _map_meta.get(key, {})
+	var nxt: Dictionary = meta.get("map_nextlev", {})
+	var target_idx := str(to).get_slice(":", 1)
+	for slot in nxt:
+		if str(nxt[slot]) == target_idx:
+			return true
+	return false
 
 
 ## Hand-authored wave blueprints — distinct level "feels" layered on top

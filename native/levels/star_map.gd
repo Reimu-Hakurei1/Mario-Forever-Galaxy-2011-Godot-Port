@@ -63,6 +63,7 @@ func _ready() -> void:
 
 	_build_header()
 	_build_grid()
+	_maybe_map_transition()
 	_cam.make_current()
 	_center_on_frontier()
 
@@ -158,6 +159,7 @@ const MAP_GAP := 60.0
 var _map_nodes: Dictionary = {}    # map idx -> [[x,y],...] authored coords
 var _node_rank: Dictionary = {}    # "m:n" -> playable level index
 var _node_pos: Dictionary = {}     # "m:n" -> world-space center (all nodes)
+var _node_btns: Dictionary = {}    # "m:n" -> node Button
 var _map_meta: Dictionary = {}     # "m:n" -> {name, map_nextlev, ...}
 
 
@@ -212,17 +214,19 @@ func _build_grid() -> void:
 			var rel: Vector2 = (pts[n] - minp) * scale
 			var pos: Vector2 = origin + rel + Vector2(40, 40)
 			var key := "%d:%d" % [m, n]
-			if _node_rank.has(key):
-				var idx: int = _node_rank[key]
-				var btn := _make_node(idx, m, n)
+			var rank := int(_node_rank.get(key, -1))
+			if rank >= 0 or _is_waypoint(key):
+				var btn := _make_node(key, rank, m, n)
 				btn.position = pos - Vector2(NODE_SIZE, NODE_SIZE) / 2
 				_world.add_child(btn)
 				_nodes.append(btn)
+				_node_btns[key] = btn
 				var center := btn.position + Vector2(NODE_SIZE / 2, NODE_SIZE / 2)
-				_node_centers[idx] = center
+				if rank >= 0:
+					_node_centers[rank] = center
 				_node_pos[key] = center
 			else:
-				# Connector/path node — a dim star, not a level.
+				# Connector/path node — a dim star, not a destination.
 				var dot := ColorRect.new()
 				dot.color = Color(0.35, 0.35, 0.45, 0.8)
 				dot.size = Vector2(10, 10)
@@ -235,13 +239,11 @@ func _build_grid() -> void:
 		_build_map_decor()
 
 
-## True when every playable node of a map is behind the frontier.
+## True when every playable node of a map is behind the frontier —
+## the original's G.map_completed, set by the map's boss/exit node.
 func _map_cleared(m: int) -> bool:
-	for i in NativeLevelTable.level_count():
-		if NativeLevelTable.world_of(i) == m \
-				and i > NativeGame.level_index:
-			return false
-	return true
+	var exit_key := NativeLevelTable.map_exit(m)
+	return exit_key != "" and NativeGame.map_done.has(exit_key)
 
 
 ## Map secrets — the original's hidden map goodies (o_map_goodie_*)
@@ -300,13 +302,18 @@ func _draw_flight_lanes() -> void:
 				continue
 			var line := Line2D.new()
 			line.points = PackedVector2Array([a, b])
-			var a_rank := int(_node_rank.get(key, -1))
-			var b_rank := int(_node_rank.get(bkey, -1))
-			var both_open := a_rank >= 0 and b_rank >= 0 \
-				and a_rank <= NativeGame.level_index \
-				and b_rank <= NativeGame.level_index
-			line.default_color = Color(0.5, 0.7, 1.0, 0.5) if both_open \
-				else Color(0.25, 0.25, 0.35, 0.6)
+			var touches_current: bool = key == NativeGame.map_current \
+				or bkey == NativeGame.map_current
+			var both_cleared: bool = _node_cleared(key) and _node_cleared(bkey)
+			if touches_current and _current_done():
+				# Live lane out of the completed current node — the
+				# original draws these bright (sprite 250 glow).
+				line.default_color = Color(1.0, 0.85, 0.4, 0.9)
+				line.width = 3.0
+			elif both_cleared:
+				line.default_color = Color(0.5, 0.7, 1.0, 0.5)
+			else:
+				line.default_color = Color(0.25, 0.25, 0.35, 0.6)
 			line.width = 2.0
 			_world.add_child(line)
 
@@ -317,14 +324,12 @@ func _draw_paths(_start_x: float, _start_y: float, _per_world: int) -> void:
 	pass   # authored node adjacency isn't extracted; nodes stand alone
 
 
-## The player's ship parked on the frontier node — pulses gently to
+## The player's ship parked on the current map node — pulses gently to
 ## invite the next flight, like the Galaxy map cursor.
 func _build_ship_cursor() -> void:
-	var total := NativeLevelTable.level_count()
-	if total == 0 or NativeGame.level_index >= total:
-		return    # campaign complete — no frontier to mark
-	var idx := NativeGame.level_index
-	var center: Vector2 = _node_centers.get(idx, Vector2.ZERO)
+	if NativeGame.map_current == "":
+		NativeGame.map_current = "0:0"
+	var center: Vector2 = _node_pos.get(NativeGame.map_current, Vector2.ZERO)
 	if center == Vector2.ZERO:
 		return
 	var tex := NativeAssets.sprite_frame(543, 1)   # upright ship frame
@@ -339,53 +344,143 @@ func _build_ship_cursor() -> void:
 	_world.add_child(_ship_cursor)
 
 
-## One level node — a star button showing world/level and lock state.
-func _make_node(idx: int, w: int, l: int) -> Button:
+## --- Graph progression (G.aktualny_lev / map_complev / nextlev) ---
+##
+## The ship is parked on NativeGame.map_current. While that node is
+## incomplete only it can be launched; once cleared, every lane
+## neighbour (nextlev + prevlev, undirected like the original's cursor
+## flight) becomes selectable. Waypoint nodes — hot spots, lock gates,
+## start points — are pre-completed in the extracted data so their
+## lanes are live immediately; clicking one just repositions the ship.
+
+func _is_waypoint(key: String) -> bool:
+	return NativeLevelTable.node_rank(key) < 0 \
+		and not NativeLevelTable.node_neighbors(key).is_empty()
+
+
+func _current_done() -> bool:
+	var cur := NativeGame.map_current
+	if cur == "":
+		return true
+	return NativeGame.map_done.has(cur) \
+		or NativeLevelTable.node_precompleted(cur)
+
+
+func _node_selectable(key: String) -> bool:
+	var clickable := NativeLevelTable.is_stage_node(key) or _is_waypoint(key)
+	if not clickable:
+		return false
+	if key == NativeGame.map_current:
+		return true
+	if not _current_done():
+		return false
+	return NativeLevelTable.node_neighbors(NativeGame.map_current).has(key)
+
+
+## Node was cleared — stage nodes live in map_done; waypoint/special
+## nodes count as done via their extracted complev flag.
+func _node_cleared(key: String) -> bool:
+	return NativeGame.map_done.has(key) \
+		or NativeLevelTable.node_precompleted(key)
+
+
+## Inter-map transition — clearing a map's exit node sets
+## NativeGame.map_transition; the original runs the next_map_obj
+## briefing (room 44) then warps to the next map's entry node.
+func _maybe_map_transition() -> void:
+	var m := NativeGame.map_transition
+	if m < 0 or m > 7:
+		return
+	NativeGame.map_transition = -1
+	NativeGame.map_current = "%d:0" % m
+	NativeGame.save()
+	var lines: Array = NativeDialogueTable.NEXT_MAP.get(m, [])
+	if lines.is_empty():
+		return
+	var talk := NativeBossDialogue.new()
+	add_child(talk)
+	talk.play(lines)
+
+
+## One map node — a star button. Stage nodes show their rank colour;
+## waypoint nodes (hot spots/lock gates) are smaller dim stars.
+func _make_node(key: String, rank: int, w: int, l: int) -> Button:
 	var btn := Button.new()
 	btn.custom_minimum_size = Vector2(NODE_SIZE, NODE_SIZE)
 	btn.size = Vector2(NODE_SIZE, NODE_SIZE)
-	btn.text = "%d-%d" % [w + 1, l + 1]
-	btn.add_theme_font_size_override("font_size", 13)
+	var meta: Dictionary = _map_meta.get(key, {})
+	var stage_label := ""
+	if rank >= 0:
+		stage_label = NativeLevelTable.config_for_key(key).get("label", "")
+	var node_name := str(meta.get("name", "")).replace("_", " ") \
+		.replace("#", " ")
+	btn.text = node_name if node_name != "" else ("%d-%d" % [w + 1, l + 1])
+	btn.add_theme_font_size_override("font_size", 11)
 
-	var unlocked: bool = idx <= NativeGame.level_index
-	if unlocked:
-		# Unlocked = world accent; the frontier node pulses gold.
-		btn.modulate = Color(1.0, 0.85, 0.35) if idx == NativeGame.level_index \
-			else Color(WORLD_COLORS[w]) * 0.85
+	var selectable := _node_selectable(key)
+	var cleared := _node_cleared(key)
+	if key == NativeGame.map_current:
+		# Parked ship node — gold pulse like the original's current star.
+		btn.modulate = Color(1.0, 0.85, 0.35)
+	elif selectable:
+		# Frontier — a lane neighbour of the completed current node.
+		btn.modulate = Color(WORLD_COLORS[w]) * (1.0 if not cleared else 0.55)
+	elif cleared:
+		btn.modulate = Color(WORLD_COLORS[w]) * 0.45
 	else:
 		btn.modulate = Color(0.25, 0.25, 0.3)
-	btn.disabled = not unlocked
-	btn.tooltip_text = NativeLevelTable.config_for(idx).get("label", "")
+	btn.disabled = not selectable
+	var tip := stage_label if stage_label != "" else btn.text
+	btn.tooltip_text = tip
 
-	if unlocked:
-		btn.pressed.connect(_on_level_pressed.bind(idx))
+	if selectable:
+		btn.pressed.connect(_on_node_pressed.bind(key))
 	return btn
 
 
-func _on_level_pressed(idx: int) -> void:
-	NativeGame.active_level = idx
-	NativeGame.pending_level = NativeLevelTable.config_for(idx)
+func _on_node_pressed(key: String) -> void:
+	if not _node_selectable(key):
+		return
+	var rank := NativeLevelTable.node_rank(key)
+	if rank < 0:
+		# Waypoint — fly the cursor there; lanes beyond it open up.
+		NativeGame.map_current = key
+		NativeGame.save()
+		_fly_cursor_to(key)
+		return
+	NativeGame.active_level = rank
+	NativeGame.active_node = key
+	NativeGame.map_current = key
+	NativeGame.pending_level = NativeLevelTable.config_for_key(key)
 	# Minigame nodes (card game/shop/gun range) don't start a run.
 	if str(NativeGame.pending_level.get("mode", "")) != "minigame":
 		NativeGame.reset_run()
-	# Entering a new world's first level plays the inter-map briefing
-	# (objects/ui/next_map_obj.gd) before the flight — only on the
-	# frontier node, not when replaying old levels.
-	var world := NativeLevelTable.world_of(idx)
-	var first_of_map := idx == 0 \
-		or NativeLevelTable.world_of(idx - 1) != world
-	if first_of_map and idx == NativeGame.level_index \
-			and str(NativeGame.pending_level.get("mode", "")) != "minigame":
-		var lines: Array = NativeDialogueTable.NEXT_MAP.get(world, [])
-		if not lines.is_empty():
-			var talk := NativeBossDialogue.new()
-			add_child(talk)
-			talk.finished.connect(func():
-				if is_instance_valid(talk):
-					talk.queue_free()
-				_fade_to_arena())
-			talk.play(lines)
-			return
+	_fly_cursor_to(key, _enter_level)
+
+
+## Glide the ship cursor along the lane to the node, then continue —
+## the original's node-to-node flight.
+func _fly_cursor_to(key: String, then: Callable = Callable()) -> void:
+	var target: Vector2 = _node_pos.get(key, _ship_cursor.position \
+		if _ship_cursor != null else Vector2.ZERO)
+	_cursor_base_y = target.y
+	if _ship_cursor == null:
+		if then.is_valid():
+			then.call()
+		return
+	if _cam_tween != null and _cam_tween.is_running():
+		_cam_tween.kill()
+	_cam_tween = create_tween()
+	_cam_tween.tween_property(_ship_cursor, "position", target, 0.45) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if then.is_valid():
+		_cam_tween.tween_callback(then)
+
+
+## Flight complete — enter the staged level. Inter-map briefings are
+## handled by _maybe_map_transition on arrival, since lanes never cross
+## map regions (the original's next_map_obj runs between map rooms).
+func _enter_level() -> void:
 	_fade_to_arena()
 
 
@@ -418,12 +513,11 @@ func _fade_to_arena() -> void:
 		get_tree().change_scene_to_file(scene))
 
 
-## Snap the camera onto the frontier (highest unlocked) node.
+## Snap the camera onto the node the ship is parked on.
 func _center_on_frontier() -> void:
 	if _cam == null:
 		return
-	var idx: int = mini(NativeGame.level_index, _node_centers.size() - 1)
-	_cam.position = _node_centers.get(idx, Vector2(512, 384))
+	_cam.position = _node_pos.get(NativeGame.map_current, Vector2(512, 384))
 
 
 ## Right-drag pans the map view; mouse wheel zooms; releasing the button
@@ -453,8 +547,7 @@ func _set_zoom(z: float) -> void:
 func _return_camera() -> void:
 	if _cam_tween != null and _cam_tween.is_running():
 		_cam_tween.kill()
-	var idx: int = mini(NativeGame.level_index, _node_centers.size() - 1)
-	var target: Vector2 = _node_centers.get(idx, _cam.position)
+	var target: Vector2 = _node_pos.get(NativeGame.map_current, _cam.position)
 	_cam_tween = create_tween()
 	_cam_tween.tween_property(_cam, "position", target, 0.6) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
@@ -467,10 +560,11 @@ func _process(_delta: float) -> void:
 		stats.text = "SCORE %d    BEST %d    COINS %d    LIVES x%d" % [
 			NativeGame.score, NativeGame.best_score,
 			NativeGame.coins, NativeGame.lives]
-	if _nodes.size() > NativeGame.level_index:
-		var frontier: Button = _nodes[NativeGame.level_index]
+	# Pulse the node the ship is parked on.
+	var current_btn: Button = _node_btns.get(NativeGame.map_current)
+	if current_btn != null:
 		var s := 1.0 + sin(Time.get_ticks_msec() / 300.0) * 0.08
-		frontier.scale = Vector2(s, s)
+		current_btn.scale = Vector2(s, s)
 	# Ship cursor bob — gentle hover over the frontier node.
 	if _ship_cursor != null:
 		_ship_cursor.position.y = _cursor_base_y \
