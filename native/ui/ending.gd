@@ -36,7 +36,15 @@ AND EVERYONE HAD GREAT TIME!
 BUT THERE IS JUST ONE QUESTION LEFT...
 WHERE IS THE BOWSER...?"""
 
-var _phase := 0   # 0 = dialogue, 1 = epilogue, 2 = stats
+## The stinger — objects/ui/ending_bowser.gd: after "WHERE IS THE
+## BOWSER...?" the original cuts to Bowser's awakening laugh.
+const BOWSER_LINES := [
+	"BOWSER|HAHAHAHA!!!#WELL WELL WELL#I HAVE#FINALLY#AWAKENED.",
+	"BOWSER|TIME TO RUN#INTO SOME#PARTY.#PREPARE TO#TAKE OFF#MY ARMY!",
+	"BOWSER|HAHAHA!#I HOPE THEY#WILL BE#GLAD TO#SEE ME!",
+]
+
+var _phase := 0   # 0 = dialogue, 1 = epilogue, 2 = bowser, 3 = stats
 var _talk: NativeBossDialogue
 var _epilogue: Label
 var _stats: Label
@@ -124,12 +132,21 @@ func _on_scene_done() -> void:
 	_epilogue.modulate.a = 0.0
 	var tw := create_tween()
 	tw.tween_property(_epilogue, "modulate:a", 1.0, 2.0)
-	# Hold the epilogue, then reveal the stats panel.
-	get_tree().create_timer(6.0).timeout.connect(_show_stats)
+	# Hold the epilogue, then the Bowser stinger, then the stats panel.
+	get_tree().create_timer(6.0).timeout.connect(_play_bowser)
+
+
+func _play_bowser() -> void:
+	_phase = 2
+	_epilogue.visible = false
+	_talk = NativeBossDialogue.new()
+	add_child(_talk)
+	_talk.finished.connect(_show_stats)
+	_talk.play(BOWSER_LINES)
 
 
 func _show_stats() -> void:
-	_phase = 2
+	_phase = 3
 	_stats.visible = true
 	_btn.visible = true
 	var tw := create_tween()
@@ -194,7 +211,7 @@ COPYRIGHT OF NINTENDO(C).""" % [
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo \
-			and event.keycode == KEY_ENTER and _phase == 2:
+			and event.keycode == KEY_ENTER and _phase == 3:
 		_on_map()
 
 
