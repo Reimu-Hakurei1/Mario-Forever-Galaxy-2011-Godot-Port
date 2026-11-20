@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_cards_set.335.2.png" id="10_62yjt"]
 [ext_resource type="Script" path="res://editor/level_bounds_guide.gd" id="bounds_guide"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background0.0.jpg" id="t1"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nh3sj"]
 blend_mode = 1
@@ -972,6 +973,7 @@ blend_mode = 1
 blend_mode = 1
 
 [node name="level_17_card_game" type="Node2D" unique_id=337911715]
+script = ExtResource("stage_launch")
 metadata/gm_room = "card_game_1"
 metadata/gm_map = 0
 metadata/gm_lev = 17

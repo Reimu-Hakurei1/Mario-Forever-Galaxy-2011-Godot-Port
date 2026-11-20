@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" id="t32" path="res://gfx/sprites/s_enemy_b.29.0.png"]
 [ext_resource type="Texture2D" id="t33" path="res://gfx/sprites/s_enemy_c.30.0.png"]
 [ext_resource type="Texture2D" id="t34" path="res://gfx/sprites/sprite185.185.0.png"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="preview_blend1"]
 blend_mode = 1
@@ -42,6 +43,7 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="room_map8" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_map8"
 metadata/gm_bg_colour = 0
 metadata/gm_map = 7

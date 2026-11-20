@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://editor/level_spawn_rule.gd" id="editable_spawn"]
 
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_sprite137.137.0.png" id="formation_texture_0"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="player_add"]
 blend_mode = 1
@@ -20,6 +21,7 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="level_06_enemy_wall" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "level_0000"
 metadata/gm_map = 0
 metadata/gm_lev = 6

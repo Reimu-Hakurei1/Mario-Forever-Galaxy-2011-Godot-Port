@@ -1,7 +1,9 @@
 [gd_scene load_steps=1 format=3]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 
 [node name="room_map_indicator" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_map_indicator"
 metadata/gm_bg_colour = 12632256
 

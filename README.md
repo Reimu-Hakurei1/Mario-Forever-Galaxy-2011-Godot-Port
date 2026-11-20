@@ -25,8 +25,8 @@ godot --path .
 | `native/ui/` | Title, options, shop, hero select, card game, ending, game over, intro |
 | `levels/native/` | Stage/wave/map JSON data consumed by `NativeLevelTable` |
 | `levels/enemy_editor_catalog.json` | Enemy-kind → sprite-layer catalog used by the level editor previews |
-| `stages/world_1..8/` | Editable level scenes — static Godot layouts with enemy spawn previews (open in the 2D editor) |
-| `editor/` | `@tool` editor scripts for the level scenes (spawn-rule previews, wave timing, bounds guide, snapshot capture) |
+| `stages/world_1..8/` | Editable level scenes — static Godot layouts with enemy spawn previews (open in the 2D editor). Pressing play on one launches the matching native level via `editor/stage_launch.gd` |
+| `editor/` | `@tool` editor scripts for the level scenes (spawn-rule previews, wave timing, bounds guide, snapshot capture) plus `stage_launch.gd`, the run-scene bridge into the native game |
 | `gfx/` | All images — `sprites/`, `backgrounds/`, `cutscene/`, `map/`, `logo/`, `title/` |
 | `music/` | Music tracks |
 | `sfx/` | Sound effects |

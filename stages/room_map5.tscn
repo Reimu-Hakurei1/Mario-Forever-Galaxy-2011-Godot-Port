@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" id="t40" path="res://gfx/sprites/sprite158.158.0.png"]
 [ext_resource type="Texture2D" id="t41" path="res://gfx/sprites/s_shopcoinmask.438.0.png"]
 [ext_resource type="Texture2D" id="t42" path="res://gfx/sprites/s_shopcoin.437.0.png"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="preview_blend1"]
 blend_mode = 1
@@ -50,6 +51,7 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="room_map5" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_map5"
 metadata/gm_bg_colour = 0
 metadata/gm_map = 4

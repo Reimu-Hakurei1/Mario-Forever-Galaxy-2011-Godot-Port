@@ -1,8 +1,10 @@
 [gd_scene load_steps=2 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/sprites/sprite886.886.0.png"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [node name="room_samplerizer" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_samplerizer"
 metadata/gm_bg_colour = 0
 

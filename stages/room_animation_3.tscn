@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background1.2.jpg" id="t2"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background2.4.png" id="t3"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_enemy_h_2.328.0.png" id="t4"]
+[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l4cu0"]
 blend_mode = 1
@@ -118,6 +119,7 @@ blend_mode = 1
 blend_mode = 1
 
 [node name="room_animation_3" type="Node2D" unique_id=201566379]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_animation_3"
 metadata/gm_bg_colour = 16777215
 
