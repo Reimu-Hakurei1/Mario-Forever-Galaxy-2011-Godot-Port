@@ -162,8 +162,10 @@ const KIND_PROFILES := {
 		"health_abs": 1200.0, "shoot_interval": 150.0, "spread": 2},
 	# o_ufos_team/o_ufos_team_dolny/o_ufos_team2 — 450hp ufo that orbits
 	# a radius-50 ring while spawning orbiting rocket objects (446/443).
+	# Contact is a ram: original drains energia*3 = 1350 hull.
 	Kind.UFOS_ORBITER: {"sprite": 112, "score": 500,
-		"health_abs": 450.0, "shoot_interval": 160.0, "spread": 3},
+		"health_abs": 450.0, "shoot_interval": 160.0, "spread": 3,
+		"contact_damage": 1350.0},
 }
 
 # Drop table — ports objects/items/drop.gd (o_drop): every kill rolls a
@@ -684,13 +686,17 @@ func _behave_flame() -> void:
 					var to_ship: Vector2 = ship.global_position - position
 					_flame_dir = to_ship.normalized()
 				_anim.rotation = _flame_dir.angle()
-		2:  # JET — stream fireballs along the locked direction
-			if int(_flame_timer) % 3 == 0:
+		2:  # JET — volley of aimed o_bullet_flamecans (obj 250) shots,
+			# one every 10f like the original's strzelacz cadence.
+			var ship := get_tree().get_first_node_in_group("player")
+			if ship != null and int(_flame_timer) % 10 == 0:
+				var base: float = (ship.global_position - position).angle()
 				var shot := NativeEnemyBullet.new()
-				shot.sprite_id = 166     # s_superfireball
-				shot.damage = 8.0
-				shot.global_position = position + _flame_dir * 30.0
-				shot.velocity = _flame_dir * 5.5
+				shot.sprite_id = 25    # o_bullet_flamecans
+				shot.damage = 20.0
+				shot.global_position = position
+				shot.velocity = Vector2.from_angle(
+					base + randf_range(-0.17, 0.17)) * 5.0
 				get_parent().add_child(shot)
 			_flame_jet_left -= 1
 			if _flame_jet_left <= 0:
