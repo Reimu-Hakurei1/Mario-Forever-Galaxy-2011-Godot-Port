@@ -401,11 +401,15 @@ func _node_cleared(key: String) -> bool:
 ## briefing (room 44) then warps to the next map's entry node.
 func _maybe_map_transition() -> void:
 	var m := NativeGame.map_transition
-	if m < 0 or m > 7:
-		return
 	NativeGame.map_transition = -1
+	if m < 1 or m > 7:
+		return
 	NativeGame.map_current = "%d:0" % m
 	NativeGame.save()
+	# next_map_obj grants the hero 2,000,000 coins on the final
+	# transition ("I'LL GIVE YOU TWO MILLIONS COINS").
+	if m == 7:
+		NativeGame.coins += 2000000
 	var lines: Array = NativeDialogueTable.NEXT_MAP.get(m, [])
 	if lines.is_empty():
 		return
