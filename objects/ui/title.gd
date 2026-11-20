@@ -10,1243 +10,1260 @@ static var P2 = load("res://game/scripts/part_2.gd")
 static var P3 = load("res://game/scripts/part_3.gd")
 static var P5_8 = load("res://game/scripts/part_5_8.gd")
 static func ev_0_0(S, A: Array) -> Variant:
-    ev_0_0_0(S, A)
-    ev_0_0_1(S, A)
-    return 0
+	ev_0_0_0(S, A)
+	ev_0_0_1(S, A)
+	return 0
 
 static func ev_0_0_0(S, A: Array) -> Variant:
-    S.g_were_sorry1 = 0
-    S.g_were_sorry2 = 0
-    S.g_were_sorry3 = 0
-    S.g_were_sorry4 = 0
-    S.g_were_sorry_txt = "WE'RE_SORRY_BUT_DUE_TO_SITE_INACCESSIBILITY_THE_SURVIVAL_MODE_IS_NOT_WORKING_CHECK_UPDATES!"
-    P2.SXMS_SFX_PlayExt(S, [215, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    P3.SXMS_WAP_Stop(S, [])
-    P0.SXMS_C_Stop(S, [])
-    P0.SXMS_C_Play(S, ["./music/title.ogg"])
-    S.g_blank_opcji_jeden = 0.25
-    S.g_sekwencjastartu = 0
-    S.g_dodatkus = 0
-    S.g_unsuported = 0
-    S.g_unsupblank = 0
-    S.g_kapecx = 0
-    S.g_kapecy = 0
-    S.g_kretyn = 0
-    R.aset(S.g_resoname, 0, "800*600")
-    R.aset(S.g_resoname, 1, "1024*786")
-    R.aset(S.g_resoname, 2, "1152*864")
-    R.aset(S.g_resoname, 3, "1280*1024")
-    R.aset(S.g_resoname, 4, "1600*1200")
-    R.aset(S.g_resoname, 5, "800*600*32")
-    R.aset(S.g_resoname, 6, "1024*786*32")
-    R.aset(S.g_resoname, 7, "1152*864*32")
-    R.aset(S.g_resoname, 8, "1280*1024*32")
-    R.aset(S.g_resoname, 9, "1600*1200*32")
-    S.g_klik = 0
-    S.g_cyckirr = 0
-    S.g_lopor = 0
-    S.g_fitosteryd = 0
-    S.g_cycker = 0
-    S.g_budziox = 0
-    S.g_ywafel = -(10)
-    S.g_UZBROJENIE = ""
-    S.g_BRON = 0
-    S.g_itor = 0
-    S.g_nagrywanie_opcji = 0
-    S.g_credits = 0
-    S.g_ixor = 1000
-    S.g_ixoro = 0
-    S.g_klik4 = 0
-    S.g_klik5 = 0
-    S.g_guided = -(1)
-    S.g_crumpy = 0
-    S.g_crumpy2 = 0
-    R.aset(S.g_napis, 0, "DIRECTED AND CREATED BY :")
-    R.aset(S.g_napis, 1, "MICHAEL (SOFTENDO) GDANIEC")
-    R.aset(S.g_napis, 2, "GRAPHICS AND CODEWORK :")
-    R.aset(S.g_napis, 3, "MICHAEL (SOFTENDO) GDANIEC")
-    R.aset(S.g_napis, 4, "ONLY CHARACTERS GFX:")
-    R.aset(S.g_napis, 5, "BY NINTENDO")
-    R.aset(S.g_napis, 6, "MUSIC SUPPORT :")
-    R.aset(S.g_napis, 7, "FREEWARE SOURCES")
-    R.aset(S.g_napis, 8, "ALL RIGHTS RESERVED")
-    R.aset(S.g_napis, 9, "WWW.SOFTENDO.COM Â© 2007")
-    R.aset(S.g_napis, 10, "MORE GAMES ON OUR WEB SITE")
-    R.aset(S.g_napis, 11, "REMEMBER TO SUPPORT US!")
-    R.aset(S.g_napis, 12, "GREETINGS FOR :")
-    R.aset(S.g_napis, 13, "DESVERGERO ")
-    R.aset(S.g_napis, 14, "TEST :")
-    R.aset(S.g_napis, 15, "SACURA-X JAPAN.")
-    R.aset(S.g_napis, 16, "TEST :")
-    R.aset(S.g_napis, 17, "WEEYAMOTO JAPAN")
-    R.aset(S.g_napis, 18, "TEST :")
-    R.aset(S.g_napis, 19, "ALMEETTO JAPAN")
-    R.aset(S.g_napis, 20, "TEST :")
-    R.aset(S.g_napis, 21, "FRIILANCER")
-    R.aset(S.g_napis, 22, "TEST :")
-    R.aset(S.g_napis, 23, "DESOLATOIRE_FR")
-    R.aset(S.g_napis, 24, "TEST :")
-    R.aset(S.g_napis, 25, "ZITRONE US")
-    R.aset(S.g_napis, 26, "TEST :")
-    R.aset(S.g_napis, 27, "THASEER US")
-    R.aset(S.g_napis, 28, "TEST :")
-    R.aset(S.g_napis, 29, "RISKER-TGT US")
-    R.aset(S.g_napis, 30, "TEST")
-    R.aset(S.g_napis, 31, "THERELOUS_IE")
-    R.aset(S.g_napis, 32, "BROWSER SUPPORT :")
-    R.aset(S.g_napis, 33, "DUNG TRUONG ")
-    R.aset(S.g_napis, 34, "SXMS SUPPORT :")
-    R.aset(S.g_napis, 35, "SHALTIF")
-    R.aset(S.g_napis, 36, "ALL RIGHTS RESERVED!")
-    R.aset(S.g_napis, 37, "SOFTENDO GOOD FREEWARE GAMMING")
-    R.aset(S.g_napis, 38, "VISIT US !")
-    R.aset(S.g_napis, 39, "WWW.SOFTENDO.COM")
-    S.g_napis_numer = 0
-    S.g_flaga1 = 0
-    S.g_flaga2 = 0
-    S.g_flaga3 = 0
-    S.g_flaga4 = 0
-    S.g_flaga5 = 1
-    S.g_tekstowa1 = 0
-    S.g_tekstowa2 = 0
-    S.g_opcja1 = 0
-    S.g_podopcja1 = 0
-    S.g_podopcja2 = 0
-    S.g_podopcja3 = 0
-    S.g_klik1 = 0
-    S.g_klik2 = 0
-    S.g_klik3 = 0
-    R.aset(S.g_sekwencja, 0, 0)
-    S.g_zegarek1 = 0
-    S.g_zegarek2 = 0
-    S.g_czcionka2 = R.font_add_sprite(S, 433, R.ord(S, "!"), 0, 0)
-    S.g_wielkosc51 = 0
-    S.g_wielkosc52 = 0
-    S.g_wielkosc53 = 0
-    S.g_wielkosc54 = 0
-    S.g_wielkosc55 = 0
-    S.g_wielkosc56 = 0
-    S.g_wielkosc57 = 0
-    S.g_wielkosc58 = 0
-    S.g_wielkosc1 = 0
-    S.g_wielkosc2 = 0
-    S.g_wielkosc3 = 0
-    S.g_wielkosc4 = 0
-    S.g_wielkosc5 = 0
-    S.g_wielkosc6 = 0
-    S.g_wielkosc7 = 0
-    S.g_wielkosc8 = 0
-    S.g_wielkosc11 = 0
-    S.g_wielkosc12 = 0
-    S.g_wielkosc13 = 0
-    S.g_wielkosc14 = 0
-    S.g_wielkosc15 = 0
-    S.g_wielkosc16 = 0
-    S.g_wielkosc17 = 0
-    S.g_wielkosc18 = 0
-    S.g_wielkosc19 = 0
-    S.g_wielkosc20 = 0
-    S.g_wielkosc21 = 0
-    S.g_wielkosc22 = 0
-    S.g_wielkosc23 = 0
-    S.g_wielkosc24 = 0
-    S.g_wielkosc25 = 0
-    S.g_wielkosc26 = 0
-    S.g_wielkosc27 = 0
-    S.g_wielkosc30 = 0
-    S.g_wielkosc31 = 0
-    S.g_wielkosc32 = 0
-    S.g_wielkosc33 = 0
-    S.g_wielkosc40 = 0
-    S.g_wielkosc41 = 0
-    S.g_wielkosc42 = 0
-    S.g_wielkosc43 = 0
-    S.g_wielkosc44 = 0
-    S.g_wielkosc45 = 0
-    S.g_wielkosc46 = 0
-    S.g_wielkosc47 = 0
-    S.g_wielkosc48 = 0
-    S.g_wielkosc49 = 0
-    S.g_nastaw = 0
-    return 0
+	S.g_were_sorry1 = 0
+	S.g_were_sorry2 = 0
+	S.g_were_sorry3 = 0
+	S.g_were_sorry4 = 0
+	S.g_were_sorry_txt = "WE'RE_SORRY_BUT_DUE_TO_SITE_INACCESSIBILITY_THE_SURVIVAL_MODE_IS_NOT_WORKING_CHECK_UPDATES!"
+	P2.SXMS_SFX_PlayExt(S, [215, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	P3.SXMS_WAP_Stop(S, [])
+	P0.SXMS_C_Stop(S, [])
+	P0.SXMS_C_Play(S, ["./music/title.ogg"])
+	S.g_blank_opcji_jeden = 0.25
+	S.g_sekwencjastartu = 0
+	S.g_dodatkus = 0
+	S.g_unsuported = 0
+	S.g_unsupblank = 0
+	S.g_kapecx = 0
+	S.g_kapecy = 0
+	S.g_kretyn = 0
+	R.aset(S.g_resoname, 0, "800*600")
+	R.aset(S.g_resoname, 1, "1024*786")
+	R.aset(S.g_resoname, 2, "1152*864")
+	R.aset(S.g_resoname, 3, "1280*1024")
+	R.aset(S.g_resoname, 4, "1600*1200")
+	R.aset(S.g_resoname, 5, "800*600*32")
+	R.aset(S.g_resoname, 6, "1024*786*32")
+	R.aset(S.g_resoname, 7, "1152*864*32")
+	R.aset(S.g_resoname, 8, "1280*1024*32")
+	R.aset(S.g_resoname, 9, "1600*1200*32")
+	S.g_klik = 0
+	S.g_cyckirr = 0
+	S.g_lopor = 0
+	S.g_fitosteryd = 0
+	S.g_cycker = 0
+	S.g_budziox = 0
+	S.g_ywafel = -(10)
+	S.g_UZBROJENIE = ""
+	S.g_BRON = 0
+	S.g_itor = 0
+	S.g_nagrywanie_opcji = 0
+	S.g_credits = 0
+	S.g_ixor = 1000
+	S.g_ixoro = 0
+	S.g_klik4 = 0
+	S.g_klik5 = 0
+	S.g_guided = -(1)
+	S.g_crumpy = 0
+	S.g_crumpy2 = 0
+	R.aset(S.g_napis, 0, "DIRECTED AND CREATED BY :")
+	R.aset(S.g_napis, 1, "MICHAEL (SOFTENDO) GDANIEC")
+	R.aset(S.g_napis, 2, "GRAPHICS AND CODEWORK :")
+	R.aset(S.g_napis, 3, "MICHAEL (SOFTENDO) GDANIEC")
+	R.aset(S.g_napis, 4, "ONLY CHARACTERS GFX:")
+	R.aset(S.g_napis, 5, "BY NINTENDO")
+	R.aset(S.g_napis, 6, "MUSIC SUPPORT :")
+	R.aset(S.g_napis, 7, "FREEWARE SOURCES")
+	R.aset(S.g_napis, 8, "ALL RIGHTS RESERVED")
+	R.aset(S.g_napis, 9, "WWW.SOFTENDO.COM Â© 2007")
+	R.aset(S.g_napis, 10, "MORE GAMES ON OUR WEB SITE")
+	R.aset(S.g_napis, 11, "REMEMBER TO SUPPORT US!")
+	R.aset(S.g_napis, 12, "GREETINGS FOR :")
+	R.aset(S.g_napis, 13, "DESVERGERO ")
+	R.aset(S.g_napis, 14, "TEST :")
+	R.aset(S.g_napis, 15, "SACURA-X JAPAN.")
+	R.aset(S.g_napis, 16, "TEST :")
+	R.aset(S.g_napis, 17, "WEEYAMOTO JAPAN")
+	R.aset(S.g_napis, 18, "TEST :")
+	R.aset(S.g_napis, 19, "ALMEETTO JAPAN")
+	R.aset(S.g_napis, 20, "TEST :")
+	R.aset(S.g_napis, 21, "FRIILANCER")
+	R.aset(S.g_napis, 22, "TEST :")
+	R.aset(S.g_napis, 23, "DESOLATOIRE_FR")
+	R.aset(S.g_napis, 24, "TEST :")
+	R.aset(S.g_napis, 25, "ZITRONE US")
+	R.aset(S.g_napis, 26, "TEST :")
+	R.aset(S.g_napis, 27, "THASEER US")
+	R.aset(S.g_napis, 28, "TEST :")
+	R.aset(S.g_napis, 29, "RISKER-TGT US")
+	R.aset(S.g_napis, 30, "TEST")
+	R.aset(S.g_napis, 31, "THERELOUS_IE")
+	R.aset(S.g_napis, 32, "BROWSER SUPPORT :")
+	R.aset(S.g_napis, 33, "DUNG TRUONG ")
+	R.aset(S.g_napis, 34, "SXMS SUPPORT :")
+	R.aset(S.g_napis, 35, "SHALTIF")
+	R.aset(S.g_napis, 36, "ALL RIGHTS RESERVED!")
+	R.aset(S.g_napis, 37, "SOFTENDO GOOD FREEWARE GAMMING")
+	R.aset(S.g_napis, 38, "VISIT US !")
+	R.aset(S.g_napis, 39, "WWW.SOFTENDO.COM")
+	S.g_napis_numer = 0
+	S.g_flaga1 = 0
+	S.g_flaga2 = 0
+	S.g_flaga3 = 0
+	S.g_flaga4 = 0
+	S.g_flaga5 = 1
+	S.g_tekstowa1 = 0
+	S.g_tekstowa2 = 0
+	S.g_opcja1 = 0
+	S.g_podopcja1 = 0
+	S.g_podopcja2 = 0
+	S.g_podopcja3 = 0
+	S.g_klik1 = 0
+	S.g_klik2 = 0
+	S.g_klik3 = 0
+	R.aset(S.g_sekwencja, 0, 0)
+	S.g_zegarek1 = 0
+	S.g_zegarek2 = 0
+	S.g_czcionka2 = R.font_add_sprite(S, 433, R.ord(S, "!"), 0, 0)
+	S.g_wielkosc51 = 0
+	S.g_wielkosc52 = 0
+	S.g_wielkosc53 = 0
+	S.g_wielkosc54 = 0
+	S.g_wielkosc55 = 0
+	S.g_wielkosc56 = 0
+	S.g_wielkosc57 = 0
+	S.g_wielkosc58 = 0
+	S.g_wielkosc1 = 0
+	S.g_wielkosc2 = 0
+	S.g_wielkosc3 = 0
+	S.g_wielkosc4 = 0
+	S.g_wielkosc5 = 0
+	S.g_wielkosc6 = 0
+	S.g_wielkosc7 = 0
+	S.g_wielkosc8 = 0
+	S.g_wielkosc11 = 0
+	S.g_wielkosc12 = 0
+	S.g_wielkosc13 = 0
+	S.g_wielkosc14 = 0
+	S.g_wielkosc15 = 0
+	S.g_wielkosc16 = 0
+	S.g_wielkosc17 = 0
+	S.g_wielkosc18 = 0
+	S.g_wielkosc19 = 0
+	S.g_wielkosc20 = 0
+	S.g_wielkosc21 = 0
+	S.g_wielkosc22 = 0
+	S.g_wielkosc23 = 0
+	S.g_wielkosc24 = 0
+	S.g_wielkosc25 = 0
+	S.g_wielkosc26 = 0
+	S.g_wielkosc27 = 0
+	S.g_wielkosc30 = 0
+	S.g_wielkosc31 = 0
+	S.g_wielkosc32 = 0
+	S.g_wielkosc33 = 0
+	S.g_wielkosc40 = 0
+	S.g_wielkosc41 = 0
+	S.g_wielkosc42 = 0
+	S.g_wielkosc43 = 0
+	S.g_wielkosc44 = 0
+	S.g_wielkosc45 = 0
+	S.g_wielkosc46 = 0
+	S.g_wielkosc47 = 0
+	S.g_wielkosc48 = 0
+	S.g_wielkosc49 = 0
+	S.g_nastaw = 0
+	return 0
 
 static func ev_0_0_1(S, A: Array) -> Variant:
-    S.g_nagrywanie_opcji = 1
-    R.ini_open(S, "settings.ini")
-    G.ster1 = R.ini_read_real(S, "options", "key1", 1)
-    G.ster2 = R.ini_read_real(S, "options", "key2", 1)
-    G.ster3 = R.ini_read_real(S, "options", "key3", 1)
-    G.ster4 = R.ini_read_real(S, "options", "key4", 1)
-    G.ster5 = R.ini_read_real(S, "options", "key5", 1)
-    G.ster6 = R.ini_read_real(S, "options", "key6", 1)
-    G.ster7 = R.ini_read_real(S, "options", "key7", 1)
-    G.ster8 = R.ini_read_real(S, "options", "key8", 1)
-    G.efekty = R.ini_read_real(S, "options", "set1", 1)
-    G.speak = R.ini_read_real(S, "options", "set2", 1)
-    G.glosnosc_dzwieku = R.ini_read_real(S, "options", "set3", 1)
-    G.stayontop = R.ini_read_real(S, "options", "set4", 1)
-    G.border = R.ini_read_real(S, "options", "set5", 1)
-    G.windowed = R.ini_read_real(S, "options", "set6", 1)
-    G.map_elements = R.ini_read_real(S, "options", "set7", 1)
-    G.resolution = R.ini_read_real(S, "options", "set8", 1)
-    G.glosnosc_muzyki = R.ini_read_real(S, "options", "set9", 1)
-    G.vsync = R.ini_read_real(S, "options", "set10", 1)
-    G.fps_limit = R.ini_read_real(S, "options", "set11", 60)
-    R.ini_close(S)
-    return 0
+	S.g_nagrywanie_opcji = 1
+	R.ini_open(S, "settings.ini")
+	G.ster1 = R.ini_read_real(S, "options", "key1", 1)
+	G.ster2 = R.ini_read_real(S, "options", "key2", 1)
+	G.ster3 = R.ini_read_real(S, "options", "key3", 1)
+	G.ster4 = R.ini_read_real(S, "options", "key4", 1)
+	G.ster5 = R.ini_read_real(S, "options", "key5", 1)
+	G.ster6 = R.ini_read_real(S, "options", "key6", 1)
+	G.ster7 = R.ini_read_real(S, "options", "key7", 1)
+	G.ster8 = R.ini_read_real(S, "options", "key8", 1)
+	G.efekty = R.ini_read_real(S, "options", "set1", 1)
+	G.speak = R.ini_read_real(S, "options", "set2", 1)
+	G.glosnosc_dzwieku = R.ini_read_real(S, "options", "set3", 1)
+	G.stayontop = R.ini_read_real(S, "options", "set4", 1)
+	G.border = R.ini_read_real(S, "options", "set5", 1)
+	G.windowed = R.ini_read_real(S, "options", "set6", 1)
+	G.map_elements = R.ini_read_real(S, "options", "set7", 1)
+	G.resolution = R.ini_read_real(S, "options", "set8", 1)
+	G.glosnosc_muzyki = R.ini_read_real(S, "options", "set9", 1)
+	G.vsync = R.ini_read_real(S, "options", "set10", 1)
+	G.fps_limit = R.ini_read_real(S, "options", "set11", 60)
+	R.ini_close(S)
+	return 0
 
 static func ev_7_3(S, A: Array) -> Variant:
-    P5_8.script_end_game(S, [])
-    return 0
+	P5_8.script_end_game(S, [])
+	return 0
 
 static func ev_7_5(S, A: Array) -> Variant:
-    if R.eqv(S, G.initializuj_wap_oneagain, 1):
-        G.initializuj_wap_oneagain = 0
-        P3.SXMS_WAP_Init(S, [])
-        P3.SXMS_WAP_LoadPlugOut(S, ["out_ds.dll"])
-        P3.SXMS_WAP_LoadPlugIn(S, ["in_psf.dll"])
-    if R.eqv(S, G.vsync, 0):
-        DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-    if R.eqv(S, G.vsync, 1):
-        DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-    Engine.max_fps = G.fps_limit
-    return 0
+	if R.eqv(S, G.initializuj_wap_oneagain, 1):
+		G.initializuj_wap_oneagain = 0
+		P3.SXMS_WAP_Init(S, [])
+		P3.SXMS_WAP_LoadPlugOut(S, ["out_ds.dll"])
+		P3.SXMS_WAP_LoadPlugIn(S, ["in_psf.dll"])
+	if R.eqv(S, G.vsync, 0):
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	if R.eqv(S, G.vsync, 1):
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	Engine.max_fps = G.fps_limit
+	return 0
 
 static func ev_8_0(S, A: Array) -> Variant:
-    ev_8_0_0(S, A)
-    ev_8_0_1(S, A)
-    ev_8_0_2(S, A)
-    ev_8_0_3(S, A)
-    ev_8_0_4(S, A)
-    return 0
+	ev_8_0_0(S, A)
+	ev_8_0_1(S, A)
+	ev_8_0_2(S, A)
+	ev_8_0_3(S, A)
+	ev_8_0_4(S, A)
+	return 0
 
 static func ev_8_0_0(S, A: Array) -> Variant:
-    if (R.eqv(S, S.g_opcja1, 10) and R.eqv(S, S.g_flaga2, 0)):
-        R.draw_set_color(S, 0x000000)
-        R.draw_set_alpha(S, S.g_flaga3)
-        R.draw_rectangle(S, 0, 0, 1024, 768, 0)
-        R.draw_sprite_ext(S, 48, 0, 512, 300, 1, 1, 0, 0xFFFFFF, S.g_flaga3)
-    if (R.eqv(S, S.g_opcja1, 10) and (S.g_flaga3 < 1)):
-        S.g_flaga3 += 0.01
-    if (S.g_flaga3 >= 1):
-        R.room_goto_next(S)
-    S.g_cyckirr -= 0.5
-    if (S.g_cyckirr <= -(50)):
-        S.g_cyckirr = 0
-    S.g_fitosteryd += 0.02
-    S.g_lopor += 4
-    if R.eqv(S, S.g_opcja1, 2):
-        if (S.g_cycker < 0.8):
-            S.g_cycker += 0.02
-        R.draw_set_alpha(S, S.g_cycker)
-        R.draw_set_color(S, 0x000000)
-        R.draw_rectangle(S, (((100 + 100) - (S.g_cycker * 250)) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((S.g_cycker * 100) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (((924 - 100) + (S.g_cycker * 250)) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - (S.g_cycker * 100)) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), 0)
-        R.draw_set_color(S, (0xFFFFFF - S.g_cyckirr))
-        R.draw_text_transformed(S, 950, S.g_cyckirr, "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 50), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 100), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 150), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 200), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 250), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 300), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 350), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 400), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 450), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 500), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 550), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 600), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 650), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 700), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 750), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 800), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 850), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 900), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 950), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 1000), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 1050), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 1100), "SMG", 0.5, 0.5, 0)
-        R.draw_text_transformed(S, 950, (S.g_cyckirr + 1150), "SMG", 0.5, 0.5, 0)
-        R.draw_set_alpha(S, 1)
-    if ((1 - R.eqv(S, S.g_opcja1, 2)) and (S.g_cycker > 0)):
-        S.g_cycker = (S.g_cycker / float(1.1))
-    S.g_crumpy += 0.5
-    S.g_crumpy2 = R.sin(S, S.g_crumpy)
-    S.g_crumpy2 = (S.g_crumpy2 / float(40))
-    if (S.g_flaga5 > 0):
-        if R.eqv(S, S.g_flaga4, 0):
-            R.draw_set_color(S, 0xFFFFFF)
-            R.draw_set_alpha(S, S.g_flaga5)
-            R.draw_rectangle(S, 0, 0, 800, 600, 0)
-        if (R.eqv(S, S.g_flaga4, 0) and (S.g_flaga5 > 0)):
-            S.g_flaga5 -= 0.05
-    R.draw_set_alpha(S, 1)
-    R.draw_set_font(S, S.g_czcionka2)
-    R.draw_set_halign(S, 1)
-    R.draw_set_color(S, 0xFFFFFF)
-    R.draw_set_valign(S, 1)
-    if R.eqv(S, S.g_opcja1, 0):
-        S.g_opcja1 = 1
-    if (((R.keyboard_check(S, 38) and (S.g_podopcja1 > 0)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 1)):
-        S.g_podopcja1 -= 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.keyboard_check(S, 40) and (S.g_podopcja1 < 7)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 1)):
-        S.g_podopcja1 += 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 1)):
-        S.g_klik1 = 0
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 5)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 4)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 3)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 2)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 1)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), (((512 - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - 4) + 40) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)):
-        R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - 4) + 80) + R.random(S, 20)) - R.random(S, 20)), 565)
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)) and (S.g_wielkosc1 < 0.5)):
-        S.g_wielkosc1 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 1))) and (S.g_wielkosc1 > 0)):
-        S.g_wielkosc1 -= 0.05
-    if (S.g_wielkosc1 < 0):
-        S.g_wielkosc1 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)) and (S.g_wielkosc2 < 0.4)):
-        S.g_wielkosc2 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 2))) and (S.g_wielkosc2 > 0)):
-        S.g_wielkosc2 -= 0.05
-    if (S.g_wielkosc2 < 0):
-        S.g_wielkosc2 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)) and (S.g_wielkosc3 < 0.4)):
-        S.g_wielkosc3 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 3))) and (S.g_wielkosc3 > 0)):
-        S.g_wielkosc3 -= 0.05
-    if (S.g_wielkosc3 < 0):
-        S.g_wielkosc3 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)) and (S.g_wielkosc4 < 0.4)):
-        S.g_wielkosc4 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 4))) and (S.g_wielkosc4 > 0)):
-        S.g_wielkosc4 -= 0.05
-    if (S.g_wielkosc4 < 0):
-        S.g_wielkosc4 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)) and (S.g_wielkosc5 < 0.4)):
-        S.g_wielkosc5 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 5))) and (S.g_wielkosc5 > 0)):
-        S.g_wielkosc5 -= 0.05
-    if (S.g_wielkosc5 < 0):
-        S.g_wielkosc5 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)) and (S.g_wielkosc30 < 0.4)):
-        S.g_wielkosc30 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 0))) and (S.g_wielkosc30 > 0)):
-        S.g_wielkosc30 -= 0.05
-    if (S.g_wielkosc30 < 0):
-        S.g_wielkosc30 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)) and (S.g_wielkosc31 < 0.4)):
-        S.g_wielkosc31 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 6))) and (S.g_wielkosc31 > 0)):
-        S.g_wielkosc31 -= 0.05
-    if (S.g_wielkosc31 < 0):
-        S.g_wielkosc31 = 0
-    if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)) and (S.g_wielkosc32 < 0.4)):
-        S.g_wielkosc32 += 0.05
-    if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 7))) and (S.g_wielkosc32 > 0)):
-        S.g_wielkosc32 -= 0.05
-    if (S.g_wielkosc32 < 0):
-        S.g_wielkosc32 = 0
-    R.draw_set_alpha(S, S.g_blank_opcji_jeden)
-    R.draw_set_color(S, 0x000000)
-    R.draw_rectangle(S, (300 + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (250 + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 300) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 130) - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
-    R.draw_rectangle(S, (300 - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (250 - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 300) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 130) + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
-    R.draw_set_alpha(S, 1)
-    if (R.eqv(S, S.g_opcja1, 1) and (S.g_blank_opcji_jeden < 0.25)):
-        S.g_blank_opcji_jeden += 0.01
-    if ((1 - R.eqv(S, S.g_opcja1, 1)) and (S.g_blank_opcji_jeden > 0)):
-        S.g_blank_opcji_jeden -= 0.01
-    if R.eqv(S, S.g_opcja1, 1):
-        if R.eqv(S, S.g_podopcja1, 0):
-            R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
-            R.draw_set_halign(S, 1)
-            R.draw_set_valign(S, 1)
-            R.draw_text_transformed(S, 512, ((512 - (40 * 5)) - 4), "STORY MODE", ((0.5 + S.g_wielkosc30) + S.g_crumpy2), ((0.5 + S.g_wielkosc30) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 5)) - 4), "STORY MODE", (0.5 + S.g_wielkosc30), (0.5 + S.g_wielkosc30), 0)
-        if R.eqv(S, S.g_podopcja1, 1):
-            R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 4)) - 4), "SURVIVAL", ((0.5 + S.g_wielkosc1) + S.g_crumpy2), ((0.5 + S.g_wielkosc1) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 4)) - 4), "SURVIVAL", (0.5 + S.g_wielkosc1), (0.5 + S.g_wielkosc1), 0)
-        if R.eqv(S, S.g_podopcja1, 2):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 3)) - 4), "OPTIONS", ((0.5 + S.g_wielkosc2) + S.g_crumpy2), ((0.5 + S.g_wielkosc2) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 3)) - 4), "OPTIONS", (0.5 + S.g_wielkosc2), (0.5 + S.g_wielkosc2), 0)
-        if R.eqv(S, S.g_podopcja1, 3):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 2)) - 4), "CREDITS", ((0.5 + S.g_wielkosc3) + S.g_crumpy2), ((0.5 + S.g_wielkosc3) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 - (40 * 2)) - 4), "CREDITS", (0.5 + S.g_wielkosc3), (0.5 + S.g_wielkosc3), 0)
-        if R.eqv(S, S.g_podopcja1, 4):
-            R.draw_set_color(S, 0x00FFFF)
-            R.draw_text_transformed(S, 512, ((512 - (40 * 1)) - 4), "GET CASH", ((0.5 + S.g_wielkosc4) + S.g_crumpy2), ((0.5 + S.g_wielkosc4) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, 0x00FFFF)
-            R.draw_text_transformed(S, 512, ((512 - (40 * 1)) - 4), "GET CASH", (0.5 + S.g_wielkosc4), (0.5 + S.g_wielkosc4), 0)
-        if R.eqv(S, S.g_podopcja1, 5):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
-            R.draw_text_transformed(S, 512, (512 - 4), "CHECK UPDATES", ((0.5 + S.g_wielkosc5) + S.g_crumpy2), ((0.5 + S.g_wielkosc5) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
-            R.draw_text_transformed(S, 512, (512 - 4), "CHECK UPDATES", (0.5 + S.g_wielkosc5), (0.5 + S.g_wielkosc5), 0)
-        if R.eqv(S, S.g_podopcja1, 6):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc31 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 + 40) - 4), "DONATE", ((0.5 + S.g_wielkosc31) + S.g_crumpy2), ((0.5 + S.g_wielkosc31) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc31 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 + 40) - 4), "DONATE", (0.5 + S.g_wielkosc31), (0.5 + S.g_wielkosc31), 0)
-        if R.eqv(S, S.g_podopcja1, 7):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 + 80) - 4), "EXIT", ((0.5 + S.g_wielkosc32) + S.g_crumpy2), ((0.5 + S.g_wielkosc32) + S.g_crumpy2), 0)
-        else:
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
-            R.draw_text_transformed(S, 512, ((512 + 80) - 4), "EXIT", (0.5 + S.g_wielkosc32), (0.5 + S.g_wielkosc32), 0)
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_opcja1 = 10
-        P2.SXMS_SFX_PlayExt(S, [216, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_opcja1 = 2
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_opcja1 = 1
-        S.g_napis_numer = 0
-        S.g_ixor = 1050
-        S.g_ixoro = 0
-        S.g_flaga1 = 0
-        S.g_klik2 = 1
-        S.g_opcja1 = 3
-    if ((((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_were_sorry1, 0)):
-        S.g_klik2 = 1
-        S.g_were_sorry1 = 1
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        R.execute_shell(S, "http://www.mariocoins.com", 0)
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        R.execute_shell(S, "http://www.softendo.com", 0)
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        R.execute_shell(S, "http://www.donate.softendo.com", 0)
-    if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        R.game_end(S)
-    if R.lnot(R.keyboard_check(S, 13)):
-        S.g_klik2 = 0
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 0)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 0
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 1)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 1
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 2)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 2
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 3)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 3
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 4)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 4
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 5)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 5
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 6)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_guided = 6
-    if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 7)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_opcja1 = 1
-    if (((R.keyboard_check(S, 38) and (S.g_podopcja3 > -(1))) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 5)):
-        S.g_podopcja3 -= 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.keyboard_check(S, 40) and (S.g_podopcja3 < 8)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 5)):
-        S.g_podopcja3 += 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 5)):
-        S.g_klik1 = 0
-    if (S.g_podopcja3 > 7):
-        S.g_podopcja3 = 0
-    if (S.g_podopcja3 < 0):
-        S.g_podopcja3 = 7
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 0)) and (S.g_wielkosc51 < 0.1)):
-        S.g_wielkosc51 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 0))) and (S.g_wielkosc51 > 0)):
-        S.g_wielkosc51 -= 0.01
-    if (S.g_wielkosc51 < 0):
-        S.g_wielkosc51 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 1)) and (S.g_wielkosc52 < 0.1)):
-        S.g_wielkosc52 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 1))) and (S.g_wielkosc52 > 0)):
-        S.g_wielkosc52 -= 0.01
-    if (S.g_wielkosc52 < 0):
-        S.g_wielkosc52 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 2)) and (S.g_wielkosc53 < 0.1)):
-        S.g_wielkosc53 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 2))) and (S.g_wielkosc53 > 0)):
-        S.g_wielkosc53 -= 0.01
-    if (S.g_wielkosc53 < 0):
-        S.g_wielkosc53 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 3)) and (S.g_wielkosc54 < 0.1)):
-        S.g_wielkosc54 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 3))) and (S.g_wielkosc54 > 0)):
-        S.g_wielkosc54 -= 0.01
-    if (S.g_wielkosc54 < 0):
-        S.g_wielkosc54 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 4)) and (S.g_wielkosc55 < 0.1)):
-        S.g_wielkosc55 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 4))) and (S.g_wielkosc55 > 0)):
-        S.g_wielkosc55 -= 0.01
-    if (S.g_wielkosc55 < 0):
-        S.g_wielkosc55 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 5)) and (S.g_wielkosc56 < 0.1)):
-        S.g_wielkosc56 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 5))) and (S.g_wielkosc56 > 0)):
-        S.g_wielkosc56 -= 0.01
-    if (S.g_wielkosc56 < 0):
-        S.g_wielkosc56 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 6)) and (S.g_wielkosc57 < 0.1)):
-        S.g_wielkosc57 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 6))) and (S.g_wielkosc57 > 0)):
-        S.g_wielkosc57 -= 0.01
-    if (S.g_wielkosc57 < 0):
-        S.g_wielkosc57 = 0
-    if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 7)) and (S.g_wielkosc58 < 0.1)):
-        S.g_wielkosc58 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 7))) and (S.g_wielkosc58 > 0)):
-        S.g_wielkosc58 -= 0.01
-    if (S.g_wielkosc58 < 0):
-        S.g_wielkosc58 = 0
-    if R.eqv(S, S.g_opcja1, 5):
-        R.draw_set_color(S, 0x00FFFF)
-        R.draw_text_transformed(S, 150, (350 - 50), "GUIDE AND HINTS :", 0.3, 0.3, 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc51 * 50000)))
-        R.draw_text_transformed(S, 150, (365 - 50), R.string(S, R.aget(G.guide, 1)), (0.3 + S.g_wielkosc51), (0.3 + S.g_wielkosc51), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc52 * 50000)))
-        R.draw_text_transformed(S, 150, (380 - 50), R.string(S, R.aget(G.guide, 2)), (0.3 + S.g_wielkosc52), (0.3 + S.g_wielkosc52), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc53 * 50000)))
-        R.draw_text_transformed(S, 150, (395 - 50), R.string(S, R.aget(G.guide, 3)), (0.3 + S.g_wielkosc53), (0.3 + S.g_wielkosc53), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc54 * 50000)))
-        R.draw_text_transformed(S, 150, (410 - 50), R.string(S, R.aget(G.guide, 4)), (0.3 + S.g_wielkosc54), (0.3 + S.g_wielkosc54), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc55 * 50000)))
-        R.draw_text_transformed(S, 150, (425 - 50), R.string(S, R.aget(G.guide, 5)), (0.3 + S.g_wielkosc55), (0.3 + S.g_wielkosc55), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc56 * 50000)))
-        R.draw_text_transformed(S, 150, (440 - 50), R.string(S, R.aget(G.guide, 6)), (0.3 + S.g_wielkosc56), (0.3 + S.g_wielkosc56), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc57 * 50000)))
-        R.draw_text_transformed(S, 150, (455 - 50), R.string(S, R.aget(G.guide, 7)), (0.3 + S.g_wielkosc57), (0.3 + S.g_wielkosc57), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc58 * 50000)))
-        R.draw_text_transformed(S, 150, (470 - 50), R.string(S, R.aget(G.guide, 8)), (0.3 + S.g_wielkosc58), (0.3 + S.g_wielkosc58), 0)
-    if (R.lnot(R.keyboard_check(S, 39)) and R.lnot(R.keyboard_check(S, 37))):
-        S.g_klik5 = 0
-    G.bron = S.g_BRON
-    if R.eqv(S, S.g_BRON, 0):
-        S.g_UZBROJENIE = "LASER BEAM"
-    if R.eqv(S, S.g_BRON, 1):
-        S.g_UZBROJENIE = "PHASE PLASM"
-    if R.eqv(S, S.g_BRON, 2):
-        S.g_UZBROJENIE = "PHOTONS"
-    if R.eqv(S, S.g_BRON, 3):
-        S.g_UZBROJENIE = "IZOMATHIC"
-    if R.eqv(S, S.g_BRON, 4):
-        S.g_UZBROJENIE = "GUIDEANCER-X"
-    if ((R.eqv(S, S.g_podopcja2, 12) and R.eqv(S, S.g_opcja1, 2)) and (S.g_budziox < 1)):
-        S.g_budziox += 0.05
-    if (((1 - R.eqv(S, S.g_podopcja2, 12)) and R.eqv(S, S.g_opcja1, 2)) and (S.g_budziox > 0)):
-        S.g_budziox -= 0.05
-    if (1 - R.eqv(S, S.g_opcja1, 2)):
-        S.g_budziox = 0
-    S.g_itor += 0.5
-    if (((R.eqv(S, S.g_podopcja2, 17) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)) and R.eqv(S, S.g_opcja1, 2)):
-        S.g_opcja1 = 1
-        S.g_klik2 = 1
-    if ((((R.keyboard_check(S, 38) and (S.g_podopcja2 > -(1))) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
-        S.g_podopcja2 -= 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.keyboard_check(S, 40) and (S.g_podopcja2 < 20)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
-        S.g_podopcja2 += 1
-        S.g_klik1 = 1
-        P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 2)):
-        S.g_klik1 = 0
-    if (S.g_podopcja2 <= -(1)):
-        S.g_podopcja2 = 19
-    if (S.g_podopcja2 >= 20):
-        S.g_podopcja2 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and (S.g_wielkosc11 < 0.1)):
-        S.g_wielkosc11 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 0))) and (S.g_wielkosc11 > 0)):
-        S.g_wielkosc11 -= 0.01
-    if (S.g_wielkosc11 < 0):
-        S.g_wielkosc11 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 1)) and (S.g_wielkosc12 < 0.1)):
-        S.g_wielkosc12 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 1))) and (S.g_wielkosc12 > 0)):
-        S.g_wielkosc12 -= 0.01
-    if (S.g_wielkosc12 < 0):
-        S.g_wielkosc12 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 2)) and (S.g_wielkosc13 < 0.1)):
-        S.g_wielkosc13 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 2))) and (S.g_wielkosc13 > 0)):
-        S.g_wielkosc13 -= 0.01
-    if (S.g_wielkosc13 < 0):
-        S.g_wielkosc13 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 3)) and (S.g_wielkosc14 < 0.1)):
-        S.g_wielkosc14 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 3))) and (S.g_wielkosc14 > 0)):
-        S.g_wielkosc14 -= 0.01
-    if (S.g_wielkosc14 < 0):
-        S.g_wielkosc14 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 4)) and (S.g_wielkosc15 < 0.1)):
-        S.g_wielkosc15 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 4))) and (S.g_wielkosc15 > 0)):
-        S.g_wielkosc15 -= 0.01
-    if (S.g_wielkosc15 < 0):
-        S.g_wielkosc15 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 5)) and (S.g_wielkosc16 < 0.1)):
-        S.g_wielkosc16 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 5))) and (S.g_wielkosc16 > 0)):
-        S.g_wielkosc16 -= 0.01
-    if (S.g_wielkosc16 < 0):
-        S.g_wielkosc16 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 6)) and (S.g_wielkosc17 < 0.1)):
-        S.g_wielkosc17 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 6))) and (S.g_wielkosc17 > 0)):
-        S.g_wielkosc17 -= 0.01
-    if (S.g_wielkosc17 < 0):
-        S.g_wielkosc17 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 7)) and (S.g_wielkosc18 < 0.1)):
-        S.g_wielkosc18 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 7))) and (S.g_wielkosc18 > 0)):
-        S.g_wielkosc18 -= 0.01
-    if (S.g_wielkosc18 < 0):
-        S.g_wielkosc18 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and (S.g_wielkosc40 < 0.1)):
-        S.g_wielkosc40 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 8))) and (S.g_wielkosc40 > 0)):
-        S.g_wielkosc40 -= 0.01
-    if (S.g_wielkosc40 < 0):
-        S.g_wielkosc40 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and (S.g_wielkosc41 < 0.1)):
-        S.g_wielkosc41 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 9))) and (S.g_wielkosc41 > 0)):
-        S.g_wielkosc41 -= 0.01
-    if (S.g_wielkosc41 < 0):
-        S.g_wielkosc41 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and (S.g_wielkosc42 < 0.1)):
-        S.g_wielkosc42 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 10))) and (S.g_wielkosc42 > 0)):
-        S.g_wielkosc42 -= 0.01
-    if (S.g_wielkosc42 < 0):
-        S.g_wielkosc42 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and (S.g_wielkosc43 < 0.1)):
-        S.g_wielkosc43 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 11))) and (S.g_wielkosc43 > 0)):
-        S.g_wielkosc43 -= 0.01
-    if (S.g_wielkosc43 < 0):
-        S.g_wielkosc43 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and (S.g_wielkosc19 < 0.1)):
-        S.g_wielkosc19 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 12))) and (S.g_wielkosc19 > 0)):
-        S.g_wielkosc19 -= 0.01
-    if (S.g_wielkosc19 < 0):
-        S.g_wielkosc19 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and (S.g_wielkosc20 < 0.1)):
-        S.g_wielkosc20 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 13))) and (S.g_wielkosc20 > 0)):
-        S.g_wielkosc20 -= 0.01
-    if (S.g_wielkosc20 < 0):
-        S.g_wielkosc20 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and (S.g_wielkosc21 < 0.1)):
-        S.g_wielkosc21 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 14))) and (S.g_wielkosc21 > 0)):
-        S.g_wielkosc21 -= 0.01
-    if (S.g_wielkosc21 < 0):
-        S.g_wielkosc21 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and (S.g_wielkosc22 < 0.1)):
-        S.g_wielkosc22 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 15))) and (S.g_wielkosc22 > 0)):
-        S.g_wielkosc22 -= 0.01
-    if (S.g_wielkosc22 < 0):
-        S.g_wielkosc22 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 17)) and (S.g_wielkosc24 < 0.1)):
-        S.g_wielkosc24 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 17))) and (S.g_wielkosc24 > 0)):
-        S.g_wielkosc24 -= 0.01
-    if (S.g_wielkosc23 < 0):
-        S.g_wielkosc23 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and (S.g_wielkosc25 < 0.1)):
-        S.g_wielkosc25 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 16))) and (S.g_wielkosc25 > 0)):
-        S.g_wielkosc25 -= 0.01
-    if (S.g_wielkosc25 < 0):
-        S.g_wielkosc23 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and (S.g_wielkosc26 < 0.1)):
-        S.g_wielkosc26 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 18))) and (S.g_wielkosc26 > 0)):
-        S.g_wielkosc26 -= 0.01
-    if (S.g_wielkosc26 < 0):
-        S.g_wielkosc26 = 0
-    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and (S.g_wielkosc27 < 0.1)):
-        S.g_wielkosc27 += 0.01
-    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 19))) and (S.g_wielkosc27 > 0)):
-        S.g_wielkosc27 -= 0.01
-    if (S.g_wielkosc27 < 0):
-        S.g_wielkosc27 = 0
-    if R.eqv(S, S.g_opcja1, 2):
-        R.draw_set_color(S, 0x00FFFF)
-        R.draw_text_transformed(S, 512, (550 - (25 * 16)), "CONTROLS :", 0.6, 0.6, 0)
-        if (1 - R.eqv(S, S.g_nastaw, 1)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc11 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 14)) + S.g_ywafel), R.concat("UP : ", R.string(S, R.aget(G.znak, G.ster1))), (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
-        if R.eqv(S, S.g_nastaw, 1):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 14)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 2)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc12 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 13)) + S.g_ywafel), R.concat("DOWN : ", R.string(S, R.aget(G.znak, G.ster2))), (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
-        if R.eqv(S, S.g_nastaw, 2):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 13)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 3)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc13 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 12)) + S.g_ywafel), R.concat("LEFT : ", R.string(S, R.aget(G.znak, G.ster3))), (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
-        if R.eqv(S, S.g_nastaw, 3):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 12)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 4)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc14 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 11)) + S.g_ywafel), R.concat("RIGHT : ", R.string(S, R.aget(G.znak, G.ster4))), (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
-        if R.eqv(S, S.g_nastaw, 4):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 11)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 5)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc15 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 10)) + S.g_ywafel), R.concat("FIRE : ", R.string(S, R.aget(G.znak, G.ster5))), (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
-        if R.eqv(S, S.g_nastaw, 5):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 10)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 6)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc16 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 9)) + S.g_ywafel), R.concat("USE SPECIAL : ", R.string(S, R.aget(G.znak, G.ster6))), (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
-        if R.eqv(S, S.g_nastaw, 6):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 9)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 7)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc17 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 8)) + S.g_ywafel), R.concat("NEXT SPECIAL : ", R.string(S, R.aget(G.znak, G.ster7))), (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
-        if R.eqv(S, S.g_nastaw, 7):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 8)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
-        if (1 - R.eqv(S, S.g_nastaw, 8)):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc18 * 50000)))
-            R.draw_text_transformed(S, 512, ((550 - (25 * 7)) + S.g_ywafel), R.concat("PREV SPECIAL : ", R.string(S, R.aget(G.znak, G.ster8))), (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
-        if R.eqv(S, S.g_nastaw, 8):
-            R.draw_set_color(S, 0x0000FF)
-            R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 7)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
-        R.draw_set_color(S, 0x00FFFF)
-        R.draw_text_transformed(S, 512, ((550 - (25 * 6)) + S.g_ywafel), "OPTIONS :", 0.6, 0.6, 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc40 * 50000)))
-        R.draw_text_transformed(S, 512, ((550 - (25 * 5)) + S.g_ywafel), R.concat("RESOLUTION : ", R.aget(S.g_resoname, G.resolution)), (0.5 + S.g_wielkosc40), (0.5 + S.g_wielkosc40), 0)
-        if R.eqv(S, G.windowed, 1):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : YES", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
-        if R.eqv(S, G.windowed, 0):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : NO", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
-        if R.eqv(S, G.border, 0):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : NONE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
-        if R.eqv(S, G.border, 1):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : RAVE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
-        if R.eqv(S, G.border, 2):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
-        if R.eqv(S, G.border, 3):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL+FPS", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
-        if R.eqv(S, G.stayontop, 0):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : MANUAL", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
-        if R.eqv(S, G.stayontop, 1):
-            R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
-            R.draw_text_transformed(S, 512, (((550 - (25 * 2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : ALWAYS", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc19 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 - 25) + S.g_ywafel) + S.g_unsuported), R.concat("MUSIC : ", R.string(S, R.round(S, (G.glosnosc_muzyki / float(2.55))))), (0.5 + S.g_wielkosc19), (0.5 + S.g_wielkosc19), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc20 * 50000)))
-        R.draw_text_transformed(S, 512, ((550 + S.g_ywafel) + S.g_unsuported), R.concat("SOUND FX : ", R.string(S, R.round(S, (G.glosnosc_dzwieku / float(2.55))))), (0.5 + S.g_wielkosc20), (0.5 + S.g_wielkosc20), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc21 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 1)) + S.g_ywafel) + S.g_unsuported), R.concat("ANNOUNCER : ", S.g_tekstowa2), (0.5 + S.g_wielkosc21), (0.5 + S.g_wielkosc21), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc22 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 2)) + S.g_ywafel) + S.g_unsuported), R.concat("DETAIL : ", S.g_tekstowa1), (0.5 + S.g_wielkosc22), (0.5 + S.g_wielkosc22), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc25 * 50000)))
-        if R.eqv(S, G.map_elements, 1):
-            R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : ALL", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
-        if R.eqv(S, G.map_elements, 0):
-            R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : NONE", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc26 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 4)) + S.g_ywafel) + S.g_unsuported), R.concat("VSYNC : ", S.g_tekstowa3), (0.5 + S.g_wielkosc26), (0.5 + S.g_wielkosc26), 0)
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc27 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 5)) + S.g_ywafel) + S.g_unsuported), R.concat("FPS LIMIT : ", S.g_tekstowa4), (0.5 + S.g_wielkosc27), (0.5 + S.g_wielkosc27), 0)
-        R.draw_set_color(S, (0x0000FF - (150000 * S.g_BRON)))
-        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc24 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 6)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 1
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 1)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 2
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 2)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 3
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 3)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 4
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 4)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 5
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 5)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 6
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 6)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 7
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 7)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
-        S.g_klik2 = 1
-        S.g_nastaw = 8
-    if ((R.eqv(S, S.g_nastaw, 1) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster1 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 2) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster2 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 3) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster3 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 4) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster4 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 5) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster5 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 6) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster6 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 7) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster7 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if ((R.eqv(S, S.g_nastaw, 8) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
-        S.g_klik2 = 1
-        S.g_klik1 = 1
-        G.ster8 = R.keyboard_lastkey
-        S.g_nastaw = 0
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and R.keyboard_check(S, 37)) and (G.glosnosc_muzyki > 0)):
-        G.glosnosc_muzyki -= 2.55
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and R.keyboard_check(S, 39)) and (G.glosnosc_muzyki < 255)):
-        G.glosnosc_muzyki += 2.55
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and R.keyboard_check(S, 37)) and (G.resolution > 0)) and R.eqv(S, S.g_klik, 0)):
-        G.resolution -= 1
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and R.keyboard_check(S, 39)) and (G.resolution < 9)) and R.eqv(S, S.g_klik, 0)):
-        G.resolution += 1
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (R.lnot(R.keyboard_check(S, 37)) and R.lnot(R.keyboard_check(S, 39))):
-        S.g_klik = 0
-    if ((((R.eqv(S, G.resolution, 0) or R.eqv(S, G.resolution, 5)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_podopcja2, 8)) and (S.g_unsuported < 80)):
-        S.g_unsuported += 5
-    if (((1 - R.eqv(S, G.resolution, 0)) or (1 - R.eqv(S, G.resolution, 5))) or (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 8))))):
-        S.g_unsuported = (S.g_unsuported / float(1.1))
-    S.g_unsupblank += 0.1
-    if (S.g_unsuported > 1):
-        R.draw_set_color(S, 0x0000FF)
-        R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-        R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-        R.draw_set_blend_mode(S, 1)
-        R.draw_set_alpha(S, R.sin(S, S.g_unsupblank))
-        R.draw_set_color(S, 0xFFFFFF)
-        R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-        R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-        R.draw_set_alpha(S, 1)
-        R.draw_set_blend_mode(S, 0)
-    if (((1 - R.eqv(S, G.aktualres, G.resolution)) or (1 - R.eqv(S, R.window_get_fullscreen(S), G.windowed))) and R.eqv(S, S.g_opcja1, 1)):
-        G.aktualres = G.resolution
-        G.initializuj_wap_oneagain = 1
-        if R.eqv(S, G.windowed, 0):
-            R.window_set_fullscreen(S, 0)
-            R.display_reset(S)
-            if R.eqv(S, G.aktualres, 0):
-                R.window_set_size(S, 800, 600)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 1):
-                R.window_set_size(S, 1024, 768)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 2):
-                R.window_set_size(S, 1152, 864)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 3):
-                R.window_set_size(S, 1280, 1024)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 4):
-                R.window_set_size(S, 1600, 1200)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 5):
-                R.window_set_size(S, 800, 600)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 6):
-                R.window_set_size(S, 1024, 768)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 7):
-                R.window_set_size(S, 1152, 864)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 8):
-                R.window_set_size(S, 1280, 1024)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 9):
-                R.window_set_size(S, 1600, 1200)
-                R.window_center(S)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-        if R.eqv(S, G.windowed, 1):
-            if ((1 - R.eqv(S, G.aktualres, 0)) and (1 - R.eqv(S, G.aktualres, 5))):
-                R.window_set_fullscreen(S, 1)
-            if R.eqv(S, G.aktualres, 0):
-                R.display_set_all(S, 800, 600, -(1), 16)
-                R.window_set_size(S, 320, 240)
-                R.display_set_all(S, 800, 600, -(1), 16)
-                R.window_set_size(S, 800, 600)
-            if R.eqv(S, G.aktualres, 1):
-                R.display_set_all(S, 1024, 768, -(1), 16)
-                R.window_set_size(S, 1024, 768)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 2):
-                R.display_set_all(S, 1152, 864, -(1), 16)
-                R.window_set_size(S, 1152, 864)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 3):
-                R.display_set_all(S, 1280, 1024, -(1), 16)
-                R.window_set_size(S, 1280, 1024)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 4):
-                R.display_set_all(S, 1600, 1200, -(1), 32)
-                R.window_set_size(S, 1600, 1200)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 5):
-                R.display_set_all(S, 800, 600, -(1), 32)
-                R.window_set_size(S, 800, 600)
-            if R.eqv(S, G.aktualres, 6):
-                R.display_set_all(S, 1024, 768, -(1), 32)
-                R.window_set_size(S, 1024, 768)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 7):
-                R.display_set_all(S, 1152, 864, -(1), 32)
-                R.window_set_size(S, 1152, 864)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 8):
-                R.display_set_all(S, 1280, 1024, -(1), 32)
-                R.window_set_size(S, 1280, 1024)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-            if R.eqv(S, G.aktualres, 9):
-                R.display_set_all(S, 1600, 1200, -(1), 32)
-                R.window_set_size(S, 1600, 1200)
-                R.aset(R.view_wport, 0, 1024)
-                R.aset(R.view_hport, 0, 768)
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and R.keyboard_check(S, 37)) and R.eqv(S, G.map_elements, 1)) and R.eqv(S, S.g_klik, 0)):
-        G.map_elements = 0
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and R.keyboard_check(S, 39)) and R.eqv(S, G.map_elements, 0)) and R.eqv(S, S.g_klik, 0)):
-        G.map_elements = 1
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and R.keyboard_check(S, 37)) and (G.windowed > 0)) and R.eqv(S, S.g_klik, 0)):
-        G.windowed -= 1
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-        G.initializuj_wap_oneagain = 1
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and R.keyboard_check(S, 39)) and (G.windowed < 1)) and R.eqv(S, S.g_klik, 0)):
-        G.windowed += 1
-        S.g_klik = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-        G.initializuj_wap_oneagain = 1
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and R.keyboard_check(S, 37)) and (G.border > 0)) and R.eqv(S, S.g_klik, 0)):
-        G.border -= 1
-        S.g_klik = 1
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and R.keyboard_check(S, 39)) and (G.border < 3)) and R.eqv(S, S.g_klik, 0)):
-        G.border += 1
-        S.g_klik = 1
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if R.eqv(S, G.border, 3):
-        R.score = R.fps
-    else:
-        R.score = ""
-    if (R.eqv(S, G.border, 0) and R.eqv(S, R.window_get_showborder(S), 1)):
-        R.window_set_showborder(S, 0)
-        G.initializuj_wap_oneagain = 1
-    if ((G.border > 0) and R.eqv(S, R.window_get_showborder(S), 0)):
-        R.window_set_showborder(S, 1)
-        G.initializuj_wap_oneagain = 1
-    if ((G.border > 1) and R.eqv(S, R.window_get_showicons(S), 0)):
-        R.window_set_showicons(S, 1)
-        G.initializuj_wap_oneagain = 1
-    if ((G.border < 2) and R.eqv(S, R.window_get_showicons(S), 1)):
-        R.window_set_showicons(S, 0)
-        G.initializuj_wap_oneagain = 1
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and R.keyboard_check(S, 37)) and R.eqv(S, G.stayontop, 1)) and R.eqv(S, S.g_klik, 0)):
-        G.stayontop = 0
-        S.g_klik = 1
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and R.keyboard_check(S, 39)) and R.eqv(S, G.stayontop, 0)) and R.eqv(S, S.g_klik, 0)):
-        G.stayontop = 1
-        S.g_klik = 1
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (R.eqv(S, G.stayontop, 0) and R.eqv(S, R.window_get_stayontop(S), 1)):
-        R.window_set_stayontop(S, 0)
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (R.eqv(S, G.stayontop, 1) and R.eqv(S, R.window_get_stayontop(S), 0)):
-        R.window_set_stayontop(S, 1)
-        G.initializuj_wap_oneagain = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and R.keyboard_check(S, 37)) and (G.glosnosc_dzwieku > 0)):
-        G.glosnosc_dzwieku -= 2.55
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and R.keyboard_check(S, 39)) and (G.glosnosc_dzwieku < 255)):
-        G.glosnosc_dzwieku += 2.55
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and R.keyboard_check(S, 37)) and R.eqv(S, G.speak, 1)) and R.eqv(S, S.g_klik4, 0)):
-        G.speak = 0
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and R.keyboard_check(S, 39)) and R.eqv(S, G.speak, 0)) and R.eqv(S, S.g_klik4, 0)):
-        G.speak = 1
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if R.eqv(S, G.speak, 0):
-        S.g_tekstowa2 = "NO"
-    if R.eqv(S, G.speak, 1):
-        S.g_tekstowa2 = "YES"
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.efekty > 0)):
-        G.efekty -= 1
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.efekty < 3)):
-        G.efekty += 1
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if (R.lnot(R.keyboard_check(S, 37)) and R.lnot(R.keyboard_check(S, 39))):
-        S.g_klik4 = 0
-    if R.eqv(S, G.efekty, 0):
-        S.g_tekstowa1 = "OFF"
-    if R.eqv(S, G.efekty, 1):
-        S.g_tekstowa1 = "VERY LOW"
-    if R.eqv(S, G.efekty, 2):
-        S.g_tekstowa1 = "LOW"
-    if R.eqv(S, G.efekty, 3):
-        S.g_tekstowa1 = "ALL"
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync > 0)):
-        G.vsync -= 1
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync < 1)):
-        G.vsync += 1
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if R.eqv(S, G.vsync, 0):
-        S.g_tekstowa3 = "OFF"
-    if R.eqv(S, G.vsync, 1):
-        S.g_tekstowa3 = "ON"
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit > 30)):
-        G.fps_limit -= 10
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit < 240)):
-        G.fps_limit += 10
-        S.g_klik4 = 1
-        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    S.g_tekstowa4 = R.string(S, G.fps_limit)
-    if ((1 - R.eqv(S, S.g_opcja1, 3)) and (S.g_dodatkus > 0)):
-        S.g_dodatkus = (S.g_dodatkus / float(1.1))
-    if (S.g_dodatkus > 0.01):
-        R.draw_set_alpha(S, (S.g_dodatkus / float(1.2)))
-        R.draw_set_color(S, 0x000000)
-        R.draw_rectangle(S, ((S.g_dodatkus * 512) - 512), ((310 + 310) - (310 * S.g_dodatkus)), ((S.g_dodatkus * 512) + 512), ((400 - 400) + (400 * S.g_dodatkus)), 0)
-        R.draw_set_alpha(S, 1)
-    if (R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_credits, 0)):
-        if (S.g_dodatkus < 1):
-            S.g_dodatkus += 0.01
-        R.draw_set_color(S, 0xFFFFFF)
-        R.draw_text_transformed(S, S.g_ixor, 340, R.aget(S.g_napis, S.g_napis_numer), 0.4, 0.4, 0)
-        R.draw_set_color(S, 0x00FFFF)
-        R.draw_text_transformed(S, S.g_ixor, 380, R.aget(S.g_napis, (S.g_napis_numer + 1)), 0.5, 0.5, 0)
-    if ((R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_flaga1, 0)) and (S.g_ixor > 512)):
-        S.g_ixoro += 0.7
-        S.g_ixor -= S.g_ixoro
-    if ((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 < 100)) and (S.g_ixor <= 512)):
-        S.g_ixoro = 0
-        S.g_flaga1 += 1
-        S.g_ixor = 512
-    if (R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)):
-        S.g_ixoro += 0.7
-        S.g_ixor -= S.g_ixoro
-    if (((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)) and (S.g_ixor < (-(((R.string_width(S, R.aget(S.g_napis, (S.g_napis_numer + 1))) / float(3)))) * 5))) and (S.g_napis_numer < 38)):
-        S.g_flaga1 = 0
-        S.g_napis_numer += 2
-        S.g_ixoro = 0
-        S.g_ixor = (1800 + (R.string_width(S, R.aget(S.g_napis, (S.g_napis_numer + 1))) / float(3)))
-    if ((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)) and (S.g_napis_numer >= 38)):
-        S.g_flaga1 = 0
-        S.g_napis_numer = 0
-        S.g_ixoro = 0
-        S.g_ixor = 2200
-        S.g_opcja1 = 1
-    if ((R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
-        S.g_klik2 = 1
-        S.g_opcja1 = 1
-    return 0
+	if (R.eqv(S, S.g_opcja1, 10) and R.eqv(S, S.g_flaga2, 0)):
+		R.draw_set_color(S, 0x000000)
+		R.draw_set_alpha(S, S.g_flaga3)
+		R.draw_rectangle(S, 0, 0, 1024, 768, 0)
+		R.draw_sprite_ext(S, 48, 0, 512, 300, 1, 1, 0, 0xFFFFFF, S.g_flaga3)
+	if (R.eqv(S, S.g_opcja1, 10) and (S.g_flaga3 < 1)):
+		S.g_flaga3 += 0.01
+	if (S.g_flaga3 >= 1):
+		R.room_goto_next(S)
+	S.g_cyckirr -= 0.5
+	if (S.g_cyckirr <= -(50)):
+		S.g_cyckirr = 0
+	S.g_fitosteryd += 0.02
+	S.g_lopor += 4
+	if R.eqv(S, S.g_opcja1, 2):
+		if (S.g_cycker < 0.8):
+			S.g_cycker += 0.02
+		R.draw_set_alpha(S, S.g_cycker)
+		R.draw_set_color(S, 0x000000)
+		R.draw_rectangle(S, (((100 + 100) - (S.g_cycker * 250)) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((S.g_cycker * 100) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (((924 - 100) + (S.g_cycker * 250)) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - (S.g_cycker * 100)) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), 0)
+		R.draw_set_color(S, (0xFFFFFF - S.g_cyckirr))
+		R.draw_text_transformed(S, 950, S.g_cyckirr, "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 50), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 100), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 150), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 200), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 250), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 300), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 350), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 400), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 450), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 500), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 550), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 600), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 650), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 700), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 750), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 800), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 850), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 900), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 950), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 1000), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 1050), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 1100), "SMG", 0.5, 0.5, 0)
+		R.draw_text_transformed(S, 950, (S.g_cyckirr + 1150), "SMG", 0.5, 0.5, 0)
+		R.draw_set_alpha(S, 1)
+	if ((1 - R.eqv(S, S.g_opcja1, 2)) and (S.g_cycker > 0)):
+		S.g_cycker = (S.g_cycker / float(1.1))
+	S.g_crumpy += 0.5
+	S.g_crumpy2 = R.sin(S, S.g_crumpy)
+	S.g_crumpy2 = (S.g_crumpy2 / float(40))
+	if (S.g_flaga5 > 0):
+		if R.eqv(S, S.g_flaga4, 0):
+			R.draw_set_color(S, 0xFFFFFF)
+			R.draw_set_alpha(S, S.g_flaga5)
+			R.draw_rectangle(S, 0, 0, 800, 600, 0)
+		if (R.eqv(S, S.g_flaga4, 0) and (S.g_flaga5 > 0)):
+			S.g_flaga5 -= 0.05
+	R.draw_set_alpha(S, 1)
+	R.draw_set_font(S, S.g_czcionka2)
+	R.draw_set_halign(S, 1)
+	R.draw_set_color(S, 0xFFFFFF)
+	R.draw_set_valign(S, 1)
+	if R.eqv(S, S.g_opcja1, 0):
+		S.g_opcja1 = 1
+	if (((R.keyboard_check(S, 38) and (S.g_podopcja1 > 0)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 1)):
+		S.g_podopcja1 -= 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.keyboard_check(S, 40) and (S.g_podopcja1 < 7)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 1)):
+		S.g_podopcja1 += 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 1)):
+		S.g_klik1 = 0
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 5)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 4)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 3)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 2)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - (40 * 1)) - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), (((512 - 4) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - 4) + 40) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)):
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((((512 - 4) + 80) + R.random(S, 20)) - R.random(S, 20)), 565)
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)) and (S.g_wielkosc1 < 0.5)):
+		S.g_wielkosc1 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 1))) and (S.g_wielkosc1 > 0)):
+		S.g_wielkosc1 -= 0.05
+	if (S.g_wielkosc1 < 0):
+		S.g_wielkosc1 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)) and (S.g_wielkosc2 < 0.4)):
+		S.g_wielkosc2 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 2))) and (S.g_wielkosc2 > 0)):
+		S.g_wielkosc2 -= 0.05
+	if (S.g_wielkosc2 < 0):
+		S.g_wielkosc2 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)) and (S.g_wielkosc3 < 0.4)):
+		S.g_wielkosc3 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 3))) and (S.g_wielkosc3 > 0)):
+		S.g_wielkosc3 -= 0.05
+	if (S.g_wielkosc3 < 0):
+		S.g_wielkosc3 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)) and (S.g_wielkosc4 < 0.4)):
+		S.g_wielkosc4 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 4))) and (S.g_wielkosc4 > 0)):
+		S.g_wielkosc4 -= 0.05
+	if (S.g_wielkosc4 < 0):
+		S.g_wielkosc4 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)) and (S.g_wielkosc5 < 0.4)):
+		S.g_wielkosc5 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 5))) and (S.g_wielkosc5 > 0)):
+		S.g_wielkosc5 -= 0.05
+	if (S.g_wielkosc5 < 0):
+		S.g_wielkosc5 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)) and (S.g_wielkosc30 < 0.4)):
+		S.g_wielkosc30 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 0))) and (S.g_wielkosc30 > 0)):
+		S.g_wielkosc30 -= 0.05
+	if (S.g_wielkosc30 < 0):
+		S.g_wielkosc30 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)) and (S.g_wielkosc31 < 0.4)):
+		S.g_wielkosc31 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 6))) and (S.g_wielkosc31 > 0)):
+		S.g_wielkosc31 -= 0.05
+	if (S.g_wielkosc31 < 0):
+		S.g_wielkosc31 = 0
+	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)) and (S.g_wielkosc32 < 0.4)):
+		S.g_wielkosc32 += 0.05
+	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 7))) and (S.g_wielkosc32 > 0)):
+		S.g_wielkosc32 -= 0.05
+	if (S.g_wielkosc32 < 0):
+		S.g_wielkosc32 = 0
+	R.draw_set_alpha(S, S.g_blank_opcji_jeden)
+	R.draw_set_color(S, 0x000000)
+	R.draw_rectangle(S, (250 + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (200 + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 250) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 100) - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
+	R.draw_rectangle(S, (250 - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (200 - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 250) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 100) + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
+	R.draw_set_alpha(S, 1)
+	if (R.eqv(S, S.g_opcja1, 1) and (S.g_blank_opcji_jeden < 0.25)):
+		S.g_blank_opcji_jeden += 0.01
+	if ((1 - R.eqv(S, S.g_opcja1, 1)) and (S.g_blank_opcji_jeden > 0)):
+		S.g_blank_opcji_jeden -= 0.01
+	if R.eqv(S, S.g_opcja1, 1):
+		if R.eqv(S, S.g_podopcja1, 0):
+			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
+			R.draw_set_halign(S, 1)
+			R.draw_set_valign(S, 1)
+			R.draw_text_transformed(S, 512, ((512 - (40 * 5)) - 4), "STORY MODE", ((0.5 + S.g_wielkosc30) + S.g_crumpy2), ((0.5 + S.g_wielkosc30) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 5)) - 4), "STORY MODE", (0.5 + S.g_wielkosc30), (0.5 + S.g_wielkosc30), 0)
+		if R.eqv(S, S.g_podopcja1, 1):
+			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 4)) - 4), "SURVIVAL", ((0.5 + S.g_wielkosc1) + S.g_crumpy2), ((0.5 + S.g_wielkosc1) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 4)) - 4), "SURVIVAL", (0.5 + S.g_wielkosc1), (0.5 + S.g_wielkosc1), 0)
+		if R.eqv(S, S.g_podopcja1, 2):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 3)) - 4), "OPTIONS", ((0.5 + S.g_wielkosc2) + S.g_crumpy2), ((0.5 + S.g_wielkosc2) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 3)) - 4), "OPTIONS", (0.5 + S.g_wielkosc2), (0.5 + S.g_wielkosc2), 0)
+		if R.eqv(S, S.g_podopcja1, 3):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 2)) - 4), "CREDITS", ((0.5 + S.g_wielkosc3) + S.g_crumpy2), ((0.5 + S.g_wielkosc3) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 - (40 * 2)) - 4), "CREDITS", (0.5 + S.g_wielkosc3), (0.5 + S.g_wielkosc3), 0)
+		if R.eqv(S, S.g_podopcja1, 4):
+			R.draw_set_color(S, 0x00FFFF)
+			R.draw_text_transformed(S, 512, ((512 - (40 * 1)) - 4), "GET CASH", ((0.5 + S.g_wielkosc4) + S.g_crumpy2), ((0.5 + S.g_wielkosc4) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, 0x00FFFF)
+			R.draw_text_transformed(S, 512, ((512 - (40 * 1)) - 4), "GET CASH", (0.5 + S.g_wielkosc4), (0.5 + S.g_wielkosc4), 0)
+		if R.eqv(S, S.g_podopcja1, 5):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
+			R.draw_text_transformed(S, 512, (512 - 4), "CHECK UPDATES", ((0.5 + S.g_wielkosc5) + S.g_crumpy2), ((0.5 + S.g_wielkosc5) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
+			R.draw_text_transformed(S, 512, (512 - 4), "CHECK UPDATES", (0.5 + S.g_wielkosc5), (0.5 + S.g_wielkosc5), 0)
+		if R.eqv(S, S.g_podopcja1, 6):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc31 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 + 40) - 4), "DONATE", ((0.5 + S.g_wielkosc31) + S.g_crumpy2), ((0.5 + S.g_wielkosc31) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc31 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 + 40) - 4), "DONATE", (0.5 + S.g_wielkosc31), (0.5 + S.g_wielkosc31), 0)
+		if R.eqv(S, S.g_podopcja1, 7):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 + 80) - 4), "EXIT", ((0.5 + S.g_wielkosc32) + S.g_crumpy2), ((0.5 + S.g_wielkosc32) + S.g_crumpy2), 0)
+		else:
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
+			R.draw_text_transformed(S, 512, ((512 + 80) - 4), "EXIT", (0.5 + S.g_wielkosc32), (0.5 + S.g_wielkosc32), 0)
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_opcja1 = 10
+		P2.SXMS_SFX_PlayExt(S, [216, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_opcja1 = 2
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_opcja1 = 1
+		S.g_napis_numer = 0
+		S.g_ixor = 1050
+		S.g_ixoro = 0
+		S.g_flaga1 = 0
+		S.g_klik2 = 1
+		S.g_opcja1 = 3
+	if ((((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_were_sorry1, 0)):
+		S.g_klik2 = 1
+		S.g_were_sorry1 = 1
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		R.execute_shell(S, "http://www.mariocoins.com", 0)
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		R.execute_shell(S, "http://www.softendo.com", 0)
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 6)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		R.execute_shell(S, "http://www.donate.softendo.com", 0)
+	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 7)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		R.game_end(S)
+	if R.lnot(R.keyboard_check(S, 13)):
+		S.g_klik2 = 0
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 0)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 0
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 1)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 1
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 2)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 2
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 3)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 3
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 4)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 4
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 5)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 5
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 6)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_guided = 6
+	if (((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 7)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_opcja1 = 1
+	if (((R.keyboard_check(S, 38) and (S.g_podopcja3 > -(1))) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 5)):
+		S.g_podopcja3 -= 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.keyboard_check(S, 40) and (S.g_podopcja3 < 8)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 5)):
+		S.g_podopcja3 += 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 5)):
+		S.g_klik1 = 0
+	if (S.g_podopcja3 > 7):
+		S.g_podopcja3 = 0
+	if (S.g_podopcja3 < 0):
+		S.g_podopcja3 = 7
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 0)) and (S.g_wielkosc51 < 0.1)):
+		S.g_wielkosc51 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 0))) and (S.g_wielkosc51 > 0)):
+		S.g_wielkosc51 -= 0.01
+	if (S.g_wielkosc51 < 0):
+		S.g_wielkosc51 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 1)) and (S.g_wielkosc52 < 0.1)):
+		S.g_wielkosc52 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 1))) and (S.g_wielkosc52 > 0)):
+		S.g_wielkosc52 -= 0.01
+	if (S.g_wielkosc52 < 0):
+		S.g_wielkosc52 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 2)) and (S.g_wielkosc53 < 0.1)):
+		S.g_wielkosc53 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 2))) and (S.g_wielkosc53 > 0)):
+		S.g_wielkosc53 -= 0.01
+	if (S.g_wielkosc53 < 0):
+		S.g_wielkosc53 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 3)) and (S.g_wielkosc54 < 0.1)):
+		S.g_wielkosc54 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 3))) and (S.g_wielkosc54 > 0)):
+		S.g_wielkosc54 -= 0.01
+	if (S.g_wielkosc54 < 0):
+		S.g_wielkosc54 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 4)) and (S.g_wielkosc55 < 0.1)):
+		S.g_wielkosc55 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 4))) and (S.g_wielkosc55 > 0)):
+		S.g_wielkosc55 -= 0.01
+	if (S.g_wielkosc55 < 0):
+		S.g_wielkosc55 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 5)) and (S.g_wielkosc56 < 0.1)):
+		S.g_wielkosc56 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 5))) and (S.g_wielkosc56 > 0)):
+		S.g_wielkosc56 -= 0.01
+	if (S.g_wielkosc56 < 0):
+		S.g_wielkosc56 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 6)) and (S.g_wielkosc57 < 0.1)):
+		S.g_wielkosc57 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 6))) and (S.g_wielkosc57 > 0)):
+		S.g_wielkosc57 -= 0.01
+	if (S.g_wielkosc57 < 0):
+		S.g_wielkosc57 = 0
+	if ((R.eqv(S, S.g_opcja1, 5) and R.eqv(S, S.g_podopcja3, 7)) and (S.g_wielkosc58 < 0.1)):
+		S.g_wielkosc58 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 5)) or (1 - R.eqv(S, S.g_podopcja3, 7))) and (S.g_wielkosc58 > 0)):
+		S.g_wielkosc58 -= 0.01
+	if (S.g_wielkosc58 < 0):
+		S.g_wielkosc58 = 0
+	if R.eqv(S, S.g_opcja1, 5):
+		R.draw_set_color(S, 0x00FFFF)
+		R.draw_text_transformed(S, 150, (350 - 50), "GUIDE AND HINTS :", 0.3, 0.3, 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc51 * 50000)))
+		R.draw_text_transformed(S, 150, (365 - 50), R.string(S, R.aget(G.guide, 1)), (0.3 + S.g_wielkosc51), (0.3 + S.g_wielkosc51), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc52 * 50000)))
+		R.draw_text_transformed(S, 150, (380 - 50), R.string(S, R.aget(G.guide, 2)), (0.3 + S.g_wielkosc52), (0.3 + S.g_wielkosc52), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc53 * 50000)))
+		R.draw_text_transformed(S, 150, (395 - 50), R.string(S, R.aget(G.guide, 3)), (0.3 + S.g_wielkosc53), (0.3 + S.g_wielkosc53), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc54 * 50000)))
+		R.draw_text_transformed(S, 150, (410 - 50), R.string(S, R.aget(G.guide, 4)), (0.3 + S.g_wielkosc54), (0.3 + S.g_wielkosc54), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc55 * 50000)))
+		R.draw_text_transformed(S, 150, (425 - 50), R.string(S, R.aget(G.guide, 5)), (0.3 + S.g_wielkosc55), (0.3 + S.g_wielkosc55), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc56 * 50000)))
+		R.draw_text_transformed(S, 150, (440 - 50), R.string(S, R.aget(G.guide, 6)), (0.3 + S.g_wielkosc56), (0.3 + S.g_wielkosc56), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc57 * 50000)))
+		R.draw_text_transformed(S, 150, (455 - 50), R.string(S, R.aget(G.guide, 7)), (0.3 + S.g_wielkosc57), (0.3 + S.g_wielkosc57), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc58 * 50000)))
+		R.draw_text_transformed(S, 150, (470 - 50), R.string(S, R.aget(G.guide, 8)), (0.3 + S.g_wielkosc58), (0.3 + S.g_wielkosc58), 0)
+	if (R.lnot(R.keyboard_check(S, 39)) and R.lnot(R.keyboard_check(S, 37))):
+		S.g_klik5 = 0
+	G.bron = S.g_BRON
+	if R.eqv(S, S.g_BRON, 0):
+		S.g_UZBROJENIE = "LASER BEAM"
+	if R.eqv(S, S.g_BRON, 1):
+		S.g_UZBROJENIE = "PHASE PLASM"
+	if R.eqv(S, S.g_BRON, 2):
+		S.g_UZBROJENIE = "PHOTONS"
+	if R.eqv(S, S.g_BRON, 3):
+		S.g_UZBROJENIE = "IZOMATHIC"
+	if R.eqv(S, S.g_BRON, 4):
+		S.g_UZBROJENIE = "GUIDEANCER-X"
+	if ((R.eqv(S, S.g_podopcja2, 12) and R.eqv(S, S.g_opcja1, 2)) and (S.g_budziox < 1)):
+		S.g_budziox += 0.05
+	if (((1 - R.eqv(S, S.g_podopcja2, 12)) and R.eqv(S, S.g_opcja1, 2)) and (S.g_budziox > 0)):
+		S.g_budziox -= 0.05
+	if (1 - R.eqv(S, S.g_opcja1, 2)):
+		S.g_budziox = 0
+	S.g_itor += 0.5
+	if (((R.eqv(S, S.g_podopcja2, 19) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)) and R.eqv(S, S.g_opcja1, 2)):
+		S.g_opcja1 = 1
+		S.g_klik2 = 1
+	if ((((R.keyboard_check(S, 38) and (S.g_podopcja2 > -(1))) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
+		S.g_podopcja2 -= 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.keyboard_check(S, 40) and (S.g_podopcja2 < 20)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
+		S.g_podopcja2 += 1
+		S.g_klik1 = 1
+		P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 2)):
+		S.g_klik1 = 0
+	if (S.g_podopcja2 <= -(1)):
+		S.g_podopcja2 = 19
+	if (S.g_podopcja2 >= 20):
+		S.g_podopcja2 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and (S.g_wielkosc11 < 0.1)):
+		S.g_wielkosc11 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 0))) and (S.g_wielkosc11 > 0)):
+		S.g_wielkosc11 -= 0.01
+	if (S.g_wielkosc11 < 0):
+		S.g_wielkosc11 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 1)) and (S.g_wielkosc12 < 0.1)):
+		S.g_wielkosc12 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 1))) and (S.g_wielkosc12 > 0)):
+		S.g_wielkosc12 -= 0.01
+	if (S.g_wielkosc12 < 0):
+		S.g_wielkosc12 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 2)) and (S.g_wielkosc13 < 0.1)):
+		S.g_wielkosc13 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 2))) and (S.g_wielkosc13 > 0)):
+		S.g_wielkosc13 -= 0.01
+	if (S.g_wielkosc13 < 0):
+		S.g_wielkosc13 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 3)) and (S.g_wielkosc14 < 0.1)):
+		S.g_wielkosc14 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 3))) and (S.g_wielkosc14 > 0)):
+		S.g_wielkosc14 -= 0.01
+	if (S.g_wielkosc14 < 0):
+		S.g_wielkosc14 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 4)) and (S.g_wielkosc15 < 0.1)):
+		S.g_wielkosc15 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 4))) and (S.g_wielkosc15 > 0)):
+		S.g_wielkosc15 -= 0.01
+	if (S.g_wielkosc15 < 0):
+		S.g_wielkosc15 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 5)) and (S.g_wielkosc16 < 0.1)):
+		S.g_wielkosc16 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 5))) and (S.g_wielkosc16 > 0)):
+		S.g_wielkosc16 -= 0.01
+	if (S.g_wielkosc16 < 0):
+		S.g_wielkosc16 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 6)) and (S.g_wielkosc17 < 0.1)):
+		S.g_wielkosc17 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 6))) and (S.g_wielkosc17 > 0)):
+		S.g_wielkosc17 -= 0.01
+	if (S.g_wielkosc17 < 0):
+		S.g_wielkosc17 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 7)) and (S.g_wielkosc18 < 0.1)):
+		S.g_wielkosc18 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 7))) and (S.g_wielkosc18 > 0)):
+		S.g_wielkosc18 -= 0.01
+	if (S.g_wielkosc18 < 0):
+		S.g_wielkosc18 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and (S.g_wielkosc40 < 0.1)):
+		S.g_wielkosc40 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 8))) and (S.g_wielkosc40 > 0)):
+		S.g_wielkosc40 -= 0.01
+	if (S.g_wielkosc40 < 0):
+		S.g_wielkosc40 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and (S.g_wielkosc41 < 0.1)):
+		S.g_wielkosc41 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 9))) and (S.g_wielkosc41 > 0)):
+		S.g_wielkosc41 -= 0.01
+	if (S.g_wielkosc41 < 0):
+		S.g_wielkosc41 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and (S.g_wielkosc42 < 0.1)):
+		S.g_wielkosc42 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 10))) and (S.g_wielkosc42 > 0)):
+		S.g_wielkosc42 -= 0.01
+	if (S.g_wielkosc42 < 0):
+		S.g_wielkosc42 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and (S.g_wielkosc43 < 0.1)):
+		S.g_wielkosc43 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 11))) and (S.g_wielkosc43 > 0)):
+		S.g_wielkosc43 -= 0.01
+	if (S.g_wielkosc43 < 0):
+		S.g_wielkosc43 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and (S.g_wielkosc19 < 0.1)):
+		S.g_wielkosc19 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 12))) and (S.g_wielkosc19 > 0)):
+		S.g_wielkosc19 -= 0.01
+	if (S.g_wielkosc19 < 0):
+		S.g_wielkosc19 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and (S.g_wielkosc20 < 0.1)):
+		S.g_wielkosc20 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 13))) and (S.g_wielkosc20 > 0)):
+		S.g_wielkosc20 -= 0.01
+	if (S.g_wielkosc20 < 0):
+		S.g_wielkosc20 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and (S.g_wielkosc21 < 0.1)):
+		S.g_wielkosc21 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 14))) and (S.g_wielkosc21 > 0)):
+		S.g_wielkosc21 -= 0.01
+	if (S.g_wielkosc21 < 0):
+		S.g_wielkosc21 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and (S.g_wielkosc22 < 0.1)):
+		S.g_wielkosc22 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 15))) and (S.g_wielkosc22 > 0)):
+		S.g_wielkosc22 -= 0.01
+	if (S.g_wielkosc22 < 0):
+		S.g_wielkosc22 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 17)) and (S.g_wielkosc24 < 0.1)):
+		S.g_wielkosc24 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 17))) and (S.g_wielkosc24 > 0)):
+		S.g_wielkosc24 -= 0.01
+	if (S.g_wielkosc23 < 0):
+		S.g_wielkosc23 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and (S.g_wielkosc25 < 0.1)):
+		S.g_wielkosc25 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 16))) and (S.g_wielkosc25 > 0)):
+		S.g_wielkosc25 -= 0.01
+	if (S.g_wielkosc25 < 0):
+		S.g_wielkosc23 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 17)) and (S.g_wielkosc26 < 0.1)):
+		S.g_wielkosc26 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 17))) and (S.g_wielkosc26 > 0)):
+		S.g_wielkosc26 -= 0.01
+	if (S.g_wielkosc26 < 0):
+		S.g_wielkosc26 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and (S.g_wielkosc27 < 0.1)):
+		S.g_wielkosc27 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 18))) and (S.g_wielkosc27 > 0)):
+		S.g_wielkosc27 -= 0.01
+	if (S.g_wielkosc27 < 0):
+		S.g_wielkosc27 = 0
+	if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and (S.g_wielkosc24 < 0.1)):
+		S.g_wielkosc24 += 0.01
+	if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 19))) and (S.g_wielkosc24 > 0)):
+		S.g_wielkosc24 -= 0.01
+	if (S.g_wielkosc24 < 0):
+		S.g_wielkosc24 = 0
+	if R.eqv(S, S.g_opcja1, 2):
+		R.draw_set_color(S, 0x00FFFF)
+		R.draw_text_transformed(S, 512, (550 - (25 * 16)), "CONTROLS :", 0.6, 0.6, 0)
+		if (1 - R.eqv(S, S.g_nastaw, 1)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc11 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 14)) + S.g_ywafel), R.concat("UP : ", R.string(S, R.aget(G.znak, G.ster1))), (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
+		if R.eqv(S, S.g_nastaw, 1):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 14)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 2)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc12 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 13)) + S.g_ywafel), R.concat("DOWN : ", R.string(S, R.aget(G.znak, G.ster2))), (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
+		if R.eqv(S, S.g_nastaw, 2):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 13)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 3)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc13 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 12)) + S.g_ywafel), R.concat("LEFT : ", R.string(S, R.aget(G.znak, G.ster3))), (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
+		if R.eqv(S, S.g_nastaw, 3):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 12)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 4)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc14 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 11)) + S.g_ywafel), R.concat("RIGHT : ", R.string(S, R.aget(G.znak, G.ster4))), (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
+		if R.eqv(S, S.g_nastaw, 4):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 11)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 5)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc15 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 10)) + S.g_ywafel), R.concat("FIRE : ", R.string(S, R.aget(G.znak, G.ster5))), (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
+		if R.eqv(S, S.g_nastaw, 5):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 10)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 6)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc16 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 9)) + S.g_ywafel), R.concat("USE SPECIAL : ", R.string(S, R.aget(G.znak, G.ster6))), (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
+		if R.eqv(S, S.g_nastaw, 6):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 9)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 7)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc17 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 8)) + S.g_ywafel), R.concat("NEXT SPECIAL : ", R.string(S, R.aget(G.znak, G.ster7))), (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
+		if R.eqv(S, S.g_nastaw, 7):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 8)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
+		if (1 - R.eqv(S, S.g_nastaw, 8)):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc18 * 50000)))
+			R.draw_text_transformed(S, 512, ((550 - (25 * 7)) + S.g_ywafel), R.concat("PREV SPECIAL : ", R.string(S, R.aget(G.znak, G.ster8))), (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
+		if R.eqv(S, S.g_nastaw, 8):
+			R.draw_set_color(S, 0x0000FF)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 7)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
+		R.draw_set_color(S, 0x00FFFF)
+		R.draw_text_transformed(S, 512, ((550 - (25 * 6)) + S.g_ywafel), "OPTIONS :", 0.6, 0.6, 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc40 * 50000)))
+		R.draw_text_transformed(S, 512, ((550 - (25 * 5)) + S.g_ywafel), R.concat("RESOLUTION : ", R.aget(S.g_resoname, G.resolution)), (0.5 + S.g_wielkosc40), (0.5 + S.g_wielkosc40), 0)
+		if R.eqv(S, G.windowed, 1):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : YES", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
+		if R.eqv(S, G.windowed, 0):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : NO", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
+		if R.eqv(S, G.border, 0):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : NONE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+		if R.eqv(S, G.border, 1):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : RAVE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+		if R.eqv(S, G.border, 2):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+		if R.eqv(S, G.border, 3):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL+FPS", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+		if R.eqv(S, G.stayontop, 0):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : MANUAL", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
+		if R.eqv(S, G.stayontop, 1):
+			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
+			R.draw_text_transformed(S, 512, (((550 - (25 * 2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : ALWAYS", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc19 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 - 25) + S.g_ywafel) + S.g_unsuported), R.concat("MUSIC : ", R.string(S, R.round(S, (G.glosnosc_muzyki / float(2.55))))), (0.5 + S.g_wielkosc19), (0.5 + S.g_wielkosc19), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc20 * 50000)))
+		R.draw_text_transformed(S, 512, ((550 + S.g_ywafel) + S.g_unsuported), R.concat("SOUND FX : ", R.string(S, R.round(S, (G.glosnosc_dzwieku / float(2.55))))), (0.5 + S.g_wielkosc20), (0.5 + S.g_wielkosc20), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc21 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 + (25 * 1)) + S.g_ywafel) + S.g_unsuported), R.concat("ANNOUNCER : ", S.g_tekstowa2), (0.5 + S.g_wielkosc21), (0.5 + S.g_wielkosc21), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc22 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 + (25 * 2)) + S.g_ywafel) + S.g_unsuported), R.concat("DETAIL : ", S.g_tekstowa1), (0.5 + S.g_wielkosc22), (0.5 + S.g_wielkosc22), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc25 * 50000)))
+		if R.eqv(S, G.map_elements, 1):
+			R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : ALL", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
+		if R.eqv(S, G.map_elements, 0):
+			R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : NONE", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc26 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 + (25 * 4)) + S.g_ywafel) + S.g_unsuported), R.concat("VSYNC : ", S.g_tekstowa3), (0.5 + S.g_wielkosc26), (0.5 + S.g_wielkosc26), 0)
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc27 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 + (25 * 5)) + S.g_ywafel) + S.g_unsuported), R.concat("FPS : ", S.g_tekstowa4), (0.5 + S.g_wielkosc27), (0.5 + S.g_wielkosc27), 0)
+		R.draw_set_color(S, (0x0000FF - (150000 * S.g_BRON)))
+		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc24 * 50000)))
+		R.draw_text_transformed(S, 512, (((550 + (25 * 6)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 1
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 1)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 2
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 2)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 3
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 3)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 4
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 4)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 5
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 5)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 6
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 6)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 7
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 7)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
+		S.g_klik2 = 1
+		S.g_nastaw = 8
+	if ((R.eqv(S, S.g_nastaw, 1) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster1 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 2) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster2 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 3) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster3 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 4) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster4 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 5) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster5 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 6) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster6 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 7) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster7 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if ((R.eqv(S, S.g_nastaw, 8) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 1)):
+		S.g_klik2 = 1
+		S.g_klik1 = 1
+		G.ster8 = R.keyboard_lastkey
+		S.g_nastaw = 0
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and R.keyboard_check(S, 37)) and (G.glosnosc_muzyki > 0)):
+		G.glosnosc_muzyki -= 2.55
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 12)) and R.keyboard_check(S, 39)) and (G.glosnosc_muzyki < 255)):
+		G.glosnosc_muzyki += 2.55
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and R.keyboard_check(S, 37)) and (G.resolution > 0)) and R.eqv(S, S.g_klik, 0)):
+		G.resolution -= 1
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 8)) and R.keyboard_check(S, 39)) and (G.resolution < 9)) and R.eqv(S, S.g_klik, 0)):
+		G.resolution += 1
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (R.lnot(R.keyboard_check(S, 37)) and R.lnot(R.keyboard_check(S, 39))):
+		S.g_klik = 0
+	if ((((R.eqv(S, G.resolution, 0) or R.eqv(S, G.resolution, 5)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_podopcja2, 8)) and (S.g_unsuported < 80)):
+		S.g_unsuported += 5
+	if (((1 - R.eqv(S, G.resolution, 0)) or (1 - R.eqv(S, G.resolution, 5))) or (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 8))))):
+		S.g_unsuported = (S.g_unsuported / float(1.1))
+	S.g_unsupblank += 0.1
+	if (S.g_unsuported > 1):
+		R.draw_set_color(S, 0x0000FF)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_set_blend_mode(S, 1)
+		R.draw_set_alpha(S, R.sin(S, S.g_unsupblank))
+		R.draw_set_color(S, 0xFFFFFF)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((550 - (25 * 3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_set_alpha(S, 1)
+		R.draw_set_blend_mode(S, 0)
+	if (((1 - R.eqv(S, G.aktualres, G.resolution)) or (1 - R.eqv(S, R.window_get_fullscreen(S), G.windowed))) and R.eqv(S, S.g_opcja1, 1)):
+		G.aktualres = G.resolution
+		G.initializuj_wap_oneagain = 1
+		if R.eqv(S, G.windowed, 0):
+			R.window_set_fullscreen(S, 0)
+			R.display_reset(S)
+			if R.eqv(S, G.aktualres, 0):
+				R.window_set_size(S, 800, 600)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 1):
+				R.window_set_size(S, 1024, 768)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 2):
+				R.window_set_size(S, 1152, 864)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 3):
+				R.window_set_size(S, 1280, 1024)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 4):
+				R.window_set_size(S, 1600, 1200)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 5):
+				R.window_set_size(S, 800, 600)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 6):
+				R.window_set_size(S, 1024, 768)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 7):
+				R.window_set_size(S, 1152, 864)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 8):
+				R.window_set_size(S, 1280, 1024)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 9):
+				R.window_set_size(S, 1600, 1200)
+				R.window_center(S)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+		if R.eqv(S, G.windowed, 1):
+			if ((1 - R.eqv(S, G.aktualres, 0)) and (1 - R.eqv(S, G.aktualres, 5))):
+				R.window_set_fullscreen(S, 1)
+			if R.eqv(S, G.aktualres, 0):
+				R.display_set_all(S, 800, 600, -(1), 16)
+				R.window_set_size(S, 320, 240)
+				R.display_set_all(S, 800, 600, -(1), 16)
+				R.window_set_size(S, 800, 600)
+			if R.eqv(S, G.aktualres, 1):
+				R.display_set_all(S, 1024, 768, -(1), 16)
+				R.window_set_size(S, 1024, 768)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 2):
+				R.display_set_all(S, 1152, 864, -(1), 16)
+				R.window_set_size(S, 1152, 864)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 3):
+				R.display_set_all(S, 1280, 1024, -(1), 16)
+				R.window_set_size(S, 1280, 1024)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 4):
+				R.display_set_all(S, 1600, 1200, -(1), 32)
+				R.window_set_size(S, 1600, 1200)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 5):
+				R.display_set_all(S, 800, 600, -(1), 32)
+				R.window_set_size(S, 800, 600)
+			if R.eqv(S, G.aktualres, 6):
+				R.display_set_all(S, 1024, 768, -(1), 32)
+				R.window_set_size(S, 1024, 768)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 7):
+				R.display_set_all(S, 1152, 864, -(1), 32)
+				R.window_set_size(S, 1152, 864)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 8):
+				R.display_set_all(S, 1280, 1024, -(1), 32)
+				R.window_set_size(S, 1280, 1024)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+			if R.eqv(S, G.aktualres, 9):
+				R.display_set_all(S, 1600, 1200, -(1), 32)
+				R.window_set_size(S, 1600, 1200)
+				R.aset(R.view_wport, 0, 1024)
+				R.aset(R.view_hport, 0, 768)
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and R.keyboard_check(S, 37)) and R.eqv(S, G.map_elements, 1)) and R.eqv(S, S.g_klik, 0)):
+		G.map_elements = 0
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 16)) and R.keyboard_check(S, 39)) and R.eqv(S, G.map_elements, 0)) and R.eqv(S, S.g_klik, 0)):
+		G.map_elements = 1
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and R.keyboard_check(S, 37)) and (G.windowed > 0)) and R.eqv(S, S.g_klik, 0)):
+		G.windowed -= 1
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+		G.initializuj_wap_oneagain = 1
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 9)) and R.keyboard_check(S, 39)) and (G.windowed < 1)) and R.eqv(S, S.g_klik, 0)):
+		G.windowed += 1
+		S.g_klik = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+		G.initializuj_wap_oneagain = 1
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and R.keyboard_check(S, 37)) and (G.border > 0)) and R.eqv(S, S.g_klik, 0)):
+		G.border -= 1
+		S.g_klik = 1
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 10)) and R.keyboard_check(S, 39)) and (G.border < 3)) and R.eqv(S, S.g_klik, 0)):
+		G.border += 1
+		S.g_klik = 1
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if R.eqv(S, G.border, 3):
+		R.score = R.fps
+	else:
+		R.score = ""
+	if (R.eqv(S, G.border, 0) and R.eqv(S, R.window_get_showborder(S), 1)):
+		R.window_set_showborder(S, 0)
+		G.initializuj_wap_oneagain = 1
+	if ((G.border > 0) and R.eqv(S, R.window_get_showborder(S), 0)):
+		R.window_set_showborder(S, 1)
+		G.initializuj_wap_oneagain = 1
+	if ((G.border > 1) and R.eqv(S, R.window_get_showicons(S), 0)):
+		R.window_set_showicons(S, 1)
+		G.initializuj_wap_oneagain = 1
+	if ((G.border < 2) and R.eqv(S, R.window_get_showicons(S), 1)):
+		R.window_set_showicons(S, 0)
+		G.initializuj_wap_oneagain = 1
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and R.keyboard_check(S, 37)) and R.eqv(S, G.stayontop, 1)) and R.eqv(S, S.g_klik, 0)):
+		G.stayontop = 0
+		S.g_klik = 1
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 11)) and R.keyboard_check(S, 39)) and R.eqv(S, G.stayontop, 0)) and R.eqv(S, S.g_klik, 0)):
+		G.stayontop = 1
+		S.g_klik = 1
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (R.eqv(S, G.stayontop, 0) and R.eqv(S, R.window_get_stayontop(S), 1)):
+		R.window_set_stayontop(S, 0)
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (R.eqv(S, G.stayontop, 1) and R.eqv(S, R.window_get_stayontop(S), 0)):
+		R.window_set_stayontop(S, 1)
+		G.initializuj_wap_oneagain = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and R.keyboard_check(S, 37)) and (G.glosnosc_dzwieku > 0)):
+		G.glosnosc_dzwieku -= 2.55
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 13)) and R.keyboard_check(S, 39)) and (G.glosnosc_dzwieku < 255)):
+		G.glosnosc_dzwieku += 2.55
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and R.keyboard_check(S, 37)) and R.eqv(S, G.speak, 1)) and R.eqv(S, S.g_klik4, 0)):
+		G.speak = 0
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 14)) and R.keyboard_check(S, 39)) and R.eqv(S, G.speak, 0)) and R.eqv(S, S.g_klik4, 0)):
+		G.speak = 1
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if R.eqv(S, G.speak, 0):
+		S.g_tekstowa2 = "NO"
+	if R.eqv(S, G.speak, 1):
+		S.g_tekstowa2 = "YES"
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.efekty > 0)):
+		G.efekty -= 1
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 15)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.efekty < 3)):
+		G.efekty += 1
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if (R.lnot(R.keyboard_check(S, 37)) and R.lnot(R.keyboard_check(S, 39))):
+		S.g_klik4 = 0
+	if R.eqv(S, G.efekty, 0):
+		S.g_tekstowa1 = "OFF"
+	if R.eqv(S, G.efekty, 1):
+		S.g_tekstowa1 = "VERY LOW"
+	if R.eqv(S, G.efekty, 2):
+		S.g_tekstowa1 = "LOW"
+	if R.eqv(S, G.efekty, 3):
+		S.g_tekstowa1 = "ALL"
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 17)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync > 0)):
+		G.vsync -= 1
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 17)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync < 1)):
+		G.vsync += 1
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if R.eqv(S, G.vsync, 0):
+		S.g_tekstowa3 = "OFF"
+	if R.eqv(S, G.vsync, 1):
+		S.g_tekstowa3 = "ON"
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit > 30)):
+		if R.eqv(S, G.fps_limit, 120):
+			G.fps_limit = 60
+		elif R.eqv(S, G.fps_limit, 60):
+			G.fps_limit = 30
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit < 120)):
+		if R.eqv(S, G.fps_limit, 30):
+			G.fps_limit = 60
+		elif R.eqv(S, G.fps_limit, 60):
+			G.fps_limit = 120
+		S.g_klik4 = 1
+		P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+	if R.eqv(S, G.fps_limit, 30):
+		S.g_tekstowa4 = "30"
+	if R.eqv(S, G.fps_limit, 60):
+		S.g_tekstowa4 = "60"
+	if R.eqv(S, G.fps_limit, 120):
+		S.g_tekstowa4 = "120"
+	if ((1 - R.eqv(S, S.g_opcja1, 3)) and (S.g_dodatkus > 0)):
+		S.g_dodatkus = (S.g_dodatkus / float(1.1))
+	if (S.g_dodatkus > 0.01):
+		R.draw_set_alpha(S, (S.g_dodatkus / float(1.2)))
+		R.draw_set_color(S, 0x000000)
+		R.draw_rectangle(S, ((S.g_dodatkus * 512) - 512), ((310 + 310) - (310 * S.g_dodatkus)), ((S.g_dodatkus * 512) + 512), ((400 - 400) + (400 * S.g_dodatkus)), 0)
+		R.draw_set_alpha(S, 1)
+	if (R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_credits, 0)):
+		if (S.g_dodatkus < 1):
+			S.g_dodatkus += 0.01
+		R.draw_set_color(S, 0xFFFFFF)
+		R.draw_text_transformed(S, S.g_ixor, 340, R.aget(S.g_napis, S.g_napis_numer), 0.4, 0.4, 0)
+		R.draw_set_color(S, 0x00FFFF)
+		R.draw_text_transformed(S, S.g_ixor, 380, R.aget(S.g_napis, (S.g_napis_numer + 1)), 0.5, 0.5, 0)
+	if ((R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_flaga1, 0)) and (S.g_ixor > 512)):
+		S.g_ixoro += 0.7
+		S.g_ixor -= S.g_ixoro
+	if ((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 < 100)) and (S.g_ixor <= 512)):
+		S.g_ixoro = 0
+		S.g_flaga1 += 1
+		S.g_ixor = 512
+	if (R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)):
+		S.g_ixoro += 0.7
+		S.g_ixor -= S.g_ixoro
+	if (((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)) and (S.g_ixor < (-(((R.string_width(S, R.aget(S.g_napis, (S.g_napis_numer + 1))) / float(3)))) * 5))) and (S.g_napis_numer < 38)):
+		S.g_flaga1 = 0
+		S.g_napis_numer += 2
+		S.g_ixoro = 0
+		S.g_ixor = (1800 + (R.string_width(S, R.aget(S.g_napis, (S.g_napis_numer + 1))) / float(3)))
+	if ((R.eqv(S, S.g_opcja1, 3) and (S.g_flaga1 >= 100)) and (S.g_napis_numer >= 38)):
+		S.g_flaga1 = 0
+		S.g_napis_numer = 0
+		S.g_ixoro = 0
+		S.g_ixor = 2200
+		S.g_opcja1 = 1
+	if ((R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
+		S.g_klik2 = 1
+		S.g_opcja1 = 1
+	return 0
 
 static func ev_8_0_1(S, A: Array) -> Variant:
-    if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_nagrywanie_opcji, 0)):
-        S.g_nagrywanie_opcji = 1
-        R.ini_open(S, "settings.ini")
-        R.ini_write_real(S, "options", "key1", G.ster1)
-        R.ini_write_real(S, "options", "key2", G.ster2)
-        R.ini_write_real(S, "options", "key3", G.ster3)
-        R.ini_write_real(S, "options", "key4", G.ster4)
-        R.ini_write_real(S, "options", "key5", G.ster5)
-        R.ini_write_real(S, "options", "key6", G.ster6)
-        R.ini_write_real(S, "options", "key7", G.ster7)
-        R.ini_write_real(S, "options", "key8", G.ster8)
-        R.ini_write_real(S, "options", "set1", G.efekty)
-        R.ini_write_real(S, "options", "set2", G.speak)
-        R.ini_write_real(S, "options", "set3", G.glosnosc_dzwieku)
-        R.ini_write_real(S, "options", "set4", G.stayontop)
-        R.ini_write_real(S, "options", "set5", G.border)
-        R.ini_write_real(S, "options", "set6", G.windowed)
-        R.ini_write_real(S, "options", "set7", G.map_elements)
-        R.ini_write_real(S, "options", "set8", G.resolution)
-        R.ini_write_real(S, "options", "set9", G.glosnosc_muzyki)
-        R.ini_write_real(S, "options", "set10", G.vsync)
-        R.ini_write_real(S, "options", "set11", G.fps_limit)
-        R.ini_close(S)
-    if ((1 - R.eqv(S, S.g_opcja1, 1)) and R.eqv(S, S.g_nagrywanie_opcji, 1)):
-        S.g_nagrywanie_opcji = 0
-    return 0
+	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_nagrywanie_opcji, 0)):
+		S.g_nagrywanie_opcji = 1
+		R.ini_open(S, "settings.ini")
+		R.ini_write_real(S, "options", "key1", G.ster1)
+		R.ini_write_real(S, "options", "key2", G.ster2)
+		R.ini_write_real(S, "options", "key3", G.ster3)
+		R.ini_write_real(S, "options", "key4", G.ster4)
+		R.ini_write_real(S, "options", "key5", G.ster5)
+		R.ini_write_real(S, "options", "key6", G.ster6)
+		R.ini_write_real(S, "options", "key7", G.ster7)
+		R.ini_write_real(S, "options", "key8", G.ster8)
+		R.ini_write_real(S, "options", "set1", G.efekty)
+		R.ini_write_real(S, "options", "set2", G.speak)
+		R.ini_write_real(S, "options", "set3", G.glosnosc_dzwieku)
+		R.ini_write_real(S, "options", "set4", G.stayontop)
+		R.ini_write_real(S, "options", "set5", G.border)
+		R.ini_write_real(S, "options", "set6", G.windowed)
+		R.ini_write_real(S, "options", "set7", G.map_elements)
+		R.ini_write_real(S, "options", "set8", G.resolution)
+		R.ini_write_real(S, "options", "set9", G.glosnosc_muzyki)
+		R.ini_write_real(S, "options", "set10", G.vsync)
+		R.ini_write_real(S, "options", "set11", G.fps_limit)
+		R.ini_close(S)
+	if ((1 - R.eqv(S, S.g_opcja1, 1)) and R.eqv(S, S.g_nagrywanie_opcji, 1)):
+		S.g_nagrywanie_opcji = 0
+	return 0
 
 static func ev_8_0_2(S, A: Array) -> Variant:
-    if ((P0.SXMS_C_Time(S, []) >= 59950) or R.eqv(S, P0.SXMS_C_IsPlaying(S, [-(1)]), 0)):
-        P0.SXMS_C_Play(S, ["./music/title.ogg"])
-        P2.SXMS_S_Position(S, [20000])
-    return 0
+	if ((P0.SXMS_C_Time(S, []) >= 59950) or R.eqv(S, P0.SXMS_C_IsPlaying(S, [-(1)]), 0)):
+		P0.SXMS_C_Play(S, ["./music/title.ogg"])
+		P2.SXMS_S_Position(S, [20000])
+	return 0
 
 static func ev_8_0_3(S, A: Array) -> Variant:
-    G.aktual_music_vol = G.glosnosc_muzyki
-    P2.SXMS_SFX_MasterVolume(S, [255])
-    P1.SXMS_C_Volume(S, [G.aktual_music_vol])
-    P3.SXMS_WAP_Volume(S, [0, (G.aktual_music_vol / float(G.dzielnik_sciszania_WAP))])
-    P3.SXMS_WAP_SetPan(S, [0])
-    return 0
+	G.aktual_music_vol = G.glosnosc_muzyki
+	P2.SXMS_SFX_MasterVolume(S, [255])
+	P1.SXMS_C_Volume(S, [G.aktual_music_vol])
+	P3.SXMS_WAP_Volume(S, [0, (G.aktual_music_vol / float(G.dzielnik_sciszania_WAP))])
+	P3.SXMS_WAP_SetPan(S, [0])
+	return 0
 
 static func ev_8_0_4(S, A: Array) -> Variant:
-    if (R.eqv(S, S.g_were_sorry1, 1) and (S.g_were_sorry2 < 100)):
-        S.g_were_sorry2 += 5
-    if (R.eqv(S, S.g_were_sorry1, 1) and (S.g_were_sorry2 >= 100)):
-        S.g_were_sorry1 = 2
-    if (1 - R.eqv(S, S.g_were_sorry1, 0)):
-        R.draw_set_color(S, 0x000000)
-        R.draw_set_alpha(S, (S.g_were_sorry2 / float(200)))
-        R.draw_rectangle(S, 0, (200 - (S.g_were_sorry2 / float(2))), 1024, (200 + (S.g_were_sorry2 / float(2))), 0)
-        R.draw_rectangle(S, 0, ((0 - (S.g_were_sorry2 / float(3))) + (S.g_were_sorry2 * 2)), 1024, ((400 + (S.g_were_sorry2 / float(3))) - (S.g_were_sorry2 * 2)), 0)
-        R.draw_set_alpha(S, 1)
-    if R.eqv(S, S.g_were_sorry1, 2):
-        R.draw_set_font(S, S.g_czcionka2)
-        R.draw_set_halign(S, 1)
-        R.draw_set_valign(S, 1)
-        R.draw_set_color(S, 0xFFFFFF)
-        R.draw_set_alpha(S, (S.g_were_sorry2 / float(100)))
-        R.draw_text_transformed(S, (2600 - S.g_were_sorry3), 200, S.g_were_sorry_txt, 0.5, 0.5, 0)
-        R.draw_set_alpha(S, 1)
-        if ((S.g_were_sorry3 < 4400) and R.eqv(S, S.g_were_sorry4, 0)):
-            S.g_were_sorry3 += 8
-        if ((S.g_were_sorry3 >= 4400) and R.eqv(S, S.g_were_sorry4, 0)):
-            S.g_were_sorry2 = (S.g_were_sorry2 / float(1.05))
-        if (S.g_were_sorry2 <= 1):
-            S.g_were_sorry2 = 0
-            S.g_were_sorry1 = 0
-            S.g_were_sorry3 = 0
-            S.g_were_sorry4 = 0
-        if (1 - R.eqv(S, S.g_were_sorry4, 0)):
-            S.g_were_sorry2 = (S.g_were_sorry2 / float(1.05))
-    if ((R.keyboard_check(S, 38) or R.keyboard_check(S, 40)) and (1 - R.eqv(S, S.g_were_sorry1, 0))):
-        S.g_were_sorry4 = 1
-    return 0
+	if (R.eqv(S, S.g_were_sorry1, 1) and (S.g_were_sorry2 < 100)):
+		S.g_were_sorry2 += 5
+	if (R.eqv(S, S.g_were_sorry1, 1) and (S.g_were_sorry2 >= 100)):
+		S.g_were_sorry1 = 2
+	if (1 - R.eqv(S, S.g_were_sorry1, 0)):
+		R.draw_set_color(S, 0x000000)
+		R.draw_set_alpha(S, (S.g_were_sorry2 / float(200)))
+		R.draw_rectangle(S, 0, (200 - (S.g_were_sorry2 / float(2))), 1024, (200 + (S.g_were_sorry2 / float(2))), 0)
+		R.draw_rectangle(S, 0, ((0 - (S.g_were_sorry2 / float(3))) + (S.g_were_sorry2 * 2)), 1024, ((400 + (S.g_were_sorry2 / float(3))) - (S.g_were_sorry2 * 2)), 0)
+		R.draw_set_alpha(S, 1)
+	if R.eqv(S, S.g_were_sorry1, 2):
+		R.draw_set_font(S, S.g_czcionka2)
+		R.draw_set_halign(S, 1)
+		R.draw_set_valign(S, 1)
+		R.draw_set_color(S, 0xFFFFFF)
+		R.draw_set_alpha(S, (S.g_were_sorry2 / float(100)))
+		R.draw_text_transformed(S, (2600 - S.g_were_sorry3), 200, S.g_were_sorry_txt, 0.5, 0.5, 0)
+		R.draw_set_alpha(S, 1)
+		if ((S.g_were_sorry3 < 4400) and R.eqv(S, S.g_were_sorry4, 0)):
+			S.g_were_sorry3 += 8
+		if ((S.g_were_sorry3 >= 4400) and R.eqv(S, S.g_were_sorry4, 0)):
+			S.g_were_sorry2 = (S.g_were_sorry2 / float(1.05))
+		if (S.g_were_sorry2 <= 1):
+			S.g_were_sorry2 = 0
+			S.g_were_sorry1 = 0
+			S.g_were_sorry3 = 0
+			S.g_were_sorry4 = 0
+		if (1 - R.eqv(S, S.g_were_sorry4, 0)):
+			S.g_were_sorry2 = (S.g_were_sorry2 / float(1.05))
+	if ((R.keyboard_check(S, 38) or R.keyboard_check(S, 40)) and (1 - R.eqv(S, S.g_were_sorry1, 0))):
+		S.g_were_sorry4 = 1
+	return 0
