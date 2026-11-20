@@ -1257,7 +1257,8 @@ func _check_player_collision() -> void:
 	# variant hulls. Same 0.45·longest-side rule as NativeEnemy.
 	var body := _body_radius + 18.0
 	if dist < body and dist > 0.01:
-		ship.global_position += to_boss.normalized() * (body - dist)
+		# to_boss points ship→boss — subtract to shove the ship away.
+		ship.global_position -= to_boss.normalized() * (body - dist)
 		# fat_boy_boss contact is a kill move — it hauls the ship in and
 		# burns 500 hull (g_energia -= 500).
 		if variant.begins_with("fat_boy"):

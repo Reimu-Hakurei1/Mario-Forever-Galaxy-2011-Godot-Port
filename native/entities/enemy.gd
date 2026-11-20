@@ -952,8 +952,9 @@ func _check_player_collision() -> void:
 	if dist >= body or dist <= 0.01:
 		return
 	# Never overlap — shove the ship out of the enemy's body even while
-	# invulnerable, so nothing can be flown through.
-	ship.global_position += to_enemy.normalized() * (body - dist)
+	# invulnerable, so nothing can be flown through. to_enemy points
+	# ship→enemy, so the pushback is subtractive.
+	ship.global_position -= to_enemy.normalized() * (body - dist)
 	# Bonus targets (o_enemy_17*) — touching awards score and pops
 	# them; the ship takes no damage and isn't knocked back.
 	if kind == Kind.BONUS:
