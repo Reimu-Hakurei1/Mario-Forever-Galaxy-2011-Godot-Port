@@ -71,6 +71,9 @@ const BOSS_VARIANTS := {1: "ufo_mega", 3: "fat_boy", 5: "flame_cans"}
 ## "chain" spawns the next fight when this one dies (boss_7_endtalk →
 ## boss_8_fight on the last castle).
 const SCRIPT_BOSSES := {
+	# o_boss_1 (169) talks then spawns o_flamecans_boss (251).
+	"wave_7_castle_1": [{"tier": 0, "variant": "flame_cans"}],
+	"wave_ghost_2_castle": [{"tier": 0, "variant": "flame_cans"}],
 	"wave_12_castle_2": [{"tier": 0}],
 	"wave_7_castle_2": [{"tier": 2}],
 	"wave_map_3_end_castle": [{"tier": 3}],
@@ -89,9 +92,10 @@ const SCRIPT_BOSSES := {
 }
 
 ## Scripts whose boss object is talk-only — the clown flies in, taunts,
-## and its exit sets g_end_level (o_boss_1 / o_boss_3 / o_boss_5 style,
-## no *_fight object chained).
-const TALK_ONLY_SCRIPTS := ["wave_7_castle_1", "wave_ghost_2_castle"]
+## and its exit sets g_end_level with no *_fight chained. (wave_7_castle_1
+## and wave_ghost_2_castle were removed: o_boss_1 chains into
+## o_flamecans_boss, a real fight.)
+const TALK_ONLY_SCRIPTS := []
 
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite",

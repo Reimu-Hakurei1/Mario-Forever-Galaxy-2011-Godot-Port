@@ -196,6 +196,12 @@ const NEXT_MAP := {
 ## native tier N-1; bosses 1-3 authored no end talk. The fatboy /
 ## ufo / flame-cans variant bosses spawn crush effects instead — no talk.
 const END_TALK := {
+	0: ["ARRRRRGGHH!!!", "YOU'VE DESTROYED#MY VESSEL!#YOU WILL PAY#FOR THAT!",
+		"NOW I'M LEAVING#WATCH YOUR BACK!#NEXT TIME I'LL#CRUSH YOU!",
+		"BEWARE OF ME AND#MY MINIONS!"],                        # o_boss_3
+	2: ["AGAIN!!!! NOOO!", "ARGHHHHH!#NO! NO! NO!",
+		"I PROMISE YOU#NEXT TIME I'LL BE#PREPARED MORE!",
+		"ARGHHHH!"],                                            # o_boss_5
 	3: ["NO! NO! NO!", "ARGHHHHH!#I WILL BACK!"],                    # boss_5_end_talk
 	5: ["I DON'T HAVE#TIME TO TALK#WITH YOU!", "SEE YOU SOON#IN MAP 7!"],  # boss_6_end_talk
 	6: ["YOU THINK#IS THIS AN#END?", "TIME TO REAL#BATTLE!"],        # boss_7_end_talk
