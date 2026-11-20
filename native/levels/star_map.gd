@@ -157,7 +157,10 @@ const MAP_GAP := 60.0
 
 var _map_nodes: Dictionary = {}    # map idx -> [[x,y],...] authored coords
 var _node_rank: Dictionary = {}    # "m:n" -> playable level index
-var _node_pos: Dictionary = {}     # "m:n" -> world-space center (all nodes)
+var _node_pos: Dictionary = {}     # "m:n" -> world-space base center
+var _orbit_nodes: Array = []       # [{key, base, btn|dot}] — 20px orbit
+var _lanes: Array = []             # [{line, a, b}] orbiting flight lanes
+var _promien := 0.0                # shared orbit phase (g_promien += 0.05/f)
 var _node_btns: Dictionary = {}    # "m:n" -> node Button
 var _map_meta: Dictionary = {}     # "m:n" -> {name, map_nextlev, ...}
 
@@ -224,6 +227,7 @@ func _build_grid() -> void:
 				if rank >= 0:
 					_node_centers[rank] = center
 				_node_pos[key] = center
+				_orbit_nodes.append({"key": key, "base": center, "btn": btn})
 			else:
 				# Connector/path node — a dim star, not a destination.
 				var dot := ColorRect.new()
@@ -232,6 +236,7 @@ func _build_grid() -> void:
 				dot.position = pos - Vector2(5, 5)
 				_world.add_child(dot)
 				_node_pos[key] = pos
+				_orbit_nodes.append({"key": key, "base": pos, "dot": dot})
 	_draw_flight_lanes()
 	_build_ship_cursor()
 	if count > 0:
@@ -315,6 +320,7 @@ func _draw_flight_lanes() -> void:
 				line.default_color = Color(0.25, 0.25, 0.35, 0.6)
 			line.width = 2.0
 			_world.add_child(line)
+			_lanes.append({"line": line, "a": key, "b": bkey})
 
 
 ## Connect consecutive nodes in each world row with a dim path line —
@@ -459,9 +465,16 @@ func _on_node_pressed(key: String) -> void:
 
 ## Glide the ship cursor along the lane to the node, then continue —
 ## the original's node-to-node flight.
+## Orbiting draw position — the original offsets every node by
+## (20·sin(promien/5), 20·cos(promien)) each frame (part_7 map draw).
+func _orbit_pos(key: String) -> Vector2:
+	var base: Vector2 = _node_pos.get(key, Vector2.ZERO)
+	return base + Vector2(sin(_promien / 5.0) * 20.0,
+		cos(_promien) * 20.0)
+
+
 func _fly_cursor_to(key: String, then: Callable = Callable()) -> void:
-	var target: Vector2 = _node_pos.get(key, _ship_cursor.position \
-		if _ship_cursor != null else Vector2.ZERO)
+	var target: Vector2 = _orbit_pos(key)
 	_cursor_base_y = target.y
 	if _ship_cursor == null:
 		if then.is_valid():
@@ -564,10 +577,28 @@ func _process(_delta: float) -> void:
 	if current_btn != null:
 		var s := 1.0 + sin(Time.get_ticks_msec() / 300.0) * 0.08
 		current_btn.scale = Vector2(s, s)
-	# Ship cursor bob — gentle hover over the frontier node.
-	if _ship_cursor != null:
-		_ship_cursor.position.y = _cursor_base_y \
-			+ sin(Time.get_ticks_msec() / 400.0) * 4.0
+	# Ship cursor orbit+bob handled in the orbit block below.
+	# Node orbits — every map node circles its anchor on a 20px radius
+	# (g_promien += 0.05/frame in the original's map draw).
+	_promien += _delta * 60.0 * 0.05
+	for n in _orbit_nodes:
+		var off := Vector2(sin(_promien / 5.0) * 20.0,
+			cos(_promien) * 20.0)
+		var p: Vector2 = n["base"] + off
+		if n.has("btn"):
+			(n["btn"] as Button).position = \
+				p - Vector2(NODE_SIZE, NODE_SIZE) / 2
+		else:
+			(n["dot"] as ColorRect).position = p - Vector2(5, 5)
+	for l in _lanes:
+		(l["line"] as Line2D).set_point_position(0, _orbit_pos(l["a"]))
+		(l["line"] as Line2D).set_point_position(1, _orbit_pos(l["b"]))
+	# Ship cursor — parked on the orbiting current node when idle.
+	if _ship_cursor != null and NativeGame.map_current != "":
+		var idle := _cam_tween == null or not _cam_tween.is_running()
+		if idle:
+			_ship_cursor.position = _orbit_pos(NativeGame.map_current) \
+				+ Vector2(0, sin(Time.get_ticks_msec() / 400.0) * 4.0)
 	# Map decor — goodies twinkle on Lissajous paths, panels pulse
 	# (ports the sin-based drift in o_map_goodie_* / map_panel_loot_2).
 	var t := Time.get_ticks_msec() / 1000.0
