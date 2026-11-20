@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" id="t3" path="res://gfx/sprites/s_player_a.543.12.png"]
 [ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_hud.5.0.png"]
 [ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_enemy_n.70.0.png"]
-[ext_resource type="Script" path="res://editor/level_bounds_guide.gd" id="bounds_guide"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
-[ext_resource type="Script" path="res://editor/level_waves.gd" id="editable_waves"]
-[ext_resource type="Script" path="res://editor/level_wave_setting.gd" id="editable_setting"]
-[ext_resource type="Script" path="res://editor/level_spawn_rule.gd" id="editable_spawn"]
-[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
+[ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
+[ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="editable_setting"]
+[ext_resource type="Script" path="res://engine/level_spawn_rule.gd" id="editable_spawn"]
 
 [sub_resource type="CanvasItemMaterial" id="player_add"]
 blend_mode = 1
@@ -19,13 +19,14 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="level_10_bonus_stage" type="Node2D"]
-script = ExtResource("stage_launch")
 metadata/gm_room = "level_0000"
 metadata/gm_map = 2
 metadata/gm_lev = 10
 metadata/gm_minigame = 0
 metadata/gm_label = "BONUS_STAGE"
 metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)
 limit_left = 0

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mario Forever Galaxy Godot Port"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://native/ui/title.tscn"
 config/features=PackedStringArray("4.7")
 run/max_fps=60
 config/icon="res://icon.png"
@@ -25,12 +25,6 @@ window/size/viewport_height=768
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/room_frame/plugin.cfg")
-
-[gdscript]
-
-completion/warn_type_hint=false
-treat_untyped_as_variant=false
-static_treat_untyped_as_variant=false
 
 [physics]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3]
+[gd_scene load_steps=44 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/sprites/s_map_levelor.247.0.png"]
 [ext_resource type="Texture2D" id="t2" path="res://gfx/map/newmap4.jpg"]
@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" id="t38" path="res://gfx/sprites/s_enemy_f.34.0.png"]
 [ext_resource type="Texture2D" id="t39" path="res://gfx/sprites/s_shopcoinmask.438.0.png"]
 [ext_resource type="Texture2D" id="t40" path="res://gfx/sprites/s_shopcoin.437.0.png"]
-[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [sub_resource type="CanvasItemMaterial" id="preview_blend1"]
 blend_mode = 1
@@ -49,10 +49,10 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="room_map4" type="Node2D"]
-script = ExtResource("stage_launch")
 metadata/gm_room = "room_map4"
 metadata/gm_bg_colour = 0
 metadata/gm_map = 3
+script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1500, 2000)

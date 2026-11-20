@@ -324,7 +324,7 @@ func _ready() -> void:
 var _sprite_id := 11
 var _scale_factor := 1.0
 var _tint := Color.WHITE
-const ANIM_FPS := 30.0
+const ANIM_FPS := 8.0
 const HIT_FLASH_TIME := 4         # frames of white flash on hit (oberwanie)
 
 
@@ -368,13 +368,6 @@ func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
 		return
 	_age_frames += 1
-	# Original draw offsets: y + 3*cos(g_zajebiscie) idle bob
-	# (g_zajebiscie += 0.1°/frame) and rotation wobble
-	# sin(g_bujanie)*16° with g_bujanie += 10°/frame.
-	if is_instance_valid(_anim):
-		_anim.position.y = 3.0 * cos(deg_to_rad(_age_frames * 0.1))
-		if not giga2_pull:
-			_anim.rotation = deg_to_rad(sin(deg_to_rad(_age_frames * 10.0)) * 16.0)
 	# boss_giga_2 spins 5 degrees per frame (g_image_angle += 5).
 	if giga2_pull:
 		rotation += deg_to_rad(5.0)

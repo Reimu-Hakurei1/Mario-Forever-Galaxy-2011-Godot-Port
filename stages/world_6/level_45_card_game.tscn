@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
-[ext_resource type="Script" path="res://editor/level_bounds_guide.gd" id="bounds_guide"]
-[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
 [node name="level_45_card_game" type="Node2D"]
-script = ExtResource("stage_launch")
 metadata/gm_room = "card_game_2"
 metadata/gm_map = 5
 metadata/gm_lev = 45
 metadata/gm_minigame = 3
 metadata/gm_label = "CARD_GAME"
 metadata/gm_bg_colour = 0
+script = ExtResource("boot")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)
 limit_left = 0

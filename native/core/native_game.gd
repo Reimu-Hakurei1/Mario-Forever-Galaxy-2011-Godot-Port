@@ -2,8 +2,8 @@ extends RefCounted
 class_name NativeGame
 ## NativeGame — global run state for the native game.
 ##
-## The Godot equivalent of the original GameMaker `global.*` variables —
-## but typed, documented, and namespaced. All members are
+## The Godot equivalent of the GameMaker `global.*` variables that lived in
+## game/globals.gd — but typed, documented, and namespaced. All members are
 ## static so any scene or entity can reach them without autoload wiring.
 ##
 ## Values that only matter inside one level (wave counters, timers) belong

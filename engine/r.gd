@@ -300,8 +300,7 @@ static func boot(scene_root: Node2D) -> void:
 	bg_front.front = true
 	bg_front.z_index = 4095
 	root.add_child(bg_front)
-	# If a stage room override is pending, skip the default first_room load
-	if pending_stage_room == "" and room_order.size() > 0:
+	if room_order.size() > 0:
 		_load_room(int(room_order[0]))
 	print("BOOT first_room=%dms total=%dms" % [Time.get_ticks_msec() - _bt2, Time.get_ticks_msec() - _bt])
 
@@ -720,65 +719,6 @@ static func run_room_code(which: Dictionary, key: String, S) -> void:
 			level_waves.begin_event(S)
 			scr.call(str(e[1]), S, [])
 			level_waves.end_event(R)
-
-
-static func _run_creation_code(S, code: String) -> void:
-	# Parse and run GameMaker creation code for rooms without registry scripts
-	# Handles common patterns: instance_create(x,y,obj_name), global.var=value
-	var lines := code.split("\n")
-	for line in lines:
-		line = line.strip_edges()
-		if line.is_empty() or line.begins_with("//"):
-			continue
-		# Handle instance_create(x,y,obj_name)
-		if line.begins_with("instance_create("):
-			var args_str := line.trim_prefix("instance_create(").trim_suffix(")")
-			var args := args_str.split(",")
-			if args.size() >= 3:
-				var x := float(args[0].strip_edges())
-				var y := float(args[1].strip_edges())
-				var obj_name := args[2].strip_edges()
-				# Find object index by name
-				var obj_idx := _find_object_index(obj_name)
-				if obj_idx >= 0:
-					instance_create(S, x, y, obj_idx)
-		# Handle global.var=value
-		elif line.begins_with("global."):
-			var eq_pos := line.find("=")
-			if eq_pos > 0:
-				var var_part := line.substr(7, eq_pos - 7).strip_edges()
-				var val_part := line.substr(eq_pos + 1).strip_edges()
-				# Remove inline comments
-				var comment_pos := val_part.find("//")
-				if comment_pos >= 0:
-					val_part = val_part.substr(0, comment_pos).strip_edges()
-				# Try to parse as number
-				var val: Variant = val_part
-				if val_part.is_valid_int():
-					val = val_part.to_int()
-				elif val_part.is_valid_float():
-					val = val_part.to_float()
-				# Set global variable
-				_set_global(var_part, val)
-
-
-static func _find_object_index(name: String) -> int:
-	# Find object index by name from registry
-	for obj in registry.get("objects", []):
-		if obj.get("name", "") == name:
-			return int(obj.get("i", -1))
-	return -1
-
-
-static func _set_global(var_name: String, value: Variant) -> void:
-	# Set a global variable by name - maps to G (globals.gd) static vars
-	# This is a simplified mapping for common variables
-	match var_name:
-		"map_level_numering":
-			G.map_level_numering = value
-		_:
-			# For unknown globals, just print a warning
-			print("CreationCode: unknown global: ", var_name)
 
 
 # ---------------------------------------------------------------- instances
@@ -2380,23 +2320,7 @@ static func _load_room(idx: int) -> void:
 		"solid": 0, "mask": -1, "sprite": -1}, -1)
 	room_ci.hide()
 	room_root.add_child(room_ci)
-	# Try registry room_create first, then fall back to creation_code from rooms.json
-	var ran_code := false
-	var e: Variant = registry.get("room_create", {}).get(str(idx), null)
-	if e != null:
-		var part: int = int(e[0])
-		if part >= 0:
-			var scr: GDScript = REG.room_part(part)
-			if scr != null:
-				level_waves.begin_event(room_ci)
-				scr.call(str(e[1]), room_ci, [])
-				level_waves.end_event(R)
-				ran_code = true
-	if not ran_code:
-		# Fallback: run creation_code from rooms.json if available
-		var creation_code: String = str(meta.get("creation_code", ""))
-		if creation_code != "":
-			_run_creation_code(room_ci, creation_code)
+	run_room_code(registry.get("room_create", {}), str(idx), room_ci)
 	if debug_load:
 		print("LOAD room=%d unload=%.1f meta=%.1f spawn=%.1f tiles=%.1f room_create=%.1f inst=%d" % [
 			idx, _unload_us / 1000.0, _meta_us / 1000.0, _spawn_us / 1000.0,
@@ -2649,9 +2573,6 @@ static func set_room_speed(v: float) -> Variant:
 
 static var trace_room_goto: bool = false
 static var debug_draw: bool = false
-static var pending_stage_room: String = ""
-static var pending_stage_map: int = 0
-static var pending_stage_lev: int = 0
 
 
 static func room_goto(S, target: Variant) -> Variant:

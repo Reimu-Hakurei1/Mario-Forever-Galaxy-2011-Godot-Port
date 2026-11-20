@@ -29,7 +29,7 @@ const TIER_PROFILES := [
 	{"sprite": 332, "scale": 0.9, "tint": Color(1.0, 0.65, 0.6)},
 	{"sprite": 502, "scale": 0.8, "tint": Color(1.0, 0.6, 0.55)},
 ]
-const ANIM_FPS := 60.0
+const ANIM_FPS := 6.0
 const ENTER_SPEED := 0.8          # px/frame descent
 const FIGHT_Y := 160.0            # hover line at the top of the arena
 const HIT_FLASH := 4
@@ -207,14 +207,7 @@ var _rakietnice := 0.0
 var _smierc_done := [false, false, false]   # boss_2 HP milestone bursts
 var _laser_charge: Array = []               # sprite-109 charge effects
 var hero_name := ""                 # set in _ready for end-talk lines
-var _bar_root: Control          # jitter/shake offset for the whole bar
-var _bar_fill: TextureRect
-var _bar_right_cap: TextureRect
-var _bar_cap_w := 5.0
-var _bar_fill_w := 299.0
-var _name_slide := 0.0
-var _bar_jitter := 0.0
-var _last_bar_hp := -1.0
+var _hp_bar: ProgressBar
 var _body_radius := 85.0          # hull block radius — set from sprite size
 var _dialogue: NativeBossDialogue
 # Clown render stack — boss_N_fight draw events compose sprite 328
@@ -1278,114 +1271,48 @@ func _check_player_collision() -> void:
 
 
 func _build_hp_bar() -> void:
-	# Boss health bar — ports script_pasek_bossa_drawe: sprite-57 end
-	# caps + sprite-56 fill (xscaled by hp fraction) at y=20, alpha 0.5,
-	# boss name above in the s_bonusfonts sprite font (484 color +
-	# 487 additive mask), all jittered when health drops.
+	# Boss health bar pinned to the top-center of the screen. A CanvasLayer
+	# is required — a bare Control under this Node2D would ride along with
+	# the boss's horizontal drift instead of staying HUD-fixed.
 	var layer := CanvasLayer.new()
 	layer.layer = 15
 	add_child(layer)
-	_bar_root = Control.new()
-	_bar_root.set_anchors_preset(Control.PRESET_FULL_RECT)
-	layer.add_child(_bar_root)
+	_hp_bar = ProgressBar.new()
+	_hp_bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_hp_bar.offset_left = 312.0
+	_hp_bar.offset_right = -312.0
+	_hp_bar.offset_top = 12.0
+	_hp_bar.offset_bottom = 30.0
+	_hp_bar.max_value = max_health
+	_hp_bar.value = health
+	_hp_bar.show_percentage = false
+	var bg := StyleBoxFlat.new()
+	bg.bg_color = Color(0, 0, 0, 0.6)
+	bg.set_corner_radius_all(4)
+	_hp_bar.add_theme_stylebox_override("background", bg)
+	var fill := StyleBoxFlat.new()
+	fill.bg_color = Color(0.9, 0.2, 0.2)
+	fill.set_corner_radius_all(4)
+	_hp_bar.add_theme_stylebox_override("fill", fill)
+	layer.add_child(_hp_bar)
 
-	var cap_l := _bar_sprite(57, Vector2(277, 20))
-	_bar_root.add_child(cap_l)
-	_bar_fill = _bar_sprite(56, Vector2(282, 20))
-	_bar_fill.stretch_mode = TextureRect.STRETCH_SCALE
-	_bar_root.add_child(_bar_fill)
-	_bar_right_cap = _bar_sprite(57, Vector2.ZERO)
-	_bar_right_cap.flip_h = true
-	_bar_root.add_child(_bar_right_cap)
-	for n in [_bar_fill, cap_l, _bar_right_cap]:
-		n.self_modulate.a = 0.5
-	if _bar_fill.texture != null:
-		_bar_fill_w = _bar_fill.texture.get_width()
-	if cap_l.texture != null:
-		_bar_cap_w = cap_l.texture.get_width()
-
-	_build_bar_name()
-
-
-func _bar_sprite(sid: int, pos: Vector2) -> TextureRect:
-	var r := TextureRect.new()
-	r.texture = NativeAssets.sprite_frame(sid, 0)
-	r.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	r.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	r.position = pos
-	if r.texture != null:
-		r.size = r.texture.get_size()
-	return r
-
-
-## Boss name in the original's proportional sprite font — sprite 484
-## (color) over 487 (additive glow), first char '!' (frame = code-33),
-## sep -4, '#' is a line break. Centered at (432, 35) like the
-## original's halign/valign-centred draw_text_transformed.
-func _build_bar_name() -> void:
-	const FIRST := 33
-	const SEP := -4
-	var lines := boss_name.split("#")
-	var line_h := 30.0
-	for li in lines.size():
-		var row_y := 35.0 - ((lines.size() - 1) * line_h) / 2.0 + li * line_h
-		# measure then place — proportional advance = glyph width + sep
-		var widths: Array = []
-		var total := 0.0
-		for ch in lines[li]:
-			var fi: int = ch.unicode_at(0) - FIRST
-			var w := 10.0
-			var gt := NativeAssets.sprite_frame(484, fi) if fi >= 0 else null
-			if gt != null:
-				w = gt.get_width() + SEP
-			widths.append(w)
-			total += w
-		var cx := 432.0 - total / 2.0
-		for ci in lines[li].length():
-			var ch := lines[li][ci]
-			var fi: int = ch.unicode_at(0) - FIRST
-			var gt := NativeAssets.sprite_frame(484, fi) if fi >= 0 else null
-			var mt := NativeAssets.sprite_frame(487, fi) if fi >= 0 else null
-			if gt != null:
-				for spr in [[mt, true], [gt, false]]:
-					var tex: Texture2D = spr[0]
-					if tex == null:
-						continue
-					var r := TextureRect.new()
-					r.texture = tex
-					r.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-					r.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-					r.position = Vector2(cx, row_y - tex.get_height() / 2.0)
-					r.size = tex.get_size()
-					if spr[1]:
-						var m := CanvasItemMaterial.new()
-						m.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-						r.material = m
-						r.modulate.a = 0.55
-					_bar_root.add_child(r)
-			cx += widths[ci]
+	# The original names every boss on its health bar
+	# (G.pasek_napis = "BOWSER'S_SPACE_CLOWN").
+	var name_label := Label.new()
+	name_label.text = boss_name
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	name_label.offset_left = 312.0
+	name_label.offset_right = -312.0
+	name_label.offset_top = -2.0
+	name_label.offset_bottom = 16.0
+	name_label.add_theme_font_size_override("font_size", 16)
+	name_label.add_theme_color_override("font_color", Color(1, 0.85, 0.4))
+	name_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	name_label.add_theme_constant_override("outline_size", 4)
+	layer.add_child(name_label)
 
 
 func _update_hp_bar() -> void:
-	if _bar_root == null:
-		return
-	var frac := clampf(health / maxf(max_health, 1.0), 0.0, 1.0)
-	# Original jitter: random offset kicks in when hp changes; on death
-	# the whole bar+name slides down and off (pasek_napis_y).
-	if health < _last_bar_hp - 0.01:
-		_bar_jitter = 4.0
-	_last_bar_hp = health
-	var jx := 0.0
-	var jy := 0.0
-	if _bar_jitter > 0.001:
-		_bar_jitter /= 1.1
-		jx = randf_range(-_bar_jitter, _bar_jitter)
-		jy = randf_range(-_bar_jitter, _bar_jitter)
-	if _dead:
-		_name_slide = minf(_name_slide + 1.0 + _name_slide / 5.0, 500.0)
-		jy += _name_slide
-	_bar_root.position = Vector2(jx, jy)
-	if _bar_fill != null:
-		_bar_fill.size.x = _bar_fill_w * frac
-	if _bar_right_cap != null:
-		_bar_right_cap.position.x = 287.0 + 300.0 * frac
+	if _hp_bar != null:
+		_hp_bar.value = health

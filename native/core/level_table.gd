@@ -19,10 +19,8 @@ class_name NativeLevelTable
 const LEVELS_PER_WORLD := 10
 const WORLDS := 8
 const STAGES_PATH := "res://levels/native/stages.json"
-const LEVEL_SETUP_PATH := "res://levels/native/level_setup.json"
 
 static var _stages: Dictionary = {}
-static var _level_setup: Dictionary = {}
 static var _playable: Array = []   # ["m:n", ...] sorted by map then node
 
 
@@ -33,10 +31,6 @@ static func _load_stages() -> void:
 		var parsed = JSON.parse_string(FileAccess.get_file_as_string(STAGES_PATH))
 		if typeof(parsed) == TYPE_DICTIONARY:
 			_stages = parsed.get("stages", {})
-	if FileAccess.file_exists(LEVEL_SETUP_PATH):
-		var parsed2 = JSON.parse_string(FileAccess.get_file_as_string(LEVEL_SETUP_PATH))
-		if typeof(parsed2) == TYPE_DICTIONARY:
-			_level_setup = parsed2
 	_playable = _stages.keys()
 	_playable.sort_custom(func(a, b):
 		var pa: PackedStringArray = str(a).split(":")
@@ -62,60 +56,6 @@ const BOSS_MUSIC := {
 	0: "real_battle", 1: "brutal_force", 2: "hard_castle", 3: "evil_castle",
 	4: "violence", 5: "violation", 6: "death_star", 7: "last_boss",
 }
-
-## Original two-plane parallax background system (enemy_controller's
-## g_background_2plaszczyzny): scenario index -> background resource id.
-## Planes: 0 = main (alpha 1.0), 1 = overlay (alpha 0.5).
-const SCENARIO_BG := {
-	0: 0, 1: 44, 2: 2, 3: 0, 4: 6, 5: 0, 6: 48, 7: 52, 8: 52,
-}
-
-## G.muzyka id -> res://music/<name>.ogg (enemy_controller ev_3_0_2).
-const MUSIC_IDS := {
-	1: "hard_life", 2: "violation", 3: "castle_dungeon", 4: "brutal_force",
-	5: "super_star", 6: "violence", 7: "rage", 8: "dark",
-	9: "boss_bowser", 10: "evil_castle", 11: "training", 12: "funy",
-	13: "ghosts", 14: "hard_castle", 15: "mixed_battle", 16: "escape",
-	17: "hard_squad", 18: "real_battle", 19: "death_star",
-	20: "last_boss", 21: "castle_fly2",
-}
-
-## Per-map fallback scenario when a level doesn't set zmien_background —
-## the authored mode per map (levels inherit the previous scenario in the
-## original; the map's dominant value is the closest static choice).
-## [main_scenario, overlay_scenario]
-const DEFAULT_SCENARIO := {
-	0: [0, 0], 1: [5, 1], 2: [6, 5], 3: [6, 1], 4: [6, 1],
-	5: [6, 0], 6: [6, 0], 7: [6, 1],
-}
-
-## Wave-script background overrides — scripts that assign
-## g_ktora_sceneria/g_ktora_sceneria2 mid-level (castle crawls switch to
-## the dungeon scenario 2, ghost waves to 4, spikey swarms to 3/8).
-## [main_scenario, overlay_scenario]
-const WAVE_SCENARIOS := {
-	"wave_7_castle_1": [2, 0], "wave_7_castle_2": [2, 1],
-	"wave_12_castle_2": [2, 0], "wave_12_key_castle": [2, 1],
-	"wave_map_3_end_castle": [2, 0],
-	"wave_map_4_castle_rush": [2, 0], "wave_map_4_castle_rush_2": [2, 0],
-	"wave_map_4_end_castle": [2, 0], "wave_map_5_end_castle": [2, 0],
-	"wave_map_6_castle_rush_3": [2, 0], "wave_map_6_end_castle": [2, 0],
-	"wave_map_6_piranha_castle_1": [2, 0],
-	"wave_map_6_piranha_castle_2": [2, 0],
-	"wave_map_7_end_castle": [2, 0],
-	"wave_map_8_end_castle": [2, 0], "wave_map_8_end_castle_2": [2, 0],
-	"wave_map_8_end_castle_22": [2, 0],
-	"ghost_wave": [4, 0], "wave_ghost_1": [4, 1], "wave_ghost_2": [4, 1],
-	"wave_11_spikey_swarm": [3, 3], "spikey_swarm_map_5": [3, 3],
-	"wave_map_5_spikeys": [8, 8],
-}
-
-
-## Scenario index -> background resource id, with the missing
-## background52 texture folded back to the plain backdrop.
-static func bg_for_scenario(scen: int) -> int:
-	var id := int(SCENARIO_BG.get(scen, 0))
-	return 0 if id == 52 else id
 
 # Enemy kinds available to the generator — must match the spawner's
 # string→Kind mapping and enemy.gd's KIND_PROFILES.
@@ -381,10 +321,6 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 		var script_name := str(wave.get("script", wave.get("spawn_name", "")))
 		if SCRIPT_BOSSES.has(script_name):
 			wave["bosses"] = SCRIPT_BOSSES[script_name]
-		# Mid-level background switches authored inside wave scripts.
-		if WAVE_SCENARIOS.has(script_name):
-			wave["scenario"] = WAVE_SCENARIOS[script_name][0]
-			wave["scenario2"] = WAVE_SCENARIOS[script_name][1]
 		waves.append(wave)
 	# Authored schedules can be sparse — top up with a couple of
 	# procedural waves so every stage has a proper ending.
@@ -412,39 +348,11 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 			seen_scripts[sname] = true
 			for b in SCRIPT_BOSSES[sname]:
 				stage_bosses.append((b as Dictionary).duplicate())
-	# Authored presentation: stages.json `bg`/`music` are the original's
-	# zmien_background scenario and muzyka id; level_setup.json adds the
-	# second parallax plane (bg2). Levels without authored values inherit
-	# their map's dominant scenario.
-	var setup: Dictionary = _level_setup.get(key, {})
-	var defs: Array = DEFAULT_SCENARIO.get(world, DEFAULT_SCENARIO[0])
-	var scen1 := int(st.get("bg", defs[0]))
-	var scen2 := int(setup.get("bg2", defs[1]))
-	var bg_id := bg_for_scenario(scen1)
-	var bg2_id := bg_for_scenario(scen2)
-	var muzyka := int(st.get("music", 0))
-	var track := str(MUSIC_IDS.get(muzyka, ""))
-	if track == "":
-		track = str(BOSS_MUSIC.get(world, pool[node % pool.size()]) if is_boss \
-			else pool[node % pool.size()])
-	var is_castle_level := bool(st.get("is_castle", false))
-	# Castle scenes don't run the wave spawner, so wave-script scenario
-	# switches never fire — adopt the first scripted scenario up front
-	# (castle crawls all switch to the dungeon backdrop anyway).
-	if is_castle_level:
-		for w in waves:
-			if w.has("scenario"):
-				scen1 = int(w["scenario"])
-				scen2 = int(w.get("scenario2", scen2))
-				bg_id = bg_for_scenario(scen1)
-				bg2_id = bg_for_scenario(scen2)
-				break
 	return {
 		"stage_bosses": stage_bosses,
 		"talk_only": talk_only,
-		"background": bg_id,
-		"background2": bg2_id,
-		"music": track,
+		"background": int(bg_pool[node % bg_pool.size()]),
+		"music": str(pool[node % pool.size()]),
 		"waves": waves,
 		"boss": {"tier": world,
 			"variant": BOSS_VARIANTS.get(world, "")} if is_boss else {},

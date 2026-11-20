@@ -1,16 +1,16 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://editor/level_snapshot.gd" id="3_rc75b"]
+[ext_resource type="Script" path="res://engine/level_snapshot.gd" id="3_rc75b"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/sprite190.190.0.png" id="4_7a1r7"]
-[ext_resource type="Script" path="res://editor/level_snapshot_instance.gd" id="5_4tktg"]
+[ext_resource type="Script" path="res://engine/level_snapshot_instance.gd" id="5_4tktg"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_startup_1.318.0.png" id="6_pb4lk"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_mauselock2.449.0.png" id="7_hgavd"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_mauselock.448.0.png" id="8_ijion"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_cards_set.335.3.png" id="9_s3os0"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_cards_set.335.2.png" id="10_2q6c5"]
-[ext_resource type="Script" path="res://editor/level_bounds_guide.gd" id="bounds_guide"]
+[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
+[ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background0.0.jpg" id="t1"]
-[ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3rqoo"]
 blend_mode = 1
@@ -973,12 +973,14 @@ blend_mode = 1
 blend_mode = 1
 
 [node name="level_13_card_game" type="Node2D" unique_id=374030084]
+script = ExtResource("boot")
 metadata/gm_room = "card_game_2"
 metadata/gm_map = 1
 metadata/gm_lev = 13
 metadata/gm_minigame = 3
 metadata/gm_label = "CARD_GAME"
 metadata/gm_bg_colour = 0
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34080695]
 position = Vector2(1512, 1384)
 limit_left = 0
