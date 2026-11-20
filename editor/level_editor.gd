@@ -691,12 +691,13 @@ func _on_viewport_input(event: InputEvent) -> void:
 				return
 			# hit-test markers: player first, then spawns topmost-last
 			var hit := _hit_marker(pos)
-			if hit.type == "player":
+			var hit_type: String = str(hit.get("type", ""))
+			if hit_type == "player":
 				_sel = _items.size() - 1
 				_drag_idx = _sel
 				_drag_offset = player_pos - pos
-			elif hit.type == "spawn":
-				_sel = _item_index_of("spawn", hit.index)
+			elif hit_type == "spawn":
+				_sel = _item_index_of("spawn", int(hit.index))
 				_drag_idx = _sel
 				_drag_offset = spawns[hit.index].pos - pos
 			else:
@@ -988,16 +989,16 @@ func _build_scene(room_name: String) -> void:
 		_status.text = "ERROR saving scene: %s" % error_string(err)
 		return
 	# make sure the runtime scene index rescans stages/ for the new file
-	var R = load("res://engine/r.gd")
-	R._level_scenes_indexed = false
-	R._level_scene_index.clear()
-	R._scene_index.clear()
+	var r_script = load("res://engine/r.gd")
+	r_script._level_scenes_indexed = false
+	r_script._level_scene_index.clear()
+	r_script._scene_index.clear()
 
 
-func _claim_ownership(node: Node, owner: Node) -> void:
+func _claim_ownership(node: Node, scene_root: Node) -> void:
 	for c in node.get_children():
-		c.owner = owner
-		_claim_ownership(c, owner)
+		c.owner = scene_root
+		_claim_ownership(c, scene_root)
 
 
 func _add_bg_layer(root: Node, bname: String, slot: int, xoff: float, tex: Texture2D) -> void:
@@ -1084,8 +1085,8 @@ func _playtest() -> void:
 		_save_level()
 		if scene_path == "":
 			return
-	var R = load("res://engine/r.gd")
-	R._level_scenes_indexed = false
-	R._level_scene_index.clear()
-	R._scene_index.clear()
+	var r_script = load("res://engine/r.gd")
+	r_script._level_scenes_indexed = false
+	r_script._level_scene_index.clear()
+	r_script._scene_index.clear()
 	get_tree().change_scene_to_file(scene_path)
