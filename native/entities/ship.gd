@@ -684,7 +684,7 @@ func _use_special(id: int) -> void:
 		4:  # NOVA RING — seq 1: damage nova around the ship
 			for enemy in NativeGame.group_roster("enemies"):
 				if is_instance_valid(enemy) \
-						and global_position.distance_to(enemy.global_position) < 320.0:
+						and global_position.distance_squared_to(enemy.global_position) < 102400.0:
 					enemy.take_damage(item["damage"])
 			_flash_special_fx(480)
 		6:  # TRIPLE MISSILE — seq 30000: three photon_laser31 bolts
@@ -815,7 +815,7 @@ func _tick_balls() -> void:
 			var eid: int = enemy.get_instance_id()
 			if frame - int(hits.get(eid, -9999)) < BALL_HIT_COOLDOWN:
 				continue
-			if ball.global_position.distance_to(enemy.global_position) < 26.0:
+			if ball.global_position.distance_squared_to(enemy.global_position) < 676.0:
 				hits[eid] = frame
 				enemy.take_damage(BALL_DAMAGE)
 		_ball_hits[i] = hits

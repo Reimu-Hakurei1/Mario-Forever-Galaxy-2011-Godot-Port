@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	# spawn protection, same as enemy ramming.
 	var ship := NativeGame.player()
 	if ship != null and not ship.invulnerable \
-			and position.distance_to(ship.global_position) < 30.0:
+			and position.distance_squared_to(ship.global_position) < 900.0:
 		NativeGame.damage_player(_dmg)
 		queue_free()
 		return
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	# includes object 26 (o_kumpel_a).
 	for buddy in NativeGame.group_roster("buddies"):
 		if is_instance_valid(buddy) and buddy.alive \
-				and position.distance_to(buddy.global_position) < 30.0:
+				and position.distance_squared_to(buddy.global_position) < 900.0:
 			buddy.take_damage(_dmg)
 			queue_free()
 			return

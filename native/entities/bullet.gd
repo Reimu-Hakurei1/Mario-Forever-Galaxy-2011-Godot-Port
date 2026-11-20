@@ -164,35 +164,34 @@ func _physics_process(_delta: float) -> void:
 		_auto_fire()
 
 	# Hit test — the original used place_meeting() against the enemy parent
-	# object; a group scan is the same check in native terms. Bullets are
-	# small and few, so the scan is cheap. Castle blocks share the scan —
-	# they're destructible but aren't enemies (no score on break).
-	for group in ["enemies", "blocks"]:
-		for target in NativeGame.group_roster(group):
-			if not is_instance_valid(target) \
-					or position.distance_to(target.global_position) >= 34.0:
+	# object; the spatial grid returns only targets in the bullet's cell
+	# (enemies and castle blocks share the scan — blocks are destructible
+	# but aren't enemies, no score on break).
+	for target in NativeGame.targets_near(position):
+		if not is_instance_valid(target) \
+				or position.distance_squared_to(target.global_position) >= 1156.0:
+			continue
+		var tid: int = target.get_instance_id()
+		var frame := Engine.get_physics_frames()
+		# Piercing bolts keep flying — a per-target cooldown stops one
+		# enemy eating the whole volley in a single frame.
+		if pierce:
+			if frame - int(_hit.get(tid, -9999)) < 12:
 				continue
-			var tid: int = target.get_instance_id()
-			var frame := Engine.get_physics_frames()
-			# Piercing bolts keep flying — a per-target cooldown stops one
-			# enemy eating the whole volley in a single frame.
-			if pierce:
-				if frame - int(_hit.get(tid, -9999)) < 12:
-					continue
-				_hit[tid] = frame
-			target.take_damage(damage)
-			if explosive:
-				_splash(target)
-			if coin_on_hit:
-				_drop_coin()
-			if shrapnel > 0:
-				_shrapnel_burst()
-			if shrapnel > 0 or gravity > 0.0:
-				_boom()
-			if not pierce:
-				_dead = true
-				queue_free()
-				return
+			_hit[tid] = frame
+		target.take_damage(damage)
+		if explosive:
+			_splash(target)
+		if coin_on_hit:
+			_drop_coin()
+		if shrapnel > 0:
+			_shrapnel_burst()
+		if shrapnel > 0 or gravity > 0.0:
+			_boom()
+		if not pierce:
+			_dead = true
+			queue_free()
+			return
 
 	# Slight visual stretch as the bolt travels (laser_u88 family's
 	# shots grow much faster — grow_rate overrides the default).
@@ -333,7 +332,7 @@ func _orbit_shot() -> void:
 func _splash(primary: Node2D) -> void:
 	for enemy in NativeGame.group_roster("enemies"):
 		if is_instance_valid(enemy) and enemy != primary \
-				and position.distance_to(enemy.global_position) < 70.0:
+				and position.distance_squared_to(enemy.global_position) < 4900.0:
 			enemy.take_damage(damage * 0.5)
 
 

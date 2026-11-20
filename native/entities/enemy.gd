@@ -502,8 +502,8 @@ func _tick_shooter() -> void:
 		return
 	var ship := NativeGame.player()
 	if _shoot_timer <= 0.0 and ship != null:
-		var dist: float = position.distance_to(ship.global_position)
-		if dist < shoot_range:
+		var dist: float = position.distance_squared_to(ship.global_position)
+		if dist < shoot_range * shoot_range:
 			_fire_volley(ship.global_position)
 			_burst_left = burst - 1
 			_shoot_timer = shoot_interval

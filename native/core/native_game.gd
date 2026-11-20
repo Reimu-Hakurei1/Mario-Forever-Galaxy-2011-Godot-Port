@@ -189,6 +189,55 @@ static func player() -> Node2D:
 	return roster[0] if not roster.is_empty() else null
 
 
+# --- Spatial hash for shootable targets ------------------------------------
+# Bullets used to scan the whole "enemies"+"blocks" roster every frame —
+# 100 bolts x 140 foes = 14k distance checks per frame, which is what
+# tanks the frame rate on crowded stages. A uniform grid rebuilt once
+# per physics frame lets each bullet check only the handful of targets
+# in its own cell.
+const TARGET_CELL := 64.0
+const TARGET_RADIUS := 40.0   # bullet hit reach (34px) + margin
+static var _target_grid: Dictionary = {}
+static var _target_grid_frame := -1
+
+
+static func _target_cell(v: Vector2) -> Vector2i:
+	return Vector2i(floori(v.x / TARGET_CELL), floori(v.y / TARGET_CELL))
+
+
+## Dictionary[Vector2i, Array] of enemies+blocks, keyed by cell. Each
+## target is inserted into every cell its hit circle overlaps, so a
+## single-cell lookup at the bullet's position finds every possible hit.
+static func target_grid() -> Dictionary:
+	var frame := Engine.get_physics_frames()
+	if frame != _target_grid_frame:
+		_target_grid_frame = frame
+		_target_grid.clear()
+		var tree := Engine.get_main_loop() as SceneTree
+		if tree != null:
+			for g in ["enemies", "blocks"]:
+				for e in tree.get_nodes_in_group(g):
+					var e2d := e as Node2D
+					if e2d == null or not is_instance_valid(e2d):
+						continue
+					var gp: Vector2 = e2d.global_position
+					var c0 := _target_cell(gp - Vector2(TARGET_RADIUS, TARGET_RADIUS))
+					var c1 := _target_cell(gp + Vector2(TARGET_RADIUS, TARGET_RADIUS))
+					for cx in range(c0.x, c1.x + 1):
+						for cy in range(c0.y, c1.y + 1):
+							var key := Vector2i(cx, cy)
+							if not _target_grid.has(key):
+								_target_grid[key] = []
+							_target_grid[key].append(e)
+	return _target_grid
+
+
+## Targets in the cell containing `pos` — the only ones a bullet at
+## `pos` can possibly hit this frame.
+static func targets_near(pos: Vector2) -> Array:
+	return target_grid().get(_target_cell(pos), [])
+
+
 ## Fallback for entry points that skip hero select (direct scene launches,
 ## headless tests): if every slot is empty, arm the current hero's
 ## starter loadout. Does NOT touch upgrades — only fills empty slots.
