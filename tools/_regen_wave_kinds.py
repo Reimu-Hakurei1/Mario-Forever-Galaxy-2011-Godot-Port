@@ -37,7 +37,7 @@ ID2KIND = {
     330: "ghost3",         # o_shyghost3
     340: "castle_enemy",   # o_castle_enemier_3
     349: "castle_enemy",   # o_castle_enemier_2_nonblock_harder
-    353: "flame",          # o_flamecans
+    353: "flame_map",      # o_flamecans (600hp)
     356: "goomba_team",    # o_goomba_team
     365: "bonus_fall",     # o_bonusho
     382: "kamikaze",       # o_spikey_swarm_map_5 (darts swarm)
@@ -47,7 +47,7 @@ ID2KIND = {
     401: "ufo_gunship",    # o_ufoteam (200hp)
     410: "mini",           # o_enemy_dookola_1
     412: "mini",           # o_enemy_dookola_2
-    432: "flame",          # o_flamecans2
+    432: "flame_map",      # o_flamecans2 (600hp)
     434: "mini",           # o_enemy_dookola_1_delayed
     435: "cyber_team",     # o_cyber_team
     438: "flame_shooter",  # o_flamecans_shoota

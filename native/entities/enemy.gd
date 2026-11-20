@@ -961,9 +961,10 @@ func _check_player_collision() -> void:
 	if ship.invulnerable:
 		return
 	if giga2_pull:
-		# boss_giga_2 contact: the orb dies, hauling the ship toward its
-		# position (g_ixor/g_iyor += lengthdir 20) and burning 200 hull.
-		ship.vel += to_enemy.normalized() * 20.0
+		# boss_giga_2 contact: the orb dies, hurling the ship AWAY from
+		# its position (lengthdir 20 along orbiter->player) and burning
+		# 200 hull.
+		ship.vel -= to_enemy.normalized() * 20.0
 		NativeGame.damage_player(200.0)
 		_spawn_explosion(0)
 		queue_free()
