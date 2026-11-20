@@ -1,25 +1,25 @@
 extends Node
 
-## Attached to every stages/*.tscn scene. Pressing F6 (run current scene)
-## routes to the native arena with the stage's authored config.
+## Attached to every stages/*.tscn scene. When running the GameMaker
+## runtime (main scene = scenes/game.tscn), these scenes launch the
+## specific room they represent by reading gm_room metadata and
+## forcing R to load that room instead of the default first_room.
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	_launch_native.call_deferred()
+	_launch_room.call_deferred()
 
 
-func _launch_native() -> void:
-	var map_idx := int(get_meta("gm_map", 0))
-	var lev_idx := int(get_meta("gm_lev", 0))
-	var key := "%d:%d" % [map_idx, lev_idx]
-	var cfg := NativeLevelTable.config_for_key(key)
-	if cfg.is_empty():
-		# Fallback for test scenes without authored data
-		cfg = {"waves": [], "background": 0, "music": "mixed_battle"}
-	NativeGame.pending_level = cfg
-	NativeGame.active_node = key
-	var rank := NativeLevelTable.node_rank(key)
-	if rank >= 0:
-		NativeGame.active_level = rank
-	get_tree().change_scene_to_file("res://native/levels/arena.tscn")
+func _launch_room() -> void:
+	var room_name: String = get_meta("gm_room", "")
+	if room_name == "":
+		return
+	# Set a global override for the room name and map/level indices
+	R.pending_stage_room = room_name
+	R.pending_stage_map = int(get_meta("gm_map", 0))
+	R.pending_stage_lev = int(get_meta("gm_lev", 0))
+	# Wait a few frames then change scene to allow the current scene to clean up
+	for i in 3:
+		await get_tree().process_frame
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
