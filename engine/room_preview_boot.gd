@@ -74,7 +74,9 @@ func _process(delta: float) -> void:
 		max_steps = maxi(2, int(ceil(float(R.room_speed) / 30.0)))
 	_acc += delta
 	var n: int = 0
-	while _acc >= step_time and n < max_steps:
+	var _lt := Time.get_ticks_usec()
+	while _acc >= step_time and n < max_steps \
+			and (n == 0 or Time.get_ticks_usec() - _lt < 11000):
 		R.step()
 		_acc -= step_time
 		n += 1

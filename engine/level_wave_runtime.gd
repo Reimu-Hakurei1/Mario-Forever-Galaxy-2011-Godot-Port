@@ -3,6 +3,10 @@ extends RefCounted
 var tables: Array = []
 var spawns: Array = []
 var bindings: Array = []
+# Flattened [array, activation, stage, first, last, value, needs_tutorial] rows;
+# read_override runs once per array access in generated scripts, so it must
+# stay cheap — array indexing beats dictionary lookups by several times.
+var binding_rows: Array = []
 var pending_spawns: Array = []
 var event_stack: Array = []
 var tutorial_complete: bool = false
@@ -31,6 +35,7 @@ func configure(data: Dictionary) -> void:
 	tables = data.get("tables", [])
 	spawns = data.get("spawns", [])
 	bindings.clear()
+	binding_rows.clear()
 	pending_spawns.clear()
 	tutorial_complete = false
 	added_roots.clear()
@@ -75,18 +80,21 @@ func bind_controller(inst) -> void:
 		var array = inst.get("g_" + str(edit.table))
 		if array is Array:
 			bindings.append({"array": array, "edit": edit})
+			binding_rows.append([array, int(edit.activation), int(edit.stage),
+				int(edit.first), int(edit.last), edit.value,
+				int(edit.activation) == 1])
 
 
 func read_override(array: Variant, stage: int, index: int) -> Variant:
 	var value: Variant = null
 	var priority: int = -1
-	for binding: Dictionary in bindings:
-		var edit: Dictionary = binding.edit
-		var activation: int = int(edit.activation)
+	for row in binding_rows:
+		var activation: int = row[1]
 		if activation == 1 and not tutorial_complete:
 			continue
-		if activation >= priority and is_same(array, binding.array) and int(edit.stage) == stage and index >= int(edit.first) and index <= int(edit.last):
-			value = edit.value
+		if activation >= priority and is_same(array, row[0]) and row[2] == stage \
+				and index >= row[3] and index <= row[4]:
+			value = row[5]
 			priority = activation
 	return value
 

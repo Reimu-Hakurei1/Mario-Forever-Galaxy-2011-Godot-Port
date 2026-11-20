@@ -98,7 +98,11 @@ func _process(delta: float) -> void:
 	acc += delta * (2.0 if ff else 1.0)
 	var n := 0
 	var t0 := Time.get_ticks_usec()
-	while acc >= step_time and n < max_steps:
+	# Never let catch-up steps eat the whole frame: once logic has spent ~11ms
+	# this frame, leftover debt carries over (capped below) so the game slows
+	# smoothly instead of spiralling into a multi-step slideshow.
+	while acc >= step_time and n < max_steps \
+			and (n == 0 or Time.get_ticks_usec() - t0 < 11000):
 		R.step()
 		acc -= step_time
 		n += 1
