@@ -19,9 +19,7 @@ func _launch_room() -> void:
 	R.pending_stage_room = room_name
 	R.pending_stage_map = int(get_meta("gm_map", 0))
 	R.pending_stage_lev = int(get_meta("gm_lev", 0))
-	# Wait one frame then instantiate the main game scene
-	await get_tree().process_frame
-	var main_scene: PackedScene = load("res://scenes/game.tscn")
-	var instance: Node = main_scene.instantiate()
-	get_tree().root.add_child(instance)
-	queue_free()
+	# Wait a few frames then change scene to allow the current scene to clean up
+	for i in 3:
+		await get_tree().process_frame
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
