@@ -92,6 +92,16 @@ static func ev_8_0(S, A: Array) -> Variant:
             R.set_direction(S, S.g_image_angle)
         S.x = (S.x + S.g_ixor)
         S.y = (S.y + S.g_iyor)
+        # Player collision — damages the player on contact but doesn't
+        # destroy the boss.
+        if R.place_meeting(S, S.x, S.y, 0):
+            if R.instance_exists(S, 0):
+                if R.eqv(S, R.get_obj_var(0, "g_skuszenie"), 0):
+                    if (R.get_obj_var(0, "g_shield") <= 0):
+                        G.energia -= 50
+                        R.set_obj_var(0, "g_iyor", (R.get_obj_var(0, "g_iyor") + 5))
+                        if R.eqv(S, G.dzwiek, 1):
+                            P2.SXMS_SFX_PlayExt(S, [6, 128, G.glosnosc_dzwieku, -(1), 0, 0])
         S.g_celownikang += 0.01
         R.aset(S.g_ladowanie, 0, (R.aget(S.g_ladowanie, 0) + 1))
         if (R.aget(S.g_ladowanie, 0) < 300):
