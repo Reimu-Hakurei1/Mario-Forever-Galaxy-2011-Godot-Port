@@ -805,6 +805,14 @@ func _fire_boss_bullet(kind: String, pos: Vector2) -> void:
 	b.global_position = pos
 	b.damage = 15.0
 	get_parent().add_child(b)
+	# boss_bullet_3/33 spawn 1-2 o_bosefe_2 glow effects (obj 122,
+	# sprite 109) at launch on high-effects settings.
+	if kind in ["aimed", "fast_home"]:
+		for i in 2:
+			var glow := NativeExplosion.new()
+			glow.variant = "muzzle"
+			glow.global_position = pos
+			get_parent().add_child(glow)
 	NativeAssets.play_sound(79)
 
 
@@ -895,8 +903,10 @@ func _check_player_collision() -> void:
 	const BODY := 85.0
 	if dist < BODY + 18.0 and dist > 0.01:
 		ship.global_position += to_boss.normalized() * (BODY + 18.0 - dist)
-		NativeGame.damage_player(30.0)
-		ship.vel -= to_boss.normalized() * 6.0
+		# boss_N_fight place_meeting: grazing the hull costs only 5
+		# energy and knocks the ship down (g_iyor += 3).
+		NativeGame.damage_player(5.0)
+		ship.vel.y += 3.0
 
 
 func _build_hp_bar() -> void:
