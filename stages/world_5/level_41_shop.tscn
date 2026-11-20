@@ -5,14 +5,12 @@
 [ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [node name="level_41_shop" type="Node2D"]
-script = ExtResource("stage_launch")
 metadata/gm_room = "room_shop"
 metadata/gm_map = 4
 metadata/gm_lev = 41
 metadata/gm_minigame = 2
 metadata/gm_label = "SHOP"
 metadata/gm_bg_colour = 0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)
 limit_left = 0

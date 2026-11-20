@@ -19,14 +19,12 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="level_09_asteroid_swarm" type="Node2D"]
-script = ExtResource("stage_launch")
 metadata/gm_room = "level_0000"
 metadata/gm_map = 1
 metadata/gm_lev = 9
 metadata/gm_minigame = 0
 metadata/gm_label = "ASTEROID_SWARM"
 metadata/gm_bg_colour = 0
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)
 limit_left = 0

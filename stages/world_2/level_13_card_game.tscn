@@ -973,14 +973,12 @@ blend_mode = 1
 blend_mode = 1
 
 [node name="level_13_card_game" type="Node2D" unique_id=374030084]
-script = ExtResource("stage_launch")
 metadata/gm_room = "card_game_2"
 metadata/gm_map = 1
 metadata/gm_lev = 13
 metadata/gm_minigame = 3
 metadata/gm_label = "CARD_GAME"
 metadata/gm_bg_colour = 0
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=34080695]
 position = Vector2(1512, 1384)
 limit_left = 0
