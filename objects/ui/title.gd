@@ -540,7 +540,7 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 		S.g_wielkosc58 = 0
 	if R.eqv(S, S.g_opcja1, 5):
 		R.draw_set_color(S, 0x00FFFF)
-		R.draw_text_transformed(S, 150, (400 - 50), "GUIDE AND HINTS :", 0.3, 0.3, 0)
+		R.draw_text_transformed(S, 150, (460 - 50), "GUIDE AND HINTS :", 0.3, 0.3, 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc51 * 50000)))
 		R.draw_text_transformed(S, 150, (365 - 50), R.string(S, R.aget(G.guide, 1)), (0.3 + S.g_wielkosc51), (0.3 + S.g_wielkosc51), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc52 * 50000)))
@@ -722,103 +722,103 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 		S.g_wielkosc24 = 0
 	if R.eqv(S, S.g_opcja1, 2):
 		R.draw_set_color(S, 0x00FFFF)
-		R.draw_text_transformed(S, 512, (400 - (20 *16)), "CONTROLS :", 0.6, 0.6, 0)
+		R.draw_text_transformed(S, 512, (460 - (20 *16)), "CONTROLS :", 0.6, 0.6, 0)
 		if (1 - R.eqv(S, S.g_nastaw, 1)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc11 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *14)) + S.g_ywafel), R.concat("UP : ", R.string(S, R.aget(G.znak, G.ster1))), (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *14)) + S.g_ywafel), R.concat("UP : ", R.string(S, R.aget(G.znak, G.ster1))), (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
 		if R.eqv(S, S.g_nastaw, 1):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *14)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *14)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc11), (0.5 + S.g_wielkosc11), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 2)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc12 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *13)) + S.g_ywafel), R.concat("DOWN : ", R.string(S, R.aget(G.znak, G.ster2))), (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *13)) + S.g_ywafel), R.concat("DOWN : ", R.string(S, R.aget(G.znak, G.ster2))), (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
 		if R.eqv(S, S.g_nastaw, 2):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *13)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *13)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc12), (0.5 + S.g_wielkosc12), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 3)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc13 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *12)) + S.g_ywafel), R.concat("LEFT : ", R.string(S, R.aget(G.znak, G.ster3))), (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *12)) + S.g_ywafel), R.concat("LEFT : ", R.string(S, R.aget(G.znak, G.ster3))), (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
 		if R.eqv(S, S.g_nastaw, 3):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *12)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *12)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc13), (0.5 + S.g_wielkosc13), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 4)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc14 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *11)) + S.g_ywafel), R.concat("RIGHT : ", R.string(S, R.aget(G.znak, G.ster4))), (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *11)) + S.g_ywafel), R.concat("RIGHT : ", R.string(S, R.aget(G.znak, G.ster4))), (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
 		if R.eqv(S, S.g_nastaw, 4):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *11)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *11)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc14), (0.5 + S.g_wielkosc14), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 5)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc15 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *10)) + S.g_ywafel), R.concat("FIRE : ", R.string(S, R.aget(G.znak, G.ster5))), (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *10)) + S.g_ywafel), R.concat("FIRE : ", R.string(S, R.aget(G.znak, G.ster5))), (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
 		if R.eqv(S, S.g_nastaw, 5):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *10)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *10)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc15), (0.5 + S.g_wielkosc15), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 6)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc16 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *9)) + S.g_ywafel), R.concat("USE SPECIAL : ", R.string(S, R.aget(G.znak, G.ster6))), (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *9)) + S.g_ywafel), R.concat("USE SPECIAL : ", R.string(S, R.aget(G.znak, G.ster6))), (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
 		if R.eqv(S, S.g_nastaw, 6):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *9)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *9)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc16), (0.5 + S.g_wielkosc16), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 7)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc17 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *8)) + S.g_ywafel), R.concat("NEXT SPECIAL : ", R.string(S, R.aget(G.znak, G.ster7))), (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *8)) + S.g_ywafel), R.concat("NEXT SPECIAL : ", R.string(S, R.aget(G.znak, G.ster7))), (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
 		if R.eqv(S, S.g_nastaw, 7):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *8)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *8)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc17), (0.5 + S.g_wielkosc17), 0)
 		if (1 - R.eqv(S, S.g_nastaw, 8)):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc18 * 50000)))
-			R.draw_text_transformed(S, 512, ((400 - (20 *7)) + S.g_ywafel), R.concat("PREV SPECIAL : ", R.string(S, R.aget(G.znak, G.ster8))), (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
+			R.draw_text_transformed(S, 512, ((460 - (20 *7)) + S.g_ywafel), R.concat("PREV SPECIAL : ", R.string(S, R.aget(G.znak, G.ster8))), (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
 		if R.eqv(S, S.g_nastaw, 8):
 			R.draw_set_color(S, 0x0000FF)
-			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *7)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
+			R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *7)) + S.g_ywafel), "PRESS ANY KEY", (0.5 + S.g_wielkosc18), (0.5 + S.g_wielkosc18), 0)
 		R.draw_set_color(S, 0x00FFFF)
-		R.draw_text_transformed(S, 512, ((400 - (20 *6)) + S.g_ywafel), "OPTIONS :", 0.6, 0.6, 0)
+		R.draw_text_transformed(S, 512, ((460 - (20 *6)) + S.g_ywafel), "OPTIONS :", 0.6, 0.6, 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc40 * 50000)))
-		R.draw_text_transformed(S, 512, ((400 - (20 *5)) + S.g_ywafel), R.concat("RESOLUTION : ", R.aget(S.g_resoname, G.resolution)), (0.5 + S.g_wielkosc40), (0.5 + S.g_wielkosc40), 0)
+		R.draw_text_transformed(S, 512, ((460 - (20 *5)) + S.g_ywafel), R.concat("RESOLUTION : ", R.aget(S.g_resoname, G.resolution)), (0.5 + S.g_wielkosc40), (0.5 + S.g_wielkosc40), 0)
 		if R.eqv(S, G.windowed, 1):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : YES", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : YES", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
 		if R.eqv(S, G.windowed, 0):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc41 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : NO", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *4)) + S.g_ywafel) + S.g_unsuported), "FULLSCREEN : NO", (0.5 + S.g_wielkosc41), (0.5 + S.g_wielkosc41), 0)
 		if R.eqv(S, G.border, 0):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : NONE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : NONE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
 		if R.eqv(S, G.border, 1):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : RAVE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : RAVE", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
 		if R.eqv(S, G.border, 2):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
 		if R.eqv(S, G.border, 3):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc42 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL+FPS", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *3)) + S.g_ywafel) + S.g_unsuported), "WINDOW BORDER : FULL+FPS", (0.5 + S.g_wielkosc42), (0.5 + S.g_wielkosc42), 0)
 		if R.eqv(S, G.stayontop, 0):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : MANUAL", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : MANUAL", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
 		if R.eqv(S, G.stayontop, 1):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc43 * 50000)))
-			R.draw_text_transformed(S, 512, (((400 - (20 *2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : ALWAYS", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
+			R.draw_text_transformed(S, 512, (((460 - (20 *2)) + S.g_ywafel) + S.g_unsuported), "WINDOW ON TOP : ALWAYS", (0.5 + S.g_wielkosc43), (0.5 + S.g_wielkosc43), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc19 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 - 25) + S.g_ywafel) + S.g_unsuported), R.concat("MUSIC : ", R.string(S, R.round(S, (G.glosnosc_muzyki / float(2.55))))), (0.5 + S.g_wielkosc19), (0.5 + S.g_wielkosc19), 0)
+		R.draw_text_transformed(S, 512, (((460 - 25) + S.g_ywafel) + S.g_unsuported), R.concat("MUSIC : ", R.string(S, R.round(S, (G.glosnosc_muzyki / float(2.55))))), (0.5 + S.g_wielkosc19), (0.5 + S.g_wielkosc19), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc20 * 50000)))
-		R.draw_text_transformed(S, 512, ((400 + S.g_ywafel) + S.g_unsuported), R.concat("SOUND FX : ", R.string(S, R.round(S, (G.glosnosc_dzwieku / float(2.55))))), (0.5 + S.g_wielkosc20), (0.5 + S.g_wielkosc20), 0)
+		R.draw_text_transformed(S, 512, ((460 + S.g_ywafel) + S.g_unsuported), R.concat("SOUND FX : ", R.string(S, R.round(S, (G.glosnosc_dzwieku / float(2.55))))), (0.5 + S.g_wielkosc20), (0.5 + S.g_wielkosc20), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc21 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 + (20 *1)) + S.g_ywafel) + S.g_unsuported), R.concat("ANNOUNCER : ", S.g_tekstowa2), (0.5 + S.g_wielkosc21), (0.5 + S.g_wielkosc21), 0)
+		R.draw_text_transformed(S, 512, (((460 + (20 *1)) + S.g_ywafel) + S.g_unsuported), R.concat("ANNOUNCER : ", S.g_tekstowa2), (0.5 + S.g_wielkosc21), (0.5 + S.g_wielkosc21), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc22 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 + (20 *2)) + S.g_ywafel) + S.g_unsuported), R.concat("DETAIL : ", S.g_tekstowa1), (0.5 + S.g_wielkosc22), (0.5 + S.g_wielkosc22), 0)
+		R.draw_text_transformed(S, 512, (((460 + (20 *2)) + S.g_ywafel) + S.g_unsuported), R.concat("DETAIL : ", S.g_tekstowa1), (0.5 + S.g_wielkosc22), (0.5 + S.g_wielkosc22), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc25 * 50000)))
 		if R.eqv(S, G.map_elements, 1):
-			R.draw_text_transformed(S, 512, (((400 + (20 *3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : ALL", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
+			R.draw_text_transformed(S, 512, (((460 + (20 *3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : ALL", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
 		if R.eqv(S, G.map_elements, 0):
-			R.draw_text_transformed(S, 512, (((400 + (20 *3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : NONE", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
+			R.draw_text_transformed(S, 512, (((460 + (20 *3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : NONE", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc26 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 + (20 *4)) + S.g_ywafel) + S.g_unsuported), R.concat("VSYNC : ", S.g_tekstowa3), (0.5 + S.g_wielkosc26), (0.5 + S.g_wielkosc26), 0)
+		R.draw_text_transformed(S, 512, (((460 + (20 *4)) + S.g_ywafel) + S.g_unsuported), R.concat("VSYNC : ", S.g_tekstowa3), (0.5 + S.g_wielkosc26), (0.5 + S.g_wielkosc26), 0)
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc27 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 + (20 *5)) + S.g_ywafel) + S.g_unsuported), R.concat("FPS : ", S.g_tekstowa4), (0.5 + S.g_wielkosc27), (0.5 + S.g_wielkosc27), 0)
+		R.draw_text_transformed(S, 512, (((460 + (20 *5)) + S.g_ywafel) + S.g_unsuported), R.concat("FPS : ", S.g_tekstowa4), (0.5 + S.g_wielkosc27), (0.5 + S.g_wielkosc27), 0)
 		R.draw_set_color(S, (0x0000FF - (150000 * S.g_BRON)))
 		R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc24 * 50000)))
-		R.draw_text_transformed(S, 512, (((400 + (20 *6)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
+		R.draw_text_transformed(S, 512, (((460 + (20 *6)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
 	if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
 		S.g_klik2 = 1
 		S.g_nastaw = 1
@@ -906,13 +906,13 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 	S.g_unsupblank += 0.1
 	if (S.g_unsuported > 1):
 		R.draw_set_color(S, 0x0000FF)
-		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
 		R.draw_set_blend_mode(S, 1)
 		R.draw_set_alpha(S, R.sin(S, S.g_unsupblank))
 		R.draw_set_color(S, 0xFFFFFF)
-		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
-		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((400 - (20 *3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *4)) + S.g_ywafel), "THIS RESOLUTION ISN'T SUPPORTED", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
+		R.draw_text_transformed(S, (512 + (20 * R.sin(S, S.g_fitosteryd))), ((460 - (20 *3)) + S.g_ywafel), "IN FULLSCREEN MODE! SORRY.", .35, (((S.g_unsuported / float(80))) / float(1.50)), 0)
 		R.draw_set_alpha(S, 1)
 		R.draw_set_blend_mode(S, 0)
 	if (((1 - R.eqv(S, G.aktualres, G.resolution)) or (1 - R.eqv(S, R.window_get_fullscreen(S), G.windowed))) and R.eqv(S, S.g_opcja1, 1)):
@@ -1157,7 +1157,7 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 	if (S.g_dodatkus > 0.01):
 		R.draw_set_alpha(S, (S.g_dodatkus / float(1.2)))
 		R.draw_set_color(S, 0x000000)
-		R.draw_rectangle(S, ((S.g_dodatkus * 512) - 512), ((310 + 310) - (310 * S.g_dodatkus)), ((S.g_dodatkus * 512) + 512), ((400 - 400) + (400 * S.g_dodatkus)), 0)
+		R.draw_rectangle(S, ((S.g_dodatkus * 512) - 512), ((310 + 310) - (310 * S.g_dodatkus)), ((S.g_dodatkus * 512) + 512), ((460 - 400) + (400 * S.g_dodatkus)), 0)
 		R.draw_set_alpha(S, 1)
 	if (R.eqv(S, S.g_opcja1, 3) and R.eqv(S, S.g_credits, 0)):
 		if (S.g_dodatkus < 1):
@@ -1243,7 +1243,7 @@ static func ev_8_0_4(S, A: Array) -> Variant:
 		R.draw_set_color(S, 0x000000)
 		R.draw_set_alpha(S, (S.g_were_sorry2 / float(200)))
 		R.draw_rectangle(S, 0, (200 - (S.g_were_sorry2 / float(2))), 1024, (200 + (S.g_were_sorry2 / float(2))), 0)
-		R.draw_rectangle(S, 0, ((0 - (S.g_were_sorry2 / float(3))) + (S.g_were_sorry2 * 2)), 1024, ((400 + (S.g_were_sorry2 / float(3))) - (S.g_were_sorry2 * 2)), 0)
+		R.draw_rectangle(S, 0, ((0 - (S.g_were_sorry2 / float(3))) + (S.g_were_sorry2 * 2)), 1024, ((460 + (S.g_were_sorry2 / float(3))) - (S.g_were_sorry2 * 2)), 0)
 		R.draw_set_alpha(S, 1)
 	if R.eqv(S, S.g_were_sorry1, 2):
 		R.draw_set_font(S, S.g_czcionka2)
