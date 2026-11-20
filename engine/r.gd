@@ -2396,7 +2396,6 @@ static func _load_room(idx: int) -> void:
 		# Fallback: run creation_code from rooms.json if available
 		var creation_code: String = str(meta.get("creation_code", ""))
 		if creation_code != "":
-			print("Running creation_code for room ", idx, ": ", creation_code.substr(0, 100))
 			_run_creation_code(room_ci, creation_code)
 	if debug_load:
 		print("LOAD room=%d unload=%.1f meta=%.1f spawn=%.1f tiles=%.1f room_create=%.1f inst=%d" % [
