@@ -1,10 +1,10 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://engine/level_snapshot.gd" id="6_b2k1m"]
-[ext_resource type="Script" path="res://engine/level_capture_primitive.gd" id="7_bqxqg"]
+[ext_resource type="Script" path="res://editor/level_snapshot.gd" id="6_b2k1m"]
+[ext_resource type="Script" path="res://editor/level_capture_primitive.gd" id="7_bqxqg"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background.png" id="7_iopsr"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background1.png" id="8_p27eu"]
-[ext_resource type="Script" path="res://engine/level_snapshot_instance.gd" id="8_sd1rt"]
+[ext_resource type="Script" path="res://editor/level_snapshot_instance.gd" id="8_sd1rt"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background2.png" id="9_c1oey"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_wirnik.329.0.png" id="12_alcpr"]
 [ext_resource type="Texture2D" path="res://gfx/sprites/s_wirnik_2.330.0.png" id="13_xf3y2"]
@@ -40,7 +40,6 @@
 [ext_resource type="Texture2D" path="res://gfx/cutscene/anim_obj_9.png" id="37_mmb48"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/anim_obj_10.png" id="38_aqsw5"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/toad_0_1.png" id="43_2cg15"]
-[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background0.0.jpg" id="t1"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background1.2.jpg" id="t2"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background2.4.png" id="t3"]
@@ -119,7 +118,6 @@ blend_mode = 1
 blend_mode = 1
 
 [node name="room_animation_3" type="Node2D" unique_id=201566379]
-script = ExtResource("boot")
 metadata/gm_room = "room_animation_3"
 metadata/gm_bg_colour = 16777215
 

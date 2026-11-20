@@ -1,8 +1,8 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://engine/level_snapshot.gd" id="5_xp8xn"]
+[ext_resource type="Script" path="res://editor/level_snapshot.gd" id="5_xp8xn"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background.png" id="6_p3e3x"]
-[ext_resource type="Script" path="res://engine/level_snapshot_instance.gd" id="7_cfgpv"]
+[ext_resource type="Script" path="res://editor/level_snapshot_instance.gd" id="7_cfgpv"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background1.png" id="7_gb27n"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/background2.png" id="8_rvdy0"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/hero1_obj_8.png" id="10_o883u"]
@@ -25,13 +25,11 @@
 [ext_resource type="Texture2D" path="res://gfx/cutscene/anim_obj_2.png" id="23_3ca8q"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/anim_obj_3_3.png" id="24_xfvk6"]
 [ext_resource type="Texture2D" path="res://gfx/cutscene/toad_4_1.png" id="26_dafgk"]
-[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background0.0.jpg" id="t1"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background1.2.jpg" id="t2"]
 [ext_resource type="Texture2D" path="res://gfx/backgrounds/background2.4.png" id="t3"]
 
 [node name="room_animation_4" type="Node2D" unique_id=1584623014]
-script = ExtResource("boot")
 metadata/gm_room = "room_animation_4"
 metadata/gm_bg_colour = 16777215
 

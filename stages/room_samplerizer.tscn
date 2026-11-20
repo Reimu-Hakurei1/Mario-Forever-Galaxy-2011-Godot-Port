@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/sprites/sprite886.886.0.png"]
-[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [node name="room_samplerizer" type="Node2D"]
 metadata/gm_room = "room_samplerizer"
 metadata/gm_bg_colour = 0
-script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)

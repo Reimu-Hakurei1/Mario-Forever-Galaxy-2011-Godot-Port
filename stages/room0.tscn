@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/logo/anim_logo2.jpg"]
 [ext_resource type="Texture2D" id="t2" path="res://gfx/logo/anim_logo.png"]
-[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [sub_resource type="CanvasItemMaterial" id="preview_blend1"]
 blend_mode = 1
@@ -10,7 +9,6 @@ blend_mode = 1
 [node name="room0" type="Node2D"]
 metadata/gm_room = "room0"
 metadata/gm_bg_colour = 9766701
-script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)

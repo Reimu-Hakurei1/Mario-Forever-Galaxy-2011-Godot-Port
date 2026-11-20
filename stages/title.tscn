@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Texture2D" id="t1" path="res://gfx/sprites/s_stateczek.428.0.png"]
 [ext_resource type="Texture2D" id="t2" path="res://gfx/sprites/s_heavylaser.411.0.png"]
@@ -6,12 +6,10 @@
 [ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_title_blur2.45.0.png"]
 [ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_title_bluer_c.46.0.png"]
 [ext_resource type="Texture2D" id="t6" path="res://gfx/sprites/sprite477.47.0.png"]
-[ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [node name="title" type="Node2D"]
 metadata/gm_room = "title"
 metadata/gm_bg_colour = 0
-script = ExtResource("boot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 384)
