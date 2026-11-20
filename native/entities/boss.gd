@@ -161,6 +161,20 @@ var _rakietnice := 0.0
 var hero_name := ""                 # set in _ready for end-talk lines
 var _hp_bar: ProgressBar
 var _dialogue: NativeBossDialogue
+# Clown render stack — boss_N_fight draw events compose sprite 328
+# (hull) over fixed overlays: 332 glow, 329 body, 330 rotor (5 additive
+# ghost phases), 334 pulsing eyes, all jittered by g_obrywacz on hits.
+# boss_8 adds two sprite-501 spoiler panels (g_spoiler deploy).
+var _visual: Node2D
+var _rotor: Sprite2D
+var _rotor_ghosts: Array = []
+var _eyes: Array = []
+var _spoilers: Array = []
+var _wirnik := 0.0
+var _oczu := 0.0
+var _obrywacz := 0.0
+var _jitter := Vector2.ZERO
+var _spoiler := 0.0
 
 
 func _ready() -> void:
@@ -178,10 +192,12 @@ func _ready() -> void:
 	var room := NativeGame.room_size()
 	position = Vector2(room.x / 2.0, -120.0)
 
-	# Tier picks the visual profile (sprite/scale/tint) and tightens the
-	# attack clock — deeper worlds mean faster, angrier bosses.
+	# All eight boss_N_fight objects draw the same clown hull (sprite
+	# 328) — the original's only visual escalation is the damage jitter
+	# and HP-state frames, not a sprite swap. Alternate encounters
+	# (ufo_mega/fat_boy/flame_cans) keep their own hulls.
 	var profile: Dictionary = TIER_PROFILES[mini(tier, TIER_PROFILES.size() - 1)]
-	var sprite_id: int = profile["sprite"]
+	var sprite_id: int = 328
 	if VARIANTS.has(variant):
 		var v: Dictionary = VARIANTS[variant]
 		boss_name = v["name"]
@@ -204,10 +220,94 @@ func _ready() -> void:
 	_anim.offset = -NativeAssets.sprite_origin(sprite_id)
 	_anim.scale = Vector2.ONE * profile["scale"]
 	_anim.modulate = profile["tint"]
-	add_child(_anim)
+	if variant == "":
+		# Clown fights hold g_animacja = 0 — a static hull frame, not a
+		# playing animation (only boss_2's HP states change it, and its
+		# hull isn't sprite 328 anyway).
+		_anim.pause()
+		_build_clown_layers()
+	else:
+		add_child(_anim)
 
 	_build_hp_bar()
 	_start_intro_speech()
+
+
+## The boss_N_fight draw events render a fixed layer stack around the
+## hull sprite: additive glow (332) behind, body plate (329), the
+## flapping rotor (330, |sin(wirnik)| x-scale + 5 ghost phases), hull,
+## then pulsing additive eyes (334). boss_8 adds spoiler panels (501).
+func _build_clown_layers() -> void:
+	_visual = Node2D.new()
+	add_child(_visual)
+	_sprite_layer(_visual, 332, Vector2.ZERO, true)
+	_sprite_layer(_visual, 329, Vector2(0, 8), false)
+	_rotor = _sprite_layer(_visual, 330, Vector2(0, 58), true)
+	for phase in [10.0, 20.0, 30.0, 50.0]:
+		var g := _sprite_layer(_visual, 330, Vector2(0, 58), true)
+		g.modulate.a = 0.3
+		g.set_meta("phase", phase)
+		_rotor_ghosts.append(g)
+	_visual.add_child(_anim)
+	for i in 4:
+		var eye := _sprite_layer(_visual, 334,
+			Vector2(-33 if i % 2 == 0 else 23, -58), true)
+		eye.scale = Vector2.ONE * (2.0 if i >= 2 else 1.0)
+		_eyes.append(eye)
+	if tier == 7:
+		for i in 2:
+			var sp := _sprite_layer(_visual, 501, Vector2.ZERO, false)
+			sp.scale.x = -1.0 if i == 1 else 1.0
+			_spoilers.append(sp)
+
+
+func _sprite_layer(parent: Node, sprite_id: int, offset: Vector2,
+		additive: bool) -> Sprite2D:
+	var s := Sprite2D.new()
+	var tex := NativeAssets.sprite_frame(sprite_id, 0)
+	if tex != null:
+		s.texture = tex
+	s.offset = -NativeAssets.sprite_origin(sprite_id)
+	s.position = offset
+	if additive:
+		var mat := CanvasItemMaterial.new()
+		mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+		s.material = mat
+	parent.add_child(s)
+	return s
+
+
+## Per-frame animation for the layer stack — ports the draw-event
+## counters: g_wirnik += 15 drives the rotor flip, g_efekt_oczu the
+## eye pulse, g_obrywacz decays the hit jitter, g_spoiler deploys the
+## boss_8 airbrakes.
+func _anim_tick() -> void:
+	if _visual == null:
+		return
+	_wirnik += 15.0
+	if _rotor != null:
+		_rotor.scale.x = absf(sin(deg_to_rad(_wirnik)))
+		for g in _rotor_ghosts:
+			g.scale.x = absf(sin(deg_to_rad(_wirnik + g.get_meta("phase"))))
+	_oczu += 1.0
+	var eye_rot := deg_to_rad(cos(deg_to_rad(_oczu)) * 534.0)
+	for e in _eyes:
+		e.rotation = eye_rot
+	if _obrywacz > 0.5:
+		_jitter = Vector2(randf_range(-_obrywacz, _obrywacz),
+			randf_range(-_obrywacz, _obrywacz))
+		_obrywacz /= 1.05
+	else:
+		_jitter = Vector2.ZERO
+		_obrywacz = 0.0
+	_visual.position = _jitter
+	if tier == 7 and _spoiler < 60.0:
+		_spoiler += 0.5
+		for i in _spoilers.size():
+			var sp: Sprite2D = _spoilers[i]
+			sp.position = Vector2((1.0 if i == 0 else -1.0) * _spoiler,
+				-_spoiler)
+			sp.rotation = deg_to_rad(_ixor)
 
 
 ## The original boss objects play their g_dialogue typewriter speech
@@ -234,6 +334,7 @@ func _physics_process(_delta: float) -> void:
 				phase = Phase.FIGHT
 		Phase.FIGHT, Phase.ENRAGE:
 			_fight_tick()
+			_anim_tick()
 		Phase.DYING:
 			pass
 
@@ -644,6 +745,7 @@ func take_damage(amount: float) -> bool:
 		return false
 	health -= amount
 	_flash = HIT_FLASH
+	_obrywacz = 3.0   # boss_N_fight: every hit kicks the damage jitter
 	if health <= 0.0:
 		die()
 		return true
