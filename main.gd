@@ -5,6 +5,8 @@ extends Node2D
 var acc: float = 0.0
 var _savedir: String = ""
 var _ff_objs: Dictionary = {}
+var _fftest: bool = false
+var _fftest_frame: int = 0
 
 
 func _ready() -> void:
@@ -13,6 +15,10 @@ func _ready() -> void:
 		if a.begins_with("--savedir="):
 			_savedir = a.substr(10).replace("\\", "/")
 			DirAccess.make_dir_recursive_absolute(_savedir)
+		elif a.begins_with("--room="):
+			R.pending_stage_room = a.substr(7)
+		elif a == "--fftest":
+			_fftest = true
 	R.boot(self)
 
 
@@ -66,6 +72,17 @@ func _process(delta: float) -> void:
 		R.draw_state_passes(n - 1)
 	if acc > step_time * 4.0:
 		acc = 0.0
+	if _fftest:
+		_fftest_frame += 1
+		if _fftest_frame == 120:
+			G.ster5 = 32
+			R.keys_down[32] = true
+		elif _fftest_frame == 240:
+			R.keys_down.erase(32)
+		elif _fftest_frame % 60 == 0:
+			print("FFTEST frame=%d ticks=%d ff=%s room=%d" % [_fftest_frame, R.tick_count, str(ff), R.room])
+		if _fftest_frame >= 360:
+			get_tree().quit()
 
 
 func _input(event: InputEvent) -> void:
