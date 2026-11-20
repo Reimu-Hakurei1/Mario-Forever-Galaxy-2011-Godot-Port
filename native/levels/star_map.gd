@@ -447,18 +447,18 @@ func _maybe_map_transition() -> void:
 	NativeGame.map_transition = -1
 	if m < 1 or m > 7:
 		return
-	NativeGame.map_current = "%d:0" % m
-	NativeGame.save()
 	# next_map_obj grants the hero 2,000,000 coins on the final
 	# transition ("I'LL GIVE YOU TWO MILLIONS COINS").
 	if m == 7:
 		NativeGame.coins += 2000000
-	var lines: Array = NativeDialogueTable.NEXT_MAP.get(m, [])
-	if lines.is_empty():
-		return
-	var talk := NativeBossDialogue.new()
-	add_child(talk)
-	talk.play(lines)
+	NativeGame.map_current = "%d:0" % m
+	NativeGame.save()
+	# The original plays the room-44 warp cinematic (next_map_obj.gd)
+	# — hero + Toad banter in dual balloons, then boost off-screen.
+	var cine := (load("res://native/ui/next_map.gd") as GDScript).new()
+	cine.destination = m
+	cine.hero_index = NativeGame.hero
+	add_child(cine)
 
 
 ## One map node — a star button. Stage nodes show their rank colour;
