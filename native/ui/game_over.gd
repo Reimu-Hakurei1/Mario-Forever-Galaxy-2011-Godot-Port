@@ -9,6 +9,26 @@ const MAP_SCENE := "res://native/levels/star_map.tscn"
 
 
 func _ready() -> void:
+	# script_ktora_mapa_skusil — the death tax: coins earned since the
+	# stage-entry snapshot (cashsuck) are cut to 10%. The original
+	# clamps cashsuckamount to 1, so the kept fraction is always 10%;
+	# the on-screen % still quotes the hero's authored amount.
+	var earned := NativeGame.coins - NativeGame.cashsuck_coins
+	NativeGame.coins = NativeGame.cashsuck_coins + roundi(float(earned) * 0.1)
+	NativeGame.cashsuck_coins = NativeGame.coins
+	NativeGame.save()
+	var pct := 100 - NativeGame.cashsuck_amount
+	var penalty := Label.new()
+	penalty.text = "YOU LOSE ALL LIVES!\nYOUR LAST EARNED CASH HAS BEEN REDUCED BY %d%%" % pct
+	penalty.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	penalty.add_theme_font_size_override("font_size", 20)
+	penalty.add_theme_color_override("font_color", Color(1, 0.6, 0.4))
+	penalty.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	penalty.add_theme_constant_override("outline_size", 6)
+	penalty.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	penalty.offset_top = 210
+	penalty.offset_bottom = 260
+	add_child(penalty)
 	var bg := ColorRect.new()
 	bg.color = Color(0.15, 0.02, 0.05)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)

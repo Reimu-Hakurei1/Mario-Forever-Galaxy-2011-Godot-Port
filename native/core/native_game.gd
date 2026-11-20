@@ -24,6 +24,8 @@ static var active_node: String = ""      ## "m:n" of the stage being played
 static var map_current: String = ""      ## "m:n" the ship is parked on
 static var map_done: Array = []          ## completed "m:n" node keys
 static var map_backdoor: String = ""      ## node we travelled from (G.map_backdoor_lev)
+static var cashsuck_coins: int = 0        ## G.game_overus_cashsuck — coins at stage entry
+static var cashsuck_amount: int = 10      ## G.game_overus_cashsuckamount — hero death-tax msg %
 static var map_transition: int = -1      ## map to advance to (-1 = none)
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
@@ -230,6 +232,10 @@ static func apply_hero() -> void:
 	coins_booster = h.get("coins_booster", 1.0)
 	better_chance_of_bonus = h.get("bonus_chance", 0.0)
 	hero_tint = h["tint"]
+	# game_overus_cashsuckamount — choose_hero.gd sets 10/15/10/10;
+	# the death screen quotes (100 - amount)% but the kept fraction
+	# is always 10% (script_ktora_mapa_skusil clamps amount to 1).
+	cashsuck_amount = 15 if hero == 1 else 10
 	for i in 5:
 		weapons[i] = -1
 		weapon_level[i] = 0
@@ -433,6 +439,7 @@ static func save() -> void:
 	cfg.set_value("profile", "map_current", map_current)
 	cfg.set_value("profile", "map_done", map_done)
 	cfg.set_value("profile", "map_backdoor", map_backdoor)
+	cfg.set_value("profile", "cashsuck_coins", cashsuck_coins)
 	cfg.set_value("profile", "map_transition", map_transition)
 	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
@@ -516,6 +523,7 @@ static func load_save() -> bool:
 	map_current = str(cfg.get_value("profile", "map_current", map_current))
 	map_done = cfg.get_value("profile", "map_done", map_done)
 	map_backdoor = str(cfg.get_value("profile", "map_backdoor", map_backdoor))
+	cashsuck_coins = int(cfg.get_value("profile", "cashsuck_coins", cashsuck_coins))
 	map_transition = int(cfg.get_value("profile", "map_transition", map_transition))
 	# Legacy saves only stored a linear level_index — reconstruct an
 	# approximate done-set from the first N stage keys so the graph

@@ -490,6 +490,12 @@ func _on_node_pressed(key: String) -> void:
 	NativeGame.active_node = key
 	NativeGame.map_current = key
 	NativeGame.pending_level = NativeLevelTable.config_for_key(key)
+	# G.game_overus_cashsuck — the original snapshots coins on every
+	# normal stage entry (map_minigame==0 branch); dying later keeps
+	# the snapshot plus 10% of what was earned since.
+	if str(NativeGame.pending_level.get("mode", "")) != "minigame" \
+			and not bool(NativeGame.pending_level.get("training", false)):
+		NativeGame.cashsuck_coins = NativeGame.coins
 	# Minigame nodes (card game/shop/gun range) don't start a run.
 	if str(NativeGame.pending_level.get("mode", "")) != "minigame":
 		NativeGame.reset_run()
