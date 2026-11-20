@@ -7,7 +7,7 @@ path="res://.godot/imported/snd_rak.ogg-8dafb3d374f5ac60ff88f197da77f2ba.oggvorb
 
 [deps]
 
-source_file="res://sfx/snd_rak.ogg"
+source_file="res://sfx/snd_rocket.ogg"
 dest_files=["res://.godot/imported/snd_rak.ogg-8dafb3d374f5ac60ff88f197da77f2ba.oggvorbisstr"]
 
 [params]

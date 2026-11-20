@@ -7,7 +7,7 @@ path="res://.godot/imported/snd_list_od_peach.ogg-b7b822ebb5cd1713339ce36065fc12
 
 [deps]
 
-source_file="res://sfx/snd_list_od_peach.ogg"
+source_file="res://sfx/snd_letter_from_peach.ogg"
 dest_files=["res://.godot/imported/snd_list_od_peach.ogg-b7b822ebb5cd1713339ce36065fc12fb.oggvorbisstr"]
 
 [params]

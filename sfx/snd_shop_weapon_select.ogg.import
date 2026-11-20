@@ -7,7 +7,7 @@ path="res://.godot/imported/snd_sho_weapon_select.ogg-7077a6071f28de47bac2a0273a
 
 [deps]
 
-source_file="res://sfx/snd_sho_weapon_select.ogg"
+source_file="res://sfx/snd_shop_weapon_select.ogg"
 dest_files=["res://.godot/imported/snd_sho_weapon_select.ogg-7077a6071f28de47bac2a0273a363139.oggvorbisstr"]
 
 [params]

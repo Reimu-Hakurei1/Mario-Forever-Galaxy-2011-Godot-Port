@@ -7,7 +7,7 @@ path="res://.godot/imported/snd_big_crystak.ogg-4991c350fa33134e6f5bd1476031e598
 
 [deps]
 
-source_file="res://sfx/snd_big_crystak.ogg"
+source_file="res://sfx/snd_big_crystal.ogg"
 dest_files=["res://.godot/imported/snd_big_crystak.ogg-4991c350fa33134e6f5bd1476031e598.oggvorbisstr"]
 
 [params]
