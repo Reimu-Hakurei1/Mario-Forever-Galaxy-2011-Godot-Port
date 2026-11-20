@@ -63,6 +63,36 @@ const BOSS_MUSIC := {
 # fat_boy_boss, flame_cans_boss appear in specific original stages).
 const BOSS_VARIANTS := {1: "ufo_mega", 3: "fat_boy", 5: "flame_cans"}
 
+## Boss encounters hidden inside wave scripts — each o_perioder_*/
+## o_wave_* object creates boss talk→fight chains at (450,-200) or
+## (S.x,S.y). Extracted from the instance_create calls in
+## objects/spawners/*.gd and objects/bosses/*.gd. "tier" is the
+## boss_N_fight number minus one (fight 4 → tier 3 … fight 8 → tier 7);
+## "chain" spawns the next fight when this one dies (boss_7_endtalk →
+## boss_8_fight on the last castle).
+const SCRIPT_BOSSES := {
+	"wave_12_castle_2": [{"tier": 0}],
+	"wave_7_castle_2": [{"tier": 2}],
+	"wave_map_3_end_castle": [{"tier": 3}],
+	"wave_map_4_castle_rush": [{"tier": 3}],
+	"wave_map_4_castle_rush_2": [{"tier": 3}],
+	"wave_map_6_castle_rush_3": [{"tier": 3}],
+	"wave_map_4_end_castle": [{"tier": 3, "variant": "fat_boy"}],
+	"wave_map_5_end_castle": [{"tier": 4}, {"tier": 4, "variant": "flame_cans"}],
+	"wave_map_6_piranha_castle_1": [{"tier": 4}],
+	"wave_map_6_piranha_castle_2": [{"tier": 4}, {"tier": 4, "variant": "fat_boy"}],
+	"wave_map_6_end_castle": [{"tier": 5}],
+	"wave_map_8_end_castle_22": [{"tier": 6, "chain": 7}, {"tier": 4, "variant": "flame_cans"}],
+	# Arena "big bad" waves — mid-stage boss spawns.
+	"wave_map_4_grouping_7": [{"tier": 3, "variant": "fat_boy"}],
+	"wave_map_5_big_bad": [{"tier": 4, "variant": "fat_boy"}],
+}
+
+## Scripts whose boss object is talk-only — the clown flies in, taunts,
+## and its exit sets g_end_level (o_boss_1 / o_boss_3 / o_boss_5 style,
+## no *_fight object chained).
+const TALK_ONLY_SCRIPTS := ["wave_7_castle_1", "wave_ghost_2_castle"]
+
 const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 	"mini", "ufo_a", "ufo_b", "ros", "crab", "jumbo", "elite",
 	"dart", "stinger", "weaver", "drone", "hunter", "warlord",
@@ -234,6 +264,12 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 				wave["health"] = 300.0
 		wave["health"] = float(wave.get("health", 10.0)) * \
 			minf(8.0 + level_index * 0.4, 40.0) / 10.0
+		# Boss spawns embedded in the wave script ride along on the
+		# wave dict — the spawner/castle scene drops NativeBoss nodes
+		# when the wave's delay elapses.
+		var script_name := str(wave.get("script", wave.get("spawn_name", "")))
+		if SCRIPT_BOSSES.has(script_name):
+			wave["bosses"] = SCRIPT_BOSSES[script_name]
 		waves.append(wave)
 	# Authored schedules can be sparse — top up with a couple of
 	# procedural waves so every stage has a proper ending.
@@ -247,7 +283,23 @@ static func _authored_config(key: String, level_index: int) -> Dictionary:
 			t += 8.0
 	waves.sort_custom(func(a, b): return float(a["delay"]) < float(b["delay"]))
 	var is_boss := bool(st.get("is_boss", false))
+	# Stage-level boss roster for castle scenes (which don't run the
+	# wave spawner): every boss spawn authored inside this stage's wave
+	# scripts, deduplicated, plus talk-only clown interstitials.
+	var stage_bosses: Array = []
+	var talk_only := false
+	var seen_scripts := {}
+	for w in waves:
+		var sname := str(w.get("script", w.get("spawn_name", "")))
+		if TALK_ONLY_SCRIPTS.has(sname):
+			talk_only = true
+		if SCRIPT_BOSSES.has(sname) and not seen_scripts.has(sname):
+			seen_scripts[sname] = true
+			for b in SCRIPT_BOSSES[sname]:
+				stage_bosses.append((b as Dictionary).duplicate())
 	return {
+		"stage_bosses": stage_bosses,
+		"talk_only": talk_only,
 		"background": int(bg_pool[node % bg_pool.size()]),
 		"music": str(pool[node % pool.size()]),
 		"waves": waves,

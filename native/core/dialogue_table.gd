@@ -159,30 +159,39 @@ const NEXT_MAP := {
 }
 
 
-## Post-fight speeches — the o_boss_*_end_talk objects that play as
-## the boss dies, before g_end_level fires. Only bosses 5-8 (and the
-## boss_55 bonus fight) authored end lines; earlier tiers go silent.
+## Post-fight speeches — the o_boss_*_end_talk objects each
+## boss_N_fight.gd spawns on its death frame (boss_4→o_boss_5_endtalk,
+## boss_5→o_boss_55_endtalk, boss_6→o_boss_6_endtalk,
+## boss_7→o_boss_7_endtalk, boss_8→o_boss_8_endtalk2). Fight N maps to
+## native tier N-1; bosses 1-3 authored no end talk. The fatboy /
+## ufo / flame-cans variant bosses spawn crush effects instead — no talk.
 const END_TALK := {
-	4: ["NO! NO! NO!", "ARGHHHHH!#I WILL BACK!"],                    # boss_5_end_talk
+	3: ["NO! NO! NO!", "ARGHHHHH!#I WILL BACK!"],                    # boss_5_end_talk
 	5: ["I DON'T HAVE#TIME TO TALK#WITH YOU!", "SEE YOU SOON#IN MAP 7!"],  # boss_6_end_talk
 	6: ["YOU THINK#IS THIS AN#END?", "TIME TO REAL#BATTLE!"],        # boss_7_end_talk
 	7: ["OHHHH NOOOOO!", "NOOOOO!!!!", "ARGHHHHH!!"],                # boss_8_end_talk_2
 }
 
-const END_TALK_55 := [   # boss_55_end_talk — the bonus rematch boss
+const END_TALK_55 := [   # boss_55_end_talk — boss_5_fight's taunt
 	"WHAT THE HELL?!",
 	"AGAIN?!",
 	"I'VE BEEN#DEFEATED#FOR THE FIVTH#TIME!!!#ARGHHH!",
-	"#WE SHALL MEET#AGAIN ON THE#NEXT MAP AND#MY ARMY WILL#CRUSH YOU#LIKE A BUG",
-	"SEE YOU SOON#",
+	"%s#WE SHALL MEET#AGAIN ON THE#NEXT MAP AND#MY ARMY WILL#CRUSH YOU#LIKE A BUG",
+	"SEE YOU SOON#%s",
 ]
 
 
-## Defeat lines for a boss — empty for tiers without authored end talk.
-static func for_end(tier: int, variant: String) -> Array:
-	if variant == "flame_cans" and tier >= 5:
-		return END_TALK_55
-	return END_TALK.get(tier, [])
+## Defeat lines for a boss — empty for tiers/variants without authored
+## end talk. `%s` is replaced with the hero name like the original's
+## R.concat(playernames...).
+static func for_end(tier: int, variant: String, hero_name: String = "") -> Array:
+	if variant != "":
+		return []
+	var lines: Array = END_TALK_55 if tier == 4 else END_TALK.get(tier, [])
+	var out: Array = []
+	for line in lines:
+		out.append(str(line) % hero_name if "%s" in str(line) else str(line))
+	return out
 
 
 ## Lines for a boss fight — variant speech wins, else the tier's

@@ -71,6 +71,13 @@ var _wp_index := -1
 var _wp_timer := 0.0
 var _pattern := 0
 var _spiral_angle := 0.0           # rotation offset for spiral barrages
+# boss_8_fight.gd "dodatkowy" finale — g_sekwencja_rakiet frame beats
+# (100/400/500/1250/1600 at 60fps) translated to seconds.
+var _finale_t := -1.0
+var _finale_step := 0
+var _finale_rockets := 0
+var _finale_rocket_t := 0.0
+var hero_name := ""                 # set in _ready for end-talk lines
 var _hp_bar: ProgressBar
 var _dialogue: NativeBossDialogue
 
@@ -121,7 +128,7 @@ func _ready() -> void:
 ## The original boss objects play their g_dialogue typewriter speech
 ## while the boss descends (o_boss_*_talk), then the fight starts.
 func _start_intro_speech() -> void:
-	var hero_name: String = NativeGame.HEROES[clampi(NativeGame.hero, 0,
+	hero_name = NativeGame.HEROES[clampi(NativeGame.hero, 0,
 		NativeGame.HEROES.size() - 1)]["name"]
 	_dialogue = NativeBossDialogue.new()
 	_dialogue.finished.connect(func(): pass)
@@ -143,6 +150,7 @@ func _physics_process(_delta: float) -> void:
 				_pattern_timer = 60.0
 		Phase.FIGHT, Phase.ENRAGE:
 			_hover_and_attack()
+			_finale_tick(_delta)
 		Phase.DYING:
 			pass
 
@@ -241,6 +249,47 @@ func _fire_barrage() -> void:
 	NativeAssets.play_sound(79)
 
 
+## boss_8_fight.gd — the castle boss runs a scripted missile sequence
+## once the fight is underway: a 3-missile fan, two 18-way bullet rings,
+## then a 30-rocket barrage (g_sekwencja_rakiet 100/400/500/1250).
+func _finale_tick(delta: float) -> void:
+	if tier != 7:
+		return
+	if _finale_t < 0.0:
+		_finale_t = 0.0
+		return
+	_finale_t += delta
+	match _finale_step:
+		0:
+			if _finale_t > 100.0 / 60.0:
+				_finale_step = 1
+				# Missiles at GM directions 90/45/135 (down, down-right,
+				# down-left) — obj 509.
+				for a in [PI / 2.0, PI / 4.0, 3.0 * PI / 4.0]:
+					_spawn_bullet(Vector2.RIGHT.rotated(a))
+		1:
+			if _finale_t > 400.0 / 60.0:
+				_finale_step = 2
+				_fire_radial(18)          # obj 513 ring #1
+		2:
+			if _finale_t > 500.0 / 60.0:
+				_finale_step = 3
+				_fire_radial(18)          # obj 513 ring #2
+		3:
+			if _finale_t > 1250.0 / 60.0:
+				_finale_step = 4
+				_finale_rockets = 30
+		4:
+			if _finale_rockets > 0:
+				_finale_rocket_t += delta
+				if _finale_rocket_t > 11.0 / 60.0:
+					_finale_rocket_t = 0.0
+					_finale_rockets -= 1
+					# obj 510 — direction 90 ± 40° random.
+					_spawn_bullet(Vector2.RIGHT.rotated(
+						PI / 2.0 + randf_range(-0.7, 0.7)))
+
+
 ## Rotate through attack patterns: aimed burst → radial ring → fan →
 ## spiral stream, escalating in ENRAGE.
 func _fire_pattern() -> void:
@@ -253,8 +302,9 @@ func _fire_pattern() -> void:
 			# original's per-phase volley counts.
 			_fire_aimed(ship.global_position, 3 + _fight_phase(), 0.15)
 		1:
-			# Radial ring of bullets in all directions.
-			_fire_radial(10)
+			# Radial ring — the boss_N_fight scripts launch exactly
+			# 12 bullet objects (o_bullet_49) in a full circle.
+			_fire_radial(12)
 		2:
 			# Sweeping fan downward toward the player's half.
 			_fire_fan(ship.global_position, 5)
@@ -409,12 +459,13 @@ func die() -> void:
 	_dead = true
 	phase = Phase.DYING
 	NativeGame.kill_enemy()
-	NativeGame.add_score(5000 + tier * 1000)
+	# boss_8_fight.gd awards +100000 score (g_naliczator) on the kill.
+	NativeGame.add_score(5000 + tier * 1000 + (100000 if tier == 7 else 0))
 	NativeGame.coins += 20 + tier * 5
 	_spawn_explosion()
 	# Post-fight villain line (o_boss_*_end_talk) plays while the
 	# wreckage burns, then the level-end sequence resumes.
-	var end_lines := NativeDialogueTable.for_end(tier, variant)
+	var end_lines := NativeDialogueTable.for_end(tier, variant, hero_name)
 	if not end_lines.is_empty():
 		var talk := NativeBossDialogue.new()
 		add_child(talk)

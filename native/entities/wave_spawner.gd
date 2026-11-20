@@ -67,6 +67,11 @@ func _physics_process(delta: float) -> void:
 		wave["spawned"] = 0
 		wave["spawn_timer"] = 0.0
 		_active.append(wave)
+		# Boss encounters embedded in the wave script (o_perioder_*
+		# objects that instance_create boss talk→fight chains) drop in
+		# when the wave's delay elapses.
+		for b in wave.get("bosses", []):
+			_spawn_script_boss(b)
 
 	# Tick each active wave: spawn one enemy per interval until count is met.
 	for wave in _active:
@@ -80,6 +85,16 @@ func _physics_process(delta: float) -> void:
 	_active = _active.filter(func(w): return w["spawned"] < w["count"])
 	if _pending.is_empty() and _active.is_empty():
 		_done = true
+
+
+## Drop a boss fight extracted from a wave script — enters from the top
+## like the original's (450,-200) spawn.
+func _spawn_script_boss(cfg: Dictionary) -> void:
+	var boss := NativeBoss.new()
+	boss.tier = int(cfg.get("tier", 0))
+	boss.variant = str(cfg.get("variant", ""))
+	get_parent().add_child(boss)
+	boss.global_position = Vector2(512, -120)
 
 
 ## Spawn one enemy at the wave's entry edge, aimed at a formation slot.

@@ -28,6 +28,18 @@ var _help_label: Label = null
 var _help_topic_shown := -1
 var _last_energy := 100.0
 var _shake := 0.0
+# Boss encounters authored inside the stage's wave scripts — the
+# original's castle-end talks chain into boss_N_fight objects; killing
+# the last one ends the stage (o_boss_*_endtalk sets g_end_level).
+var _boss_queue: Array = []
+var _alive_bosses := 0
+var _bosses_seen := false
+var _boss_timer := -1.0
+var _chain_tier := -1
+var _chain_timer := -1.0
+var _talk_only := false
+var _talk_started := false
+var _clear_banner := "KEY FOUND!"
 
 
 func _ready() -> void:
@@ -54,6 +66,12 @@ func _ready() -> void:
 	NativeGame.trigger_help(27, 27)
 	NativeGame.ensure_weapons()
 	NativeGame.castle_key_found = false
+	_boss_queue = _level_cfg.get("stage_bosses", [])
+	_talk_only = bool(_level_cfg.get("talk_only", false))
+	if not _boss_queue.is_empty():
+		_boss_timer = 4.0
+	elif _talk_only:
+		_boss_timer = 3.0
 
 	if NativeGame.muzyka == 1:
 		var music := NativeAssets.music(music_track)
@@ -128,12 +146,38 @@ func _process(delta: float) -> void:
 	# Key found = stage clear (o_key sets g_end_level in the original).
 	if not _level_cleared and NativeGame.castle_key_found:
 		_level_cleared = true
+		_clear_banner = "KEY FOUND!"
 		_on_level_cleared()
 
 	if _respawn_timer >= 0.0:
 		_respawn_timer -= delta
 		if _respawn_timer < 0.0:
 			_respawn()
+
+	# Scheduled boss spawns — staggered like the original's wave-script
+	# beat times; the first drops in a few seconds after the intro.
+	if _boss_timer >= 0.0:
+		_boss_timer -= delta
+		if _boss_timer < 0.0:
+			if _chain_tier >= 0:
+				_spawn_stage_boss({"tier": _chain_tier})
+				_chain_tier = -1
+			elif _talk_only and not _talk_started:
+				_talk_started = true
+				_play_talk_only()
+				_boss_timer = 6.0 if not _boss_queue.is_empty() else -1.0
+			elif not _boss_queue.is_empty():
+				_spawn_stage_boss(_boss_queue.pop_front())
+				_boss_timer = 6.0
+
+	# Boss wipe = stage clear (the endtalk's exit sets g_end_level in
+	# the original). Wait until every spawned boss is gone.
+	if _bosses_seen and _alive_bosses <= 0 \
+			and _boss_queue.is_empty() and _chain_tier < 0 \
+			and not _level_cleared:
+		_level_cleared = true
+		_clear_banner = "BOSS DOWN!"
+		_on_level_cleared()
 
 	if _clear_timer >= 0.0:
 		_clear_timer -= delta
@@ -177,11 +221,51 @@ func _respawn() -> void:
 	_ship.invulnerable = false
 
 
+## Drop a boss fight authored inside the stage's wave script — enters
+## from above like the original's (450,-200) spawn. `chain` (the
+## boss_7_endtalk → boss_8_fight handoff on the last castle) queues the
+## next fight when this one dies.
+func _spawn_stage_boss(cfg: Dictionary) -> void:
+	var boss := NativeBoss.new()
+	boss.tier = int(cfg.get("tier", 0))
+	boss.variant = str(cfg.get("variant", ""))
+	add_child(boss)
+	boss.global_position = Vector2(512, -120)
+	_bosses_seen = true
+	_alive_bosses += 1
+	var chain := int(cfg.get("chain", -1))
+	boss.tree_exited.connect(func(): _boss_exited(chain))
+
+
+func _boss_exited(chain: int) -> void:
+	_alive_bosses -= 1
+	if chain >= 0 and _chain_tier < 0:
+		_chain_tier = chain
+		if _boss_timer < 0.0:
+			_boss_timer = 5.0
+
+
+## Talk-only interstitial (o_boss_1 style): the clown flies in, plays
+## his speech, and his departure ends the stage — no fight, no key.
+func _play_talk_only() -> void:
+	var hero_name: String = NativeGame.HEROES[clampi(NativeGame.hero, 0,
+		NativeGame.HEROES.size() - 1)]["name"]
+	var talk := NativeBossDialogue.new()
+	add_child(talk)
+	talk.play(NativeDialogueTable.for_boss(0, "", hero_name))
+	talk.finished.connect(func():
+		if not _level_cleared:
+			_level_cleared = true
+			_clear_banner = ""
+			_on_level_cleared())
+
+
 func _on_level_cleared() -> void:
 	NativeGame.add_score(500)
 	print("CASTLE CLEAR — score=%d coins=%d" % [NativeGame.score, NativeGame.coins])
 	NativeAssets.play_sound(105)
-	_show_banner("KEY FOUND!\nLEVEL CLEAR!")
+	var banner := _clear_banner + "\n" if _clear_banner != "" else ""
+	_show_banner(banner + "LEVEL CLEAR!")
 	_clear_timer = LEVEL_CLEAR_DELAY
 
 
