@@ -684,9 +684,9 @@
   "kind": "ufos_orbiter"
  },
  "wave_map_4_grouping_31": {
-  "pattern": "grid",
+  "pattern": "stream",
   "count": 10,
-  "interval": 20,
+  "interval": 650,
   "kinds": [
    "fat_boy_heavy"
   ],
@@ -835,13 +835,12 @@
   ]
  },
  "wave_map_5_big_bad": {
-  "pattern": "stream",
-  "count": 20,
-  "interval": 20,
+  "pattern": "grid",
+  "count": 36,
+  "interval": 100,
   "kinds": [
    "ufo_gunship",
-   "flame_map",
-   "mini"
+   "flame_map"
   ],
   "kind": "ufo_gunship"
  },
@@ -1029,9 +1028,9 @@
   "kind": "castle_enemy"
  },
  "wave_map_8_ufoses_1": {
-  "pattern": "ufo_stream",
+  "pattern": "stream",
   "count": 100,
-  "interval": 20,
+  "interval": 40,
   "kinds": [
    "ufo_gunship2"
   ],
