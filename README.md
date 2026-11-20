@@ -6,10 +6,6 @@ the original is preserved — the GameMaker event code is machine-translated int
 GDScript and runs on a custom compatibility runtime that reproduces GM8 semantics
 (instances, events, collision masks, rooms, paths, surfaces, sound).
 
-![Gameplay](stage_shot.png)
-![Level editor view](stage_shot2.png)
-![Boss stage](stage_shot3.png)
-
 ## Features
 
 - **Complete game flow** — title screen, hero select, intro/story rooms, world map,
