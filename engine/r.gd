@@ -37,6 +37,9 @@ static var obj_key_events_cache: Dictionary = {}
 static var handler_cache: Dictionary = {}
 static var empty_args: Array = []
 static var rooms_by_name: Dictionary = {}
+static var pending_stage_room: String = ""
+static var pending_stage_map: int = 0
+static var pending_stage_lev: int = 0
 
 # ---------------------------------------------------------------- live state
 static var instances: Array = []
@@ -301,7 +304,30 @@ static func boot(scene_root: Node2D) -> void:
 	bg_front.z_index = 4095
 	root.add_child(bg_front)
 	if room_order.size() > 0:
-		_load_room(int(room_order[0]))
+		if pending_stage_room != "":
+			# Stage scene launch — find the room by name and set map/level globals
+			var target_idx := -1
+			for r_idx in room_data.get("rooms", {}).keys():
+				if room_data["rooms"][r_idx].get("name", "") == pending_stage_room:
+					target_idx = int(r_idx)
+					break
+			if target_idx >= 0:
+				# Set globals for the stage
+				var globals: GDScript = load("res://game/globals.gd")
+				globals.map_number = pending_stage_map
+				globals.aktualny_lev = pending_stage_lev
+				_load_room(target_idx)
+				pending_stage_room = ""
+				pending_stage_map = 0
+				pending_stage_lev = 0
+			else:
+				warn("pending_stage_room_not_found:%s" % pending_stage_room)
+				pending_stage_room = ""
+				pending_stage_map = 0
+				pending_stage_lev = 0
+				_load_room(int(room_order[0]))
+		else:
+			_load_room(int(room_order[0]))
 	print("BOOT first_room=%dms total=%dms" % [Time.get_ticks_msec() - _bt2, Time.get_ticks_msec() - _bt])
 
 
