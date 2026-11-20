@@ -53,6 +53,14 @@ var _last_energy := 100.0
 var _shake := 0.0                   # screenshake timer after hull hits
 var _stars: Sprite2D = null         # parallax starfield layer
 
+# Two-plane background state — wave scripts switch scenarios mid-level
+# (g_ktora_sceneria); _bg_timer drives the original's ~1.6s crossfade.
+var _bg_main: Sprite2D = null
+var _bg_overlay: Sprite2D = null
+var _bg_ids := [-1, -1]             # current [main, overlay] bg ids
+var _bg_swap := {}
+var _bg_timer := -1.0
+
 
 func _ready() -> void:
 
@@ -71,6 +79,7 @@ func _ready() -> void:
 	var music_track: String = _level_cfg.get("music", MUSIC_TRACK)
 	# wave_help_1.gd — the first stage runs a scripted tutorial before
 	# enemies spawn: welcome → move all directions → shoot → live waves.
+	_spawner.scenario_changed.connect(_on_scenario_changed)
 	if NativeGame.active_level == 0:
 		_tut_active = true
 		_tut_waves = _level_cfg.get("waves", [])
@@ -90,7 +99,26 @@ func _ready() -> void:
 		bg.centered = false
 		bg.scale = Vector2(WORLD_SIZE.x / tex.get_width(), WORLD_SIZE.y / tex.get_height())
 	bg.z_index = -100
+	_bg_main = bg
+	_bg_ids[0] = bg_id
 	add_child(bg)
+
+	# Second parallax plane — the original composites bg_index 1 at
+	# alpha 0.5 over the main backdrop (enemy_controller paralax==1).
+	var bg2_id: int = _level_cfg.get("background2", -1)
+	if bg2_id >= 0:
+		var tex2 := NativeAssets.background(bg2_id)
+		if tex2 != null:
+			var bg2 := Sprite2D.new()
+			bg2.texture = tex2
+			bg2.centered = false
+			bg2.scale = Vector2(WORLD_SIZE.x / tex2.get_width(),
+				WORLD_SIZE.y / tex2.get_height())
+			bg2.self_modulate = Color(1, 1, 1, 0.5)
+			bg2.z_index = -99
+			_bg_overlay = bg2
+			_bg_ids[1] = bg2_id
+			add_child(bg2)
 
 	# Parallax starfield — a generated dot texture drifting behind the
 	# level art so the arena feels like it's moving through space.
@@ -164,6 +192,24 @@ func _set_paused(on: bool) -> void:
 
 
 func _process(delta: float) -> void:
+	# Background scenario transition — wave scripts reassign
+	# g_ktora_sceneria mid-level; dip-fade, swap textures, fade back.
+	if _bg_timer >= 0.0:
+		_bg_timer += delta
+		const FADE_OUT := 0.35
+		const FADE_IN := 0.85
+		if _bg_timer < FADE_OUT:
+			_set_bg_alpha(1.0 - _bg_timer / FADE_OUT)
+		else:
+			if not _bg_swap.is_empty():
+				_apply_bg_swap()
+				_bg_swap = {}
+			var f := clampf((_bg_timer - FADE_OUT) / FADE_IN, 0.0, 1.0)
+			_set_bg_alpha(f)
+		if _bg_timer >= FADE_OUT + FADE_IN:
+			_bg_timer = -1.0
+			_set_bg_alpha(1.0)
+
 	# Parallax drift — stars slide left and wrap; frozen while paused.
 	if _stars != null and not NativeGame.paused:
 		_stars.position.x -= delta * 12.0
@@ -368,6 +414,56 @@ static func _make_starfield_texture() -> Texture2D:
 		img.set_pixel(x, y, c)
 		img.set_pixel(x + 1024, y, c)   # mirrored tile for seamless wrap
 	return ImageTexture.create_from_image(img)
+
+
+## Wave-script scenario switch — queues a crossfade to the new
+## background pair (main plane + 50% overlay plane).
+func _on_scenario_changed(main_scen: int, overlay_scen: int) -> void:
+	var main_id := NativeLevelTable.bg_for_scenario(main_scen)
+	var ov_id: int = _bg_ids[1] if overlay_scen < 0 \
+		else NativeLevelTable.bg_for_scenario(overlay_scen)
+	if main_id == _bg_ids[0] and ov_id == _bg_ids[1]:
+		return
+	_bg_swap = {"main": main_id, "overlay": ov_id}
+	_bg_timer = 0.0
+
+
+func _set_bg_alpha(f: float) -> void:
+	if _bg_main != null:
+		_bg_main.self_modulate.a = f
+	if _bg_overlay != null:
+		_bg_overlay.self_modulate.a = 0.5 * f
+
+
+func _apply_bg_swap() -> void:
+	var main_id: int = _bg_swap.get("main", -1)
+	var ov_id: int = _bg_swap.get("overlay", -1)
+	if main_id >= 0 and main_id != _bg_ids[0]:
+		var tex := NativeAssets.background(main_id)
+		if tex != null and _bg_main != null:
+			_bg_main.texture = tex
+			_bg_main.scale = Vector2(WORLD_SIZE.x / tex.get_width(),
+				WORLD_SIZE.y / tex.get_height())
+		_bg_ids[0] = main_id
+	if ov_id >= 0 and ov_id != _bg_ids[1]:
+		var tex2 := NativeAssets.background(ov_id)
+		if tex2 != null:
+			if _bg_overlay == null:
+				_bg_overlay = _make_bg_sprite(tex2, 0.5, -99)
+				add_child(_bg_overlay)
+			_bg_overlay.texture = tex2
+			_bg_overlay.scale = Vector2(WORLD_SIZE.x / tex2.get_width(),
+				WORLD_SIZE.y / tex2.get_height())
+		_bg_ids[1] = ov_id
+
+
+static func _make_bg_sprite(tex: Texture2D, alpha: float, z: int) -> Sprite2D:
+	var sp := Sprite2D.new()
+	sp.texture = tex
+	sp.centered = false
+	sp.self_modulate = Color(1, 1, 1, alpha)
+	sp.z_index = z
+	return sp
 
 
 func _show_banner(text: String) -> void:

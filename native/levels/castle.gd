@@ -66,6 +66,20 @@ func _ready() -> void:
 	bg.z_index = -100
 	add_child(bg)
 
+	# Second parallax plane — same two-layer composite as the arena.
+	var bg2_id: int = _level_cfg.get("background2", -1)
+	if bg2_id >= 0:
+		var tex2 := NativeAssets.background(bg2_id)
+		if tex2 != null:
+			var bg2 := Sprite2D.new()
+			bg2.texture = tex2
+			bg2.centered = false
+			bg2.scale = Vector2(WORLD_SIZE.x / tex2.get_width(),
+				WORLD_SIZE.y / tex2.get_height())
+			bg2.self_modulate = Color(1, 1, 1, 0.5)
+			bg2.z_index = -99
+			add_child(bg2)
+
 	NativeGame.reset_run()
 	# enemy_controller.gd perioder code 1002 — the castle intro topic.
 	NativeGame.trigger_help(27, 27)

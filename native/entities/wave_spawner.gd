@@ -1,5 +1,10 @@
 extends Node2D
 class_name NativeWaveSpawner
+
+## Emitted when a launched wave carries an authored background-scenario
+## change (wave scripts set g_ktora_sceneria[_2] in the original).
+## Args: (main_scenario, overlay_scenario) — overlay -1 = unchanged.
+signal scenario_changed(main_scenario: int, overlay_scenario: int)
 ## NativeWaveSpawner — schedules enemy waves for a level.
 ##
 ## The original GameMaker level spawns enemies through `o_przeciwnikor`
@@ -71,6 +76,9 @@ func _physics_process(delta: float) -> void:
 		wave["spawned"] = 0
 		wave["spawn_timer"] = 0.0
 		_active.append(wave)
+		if wave.has("scenario"):
+			scenario_changed.emit(int(wave["scenario"]),
+				int(wave.get("scenario2", -1)))
 		# Boss encounters embedded in the wave script (o_perioder_*
 		# objects that instance_create boss talk→fight chains) drop in
 		# when the wave's delay elapses.
