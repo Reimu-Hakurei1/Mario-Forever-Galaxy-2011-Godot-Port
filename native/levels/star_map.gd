@@ -308,12 +308,19 @@ func _draw_flight_lanes() -> void:
 			line.points = PackedVector2Array([a, b])
 			var touches_current: bool = key == NativeGame.map_current \
 				or bkey == NativeGame.map_current
+			var touches_backdoor: bool = key == NativeGame.map_backdoor \
+				or bkey == NativeGame.map_backdoor
 			var both_cleared: bool = _node_cleared(key) and _node_cleared(bkey)
 			if touches_current and _current_done():
 				# Live lane out of the completed current node — the
 				# original draws these bright (sprite 250 glow).
 				line.default_color = Color(1.0, 0.85, 0.4, 0.9)
 				line.width = 3.0
+			elif touches_backdoor and _current_done():
+				# Return lane to map_backdoor_lev — the original marks
+				# it with the token arrow (sprite 267).
+				line.default_color = Color(0.6, 0.9, 1.0, 0.7)
+				line.width = 2.5
 			elif both_cleared:
 				line.default_color = Color(0.5, 0.7, 1.0, 0.5)
 			else:
@@ -446,6 +453,10 @@ func _make_node(key: String, rank: int, w: int, l: int) -> Button:
 func _on_node_pressed(key: String) -> void:
 	if not _node_selectable(key):
 		return
+	# G.map_backdoor_lev — remember where we flew from so the return
+	# lane stays identifiable (persisted in the save file).
+	if key != NativeGame.map_current:
+		NativeGame.map_backdoor = NativeGame.map_current
 	var rank := NativeLevelTable.node_rank(key)
 	if rank < 0:
 		# Waypoint — fly the cursor there; lanes beyond it open up.

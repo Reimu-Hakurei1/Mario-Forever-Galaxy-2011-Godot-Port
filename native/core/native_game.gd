@@ -23,6 +23,7 @@ static var active_level: int = 0     ## level currently being played
 static var active_node: String = ""      ## "m:n" of the stage being played
 static var map_current: String = ""      ## "m:n" the ship is parked on
 static var map_done: Array = []          ## completed "m:n" node keys
+static var map_backdoor: String = ""      ## node we travelled from (G.map_backdoor_lev)
 static var map_transition: int = -1      ## map to advance to (-1 = none)
 static var upgrade_wing: int = 0     ## G.upgradeWING — handling authority
 static var upgrade_boost: int = 0    ## G.upgradeBOOST — max speed
@@ -431,6 +432,7 @@ static func save() -> void:
 	cfg.set_value("profile", "level_index", level_index)
 	cfg.set_value("profile", "map_current", map_current)
 	cfg.set_value("profile", "map_done", map_done)
+	cfg.set_value("profile", "map_backdoor", map_backdoor)
 	cfg.set_value("profile", "map_transition", map_transition)
 	cfg.set_value("profile", "upgrade_wing", upgrade_wing)
 	cfg.set_value("profile", "upgrade_boost", upgrade_boost)
@@ -473,6 +475,7 @@ static func reset_profile() -> void:
 	active_node = ""
 	map_current = "0:0"
 	map_done = []
+	map_backdoor = ""
 	map_transition = -1
 	upgrade_wing = 0
 	upgrade_boost = 0
@@ -512,6 +515,7 @@ static func load_save() -> bool:
 	level_index = int(cfg.get_value("profile", "level_index", level_index))
 	map_current = str(cfg.get_value("profile", "map_current", map_current))
 	map_done = cfg.get_value("profile", "map_done", map_done)
+	map_backdoor = str(cfg.get_value("profile", "map_backdoor", map_backdoor))
 	map_transition = int(cfg.get_value("profile", "map_transition", map_transition))
 	# Legacy saves only stored a linear level_index — reconstruct an
 	# approximate done-set from the first N stage keys so the graph
