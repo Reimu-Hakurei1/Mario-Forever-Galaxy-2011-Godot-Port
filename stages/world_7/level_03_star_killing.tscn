@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
-[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
-[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
-[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://gfx/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
@@ -387,7 +387,7 @@ position = Vector2(80, 96)
 source_position = Vector2(80, 96)
 object_index = 214
 match_enemy_kind = -1
-preview_layers = [{"texture": "res://images/sprites/s_bonus_coin2.230.0.png", "x": 0, "y": 0, "sx": 0.315, "sy": 0.309, "rotation": -0.0, "ox": 48, "oy": 48, "blend": 2}, {"texture": "res://images/sprites/s_bonus_coin.229.0.png", "x": 0, "y": 0, "sx": 0.3, "sy": 0.309, "rotation": -0.0, "ox": 43, "oy": 43, "blend": 1}]
+preview_layers = [{"texture": "res://gfx/sprites/s_bonus_coin2.230.0.png", "x": 0, "y": 0, "sx": 0.315, "sy": 0.309, "rotation": -0.0, "ox": 48, "oy": 48, "blend": 2}, {"texture": "res://gfx/sprites/s_bonus_coin.229.0.png", "x": 0, "y": 0, "sx": 0.3, "sy": 0.309, "rotation": -0.0, "ox": 43, "oy": 43, "blend": 1}]
 source_key = "o_coindrop:-1"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map4_grupowanie_22/event_3_0/action_0"
 
@@ -397,7 +397,7 @@ position = Vector2(180, 96)
 source_position = Vector2(180, 96)
 object_index = 12
 match_enemy_kind = 15
-preview_layers = [{"texture": "res://images/sprites/s_bonuschestmask.244.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 51, "oy": 42, "blend": 2}, {"texture": "res://images/sprites/s_bonuschest2.245.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 41, "oy": 31, "blend": 1}]
+preview_layers = [{"texture": "res://gfx/sprites/s_bonuschestmask.244.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 51, "oy": 42, "blend": 2}, {"texture": "res://gfx/sprites/s_bonuschest2.245.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 41, "oy": 31, "blend": 1}]
 source_key = "o_enemy_1:15"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map4_grupowanie_22/event_3_0/action_0"
 
@@ -407,7 +407,7 @@ position = Vector2(280, 96)
 source_position = Vector2(280, 96)
 object_index = 12
 match_enemy_kind = 6
-preview_layers = [{"texture": "res://images/sprites/s_enemy_f.34.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 29, "oy": 28, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_f.34.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 29, "oy": 28, "blend": 0}]
 source_key = "o_enemy_1:6"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map4_grupowanie_22/event_3_0/action_0"
 
@@ -417,7 +417,7 @@ position = Vector2(380, 96)
 source_position = Vector2(380, 96)
 object_index = 12
 match_enemy_kind = 7
-preview_layers = [{"texture": "res://images/sprites/s_enemy_l.68.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 39, "oy": 39, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_l.68.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 39, "oy": 39, "blend": 0}]
 source_key = "o_enemy_1:7"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map4_grupowanie_22/event_3_0/action_0"
 
@@ -427,7 +427,7 @@ position = Vector2(480, 96)
 source_position = Vector2(480, 96)
 object_index = 12
 match_enemy_kind = 8
-preview_layers = [{"texture": "res://images/sprites/s_enemy_m.69.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 39, "oy": 39, "blend": 0}, {"texture": "res://images/sprites/s_enemy_n.70.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 20, "oy": 19, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_m.69.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 39, "oy": 39, "blend": 0}, {"texture": "res://gfx/sprites/s_enemy_n.70.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 20, "oy": 19, "blend": 0}]
 source_key = "o_enemy_1:8"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_map4_grupowanie_22/event_3_0/action_0"
 

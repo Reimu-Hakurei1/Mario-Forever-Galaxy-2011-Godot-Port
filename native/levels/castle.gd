@@ -73,12 +73,12 @@ func _ready() -> void:
 	elif _talk_only:
 		_boss_timer = 3.0
 
-	if NativeGame.muzyka == 1:
+	if NativeGame.music_enabled == 1:
 		var music := NativeAssets.music(music_track)
 		if music != null:
 			var player := AudioStreamPlayer.new()
 			player.stream = music
-			player.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
+			player.volume_db = linear_to_db(maxf(0.01, NativeGame.sound_volume))
 			add_child(player)
 			player.play()
 

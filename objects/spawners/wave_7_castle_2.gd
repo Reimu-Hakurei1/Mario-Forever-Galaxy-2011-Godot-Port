@@ -22,7 +22,7 @@ static func ev_0_0(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_0(S, A: Array) -> Variant:
-    R.background_replace(S, 2, "data/g/background1plus.jpg", 0, 0, 0)
+    R.background_replace(S, 2, "gfx/map/background1plus.jpg", 0, 0, 0)
     S.g_dodawacz_y = 700
     S.g_dodawacz_assign = 0
     S.g_dodawacz_max = 16

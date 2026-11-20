@@ -1171,11 +1171,11 @@ static func ev_8_0_1(S, A: Array) -> Variant:
     S.g_ktora_muza = (R.round(S, R.random(S, 1)) + 1)
     if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
         if R.eqv(S, S.g_ktora_muza, 1):
-            P3.SXMS_WAP_Play(S, ["./data/m/shop1"])
+            P3.SXMS_WAP_Play(S, ["./music/shop1"])
         G.cogra = G.muzyka
         P0.SXMS_C_Stop(S, [])
         if R.eqv(S, S.g_ktora_muza, 2):
-            P3.SXMS_WAP_Play(S, ["./data/m/shop2"])
+            P3.SXMS_WAP_Play(S, ["./music/shop2"])
         G.cogra = G.muzyka
         P0.SXMS_C_Stop(S, [])
     return 0

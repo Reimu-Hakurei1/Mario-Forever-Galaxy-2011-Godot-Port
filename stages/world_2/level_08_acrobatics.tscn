@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
-[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
-[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
-[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://gfx/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
@@ -855,7 +855,7 @@ position = Vector2(80, 96)
 source_position = Vector2(80, 96)
 object_index = 12
 match_enemy_kind = 2
-preview_layers = [{"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite156.156.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 31, "oy": 42, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://gfx/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://gfx/sprites/sprite156.156.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 31, "oy": 42, "blend": 0}]
 source_key = "o_enemy_1:2"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_18_kolo_1/event_3_0/action_0"
 
@@ -865,7 +865,7 @@ position = Vector2(180, 96)
 source_position = Vector2(180, 96)
 object_index = 12
 match_enemy_kind = 14
-preview_layers = [{"texture": "res://images/sprites/s_bonuschestmask.244.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 51, "oy": 42, "blend": 2}, {"texture": "res://images/sprites/s_bonuschest.243.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 41, "oy": 31, "blend": 1}]
+preview_layers = [{"texture": "res://gfx/sprites/s_bonuschestmask.244.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 51, "oy": 42, "blend": 2}, {"texture": "res://gfx/sprites/s_bonuschest.243.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 41, "oy": 31, "blend": 1}]
 source_key = "o_enemy_1:14"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_18_kolo_5/event_3_0/action_0"
 

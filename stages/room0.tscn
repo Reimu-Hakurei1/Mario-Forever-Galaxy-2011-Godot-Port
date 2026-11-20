@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://data/l/anim_logo2.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://data/l/anim_logo.png"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/logo/anim_logo2.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/logo/anim_logo.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [sub_resource type="CanvasItemMaterial" id="preview_blend1"]

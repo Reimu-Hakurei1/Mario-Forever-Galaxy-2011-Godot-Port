@@ -4128,12 +4128,12 @@ static func script_map_interface(S, A: Array) -> Variant:
             G.hex_save_pos = 1000
         if R.eqv(S, G.save_slot, 2):
             G.hex_save_pos = 500
-        P4.hex_create_empty(S, ["./data/m/skipper", 3000])
-        S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+        P4.hex_create_empty(S, ["./data/skipper", 3000])
+        S.g_zapis = P4.hex_open(S, ["./data/skipper"])
         R.aset(G.map_number, 0, P4.hex_read(S, [S.g_zapis, (1 + G.hex_save_pos)]))
         G.aktualny_lev = P4.hex_read(S, [S.g_zapis, (42 + G.hex_save_pos)])
         G.map_backdoor_lev = P4.hex_read(S, [S.g_zapis, (43 + G.hex_save_pos)])
-        S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+        S.g_zapis = P4.hex_open(S, ["./data/skipper"])
         S.g_i = 0
         while true:
             if not ((S.g_i < 60)):
@@ -4152,21 +4152,21 @@ static func script_map_interface(S, A: Array) -> Variant:
         S.g_muzyka = 1
         P0.SXMS_C_Stop(S, [])
         if R.eqv(S, R.aget(G.map_number, 0), 0):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_1"])
+            P3.SXMS_WAP_Play(S, ["./music/map_1"])
         if R.eqv(S, R.aget(G.map_number, 0), 1):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_2"])
+            P3.SXMS_WAP_Play(S, ["./music/map_2"])
         if R.eqv(S, R.aget(G.map_number, 0), 2):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_3"])
+            P3.SXMS_WAP_Play(S, ["./music/map_3"])
         if R.eqv(S, R.aget(G.map_number, 0), 3):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_4"])
+            P3.SXMS_WAP_Play(S, ["./music/map_4"])
         if R.eqv(S, R.aget(G.map_number, 0), 4):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_5"])
+            P3.SXMS_WAP_Play(S, ["./music/map_5"])
         if R.eqv(S, R.aget(G.map_number, 0), 5):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_1"])
+            P3.SXMS_WAP_Play(S, ["./music/map_1"])
         if R.eqv(S, R.aget(G.map_number, 0), 6):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_3"])
+            P3.SXMS_WAP_Play(S, ["./music/map_3"])
         if R.eqv(S, R.aget(G.map_number, 0), 7):
-            P3.SXMS_WAP_Play(S, ["./data/m/map_last"])
+            P3.SXMS_WAP_Play(S, ["./music/map_last"])
         P3.SXMS_WAP_Volume(S, [0, G.aktual_music_vol])
     if R.eqv(S, R.get_obj_var(225, "g_wybor_etapu_block"), 1):
         G.aktual_music_vol = (G.aktual_music_vol / float(1.1))
@@ -11348,8 +11348,8 @@ static func script_nagraj_save(S, A: Array) -> Variant:
         G.hex_save_pos = 1000
     if R.eqv(S, G.save_slot, 2):
         G.hex_save_pos = 500
-    P4.hex_create_empty(S, ["./data/m/skipper", 3000])
-    S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+    P4.hex_create_empty(S, ["./data/skipper", 3000])
+    S.g_zapis = P4.hex_open(S, ["./data/skipper"])
     P4.hex_write(S, [S.g_zapis, (0 + G.hex_save_pos), R.aget(G.map_zmien_etap, 0)])
     P4.hex_write(S, [S.g_zapis, (1 + G.hex_save_pos), R.aget(G.map_number, 0)])
     P4.hex_write(S, [S.g_zapis, (2 + G.hex_save_pos), G.shopmax2])

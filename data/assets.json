@@ -13,7 +13,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_hud.5.0.png"
+    "res://gfx/sprites/s_hud.5.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -32,11 +32,11 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_stopper_b.6.0.png",
-    "res://images/sprites/s_stopper_b.6.1.png",
-    "res://images/sprites/s_stopper_b.6.2.png",
-    "res://images/sprites/s_stopper_b.6.3.png",
-    "res://images/sprites/s_stopper_b.6.4.png"
+    "res://gfx/sprites/s_stopper_b.6.0.png",
+    "res://gfx/sprites/s_stopper_b.6.1.png",
+    "res://gfx/sprites/s_stopper_b.6.2.png",
+    "res://gfx/sprites/s_stopper_b.6.3.png",
+    "res://gfx/sprites/s_stopper_b.6.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -55,22 +55,22 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_enemy_a.11.0.png",
-    "res://images/sprites/s_enemy_a.11.1.png",
-    "res://images/sprites/s_enemy_a.11.2.png",
-    "res://images/sprites/s_enemy_a.11.3.png",
-    "res://images/sprites/s_enemy_a.11.4.png",
-    "res://images/sprites/s_enemy_a.11.5.png",
-    "res://images/sprites/s_enemy_a.11.6.png",
-    "res://images/sprites/s_enemy_a.11.7.png",
-    "res://images/sprites/s_enemy_a.11.8.png",
-    "res://images/sprites/s_enemy_a.11.9.png",
-    "res://images/sprites/s_enemy_a.11.10.png",
-    "res://images/sprites/s_enemy_a.11.11.png",
-    "res://images/sprites/s_enemy_a.11.12.png",
-    "res://images/sprites/s_enemy_a.11.13.png",
-    "res://images/sprites/s_enemy_a.11.14.png",
-    "res://images/sprites/s_enemy_a.11.15.png"
+    "res://gfx/sprites/s_enemy_a.11.0.png",
+    "res://gfx/sprites/s_enemy_a.11.1.png",
+    "res://gfx/sprites/s_enemy_a.11.2.png",
+    "res://gfx/sprites/s_enemy_a.11.3.png",
+    "res://gfx/sprites/s_enemy_a.11.4.png",
+    "res://gfx/sprites/s_enemy_a.11.5.png",
+    "res://gfx/sprites/s_enemy_a.11.6.png",
+    "res://gfx/sprites/s_enemy_a.11.7.png",
+    "res://gfx/sprites/s_enemy_a.11.8.png",
+    "res://gfx/sprites/s_enemy_a.11.9.png",
+    "res://gfx/sprites/s_enemy_a.11.10.png",
+    "res://gfx/sprites/s_enemy_a.11.11.png",
+    "res://gfx/sprites/s_enemy_a.11.12.png",
+    "res://gfx/sprites/s_enemy_a.11.13.png",
+    "res://gfx/sprites/s_enemy_a.11.14.png",
+    "res://gfx/sprites/s_enemy_a.11.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -89,7 +89,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_1.12.0.png"
+    "res://gfx/sprites/s_bullet_1.12.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -108,43 +108,43 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_explo_1.14.0.png",
-    "res://images/sprites/s_explo_1.14.1.png",
-    "res://images/sprites/s_explo_1.14.2.png",
-    "res://images/sprites/s_explo_1.14.3.png",
-    "res://images/sprites/s_explo_1.14.4.png",
-    "res://images/sprites/s_explo_1.14.5.png",
-    "res://images/sprites/s_explo_1.14.6.png",
-    "res://images/sprites/s_explo_1.14.7.png",
-    "res://images/sprites/s_explo_1.14.8.png",
-    "res://images/sprites/s_explo_1.14.9.png",
-    "res://images/sprites/s_explo_1.14.10.png",
-    "res://images/sprites/s_explo_1.14.11.png",
-    "res://images/sprites/s_explo_1.14.12.png",
-    "res://images/sprites/s_explo_1.14.13.png",
-    "res://images/sprites/s_explo_1.14.14.png",
-    "res://images/sprites/s_explo_1.14.15.png",
-    "res://images/sprites/s_explo_1.14.16.png",
-    "res://images/sprites/s_explo_1.14.17.png",
-    "res://images/sprites/s_explo_1.14.18.png",
-    "res://images/sprites/s_explo_1.14.19.png",
-    "res://images/sprites/s_explo_1.14.20.png",
-    "res://images/sprites/s_explo_1.14.21.png",
-    "res://images/sprites/s_explo_1.14.22.png",
-    "res://images/sprites/s_explo_1.14.23.png",
-    "res://images/sprites/s_explo_1.14.24.png",
-    "res://images/sprites/s_explo_1.14.25.png",
-    "res://images/sprites/s_explo_1.14.26.png",
-    "res://images/sprites/s_explo_1.14.27.png",
-    "res://images/sprites/s_explo_1.14.28.png",
-    "res://images/sprites/s_explo_1.14.29.png",
-    "res://images/sprites/s_explo_1.14.30.png",
-    "res://images/sprites/s_explo_1.14.31.png",
-    "res://images/sprites/s_explo_1.14.32.png",
-    "res://images/sprites/s_explo_1.14.33.png",
-    "res://images/sprites/s_explo_1.14.34.png",
-    "res://images/sprites/s_explo_1.14.35.png",
-    "res://images/sprites/s_explo_1.14.36.png"
+    "res://gfx/sprites/s_explo_1.14.0.png",
+    "res://gfx/sprites/s_explo_1.14.1.png",
+    "res://gfx/sprites/s_explo_1.14.2.png",
+    "res://gfx/sprites/s_explo_1.14.3.png",
+    "res://gfx/sprites/s_explo_1.14.4.png",
+    "res://gfx/sprites/s_explo_1.14.5.png",
+    "res://gfx/sprites/s_explo_1.14.6.png",
+    "res://gfx/sprites/s_explo_1.14.7.png",
+    "res://gfx/sprites/s_explo_1.14.8.png",
+    "res://gfx/sprites/s_explo_1.14.9.png",
+    "res://gfx/sprites/s_explo_1.14.10.png",
+    "res://gfx/sprites/s_explo_1.14.11.png",
+    "res://gfx/sprites/s_explo_1.14.12.png",
+    "res://gfx/sprites/s_explo_1.14.13.png",
+    "res://gfx/sprites/s_explo_1.14.14.png",
+    "res://gfx/sprites/s_explo_1.14.15.png",
+    "res://gfx/sprites/s_explo_1.14.16.png",
+    "res://gfx/sprites/s_explo_1.14.17.png",
+    "res://gfx/sprites/s_explo_1.14.18.png",
+    "res://gfx/sprites/s_explo_1.14.19.png",
+    "res://gfx/sprites/s_explo_1.14.20.png",
+    "res://gfx/sprites/s_explo_1.14.21.png",
+    "res://gfx/sprites/s_explo_1.14.22.png",
+    "res://gfx/sprites/s_explo_1.14.23.png",
+    "res://gfx/sprites/s_explo_1.14.24.png",
+    "res://gfx/sprites/s_explo_1.14.25.png",
+    "res://gfx/sprites/s_explo_1.14.26.png",
+    "res://gfx/sprites/s_explo_1.14.27.png",
+    "res://gfx/sprites/s_explo_1.14.28.png",
+    "res://gfx/sprites/s_explo_1.14.29.png",
+    "res://gfx/sprites/s_explo_1.14.30.png",
+    "res://gfx/sprites/s_explo_1.14.31.png",
+    "res://gfx/sprites/s_explo_1.14.32.png",
+    "res://gfx/sprites/s_explo_1.14.33.png",
+    "res://gfx/sprites/s_explo_1.14.34.png",
+    "res://gfx/sprites/s_explo_1.14.35.png",
+    "res://gfx/sprites/s_explo_1.14.36.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -163,7 +163,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bar_1.15.0.png"
+    "res://gfx/sprites/s_bar_1.15.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -182,7 +182,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bar_2.16.0.png"
+    "res://gfx/sprites/s_bar_2.16.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -201,7 +201,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bar_3.19.0.png"
+    "res://gfx/sprites/s_bar_3.19.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -220,7 +220,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_2.20.0.png"
+    "res://gfx/sprites/s_bullet_2.20.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -239,7 +239,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_flash_1.21.0.png"
+    "res://gfx/sprites/s_flash_1.21.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -258,7 +258,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_3.22.0.png"
+    "res://gfx/sprites/s_bullet_3.22.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -277,7 +277,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_4.23.0.png"
+    "res://gfx/sprites/s_bullet_4.23.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -296,7 +296,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_5.24.0.png"
+    "res://gfx/sprites/s_bullet_5.24.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -315,7 +315,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_6.25.0.png"
+    "res://gfx/sprites/s_bullet_6.25.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -334,7 +334,7 @@
     7
    ],
    "frames": [
-    "res://images/sprites/s_bullet_mark.26.0.png"
+    "res://gfx/sprites/s_bullet_mark.26.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -353,7 +353,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_odlamek_1.28.0.png"
+    "res://gfx/sprites/s_odlamek_1.28.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -372,14 +372,14 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_enemy_b.29.0.png",
-    "res://images/sprites/s_enemy_b.29.1.png",
-    "res://images/sprites/s_enemy_b.29.2.png",
-    "res://images/sprites/s_enemy_b.29.3.png",
-    "res://images/sprites/s_enemy_b.29.4.png",
-    "res://images/sprites/s_enemy_b.29.5.png",
-    "res://images/sprites/s_enemy_b.29.6.png",
-    "res://images/sprites/s_enemy_b.29.7.png"
+    "res://gfx/sprites/s_enemy_b.29.0.png",
+    "res://gfx/sprites/s_enemy_b.29.1.png",
+    "res://gfx/sprites/s_enemy_b.29.2.png",
+    "res://gfx/sprites/s_enemy_b.29.3.png",
+    "res://gfx/sprites/s_enemy_b.29.4.png",
+    "res://gfx/sprites/s_enemy_b.29.5.png",
+    "res://gfx/sprites/s_enemy_b.29.6.png",
+    "res://gfx/sprites/s_enemy_b.29.7.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -398,7 +398,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_c.30.0.png"
+    "res://gfx/sprites/s_enemy_c.30.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -417,7 +417,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_7.32.0.png"
+    "res://gfx/sprites/s_bullet_7.32.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -436,7 +436,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_f.34.0.png"
+    "res://gfx/sprites/s_enemy_f.34.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -455,7 +455,7 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_gameover.38.0.png"
+    "res://gfx/sprites/s_gameover.38.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -474,7 +474,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet8.41.0.png"
+    "res://gfx/sprites/s_bullet8.41.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -493,7 +493,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_blur.44.0.png"
+    "res://gfx/sprites/s_title_blur.44.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -512,7 +512,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_blur2.45.0.png"
+    "res://gfx/sprites/s_title_blur2.45.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -531,7 +531,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_bluer_c.46.0.png"
+    "res://gfx/sprites/s_title_bluer_c.46.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -550,7 +550,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite477.47.0.png"
+    "res://gfx/sprites/sprite477.47.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -569,7 +569,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_go.48.0.png"
+    "res://gfx/sprites/s_title_go.48.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -588,18 +588,18 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_enemy_j.50.0.png",
-    "res://images/sprites/s_enemy_j.50.1.png",
-    "res://images/sprites/s_enemy_j.50.2.png",
-    "res://images/sprites/s_enemy_j.50.3.png",
-    "res://images/sprites/s_enemy_j.50.4.png",
-    "res://images/sprites/s_enemy_j.50.5.png",
-    "res://images/sprites/s_enemy_j.50.6.png",
-    "res://images/sprites/s_enemy_j.50.7.png",
-    "res://images/sprites/s_enemy_j.50.8.png",
-    "res://images/sprites/s_enemy_j.50.9.png",
-    "res://images/sprites/s_enemy_j.50.10.png",
-    "res://images/sprites/s_enemy_j.50.11.png"
+    "res://gfx/sprites/s_enemy_j.50.0.png",
+    "res://gfx/sprites/s_enemy_j.50.1.png",
+    "res://gfx/sprites/s_enemy_j.50.2.png",
+    "res://gfx/sprites/s_enemy_j.50.3.png",
+    "res://gfx/sprites/s_enemy_j.50.4.png",
+    "res://gfx/sprites/s_enemy_j.50.5.png",
+    "res://gfx/sprites/s_enemy_j.50.6.png",
+    "res://gfx/sprites/s_enemy_j.50.7.png",
+    "res://gfx/sprites/s_enemy_j.50.8.png",
+    "res://gfx/sprites/s_enemy_j.50.9.png",
+    "res://gfx/sprites/s_enemy_j.50.10.png",
+    "res://gfx/sprites/s_enemy_j.50.11.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -618,7 +618,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_8.51.0.png"
+    "res://gfx/sprites/s_bullet_8.51.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -637,7 +637,7 @@
     2
    ],
    "frames": [
-    "res://images/sprites/s_bullet_9.52.0.png"
+    "res://gfx/sprites/s_bullet_9.52.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -656,7 +656,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_10.53.0.png"
+    "res://gfx/sprites/s_bullet_10.53.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -675,7 +675,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_11.54.0.png"
+    "res://gfx/sprites/s_bullet_11.54.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -694,7 +694,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_12.55.0.png"
+    "res://gfx/sprites/s_bullet_12.55.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -713,7 +713,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_hud_boss.56.0.png"
+    "res://gfx/sprites/s_hud_boss.56.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -732,7 +732,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_hud_boss2.57.0.png"
+    "res://gfx/sprites/s_hud_boss2.57.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -751,7 +751,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_hud_boss3.58.0.png"
+    "res://gfx/sprites/s_hud_boss3.58.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -770,7 +770,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_1.59.0.png"
+    "res://gfx/sprites/s_guide_1.59.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -789,7 +789,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_2.60.0.png"
+    "res://gfx/sprites/s_guide_2.60.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -808,7 +808,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_3.61.0.png"
+    "res://gfx/sprites/s_guide_3.61.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -827,7 +827,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_4.62.0.png"
+    "res://gfx/sprites/s_guide_4.62.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -846,7 +846,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_5.63.0.png"
+    "res://gfx/sprites/s_guide_5.63.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -865,7 +865,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_6.64.0.png"
+    "res://gfx/sprites/s_guide_6.64.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -884,7 +884,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_guide_7.65.0.png"
+    "res://gfx/sprites/s_guide_7.65.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -903,43 +903,43 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_explo_2.67.0.png",
-    "res://images/sprites/s_explo_2.67.1.png",
-    "res://images/sprites/s_explo_2.67.2.png",
-    "res://images/sprites/s_explo_2.67.3.png",
-    "res://images/sprites/s_explo_2.67.4.png",
-    "res://images/sprites/s_explo_2.67.5.png",
-    "res://images/sprites/s_explo_2.67.6.png",
-    "res://images/sprites/s_explo_2.67.7.png",
-    "res://images/sprites/s_explo_2.67.8.png",
-    "res://images/sprites/s_explo_2.67.9.png",
-    "res://images/sprites/s_explo_2.67.10.png",
-    "res://images/sprites/s_explo_2.67.11.png",
-    "res://images/sprites/s_explo_2.67.12.png",
-    "res://images/sprites/s_explo_2.67.13.png",
-    "res://images/sprites/s_explo_2.67.14.png",
-    "res://images/sprites/s_explo_2.67.15.png",
-    "res://images/sprites/s_explo_2.67.16.png",
-    "res://images/sprites/s_explo_2.67.17.png",
-    "res://images/sprites/s_explo_2.67.18.png",
-    "res://images/sprites/s_explo_2.67.19.png",
-    "res://images/sprites/s_explo_2.67.20.png",
-    "res://images/sprites/s_explo_2.67.21.png",
-    "res://images/sprites/s_explo_2.67.22.png",
-    "res://images/sprites/s_explo_2.67.23.png",
-    "res://images/sprites/s_explo_2.67.24.png",
-    "res://images/sprites/s_explo_2.67.25.png",
-    "res://images/sprites/s_explo_2.67.26.png",
-    "res://images/sprites/s_explo_2.67.27.png",
-    "res://images/sprites/s_explo_2.67.28.png",
-    "res://images/sprites/s_explo_2.67.29.png",
-    "res://images/sprites/s_explo_2.67.30.png",
-    "res://images/sprites/s_explo_2.67.31.png",
-    "res://images/sprites/s_explo_2.67.32.png",
-    "res://images/sprites/s_explo_2.67.33.png",
-    "res://images/sprites/s_explo_2.67.34.png",
-    "res://images/sprites/s_explo_2.67.35.png",
-    "res://images/sprites/s_explo_2.67.36.png"
+    "res://gfx/sprites/s_explo_2.67.0.png",
+    "res://gfx/sprites/s_explo_2.67.1.png",
+    "res://gfx/sprites/s_explo_2.67.2.png",
+    "res://gfx/sprites/s_explo_2.67.3.png",
+    "res://gfx/sprites/s_explo_2.67.4.png",
+    "res://gfx/sprites/s_explo_2.67.5.png",
+    "res://gfx/sprites/s_explo_2.67.6.png",
+    "res://gfx/sprites/s_explo_2.67.7.png",
+    "res://gfx/sprites/s_explo_2.67.8.png",
+    "res://gfx/sprites/s_explo_2.67.9.png",
+    "res://gfx/sprites/s_explo_2.67.10.png",
+    "res://gfx/sprites/s_explo_2.67.11.png",
+    "res://gfx/sprites/s_explo_2.67.12.png",
+    "res://gfx/sprites/s_explo_2.67.13.png",
+    "res://gfx/sprites/s_explo_2.67.14.png",
+    "res://gfx/sprites/s_explo_2.67.15.png",
+    "res://gfx/sprites/s_explo_2.67.16.png",
+    "res://gfx/sprites/s_explo_2.67.17.png",
+    "res://gfx/sprites/s_explo_2.67.18.png",
+    "res://gfx/sprites/s_explo_2.67.19.png",
+    "res://gfx/sprites/s_explo_2.67.20.png",
+    "res://gfx/sprites/s_explo_2.67.21.png",
+    "res://gfx/sprites/s_explo_2.67.22.png",
+    "res://gfx/sprites/s_explo_2.67.23.png",
+    "res://gfx/sprites/s_explo_2.67.24.png",
+    "res://gfx/sprites/s_explo_2.67.25.png",
+    "res://gfx/sprites/s_explo_2.67.26.png",
+    "res://gfx/sprites/s_explo_2.67.27.png",
+    "res://gfx/sprites/s_explo_2.67.28.png",
+    "res://gfx/sprites/s_explo_2.67.29.png",
+    "res://gfx/sprites/s_explo_2.67.30.png",
+    "res://gfx/sprites/s_explo_2.67.31.png",
+    "res://gfx/sprites/s_explo_2.67.32.png",
+    "res://gfx/sprites/s_explo_2.67.33.png",
+    "res://gfx/sprites/s_explo_2.67.34.png",
+    "res://gfx/sprites/s_explo_2.67.35.png",
+    "res://gfx/sprites/s_explo_2.67.36.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -958,7 +958,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_l.68.0.png"
+    "res://gfx/sprites/s_enemy_l.68.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -977,7 +977,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_m.69.0.png"
+    "res://gfx/sprites/s_enemy_m.69.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -996,7 +996,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_n.70.0.png"
+    "res://gfx/sprites/s_enemy_n.70.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1015,7 +1015,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_p.73.0.png"
+    "res://gfx/sprites/s_enemy_p.73.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1034,7 +1034,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_1b.75.0.png"
+    "res://gfx/sprites/s_bullet_1b.75.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1053,12 +1053,12 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_1bb.76.0.png",
-    "res://images/sprites/s_bullet_1bb.76.1.png",
-    "res://images/sprites/s_bullet_1bb.76.2.png",
-    "res://images/sprites/s_bullet_1bb.76.3.png",
-    "res://images/sprites/s_bullet_1bb.76.4.png",
-    "res://images/sprites/s_bullet_1bb.76.5.png"
+    "res://gfx/sprites/s_bullet_1bb.76.0.png",
+    "res://gfx/sprites/s_bullet_1bb.76.1.png",
+    "res://gfx/sprites/s_bullet_1bb.76.2.png",
+    "res://gfx/sprites/s_bullet_1bb.76.3.png",
+    "res://gfx/sprites/s_bullet_1bb.76.4.png",
+    "res://gfx/sprites/s_bullet_1bb.76.5.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1077,7 +1077,7 @@
     12
    ],
    "frames": [
-    "res://images/sprites/s_bullet_15.77.0.png"
+    "res://gfx/sprites/s_bullet_15.77.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1096,7 +1096,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroids_1.80.0.png"
+    "res://gfx/sprites/s_asteroids_1.80.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1115,7 +1115,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroids_2.81.0.png"
+    "res://gfx/sprites/s_asteroids_2.81.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1134,7 +1134,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroids_3.82.0.png"
+    "res://gfx/sprites/s_asteroids_3.82.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1153,7 +1153,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroids_4.83.0.png"
+    "res://gfx/sprites/s_asteroids_4.83.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1172,7 +1172,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bulletprof_1.95.0.png"
+    "res://gfx/sprites/s_bulletprof_1.95.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1191,7 +1191,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_14.108.0.png"
+    "res://gfx/sprites/s_bullet_14.108.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1210,7 +1210,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_explo_3.109.0.png"
+    "res://gfx/sprites/s_explo_3.109.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1229,9 +1229,9 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_ufo_b.110.0.png",
-    "res://images/sprites/s_ufo_b.110.1.png",
-    "res://images/sprites/s_ufo_b.110.2.png"
+    "res://gfx/sprites/s_ufo_b.110.0.png",
+    "res://gfx/sprites/s_ufo_b.110.1.png",
+    "res://gfx/sprites/s_ufo_b.110.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1250,7 +1250,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet9.111.0.png"
+    "res://gfx/sprites/s_bullet9.111.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1269,9 +1269,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_enemy_u.112.0.png",
-    "res://images/sprites/s_enemy_u.112.1.png",
-    "res://images/sprites/s_enemy_u.112.2.png"
+    "res://gfx/sprites/s_enemy_u.112.0.png",
+    "res://gfx/sprites/s_enemy_u.112.1.png",
+    "res://gfx/sprites/s_enemy_u.112.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1290,7 +1290,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bossbul_1.115.0.png"
+    "res://gfx/sprites/s_bossbul_1.115.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1309,7 +1309,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bossbul_2.116.0.png"
+    "res://gfx/sprites/s_bossbul_2.116.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1328,7 +1328,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_efekt_1.120.0.png"
+    "res://gfx/sprites/s_title_efekt_1.120.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1347,7 +1347,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_16.121.0.png"
+    "res://gfx/sprites/s_bullet_16.121.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1366,7 +1366,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_17.122.0.png"
+    "res://gfx/sprites/s_bullet_17.122.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1385,7 +1385,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_18.123.0.png"
+    "res://gfx/sprites/s_bullet_18.123.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1404,7 +1404,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_19.124.0.png"
+    "res://gfx/sprites/s_bullet_19.124.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1423,7 +1423,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_20.125.0.png"
+    "res://gfx/sprites/s_bullet_20.125.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1442,7 +1442,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_asteroids_panzer.131.0.png"
+    "res://gfx/sprites/s_asteroids_panzer.131.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1461,26 +1461,26 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_statuses.133.0.png",
-    "res://images/sprites/s_statuses.133.1.png",
-    "res://images/sprites/s_statuses.133.2.png",
-    "res://images/sprites/s_statuses.133.3.png",
-    "res://images/sprites/s_statuses.133.4.png",
-    "res://images/sprites/s_statuses.133.5.png",
-    "res://images/sprites/s_statuses.133.6.png",
-    "res://images/sprites/s_statuses.133.7.png",
-    "res://images/sprites/s_statuses.133.8.png",
-    "res://images/sprites/s_statuses.133.9.png",
-    "res://images/sprites/s_statuses.133.10.png",
-    "res://images/sprites/s_statuses.133.11.png",
-    "res://images/sprites/s_statuses.133.12.png",
-    "res://images/sprites/s_statuses.133.13.png",
-    "res://images/sprites/s_statuses.133.14.png",
-    "res://images/sprites/s_statuses.133.15.png",
-    "res://images/sprites/s_statuses.133.16.png",
-    "res://images/sprites/s_statuses.133.17.png",
-    "res://images/sprites/s_statuses.133.18.png",
-    "res://images/sprites/s_statuses.133.19.png"
+    "res://gfx/sprites/s_statuses.133.0.png",
+    "res://gfx/sprites/s_statuses.133.1.png",
+    "res://gfx/sprites/s_statuses.133.2.png",
+    "res://gfx/sprites/s_statuses.133.3.png",
+    "res://gfx/sprites/s_statuses.133.4.png",
+    "res://gfx/sprites/s_statuses.133.5.png",
+    "res://gfx/sprites/s_statuses.133.6.png",
+    "res://gfx/sprites/s_statuses.133.7.png",
+    "res://gfx/sprites/s_statuses.133.8.png",
+    "res://gfx/sprites/s_statuses.133.9.png",
+    "res://gfx/sprites/s_statuses.133.10.png",
+    "res://gfx/sprites/s_statuses.133.11.png",
+    "res://gfx/sprites/s_statuses.133.12.png",
+    "res://gfx/sprites/s_statuses.133.13.png",
+    "res://gfx/sprites/s_statuses.133.14.png",
+    "res://gfx/sprites/s_statuses.133.15.png",
+    "res://gfx/sprites/s_statuses.133.16.png",
+    "res://gfx/sprites/s_statuses.133.17.png",
+    "res://gfx/sprites/s_statuses.133.18.png",
+    "res://gfx/sprites/s_statuses.133.19.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1499,7 +1499,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_spikey.136.0.png"
+    "res://gfx/sprites/s_spikey.136.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1518,22 +1518,22 @@
     5
    ],
    "frames": [
-    "res://images/sprites/s_sprite137.137.0.png",
-    "res://images/sprites/s_sprite137.137.1.png",
-    "res://images/sprites/s_sprite137.137.2.png",
-    "res://images/sprites/s_sprite137.137.3.png",
-    "res://images/sprites/s_sprite137.137.4.png",
-    "res://images/sprites/s_sprite137.137.5.png",
-    "res://images/sprites/s_sprite137.137.6.png",
-    "res://images/sprites/s_sprite137.137.7.png",
-    "res://images/sprites/s_sprite137.137.8.png",
-    "res://images/sprites/s_sprite137.137.9.png",
-    "res://images/sprites/s_sprite137.137.10.png",
-    "res://images/sprites/s_sprite137.137.11.png",
-    "res://images/sprites/s_sprite137.137.12.png",
-    "res://images/sprites/s_sprite137.137.13.png",
-    "res://images/sprites/s_sprite137.137.14.png",
-    "res://images/sprites/s_sprite137.137.15.png"
+    "res://gfx/sprites/s_sprite137.137.0.png",
+    "res://gfx/sprites/s_sprite137.137.1.png",
+    "res://gfx/sprites/s_sprite137.137.2.png",
+    "res://gfx/sprites/s_sprite137.137.3.png",
+    "res://gfx/sprites/s_sprite137.137.4.png",
+    "res://gfx/sprites/s_sprite137.137.5.png",
+    "res://gfx/sprites/s_sprite137.137.6.png",
+    "res://gfx/sprites/s_sprite137.137.7.png",
+    "res://gfx/sprites/s_sprite137.137.8.png",
+    "res://gfx/sprites/s_sprite137.137.9.png",
+    "res://gfx/sprites/s_sprite137.137.10.png",
+    "res://gfx/sprites/s_sprite137.137.11.png",
+    "res://gfx/sprites/s_sprite137.137.12.png",
+    "res://gfx/sprites/s_sprite137.137.13.png",
+    "res://gfx/sprites/s_sprite137.137.14.png",
+    "res://gfx/sprites/s_sprite137.137.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1552,7 +1552,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_efekt_2.138.0.png"
+    "res://gfx/sprites/s_title_efekt_2.138.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1571,7 +1571,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite139.139.0.png"
+    "res://gfx/sprites/sprite139.139.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1590,7 +1590,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite140.140.0.png"
+    "res://gfx/sprites/sprite140.140.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1609,7 +1609,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite141.141.0.png"
+    "res://gfx/sprites/sprite141.141.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1628,7 +1628,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite142.142.0.png"
+    "res://gfx/sprites/sprite142.142.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1647,7 +1647,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite143.143.0.png"
+    "res://gfx/sprites/sprite143.143.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1666,7 +1666,7 @@
     2
    ],
    "frames": [
-    "res://images/sprites/sprite144.144.0.png"
+    "res://gfx/sprites/sprite144.144.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1685,7 +1685,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite47.145.0.png"
+    "res://gfx/sprites/sprite47.145.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1704,7 +1704,7 @@
     12
    ],
    "frames": [
-    "res://images/sprites/s_enemy_s_die.146.0.png"
+    "res://gfx/sprites/s_enemy_s_die.146.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1723,10 +1723,10 @@
     20
    ],
    "frames": [
-    "res://images/sprites/s_die.151.0.png",
-    "res://images/sprites/s_die.151.1.png",
-    "res://images/sprites/s_die.151.2.png",
-    "res://images/sprites/s_die.151.3.png"
+    "res://gfx/sprites/s_die.151.0.png",
+    "res://gfx/sprites/s_die.151.1.png",
+    "res://gfx/sprites/s_die.151.2.png",
+    "res://gfx/sprites/s_die.151.3.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1745,7 +1745,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_diemask.152.0.png"
+    "res://gfx/sprites/s_diemask.152.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1764,11 +1764,11 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_stopper_a.153.0.png",
-    "res://images/sprites/s_stopper_a.153.1.png",
-    "res://images/sprites/s_stopper_a.153.2.png",
-    "res://images/sprites/s_stopper_a.153.3.png",
-    "res://images/sprites/s_stopper_a.153.4.png"
+    "res://gfx/sprites/s_stopper_a.153.0.png",
+    "res://gfx/sprites/s_stopper_a.153.1.png",
+    "res://gfx/sprites/s_stopper_a.153.2.png",
+    "res://gfx/sprites/s_stopper_a.153.3.png",
+    "res://gfx/sprites/s_stopper_a.153.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1787,18 +1787,18 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonusenergy.154.0.png",
-    "res://images/sprites/s_bonusenergy.154.1.png",
-    "res://images/sprites/s_bonusenergy.154.2.png",
-    "res://images/sprites/s_bonusenergy.154.3.png",
-    "res://images/sprites/s_bonusenergy.154.4.png",
-    "res://images/sprites/s_bonusenergy.154.5.png",
-    "res://images/sprites/s_bonusenergy.154.6.png",
-    "res://images/sprites/s_bonusenergy.154.7.png",
-    "res://images/sprites/s_bonusenergy.154.8.png",
-    "res://images/sprites/s_bonusenergy.154.9.png",
-    "res://images/sprites/s_bonusenergy.154.10.png",
-    "res://images/sprites/s_bonusenergy.154.11.png"
+    "res://gfx/sprites/s_bonusenergy.154.0.png",
+    "res://gfx/sprites/s_bonusenergy.154.1.png",
+    "res://gfx/sprites/s_bonusenergy.154.2.png",
+    "res://gfx/sprites/s_bonusenergy.154.3.png",
+    "res://gfx/sprites/s_bonusenergy.154.4.png",
+    "res://gfx/sprites/s_bonusenergy.154.5.png",
+    "res://gfx/sprites/s_bonusenergy.154.6.png",
+    "res://gfx/sprites/s_bonusenergy.154.7.png",
+    "res://gfx/sprites/s_bonusenergy.154.8.png",
+    "res://gfx/sprites/s_bonusenergy.154.9.png",
+    "res://gfx/sprites/s_bonusenergy.154.10.png",
+    "res://gfx/sprites/s_bonusenergy.154.11.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1817,22 +1817,22 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonuslives.155.0.png",
-    "res://images/sprites/s_bonuslives.155.1.png",
-    "res://images/sprites/s_bonuslives.155.2.png",
-    "res://images/sprites/s_bonuslives.155.3.png",
-    "res://images/sprites/s_bonuslives.155.4.png",
-    "res://images/sprites/s_bonuslives.155.5.png",
-    "res://images/sprites/s_bonuslives.155.6.png",
-    "res://images/sprites/s_bonuslives.155.7.png",
-    "res://images/sprites/s_bonuslives.155.8.png",
-    "res://images/sprites/s_bonuslives.155.9.png",
-    "res://images/sprites/s_bonuslives.155.10.png",
-    "res://images/sprites/s_bonuslives.155.11.png",
-    "res://images/sprites/s_bonuslives.155.12.png",
-    "res://images/sprites/s_bonuslives.155.13.png",
-    "res://images/sprites/s_bonuslives.155.14.png",
-    "res://images/sprites/s_bonuslives.155.15.png"
+    "res://gfx/sprites/s_bonuslives.155.0.png",
+    "res://gfx/sprites/s_bonuslives.155.1.png",
+    "res://gfx/sprites/s_bonuslives.155.2.png",
+    "res://gfx/sprites/s_bonuslives.155.3.png",
+    "res://gfx/sprites/s_bonuslives.155.4.png",
+    "res://gfx/sprites/s_bonuslives.155.5.png",
+    "res://gfx/sprites/s_bonuslives.155.6.png",
+    "res://gfx/sprites/s_bonuslives.155.7.png",
+    "res://gfx/sprites/s_bonuslives.155.8.png",
+    "res://gfx/sprites/s_bonuslives.155.9.png",
+    "res://gfx/sprites/s_bonuslives.155.10.png",
+    "res://gfx/sprites/s_bonuslives.155.11.png",
+    "res://gfx/sprites/s_bonuslives.155.12.png",
+    "res://gfx/sprites/s_bonuslives.155.13.png",
+    "res://gfx/sprites/s_bonuslives.155.14.png",
+    "res://gfx/sprites/s_bonuslives.155.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1851,18 +1851,18 @@
     11
    ],
    "frames": [
-    "res://images/sprites/sprite156.156.0.png",
-    "res://images/sprites/sprite156.156.1.png",
-    "res://images/sprites/sprite156.156.2.png",
-    "res://images/sprites/sprite156.156.3.png",
-    "res://images/sprites/sprite156.156.4.png",
-    "res://images/sprites/sprite156.156.5.png",
-    "res://images/sprites/sprite156.156.6.png",
-    "res://images/sprites/sprite156.156.7.png",
-    "res://images/sprites/sprite156.156.8.png",
-    "res://images/sprites/sprite156.156.9.png",
-    "res://images/sprites/sprite156.156.10.png",
-    "res://images/sprites/sprite156.156.11.png"
+    "res://gfx/sprites/sprite156.156.0.png",
+    "res://gfx/sprites/sprite156.156.1.png",
+    "res://gfx/sprites/sprite156.156.2.png",
+    "res://gfx/sprites/sprite156.156.3.png",
+    "res://gfx/sprites/sprite156.156.4.png",
+    "res://gfx/sprites/sprite156.156.5.png",
+    "res://gfx/sprites/sprite156.156.6.png",
+    "res://gfx/sprites/sprite156.156.7.png",
+    "res://gfx/sprites/sprite156.156.8.png",
+    "res://gfx/sprites/sprite156.156.9.png",
+    "res://gfx/sprites/sprite156.156.10.png",
+    "res://gfx/sprites/sprite156.156.11.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1881,7 +1881,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite157.157.0.png"
+    "res://gfx/sprites/sprite157.157.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1900,30 +1900,30 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite158.158.0.png",
-    "res://images/sprites/sprite158.158.1.png",
-    "res://images/sprites/sprite158.158.2.png",
-    "res://images/sprites/sprite158.158.3.png",
-    "res://images/sprites/sprite158.158.4.png",
-    "res://images/sprites/sprite158.158.5.png",
-    "res://images/sprites/sprite158.158.6.png",
-    "res://images/sprites/sprite158.158.7.png",
-    "res://images/sprites/sprite158.158.8.png",
-    "res://images/sprites/sprite158.158.9.png",
-    "res://images/sprites/sprite158.158.10.png",
-    "res://images/sprites/sprite158.158.11.png",
-    "res://images/sprites/sprite158.158.12.png",
-    "res://images/sprites/sprite158.158.13.png",
-    "res://images/sprites/sprite158.158.14.png",
-    "res://images/sprites/sprite158.158.15.png",
-    "res://images/sprites/sprite158.158.16.png",
-    "res://images/sprites/sprite158.158.17.png",
-    "res://images/sprites/sprite158.158.18.png",
-    "res://images/sprites/sprite158.158.19.png",
-    "res://images/sprites/sprite158.158.20.png",
-    "res://images/sprites/sprite158.158.21.png",
-    "res://images/sprites/sprite158.158.22.png",
-    "res://images/sprites/sprite158.158.23.png"
+    "res://gfx/sprites/sprite158.158.0.png",
+    "res://gfx/sprites/sprite158.158.1.png",
+    "res://gfx/sprites/sprite158.158.2.png",
+    "res://gfx/sprites/sprite158.158.3.png",
+    "res://gfx/sprites/sprite158.158.4.png",
+    "res://gfx/sprites/sprite158.158.5.png",
+    "res://gfx/sprites/sprite158.158.6.png",
+    "res://gfx/sprites/sprite158.158.7.png",
+    "res://gfx/sprites/sprite158.158.8.png",
+    "res://gfx/sprites/sprite158.158.9.png",
+    "res://gfx/sprites/sprite158.158.10.png",
+    "res://gfx/sprites/sprite158.158.11.png",
+    "res://gfx/sprites/sprite158.158.12.png",
+    "res://gfx/sprites/sprite158.158.13.png",
+    "res://gfx/sprites/sprite158.158.14.png",
+    "res://gfx/sprites/sprite158.158.15.png",
+    "res://gfx/sprites/sprite158.158.16.png",
+    "res://gfx/sprites/sprite158.158.17.png",
+    "res://gfx/sprites/sprite158.158.18.png",
+    "res://gfx/sprites/sprite158.158.19.png",
+    "res://gfx/sprites/sprite158.158.20.png",
+    "res://gfx/sprites/sprite158.158.21.png",
+    "res://gfx/sprites/sprite158.158.22.png",
+    "res://gfx/sprites/sprite158.158.23.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1942,7 +1942,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_21.159.0.png"
+    "res://gfx/sprites/s_bullet_21.159.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1961,20 +1961,20 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite160.160.0.png",
-    "res://images/sprites/sprite160.160.1.png",
-    "res://images/sprites/sprite160.160.2.png",
-    "res://images/sprites/sprite160.160.3.png",
-    "res://images/sprites/sprite160.160.4.png",
-    "res://images/sprites/sprite160.160.5.png",
-    "res://images/sprites/sprite160.160.6.png",
-    "res://images/sprites/sprite160.160.7.png",
-    "res://images/sprites/sprite160.160.8.png",
-    "res://images/sprites/sprite160.160.9.png",
-    "res://images/sprites/sprite160.160.10.png",
-    "res://images/sprites/sprite160.160.11.png",
-    "res://images/sprites/sprite160.160.12.png",
-    "res://images/sprites/sprite160.160.13.png"
+    "res://gfx/sprites/sprite160.160.0.png",
+    "res://gfx/sprites/sprite160.160.1.png",
+    "res://gfx/sprites/sprite160.160.2.png",
+    "res://gfx/sprites/sprite160.160.3.png",
+    "res://gfx/sprites/sprite160.160.4.png",
+    "res://gfx/sprites/sprite160.160.5.png",
+    "res://gfx/sprites/sprite160.160.6.png",
+    "res://gfx/sprites/sprite160.160.7.png",
+    "res://gfx/sprites/sprite160.160.8.png",
+    "res://gfx/sprites/sprite160.160.9.png",
+    "res://gfx/sprites/sprite160.160.10.png",
+    "res://gfx/sprites/sprite160.160.11.png",
+    "res://gfx/sprites/sprite160.160.12.png",
+    "res://gfx/sprites/sprite160.160.13.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -1993,22 +1993,22 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite161.161.0.png",
-    "res://images/sprites/sprite161.161.1.png",
-    "res://images/sprites/sprite161.161.2.png",
-    "res://images/sprites/sprite161.161.3.png",
-    "res://images/sprites/sprite161.161.4.png",
-    "res://images/sprites/sprite161.161.5.png",
-    "res://images/sprites/sprite161.161.6.png",
-    "res://images/sprites/sprite161.161.7.png",
-    "res://images/sprites/sprite161.161.8.png",
-    "res://images/sprites/sprite161.161.9.png",
-    "res://images/sprites/sprite161.161.10.png",
-    "res://images/sprites/sprite161.161.11.png",
-    "res://images/sprites/sprite161.161.12.png",
-    "res://images/sprites/sprite161.161.13.png",
-    "res://images/sprites/sprite161.161.14.png",
-    "res://images/sprites/sprite161.161.15.png"
+    "res://gfx/sprites/sprite161.161.0.png",
+    "res://gfx/sprites/sprite161.161.1.png",
+    "res://gfx/sprites/sprite161.161.2.png",
+    "res://gfx/sprites/sprite161.161.3.png",
+    "res://gfx/sprites/sprite161.161.4.png",
+    "res://gfx/sprites/sprite161.161.5.png",
+    "res://gfx/sprites/sprite161.161.6.png",
+    "res://gfx/sprites/sprite161.161.7.png",
+    "res://gfx/sprites/sprite161.161.8.png",
+    "res://gfx/sprites/sprite161.161.9.png",
+    "res://gfx/sprites/sprite161.161.10.png",
+    "res://gfx/sprites/sprite161.161.11.png",
+    "res://gfx/sprites/sprite161.161.12.png",
+    "res://gfx/sprites/sprite161.161.13.png",
+    "res://gfx/sprites/sprite161.161.14.png",
+    "res://gfx/sprites/sprite161.161.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2027,20 +2027,20 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite162.162.0.png",
-    "res://images/sprites/sprite162.162.1.png",
-    "res://images/sprites/sprite162.162.2.png",
-    "res://images/sprites/sprite162.162.3.png",
-    "res://images/sprites/sprite162.162.4.png",
-    "res://images/sprites/sprite162.162.5.png",
-    "res://images/sprites/sprite162.162.6.png",
-    "res://images/sprites/sprite162.162.7.png",
-    "res://images/sprites/sprite162.162.8.png",
-    "res://images/sprites/sprite162.162.9.png",
-    "res://images/sprites/sprite162.162.10.png",
-    "res://images/sprites/sprite162.162.11.png",
-    "res://images/sprites/sprite162.162.12.png",
-    "res://images/sprites/sprite162.162.13.png"
+    "res://gfx/sprites/sprite162.162.0.png",
+    "res://gfx/sprites/sprite162.162.1.png",
+    "res://gfx/sprites/sprite162.162.2.png",
+    "res://gfx/sprites/sprite162.162.3.png",
+    "res://gfx/sprites/sprite162.162.4.png",
+    "res://gfx/sprites/sprite162.162.5.png",
+    "res://gfx/sprites/sprite162.162.6.png",
+    "res://gfx/sprites/sprite162.162.7.png",
+    "res://gfx/sprites/sprite162.162.8.png",
+    "res://gfx/sprites/sprite162.162.9.png",
+    "res://gfx/sprites/sprite162.162.10.png",
+    "res://gfx/sprites/sprite162.162.11.png",
+    "res://gfx/sprites/sprite162.162.12.png",
+    "res://gfx/sprites/sprite162.162.13.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2059,7 +2059,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_22.163.0.png"
+    "res://gfx/sprites/s_bullet_22.163.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2078,18 +2078,18 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite164.164.0.png",
-    "res://images/sprites/sprite164.164.1.png",
-    "res://images/sprites/sprite164.164.2.png",
-    "res://images/sprites/sprite164.164.3.png",
-    "res://images/sprites/sprite164.164.4.png",
-    "res://images/sprites/sprite164.164.5.png",
-    "res://images/sprites/sprite164.164.6.png",
-    "res://images/sprites/sprite164.164.7.png",
-    "res://images/sprites/sprite164.164.8.png",
-    "res://images/sprites/sprite164.164.9.png",
-    "res://images/sprites/sprite164.164.10.png",
-    "res://images/sprites/sprite164.164.11.png"
+    "res://gfx/sprites/sprite164.164.0.png",
+    "res://gfx/sprites/sprite164.164.1.png",
+    "res://gfx/sprites/sprite164.164.2.png",
+    "res://gfx/sprites/sprite164.164.3.png",
+    "res://gfx/sprites/sprite164.164.4.png",
+    "res://gfx/sprites/sprite164.164.5.png",
+    "res://gfx/sprites/sprite164.164.6.png",
+    "res://gfx/sprites/sprite164.164.7.png",
+    "res://gfx/sprites/sprite164.164.8.png",
+    "res://gfx/sprites/sprite164.164.9.png",
+    "res://gfx/sprites/sprite164.164.10.png",
+    "res://gfx/sprites/sprite164.164.11.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2108,28 +2108,28 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite165.165.0.png",
-    "res://images/sprites/sprite165.165.1.png",
-    "res://images/sprites/sprite165.165.2.png",
-    "res://images/sprites/sprite165.165.3.png",
-    "res://images/sprites/sprite165.165.4.png",
-    "res://images/sprites/sprite165.165.5.png",
-    "res://images/sprites/sprite165.165.6.png",
-    "res://images/sprites/sprite165.165.7.png",
-    "res://images/sprites/sprite165.165.8.png",
-    "res://images/sprites/sprite165.165.9.png",
-    "res://images/sprites/sprite165.165.10.png",
-    "res://images/sprites/sprite165.165.11.png",
-    "res://images/sprites/sprite165.165.12.png",
-    "res://images/sprites/sprite165.165.13.png",
-    "res://images/sprites/sprite165.165.14.png",
-    "res://images/sprites/sprite165.165.15.png",
-    "res://images/sprites/sprite165.165.16.png",
-    "res://images/sprites/sprite165.165.17.png",
-    "res://images/sprites/sprite165.165.18.png",
-    "res://images/sprites/sprite165.165.19.png",
-    "res://images/sprites/sprite165.165.20.png",
-    "res://images/sprites/sprite165.165.21.png"
+    "res://gfx/sprites/sprite165.165.0.png",
+    "res://gfx/sprites/sprite165.165.1.png",
+    "res://gfx/sprites/sprite165.165.2.png",
+    "res://gfx/sprites/sprite165.165.3.png",
+    "res://gfx/sprites/sprite165.165.4.png",
+    "res://gfx/sprites/sprite165.165.5.png",
+    "res://gfx/sprites/sprite165.165.6.png",
+    "res://gfx/sprites/sprite165.165.7.png",
+    "res://gfx/sprites/sprite165.165.8.png",
+    "res://gfx/sprites/sprite165.165.9.png",
+    "res://gfx/sprites/sprite165.165.10.png",
+    "res://gfx/sprites/sprite165.165.11.png",
+    "res://gfx/sprites/sprite165.165.12.png",
+    "res://gfx/sprites/sprite165.165.13.png",
+    "res://gfx/sprites/sprite165.165.14.png",
+    "res://gfx/sprites/sprite165.165.15.png",
+    "res://gfx/sprites/sprite165.165.16.png",
+    "res://gfx/sprites/sprite165.165.17.png",
+    "res://gfx/sprites/sprite165.165.18.png",
+    "res://gfx/sprites/sprite165.165.19.png",
+    "res://gfx/sprites/sprite165.165.20.png",
+    "res://gfx/sprites/sprite165.165.21.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2148,7 +2148,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_superfireball.166.0.png"
+    "res://gfx/sprites/s_superfireball.166.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2167,7 +2167,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite167.167.0.png"
+    "res://gfx/sprites/sprite167.167.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2186,8 +2186,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite168.168.0.png",
-    "res://images/sprites/sprite168.168.1.png"
+    "res://gfx/sprites/sprite168.168.0.png",
+    "res://gfx/sprites/sprite168.168.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2206,34 +2206,34 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite169.169.0.png",
-    "res://images/sprites/sprite169.169.1.png",
-    "res://images/sprites/sprite169.169.2.png",
-    "res://images/sprites/sprite169.169.3.png",
-    "res://images/sprites/sprite169.169.4.png",
-    "res://images/sprites/sprite169.169.5.png",
-    "res://images/sprites/sprite169.169.6.png",
-    "res://images/sprites/sprite169.169.7.png",
-    "res://images/sprites/sprite169.169.8.png",
-    "res://images/sprites/sprite169.169.9.png",
-    "res://images/sprites/sprite169.169.10.png",
-    "res://images/sprites/sprite169.169.11.png",
-    "res://images/sprites/sprite169.169.12.png",
-    "res://images/sprites/sprite169.169.13.png",
-    "res://images/sprites/sprite169.169.14.png",
-    "res://images/sprites/sprite169.169.15.png",
-    "res://images/sprites/sprite169.169.16.png",
-    "res://images/sprites/sprite169.169.17.png",
-    "res://images/sprites/sprite169.169.18.png",
-    "res://images/sprites/sprite169.169.19.png",
-    "res://images/sprites/sprite169.169.20.png",
-    "res://images/sprites/sprite169.169.21.png",
-    "res://images/sprites/sprite169.169.22.png",
-    "res://images/sprites/sprite169.169.23.png",
-    "res://images/sprites/sprite169.169.24.png",
-    "res://images/sprites/sprite169.169.25.png",
-    "res://images/sprites/sprite169.169.26.png",
-    "res://images/sprites/sprite169.169.27.png"
+    "res://gfx/sprites/sprite169.169.0.png",
+    "res://gfx/sprites/sprite169.169.1.png",
+    "res://gfx/sprites/sprite169.169.2.png",
+    "res://gfx/sprites/sprite169.169.3.png",
+    "res://gfx/sprites/sprite169.169.4.png",
+    "res://gfx/sprites/sprite169.169.5.png",
+    "res://gfx/sprites/sprite169.169.6.png",
+    "res://gfx/sprites/sprite169.169.7.png",
+    "res://gfx/sprites/sprite169.169.8.png",
+    "res://gfx/sprites/sprite169.169.9.png",
+    "res://gfx/sprites/sprite169.169.10.png",
+    "res://gfx/sprites/sprite169.169.11.png",
+    "res://gfx/sprites/sprite169.169.12.png",
+    "res://gfx/sprites/sprite169.169.13.png",
+    "res://gfx/sprites/sprite169.169.14.png",
+    "res://gfx/sprites/sprite169.169.15.png",
+    "res://gfx/sprites/sprite169.169.16.png",
+    "res://gfx/sprites/sprite169.169.17.png",
+    "res://gfx/sprites/sprite169.169.18.png",
+    "res://gfx/sprites/sprite169.169.19.png",
+    "res://gfx/sprites/sprite169.169.20.png",
+    "res://gfx/sprites/sprite169.169.21.png",
+    "res://gfx/sprites/sprite169.169.22.png",
+    "res://gfx/sprites/sprite169.169.23.png",
+    "res://gfx/sprites/sprite169.169.24.png",
+    "res://gfx/sprites/sprite169.169.25.png",
+    "res://gfx/sprites/sprite169.169.26.png",
+    "res://gfx/sprites/sprite169.169.27.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2252,8 +2252,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite170.171.0.png",
-    "res://images/sprites/sprite170.171.1.png"
+    "res://gfx/sprites/sprite170.171.0.png",
+    "res://gfx/sprites/sprite170.171.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2272,7 +2272,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_lakitushot.172.0.png"
+    "res://gfx/sprites/s_lakitushot.172.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2291,9 +2291,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_ufo_a.174.0.png",
-    "res://images/sprites/s_ufo_a.174.1.png",
-    "res://images/sprites/s_ufo_a.174.2.png"
+    "res://gfx/sprites/s_ufo_a.174.0.png",
+    "res://gfx/sprites/s_ufo_a.174.1.png",
+    "res://gfx/sprites/s_ufo_a.174.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2312,9 +2312,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_ufo_a_crack.175.0.png",
-    "res://images/sprites/s_ufo_a_crack.175.1.png",
-    "res://images/sprites/s_ufo_a_crack.175.2.png"
+    "res://gfx/sprites/s_ufo_a_crack.175.0.png",
+    "res://gfx/sprites/s_ufo_a_crack.175.1.png",
+    "res://gfx/sprites/s_ufo_a_crack.175.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2333,7 +2333,7 @@
     2
    ],
    "frames": [
-    "res://images/sprites/s_ufo_b_crack.176.0.png"
+    "res://gfx/sprites/s_ufo_b_crack.176.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2352,7 +2352,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_enemy_u_crack.177.0.png"
+    "res://gfx/sprites/s_enemy_u_crack.177.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2371,7 +2371,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite178.178.0.png"
+    "res://gfx/sprites/sprite178.178.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2390,7 +2390,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite179.179.0.png"
+    "res://gfx/sprites/sprite179.179.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2409,7 +2409,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite180.180.0.png"
+    "res://gfx/sprites/sprite180.180.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2428,7 +2428,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite181.181.0.png"
+    "res://gfx/sprites/sprite181.181.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2447,9 +2447,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite182.182.0.png",
-    "res://images/sprites/sprite182.182.1.png",
-    "res://images/sprites/sprite182.182.2.png"
+    "res://gfx/sprites/sprite182.182.0.png",
+    "res://gfx/sprites/sprite182.182.1.png",
+    "res://gfx/sprites/sprite182.182.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2468,9 +2468,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite183.183.0.png",
-    "res://images/sprites/sprite183.183.1.png",
-    "res://images/sprites/sprite183.183.2.png"
+    "res://gfx/sprites/sprite183.183.0.png",
+    "res://gfx/sprites/sprite183.183.1.png",
+    "res://gfx/sprites/sprite183.183.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2489,7 +2489,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite184.184.0.png"
+    "res://gfx/sprites/sprite184.184.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2508,7 +2508,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite185.185.0.png"
+    "res://gfx/sprites/sprite185.185.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2527,7 +2527,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite186.186.0.png"
+    "res://gfx/sprites/sprite186.186.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2546,7 +2546,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite187.187.0.png"
+    "res://gfx/sprites/sprite187.187.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2565,7 +2565,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite188.188.0.png"
+    "res://gfx/sprites/sprite188.188.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2584,7 +2584,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite189.189.0.png"
+    "res://gfx/sprites/sprite189.189.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2603,7 +2603,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite190.190.0.png"
+    "res://gfx/sprites/sprite190.190.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2622,7 +2622,7 @@
     25
    ],
    "frames": [
-    "res://images/sprites/sprite191.191.0.png"
+    "res://gfx/sprites/sprite191.191.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2641,7 +2641,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite192.192.0.png"
+    "res://gfx/sprites/sprite192.192.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2660,7 +2660,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite193.193.0.png"
+    "res://gfx/sprites/sprite193.193.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2679,7 +2679,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite194.194.0.png"
+    "res://gfx/sprites/sprite194.194.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2698,7 +2698,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite195.195.0.png"
+    "res://gfx/sprites/sprite195.195.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2717,7 +2717,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite196.196.0.png"
+    "res://gfx/sprites/sprite196.196.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2736,7 +2736,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite197.197.0.png"
+    "res://gfx/sprites/sprite197.197.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2755,7 +2755,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite198.198.0.png"
+    "res://gfx/sprites/sprite198.198.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2774,7 +2774,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite199.199.0.png"
+    "res://gfx/sprites/sprite199.199.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2793,64 +2793,64 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite200.200.0.png",
-    "res://images/sprites/sprite200.200.1.png",
-    "res://images/sprites/sprite200.200.2.png",
-    "res://images/sprites/sprite200.200.3.png",
-    "res://images/sprites/sprite200.200.4.png",
-    "res://images/sprites/sprite200.200.5.png",
-    "res://images/sprites/sprite200.200.6.png",
-    "res://images/sprites/sprite200.200.7.png",
-    "res://images/sprites/sprite200.200.8.png",
-    "res://images/sprites/sprite200.200.9.png",
-    "res://images/sprites/sprite200.200.10.png",
-    "res://images/sprites/sprite200.200.11.png",
-    "res://images/sprites/sprite200.200.12.png",
-    "res://images/sprites/sprite200.200.13.png",
-    "res://images/sprites/sprite200.200.14.png",
-    "res://images/sprites/sprite200.200.15.png",
-    "res://images/sprites/sprite200.200.16.png",
-    "res://images/sprites/sprite200.200.17.png",
-    "res://images/sprites/sprite200.200.18.png",
-    "res://images/sprites/sprite200.200.19.png",
-    "res://images/sprites/sprite200.200.20.png",
-    "res://images/sprites/sprite200.200.21.png",
-    "res://images/sprites/sprite200.200.22.png",
-    "res://images/sprites/sprite200.200.23.png",
-    "res://images/sprites/sprite200.200.24.png",
-    "res://images/sprites/sprite200.200.25.png",
-    "res://images/sprites/sprite200.200.26.png",
-    "res://images/sprites/sprite200.200.27.png",
-    "res://images/sprites/sprite200.200.28.png",
-    "res://images/sprites/sprite200.200.29.png",
-    "res://images/sprites/sprite200.200.30.png",
-    "res://images/sprites/sprite200.200.31.png",
-    "res://images/sprites/sprite200.200.32.png",
-    "res://images/sprites/sprite200.200.33.png",
-    "res://images/sprites/sprite200.200.34.png",
-    "res://images/sprites/sprite200.200.35.png",
-    "res://images/sprites/sprite200.200.36.png",
-    "res://images/sprites/sprite200.200.37.png",
-    "res://images/sprites/sprite200.200.38.png",
-    "res://images/sprites/sprite200.200.39.png",
-    "res://images/sprites/sprite200.200.40.png",
-    "res://images/sprites/sprite200.200.41.png",
-    "res://images/sprites/sprite200.200.42.png",
-    "res://images/sprites/sprite200.200.43.png",
-    "res://images/sprites/sprite200.200.44.png",
-    "res://images/sprites/sprite200.200.45.png",
-    "res://images/sprites/sprite200.200.46.png",
-    "res://images/sprites/sprite200.200.47.png",
-    "res://images/sprites/sprite200.200.48.png",
-    "res://images/sprites/sprite200.200.49.png",
-    "res://images/sprites/sprite200.200.50.png",
-    "res://images/sprites/sprite200.200.51.png",
-    "res://images/sprites/sprite200.200.52.png",
-    "res://images/sprites/sprite200.200.53.png",
-    "res://images/sprites/sprite200.200.54.png",
-    "res://images/sprites/sprite200.200.55.png",
-    "res://images/sprites/sprite200.200.56.png",
-    "res://images/sprites/sprite200.200.57.png"
+    "res://gfx/sprites/sprite200.200.0.png",
+    "res://gfx/sprites/sprite200.200.1.png",
+    "res://gfx/sprites/sprite200.200.2.png",
+    "res://gfx/sprites/sprite200.200.3.png",
+    "res://gfx/sprites/sprite200.200.4.png",
+    "res://gfx/sprites/sprite200.200.5.png",
+    "res://gfx/sprites/sprite200.200.6.png",
+    "res://gfx/sprites/sprite200.200.7.png",
+    "res://gfx/sprites/sprite200.200.8.png",
+    "res://gfx/sprites/sprite200.200.9.png",
+    "res://gfx/sprites/sprite200.200.10.png",
+    "res://gfx/sprites/sprite200.200.11.png",
+    "res://gfx/sprites/sprite200.200.12.png",
+    "res://gfx/sprites/sprite200.200.13.png",
+    "res://gfx/sprites/sprite200.200.14.png",
+    "res://gfx/sprites/sprite200.200.15.png",
+    "res://gfx/sprites/sprite200.200.16.png",
+    "res://gfx/sprites/sprite200.200.17.png",
+    "res://gfx/sprites/sprite200.200.18.png",
+    "res://gfx/sprites/sprite200.200.19.png",
+    "res://gfx/sprites/sprite200.200.20.png",
+    "res://gfx/sprites/sprite200.200.21.png",
+    "res://gfx/sprites/sprite200.200.22.png",
+    "res://gfx/sprites/sprite200.200.23.png",
+    "res://gfx/sprites/sprite200.200.24.png",
+    "res://gfx/sprites/sprite200.200.25.png",
+    "res://gfx/sprites/sprite200.200.26.png",
+    "res://gfx/sprites/sprite200.200.27.png",
+    "res://gfx/sprites/sprite200.200.28.png",
+    "res://gfx/sprites/sprite200.200.29.png",
+    "res://gfx/sprites/sprite200.200.30.png",
+    "res://gfx/sprites/sprite200.200.31.png",
+    "res://gfx/sprites/sprite200.200.32.png",
+    "res://gfx/sprites/sprite200.200.33.png",
+    "res://gfx/sprites/sprite200.200.34.png",
+    "res://gfx/sprites/sprite200.200.35.png",
+    "res://gfx/sprites/sprite200.200.36.png",
+    "res://gfx/sprites/sprite200.200.37.png",
+    "res://gfx/sprites/sprite200.200.38.png",
+    "res://gfx/sprites/sprite200.200.39.png",
+    "res://gfx/sprites/sprite200.200.40.png",
+    "res://gfx/sprites/sprite200.200.41.png",
+    "res://gfx/sprites/sprite200.200.42.png",
+    "res://gfx/sprites/sprite200.200.43.png",
+    "res://gfx/sprites/sprite200.200.44.png",
+    "res://gfx/sprites/sprite200.200.45.png",
+    "res://gfx/sprites/sprite200.200.46.png",
+    "res://gfx/sprites/sprite200.200.47.png",
+    "res://gfx/sprites/sprite200.200.48.png",
+    "res://gfx/sprites/sprite200.200.49.png",
+    "res://gfx/sprites/sprite200.200.50.png",
+    "res://gfx/sprites/sprite200.200.51.png",
+    "res://gfx/sprites/sprite200.200.52.png",
+    "res://gfx/sprites/sprite200.200.53.png",
+    "res://gfx/sprites/sprite200.200.54.png",
+    "res://gfx/sprites/sprite200.200.55.png",
+    "res://gfx/sprites/sprite200.200.56.png",
+    "res://gfx/sprites/sprite200.200.57.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2869,8 +2869,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite201.201.0.png",
-    "res://images/sprites/sprite201.201.1.png"
+    "res://gfx/sprites/sprite201.201.0.png",
+    "res://gfx/sprites/sprite201.201.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2889,7 +2889,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_1c.204.0.png"
+    "res://gfx/sprites/s_bullet_1c.204.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2908,7 +2908,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_100.205.0.png"
+    "res://gfx/sprites/s_bullet_100.205.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2927,10 +2927,10 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_flash_2.206.0.png",
-    "res://images/sprites/s_flash_2.206.1.png",
-    "res://images/sprites/s_flash_2.206.2.png",
-    "res://images/sprites/s_flash_2.206.3.png"
+    "res://gfx/sprites/s_flash_2.206.0.png",
+    "res://gfx/sprites/s_flash_2.206.1.png",
+    "res://gfx/sprites/s_flash_2.206.2.png",
+    "res://gfx/sprites/s_flash_2.206.3.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2949,7 +2949,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun.207.0.png"
+    "res://gfx/sprites/s_bullet_minigun.207.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2968,7 +2968,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite208.208.0.png"
+    "res://gfx/sprites/sprite208.208.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -2987,7 +2987,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite209.209.0.png"
+    "res://gfx/sprites/sprite209.209.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3006,7 +3006,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite210.210.0.png"
+    "res://gfx/sprites/sprite210.210.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3025,7 +3025,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite211.211.0.png"
+    "res://gfx/sprites/sprite211.211.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3044,7 +3044,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun2.213.0.png"
+    "res://gfx/sprites/s_bullet_minigun2.213.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3063,7 +3063,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_1b2.214.0.png"
+    "res://gfx/sprites/s_bullet_1b2.214.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3082,7 +3082,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun3.215.0.png"
+    "res://gfx/sprites/s_bullet_minigun3.215.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3101,7 +3101,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun4.216.0.png"
+    "res://gfx/sprites/s_bullet_minigun4.216.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3120,7 +3120,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun5.217.0.png"
+    "res://gfx/sprites/s_bullet_minigun5.217.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3139,7 +3139,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun6.218.0.png"
+    "res://gfx/sprites/s_bullet_minigun6.218.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3158,7 +3158,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun7.219.0.png"
+    "res://gfx/sprites/s_bullet_minigun7.219.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3177,7 +3177,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minigun8.220.0.png"
+    "res://gfx/sprites/s_bullet_minigun8.220.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3196,7 +3196,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/sprite221.221.0.png"
+    "res://gfx/sprites/sprite221.221.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3215,7 +3215,7 @@
     18
    ],
    "frames": [
-    "res://images/sprites/sprite222.222.0.png"
+    "res://gfx/sprites/sprite222.222.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3234,7 +3234,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_effector_01.228.0.png"
+    "res://gfx/sprites/s_effector_01.228.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3253,7 +3253,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_coin.229.0.png"
+    "res://gfx/sprites/s_bonus_coin.229.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3272,7 +3272,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_coin2.230.0.png"
+    "res://gfx/sprites/s_bonus_coin2.230.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3291,7 +3291,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_diamond.231.0.png"
+    "res://gfx/sprites/s_bonus_diamond.231.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3310,7 +3310,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_diamond2.232.0.png"
+    "res://gfx/sprites/s_bonus_diamond2.232.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3329,7 +3329,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_diamond3.233.0.png"
+    "res://gfx/sprites/s_bonus_diamond3.233.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3348,7 +3348,7 @@
     46
    ],
    "frames": [
-    "res://images/sprites/s_special_magma.234.0.png"
+    "res://gfx/sprites/s_special_magma.234.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3367,7 +3367,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_special_load.235.0.png"
+    "res://gfx/sprites/s_special_load.235.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3386,7 +3386,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_special_kaboom.236.0.png"
+    "res://gfx/sprites/s_special_kaboom.236.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3405,7 +3405,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_special_regen.237.0.png"
+    "res://gfx/sprites/s_special_regen.237.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3424,26 +3424,26 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_specials.239.0.png",
-    "res://images/sprites/s_specials.239.1.png",
-    "res://images/sprites/s_specials.239.2.png",
-    "res://images/sprites/s_specials.239.3.png",
-    "res://images/sprites/s_specials.239.4.png",
-    "res://images/sprites/s_specials.239.5.png",
-    "res://images/sprites/s_specials.239.6.png",
-    "res://images/sprites/s_specials.239.7.png",
-    "res://images/sprites/s_specials.239.8.png",
-    "res://images/sprites/s_specials.239.9.png",
-    "res://images/sprites/s_specials.239.10.png",
-    "res://images/sprites/s_specials.239.11.png",
-    "res://images/sprites/s_specials.239.12.png",
-    "res://images/sprites/s_specials.239.13.png",
-    "res://images/sprites/s_specials.239.14.png",
-    "res://images/sprites/s_specials.239.15.png",
-    "res://images/sprites/s_specials.239.16.png",
-    "res://images/sprites/s_specials.239.17.png",
-    "res://images/sprites/s_specials.239.18.png",
-    "res://images/sprites/s_specials.239.19.png"
+    "res://gfx/sprites/s_specials.239.0.png",
+    "res://gfx/sprites/s_specials.239.1.png",
+    "res://gfx/sprites/s_specials.239.2.png",
+    "res://gfx/sprites/s_specials.239.3.png",
+    "res://gfx/sprites/s_specials.239.4.png",
+    "res://gfx/sprites/s_specials.239.5.png",
+    "res://gfx/sprites/s_specials.239.6.png",
+    "res://gfx/sprites/s_specials.239.7.png",
+    "res://gfx/sprites/s_specials.239.8.png",
+    "res://gfx/sprites/s_specials.239.9.png",
+    "res://gfx/sprites/s_specials.239.10.png",
+    "res://gfx/sprites/s_specials.239.11.png",
+    "res://gfx/sprites/s_specials.239.12.png",
+    "res://gfx/sprites/s_specials.239.13.png",
+    "res://gfx/sprites/s_specials.239.14.png",
+    "res://gfx/sprites/s_specials.239.15.png",
+    "res://gfx/sprites/s_specials.239.16.png",
+    "res://gfx/sprites/s_specials.239.17.png",
+    "res://gfx/sprites/s_specials.239.18.png",
+    "res://gfx/sprites/s_specials.239.19.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3462,7 +3462,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_additionalpanel.240.0.png"
+    "res://gfx/sprites/s_additionalpanel.240.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3481,7 +3481,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_additionalpanelmask.241.0.png"
+    "res://gfx/sprites/s_additionalpanelmask.241.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3500,7 +3500,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonuschest.243.0.png"
+    "res://gfx/sprites/s_bonuschest.243.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3519,7 +3519,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonuschestmask.244.0.png"
+    "res://gfx/sprites/s_bonuschestmask.244.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3538,7 +3538,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonuschest2.245.0.png"
+    "res://gfx/sprites/s_bonuschest2.245.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3557,7 +3557,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_resoultefekt.246.0.png"
+    "res://gfx/sprites/s_resoultefekt.246.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3576,7 +3576,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_levelor.247.0.png"
+    "res://gfx/sprites/s_map_levelor.247.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3595,7 +3595,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_levelormask.248.0.png"
+    "res://gfx/sprites/s_map_levelormask.248.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3614,7 +3614,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_adder.249.0.png"
+    "res://gfx/sprites/s_map_adder.249.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3633,7 +3633,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_linker.250.0.png"
+    "res://gfx/sprites/s_map_linker.250.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3652,7 +3652,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_01.251.0.png"
+    "res://gfx/sprites/s_map_galactic_01.251.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3671,8 +3671,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_02.252.0.png",
-    "res://images/sprites/s_map_galactic_02.252.1.png"
+    "res://gfx/sprites/s_map_galactic_02.252.0.png",
+    "res://gfx/sprites/s_map_galactic_02.252.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3691,7 +3691,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_03.253.0.png"
+    "res://gfx/sprites/s_map_galactic_03.253.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3710,7 +3710,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_back.254.0.png"
+    "res://gfx/sprites/s_map_back.254.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3729,7 +3729,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_04.255.0.png"
+    "res://gfx/sprites/s_map_galactic_04.255.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3748,7 +3748,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_05.256.0.png"
+    "res://gfx/sprites/s_map_galactic_05.256.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3767,7 +3767,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_06.258.0.png"
+    "res://gfx/sprites/s_map_galactic_06.258.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3786,7 +3786,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_07.259.0.png"
+    "res://gfx/sprites/s_map_galactic_07.259.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3805,7 +3805,7 @@
     11
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_08.261.0.png"
+    "res://gfx/sprites/s_map_galactic_08.261.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3824,7 +3824,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_09.262.0.png"
+    "res://gfx/sprites/s_map_galactic_09.262.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3843,7 +3843,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_marker.264.0.png"
+    "res://gfx/sprites/s_map_marker.264.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3862,7 +3862,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_punktor.265.0.png"
+    "res://gfx/sprites/s_map_punktor.265.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3881,7 +3881,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_ladowacz333.267.0.png"
+    "res://gfx/sprites/s_ladowacz333.267.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3900,7 +3900,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_trail.270.0.png"
+    "res://gfx/sprites/s_map_trail.270.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3919,7 +3919,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel.271.0.png"
+    "res://gfx/sprites/s_map_pannel.271.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3938,7 +3938,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_mask.272.0.png"
+    "res://gfx/sprites/s_map_pannel_mask.272.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3957,7 +3957,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_add.273.0.png"
+    "res://gfx/sprites/s_map_pannel_add.273.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3976,7 +3976,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_sub.274.0.png"
+    "res://gfx/sprites/s_map_pannel_sub.274.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -3995,7 +3995,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_cur.275.0.png"
+    "res://gfx/sprites/s_map_pannel_cur.275.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4014,7 +4014,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_cur_mask.276.0.png"
+    "res://gfx/sprites/s_map_pannel_cur_mask.276.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4033,7 +4033,7 @@
     4
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_cur2.277.0.png"
+    "res://gfx/sprites/s_map_pannel_cur2.277.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4052,7 +4052,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_dir.278.0.png"
+    "res://gfx/sprites/s_map_pannel_dir.278.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4071,7 +4071,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_pannel_dir2.279.0.png"
+    "res://gfx/sprites/s_map_pannel_dir2.279.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4090,7 +4090,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_levelor2.288.0.png"
+    "res://gfx/sprites/s_map_levelor2.288.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4109,7 +4109,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_engage.289.0.png"
+    "res://gfx/sprites/s_map_engage.289.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4128,7 +4128,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_testor.290.0.png"
+    "res://gfx/sprites/s_map_testor.290.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4147,7 +4147,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_ladowacz3.292.0.png"
+    "res://gfx/sprites/s_ladowacz3.292.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4166,20 +4166,20 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_1.293.0.png",
-    "res://images/sprites/s_castle_piece_1.293.1.png",
-    "res://images/sprites/s_castle_piece_1.293.2.png",
-    "res://images/sprites/s_castle_piece_1.293.3.png",
-    "res://images/sprites/s_castle_piece_1.293.4.png",
-    "res://images/sprites/s_castle_piece_1.293.5.png",
-    "res://images/sprites/s_castle_piece_1.293.6.png",
-    "res://images/sprites/s_castle_piece_1.293.7.png",
-    "res://images/sprites/s_castle_piece_1.293.8.png",
-    "res://images/sprites/s_castle_piece_1.293.9.png",
-    "res://images/sprites/s_castle_piece_1.293.10.png",
-    "res://images/sprites/s_castle_piece_1.293.11.png",
-    "res://images/sprites/s_castle_piece_1.293.12.png",
-    "res://images/sprites/s_castle_piece_1.293.13.png"
+    "res://gfx/sprites/s_castle_piece_1.293.0.png",
+    "res://gfx/sprites/s_castle_piece_1.293.1.png",
+    "res://gfx/sprites/s_castle_piece_1.293.2.png",
+    "res://gfx/sprites/s_castle_piece_1.293.3.png",
+    "res://gfx/sprites/s_castle_piece_1.293.4.png",
+    "res://gfx/sprites/s_castle_piece_1.293.5.png",
+    "res://gfx/sprites/s_castle_piece_1.293.6.png",
+    "res://gfx/sprites/s_castle_piece_1.293.7.png",
+    "res://gfx/sprites/s_castle_piece_1.293.8.png",
+    "res://gfx/sprites/s_castle_piece_1.293.9.png",
+    "res://gfx/sprites/s_castle_piece_1.293.10.png",
+    "res://gfx/sprites/s_castle_piece_1.293.11.png",
+    "res://gfx/sprites/s_castle_piece_1.293.12.png",
+    "res://gfx/sprites/s_castle_piece_1.293.13.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4198,7 +4198,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_2.294.0.png"
+    "res://gfx/sprites/s_castle_piece_2.294.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4217,7 +4217,7 @@
     4
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_3.295.0.png"
+    "res://gfx/sprites/s_castle_piece_3.295.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4236,7 +4236,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_roslinka.296.0.png"
+    "res://gfx/sprites/s_enemy_roslinka.296.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4255,8 +4255,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_roslinka2.297.0.png",
-    "res://images/sprites/s_enemy_roslinka2.297.1.png"
+    "res://gfx/sprites/s_enemy_roslinka2.297.0.png",
+    "res://gfx/sprites/s_enemy_roslinka2.297.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4275,7 +4275,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_roslinka3.298.0.png"
+    "res://gfx/sprites/s_enemy_roslinka3.298.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4294,7 +4294,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_roslinka4.299.0.png"
+    "res://gfx/sprites/s_enemy_roslinka4.299.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4313,7 +4313,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_blocker.300.0.png"
+    "res://gfx/sprites/s_blocker.300.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4332,7 +4332,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_castle_cannon.301.0.png"
+    "res://gfx/sprites/s_castle_cannon.301.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4351,7 +4351,7 @@
     16
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_4.302.0.png"
+    "res://gfx/sprites/s_castle_piece_4.302.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4370,7 +4370,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_kulka.303.0.png"
+    "res://gfx/sprites/s_bullet_kulka.303.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4389,7 +4389,7 @@
     18
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_5.304.0.png"
+    "res://gfx/sprites/s_castle_piece_5.304.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4408,7 +4408,7 @@
     35
    ],
    "frames": [
-    "res://images/sprites/s_player_mask.305.0.png"
+    "res://gfx/sprites/s_player_mask.305.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4427,7 +4427,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_6.306.0.png"
+    "res://gfx/sprites/s_castle_piece_6.306.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4446,7 +4446,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_7.307.0.png"
+    "res://gfx/sprites/s_castle_piece_7.307.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4465,7 +4465,7 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_8.308.0.png"
+    "res://gfx/sprites/s_castle_piece_8.308.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4484,7 +4484,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_9.310.0.png"
+    "res://gfx/sprites/s_castle_piece_9.310.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4503,7 +4503,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_wiatrak_mask.311.0.png"
+    "res://gfx/sprites/s_wiatrak_mask.311.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4522,7 +4522,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_wiatrak_center.312.0.png"
+    "res://gfx/sprites/s_wiatrak_center.312.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4541,7 +4541,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_castle_point.313.0.png"
+    "res://gfx/sprites/s_castle_point.313.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4560,7 +4560,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_castle_cegla.314.0.png"
+    "res://gfx/sprites/s_castle_cegla.314.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4579,7 +4579,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_title_efekt_3.315.0.png"
+    "res://gfx/sprites/s_title_efekt_3.315.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4598,7 +4598,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroidus.316.0.png"
+    "res://gfx/sprites/s_asteroidus.316.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4617,10 +4617,10 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_asteroidus2.317.0.png",
-    "res://images/sprites/s_asteroidus2.317.1.png",
-    "res://images/sprites/s_asteroidus2.317.2.png",
-    "res://images/sprites/s_asteroidus2.317.3.png"
+    "res://gfx/sprites/s_asteroidus2.317.0.png",
+    "res://gfx/sprites/s_asteroidus2.317.1.png",
+    "res://gfx/sprites/s_asteroidus2.317.2.png",
+    "res://gfx/sprites/s_asteroidus2.317.3.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4639,7 +4639,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_startup_1.318.0.png"
+    "res://gfx/sprites/s_startup_1.318.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4658,7 +4658,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_spikeyhead.319.0.png"
+    "res://gfx/sprites/s_spikeyhead.319.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4677,7 +4677,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_spikeymask.320.0.png"
+    "res://gfx/sprites/s_spikeymask.320.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4696,7 +4696,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_spikeychain.321.0.png"
+    "res://gfx/sprites/s_spikeychain.321.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4715,7 +4715,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_spikeygear.322.0.png"
+    "res://gfx/sprites/s_spikeygear.322.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4734,8 +4734,8 @@
     14
    ],
    "frames": [
-    "res://images/sprites/s_spikeyguy.323.0.png",
-    "res://images/sprites/s_spikeyguy.323.1.png"
+    "res://gfx/sprites/s_spikeyguy.323.0.png",
+    "res://gfx/sprites/s_spikeyguy.323.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4754,7 +4754,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_spikeyklosz.324.0.png"
+    "res://gfx/sprites/s_spikeyklosz.324.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4773,7 +4773,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_10.325.0.png"
+    "res://gfx/sprites/s_map_galactic_10.325.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4792,7 +4792,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_11.326.0.png"
+    "res://gfx/sprites/s_map_galactic_11.326.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4811,8 +4811,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_12.327.0.png",
-    "res://images/sprites/s_map_galactic_12.327.1.png"
+    "res://gfx/sprites/s_map_galactic_12.327.0.png",
+    "res://gfx/sprites/s_map_galactic_12.327.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4831,8 +4831,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_enemy_h_2.328.0.png",
-    "res://images/sprites/s_enemy_h_2.328.1.png"
+    "res://gfx/sprites/s_enemy_h_2.328.0.png",
+    "res://gfx/sprites/s_enemy_h_2.328.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4851,7 +4851,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_wirnik.329.0.png"
+    "res://gfx/sprites/s_wirnik.329.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4870,7 +4870,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_wirnik_2.330.0.png"
+    "res://gfx/sprites/s_wirnik_2.330.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4889,7 +4889,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_enemy_h_3.332.0.png"
+    "res://gfx/sprites/s_enemy_h_3.332.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4908,7 +4908,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_slow_motion_effect.333.0.png"
+    "res://gfx/sprites/s_slow_motion_effect.333.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4927,7 +4927,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_boss_ocznix.334.0.png"
+    "res://gfx/sprites/s_boss_ocznix.334.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4946,10 +4946,10 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_cards_set.335.0.png",
-    "res://images/sprites/s_cards_set.335.1.png",
-    "res://images/sprites/s_cards_set.335.2.png",
-    "res://images/sprites/s_cards_set.335.3.png"
+    "res://gfx/sprites/s_cards_set.335.0.png",
+    "res://gfx/sprites/s_cards_set.335.1.png",
+    "res://gfx/sprites/s_cards_set.335.2.png",
+    "res://gfx/sprites/s_cards_set.335.3.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4968,7 +4968,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_card_star.344.0.png"
+    "res://gfx/sprites/s_card_star.344.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -4987,7 +4987,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_card_cursor.345.0.png"
+    "res://gfx/sprites/s_card_cursor.345.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5006,8 +5006,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_13.346.0.png",
-    "res://images/sprites/s_map_galactic_13.346.1.png"
+    "res://gfx/sprites/s_map_galactic_13.346.0.png",
+    "res://gfx/sprites/s_map_galactic_13.346.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5026,9 +5026,9 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_14.347.0.png",
-    "res://images/sprites/s_map_galactic_14.347.1.png",
-    "res://images/sprites/s_map_galactic_14.347.2.png"
+    "res://gfx/sprites/s_map_galactic_14.347.0.png",
+    "res://gfx/sprites/s_map_galactic_14.347.1.png",
+    "res://gfx/sprites/s_map_galactic_14.347.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5047,8 +5047,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_galactic_15.348.0.png",
-    "res://images/sprites/s_map_galactic_15.348.1.png"
+    "res://gfx/sprites/s_map_galactic_15.348.0.png",
+    "res://gfx/sprites/s_map_galactic_15.348.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5067,15 +5067,15 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_dummy.349.0.png",
-    "res://images/sprites/s_dummy.349.1.png",
-    "res://images/sprites/s_dummy.349.2.png",
-    "res://images/sprites/s_dummy.349.3.png",
-    "res://images/sprites/s_dummy.349.4.png",
-    "res://images/sprites/s_dummy.349.5.png",
-    "res://images/sprites/s_dummy.349.6.png",
-    "res://images/sprites/s_dummy.349.7.png",
-    "res://images/sprites/s_dummy.349.8.png"
+    "res://gfx/sprites/s_dummy.349.0.png",
+    "res://gfx/sprites/s_dummy.349.1.png",
+    "res://gfx/sprites/s_dummy.349.2.png",
+    "res://gfx/sprites/s_dummy.349.3.png",
+    "res://gfx/sprites/s_dummy.349.4.png",
+    "res://gfx/sprites/s_dummy.349.5.png",
+    "res://gfx/sprites/s_dummy.349.6.png",
+    "res://gfx/sprites/s_dummy.349.7.png",
+    "res://gfx/sprites/s_dummy.349.8.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5094,16 +5094,16 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_dummy_fontmask.350.0.png",
-    "res://images/sprites/s_dummy_fontmask.350.1.png",
-    "res://images/sprites/s_dummy_fontmask.350.2.png",
-    "res://images/sprites/s_dummy_fontmask.350.3.png",
-    "res://images/sprites/s_dummy_fontmask.350.4.png",
-    "res://images/sprites/s_dummy_fontmask.350.5.png",
-    "res://images/sprites/s_dummy_fontmask.350.6.png",
-    "res://images/sprites/s_dummy_fontmask.350.7.png",
-    "res://images/sprites/s_dummy_fontmask.350.8.png",
-    "res://images/sprites/s_dummy_fontmask.350.9.png"
+    "res://gfx/sprites/s_dummy_fontmask.350.0.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.1.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.2.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.3.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.4.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.5.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.6.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.7.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.8.png",
+    "res://gfx/sprites/s_dummy_fontmask.350.9.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5122,16 +5122,16 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_dummy_font.351.0.png",
-    "res://images/sprites/s_dummy_font.351.1.png",
-    "res://images/sprites/s_dummy_font.351.2.png",
-    "res://images/sprites/s_dummy_font.351.3.png",
-    "res://images/sprites/s_dummy_font.351.4.png",
-    "res://images/sprites/s_dummy_font.351.5.png",
-    "res://images/sprites/s_dummy_font.351.6.png",
-    "res://images/sprites/s_dummy_font.351.7.png",
-    "res://images/sprites/s_dummy_font.351.8.png",
-    "res://images/sprites/s_dummy_font.351.9.png"
+    "res://gfx/sprites/s_dummy_font.351.0.png",
+    "res://gfx/sprites/s_dummy_font.351.1.png",
+    "res://gfx/sprites/s_dummy_font.351.2.png",
+    "res://gfx/sprites/s_dummy_font.351.3.png",
+    "res://gfx/sprites/s_dummy_font.351.4.png",
+    "res://gfx/sprites/s_dummy_font.351.5.png",
+    "res://gfx/sprites/s_dummy_font.351.6.png",
+    "res://gfx/sprites/s_dummy_font.351.7.png",
+    "res://gfx/sprites/s_dummy_font.351.8.png",
+    "res://gfx/sprites/s_dummy_font.351.9.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5150,7 +5150,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_player_mapper.352.0.png"
+    "res://gfx/sprites/s_player_mapper.352.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5169,7 +5169,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_mini.406.0.png"
+    "res://gfx/sprites/s_bullet_mini.406.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5188,7 +5188,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bullet_minimask.407.0.png"
+    "res://gfx/sprites/s_bullet_minimask.407.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5207,7 +5207,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_frost.408.0.png"
+    "res://gfx/sprites/s_bullet_frost.408.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5226,9 +5226,9 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_massive_minigun.409.0.png",
-    "res://images/sprites/s_massive_minigun.409.1.png",
-    "res://images/sprites/s_massive_minigun.409.2.png"
+    "res://gfx/sprites/s_massive_minigun.409.0.png",
+    "res://gfx/sprites/s_massive_minigun.409.1.png",
+    "res://gfx/sprites/s_massive_minigun.409.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5247,7 +5247,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bullet_100plus.410.0.png"
+    "res://gfx/sprites/s_bullet_100plus.410.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5266,7 +5266,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_heavylaser.411.0.png"
+    "res://gfx/sprites/s_heavylaser.411.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5285,7 +5285,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_heavylaser2.412.0.png"
+    "res://gfx/sprites/s_heavylaser2.412.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5304,7 +5304,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopback.413.0.png"
+    "res://gfx/sprites/s_shopback.413.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5323,7 +5323,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_shopdeta.414.0.png"
+    "res://gfx/sprites/s_shopdeta.414.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5342,7 +5342,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_shopdeta2.415.0.png"
+    "res://gfx/sprites/s_shopdeta2.415.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5361,7 +5361,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_shopkeeping.416.0.png"
+    "res://gfx/sprites/s_shopkeeping.416.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5380,7 +5380,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopkeeping2.417.0.png"
+    "res://gfx/sprites/s_shopkeeping2.417.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5399,7 +5399,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopsuwak.419.0.png"
+    "res://gfx/sprites/s_shopsuwak.419.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5418,7 +5418,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopsuwak2.420.0.png"
+    "res://gfx/sprites/s_shopsuwak2.420.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5437,7 +5437,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shoppuntor.421.0.png"
+    "res://gfx/sprites/s_shoppuntor.421.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5456,7 +5456,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopsuwak3.422.0.png"
+    "res://gfx/sprites/s_shopsuwak3.422.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5475,7 +5475,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopsuwak4.423.0.png"
+    "res://gfx/sprites/s_shopsuwak4.423.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5494,49 +5494,49 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopguns.424.0.png",
-    "res://images/sprites/s_shopguns.424.1.png",
-    "res://images/sprites/s_shopguns.424.2.png",
-    "res://images/sprites/s_shopguns.424.3.png",
-    "res://images/sprites/s_shopguns.424.4.png",
-    "res://images/sprites/s_shopguns.424.5.png",
-    "res://images/sprites/s_shopguns.424.6.png",
-    "res://images/sprites/s_shopguns.424.7.png",
-    "res://images/sprites/s_shopguns.424.8.png",
-    "res://images/sprites/s_shopguns.424.9.png",
-    "res://images/sprites/s_shopguns.424.10.png",
-    "res://images/sprites/s_shopguns.424.11.png",
-    "res://images/sprites/s_shopguns.424.12.png",
-    "res://images/sprites/s_shopguns.424.13.png",
-    "res://images/sprites/s_shopguns.424.14.png",
-    "res://images/sprites/s_shopguns.424.15.png",
-    "res://images/sprites/s_shopguns.424.16.png",
-    "res://images/sprites/s_shopguns.424.17.png",
-    "res://images/sprites/s_shopguns.424.18.png",
-    "res://images/sprites/s_shopguns.424.19.png",
-    "res://images/sprites/s_shopguns.424.20.png",
-    "res://images/sprites/s_shopguns.424.21.png",
-    "res://images/sprites/s_shopguns.424.22.png",
-    "res://images/sprites/s_shopguns.424.23.png",
-    "res://images/sprites/s_shopguns.424.24.png",
-    "res://images/sprites/s_shopguns.424.25.png",
-    "res://images/sprites/s_shopguns.424.26.png",
-    "res://images/sprites/s_shopguns.424.27.png",
-    "res://images/sprites/s_shopguns.424.28.png",
-    "res://images/sprites/s_shopguns.424.29.png",
-    "res://images/sprites/s_shopguns.424.30.png",
-    "res://images/sprites/s_shopguns.424.31.png",
-    "res://images/sprites/s_shopguns.424.32.png",
-    "res://images/sprites/s_shopguns.424.33.png",
-    "res://images/sprites/s_shopguns.424.34.png",
-    "res://images/sprites/s_shopguns.424.35.png",
-    "res://images/sprites/s_shopguns.424.36.png",
-    "res://images/sprites/s_shopguns.424.37.png",
-    "res://images/sprites/s_shopguns.424.38.png",
-    "res://images/sprites/s_shopguns.424.39.png",
-    "res://images/sprites/s_shopguns.424.40.png",
-    "res://images/sprites/s_shopguns.424.41.png",
-    "res://images/sprites/s_shopguns.424.42.png"
+    "res://gfx/sprites/s_shopguns.424.0.png",
+    "res://gfx/sprites/s_shopguns.424.1.png",
+    "res://gfx/sprites/s_shopguns.424.2.png",
+    "res://gfx/sprites/s_shopguns.424.3.png",
+    "res://gfx/sprites/s_shopguns.424.4.png",
+    "res://gfx/sprites/s_shopguns.424.5.png",
+    "res://gfx/sprites/s_shopguns.424.6.png",
+    "res://gfx/sprites/s_shopguns.424.7.png",
+    "res://gfx/sprites/s_shopguns.424.8.png",
+    "res://gfx/sprites/s_shopguns.424.9.png",
+    "res://gfx/sprites/s_shopguns.424.10.png",
+    "res://gfx/sprites/s_shopguns.424.11.png",
+    "res://gfx/sprites/s_shopguns.424.12.png",
+    "res://gfx/sprites/s_shopguns.424.13.png",
+    "res://gfx/sprites/s_shopguns.424.14.png",
+    "res://gfx/sprites/s_shopguns.424.15.png",
+    "res://gfx/sprites/s_shopguns.424.16.png",
+    "res://gfx/sprites/s_shopguns.424.17.png",
+    "res://gfx/sprites/s_shopguns.424.18.png",
+    "res://gfx/sprites/s_shopguns.424.19.png",
+    "res://gfx/sprites/s_shopguns.424.20.png",
+    "res://gfx/sprites/s_shopguns.424.21.png",
+    "res://gfx/sprites/s_shopguns.424.22.png",
+    "res://gfx/sprites/s_shopguns.424.23.png",
+    "res://gfx/sprites/s_shopguns.424.24.png",
+    "res://gfx/sprites/s_shopguns.424.25.png",
+    "res://gfx/sprites/s_shopguns.424.26.png",
+    "res://gfx/sprites/s_shopguns.424.27.png",
+    "res://gfx/sprites/s_shopguns.424.28.png",
+    "res://gfx/sprites/s_shopguns.424.29.png",
+    "res://gfx/sprites/s_shopguns.424.30.png",
+    "res://gfx/sprites/s_shopguns.424.31.png",
+    "res://gfx/sprites/s_shopguns.424.32.png",
+    "res://gfx/sprites/s_shopguns.424.33.png",
+    "res://gfx/sprites/s_shopguns.424.34.png",
+    "res://gfx/sprites/s_shopguns.424.35.png",
+    "res://gfx/sprites/s_shopguns.424.36.png",
+    "res://gfx/sprites/s_shopguns.424.37.png",
+    "res://gfx/sprites/s_shopguns.424.38.png",
+    "res://gfx/sprites/s_shopguns.424.39.png",
+    "res://gfx/sprites/s_shopguns.424.40.png",
+    "res://gfx/sprites/s_shopguns.424.41.png",
+    "res://gfx/sprites/s_shopguns.424.42.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5555,7 +5555,7 @@
     22
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio.425.0.png"
+    "res://gfx/sprites/s_grzybcio.425.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5574,8 +5574,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio2.426.0.png",
-    "res://images/sprites/s_grzybcio2.426.1.png"
+    "res://gfx/sprites/s_grzybcio2.426.0.png",
+    "res://gfx/sprites/s_grzybcio2.426.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5594,7 +5594,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_panel.427.0.png"
+    "res://gfx/sprites/s_panel.427.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5613,7 +5613,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_stateczek.428.0.png"
+    "res://gfx/sprites/s_stateczek.428.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5632,7 +5632,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_weaponry.429.0.png"
+    "res://gfx/sprites/s_weaponry.429.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5651,7 +5651,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_weaponrymask.430.0.png"
+    "res://gfx/sprites/s_weaponrymask.430.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5670,7 +5670,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_buypasek.431.0.png"
+    "res://gfx/sprites/s_buypasek.431.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5689,7 +5689,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_buypasekmask.432.0.png"
+    "res://gfx/sprites/s_buypasekmask.432.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5708,64 +5708,64 @@
     11
    ],
    "frames": [
-    "res://images/sprites/s_fontoshop.433.0.png",
-    "res://images/sprites/s_fontoshop.433.1.png",
-    "res://images/sprites/s_fontoshop.433.2.png",
-    "res://images/sprites/s_fontoshop.433.3.png",
-    "res://images/sprites/s_fontoshop.433.4.png",
-    "res://images/sprites/s_fontoshop.433.5.png",
-    "res://images/sprites/s_fontoshop.433.6.png",
-    "res://images/sprites/s_fontoshop.433.7.png",
-    "res://images/sprites/s_fontoshop.433.8.png",
-    "res://images/sprites/s_fontoshop.433.9.png",
-    "res://images/sprites/s_fontoshop.433.10.png",
-    "res://images/sprites/s_fontoshop.433.11.png",
-    "res://images/sprites/s_fontoshop.433.12.png",
-    "res://images/sprites/s_fontoshop.433.13.png",
-    "res://images/sprites/s_fontoshop.433.14.png",
-    "res://images/sprites/s_fontoshop.433.15.png",
-    "res://images/sprites/s_fontoshop.433.16.png",
-    "res://images/sprites/s_fontoshop.433.17.png",
-    "res://images/sprites/s_fontoshop.433.18.png",
-    "res://images/sprites/s_fontoshop.433.19.png",
-    "res://images/sprites/s_fontoshop.433.20.png",
-    "res://images/sprites/s_fontoshop.433.21.png",
-    "res://images/sprites/s_fontoshop.433.22.png",
-    "res://images/sprites/s_fontoshop.433.23.png",
-    "res://images/sprites/s_fontoshop.433.24.png",
-    "res://images/sprites/s_fontoshop.433.25.png",
-    "res://images/sprites/s_fontoshop.433.26.png",
-    "res://images/sprites/s_fontoshop.433.27.png",
-    "res://images/sprites/s_fontoshop.433.28.png",
-    "res://images/sprites/s_fontoshop.433.29.png",
-    "res://images/sprites/s_fontoshop.433.30.png",
-    "res://images/sprites/s_fontoshop.433.31.png",
-    "res://images/sprites/s_fontoshop.433.32.png",
-    "res://images/sprites/s_fontoshop.433.33.png",
-    "res://images/sprites/s_fontoshop.433.34.png",
-    "res://images/sprites/s_fontoshop.433.35.png",
-    "res://images/sprites/s_fontoshop.433.36.png",
-    "res://images/sprites/s_fontoshop.433.37.png",
-    "res://images/sprites/s_fontoshop.433.38.png",
-    "res://images/sprites/s_fontoshop.433.39.png",
-    "res://images/sprites/s_fontoshop.433.40.png",
-    "res://images/sprites/s_fontoshop.433.41.png",
-    "res://images/sprites/s_fontoshop.433.42.png",
-    "res://images/sprites/s_fontoshop.433.43.png",
-    "res://images/sprites/s_fontoshop.433.44.png",
-    "res://images/sprites/s_fontoshop.433.45.png",
-    "res://images/sprites/s_fontoshop.433.46.png",
-    "res://images/sprites/s_fontoshop.433.47.png",
-    "res://images/sprites/s_fontoshop.433.48.png",
-    "res://images/sprites/s_fontoshop.433.49.png",
-    "res://images/sprites/s_fontoshop.433.50.png",
-    "res://images/sprites/s_fontoshop.433.51.png",
-    "res://images/sprites/s_fontoshop.433.52.png",
-    "res://images/sprites/s_fontoshop.433.53.png",
-    "res://images/sprites/s_fontoshop.433.54.png",
-    "res://images/sprites/s_fontoshop.433.55.png",
-    "res://images/sprites/s_fontoshop.433.56.png",
-    "res://images/sprites/s_fontoshop.433.57.png"
+    "res://gfx/sprites/s_fontoshop.433.0.png",
+    "res://gfx/sprites/s_fontoshop.433.1.png",
+    "res://gfx/sprites/s_fontoshop.433.2.png",
+    "res://gfx/sprites/s_fontoshop.433.3.png",
+    "res://gfx/sprites/s_fontoshop.433.4.png",
+    "res://gfx/sprites/s_fontoshop.433.5.png",
+    "res://gfx/sprites/s_fontoshop.433.6.png",
+    "res://gfx/sprites/s_fontoshop.433.7.png",
+    "res://gfx/sprites/s_fontoshop.433.8.png",
+    "res://gfx/sprites/s_fontoshop.433.9.png",
+    "res://gfx/sprites/s_fontoshop.433.10.png",
+    "res://gfx/sprites/s_fontoshop.433.11.png",
+    "res://gfx/sprites/s_fontoshop.433.12.png",
+    "res://gfx/sprites/s_fontoshop.433.13.png",
+    "res://gfx/sprites/s_fontoshop.433.14.png",
+    "res://gfx/sprites/s_fontoshop.433.15.png",
+    "res://gfx/sprites/s_fontoshop.433.16.png",
+    "res://gfx/sprites/s_fontoshop.433.17.png",
+    "res://gfx/sprites/s_fontoshop.433.18.png",
+    "res://gfx/sprites/s_fontoshop.433.19.png",
+    "res://gfx/sprites/s_fontoshop.433.20.png",
+    "res://gfx/sprites/s_fontoshop.433.21.png",
+    "res://gfx/sprites/s_fontoshop.433.22.png",
+    "res://gfx/sprites/s_fontoshop.433.23.png",
+    "res://gfx/sprites/s_fontoshop.433.24.png",
+    "res://gfx/sprites/s_fontoshop.433.25.png",
+    "res://gfx/sprites/s_fontoshop.433.26.png",
+    "res://gfx/sprites/s_fontoshop.433.27.png",
+    "res://gfx/sprites/s_fontoshop.433.28.png",
+    "res://gfx/sprites/s_fontoshop.433.29.png",
+    "res://gfx/sprites/s_fontoshop.433.30.png",
+    "res://gfx/sprites/s_fontoshop.433.31.png",
+    "res://gfx/sprites/s_fontoshop.433.32.png",
+    "res://gfx/sprites/s_fontoshop.433.33.png",
+    "res://gfx/sprites/s_fontoshop.433.34.png",
+    "res://gfx/sprites/s_fontoshop.433.35.png",
+    "res://gfx/sprites/s_fontoshop.433.36.png",
+    "res://gfx/sprites/s_fontoshop.433.37.png",
+    "res://gfx/sprites/s_fontoshop.433.38.png",
+    "res://gfx/sprites/s_fontoshop.433.39.png",
+    "res://gfx/sprites/s_fontoshop.433.40.png",
+    "res://gfx/sprites/s_fontoshop.433.41.png",
+    "res://gfx/sprites/s_fontoshop.433.42.png",
+    "res://gfx/sprites/s_fontoshop.433.43.png",
+    "res://gfx/sprites/s_fontoshop.433.44.png",
+    "res://gfx/sprites/s_fontoshop.433.45.png",
+    "res://gfx/sprites/s_fontoshop.433.46.png",
+    "res://gfx/sprites/s_fontoshop.433.47.png",
+    "res://gfx/sprites/s_fontoshop.433.48.png",
+    "res://gfx/sprites/s_fontoshop.433.49.png",
+    "res://gfx/sprites/s_fontoshop.433.50.png",
+    "res://gfx/sprites/s_fontoshop.433.51.png",
+    "res://gfx/sprites/s_fontoshop.433.52.png",
+    "res://gfx/sprites/s_fontoshop.433.53.png",
+    "res://gfx/sprites/s_fontoshop.433.54.png",
+    "res://gfx/sprites/s_fontoshop.433.55.png",
+    "res://gfx/sprites/s_fontoshop.433.56.png",
+    "res://gfx/sprites/s_fontoshop.433.57.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5784,76 +5784,76 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_fontoshopmask.434.0.png",
-    "res://images/sprites/s_fontoshopmask.434.1.png",
-    "res://images/sprites/s_fontoshopmask.434.2.png",
-    "res://images/sprites/s_fontoshopmask.434.3.png",
-    "res://images/sprites/s_fontoshopmask.434.4.png",
-    "res://images/sprites/s_fontoshopmask.434.5.png",
-    "res://images/sprites/s_fontoshopmask.434.6.png",
-    "res://images/sprites/s_fontoshopmask.434.7.png",
-    "res://images/sprites/s_fontoshopmask.434.8.png",
-    "res://images/sprites/s_fontoshopmask.434.9.png",
-    "res://images/sprites/s_fontoshopmask.434.10.png",
-    "res://images/sprites/s_fontoshopmask.434.11.png",
-    "res://images/sprites/s_fontoshopmask.434.12.png",
-    "res://images/sprites/s_fontoshopmask.434.13.png",
-    "res://images/sprites/s_fontoshopmask.434.14.png",
-    "res://images/sprites/s_fontoshopmask.434.15.png",
-    "res://images/sprites/s_fontoshopmask.434.16.png",
-    "res://images/sprites/s_fontoshopmask.434.17.png",
-    "res://images/sprites/s_fontoshopmask.434.18.png",
-    "res://images/sprites/s_fontoshopmask.434.19.png",
-    "res://images/sprites/s_fontoshopmask.434.20.png",
-    "res://images/sprites/s_fontoshopmask.434.21.png",
-    "res://images/sprites/s_fontoshopmask.434.22.png",
-    "res://images/sprites/s_fontoshopmask.434.23.png",
-    "res://images/sprites/s_fontoshopmask.434.24.png",
-    "res://images/sprites/s_fontoshopmask.434.25.png",
-    "res://images/sprites/s_fontoshopmask.434.26.png",
-    "res://images/sprites/s_fontoshopmask.434.27.png",
-    "res://images/sprites/s_fontoshopmask.434.28.png",
-    "res://images/sprites/s_fontoshopmask.434.29.png",
-    "res://images/sprites/s_fontoshopmask.434.30.png",
-    "res://images/sprites/s_fontoshopmask.434.31.png",
-    "res://images/sprites/s_fontoshopmask.434.32.png",
-    "res://images/sprites/s_fontoshopmask.434.33.png",
-    "res://images/sprites/s_fontoshopmask.434.34.png",
-    "res://images/sprites/s_fontoshopmask.434.35.png",
-    "res://images/sprites/s_fontoshopmask.434.36.png",
-    "res://images/sprites/s_fontoshopmask.434.37.png",
-    "res://images/sprites/s_fontoshopmask.434.38.png",
-    "res://images/sprites/s_fontoshopmask.434.39.png",
-    "res://images/sprites/s_fontoshopmask.434.40.png",
-    "res://images/sprites/s_fontoshopmask.434.41.png",
-    "res://images/sprites/s_fontoshopmask.434.42.png",
-    "res://images/sprites/s_fontoshopmask.434.43.png",
-    "res://images/sprites/s_fontoshopmask.434.44.png",
-    "res://images/sprites/s_fontoshopmask.434.45.png",
-    "res://images/sprites/s_fontoshopmask.434.46.png",
-    "res://images/sprites/s_fontoshopmask.434.47.png",
-    "res://images/sprites/s_fontoshopmask.434.48.png",
-    "res://images/sprites/s_fontoshopmask.434.49.png",
-    "res://images/sprites/s_fontoshopmask.434.50.png",
-    "res://images/sprites/s_fontoshopmask.434.51.png",
-    "res://images/sprites/s_fontoshopmask.434.52.png",
-    "res://images/sprites/s_fontoshopmask.434.53.png",
-    "res://images/sprites/s_fontoshopmask.434.54.png",
-    "res://images/sprites/s_fontoshopmask.434.55.png",
-    "res://images/sprites/s_fontoshopmask.434.56.png",
-    "res://images/sprites/s_fontoshopmask.434.57.png",
-    "res://images/sprites/s_fontoshopmask.434.58.png",
-    "res://images/sprites/s_fontoshopmask.434.59.png",
-    "res://images/sprites/s_fontoshopmask.434.60.png",
-    "res://images/sprites/s_fontoshopmask.434.61.png",
-    "res://images/sprites/s_fontoshopmask.434.62.png",
-    "res://images/sprites/s_fontoshopmask.434.63.png",
-    "res://images/sprites/s_fontoshopmask.434.64.png",
-    "res://images/sprites/s_fontoshopmask.434.65.png",
-    "res://images/sprites/s_fontoshopmask.434.66.png",
-    "res://images/sprites/s_fontoshopmask.434.67.png",
-    "res://images/sprites/s_fontoshopmask.434.68.png",
-    "res://images/sprites/s_fontoshopmask.434.69.png"
+    "res://gfx/sprites/s_fontoshopmask.434.0.png",
+    "res://gfx/sprites/s_fontoshopmask.434.1.png",
+    "res://gfx/sprites/s_fontoshopmask.434.2.png",
+    "res://gfx/sprites/s_fontoshopmask.434.3.png",
+    "res://gfx/sprites/s_fontoshopmask.434.4.png",
+    "res://gfx/sprites/s_fontoshopmask.434.5.png",
+    "res://gfx/sprites/s_fontoshopmask.434.6.png",
+    "res://gfx/sprites/s_fontoshopmask.434.7.png",
+    "res://gfx/sprites/s_fontoshopmask.434.8.png",
+    "res://gfx/sprites/s_fontoshopmask.434.9.png",
+    "res://gfx/sprites/s_fontoshopmask.434.10.png",
+    "res://gfx/sprites/s_fontoshopmask.434.11.png",
+    "res://gfx/sprites/s_fontoshopmask.434.12.png",
+    "res://gfx/sprites/s_fontoshopmask.434.13.png",
+    "res://gfx/sprites/s_fontoshopmask.434.14.png",
+    "res://gfx/sprites/s_fontoshopmask.434.15.png",
+    "res://gfx/sprites/s_fontoshopmask.434.16.png",
+    "res://gfx/sprites/s_fontoshopmask.434.17.png",
+    "res://gfx/sprites/s_fontoshopmask.434.18.png",
+    "res://gfx/sprites/s_fontoshopmask.434.19.png",
+    "res://gfx/sprites/s_fontoshopmask.434.20.png",
+    "res://gfx/sprites/s_fontoshopmask.434.21.png",
+    "res://gfx/sprites/s_fontoshopmask.434.22.png",
+    "res://gfx/sprites/s_fontoshopmask.434.23.png",
+    "res://gfx/sprites/s_fontoshopmask.434.24.png",
+    "res://gfx/sprites/s_fontoshopmask.434.25.png",
+    "res://gfx/sprites/s_fontoshopmask.434.26.png",
+    "res://gfx/sprites/s_fontoshopmask.434.27.png",
+    "res://gfx/sprites/s_fontoshopmask.434.28.png",
+    "res://gfx/sprites/s_fontoshopmask.434.29.png",
+    "res://gfx/sprites/s_fontoshopmask.434.30.png",
+    "res://gfx/sprites/s_fontoshopmask.434.31.png",
+    "res://gfx/sprites/s_fontoshopmask.434.32.png",
+    "res://gfx/sprites/s_fontoshopmask.434.33.png",
+    "res://gfx/sprites/s_fontoshopmask.434.34.png",
+    "res://gfx/sprites/s_fontoshopmask.434.35.png",
+    "res://gfx/sprites/s_fontoshopmask.434.36.png",
+    "res://gfx/sprites/s_fontoshopmask.434.37.png",
+    "res://gfx/sprites/s_fontoshopmask.434.38.png",
+    "res://gfx/sprites/s_fontoshopmask.434.39.png",
+    "res://gfx/sprites/s_fontoshopmask.434.40.png",
+    "res://gfx/sprites/s_fontoshopmask.434.41.png",
+    "res://gfx/sprites/s_fontoshopmask.434.42.png",
+    "res://gfx/sprites/s_fontoshopmask.434.43.png",
+    "res://gfx/sprites/s_fontoshopmask.434.44.png",
+    "res://gfx/sprites/s_fontoshopmask.434.45.png",
+    "res://gfx/sprites/s_fontoshopmask.434.46.png",
+    "res://gfx/sprites/s_fontoshopmask.434.47.png",
+    "res://gfx/sprites/s_fontoshopmask.434.48.png",
+    "res://gfx/sprites/s_fontoshopmask.434.49.png",
+    "res://gfx/sprites/s_fontoshopmask.434.50.png",
+    "res://gfx/sprites/s_fontoshopmask.434.51.png",
+    "res://gfx/sprites/s_fontoshopmask.434.52.png",
+    "res://gfx/sprites/s_fontoshopmask.434.53.png",
+    "res://gfx/sprites/s_fontoshopmask.434.54.png",
+    "res://gfx/sprites/s_fontoshopmask.434.55.png",
+    "res://gfx/sprites/s_fontoshopmask.434.56.png",
+    "res://gfx/sprites/s_fontoshopmask.434.57.png",
+    "res://gfx/sprites/s_fontoshopmask.434.58.png",
+    "res://gfx/sprites/s_fontoshopmask.434.59.png",
+    "res://gfx/sprites/s_fontoshopmask.434.60.png",
+    "res://gfx/sprites/s_fontoshopmask.434.61.png",
+    "res://gfx/sprites/s_fontoshopmask.434.62.png",
+    "res://gfx/sprites/s_fontoshopmask.434.63.png",
+    "res://gfx/sprites/s_fontoshopmask.434.64.png",
+    "res://gfx/sprites/s_fontoshopmask.434.65.png",
+    "res://gfx/sprites/s_fontoshopmask.434.66.png",
+    "res://gfx/sprites/s_fontoshopmask.434.67.png",
+    "res://gfx/sprites/s_fontoshopmask.434.68.png",
+    "res://gfx/sprites/s_fontoshopmask.434.69.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5872,7 +5872,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shoplighterus.435.0.png"
+    "res://gfx/sprites/s_shoplighterus.435.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5891,65 +5891,65 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_smallfonts.436.0.png",
-    "res://images/sprites/s_smallfonts.436.1.png",
-    "res://images/sprites/s_smallfonts.436.2.png",
-    "res://images/sprites/s_smallfonts.436.3.png",
-    "res://images/sprites/s_smallfonts.436.4.png",
-    "res://images/sprites/s_smallfonts.436.5.png",
-    "res://images/sprites/s_smallfonts.436.6.png",
-    "res://images/sprites/s_smallfonts.436.7.png",
-    "res://images/sprites/s_smallfonts.436.8.png",
-    "res://images/sprites/s_smallfonts.436.9.png",
-    "res://images/sprites/s_smallfonts.436.10.png",
-    "res://images/sprites/s_smallfonts.436.11.png",
-    "res://images/sprites/s_smallfonts.436.12.png",
-    "res://images/sprites/s_smallfonts.436.13.png",
-    "res://images/sprites/s_smallfonts.436.14.png",
-    "res://images/sprites/s_smallfonts.436.15.png",
-    "res://images/sprites/s_smallfonts.436.16.png",
-    "res://images/sprites/s_smallfonts.436.17.png",
-    "res://images/sprites/s_smallfonts.436.18.png",
-    "res://images/sprites/s_smallfonts.436.19.png",
-    "res://images/sprites/s_smallfonts.436.20.png",
-    "res://images/sprites/s_smallfonts.436.21.png",
-    "res://images/sprites/s_smallfonts.436.22.png",
-    "res://images/sprites/s_smallfonts.436.23.png",
-    "res://images/sprites/s_smallfonts.436.24.png",
-    "res://images/sprites/s_smallfonts.436.25.png",
-    "res://images/sprites/s_smallfonts.436.26.png",
-    "res://images/sprites/s_smallfonts.436.27.png",
-    "res://images/sprites/s_smallfonts.436.28.png",
-    "res://images/sprites/s_smallfonts.436.29.png",
-    "res://images/sprites/s_smallfonts.436.30.png",
-    "res://images/sprites/s_smallfonts.436.31.png",
-    "res://images/sprites/s_smallfonts.436.32.png",
-    "res://images/sprites/s_smallfonts.436.33.png",
-    "res://images/sprites/s_smallfonts.436.34.png",
-    "res://images/sprites/s_smallfonts.436.35.png",
-    "res://images/sprites/s_smallfonts.436.36.png",
-    "res://images/sprites/s_smallfonts.436.37.png",
-    "res://images/sprites/s_smallfonts.436.38.png",
-    "res://images/sprites/s_smallfonts.436.39.png",
-    "res://images/sprites/s_smallfonts.436.40.png",
-    "res://images/sprites/s_smallfonts.436.41.png",
-    "res://images/sprites/s_smallfonts.436.42.png",
-    "res://images/sprites/s_smallfonts.436.43.png",
-    "res://images/sprites/s_smallfonts.436.44.png",
-    "res://images/sprites/s_smallfonts.436.45.png",
-    "res://images/sprites/s_smallfonts.436.46.png",
-    "res://images/sprites/s_smallfonts.436.47.png",
-    "res://images/sprites/s_smallfonts.436.48.png",
-    "res://images/sprites/s_smallfonts.436.49.png",
-    "res://images/sprites/s_smallfonts.436.50.png",
-    "res://images/sprites/s_smallfonts.436.51.png",
-    "res://images/sprites/s_smallfonts.436.52.png",
-    "res://images/sprites/s_smallfonts.436.53.png",
-    "res://images/sprites/s_smallfonts.436.54.png",
-    "res://images/sprites/s_smallfonts.436.55.png",
-    "res://images/sprites/s_smallfonts.436.56.png",
-    "res://images/sprites/s_smallfonts.436.57.png",
-    "res://images/sprites/s_smallfonts.436.58.png"
+    "res://gfx/sprites/s_smallfonts.436.0.png",
+    "res://gfx/sprites/s_smallfonts.436.1.png",
+    "res://gfx/sprites/s_smallfonts.436.2.png",
+    "res://gfx/sprites/s_smallfonts.436.3.png",
+    "res://gfx/sprites/s_smallfonts.436.4.png",
+    "res://gfx/sprites/s_smallfonts.436.5.png",
+    "res://gfx/sprites/s_smallfonts.436.6.png",
+    "res://gfx/sprites/s_smallfonts.436.7.png",
+    "res://gfx/sprites/s_smallfonts.436.8.png",
+    "res://gfx/sprites/s_smallfonts.436.9.png",
+    "res://gfx/sprites/s_smallfonts.436.10.png",
+    "res://gfx/sprites/s_smallfonts.436.11.png",
+    "res://gfx/sprites/s_smallfonts.436.12.png",
+    "res://gfx/sprites/s_smallfonts.436.13.png",
+    "res://gfx/sprites/s_smallfonts.436.14.png",
+    "res://gfx/sprites/s_smallfonts.436.15.png",
+    "res://gfx/sprites/s_smallfonts.436.16.png",
+    "res://gfx/sprites/s_smallfonts.436.17.png",
+    "res://gfx/sprites/s_smallfonts.436.18.png",
+    "res://gfx/sprites/s_smallfonts.436.19.png",
+    "res://gfx/sprites/s_smallfonts.436.20.png",
+    "res://gfx/sprites/s_smallfonts.436.21.png",
+    "res://gfx/sprites/s_smallfonts.436.22.png",
+    "res://gfx/sprites/s_smallfonts.436.23.png",
+    "res://gfx/sprites/s_smallfonts.436.24.png",
+    "res://gfx/sprites/s_smallfonts.436.25.png",
+    "res://gfx/sprites/s_smallfonts.436.26.png",
+    "res://gfx/sprites/s_smallfonts.436.27.png",
+    "res://gfx/sprites/s_smallfonts.436.28.png",
+    "res://gfx/sprites/s_smallfonts.436.29.png",
+    "res://gfx/sprites/s_smallfonts.436.30.png",
+    "res://gfx/sprites/s_smallfonts.436.31.png",
+    "res://gfx/sprites/s_smallfonts.436.32.png",
+    "res://gfx/sprites/s_smallfonts.436.33.png",
+    "res://gfx/sprites/s_smallfonts.436.34.png",
+    "res://gfx/sprites/s_smallfonts.436.35.png",
+    "res://gfx/sprites/s_smallfonts.436.36.png",
+    "res://gfx/sprites/s_smallfonts.436.37.png",
+    "res://gfx/sprites/s_smallfonts.436.38.png",
+    "res://gfx/sprites/s_smallfonts.436.39.png",
+    "res://gfx/sprites/s_smallfonts.436.40.png",
+    "res://gfx/sprites/s_smallfonts.436.41.png",
+    "res://gfx/sprites/s_smallfonts.436.42.png",
+    "res://gfx/sprites/s_smallfonts.436.43.png",
+    "res://gfx/sprites/s_smallfonts.436.44.png",
+    "res://gfx/sprites/s_smallfonts.436.45.png",
+    "res://gfx/sprites/s_smallfonts.436.46.png",
+    "res://gfx/sprites/s_smallfonts.436.47.png",
+    "res://gfx/sprites/s_smallfonts.436.48.png",
+    "res://gfx/sprites/s_smallfonts.436.49.png",
+    "res://gfx/sprites/s_smallfonts.436.50.png",
+    "res://gfx/sprites/s_smallfonts.436.51.png",
+    "res://gfx/sprites/s_smallfonts.436.52.png",
+    "res://gfx/sprites/s_smallfonts.436.53.png",
+    "res://gfx/sprites/s_smallfonts.436.54.png",
+    "res://gfx/sprites/s_smallfonts.436.55.png",
+    "res://gfx/sprites/s_smallfonts.436.56.png",
+    "res://gfx/sprites/s_smallfonts.436.57.png",
+    "res://gfx/sprites/s_smallfonts.436.58.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5968,7 +5968,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopcoin.437.0.png"
+    "res://gfx/sprites/s_shopcoin.437.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -5987,7 +5987,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopcoinmask.438.0.png"
+    "res://gfx/sprites/s_shopcoinmask.438.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6006,21 +6006,21 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_coinfonts.439.0.png",
-    "res://images/sprites/s_coinfonts.439.1.png",
-    "res://images/sprites/s_coinfonts.439.2.png",
-    "res://images/sprites/s_coinfonts.439.3.png",
-    "res://images/sprites/s_coinfonts.439.4.png",
-    "res://images/sprites/s_coinfonts.439.5.png",
-    "res://images/sprites/s_coinfonts.439.6.png",
-    "res://images/sprites/s_coinfonts.439.7.png",
-    "res://images/sprites/s_coinfonts.439.8.png",
-    "res://images/sprites/s_coinfonts.439.9.png",
-    "res://images/sprites/s_coinfonts.439.10.png",
-    "res://images/sprites/s_coinfonts.439.11.png",
-    "res://images/sprites/s_coinfonts.439.12.png",
-    "res://images/sprites/s_coinfonts.439.13.png",
-    "res://images/sprites/s_coinfonts.439.14.png"
+    "res://gfx/sprites/s_coinfonts.439.0.png",
+    "res://gfx/sprites/s_coinfonts.439.1.png",
+    "res://gfx/sprites/s_coinfonts.439.2.png",
+    "res://gfx/sprites/s_coinfonts.439.3.png",
+    "res://gfx/sprites/s_coinfonts.439.4.png",
+    "res://gfx/sprites/s_coinfonts.439.5.png",
+    "res://gfx/sprites/s_coinfonts.439.6.png",
+    "res://gfx/sprites/s_coinfonts.439.7.png",
+    "res://gfx/sprites/s_coinfonts.439.8.png",
+    "res://gfx/sprites/s_coinfonts.439.9.png",
+    "res://gfx/sprites/s_coinfonts.439.10.png",
+    "res://gfx/sprites/s_coinfonts.439.11.png",
+    "res://gfx/sprites/s_coinfonts.439.12.png",
+    "res://gfx/sprites/s_coinfonts.439.13.png",
+    "res://gfx/sprites/s_coinfonts.439.14.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6039,21 +6039,21 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_coinfontsmask.440.0.png",
-    "res://images/sprites/s_coinfontsmask.440.1.png",
-    "res://images/sprites/s_coinfontsmask.440.2.png",
-    "res://images/sprites/s_coinfontsmask.440.3.png",
-    "res://images/sprites/s_coinfontsmask.440.4.png",
-    "res://images/sprites/s_coinfontsmask.440.5.png",
-    "res://images/sprites/s_coinfontsmask.440.6.png",
-    "res://images/sprites/s_coinfontsmask.440.7.png",
-    "res://images/sprites/s_coinfontsmask.440.8.png",
-    "res://images/sprites/s_coinfontsmask.440.9.png",
-    "res://images/sprites/s_coinfontsmask.440.10.png",
-    "res://images/sprites/s_coinfontsmask.440.11.png",
-    "res://images/sprites/s_coinfontsmask.440.12.png",
-    "res://images/sprites/s_coinfontsmask.440.13.png",
-    "res://images/sprites/s_coinfontsmask.440.14.png"
+    "res://gfx/sprites/s_coinfontsmask.440.0.png",
+    "res://gfx/sprites/s_coinfontsmask.440.1.png",
+    "res://gfx/sprites/s_coinfontsmask.440.2.png",
+    "res://gfx/sprites/s_coinfontsmask.440.3.png",
+    "res://gfx/sprites/s_coinfontsmask.440.4.png",
+    "res://gfx/sprites/s_coinfontsmask.440.5.png",
+    "res://gfx/sprites/s_coinfontsmask.440.6.png",
+    "res://gfx/sprites/s_coinfontsmask.440.7.png",
+    "res://gfx/sprites/s_coinfontsmask.440.8.png",
+    "res://gfx/sprites/s_coinfontsmask.440.9.png",
+    "res://gfx/sprites/s_coinfontsmask.440.10.png",
+    "res://gfx/sprites/s_coinfontsmask.440.11.png",
+    "res://gfx/sprites/s_coinfontsmask.440.12.png",
+    "res://gfx/sprites/s_coinfontsmask.440.13.png",
+    "res://gfx/sprites/s_coinfontsmask.440.14.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6072,7 +6072,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_upgradebar.441.0.png"
+    "res://gfx/sprites/s_upgradebar.441.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6091,7 +6091,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_shopkeeping3.442.0.png"
+    "res://gfx/sprites/s_shopkeeping3.442.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6110,7 +6110,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_minipanel.443.0.png"
+    "res://gfx/sprites/s_minipanel.443.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6129,7 +6129,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shoppaseksily.444.0.png"
+    "res://gfx/sprites/s_shoppaseksily.444.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6148,7 +6148,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shoppaseksily2.445.0.png"
+    "res://gfx/sprites/s_shoppaseksily2.445.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6167,7 +6167,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shoppaseksily3.446.0.png"
+    "res://gfx/sprites/s_shoppaseksily3.446.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6186,7 +6186,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_mauselock.448.0.png"
+    "res://gfx/sprites/s_mauselock.448.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6205,7 +6205,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_mauselock2.449.0.png"
+    "res://gfx/sprites/s_mauselock2.449.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6224,7 +6224,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_levelup.450.0.png"
+    "res://gfx/sprites/s_levelup.450.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6243,7 +6243,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_levelup2.451.0.png"
+    "res://gfx/sprites/s_levelup2.451.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6262,7 +6262,7 @@
     2
    ],
    "frames": [
-    "res://images/sprites/s_levelmush.452.0.png"
+    "res://gfx/sprites/s_levelmush.452.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6281,7 +6281,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_levelmush2.453.0.png"
+    "res://gfx/sprites/s_levelmush2.453.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6300,7 +6300,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_sellweap.454.0.png"
+    "res://gfx/sprites/s_sellweap.454.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6319,7 +6319,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_sellweap2.455.0.png"
+    "res://gfx/sprites/s_sellweap2.455.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6338,16 +6338,16 @@
     20
    ],
    "frames": [
-    "res://images/sprites/s_shopguns2.456.0.png",
-    "res://images/sprites/s_shopguns2.456.1.png",
-    "res://images/sprites/s_shopguns2.456.2.png",
-    "res://images/sprites/s_shopguns2.456.3.png",
-    "res://images/sprites/s_shopguns2.456.4.png",
-    "res://images/sprites/s_shopguns2.456.5.png",
-    "res://images/sprites/s_shopguns2.456.6.png",
-    "res://images/sprites/s_shopguns2.456.7.png",
-    "res://images/sprites/s_shopguns2.456.8.png",
-    "res://images/sprites/s_shopguns2.456.9.png"
+    "res://gfx/sprites/s_shopguns2.456.0.png",
+    "res://gfx/sprites/s_shopguns2.456.1.png",
+    "res://gfx/sprites/s_shopguns2.456.2.png",
+    "res://gfx/sprites/s_shopguns2.456.3.png",
+    "res://gfx/sprites/s_shopguns2.456.4.png",
+    "res://gfx/sprites/s_shopguns2.456.5.png",
+    "res://gfx/sprites/s_shopguns2.456.6.png",
+    "res://gfx/sprites/s_shopguns2.456.7.png",
+    "res://gfx/sprites/s_shopguns2.456.8.png",
+    "res://gfx/sprites/s_shopguns2.456.9.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6366,11 +6366,11 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopbutton1.457.0.png",
-    "res://images/sprites/s_shopbutton1.457.1.png",
-    "res://images/sprites/s_shopbutton1.457.2.png",
-    "res://images/sprites/s_shopbutton1.457.3.png",
-    "res://images/sprites/s_shopbutton1.457.4.png"
+    "res://gfx/sprites/s_shopbutton1.457.0.png",
+    "res://gfx/sprites/s_shopbutton1.457.1.png",
+    "res://gfx/sprites/s_shopbutton1.457.2.png",
+    "res://gfx/sprites/s_shopbutton1.457.3.png",
+    "res://gfx/sprites/s_shopbutton1.457.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6389,7 +6389,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shopbutton2.458.0.png"
+    "res://gfx/sprites/s_shopbutton2.458.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6408,7 +6408,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_kumpel.459.0.png"
+    "res://gfx/sprites/s_kumpel.459.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6427,7 +6427,7 @@
     4
    ],
    "frames": [
-    "res://images/sprites/s_kumpel2.460.0.png"
+    "res://gfx/sprites/s_kumpel2.460.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6446,7 +6446,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_kumpel3.461.0.png"
+    "res://gfx/sprites/s_kumpel3.461.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6465,7 +6465,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_livesus.462.0.png"
+    "res://gfx/sprites/s_livesus.462.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6484,7 +6484,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_livesusmask.463.0.png"
+    "res://gfx/sprites/s_livesusmask.463.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6503,7 +6503,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_oczniks.464.0.png"
+    "res://gfx/sprites/s_oczniks.464.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6522,7 +6522,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio3.467.0.png"
+    "res://gfx/sprites/s_grzybcio3.467.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6541,7 +6541,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_shop_upgrading_ring.469.0.png"
+    "res://gfx/sprites/s_shop_upgrading_ring.469.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6560,7 +6560,7 @@
     4
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_oko.470.0.png"
+    "res://gfx/sprites/s_grzybcio_oko.470.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6579,8 +6579,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio4.471.0.png",
-    "res://images/sprites/s_grzybcio4.471.1.png"
+    "res://gfx/sprites/s_grzybcio4.471.0.png",
+    "res://gfx/sprites/s_grzybcio4.471.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6599,7 +6599,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_buzia.472.0.png"
+    "res://gfx/sprites/s_grzybcio_buzia.472.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6618,8 +6618,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_lapa.473.0.png",
-    "res://images/sprites/s_grzybcio_lapa.473.1.png"
+    "res://gfx/sprites/s_grzybcio_lapa.473.0.png",
+    "res://gfx/sprites/s_grzybcio_lapa.473.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6638,7 +6638,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_buzia2.474.0.png"
+    "res://gfx/sprites/s_grzybcio_buzia2.474.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6657,7 +6657,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_buzia3.475.0.png"
+    "res://gfx/sprites/s_grzybcio_buzia3.475.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6676,7 +6676,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_grzybcio_buzia4.476.0.png"
+    "res://gfx/sprites/s_grzybcio_buzia4.476.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6695,8 +6695,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_neu.477.0.png",
-    "res://images/sprites/s_neu.477.1.png"
+    "res://gfx/sprites/s_neu.477.0.png",
+    "res://gfx/sprites/s_neu.477.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6715,22 +6715,22 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_enemy_aup2.478.0.png",
-    "res://images/sprites/s_enemy_aup2.478.1.png",
-    "res://images/sprites/s_enemy_aup2.478.2.png",
-    "res://images/sprites/s_enemy_aup2.478.3.png",
-    "res://images/sprites/s_enemy_aup2.478.4.png",
-    "res://images/sprites/s_enemy_aup2.478.5.png",
-    "res://images/sprites/s_enemy_aup2.478.6.png",
-    "res://images/sprites/s_enemy_aup2.478.7.png",
-    "res://images/sprites/s_enemy_aup2.478.8.png",
-    "res://images/sprites/s_enemy_aup2.478.9.png",
-    "res://images/sprites/s_enemy_aup2.478.10.png",
-    "res://images/sprites/s_enemy_aup2.478.11.png",
-    "res://images/sprites/s_enemy_aup2.478.12.png",
-    "res://images/sprites/s_enemy_aup2.478.13.png",
-    "res://images/sprites/s_enemy_aup2.478.14.png",
-    "res://images/sprites/s_enemy_aup2.478.15.png"
+    "res://gfx/sprites/s_enemy_aup2.478.0.png",
+    "res://gfx/sprites/s_enemy_aup2.478.1.png",
+    "res://gfx/sprites/s_enemy_aup2.478.2.png",
+    "res://gfx/sprites/s_enemy_aup2.478.3.png",
+    "res://gfx/sprites/s_enemy_aup2.478.4.png",
+    "res://gfx/sprites/s_enemy_aup2.478.5.png",
+    "res://gfx/sprites/s_enemy_aup2.478.6.png",
+    "res://gfx/sprites/s_enemy_aup2.478.7.png",
+    "res://gfx/sprites/s_enemy_aup2.478.8.png",
+    "res://gfx/sprites/s_enemy_aup2.478.9.png",
+    "res://gfx/sprites/s_enemy_aup2.478.10.png",
+    "res://gfx/sprites/s_enemy_aup2.478.11.png",
+    "res://gfx/sprites/s_enemy_aup2.478.12.png",
+    "res://gfx/sprites/s_enemy_aup2.478.13.png",
+    "res://gfx/sprites/s_enemy_aup2.478.14.png",
+    "res://gfx/sprites/s_enemy_aup2.478.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6749,22 +6749,22 @@
     3
    ],
    "frames": [
-    "res://images/sprites/s_enemy_aup.479.0.png",
-    "res://images/sprites/s_enemy_aup.479.1.png",
-    "res://images/sprites/s_enemy_aup.479.2.png",
-    "res://images/sprites/s_enemy_aup.479.3.png",
-    "res://images/sprites/s_enemy_aup.479.4.png",
-    "res://images/sprites/s_enemy_aup.479.5.png",
-    "res://images/sprites/s_enemy_aup.479.6.png",
-    "res://images/sprites/s_enemy_aup.479.7.png",
-    "res://images/sprites/s_enemy_aup.479.8.png",
-    "res://images/sprites/s_enemy_aup.479.9.png",
-    "res://images/sprites/s_enemy_aup.479.10.png",
-    "res://images/sprites/s_enemy_aup.479.11.png",
-    "res://images/sprites/s_enemy_aup.479.12.png",
-    "res://images/sprites/s_enemy_aup.479.13.png",
-    "res://images/sprites/s_enemy_aup.479.14.png",
-    "res://images/sprites/s_enemy_aup.479.15.png"
+    "res://gfx/sprites/s_enemy_aup.479.0.png",
+    "res://gfx/sprites/s_enemy_aup.479.1.png",
+    "res://gfx/sprites/s_enemy_aup.479.2.png",
+    "res://gfx/sprites/s_enemy_aup.479.3.png",
+    "res://gfx/sprites/s_enemy_aup.479.4.png",
+    "res://gfx/sprites/s_enemy_aup.479.5.png",
+    "res://gfx/sprites/s_enemy_aup.479.6.png",
+    "res://gfx/sprites/s_enemy_aup.479.7.png",
+    "res://gfx/sprites/s_enemy_aup.479.8.png",
+    "res://gfx/sprites/s_enemy_aup.479.9.png",
+    "res://gfx/sprites/s_enemy_aup.479.10.png",
+    "res://gfx/sprites/s_enemy_aup.479.11.png",
+    "res://gfx/sprites/s_enemy_aup.479.12.png",
+    "res://gfx/sprites/s_enemy_aup.479.13.png",
+    "res://gfx/sprites/s_enemy_aup.479.14.png",
+    "res://gfx/sprites/s_enemy_aup.479.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6783,7 +6783,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_special_weapon.480.0.png"
+    "res://gfx/sprites/s_special_weapon.480.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6802,8 +6802,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonus_muschroom.481.0.png",
-    "res://images/sprites/s_bonus_muschroom.481.1.png"
+    "res://gfx/sprites/s_bonus_muschroom.481.0.png",
+    "res://gfx/sprites/s_bonus_muschroom.481.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6822,8 +6822,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonus_flower.482.0.png",
-    "res://images/sprites/s_bonus_flower.482.1.png"
+    "res://gfx/sprites/s_bonus_flower.482.0.png",
+    "res://gfx/sprites/s_bonus_flower.482.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6842,8 +6842,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_overheat.483.0.png",
-    "res://images/sprites/s_overheat.483.1.png"
+    "res://gfx/sprites/s_overheat.483.0.png",
+    "res://gfx/sprites/s_overheat.483.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6862,64 +6862,64 @@
     2
    ],
    "frames": [
-    "res://images/sprites/s_bonusfonts.484.0.png",
-    "res://images/sprites/s_bonusfonts.484.1.png",
-    "res://images/sprites/s_bonusfonts.484.2.png",
-    "res://images/sprites/s_bonusfonts.484.3.png",
-    "res://images/sprites/s_bonusfonts.484.4.png",
-    "res://images/sprites/s_bonusfonts.484.5.png",
-    "res://images/sprites/s_bonusfonts.484.6.png",
-    "res://images/sprites/s_bonusfonts.484.7.png",
-    "res://images/sprites/s_bonusfonts.484.8.png",
-    "res://images/sprites/s_bonusfonts.484.9.png",
-    "res://images/sprites/s_bonusfonts.484.10.png",
-    "res://images/sprites/s_bonusfonts.484.11.png",
-    "res://images/sprites/s_bonusfonts.484.12.png",
-    "res://images/sprites/s_bonusfonts.484.13.png",
-    "res://images/sprites/s_bonusfonts.484.14.png",
-    "res://images/sprites/s_bonusfonts.484.15.png",
-    "res://images/sprites/s_bonusfonts.484.16.png",
-    "res://images/sprites/s_bonusfonts.484.17.png",
-    "res://images/sprites/s_bonusfonts.484.18.png",
-    "res://images/sprites/s_bonusfonts.484.19.png",
-    "res://images/sprites/s_bonusfonts.484.20.png",
-    "res://images/sprites/s_bonusfonts.484.21.png",
-    "res://images/sprites/s_bonusfonts.484.22.png",
-    "res://images/sprites/s_bonusfonts.484.23.png",
-    "res://images/sprites/s_bonusfonts.484.24.png",
-    "res://images/sprites/s_bonusfonts.484.25.png",
-    "res://images/sprites/s_bonusfonts.484.26.png",
-    "res://images/sprites/s_bonusfonts.484.27.png",
-    "res://images/sprites/s_bonusfonts.484.28.png",
-    "res://images/sprites/s_bonusfonts.484.29.png",
-    "res://images/sprites/s_bonusfonts.484.30.png",
-    "res://images/sprites/s_bonusfonts.484.31.png",
-    "res://images/sprites/s_bonusfonts.484.32.png",
-    "res://images/sprites/s_bonusfonts.484.33.png",
-    "res://images/sprites/s_bonusfonts.484.34.png",
-    "res://images/sprites/s_bonusfonts.484.35.png",
-    "res://images/sprites/s_bonusfonts.484.36.png",
-    "res://images/sprites/s_bonusfonts.484.37.png",
-    "res://images/sprites/s_bonusfonts.484.38.png",
-    "res://images/sprites/s_bonusfonts.484.39.png",
-    "res://images/sprites/s_bonusfonts.484.40.png",
-    "res://images/sprites/s_bonusfonts.484.41.png",
-    "res://images/sprites/s_bonusfonts.484.42.png",
-    "res://images/sprites/s_bonusfonts.484.43.png",
-    "res://images/sprites/s_bonusfonts.484.44.png",
-    "res://images/sprites/s_bonusfonts.484.45.png",
-    "res://images/sprites/s_bonusfonts.484.46.png",
-    "res://images/sprites/s_bonusfonts.484.47.png",
-    "res://images/sprites/s_bonusfonts.484.48.png",
-    "res://images/sprites/s_bonusfonts.484.49.png",
-    "res://images/sprites/s_bonusfonts.484.50.png",
-    "res://images/sprites/s_bonusfonts.484.51.png",
-    "res://images/sprites/s_bonusfonts.484.52.png",
-    "res://images/sprites/s_bonusfonts.484.53.png",
-    "res://images/sprites/s_bonusfonts.484.54.png",
-    "res://images/sprites/s_bonusfonts.484.55.png",
-    "res://images/sprites/s_bonusfonts.484.56.png",
-    "res://images/sprites/s_bonusfonts.484.57.png"
+    "res://gfx/sprites/s_bonusfonts.484.0.png",
+    "res://gfx/sprites/s_bonusfonts.484.1.png",
+    "res://gfx/sprites/s_bonusfonts.484.2.png",
+    "res://gfx/sprites/s_bonusfonts.484.3.png",
+    "res://gfx/sprites/s_bonusfonts.484.4.png",
+    "res://gfx/sprites/s_bonusfonts.484.5.png",
+    "res://gfx/sprites/s_bonusfonts.484.6.png",
+    "res://gfx/sprites/s_bonusfonts.484.7.png",
+    "res://gfx/sprites/s_bonusfonts.484.8.png",
+    "res://gfx/sprites/s_bonusfonts.484.9.png",
+    "res://gfx/sprites/s_bonusfonts.484.10.png",
+    "res://gfx/sprites/s_bonusfonts.484.11.png",
+    "res://gfx/sprites/s_bonusfonts.484.12.png",
+    "res://gfx/sprites/s_bonusfonts.484.13.png",
+    "res://gfx/sprites/s_bonusfonts.484.14.png",
+    "res://gfx/sprites/s_bonusfonts.484.15.png",
+    "res://gfx/sprites/s_bonusfonts.484.16.png",
+    "res://gfx/sprites/s_bonusfonts.484.17.png",
+    "res://gfx/sprites/s_bonusfonts.484.18.png",
+    "res://gfx/sprites/s_bonusfonts.484.19.png",
+    "res://gfx/sprites/s_bonusfonts.484.20.png",
+    "res://gfx/sprites/s_bonusfonts.484.21.png",
+    "res://gfx/sprites/s_bonusfonts.484.22.png",
+    "res://gfx/sprites/s_bonusfonts.484.23.png",
+    "res://gfx/sprites/s_bonusfonts.484.24.png",
+    "res://gfx/sprites/s_bonusfonts.484.25.png",
+    "res://gfx/sprites/s_bonusfonts.484.26.png",
+    "res://gfx/sprites/s_bonusfonts.484.27.png",
+    "res://gfx/sprites/s_bonusfonts.484.28.png",
+    "res://gfx/sprites/s_bonusfonts.484.29.png",
+    "res://gfx/sprites/s_bonusfonts.484.30.png",
+    "res://gfx/sprites/s_bonusfonts.484.31.png",
+    "res://gfx/sprites/s_bonusfonts.484.32.png",
+    "res://gfx/sprites/s_bonusfonts.484.33.png",
+    "res://gfx/sprites/s_bonusfonts.484.34.png",
+    "res://gfx/sprites/s_bonusfonts.484.35.png",
+    "res://gfx/sprites/s_bonusfonts.484.36.png",
+    "res://gfx/sprites/s_bonusfonts.484.37.png",
+    "res://gfx/sprites/s_bonusfonts.484.38.png",
+    "res://gfx/sprites/s_bonusfonts.484.39.png",
+    "res://gfx/sprites/s_bonusfonts.484.40.png",
+    "res://gfx/sprites/s_bonusfonts.484.41.png",
+    "res://gfx/sprites/s_bonusfonts.484.42.png",
+    "res://gfx/sprites/s_bonusfonts.484.43.png",
+    "res://gfx/sprites/s_bonusfonts.484.44.png",
+    "res://gfx/sprites/s_bonusfonts.484.45.png",
+    "res://gfx/sprites/s_bonusfonts.484.46.png",
+    "res://gfx/sprites/s_bonusfonts.484.47.png",
+    "res://gfx/sprites/s_bonusfonts.484.48.png",
+    "res://gfx/sprites/s_bonusfonts.484.49.png",
+    "res://gfx/sprites/s_bonusfonts.484.50.png",
+    "res://gfx/sprites/s_bonusfonts.484.51.png",
+    "res://gfx/sprites/s_bonusfonts.484.52.png",
+    "res://gfx/sprites/s_bonusfonts.484.53.png",
+    "res://gfx/sprites/s_bonusfonts.484.54.png",
+    "res://gfx/sprites/s_bonusfonts.484.55.png",
+    "res://gfx/sprites/s_bonusfonts.484.56.png",
+    "res://gfx/sprites/s_bonusfonts.484.57.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -6938,64 +6938,64 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonusfonts2.487.0.png",
-    "res://images/sprites/s_bonusfonts2.487.1.png",
-    "res://images/sprites/s_bonusfonts2.487.2.png",
-    "res://images/sprites/s_bonusfonts2.487.3.png",
-    "res://images/sprites/s_bonusfonts2.487.4.png",
-    "res://images/sprites/s_bonusfonts2.487.5.png",
-    "res://images/sprites/s_bonusfonts2.487.6.png",
-    "res://images/sprites/s_bonusfonts2.487.7.png",
-    "res://images/sprites/s_bonusfonts2.487.8.png",
-    "res://images/sprites/s_bonusfonts2.487.9.png",
-    "res://images/sprites/s_bonusfonts2.487.10.png",
-    "res://images/sprites/s_bonusfonts2.487.11.png",
-    "res://images/sprites/s_bonusfonts2.487.12.png",
-    "res://images/sprites/s_bonusfonts2.487.13.png",
-    "res://images/sprites/s_bonusfonts2.487.14.png",
-    "res://images/sprites/s_bonusfonts2.487.15.png",
-    "res://images/sprites/s_bonusfonts2.487.16.png",
-    "res://images/sprites/s_bonusfonts2.487.17.png",
-    "res://images/sprites/s_bonusfonts2.487.18.png",
-    "res://images/sprites/s_bonusfonts2.487.19.png",
-    "res://images/sprites/s_bonusfonts2.487.20.png",
-    "res://images/sprites/s_bonusfonts2.487.21.png",
-    "res://images/sprites/s_bonusfonts2.487.22.png",
-    "res://images/sprites/s_bonusfonts2.487.23.png",
-    "res://images/sprites/s_bonusfonts2.487.24.png",
-    "res://images/sprites/s_bonusfonts2.487.25.png",
-    "res://images/sprites/s_bonusfonts2.487.26.png",
-    "res://images/sprites/s_bonusfonts2.487.27.png",
-    "res://images/sprites/s_bonusfonts2.487.28.png",
-    "res://images/sprites/s_bonusfonts2.487.29.png",
-    "res://images/sprites/s_bonusfonts2.487.30.png",
-    "res://images/sprites/s_bonusfonts2.487.31.png",
-    "res://images/sprites/s_bonusfonts2.487.32.png",
-    "res://images/sprites/s_bonusfonts2.487.33.png",
-    "res://images/sprites/s_bonusfonts2.487.34.png",
-    "res://images/sprites/s_bonusfonts2.487.35.png",
-    "res://images/sprites/s_bonusfonts2.487.36.png",
-    "res://images/sprites/s_bonusfonts2.487.37.png",
-    "res://images/sprites/s_bonusfonts2.487.38.png",
-    "res://images/sprites/s_bonusfonts2.487.39.png",
-    "res://images/sprites/s_bonusfonts2.487.40.png",
-    "res://images/sprites/s_bonusfonts2.487.41.png",
-    "res://images/sprites/s_bonusfonts2.487.42.png",
-    "res://images/sprites/s_bonusfonts2.487.43.png",
-    "res://images/sprites/s_bonusfonts2.487.44.png",
-    "res://images/sprites/s_bonusfonts2.487.45.png",
-    "res://images/sprites/s_bonusfonts2.487.46.png",
-    "res://images/sprites/s_bonusfonts2.487.47.png",
-    "res://images/sprites/s_bonusfonts2.487.48.png",
-    "res://images/sprites/s_bonusfonts2.487.49.png",
-    "res://images/sprites/s_bonusfonts2.487.50.png",
-    "res://images/sprites/s_bonusfonts2.487.51.png",
-    "res://images/sprites/s_bonusfonts2.487.52.png",
-    "res://images/sprites/s_bonusfonts2.487.53.png",
-    "res://images/sprites/s_bonusfonts2.487.54.png",
-    "res://images/sprites/s_bonusfonts2.487.55.png",
-    "res://images/sprites/s_bonusfonts2.487.56.png",
-    "res://images/sprites/s_bonusfonts2.487.57.png"
+    "res://gfx/sprites/s_bonusfonts2.487.0.png",
+    "res://gfx/sprites/s_bonusfonts2.487.1.png",
+    "res://gfx/sprites/s_bonusfonts2.487.2.png",
+    "res://gfx/sprites/s_bonusfonts2.487.3.png",
+    "res://gfx/sprites/s_bonusfonts2.487.4.png",
+    "res://gfx/sprites/s_bonusfonts2.487.5.png",
+    "res://gfx/sprites/s_bonusfonts2.487.6.png",
+    "res://gfx/sprites/s_bonusfonts2.487.7.png",
+    "res://gfx/sprites/s_bonusfonts2.487.8.png",
+    "res://gfx/sprites/s_bonusfonts2.487.9.png",
+    "res://gfx/sprites/s_bonusfonts2.487.10.png",
+    "res://gfx/sprites/s_bonusfonts2.487.11.png",
+    "res://gfx/sprites/s_bonusfonts2.487.12.png",
+    "res://gfx/sprites/s_bonusfonts2.487.13.png",
+    "res://gfx/sprites/s_bonusfonts2.487.14.png",
+    "res://gfx/sprites/s_bonusfonts2.487.15.png",
+    "res://gfx/sprites/s_bonusfonts2.487.16.png",
+    "res://gfx/sprites/s_bonusfonts2.487.17.png",
+    "res://gfx/sprites/s_bonusfonts2.487.18.png",
+    "res://gfx/sprites/s_bonusfonts2.487.19.png",
+    "res://gfx/sprites/s_bonusfonts2.487.20.png",
+    "res://gfx/sprites/s_bonusfonts2.487.21.png",
+    "res://gfx/sprites/s_bonusfonts2.487.22.png",
+    "res://gfx/sprites/s_bonusfonts2.487.23.png",
+    "res://gfx/sprites/s_bonusfonts2.487.24.png",
+    "res://gfx/sprites/s_bonusfonts2.487.25.png",
+    "res://gfx/sprites/s_bonusfonts2.487.26.png",
+    "res://gfx/sprites/s_bonusfonts2.487.27.png",
+    "res://gfx/sprites/s_bonusfonts2.487.28.png",
+    "res://gfx/sprites/s_bonusfonts2.487.29.png",
+    "res://gfx/sprites/s_bonusfonts2.487.30.png",
+    "res://gfx/sprites/s_bonusfonts2.487.31.png",
+    "res://gfx/sprites/s_bonusfonts2.487.32.png",
+    "res://gfx/sprites/s_bonusfonts2.487.33.png",
+    "res://gfx/sprites/s_bonusfonts2.487.34.png",
+    "res://gfx/sprites/s_bonusfonts2.487.35.png",
+    "res://gfx/sprites/s_bonusfonts2.487.36.png",
+    "res://gfx/sprites/s_bonusfonts2.487.37.png",
+    "res://gfx/sprites/s_bonusfonts2.487.38.png",
+    "res://gfx/sprites/s_bonusfonts2.487.39.png",
+    "res://gfx/sprites/s_bonusfonts2.487.40.png",
+    "res://gfx/sprites/s_bonusfonts2.487.41.png",
+    "res://gfx/sprites/s_bonusfonts2.487.42.png",
+    "res://gfx/sprites/s_bonusfonts2.487.43.png",
+    "res://gfx/sprites/s_bonusfonts2.487.44.png",
+    "res://gfx/sprites/s_bonusfonts2.487.45.png",
+    "res://gfx/sprites/s_bonusfonts2.487.46.png",
+    "res://gfx/sprites/s_bonusfonts2.487.47.png",
+    "res://gfx/sprites/s_bonusfonts2.487.48.png",
+    "res://gfx/sprites/s_bonusfonts2.487.49.png",
+    "res://gfx/sprites/s_bonusfonts2.487.50.png",
+    "res://gfx/sprites/s_bonusfonts2.487.51.png",
+    "res://gfx/sprites/s_bonusfonts2.487.52.png",
+    "res://gfx/sprites/s_bonusfonts2.487.53.png",
+    "res://gfx/sprites/s_bonusfonts2.487.54.png",
+    "res://gfx/sprites/s_bonusfonts2.487.55.png",
+    "res://gfx/sprites/s_bonusfonts2.487.56.png",
+    "res://gfx/sprites/s_bonusfonts2.487.57.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7014,8 +7014,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_bonus_cooling.488.0.png",
-    "res://images/sprites/s_bonus_cooling.488.1.png"
+    "res://gfx/sprites/s_bonus_cooling.488.0.png",
+    "res://gfx/sprites/s_bonus_cooling.488.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7034,8 +7034,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonus_redstar.489.0.png",
-    "res://images/sprites/s_bonus_redstar.489.1.png"
+    "res://gfx/sprites/s_bonus_redstar.489.0.png",
+    "res://gfx/sprites/s_bonus_redstar.489.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7054,8 +7054,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_bonus_coolstar.490.0.png",
-    "res://images/sprites/s_bonus_coolstar.490.1.png"
+    "res://gfx/sprites/s_bonus_coolstar.490.0.png",
+    "res://gfx/sprites/s_bonus_coolstar.490.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7074,8 +7074,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_qmpel.492.0.png",
-    "res://images/sprites/s_qmpel.492.1.png"
+    "res://gfx/sprites/s_qmpel.492.0.png",
+    "res://gfx/sprites/s_qmpel.492.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7094,11 +7094,11 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shyghost.493.0.png",
-    "res://images/sprites/s_shyghost.493.1.png",
-    "res://images/sprites/s_shyghost.493.2.png",
-    "res://images/sprites/s_shyghost.493.3.png",
-    "res://images/sprites/s_shyghost.493.4.png"
+    "res://gfx/sprites/s_shyghost.493.0.png",
+    "res://gfx/sprites/s_shyghost.493.1.png",
+    "res://gfx/sprites/s_shyghost.493.2.png",
+    "res://gfx/sprites/s_shyghost.493.3.png",
+    "res://gfx/sprites/s_shyghost.493.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7117,7 +7117,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_shyghost2.494.0.png"
+    "res://gfx/sprites/s_shyghost2.494.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7136,8 +7136,8 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_unknown_location.495.0.png",
-    "res://images/sprites/s_unknown_location.495.1.png"
+    "res://gfx/sprites/s_unknown_location.495.0.png",
+    "res://gfx/sprites/s_unknown_location.495.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7156,8 +7156,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_map_gate.496.0.png",
-    "res://images/sprites/s_map_gate.496.1.png"
+    "res://gfx/sprites/s_map_gate.496.0.png",
+    "res://gfx/sprites/s_map_gate.496.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7176,8 +7176,8 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_key.497.0.png",
-    "res://images/sprites/s_key.497.1.png"
+    "res://gfx/sprites/s_key.497.0.png",
+    "res://gfx/sprites/s_key.497.1.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7213,7 +7213,7 @@
     43
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_10.499.0.png"
+    "res://gfx/sprites/s_castle_piece_10.499.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7232,7 +7232,7 @@
     13
    ],
    "frames": [
-    "res://images/sprites/s_castle_piece_11.500.0.png"
+    "res://gfx/sprites/s_castle_piece_11.500.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7251,7 +7251,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_boss_rockets_poiler.501.0.png"
+    "res://gfx/sprites/s_boss_rockets_poiler.501.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7270,7 +7270,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_boss_bigrocka.502.0.png"
+    "res://gfx/sprites/s_boss_bigrocka.502.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7289,9 +7289,9 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_warping_toad.511.0.png",
-    "res://images/sprites/s_warping_toad.511.1.png",
-    "res://images/sprites/s_warping_toad.511.2.png"
+    "res://gfx/sprites/s_warping_toad.511.0.png",
+    "res://gfx/sprites/s_warping_toad.511.1.png",
+    "res://gfx/sprites/s_warping_toad.511.2.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -7395,22 +7395,22 @@
     0
    ],
    "frames": [
-    "res://images/sprites/s_player_a.543.0.png",
-    "res://images/sprites/s_player_a.543.1.png",
-    "res://images/sprites/s_player_a.543.2.png",
-    "res://images/sprites/s_player_a.543.3.png",
-    "res://images/sprites/s_player_a.543.4.png",
-    "res://images/sprites/s_player_a.543.5.png",
-    "res://images/sprites/s_player_a.543.6.png",
-    "res://images/sprites/s_player_a.543.7.png",
-    "res://images/sprites/s_player_a.543.8.png",
-    "res://images/sprites/s_player_a.543.9.png",
-    "res://images/sprites/s_player_a.543.10.png",
-    "res://images/sprites/s_player_a.543.11.png",
-    "res://images/sprites/s_player_a.543.12.png",
-    "res://images/sprites/s_player_a.543.13.png",
-    "res://images/sprites/s_player_a.543.14.png",
-    "res://images/sprites/s_player_a.543.15.png"
+    "res://gfx/sprites/s_player_a.543.0.png",
+    "res://gfx/sprites/s_player_a.543.1.png",
+    "res://gfx/sprites/s_player_a.543.2.png",
+    "res://gfx/sprites/s_player_a.543.3.png",
+    "res://gfx/sprites/s_player_a.543.4.png",
+    "res://gfx/sprites/s_player_a.543.5.png",
+    "res://gfx/sprites/s_player_a.543.6.png",
+    "res://gfx/sprites/s_player_a.543.7.png",
+    "res://gfx/sprites/s_player_a.543.8.png",
+    "res://gfx/sprites/s_player_a.543.9.png",
+    "res://gfx/sprites/s_player_a.543.10.png",
+    "res://gfx/sprites/s_player_a.543.11.png",
+    "res://gfx/sprites/s_player_a.543.12.png",
+    "res://gfx/sprites/s_player_a.543.13.png",
+    "res://gfx/sprites/s_player_a.543.14.png",
+    "res://gfx/sprites/s_player_a.543.15.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8109,11 +8109,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_0.609.0.png",
-    "res://images/sprites/s_anim_mario_run_0.609.1.png",
-    "res://images/sprites/s_anim_mario_run_0.609.2.png",
-    "res://images/sprites/s_anim_mario_run_0.609.3.png",
-    "res://images/sprites/s_anim_mario_run_0.609.4.png"
+    "res://gfx/sprites/s_anim_mario_run_0.609.0.png",
+    "res://gfx/sprites/s_anim_mario_run_0.609.1.png",
+    "res://gfx/sprites/s_anim_mario_run_0.609.2.png",
+    "res://gfx/sprites/s_anim_mario_run_0.609.3.png",
+    "res://gfx/sprites/s_anim_mario_run_0.609.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8132,11 +8132,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_1.610.0.png",
-    "res://images/sprites/s_anim_mario_run_1.610.1.png",
-    "res://images/sprites/s_anim_mario_run_1.610.2.png",
-    "res://images/sprites/s_anim_mario_run_1.610.3.png",
-    "res://images/sprites/s_anim_mario_run_1.610.4.png"
+    "res://gfx/sprites/s_anim_mario_run_1.610.0.png",
+    "res://gfx/sprites/s_anim_mario_run_1.610.1.png",
+    "res://gfx/sprites/s_anim_mario_run_1.610.2.png",
+    "res://gfx/sprites/s_anim_mario_run_1.610.3.png",
+    "res://gfx/sprites/s_anim_mario_run_1.610.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8155,11 +8155,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_2.611.0.png",
-    "res://images/sprites/s_anim_mario_run_2.611.1.png",
-    "res://images/sprites/s_anim_mario_run_2.611.2.png",
-    "res://images/sprites/s_anim_mario_run_2.611.3.png",
-    "res://images/sprites/s_anim_mario_run_2.611.4.png"
+    "res://gfx/sprites/s_anim_mario_run_2.611.0.png",
+    "res://gfx/sprites/s_anim_mario_run_2.611.1.png",
+    "res://gfx/sprites/s_anim_mario_run_2.611.2.png",
+    "res://gfx/sprites/s_anim_mario_run_2.611.3.png",
+    "res://gfx/sprites/s_anim_mario_run_2.611.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8178,11 +8178,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_3.612.0.png",
-    "res://images/sprites/s_anim_mario_run_3.612.1.png",
-    "res://images/sprites/s_anim_mario_run_3.612.2.png",
-    "res://images/sprites/s_anim_mario_run_3.612.3.png",
-    "res://images/sprites/s_anim_mario_run_3.612.4.png"
+    "res://gfx/sprites/s_anim_mario_run_3.612.0.png",
+    "res://gfx/sprites/s_anim_mario_run_3.612.1.png",
+    "res://gfx/sprites/s_anim_mario_run_3.612.2.png",
+    "res://gfx/sprites/s_anim_mario_run_3.612.3.png",
+    "res://gfx/sprites/s_anim_mario_run_3.612.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8201,11 +8201,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_4.613.0.png",
-    "res://images/sprites/s_anim_mario_run_4.613.1.png",
-    "res://images/sprites/s_anim_mario_run_4.613.2.png",
-    "res://images/sprites/s_anim_mario_run_4.613.3.png",
-    "res://images/sprites/s_anim_mario_run_4.613.4.png"
+    "res://gfx/sprites/s_anim_mario_run_4.613.0.png",
+    "res://gfx/sprites/s_anim_mario_run_4.613.1.png",
+    "res://gfx/sprites/s_anim_mario_run_4.613.2.png",
+    "res://gfx/sprites/s_anim_mario_run_4.613.3.png",
+    "res://gfx/sprites/s_anim_mario_run_4.613.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8224,11 +8224,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_5.614.0.png",
-    "res://images/sprites/s_anim_mario_run_5.614.1.png",
-    "res://images/sprites/s_anim_mario_run_5.614.2.png",
-    "res://images/sprites/s_anim_mario_run_5.614.3.png",
-    "res://images/sprites/s_anim_mario_run_5.614.4.png"
+    "res://gfx/sprites/s_anim_mario_run_5.614.0.png",
+    "res://gfx/sprites/s_anim_mario_run_5.614.1.png",
+    "res://gfx/sprites/s_anim_mario_run_5.614.2.png",
+    "res://gfx/sprites/s_anim_mario_run_5.614.3.png",
+    "res://gfx/sprites/s_anim_mario_run_5.614.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8247,11 +8247,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_6.615.0.png",
-    "res://images/sprites/s_anim_mario_run_6.615.1.png",
-    "res://images/sprites/s_anim_mario_run_6.615.2.png",
-    "res://images/sprites/s_anim_mario_run_6.615.3.png",
-    "res://images/sprites/s_anim_mario_run_6.615.4.png"
+    "res://gfx/sprites/s_anim_mario_run_6.615.0.png",
+    "res://gfx/sprites/s_anim_mario_run_6.615.1.png",
+    "res://gfx/sprites/s_anim_mario_run_6.615.2.png",
+    "res://gfx/sprites/s_anim_mario_run_6.615.3.png",
+    "res://gfx/sprites/s_anim_mario_run_6.615.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8270,11 +8270,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_run_7.616.0.png",
-    "res://images/sprites/s_anim_mario_run_7.616.1.png",
-    "res://images/sprites/s_anim_mario_run_7.616.2.png",
-    "res://images/sprites/s_anim_mario_run_7.616.3.png",
-    "res://images/sprites/s_anim_mario_run_7.616.4.png"
+    "res://gfx/sprites/s_anim_mario_run_7.616.0.png",
+    "res://gfx/sprites/s_anim_mario_run_7.616.1.png",
+    "res://gfx/sprites/s_anim_mario_run_7.616.2.png",
+    "res://gfx/sprites/s_anim_mario_run_7.616.3.png",
+    "res://gfx/sprites/s_anim_mario_run_7.616.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8293,11 +8293,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_stop.617.0.png",
-    "res://images/sprites/s_anim_mario_stop.617.1.png",
-    "res://images/sprites/s_anim_mario_stop.617.2.png",
-    "res://images/sprites/s_anim_mario_stop.617.3.png",
-    "res://images/sprites/s_anim_mario_stop.617.4.png"
+    "res://gfx/sprites/s_anim_mario_stop.617.0.png",
+    "res://gfx/sprites/s_anim_mario_stop.617.1.png",
+    "res://gfx/sprites/s_anim_mario_stop.617.2.png",
+    "res://gfx/sprites/s_anim_mario_stop.617.3.png",
+    "res://gfx/sprites/s_anim_mario_stop.617.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8316,11 +8316,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_panic_0.618.0.png",
-    "res://images/sprites/s_anim_mario_panic_0.618.1.png",
-    "res://images/sprites/s_anim_mario_panic_0.618.2.png",
-    "res://images/sprites/s_anim_mario_panic_0.618.3.png",
-    "res://images/sprites/s_anim_mario_panic_0.618.4.png"
+    "res://gfx/sprites/s_anim_mario_panic_0.618.0.png",
+    "res://gfx/sprites/s_anim_mario_panic_0.618.1.png",
+    "res://gfx/sprites/s_anim_mario_panic_0.618.2.png",
+    "res://gfx/sprites/s_anim_mario_panic_0.618.3.png",
+    "res://gfx/sprites/s_anim_mario_panic_0.618.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8339,11 +8339,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_panic_1.619.0.png",
-    "res://images/sprites/s_anim_mario_panic_1.619.1.png",
-    "res://images/sprites/s_anim_mario_panic_1.619.2.png",
-    "res://images/sprites/s_anim_mario_panic_1.619.3.png",
-    "res://images/sprites/s_anim_mario_panic_1.619.4.png"
+    "res://gfx/sprites/s_anim_mario_panic_1.619.0.png",
+    "res://gfx/sprites/s_anim_mario_panic_1.619.1.png",
+    "res://gfx/sprites/s_anim_mario_panic_1.619.2.png",
+    "res://gfx/sprites/s_anim_mario_panic_1.619.3.png",
+    "res://gfx/sprites/s_anim_mario_panic_1.619.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8362,11 +8362,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_panic_2.620.0.png",
-    "res://images/sprites/s_anim_mario_panic_2.620.1.png",
-    "res://images/sprites/s_anim_mario_panic_2.620.2.png",
-    "res://images/sprites/s_anim_mario_panic_2.620.3.png",
-    "res://images/sprites/s_anim_mario_panic_2.620.4.png"
+    "res://gfx/sprites/s_anim_mario_panic_2.620.0.png",
+    "res://gfx/sprites/s_anim_mario_panic_2.620.1.png",
+    "res://gfx/sprites/s_anim_mario_panic_2.620.2.png",
+    "res://gfx/sprites/s_anim_mario_panic_2.620.3.png",
+    "res://gfx/sprites/s_anim_mario_panic_2.620.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8385,11 +8385,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_panic_3.621.0.png",
-    "res://images/sprites/s_anim_mario_panic_3.621.1.png",
-    "res://images/sprites/s_anim_mario_panic_3.621.2.png",
-    "res://images/sprites/s_anim_mario_panic_3.621.3.png",
-    "res://images/sprites/s_anim_mario_panic_3.621.4.png"
+    "res://gfx/sprites/s_anim_mario_panic_3.621.0.png",
+    "res://gfx/sprites/s_anim_mario_panic_3.621.1.png",
+    "res://gfx/sprites/s_anim_mario_panic_3.621.2.png",
+    "res://gfx/sprites/s_anim_mario_panic_3.621.3.png",
+    "res://gfx/sprites/s_anim_mario_panic_3.621.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8408,11 +8408,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_roar_0.622.0.png",
-    "res://images/sprites/s_anim_mario_roar_0.622.1.png",
-    "res://images/sprites/s_anim_mario_roar_0.622.2.png",
-    "res://images/sprites/s_anim_mario_roar_0.622.3.png",
-    "res://images/sprites/s_anim_mario_roar_0.622.4.png"
+    "res://gfx/sprites/s_anim_mario_roar_0.622.0.png",
+    "res://gfx/sprites/s_anim_mario_roar_0.622.1.png",
+    "res://gfx/sprites/s_anim_mario_roar_0.622.2.png",
+    "res://gfx/sprites/s_anim_mario_roar_0.622.3.png",
+    "res://gfx/sprites/s_anim_mario_roar_0.622.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8431,11 +8431,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_roar_1.623.0.png",
-    "res://images/sprites/s_anim_mario_roar_1.623.1.png",
-    "res://images/sprites/s_anim_mario_roar_1.623.2.png",
-    "res://images/sprites/s_anim_mario_roar_1.623.3.png",
-    "res://images/sprites/s_anim_mario_roar_1.623.4.png"
+    "res://gfx/sprites/s_anim_mario_roar_1.623.0.png",
+    "res://gfx/sprites/s_anim_mario_roar_1.623.1.png",
+    "res://gfx/sprites/s_anim_mario_roar_1.623.2.png",
+    "res://gfx/sprites/s_anim_mario_roar_1.623.3.png",
+    "res://gfx/sprites/s_anim_mario_roar_1.623.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8454,11 +8454,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_roar_2.624.0.png",
-    "res://images/sprites/s_anim_mario_roar_2.624.1.png",
-    "res://images/sprites/s_anim_mario_roar_2.624.2.png",
-    "res://images/sprites/s_anim_mario_roar_2.624.3.png",
-    "res://images/sprites/s_anim_mario_roar_2.624.4.png"
+    "res://gfx/sprites/s_anim_mario_roar_2.624.0.png",
+    "res://gfx/sprites/s_anim_mario_roar_2.624.1.png",
+    "res://gfx/sprites/s_anim_mario_roar_2.624.2.png",
+    "res://gfx/sprites/s_anim_mario_roar_2.624.3.png",
+    "res://gfx/sprites/s_anim_mario_roar_2.624.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8477,11 +8477,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_mario_roar_3.625.0.png",
-    "res://images/sprites/s_anim_mario_roar_3.625.1.png",
-    "res://images/sprites/s_anim_mario_roar_3.625.2.png",
-    "res://images/sprites/s_anim_mario_roar_3.625.3.png",
-    "res://images/sprites/s_anim_mario_roar_3.625.4.png"
+    "res://gfx/sprites/s_anim_mario_roar_3.625.0.png",
+    "res://gfx/sprites/s_anim_mario_roar_3.625.1.png",
+    "res://gfx/sprites/s_anim_mario_roar_3.625.2.png",
+    "res://gfx/sprites/s_anim_mario_roar_3.625.3.png",
+    "res://gfx/sprites/s_anim_mario_roar_3.625.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8500,11 +8500,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_0.626.0.png",
-    "res://images/sprites/s_anim_luigy_run_0.626.1.png",
-    "res://images/sprites/s_anim_luigy_run_0.626.2.png",
-    "res://images/sprites/s_anim_luigy_run_0.626.3.png",
-    "res://images/sprites/s_anim_luigy_run_0.626.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_0.626.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_0.626.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_0.626.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_0.626.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_0.626.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8523,11 +8523,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_1.627.0.png",
-    "res://images/sprites/s_anim_luigy_run_1.627.1.png",
-    "res://images/sprites/s_anim_luigy_run_1.627.2.png",
-    "res://images/sprites/s_anim_luigy_run_1.627.3.png",
-    "res://images/sprites/s_anim_luigy_run_1.627.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_1.627.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_1.627.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_1.627.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_1.627.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_1.627.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8546,11 +8546,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_2.628.0.png",
-    "res://images/sprites/s_anim_luigy_run_2.628.1.png",
-    "res://images/sprites/s_anim_luigy_run_2.628.2.png",
-    "res://images/sprites/s_anim_luigy_run_2.628.3.png",
-    "res://images/sprites/s_anim_luigy_run_2.628.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_2.628.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_2.628.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_2.628.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_2.628.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_2.628.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8569,11 +8569,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_3.629.0.png",
-    "res://images/sprites/s_anim_luigy_run_3.629.1.png",
-    "res://images/sprites/s_anim_luigy_run_3.629.2.png",
-    "res://images/sprites/s_anim_luigy_run_3.629.3.png",
-    "res://images/sprites/s_anim_luigy_run_3.629.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_3.629.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_3.629.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_3.629.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_3.629.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_3.629.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8592,11 +8592,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_4.630.0.png",
-    "res://images/sprites/s_anim_luigy_run_4.630.1.png",
-    "res://images/sprites/s_anim_luigy_run_4.630.2.png",
-    "res://images/sprites/s_anim_luigy_run_4.630.3.png",
-    "res://images/sprites/s_anim_luigy_run_4.630.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_4.630.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_4.630.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_4.630.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_4.630.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_4.630.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8615,11 +8615,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_5.631.0.png",
-    "res://images/sprites/s_anim_luigy_run_5.631.1.png",
-    "res://images/sprites/s_anim_luigy_run_5.631.2.png",
-    "res://images/sprites/s_anim_luigy_run_5.631.3.png",
-    "res://images/sprites/s_anim_luigy_run_5.631.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_5.631.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_5.631.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_5.631.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_5.631.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_5.631.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8638,11 +8638,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_6.632.0.png",
-    "res://images/sprites/s_anim_luigy_run_6.632.1.png",
-    "res://images/sprites/s_anim_luigy_run_6.632.2.png",
-    "res://images/sprites/s_anim_luigy_run_6.632.3.png",
-    "res://images/sprites/s_anim_luigy_run_6.632.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_6.632.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_6.632.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_6.632.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_6.632.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_6.632.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8661,11 +8661,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_run_7.633.0.png",
-    "res://images/sprites/s_anim_luigy_run_7.633.1.png",
-    "res://images/sprites/s_anim_luigy_run_7.633.2.png",
-    "res://images/sprites/s_anim_luigy_run_7.633.3.png",
-    "res://images/sprites/s_anim_luigy_run_7.633.4.png"
+    "res://gfx/sprites/s_anim_luigy_run_7.633.0.png",
+    "res://gfx/sprites/s_anim_luigy_run_7.633.1.png",
+    "res://gfx/sprites/s_anim_luigy_run_7.633.2.png",
+    "res://gfx/sprites/s_anim_luigy_run_7.633.3.png",
+    "res://gfx/sprites/s_anim_luigy_run_7.633.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8684,11 +8684,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_anim_luigy_stop.634.0.png",
-    "res://images/sprites/s_anim_luigy_stop.634.1.png",
-    "res://images/sprites/s_anim_luigy_stop.634.2.png",
-    "res://images/sprites/s_anim_luigy_stop.634.3.png",
-    "res://images/sprites/s_anim_luigy_stop.634.4.png"
+    "res://gfx/sprites/s_anim_luigy_stop.634.0.png",
+    "res://gfx/sprites/s_anim_luigy_stop.634.1.png",
+    "res://gfx/sprites/s_anim_luigy_stop.634.2.png",
+    "res://gfx/sprites/s_anim_luigy_stop.634.3.png",
+    "res://gfx/sprites/s_anim_luigy_stop.634.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8707,11 +8707,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_0.635.0.png",
-    "res://images/sprites/s_metroid_0.635.1.png",
-    "res://images/sprites/s_metroid_0.635.2.png",
-    "res://images/sprites/s_metroid_0.635.3.png",
-    "res://images/sprites/s_metroid_0.635.4.png"
+    "res://gfx/sprites/s_metroid_0.635.0.png",
+    "res://gfx/sprites/s_metroid_0.635.1.png",
+    "res://gfx/sprites/s_metroid_0.635.2.png",
+    "res://gfx/sprites/s_metroid_0.635.3.png",
+    "res://gfx/sprites/s_metroid_0.635.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8730,11 +8730,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_1.636.0.png",
-    "res://images/sprites/s_metroid_1.636.1.png",
-    "res://images/sprites/s_metroid_1.636.2.png",
-    "res://images/sprites/s_metroid_1.636.3.png",
-    "res://images/sprites/s_metroid_1.636.4.png"
+    "res://gfx/sprites/s_metroid_1.636.0.png",
+    "res://gfx/sprites/s_metroid_1.636.1.png",
+    "res://gfx/sprites/s_metroid_1.636.2.png",
+    "res://gfx/sprites/s_metroid_1.636.3.png",
+    "res://gfx/sprites/s_metroid_1.636.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8753,11 +8753,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_2.637.0.png",
-    "res://images/sprites/s_metroid_2.637.1.png",
-    "res://images/sprites/s_metroid_2.637.2.png",
-    "res://images/sprites/s_metroid_2.637.3.png",
-    "res://images/sprites/s_metroid_2.637.4.png"
+    "res://gfx/sprites/s_metroid_2.637.0.png",
+    "res://gfx/sprites/s_metroid_2.637.1.png",
+    "res://gfx/sprites/s_metroid_2.637.2.png",
+    "res://gfx/sprites/s_metroid_2.637.3.png",
+    "res://gfx/sprites/s_metroid_2.637.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8776,11 +8776,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_3.638.0.png",
-    "res://images/sprites/s_metroid_3.638.1.png",
-    "res://images/sprites/s_metroid_3.638.2.png",
-    "res://images/sprites/s_metroid_3.638.3.png",
-    "res://images/sprites/s_metroid_3.638.4.png"
+    "res://gfx/sprites/s_metroid_3.638.0.png",
+    "res://gfx/sprites/s_metroid_3.638.1.png",
+    "res://gfx/sprites/s_metroid_3.638.2.png",
+    "res://gfx/sprites/s_metroid_3.638.3.png",
+    "res://gfx/sprites/s_metroid_3.638.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8799,11 +8799,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_4.639.0.png",
-    "res://images/sprites/s_metroid_4.639.1.png",
-    "res://images/sprites/s_metroid_4.639.2.png",
-    "res://images/sprites/s_metroid_4.639.3.png",
-    "res://images/sprites/s_metroid_4.639.4.png"
+    "res://gfx/sprites/s_metroid_4.639.0.png",
+    "res://gfx/sprites/s_metroid_4.639.1.png",
+    "res://gfx/sprites/s_metroid_4.639.2.png",
+    "res://gfx/sprites/s_metroid_4.639.3.png",
+    "res://gfx/sprites/s_metroid_4.639.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8822,11 +8822,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_5.640.0.png",
-    "res://images/sprites/s_metroid_5.640.1.png",
-    "res://images/sprites/s_metroid_5.640.2.png",
-    "res://images/sprites/s_metroid_5.640.3.png",
-    "res://images/sprites/s_metroid_5.640.4.png"
+    "res://gfx/sprites/s_metroid_5.640.0.png",
+    "res://gfx/sprites/s_metroid_5.640.1.png",
+    "res://gfx/sprites/s_metroid_5.640.2.png",
+    "res://gfx/sprites/s_metroid_5.640.3.png",
+    "res://gfx/sprites/s_metroid_5.640.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8845,11 +8845,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_6.641.0.png",
-    "res://images/sprites/s_metroid_6.641.1.png",
-    "res://images/sprites/s_metroid_6.641.2.png",
-    "res://images/sprites/s_metroid_6.641.3.png",
-    "res://images/sprites/s_metroid_6.641.4.png"
+    "res://gfx/sprites/s_metroid_6.641.0.png",
+    "res://gfx/sprites/s_metroid_6.641.1.png",
+    "res://gfx/sprites/s_metroid_6.641.2.png",
+    "res://gfx/sprites/s_metroid_6.641.3.png",
+    "res://gfx/sprites/s_metroid_6.641.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8868,11 +8868,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_7.642.0.png",
-    "res://images/sprites/s_metroid_7.642.1.png",
-    "res://images/sprites/s_metroid_7.642.2.png",
-    "res://images/sprites/s_metroid_7.642.3.png",
-    "res://images/sprites/s_metroid_7.642.4.png"
+    "res://gfx/sprites/s_metroid_7.642.0.png",
+    "res://gfx/sprites/s_metroid_7.642.1.png",
+    "res://gfx/sprites/s_metroid_7.642.2.png",
+    "res://gfx/sprites/s_metroid_7.642.3.png",
+    "res://gfx/sprites/s_metroid_7.642.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8891,11 +8891,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_8.643.0.png",
-    "res://images/sprites/s_metroid_8.643.1.png",
-    "res://images/sprites/s_metroid_8.643.2.png",
-    "res://images/sprites/s_metroid_8.643.3.png",
-    "res://images/sprites/s_metroid_8.643.4.png"
+    "res://gfx/sprites/s_metroid_8.643.0.png",
+    "res://gfx/sprites/s_metroid_8.643.1.png",
+    "res://gfx/sprites/s_metroid_8.643.2.png",
+    "res://gfx/sprites/s_metroid_8.643.3.png",
+    "res://gfx/sprites/s_metroid_8.643.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8914,11 +8914,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_9.644.0.png",
-    "res://images/sprites/s_metroid_9.644.1.png",
-    "res://images/sprites/s_metroid_9.644.2.png",
-    "res://images/sprites/s_metroid_9.644.3.png",
-    "res://images/sprites/s_metroid_9.644.4.png"
+    "res://gfx/sprites/s_metroid_9.644.0.png",
+    "res://gfx/sprites/s_metroid_9.644.1.png",
+    "res://gfx/sprites/s_metroid_9.644.2.png",
+    "res://gfx/sprites/s_metroid_9.644.3.png",
+    "res://gfx/sprites/s_metroid_9.644.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8937,11 +8937,11 @@
     31
    ],
    "frames": [
-    "res://images/sprites/s_metroid_10.645.0.png",
-    "res://images/sprites/s_metroid_10.645.1.png",
-    "res://images/sprites/s_metroid_10.645.2.png",
-    "res://images/sprites/s_metroid_10.645.3.png",
-    "res://images/sprites/s_metroid_10.645.4.png"
+    "res://gfx/sprites/s_metroid_10.645.0.png",
+    "res://gfx/sprites/s_metroid_10.645.1.png",
+    "res://gfx/sprites/s_metroid_10.645.2.png",
+    "res://gfx/sprites/s_metroid_10.645.3.png",
+    "res://gfx/sprites/s_metroid_10.645.4.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8977,7 +8977,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_logo_space_maker.678.0.png"
+    "res://gfx/sprites/s_logo_space_maker.678.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -8996,7 +8996,7 @@
     1
    ],
    "frames": [
-    "res://images/sprites/s_logo_special_1.679.0.png"
+    "res://gfx/sprites/s_logo_special_1.679.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -9270,7 +9270,7 @@
     0
    ],
    "frames": [
-    "res://images/sprites/sprite886.886.0.png"
+    "res://gfx/sprites/sprite886.886.0.png"
    ],
    "shape": 0,
    "alpha_tolerance": 0,
@@ -9281,55 +9281,55 @@
   "0": {
    "name": "background0",
    "frames": [
-    "res://images/backgrounds/background0.0.jpg"
+    "res://gfx/backgrounds/background0.0.jpg"
    ]
   },
   "2": {
    "name": "background1",
    "frames": [
-    "res://images/backgrounds/background1.2.jpg"
+    "res://gfx/backgrounds/background1.2.jpg"
    ]
   },
   "4": {
    "name": "background2",
    "frames": [
-    "res://images/backgrounds/background2.4.png"
+    "res://gfx/backgrounds/background2.4.png"
    ]
   },
   "5": {
    "name": "background3",
    "frames": [
-    "res://images/backgrounds/background3.5.png"
+    "res://gfx/backgrounds/background3.5.png"
    ]
   },
   "6": {
    "name": "background5",
    "frames": [
-    "res://images/backgrounds/background5.6.jpg"
+    "res://gfx/backgrounds/background5.6.jpg"
    ]
   },
   "41": {
    "name": "back_asteroids",
    "frames": [
-    "res://images/backgrounds/back_asteroids.41.png"
+    "res://gfx/backgrounds/back_asteroids.41.png"
    ]
   },
   "44": {
    "name": "background0plus",
    "frames": [
-    "res://images/backgrounds/background0plus.44.jpg"
+    "res://gfx/backgrounds/background0plus.44.jpg"
    ]
   },
   "45": {
    "name": "s_shopbackround",
    "frames": [
-    "res://images/backgrounds/s_shopbackround.45.png"
+    "res://gfx/backgrounds/s_shopbackround.45.png"
    ]
   },
   "48": {
    "name": "background48",
    "frames": [
-    "res://images/backgrounds/background48.48.png"
+    "res://gfx/backgrounds/background48.48.png"
    ]
   },
   "52": {
@@ -9338,144 +9338,144 @@
   }
  },
  "sounds": {
-  "0": "res://data/s/snd_apporach_1.wav",
-  "1": "res://data/s/snd_badhit_1.wav",
-  "2": "res://data/s/snd_badhit_2.wav",
-  "3": "res://data/s/snd_badhit_3.wav",
-  "4": "res://data/s/snd_badhit_a.ogg",
-  "6": "res://data/s/snd_explosion_a.ogg",
-  "7": "res://data/s/snd_explosion_b.ogg",
-  "8": "res://data/s/snd_explosion_c.ogg",
-  "9": "res://data/s/snd_impact_a.wav",
-  "10": "res://data/s/snd_impact_b.wav",
-  "11": "res://data/s/snd_impact_c.wav",
-  "12": "res://data/s/snd_playshot_a.ogg",
-  "13": "res://data/s/snd_playshot_b.wav",
-  "14": "res://data/s/snd_playshot_c.ogg",
-  "15": "res://data/s/snd_playshot_d.ogg",
-  "16": "res://data/s/snd_playshot_e.ogg",
-  "17": "res://data/s/snd_playshot_f.wav",
-  "18": "res://data/s/snd_playshot_g.wav",
-  "19": "res://data/s/snd_playshot_h.ogg",
-  "20": "res://data/s/snd_playshot_i.ogg",
-  "21": "res://data/s/snd_playshot_j.ogg",
-  "22": "res://data/s/snd_playshot_k.ogg",
-  "23": "res://data/s/snd_playshot_l.ogg",
-  "24": "res://data/s/snd_playshot_tt.wav",
-  "25": "res://data/s/snd_playshot_ttt.wav",
-  "26": "res://data/s/snd_playshot_tttt.wav",
-  "27": "res://data/s/snd_rak.ogg",
+  "0": "res://sfx/snd_apporach_1.wav",
+  "1": "res://sfx/snd_badhit_1.wav",
+  "2": "res://sfx/snd_badhit_2.wav",
+  "3": "res://sfx/snd_badhit_3.wav",
+  "4": "res://sfx/snd_badhit_a.ogg",
+  "6": "res://sfx/snd_explosion_a.ogg",
+  "7": "res://sfx/snd_explosion_b.ogg",
+  "8": "res://sfx/snd_explosion_c.ogg",
+  "9": "res://sfx/snd_impact_a.wav",
+  "10": "res://sfx/snd_impact_b.wav",
+  "11": "res://sfx/snd_impact_c.wav",
+  "12": "res://sfx/snd_playshot_a.ogg",
+  "13": "res://sfx/snd_playshot_b.wav",
+  "14": "res://sfx/snd_playshot_c.ogg",
+  "15": "res://sfx/snd_playshot_d.ogg",
+  "16": "res://sfx/snd_playshot_e.ogg",
+  "17": "res://sfx/snd_playshot_f.wav",
+  "18": "res://sfx/snd_playshot_g.wav",
+  "19": "res://sfx/snd_playshot_h.ogg",
+  "20": "res://sfx/snd_playshot_i.ogg",
+  "21": "res://sfx/snd_playshot_j.ogg",
+  "22": "res://sfx/snd_playshot_k.ogg",
+  "23": "res://sfx/snd_playshot_l.ogg",
+  "24": "res://sfx/snd_playshot_tt.wav",
+  "25": "res://sfx/snd_playshot_ttt.wav",
+  "26": "res://sfx/snd_playshot_tttt.wav",
+  "27": "res://sfx/snd_rak.ogg",
   "28": null,
   "29": null,
   "30": null,
   "31": null,
   "32": null,
-  "33": "res://data/s/snd_ufoload.ogg",
-  "35": "res://data/s/snd_playshot_bosslas.ogg",
-  "36": "res://data/s/snd_playshot_bosslas2.ogg",
+  "33": "res://sfx/snd_ufoload.ogg",
+  "35": "res://sfx/snd_playshot_bosslas.ogg",
+  "36": "res://sfx/snd_playshot_bosslas2.ogg",
   "38": null,
   "39": null,
-  "40": "res://data/s/snd_izomatic.ogg",
-  "41": "res://data/s/snd_izomatic2.ogg",
-  "42": "res://data/s/snd_izomatic3.ogg",
-  "43": "res://data/s/snd_guideancer.ogg",
-  "44": "res://data/s/snd_guideancer2.ogg",
-  "45": "res://data/s/pointerus.wav",
-  "46": "res://data/s/snd_die.ogg",
-  "50": "res://data/s/boomerang1.ogg",
-  "51": "res://data/s/boomerang2.ogg",
-  "52": "res://data/s/fireball.ogg",
-  "53": "res://data/s/snd_radialshot.ogg",
-  "54": "res://data/s/snd_ladowanie.ogg",
-  "55": "res://data/s/snd_ladowanie2.ogg",
-  "56": "res://data/s/snd_ladowanie3.ogg",
-  "57": "res://data/s/snd_ballup.ogg",
-  "58": "res://data/s/snd_shortminigun.wav",
-  "59": "res://data/s/snd_smallbounce.ogg",
-  "60": "res://data/s/snd_smallshotta.ogg",
-  "61": "res://data/s/snd_smallexplo.ogg",
-  "62": "res://data/s/snd_smallballus.ogg",
-  "63": "res://data/s/snd_bluerockets.ogg",
-  "64": "res://data/s/snd_bigrocka.ogg",
-  "65": "res://data/s/snd_biglassa.ogg",
-  "66": "res://data/s/snd_fosforus.ogg",
-  "67": "res://data/s/snd_giggamachine.ogg",
-  "68": "res://data/s/snd_minifosfo.ogg",
-  "70": "res://data/s/snd_machinegun.ogg",
-  "69": "res://data/s/snd_shotgana.ogg",
-  "71": "res://data/s/snd_guidemag.ogg",
-  "72": "res://data/s/snd_flakexplo.ogg",
-  "73": "res://data/s/snd_minilaser.ogg",
-  "74": "res://data/s/snd_grenmagma.ogg",
-  "75": "res://data/s/snd_minishot.wav",
-  "76": "res://data/s/snd_coin_catch.ogg",
-  "77": "res://data/s/snd_small_krystak.ogg",
-  "78": "res://data/s/snd_big_crystak.ogg",
-  "79": "res://data/s/snd_explosion_normal.ogg",
-  "80": "res://data/s/snd_megaspecial.ogg",
-  "81": "res://data/s/snd_megaspecial2.ogg",
-  "82": "res://data/s/snd_magelaser.ogg",
-  "83": "res://data/s/snd_special_kaboom.ogg",
-  "84": "res://data/s/snd_takenap.ogg",
-  "85": "res://data/s/snd_twromb.ogg",
-  "86": "res://data/s/snd_flammeh.ogg",
-  "87": "res://data/s/snd_bite.ogg",
-  "88": "res://data/s/snd_pointblock.ogg",
-  "89": "res://data/s/snd_flammer.ogg",
-  "90": "res://data/s/snd_bowser_growl.ogg",
-  "91": "res://data/s/snd_bowser_laugh.ogg",
-  "92": "res://data/s/snd_bowser_cackle.ogg",
-  "93": "res://data/s/snd_bowser_huh.ogg",
-  "94": "res://data/s/snd_asteroid_destroy.ogg",
-  "95": "res://data/s/snd_metal_scratch1.ogg",
-  "96": "res://data/s/snd_metal_scratch2.ogg",
-  "97": "res://data/s/snd_metal_scratch3.ogg",
-  "98": "res://data/s/snd_bowser_laugh_2.ogg",
-  "99": "res://data/s/snd_motion_slow.ogg",
-  "100": "res://data/s/snd_motion_fast.ogg",
-  "110": "res://data/s/snd_minipini.ogg",
-  "111": "res://data/s/snd_weapon_lafontaine.ogg",
-  "112": "res://data/s/snd_weapon_lafontaine_boom.ogg",
-  "113": "res://data/s/snd_laser.ogg",
-  "101": "res://data/s/snd_font_additional.wav",
-  "102": "res://data/s/snd_sho_weapon_select.ogg",
-  "103": "res://data/s/snd_sell_weapon.ogg",
-  "104": "res://data/s/snd_weapon_level_change.wav",
-  "105": "res://data/s/snd_upgrade_up.ogg",
-  "106": "res://data/s/snd_upgrade_down.ogg",
-  "107": "res://data/s/snd_choosed_shop_weapon.ogg",
-  "108": "res://data/s/snd_buy.ogg",
-  "109": "res://data/s/snd_wrong.ogg",
-  "200": "res://data/s/snd_refill.ogg",
-  "201": "res://data/s/snd_buy_live.ogg",
-  "202": "res://data/s/snd_explosion_c.ogg",
-  "203": "res://data/s/snd_hint.ogg",
-  "204": "res://data/s/snd_hint2.ogg",
-  "205": "res://data/s/snd_overheat.ogg",
-  "206": "res://data/s/snd_koopa_troopa_die.ogg",
-  "207": "res://data/s/snd_ufo_laser.ogg",
-  "208": "res://data/s/snd_bigexplosion.ogg",
-  "209": "res://data/s/snd_boo.ogg",
-  "210": "res://data/s/snd_boo2.ogg",
-  "211": "res://data/s/snd_gate.ogg",
-  "212": "res://data/s/snd_peach_letter.ogg",
-  "213": "res://data/s/snd_list_od_peach.ogg",
-  "214": "res://data/s/snd_anim_prologue.ogg",
-  "215": "res://data/s/snd_mario_yahoo.ogg",
-  "216": "res://data/s/snd_mario_letsgo.ogg",
-  "217": "res://data/s/snd_anim_peach.ogg",
-  "218": "res://data/s/snd_megaboom.ogg",
-  "219": "res://data/s/snd_anim_0.ogg",
-  "220": "res://data/s/snd_anim_1.ogg",
-  "221": "res://data/s/snd_anim_2.ogg",
-  "222": "res://data/s/snd_anim_3.ogg",
-  "223": "res://data/s/snd_anim_4.ogg",
-  "224": "res://data/s/snd_anim_5.ogg",
-  "225": "res://data/s/snd_anim_6.ogg",
-  "226": "res://data/s/snd_anim_heart.ogg",
-  "227": "res://data/s/snd_anim_heart2.ogg",
-  "228": "res://data/s/snd_anim_heart3.ogg",
-  "229": "res://data/s/snd_char_select.ogg"
+  "40": "res://sfx/snd_izomatic.ogg",
+  "41": "res://sfx/snd_izomatic2.ogg",
+  "42": "res://sfx/snd_izomatic3.ogg",
+  "43": "res://sfx/snd_guideancer.ogg",
+  "44": "res://sfx/snd_guideancer2.ogg",
+  "45": "res://sfx/pointerus.wav",
+  "46": "res://sfx/snd_die.ogg",
+  "50": "res://sfx/boomerang1.ogg",
+  "51": "res://sfx/boomerang2.ogg",
+  "52": "res://sfx/fireball.ogg",
+  "53": "res://sfx/snd_radialshot.ogg",
+  "54": "res://sfx/snd_ladowanie.ogg",
+  "55": "res://sfx/snd_ladowanie2.ogg",
+  "56": "res://sfx/snd_ladowanie3.ogg",
+  "57": "res://sfx/snd_ballup.ogg",
+  "58": "res://sfx/snd_shortminigun.wav",
+  "59": "res://sfx/snd_smallbounce.ogg",
+  "60": "res://sfx/snd_smallshotta.ogg",
+  "61": "res://sfx/snd_smallexplo.ogg",
+  "62": "res://sfx/snd_smallballus.ogg",
+  "63": "res://sfx/snd_bluerockets.ogg",
+  "64": "res://sfx/snd_bigrocka.ogg",
+  "65": "res://sfx/snd_biglassa.ogg",
+  "66": "res://sfx/snd_fosforus.ogg",
+  "67": "res://sfx/snd_giggamachine.ogg",
+  "68": "res://sfx/snd_minifosfo.ogg",
+  "70": "res://sfx/snd_machinegun.ogg",
+  "69": "res://sfx/snd_shotgana.ogg",
+  "71": "res://sfx/snd_guidemag.ogg",
+  "72": "res://sfx/snd_flakexplo.ogg",
+  "73": "res://sfx/snd_minilaser.ogg",
+  "74": "res://sfx/snd_grenmagma.ogg",
+  "75": "res://sfx/snd_minishot.wav",
+  "76": "res://sfx/snd_coin_catch.ogg",
+  "77": "res://sfx/snd_small_krystak.ogg",
+  "78": "res://sfx/snd_big_crystak.ogg",
+  "79": "res://sfx/snd_explosion_normal.ogg",
+  "80": "res://sfx/snd_megaspecial.ogg",
+  "81": "res://sfx/snd_megaspecial2.ogg",
+  "82": "res://sfx/snd_magelaser.ogg",
+  "83": "res://sfx/snd_special_kaboom.ogg",
+  "84": "res://sfx/snd_takenap.ogg",
+  "85": "res://sfx/snd_twromb.ogg",
+  "86": "res://sfx/snd_flammeh.ogg",
+  "87": "res://sfx/snd_bite.ogg",
+  "88": "res://sfx/snd_pointblock.ogg",
+  "89": "res://sfx/snd_flammer.ogg",
+  "90": "res://sfx/snd_bowser_growl.ogg",
+  "91": "res://sfx/snd_bowser_laugh.ogg",
+  "92": "res://sfx/snd_bowser_cackle.ogg",
+  "93": "res://sfx/snd_bowser_huh.ogg",
+  "94": "res://sfx/snd_asteroid_destroy.ogg",
+  "95": "res://sfx/snd_metal_scratch1.ogg",
+  "96": "res://sfx/snd_metal_scratch2.ogg",
+  "97": "res://sfx/snd_metal_scratch3.ogg",
+  "98": "res://sfx/snd_bowser_laugh_2.ogg",
+  "99": "res://sfx/snd_motion_slow.ogg",
+  "100": "res://sfx/snd_motion_fast.ogg",
+  "110": "res://sfx/snd_minipini.ogg",
+  "111": "res://sfx/snd_weapon_lafontaine.ogg",
+  "112": "res://sfx/snd_weapon_lafontaine_boom.ogg",
+  "113": "res://sfx/snd_laser.ogg",
+  "101": "res://sfx/snd_font_additional.wav",
+  "102": "res://sfx/snd_sho_weapon_select.ogg",
+  "103": "res://sfx/snd_sell_weapon.ogg",
+  "104": "res://sfx/snd_weapon_level_change.wav",
+  "105": "res://sfx/snd_upgrade_up.ogg",
+  "106": "res://sfx/snd_upgrade_down.ogg",
+  "107": "res://sfx/snd_choosed_shop_weapon.ogg",
+  "108": "res://sfx/snd_buy.ogg",
+  "109": "res://sfx/snd_wrong.ogg",
+  "200": "res://sfx/snd_refill.ogg",
+  "201": "res://sfx/snd_buy_live.ogg",
+  "202": "res://sfx/snd_explosion_c.ogg",
+  "203": "res://sfx/snd_hint.ogg",
+  "204": "res://sfx/snd_hint2.ogg",
+  "205": "res://sfx/snd_overheat.ogg",
+  "206": "res://sfx/snd_koopa_troopa_die.ogg",
+  "207": "res://sfx/snd_ufo_laser.ogg",
+  "208": "res://sfx/snd_bigexplosion.ogg",
+  "209": "res://sfx/snd_boo.ogg",
+  "210": "res://sfx/snd_boo2.ogg",
+  "211": "res://sfx/snd_gate.ogg",
+  "212": "res://sfx/snd_peach_letter.ogg",
+  "213": "res://sfx/snd_list_od_peach.ogg",
+  "214": "res://sfx/snd_anim_prologue.ogg",
+  "215": "res://sfx/snd_mario_yahoo.ogg",
+  "216": "res://sfx/snd_mario_letsgo.ogg",
+  "217": "res://sfx/snd_anim_peach.ogg",
+  "218": "res://sfx/snd_megaboom.ogg",
+  "219": "res://sfx/snd_anim_0.ogg",
+  "220": "res://sfx/snd_anim_1.ogg",
+  "221": "res://sfx/snd_anim_2.ogg",
+  "222": "res://sfx/snd_anim_3.ogg",
+  "223": "res://sfx/snd_anim_4.ogg",
+  "224": "res://sfx/snd_anim_5.ogg",
+  "225": "res://sfx/snd_anim_6.ogg",
+  "226": "res://sfx/snd_anim_heart.ogg",
+  "227": "res://sfx/snd_anim_heart2.ogg",
+  "228": "res://sfx/snd_anim_heart3.ogg",
+  "229": "res://sfx/snd_char_select.ogg"
  },
  "music": {},
  "runtime_paths": {},

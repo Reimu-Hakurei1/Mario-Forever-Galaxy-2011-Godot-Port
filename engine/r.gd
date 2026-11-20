@@ -305,11 +305,11 @@ static func boot(scene_root: Node2D) -> void:
 	print("BOOT first_room=%dms total=%dms" % [Time.get_ticks_msec() - _bt2, Time.get_ticks_msec() - _bt])
 
 
-# Galaxy keeps all three save slots inside data/m/skipper, which the original game
+# Galaxy keeps all three save slots inside data/skipper, which the original game
 # writes next to the exe. The port reads/writes its working directory, so the
 # shipped file has to be copied there once or saves could never persist.
 static func _seed_user_files() -> void:
-	for rel in ["data/m/skipper", "settings.ini"]:
+	for rel in ["data/skipper", "settings.ini"]:
 		var dst: String = working_directory.path_join(str(rel))
 		# A zero-byte settings.ini (written before this seeding existed) would keep
 		# the game on placeholder key bindings, so treat it as missing.
@@ -2039,7 +2039,7 @@ static func _scene_path(meta: Dictionary) -> String:
 
 static func _scene_layout(idx: int, meta: Dictionary) -> Dictionary:
 	if _scene_index.is_empty():
-		var f := FileAccess.open("res://data/levels/index.json", FileAccess.READ)
+		var f := FileAccess.open("res://levels/index.json", FileAccess.READ)
 		if f == null:
 			return meta
 		var list: Variant = JSON.parse_string(f.get_as_text())

@@ -120,22 +120,22 @@ const SMIERC_OFFSETS := [Vector2(122, 0), Vector2(-122, 0),
 # fat_boy variants also carry cannon `adders`, a periodic obj-116 dart
 # fan (`rockets` = frame period; `side` = wing pair at x±100), and
 # six-coin death drops (`coins`). flame_cans variants carry volley
-# size `ilosc` and charge-cycle head start `lad0`.
+# size `volley` and charge-cycle head start `charge`.
 const VARIANTS := {
 	"ufo_mega": {"name": "UFO MEGA", "sprite": 174, "scale": 1.1,
 		"tint": Color(0.8, 0.9, 1.0), "hp": 800.0},
 	"flame_cans": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
 		"tint": Color(1.0, 0.6, 0.3), "hp": 600.0,
-		"ilosc": 10.0, "lad0": 800.0},
+		"volley": 10.0, "charge": 800.0},
 	"flame_cans_2": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
 		"tint": Color(1.0, 0.6, 0.3), "hp": 1200.0,
-		"ilosc": 4.0, "lad0": 800.0},
+		"volley": 4.0, "charge": 800.0},
 	"flame_cans_3": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
 		"tint": Color(1.0, 0.6, 0.3), "hp": 1200.0,
-		"ilosc": 10.0, "lad0": 200.0},
+		"volley": 10.0, "charge": 200.0},
 	"flame_cans_4": {"name": "FLAME CANS", "sprite": 182, "scale": 1.0,
 		"tint": Color(1.0, 0.6, 0.3), "hp": 2000.0,
-		"ilosc": 20.0, "lad0": 800.0},
+		"volley": 20.0, "charge": 800.0},
 	"fat_boy": {"name": "KOOPA_TROOPA'S FAT_BOY", "sprite": 178,
 		"scale": 0.9, "tint": Color(1.0, 0.85, 0.6), "hp": 8000.0,
 		"adders": [1.0, 1.3, 1.7]},
@@ -176,7 +176,7 @@ var _dead := false
 var _seq := 0
 var _dox := 452.0
 var _doy := 350.0
-var _ixor := 0.0
+var _drift_x := 0.0
 var _rozstrzel := 0.0
 var _rozstrzelywywuj := 0.0
 var _sq2 := 0
@@ -189,8 +189,8 @@ var _gigatak := false
 var _rzuc_raz := false
 var _kiedy_team := 0.0
 var _kiedy_biggery := 0.0
-var _promien_biggery := 0.0
-var _kat_biggery := 0.0
+var _orbit_radius := 0.0
+var _orbit_angle := 0.0
 var _biggery: Array = []
 var _wypusc_goombe := 0.0
 var _wypuszczanie_goomby := 0.0
@@ -200,7 +200,7 @@ var _laser_t := 0.0
 var _seq_rakiet := 0.0
 var _gigatron := 0
 var _gigatime := 0.0
-var _ilosc_rakiet := 0
+var _rockets_left := 0
 var _strzelaj_rakiet := 0.0
 var _gigarandom := 0.0
 var _rakietnice := 0.0
@@ -237,9 +237,9 @@ func _ready() -> void:
 		if VARIANTS[variant].has("rockets"):
 			_fb_rocket_period = float(VARIANTS[variant]["rockets"])
 			_fb_side = bool(VARIANTS[variant].get("side", false))
-		if VARIANTS[variant].has("ilosc"):
-			_fc_ilosc_max = float(VARIANTS[variant]["ilosc"])
-		_ladowanie = float(VARIANTS[variant].get("lad0", 0.0))
+		if VARIANTS[variant].has("volley"):
+			_fc_volley_max = float(VARIANTS[variant]["volley"])
+		_ladowanie = float(VARIANTS[variant].get("charge", 0.0))
 	health = max_health
 	# g_giga starts at -300 in most scripts (first orb ~600f in); boss_2
 	# starts at 0.
@@ -375,7 +375,7 @@ func _anim_tick() -> void:
 			var sp: Sprite2D = _spoilers[i]
 			sp.position = Vector2((1.0 if i == 0 else -1.0) * _spoiler,
 				-_spoiler)
-			sp.rotation = deg_to_rad(_ixor)
+			sp.rotation = deg_to_rad(_drift_x)
 
 
 ## The original boss objects play their g_dialogue typewriter speech
@@ -516,7 +516,7 @@ func _boss8_tick(cfg: Dictionary) -> void:
 			for i in 18:
 				_spawn_dart(513, 20.0 * i)
 		1250:
-			_ilosc_rakiet = 30
+			_rockets_left = 30
 		1600:
 			_gigatron = 20
 			_seq_rakiet = 1601.0
@@ -524,9 +524,9 @@ func _boss8_tick(cfg: Dictionary) -> void:
 			_seq_rakiet = 0.0
 	# obj 510 rocket stream — every >10f while ilosc_rakiet lasts.
 	_strzelaj_rakiet += 1.0
-	if _ilosc_rakiet > 0 and _strzelaj_rakiet > 10.0:
+	if _rockets_left > 0 and _strzelaj_rakiet > 10.0:
 		_strzelaj_rakiet = 0.0
-		_ilosc_rakiet -= 1
+		_rockets_left -= 1
 		_spawn_dart(510, 90.0 + randf_range(-40.0, 40.0))
 	# obj 512 rotating volleys — every >50f while gigatron lasts.
 	_gigatime += 1.0
@@ -546,18 +546,18 @@ func _move_toward_target(has_sweep: bool) -> void:
 		return
 	var sweeping := has_sweep and _rozstrzel >= 1000.0
 	if position.x < _dox:
-		if not sweeping or _ixor < 3.0:
-			_ixor += 0.3
+		if not sweeping or _drift_x < 3.0:
+			_drift_x += 0.3
 	elif position.x > _dox:
-		if not sweeping or _ixor > -3.0:
-			_ixor -= 0.3
-	_ixor = clampf(_ixor, -10.0, 10.0)
+		if not sweeping or _drift_x > -3.0:
+			_drift_x -= 0.3
+	_drift_x = clampf(_drift_x, -10.0, 10.0)
 	if absf(position.x - _dox) < 16.0:
-		_ixor /= 1.2
-	position.x += _ixor
+		_drift_x /= 1.2
+	position.x += _drift_x
 	position.y += signf(_doy - position.y) * minf(2.0, absf(_doy - position.y))
 	if absf(position.x - _dox) < 4.0 and absf(position.y - _doy) < 4.0 \
-			and absf(_ixor) < 1.0:
+			and absf(_drift_x) < 1.0:
 		_seq += 1
 
 
@@ -808,8 +808,8 @@ var _fc_v := Vector2.ZERO
 var _ladowanie := 0.0
 var _fc_sekwencer := 2
 var _fc_strzelacz := 0.0
-var _fc_ilosc := 10.0
-var _fc_ilosc_max := 10.0   # variant volley size (4/10/20)
+var _fc_volley := 10.0
+var _fc_volley_max := 10.0   # variant volley size (4/10/20)
 var _fc_podniszczony := false
 
 func _flame_cans_tick() -> void:
@@ -853,28 +853,28 @@ func _flame_cans_tick() -> void:
 	if _ladowanie >= 800.0 and _fc_sekwencer < 2:
 		_fc_strzelacz = 0.0
 		_fc_sekwencer += 1
-		_fc_ilosc = _fc_ilosc_max
+		_fc_volley = _fc_volley_max
 		if _fc_sekwencer < 2:
 			_ladowanie = 0.0
 	if _fc_sekwencer == 2 and _fc_seq > 0:
 		_fc_strzelacz += 1.0
 		if _fc_strzelacz > 10.0:
 			_fc_strzelacz = 0.0
-			_fc_ilosc -= 1.0
+			_fc_volley -= 1.0
 			var b := NativeEnemyBullet.new()
 			b.move_kind = "aimed"
 			b.sprite_id = 25
 			b.global_position = position
 			b.damage = 20.0
 			get_parent().add_child(b)
-		if _fc_ilosc <= 0.0:
+		if _fc_volley <= 0.0:
 			_fc_sekwencer = 3
-			_fc_ilosc = _fc_ilosc_max
+			_fc_volley = _fc_volley_max
 	elif _fc_sekwencer >= 3 and _fc_sekwencer < 80:
 		_fc_sekwencer += 1.0
 		if _fc_sekwencer == 80:
 			_fc_sekwencer = 0
-			_fc_ilosc = 0.0
+			_fc_volley = 0.0
 			_ladowanie = 0.0
 	# podniszczony — below half health it takes heavy damage once.
 	if not _fc_podniszczony and health < max_health * 0.5:
@@ -969,28 +969,28 @@ func _team_tick(cfg: Dictionary) -> void:
 				orb.global_position = position
 				get_parent().add_child(orb)
 				_biggery.append(orb)
-			_promien_biggery = 0.0
-			_kat_biggery = 0.0
+			_orbit_radius = 0.0
+			_orbit_angle = 0.0
 		if not _biggery.is_empty():
-			_promien_biggery += 2.0
-			_kat_biggery += _promien_biggery / 400.0 \
-				+ 1.0 / (_promien_biggery / 300.0)
+			_orbit_radius += 2.0
+			_orbit_angle += _orbit_radius / 400.0 \
+				+ 1.0 / (_orbit_radius / 300.0)
 			var anchor := _biggery_anchor()
 			for i in _biggery.size():
 				var orb: NativeEnemy = _biggery[i]
 				if not is_instance_valid(orb):
 					continue
-				if _promien_biggery > 1200.0:
+				if _orbit_radius > 1200.0:
 					orb.queue_free()
 					continue
 				orb.global_position = anchor.global_position \
-					+ Vector2(sin(deg_to_rad(_kat_biggery + 180.0 * i)),
-						cos(deg_to_rad(_kat_biggery + 180.0 * i))) \
-					* _promien_biggery
+					+ Vector2(sin(deg_to_rad(_orbit_angle + 180.0 * i)),
+						cos(deg_to_rad(_orbit_angle + 180.0 * i))) \
+					* _orbit_radius
 			_biggery = _biggery.filter(func(o): return is_instance_valid(o))
 			if _biggery.is_empty():
-				_promien_biggery = 0.0
-				_kat_biggery = 0.0
+				_orbit_radius = 0.0
+				_orbit_angle = 0.0
 	# g_rakieta — boss_6/7 paired rockets (116) every 220f.
 	if cfg.get("rockets", false):
 		_rakieta += 1.0

@@ -144,7 +144,7 @@ enemy drops and the shop's SPECIALS tab (the original's SUPPORT page).
 
 ## Hand-authoring levels
 
-Drop a JSON file at `data/levels/native/<index>.json` (zero-based —
+Drop a JSON file at `levels/native/<index>.json` (zero-based —
 `00.json` is level 1, `09.json` is world 1's boss level) and it
 replaces the generated config for that level entirely. Missing keys
 fall back to the world's theme defaults.

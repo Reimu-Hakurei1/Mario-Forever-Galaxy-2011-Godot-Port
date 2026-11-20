@@ -19,7 +19,7 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_image_speed = 0
     S.g_koppa = 0
     S.g_blanker_end = 0
-    R.sprite_replace_alpha(S, 547, "./data/a/anim_planet.png", 1, 0, 1, 300, 260)
+    R.sprite_replace_alpha(S, 547, "./gfx/cutscene/anim_planet.png", 1, 0, 1, 300, 260)
     R.aset(R.bg_alpha, 0, 1)
     R.aset(R.bg_alpha, 1, 0.6)
     R.aset(R.bg_alpha, 2, 0.6)
@@ -149,7 +149,7 @@ static func ev_8_0_0(S, A: Array) -> Variant:
             R.draw_set_blend_mode(S, 0)
         S.g_i += 1
     if ((S.g_napisor > 2700) and R.eqv(S, S.g_koppa, 0)):
-        P0.SXMS_C_Play(S, ["./data/m/boss_bowser.ogg"])
+        P0.SXMS_C_Play(S, ["./music/boss_bowser.ogg"])
         S.g_koppa = 1
         R.instance_create(S, 300, -(400), 576)
         S.g_muza = 1
@@ -170,7 +170,7 @@ static func ev_8_0_1(S, A: Array) -> Variant:
         P1.SXMS_C_Volume(S, [G.glosnosc_muzyki])
         P3.SXMS_WAP_Volume(S, [0, G.glosnosc_muzyki])
         if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
-            P0.SXMS_C_Play(S, ["./data/m/finishing.ogg"])
+            P0.SXMS_C_Play(S, ["./music/finishing.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
     if R.eqv(S, S.g_muza, 1):
@@ -178,7 +178,7 @@ static func ev_8_0_1(S, A: Array) -> Variant:
         P1.SXMS_C_Volume(S, [G.glosnosc_muzyki])
         P3.SXMS_WAP_Volume(S, [0, G.glosnosc_muzyki])
         if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
-            P0.SXMS_C_Play(S, ["./data/m/boss_bowser.ogg"])
+            P0.SXMS_C_Play(S, ["./music/boss_bowser.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
     return 0

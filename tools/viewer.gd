@@ -10,7 +10,7 @@ var shot := ""
 var frames := 0
 
 func _ready() -> void:
-	var f := FileAccess.open("res://data/levels/index.json", FileAccess.READ)
+	var f := FileAccess.open("res://levels/index.json", FileAccess.READ)
 	if f == null:
 		return
 	rooms = JSON.parse_string(f.get_as_text())

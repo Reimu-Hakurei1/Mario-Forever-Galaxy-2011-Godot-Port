@@ -1,7 +1,7 @@
 extends Control
 ## NativeCutscene — the original's room_animation_* story cinematics.
 ##
-## The legacy anim_1..4 rooms play pre-rendered story cards (data/a/
+## The legacy anim_1..4 rooms play pre-rendered story cards (gfx/cutscene/
 ## txt_*.png dialogue, toad_*/anim_obj_*/hero* character art,
 ## background*.png backdrops) as timed image sequences. This scene
 ## reproduces that presentation: full-screen cards crossfading on a
@@ -12,12 +12,12 @@ signal finished
 ## Scene to open when the sequence ends (empty = just free).
 var next_scene := ""
 
-const IMG_DIR := "res://data/a/"
+const IMG_DIR := "res://gfx/cutscene/"
 const BEAT := 3.2               # seconds per card
-const ANIM1_DATA := "res://data/levels/native/anim_1_slaves.json"
-const ANIM3_DATA := "res://data/levels/native/anim_3_slaves.json"
-const ANIM4_DATA := "res://data/levels/native/anim_4_slaves.json"
-const ANIM2_KOKO := "res://data/levels/native/anim_2_koko.json"
+const ANIM1_DATA := "res://levels/native/anim_1_slaves.json"
+const ANIM3_DATA := "res://levels/native/anim_3_slaves.json"
+const ANIM4_DATA := "res://levels/native/anim_4_slaves.json"
+const ANIM2_KOKO := "res://levels/native/anim_2_koko.json"
 
 # The four legacy sequences. "opening" is special-cased: it plays the
 # real room_animation_1 choreography (spiral text crawl, parallax
@@ -105,7 +105,7 @@ var _a2_clouds: Array = []
 var _a2_over := false
 var _anim_frame := 0.0
 var _anim_speed := 0.0
-var _napis_y := 0.0
+var _text_y := 0.0
 var _blanker := 1.0
 var _sciemnij_list := 0.0
 var _list_od_peach := 0.0
@@ -170,7 +170,7 @@ func _make_layer() -> TextureRect:
 
 
 func _tex(file: String) -> Texture2D:
-	# data/a/*.png are imported resources (.import files present) —
+	# gfx/cutscene/*.png are imported resources (.import files present) —
 	# load() returns Texture2D and stays export-safe, unlike Image.load.
 	var path := IMG_DIR + file
 	if not ResourceLoader.exists(path):
@@ -524,11 +524,11 @@ func _scroll_backgrounds() -> void:
 func _anim1_spiral() -> void:
 	_blanker = maxf(0.0, _blanker / 1.03)
 	_dim.modulate.a = _blanker
-	_napis_y += 0.35
+	_text_y += 0.35
 	var done := true
 	for i in _txt_cards.size():
 		var card: TextureRect = _txt_cards[i]
-		var y := 600.0 - _napis_y + i * 50.0 + i * i
+		var y := 600.0 - _text_y + i * 50.0 + i * i
 		card.position = Vector2(512 - card.size.x / 2, y - card.size.y / 2)
 		var a: float = card.modulate.a
 		if y < 500.0 and y > 300.0 and a < 1.0:

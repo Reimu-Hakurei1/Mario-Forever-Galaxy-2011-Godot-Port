@@ -23,7 +23,7 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     P2.SXMS_SFX_PlayExt(S, [215, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
     P3.SXMS_WAP_Stop(S, [])
     P0.SXMS_C_Stop(S, [])
-    P0.SXMS_C_Play(S, ["./data/m/title.ogg"])
+    P0.SXMS_C_Play(S, ["./music/title.ogg"])
     S.g_blank_opcji_jeden = 0.25
     S.g_sekwencjastartu = 0
     S.g_dodatkus = 0
@@ -1157,7 +1157,7 @@ static func ev_8_0_1(S, A: Array) -> Variant:
 
 static func ev_8_0_2(S, A: Array) -> Variant:
     if ((P0.SXMS_C_Time(S, []) >= 59950) or R.eqv(S, P0.SXMS_C_IsPlaying(S, [-(1)]), 0)):
-        P0.SXMS_C_Play(S, ["./data/m/title.ogg"])
+        P0.SXMS_C_Play(S, ["./music/title.ogg"])
         P2.SXMS_S_Position(S, [20000])
     return 0
 

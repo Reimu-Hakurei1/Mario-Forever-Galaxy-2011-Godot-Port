@@ -56,9 +56,9 @@ func _boot() -> void:
 	game.set_process(false)
 	if storybg:
 		# Replay the art that room_animation_1 installs for the whole intro chain.
-		R.background_replace_alpha(null, 0, "./data/a/background.png", 1)
-		R.background_replace_alpha(null, 2, "./data/a/background1.png", 1)
-		R.background_replace_alpha(null, 4, "./data/a/background2.png", 1)
+		R.background_replace_alpha(null, 0, "./gfx/cutscene/background.png", 1)
+		R.background_replace_alpha(null, 2, "./gfx/cutscene/background1.png", 1)
+		R.background_replace_alpha(null, 4, "./gfx/cutscene/background2.png", 1)
 	R.working_directory = savedir
 	DirAccess.make_dir_recursive_absolute(savedir)
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

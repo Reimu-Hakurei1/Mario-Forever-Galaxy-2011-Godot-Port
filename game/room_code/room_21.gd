@@ -6,8 +6,8 @@ static var G = load("res://game/globals.gd")
 static func room_21(S, A: Array) -> Variant:
     G.map_1_assigned = 0
     G.aktualny_lev = 0
-    R.sprite_replace(S, 254, "data/g/newmap4.jpg", 0, 0, 0, 0, 1, 440, 346)
-    R.background_replace(S, 48, "data/g/newmap4.jpg", 0, 0, 1)
+    R.sprite_replace(S, 254, "gfx/map/newmap4.jpg", 0, 0, 0, 0, 1, 440, 346)
+    R.background_replace(S, 48, "gfx/map/newmap4.jpg", 0, 0, 1)
     G.particle_map_goodies = R.part_system_create(S)
     G.particle_map_goodies2 = R.part_system_create(S)
     G.particle_map_trail = R.part_type_create(S)

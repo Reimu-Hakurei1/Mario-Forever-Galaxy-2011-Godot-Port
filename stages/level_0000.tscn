@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
-[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
-[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
-[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://gfx/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [ext_resource type="Script" path="res://engine/level_waves.gd" id="editable_waves"]
 [ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="editable_setting"]
 [ext_resource type="Script" path="res://engine/level_spawn_rule.gd" id="editable_spawn"]
 
-[ext_resource type="Texture2D" path="res://images/sprites/s_enemy_a.11.0.png" id="formation_texture_0"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_enemy_a.11.0.png" id="formation_texture_0"]
 
 [sub_resource type="CanvasItemMaterial" id="player_add"]
 blend_mode = 1
@@ -474,7 +474,7 @@ position = Vector2(80, 96)
 source_position = Vector2(80, 96)
 object_index = 12
 match_enemy_kind = 0
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_perioder_help_1/Step"
 
@@ -491,7 +491,7 @@ source_position = Vector2(60, 64)
 match_enemy_kind = 0
 match_formation_slot = 0
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:0"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -505,7 +505,7 @@ source_position = Vector2(140, 64)
 match_enemy_kind = 0
 match_formation_slot = 1
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:1"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -519,7 +519,7 @@ source_position = Vector2(220, 64)
 match_enemy_kind = 0
 match_formation_slot = 2
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:2"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -533,7 +533,7 @@ source_position = Vector2(300, 64)
 match_enemy_kind = 0
 match_formation_slot = 3
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:3"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -547,7 +547,7 @@ source_position = Vector2(380, 64)
 match_enemy_kind = 0
 match_formation_slot = 4
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:4"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -561,7 +561,7 @@ source_position = Vector2(460, 64)
 match_enemy_kind = 0
 match_formation_slot = 5
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:5"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -575,7 +575,7 @@ source_position = Vector2(540, 64)
 match_enemy_kind = 0
 match_formation_slot = 6
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:6"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -589,7 +589,7 @@ source_position = Vector2(620, 64)
 match_enemy_kind = 0
 match_formation_slot = 7
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:7"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -603,7 +603,7 @@ source_position = Vector2(700, 64)
 match_enemy_kind = 0
 match_formation_slot = 8
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:8"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -617,7 +617,7 @@ source_position = Vector2(780, 64)
 match_enemy_kind = 0
 match_formation_slot = 9
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:9"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -631,7 +631,7 @@ source_position = Vector2(60, 128)
 match_enemy_kind = 0
 match_formation_slot = 10
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:10"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -645,7 +645,7 @@ source_position = Vector2(140, 128)
 match_enemy_kind = 0
 match_formation_slot = 11
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:11"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -659,7 +659,7 @@ source_position = Vector2(220, 128)
 match_enemy_kind = 0
 match_formation_slot = 12
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:12"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -673,7 +673,7 @@ source_position = Vector2(300, 128)
 match_enemy_kind = 0
 match_formation_slot = 13
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:13"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -687,7 +687,7 @@ source_position = Vector2(380, 128)
 match_enemy_kind = 0
 match_formation_slot = 14
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:14"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -701,7 +701,7 @@ source_position = Vector2(460, 128)
 match_enemy_kind = 0
 match_formation_slot = 15
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:15"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -715,7 +715,7 @@ source_position = Vector2(540, 128)
 match_enemy_kind = 0
 match_formation_slot = 16
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:16"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -729,7 +729,7 @@ source_position = Vector2(620, 128)
 match_enemy_kind = 0
 match_formation_slot = 17
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:17"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -743,7 +743,7 @@ source_position = Vector2(700, 128)
 match_enemy_kind = 0
 match_formation_slot = 18
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:18"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -757,7 +757,7 @@ source_position = Vector2(780, 128)
 match_enemy_kind = 0
 match_formation_slot = 19
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:19"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -771,7 +771,7 @@ source_position = Vector2(60, 196)
 match_enemy_kind = 0
 match_formation_slot = 20
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:20"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -785,7 +785,7 @@ source_position = Vector2(140, 196)
 match_enemy_kind = 0
 match_formation_slot = 21
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:21"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -799,7 +799,7 @@ source_position = Vector2(220, 196)
 match_enemy_kind = 0
 match_formation_slot = 22
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:22"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -813,7 +813,7 @@ source_position = Vector2(300, 196)
 match_enemy_kind = 0
 match_formation_slot = 23
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:23"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -827,7 +827,7 @@ source_position = Vector2(380, 196)
 match_enemy_kind = 0
 match_formation_slot = 24
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:24"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -841,7 +841,7 @@ source_position = Vector2(460, 196)
 match_enemy_kind = 0
 match_formation_slot = 25
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:25"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -855,7 +855,7 @@ source_position = Vector2(540, 196)
 match_enemy_kind = 0
 match_formation_slot = 26
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:26"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -869,7 +869,7 @@ source_position = Vector2(620, 196)
 match_enemy_kind = 0
 match_formation_slot = 27
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:27"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -883,7 +883,7 @@ source_position = Vector2(700, 196)
 match_enemy_kind = 0
 match_formation_slot = 28
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:28"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"
 
@@ -897,6 +897,6 @@ source_position = Vector2(780, 196)
 match_enemy_kind = 0
 match_formation_slot = 29
 show_name = false
-preview_layers = [{"texture": "res://images/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_enemy_a.11.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 30, "oy": 30, "blend": 0}]
 source_key = "o_enemy_1:0:slot:29"
 source_description = "Move this sprite to edit this formation slot, not every enemy of its type. movement_and_firing_tutorial"

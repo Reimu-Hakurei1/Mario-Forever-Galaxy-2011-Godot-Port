@@ -19,7 +19,7 @@ func _initialize() -> void:
 			seek_to = float(a.substr(7))
 		elif a.begins_with("--frames="):
 			limit = int(a.substr(9))
-	var s: AudioStreamOggVorbis = load("res://data/m/%s.ogg" % track)
+	var s: AudioStreamOggVorbis = load("res://music/%s.ogg" % track)
 	print("STREAM %s loop=%s loop_offset=%.3f length=%.3f" % [track, str(s.loop),
 		s.loop_offset, s.get_length()])
 	p = AudioStreamPlayer.new()

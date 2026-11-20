@@ -2,8 +2,8 @@ extends Control
 ## NativeOptions — settings screen (ports the GameMaker options room).
 ##
 ## Toggles map to the same NativeGame settings fields the legacy game
-## used: muzyka (music), dzwiek (sound fx), efekty (particle quality),
-## glosnosc_dzwieku (sfx volume). Changes save immediately and apply
+## used: music_enabled (music), sound_enabled (sound fx), effects (particle quality),
+## sound_volume (sfx volume). Changes save immediately and apply
 ## live — music players already read the fields each frame.
 
 signal closed
@@ -34,11 +34,11 @@ func _ready() -> void:
 	title.add_theme_color_override("font_color", Color(1, 0.85, 0.3))
 	box.add_child(title)
 
-	box.add_child(_toggle("MUSIC", NativeGame.muzyka, func(v): NativeGame.muzyka = v))
-	box.add_child(_toggle("SOUND FX", NativeGame.dzwiek, func(v): NativeGame.dzwiek = v))
+	box.add_child(_toggle("MUSIC", NativeGame.music_enabled, func(v): NativeGame.music_enabled = v))
+	box.add_child(_toggle("SOUND FX", NativeGame.sound_enabled, func(v): NativeGame.sound_enabled = v))
 	box.add_child(_effects_row())
-	box.add_child(_volume_row("SFX VOLUME", "glosnosc_dzwieku"))
-	box.add_child(_volume_row("MUSIC VOLUME", "glosnosc_muzyki"))
+	box.add_child(_volume_row("SFX VOLUME", "sound_volume"))
+	box.add_child(_volume_row("MUSIC VOLUME", "music_volume"))
 	box.add_child(_controls_section())
 	box.add_child(_toggle("FULLSCREEN", 1 if NativeGame.fullscreen else 0,
 		func(v):
@@ -90,9 +90,9 @@ func _effects_row() -> HBoxContainer:
 	opt.add_item("LOW")
 	opt.add_item("MEDIUM")
 	opt.add_item("HIGH")
-	opt.select(clampi(NativeGame.efekty, 0, 2))
+	opt.select(clampi(NativeGame.effects, 0, 2))
 	opt.item_selected.connect(func(i):
-		NativeGame.efekty = i
+		NativeGame.effects = i
 		NativeGame.save())
 	row.add_child(opt)
 	return row
@@ -110,14 +110,14 @@ func _volume_row(label_text: String, field: String) -> HBoxContainer:
 	slider.min_value = 0.0
 	slider.max_value = 1.0
 	slider.step = 0.05
-	slider.value = NativeGame.glosnosc_dzwieku if field == "glosnosc_dzwieku" \
-		else NativeGame.glosnosc_muzyki
+	slider.value = NativeGame.sound_volume if field == "sound_volume" \
+		else NativeGame.music_volume
 	slider.custom_minimum_size = Vector2(220, 0)
 	slider.value_changed.connect(func(v):
-		if field == "glosnosc_dzwieku":
-			NativeGame.glosnosc_dzwieku = v
+		if field == "sound_volume":
+			NativeGame.sound_volume = v
 		else:
-			NativeGame.glosnosc_muzyki = v
+			NativeGame.music_volume = v
 		NativeGame.save())
 	row.add_child(slider)
 	return row

@@ -18,8 +18,8 @@ static func ev_0_0(S, A: Array) -> Variant:
 
 static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_odlegloscier_kasacji = 1000
-    P2.SXMS_SFX_Load(S, [213, "./data/s/snd_list_od_peach.ogg", 1])
-    S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+    P2.SXMS_SFX_Load(S, [213, "./sfx/snd_list_od_peach.ogg", 1])
+    S.g_zapis = P4.hex_open(S, ["./data/skipper"])
     R.aset(S.g_stan_zapisu, 0, P4.hex_read(S, [S.g_zapis, (44 + 2000)]))
     R.aset(S.g_stan_zapisu, 1, P4.hex_read(S, [S.g_zapis, (44 + 1000)]))
     R.aset(S.g_stan_zapisu, 2, P4.hex_read(S, [S.g_zapis, (44 + 500)]))
@@ -44,7 +44,7 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     P1.SXMS_C_Volume(S, [G.aktual_music_vol])
     P3.SXMS_WAP_Volume(S, [0, (G.aktual_music_vol / float(G.dzielnik_sciszania_WAP))])
     P3.SXMS_WAP_SetPan(S, [0])
-    P3.SXMS_WAP_Play(S, ["./data/m/save_room"])
+    P3.SXMS_WAP_Play(S, ["./music/save_room"])
     S.g_efektowanie = 0
     S.g_efektowanie1 = 0
     S.g_efektowanie_zapisu = 0
@@ -109,11 +109,11 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     R.aset(S.g_migaczuj_sekwencja, 1, 0)
     R.aset(S.g_migaczuj, 2, 0)
     R.aset(S.g_migaczuj_sekwencja, 2, 0)
-    R.sprite_replace_alpha(S, 523, "./data/a/hero_0.png", 1, 0, 1, (286 / float(2)), (454 / float(2)))
-    R.sprite_replace_alpha(S, 524, "./data/a/hero_1.png", 1, 0, 1, (371 / float(2)), (402 / float(2)))
-    R.sprite_replace_alpha(S, 525, "./data/a/hero_2.png", 1, 0, 1, (277 / float(2)), (327 / float(2)))
-    R.sprite_replace_alpha(S, 526, "./data/a/hero_3.png", 1, 0, 1, (225 / float(2)), (423 / float(2)))
-    R.sprite_replace_alpha(S, 527, "./data/a/savegame_brick.png", 1, 0, 1, 64, 32)
+    R.sprite_replace_alpha(S, 523, "./gfx/cutscene/hero_0.png", 1, 0, 1, (286 / float(2)), (454 / float(2)))
+    R.sprite_replace_alpha(S, 524, "./gfx/cutscene/hero_1.png", 1, 0, 1, (371 / float(2)), (402 / float(2)))
+    R.sprite_replace_alpha(S, 525, "./gfx/cutscene/hero_2.png", 1, 0, 1, (277 / float(2)), (327 / float(2)))
+    R.sprite_replace_alpha(S, 526, "./gfx/cutscene/hero_3.png", 1, 0, 1, (225 / float(2)), (423 / float(2)))
+    R.sprite_replace_alpha(S, 527, "./gfx/cutscene/savegame_brick.png", 1, 0, 1, 64, 32)
     S.g_opcja = 0
     R.aset(S.g_save_y, 0, -(1500))
     R.aset(S.g_save_y, 1, -(12000))
@@ -273,7 +273,7 @@ static func ev_8_0_2(S, A: Array) -> Variant:
         G.hex_save_pos = 1000
     if R.eqv(S, G.save_slot, 2):
         G.hex_save_pos = 500
-    S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+    S.g_zapis = P4.hex_open(S, ["./data/skipper"])
     R.aset(G.stan_zapisu, 0, P4.hex_read(S, [S.g_zapis, (44 + G.hex_save_pos)]))
     P4.hex_close(S, [S.g_zapis])
     if ((((R.keyboard_check(S, 13) and R.eqv(S, S.g_mario_wybral_zapis, 0)) and R.eqv(S, S.g_kasuje_zapis, 0)) and (R.aget(S.g_save_y, 2) >= -(20))) and R.eqv(S, S.g_klik, 0)):
@@ -304,7 +304,7 @@ static func ev_8_0_2(S, A: Array) -> Variant:
             G.hex_save_pos = 1000
         if R.eqv(S, G.save_slot, 2):
             G.hex_save_pos = 500
-        S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+        S.g_zapis = P4.hex_open(S, ["./data/skipper"])
         R.aset(G.map_zmien_etap, 0, P4.hex_read(S, [S.g_zapis, (0 + G.hex_save_pos)]))
         R.aset(G.map_number, 0, P4.hex_read(S, [S.g_zapis, (1 + G.hex_save_pos)]))
         G.shopmax2 = P4.hex_read(S, [S.g_zapis, (2 + G.hex_save_pos)])
@@ -700,8 +700,8 @@ static func ev_8_0_6(S, A: Array) -> Variant:
             S.g_efektowanie_zapisu = G.save_slot
             S.g_kasuje_zapis = 0
             S.g_kasuje_przyblizenie = 0
-            P4.hex_create_empty(S, ["./data/m/skipper", 3000])
-            S.g_zapis = P4.hex_open(S, ["./data/m/skipper"])
+            P4.hex_create_empty(S, ["./data/skipper", 3000])
+            S.g_zapis = P4.hex_open(S, ["./data/skipper"])
             R.aset(G.stan_zapisu, 0, 0)
             R.aset(S.g_stan_zapisu, G.save_slot, 0)
             P4.hex_write(S, [S.g_zapis, (44 + G.hex_save_pos), R.aget(G.stan_zapisu, 0)])

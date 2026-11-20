@@ -104,7 +104,7 @@ func _draw() -> void:
 
 static func _catalog() -> Dictionary:
 	if _enemy_catalog.is_empty():
-		var file := FileAccess.open("res://data/levels/enemy_editor_catalog.json", FileAccess.READ)
+		var file := FileAccess.open("res://levels/enemy_editor_catalog.json", FileAccess.READ)
 		if file != null:
 			_enemy_catalog = JSON.parse_string(file.get_as_text())
 	return _enemy_catalog

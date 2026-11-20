@@ -15,11 +15,11 @@ static func ev_0_0(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_0(S, A: Array) -> Variant:
-    P0.SXMS_C_Play(S, ["./data/m/finishing.ogg"])
+    P0.SXMS_C_Play(S, ["./music/finishing.ogg"])
     G.cogra = G.muzyka
     P3.SXMS_WAP_Stop(S, [])
-    R.background_replace(S, 0, "./data/g/background000.jpg", 0, 0, 0)
-    R.background_replace(S, 2, "./data/g/newmap2.jpg", 0, 0, 0)
+    R.background_replace(S, 0, "./gfx/map/background000.jpg", 0, 0, 0)
+    R.background_replace(S, 2, "./gfx/map/newmap2.jpg", 0, 0, 0)
     S.g_dzielnik = 10000
     S.g_star = 0
     S.g_obraca_sie = 0
@@ -243,9 +243,9 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_1(S, A: Array) -> Variant:
-    R.sprite_replace_alpha(S, 547, "./data/a/anim_obj_17.png", 1, 0, 1, 45, 0)
-    R.sprite_replace_alpha(S, 548, "./data/a/anim_obj_18.png", 1, 0, 1, 45, 0)
-    R.sprite_replace_alpha(S, 549, "./data/a/anim_obj_19.png", 1, 0, 1, 45, 0)
+    R.sprite_replace_alpha(S, 547, "./gfx/cutscene/anim_obj_17.png", 1, 0, 1, 45, 0)
+    R.sprite_replace_alpha(S, 548, "./gfx/cutscene/anim_obj_18.png", 1, 0, 1, 45, 0)
+    R.sprite_replace_alpha(S, 549, "./gfx/cutscene/anim_obj_19.png", 1, 0, 1, 45, 0)
     return 0
 
 static func ev_7_3(S, A: Array) -> Variant:
@@ -363,7 +363,7 @@ static func ev_8_0_1(S, A: Array) -> Variant:
     P1.SXMS_C_Volume(S, [G.glosnosc_muzyki])
     P3.SXMS_WAP_Volume(S, [0, G.glosnosc_muzyki])
     if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
-        P0.SXMS_C_Play(S, ["./data/m/finishing.ogg"])
+        P0.SXMS_C_Play(S, ["./music/finishing.ogg"])
         G.cogra = G.muzyka
         P3.SXMS_WAP_Stop(S, [])
     return 0

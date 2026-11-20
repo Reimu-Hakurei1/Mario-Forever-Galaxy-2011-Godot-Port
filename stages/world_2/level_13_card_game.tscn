@@ -1,16 +1,16 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://engine/level_snapshot.gd" id="3_rc75b"]
-[ext_resource type="Texture2D" path="res://images/sprites/sprite190.190.0.png" id="4_7a1r7"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/sprite190.190.0.png" id="4_7a1r7"]
 [ext_resource type="Script" path="res://engine/level_snapshot_instance.gd" id="5_4tktg"]
-[ext_resource type="Texture2D" path="res://images/sprites/s_startup_1.318.0.png" id="6_pb4lk"]
-[ext_resource type="Texture2D" path="res://images/sprites/s_mauselock2.449.0.png" id="7_hgavd"]
-[ext_resource type="Texture2D" path="res://images/sprites/s_mauselock.448.0.png" id="8_ijion"]
-[ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.3.png" id="9_s3os0"]
-[ext_resource type="Texture2D" path="res://images/sprites/s_cards_set.335.2.png" id="10_2q6c5"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_startup_1.318.0.png" id="6_pb4lk"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_mauselock2.449.0.png" id="7_hgavd"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_mauselock.448.0.png" id="8_ijion"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_cards_set.335.3.png" id="9_s3os0"]
+[ext_resource type="Texture2D" path="res://gfx/sprites/s_cards_set.335.2.png" id="10_2q6c5"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
-[ext_resource type="Texture2D" path="res://images/backgrounds/background0.0.jpg" id="t1"]
+[ext_resource type="Texture2D" path="res://gfx/backgrounds/background0.0.jpg" id="t1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3rqoo"]
 blend_mode = 1

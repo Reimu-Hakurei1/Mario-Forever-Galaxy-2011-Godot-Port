@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background1.2.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background1.2.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/backgrounds/background0.0.jpg"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [node name="room_the_end_3" type="Node2D"]

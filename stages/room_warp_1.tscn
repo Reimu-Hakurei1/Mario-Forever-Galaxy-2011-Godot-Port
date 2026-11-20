@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 
 [node name="room_warp_1" type="Node2D"]

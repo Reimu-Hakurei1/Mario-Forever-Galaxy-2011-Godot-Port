@@ -863,213 +863,213 @@ static func ev_3_0_2(S, A: Array) -> Variant:
         P3.SXMS_WAP_Volume(S, [0, G.glosnosc_muzyki])
     if ((R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)) and (1 - R.eqv(S, G.muzyka, 100))):
         if R.eqv(S, G.muzyka, 1):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_life"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_life"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 2):
-            P3.SXMS_WAP_Play(S, ["./data/m/violation"])
+            P3.SXMS_WAP_Play(S, ["./music/violation"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 3):
-            P3.SXMS_WAP_Play(S, ["./data/m/castle_dungeon"])
+            P3.SXMS_WAP_Play(S, ["./music/castle_dungeon"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 4):
-            P3.SXMS_WAP_Play(S, ["./data/m/brutal_force"])
+            P3.SXMS_WAP_Play(S, ["./music/brutal_force"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 5):
-            P3.SXMS_WAP_Play(S, ["./data/m/super_star"])
+            P3.SXMS_WAP_Play(S, ["./music/super_star"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 6):
-            P3.SXMS_WAP_Play(S, ["./data/m/violence"])
+            P3.SXMS_WAP_Play(S, ["./music/violence"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 7):
-            P3.SXMS_WAP_Play(S, ["./data/m/rage"])
+            P3.SXMS_WAP_Play(S, ["./music/rage"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 8):
-            P3.SXMS_WAP_Play(S, ["./data/m/dark"])
+            P3.SXMS_WAP_Play(S, ["./music/dark"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 9):
-            P0.SXMS_C_Play(S, ["./data/m/boss_bowser.ogg"])
+            P0.SXMS_C_Play(S, ["./music/boss_bowser.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 10):
-            P0.SXMS_C_Play(S, ["./data/m/evil_castle.ogg"])
+            P0.SXMS_C_Play(S, ["./music/evil_castle.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 11):
-            P3.SXMS_WAP_Play(S, ["./data/m/training"])
+            P3.SXMS_WAP_Play(S, ["./music/training"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 12):
-            P3.SXMS_WAP_Play(S, ["./data/m/funy"])
+            P3.SXMS_WAP_Play(S, ["./music/funy"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if R.eqv(S, G.muzyka, 13):
-            P0.SXMS_C_Play(S, ["./data/m/ghosts.ogg"])
+            P0.SXMS_C_Play(S, ["./music/ghosts.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 14):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_castle"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_castle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if R.eqv(S, G.muzyka, 15):
-            P3.SXMS_WAP_Play(S, ["./data/m/mixed_battle"])
+            P3.SXMS_WAP_Play(S, ["./music/mixed_battle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 16):
-            P3.SXMS_WAP_Play(S, ["./data/m/escape"])
+            P3.SXMS_WAP_Play(S, ["./music/escape"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 17):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_squad"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_squad"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 18):
-            P3.SXMS_WAP_Play(S, ["./data/m/real_battle"])
+            P3.SXMS_WAP_Play(S, ["./music/real_battle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 19):
-            P3.SXMS_WAP_Play(S, ["./data/m/death_star"])
+            P3.SXMS_WAP_Play(S, ["./music/death_star"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if R.eqv(S, G.muzyka, 20):
-            P3.SXMS_WAP_Play(S, ["./data/m/last_boss"])
+            P3.SXMS_WAP_Play(S, ["./music/last_boss"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if R.eqv(S, G.muzyka, 21):
-            P3.SXMS_WAP_Play(S, ["./data/m/castle_fly2"])
+            P3.SXMS_WAP_Play(S, ["./music/castle_fly2"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
     if (R.eqv(S, S.g_level_music, 1) and (1 - R.eqv(S, G.muzyka, 100))):
         if (R.eqv(S, G.muzyka, 1) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_life"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_life"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 2) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/violation"])
+            P3.SXMS_WAP_Play(S, ["./music/violation"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 3) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/castle_dungeon"])
+            P3.SXMS_WAP_Play(S, ["./music/castle_dungeon"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 4) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/brutal_force"])
+            P3.SXMS_WAP_Play(S, ["./music/brutal_force"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 5) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/super_star"])
+            P3.SXMS_WAP_Play(S, ["./music/super_star"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 6) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/violence"])
+            P3.SXMS_WAP_Play(S, ["./music/violence"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 7) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/rage"])
+            P3.SXMS_WAP_Play(S, ["./music/rage"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 8) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/dark"])
+            P3.SXMS_WAP_Play(S, ["./music/dark"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 9) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P0.SXMS_C_Play(S, ["./data/m/boss_bowser.ogg"])
+            P0.SXMS_C_Play(S, ["./music/boss_bowser.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 10) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P0.SXMS_C_Play(S, ["./data/m/evil_castle.ogg"])
+            P0.SXMS_C_Play(S, ["./music/evil_castle.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 11) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/training"])
+            P3.SXMS_WAP_Play(S, ["./music/training"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 12) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/funy"])
+            P3.SXMS_WAP_Play(S, ["./music/funy"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 13) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P0.SXMS_C_Play(S, ["./data/m/ghosts.ogg"])
+            P0.SXMS_C_Play(S, ["./music/ghosts.ogg"])
             G.cogra = G.muzyka
             P3.SXMS_WAP_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1.5
         if (R.eqv(S, G.muzyka, 14) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_castle"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_castle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 15) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/mixed_battle"])
+            P3.SXMS_WAP_Play(S, ["./music/mixed_battle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 16) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/escape"])
+            P3.SXMS_WAP_Play(S, ["./music/escape"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 17) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/hard_squad"])
+            P3.SXMS_WAP_Play(S, ["./music/hard_squad"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 18) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/real_battle"])
+            P3.SXMS_WAP_Play(S, ["./music/real_battle"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 19) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/death_star"])
+            P3.SXMS_WAP_Play(S, ["./music/death_star"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 20) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/last_boss"])
+            P3.SXMS_WAP_Play(S, ["./music/last_boss"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
         if (R.eqv(S, G.muzyka, 21) and (1 - R.eqv(S, G.cogra, G.muzyka))):
-            P3.SXMS_WAP_Play(S, ["./data/m/castle_fly2"])
+            P3.SXMS_WAP_Play(S, ["./music/castle_fly2"])
             G.cogra = G.muzyka
             P0.SXMS_C_Stop(S, [])
             G.dzielnik_sciszania_WAP = 1
@@ -1087,107 +1087,107 @@ static func ev_3_0_2(S, A: Array) -> Variant:
             S.g_sekwencja_muzyki = 2
         if (R.eqv(S, S.g_sekwencja_muzyki, 2) and (1 - R.eqv(S, G.muzyka, 100))):
             if R.eqv(S, G.muzyka, 1):
-                P3.SXMS_WAP_Play(S, ["./data/m/hard_life"])
+                P3.SXMS_WAP_Play(S, ["./music/hard_life"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 2):
-                P3.SXMS_WAP_Play(S, ["./data/m/violation"])
+                P3.SXMS_WAP_Play(S, ["./music/violation"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 3):
-                P3.SXMS_WAP_Play(S, ["./data/m/castle_dungeon"])
+                P3.SXMS_WAP_Play(S, ["./music/castle_dungeon"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 4):
-                P3.SXMS_WAP_Play(S, ["./data/m/brutal_force"])
+                P3.SXMS_WAP_Play(S, ["./music/brutal_force"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 5):
-                P3.SXMS_WAP_Play(S, ["./data/m/super_star"])
+                P3.SXMS_WAP_Play(S, ["./music/super_star"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 6):
-                P3.SXMS_WAP_Play(S, ["./data/m/violence"])
+                P3.SXMS_WAP_Play(S, ["./music/violence"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 7):
-                P3.SXMS_WAP_Play(S, ["./data/m/rage"])
+                P3.SXMS_WAP_Play(S, ["./music/rage"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 8):
-                P3.SXMS_WAP_Play(S, ["./data/m/dark"])
+                P3.SXMS_WAP_Play(S, ["./music/dark"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 9):
-                P0.SXMS_C_Play(S, ["./data/m/boss_bowser.ogg"])
+                P0.SXMS_C_Play(S, ["./music/boss_bowser.ogg"])
                 G.cogra = G.muzyka
                 P3.SXMS_WAP_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 10):
-                P0.SXMS_C_Play(S, ["./data/m/evil_castle.ogg"])
+                P0.SXMS_C_Play(S, ["./music/evil_castle.ogg"])
                 G.cogra = G.muzyka
                 P3.SXMS_WAP_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 11):
-                P3.SXMS_WAP_Play(S, ["./data/m/training"])
+                P3.SXMS_WAP_Play(S, ["./music/training"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 12):
-                P3.SXMS_WAP_Play(S, ["./data/m/funy"])
+                P3.SXMS_WAP_Play(S, ["./music/funy"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 13):
-                P0.SXMS_C_Play(S, ["./data/m/ghosts.ogg"])
+                P0.SXMS_C_Play(S, ["./music/ghosts.ogg"])
                 G.cogra = G.muzyka
                 P3.SXMS_WAP_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1.5
             if R.eqv(S, G.muzyka, 14):
-                P3.SXMS_WAP_Play(S, ["./data/m/hard_castle"])
+                P3.SXMS_WAP_Play(S, ["./music/hard_castle"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 15):
-                P3.SXMS_WAP_Play(S, ["./data/m/mixed_battle"])
+                P3.SXMS_WAP_Play(S, ["./music/mixed_battle"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 16):
-                P3.SXMS_WAP_Play(S, ["./data/m/escape"])
+                P3.SXMS_WAP_Play(S, ["./music/escape"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 17):
-                P3.SXMS_WAP_Play(S, ["./data/m/hard_squad"])
+                P3.SXMS_WAP_Play(S, ["./music/hard_squad"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 18):
-                P3.SXMS_WAP_Play(S, ["./data/m/real_battle"])
+                P3.SXMS_WAP_Play(S, ["./music/real_battle"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 19):
-                P3.SXMS_WAP_Play(S, ["./data/m/death_star"])
+                P3.SXMS_WAP_Play(S, ["./music/death_star"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 20):
-                P3.SXMS_WAP_Play(S, ["./data/m/last_boss"])
+                P3.SXMS_WAP_Play(S, ["./music/last_boss"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1
             if R.eqv(S, G.muzyka, 21):
-                P3.SXMS_WAP_Play(S, ["./data/m/castle_fly2"])
+                P3.SXMS_WAP_Play(S, ["./music/castle_fly2"])
                 G.cogra = G.muzyka
                 P0.SXMS_C_Stop(S, [])
                 G.dzielnik_sciszania_WAP = 1

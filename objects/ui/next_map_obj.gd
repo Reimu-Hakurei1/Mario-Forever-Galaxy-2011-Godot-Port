@@ -1220,7 +1220,7 @@ static func ev_8_0(S, A: Array) -> Variant:
     P1.SXMS_C_Volume(S, [G.glosnosc_muzyki])
     P3.SXMS_WAP_Volume(S, [0, G.glosnosc_muzyki])
     if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
-        P0.SXMS_C_Play(S, ["./data/m/finishing.ogg"])
+        P0.SXMS_C_Play(S, ["./music/finishing.ogg"])
         G.cogra = G.muzyka
         P3.SXMS_WAP_Stop(S, [])
     if ((S.g_dialogues < 1) and (1 - R.eqv(S, R.aget(S.g_dialotime, S.g_dialonumber), -(1)))):

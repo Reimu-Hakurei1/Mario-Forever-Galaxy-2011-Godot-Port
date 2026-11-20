@@ -49,7 +49,7 @@ names, so those must not change.
 
 The game writes to the Godot user directory (`user://`, i.e.
 `%APPDATA%\Godot\app_userdata\Mario Forever Galaxy Godot Port`). `settings.ini`
-and `data/m/skipper` are seeded from the project on first run. Tests should point
+and `data/skipper` are seeded from the project on first run. Tests should point
 `R.working_directory` at a copy under `_test_saves/` — never at the real saves.
 
 ## Validation

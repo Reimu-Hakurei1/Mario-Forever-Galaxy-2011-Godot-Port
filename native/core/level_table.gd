@@ -13,12 +13,12 @@ class_name NativeLevelTable
 
 ## Campaign = the original's authored stage schedules, extracted from
 ## script_perioder_maps/script_perioder_map_* in part_7.gd into
-## data/levels/native/stages.json. Each playable (map, node) pair is one
+## levels/native/stages.json. Each playable (map, node) pair is one
 ## level; index = rank in that sorted list. Nodes without a schedule
 ## block are map connectors/minigames, not levels.
 const LEVELS_PER_WORLD := 10
 const WORLDS := 8
-const STAGES_PATH := "res://data/levels/native/stages.json"
+const STAGES_PATH := "res://levels/native/stages.json"
 
 static var _stages: Dictionary = {}
 static var _playable: Array = []   # ["m:n", ...] sorted by map then node
@@ -144,8 +144,8 @@ const KINDS := ["goomba", "shooter", "kamikaze", "tank", "eye",
 ## the arena scene consumes: {background, music, waves, boss, label}.
 ##
 ## Levels can be hand-authored: drop a JSON file at
-## `data/levels/native/<index>.json` (e.g. `00.json` = level 1) and it
-## replaces the generated config entirely — see data/levels/native/
+## `levels/native/<index>.json` (e.g. `00.json` = level 1) and it
+## replaces the generated config entirely — see levels/native/
 ## for the format. Waves are the same dicts the spawner consumes.
 static func config_for(level_index: int) -> Dictionary:
 	var custom := _custom_config(level_index)
@@ -212,7 +212,7 @@ static func config_for(level_index: int) -> Dictionary:
 ## Load a hand-authored level override. Missing keys fall back to the
 ## world's theme defaults so files only need to specify what they change.
 static func _custom_config(level_index: int) -> Dictionary:
-	var path := "res://data/levels/native/%02d.json" % level_index
+	var path := "res://levels/native/%02d.json" % level_index
 	if not FileAccess.file_exists(path):
 		return {}
 	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
@@ -389,7 +389,7 @@ static func level_of(level_index: int) -> int:
 
 
 ## --- Star-map node graph (G.map_nextlev / map_prevlev / map_complev) ---
-## data/levels/native/map_meta.json holds the extracted per-node
+## levels/native/map_meta.json holds the extracted per-node
 ## adjacency, names, minigame routing, and pre-completed flags.
 
 static var _map_meta: Dictionary = {}
@@ -401,7 +401,7 @@ static func _load_map_meta() -> void:
 	if _map_meta_loaded:
 		return
 	_map_meta_loaded = true
-	const META_PATH := "res://data/levels/native/map_meta.json"
+	const META_PATH := "res://levels/native/map_meta.json"
 	if FileAccess.file_exists(META_PATH):
 		var parsed = JSON.parse_string(FileAccess.get_file_as_string(META_PATH))
 		if typeof(parsed) == TYPE_DICTIONARY:
@@ -510,7 +510,7 @@ static func map_exit(map: int) -> String:
 		var label := (str(st.get("title", "")) + " " \
 			+ str(meta.get("name", ""))).to_upper()
 		# The map-final stage carries the boss-castle signature: the
-		# extracted muzyka flag is 10 (boss theme) on every
+		# extracted music_enabled flag is 10 (boss theme) on every
 		# BOWSER_CASTLE/LAST_CASTLE node, 9 on the final BOSS! stage.
 		var music = st.get("music", 0)
 		var score := 0.0
@@ -604,7 +604,7 @@ static func _blueprint_for(world: int, level: int, difficulty: int) -> Array:
 
 
 ## Scripted waves — the original's ~115 named o_wave_* spawner objects,
-## pre-extracted to data/levels/native/wave_scripts.json (pattern,
+## pre-extracted to levels/native/wave_scripts.json (pattern,
 ## count, per-spawn interval in frames, enemy kinds). Each level draws
 ## two entries so the whole catalogue is scheduled across the campaign.
 ##
@@ -645,7 +645,7 @@ static func _scripted_for(world: int, level: int, difficulty: int,
 static func _load_wave_scripts() -> Dictionary:
 	if not _wave_scripts.is_empty():
 		return _wave_scripts
-	var path := "res://data/levels/native/wave_scripts.json"
+	var path := "res://levels/native/wave_scripts.json"
 	if FileAccess.file_exists(path):
 		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
 		if typeof(parsed) == TYPE_DICTIONARY:

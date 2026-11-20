@@ -12,7 +12,7 @@ extends Node2D
 
 const WORLD_SIZE := Vector2(1024, 768)
 const BACKGROUND_ID := 0            # background0 — asteroid field backdrop
-const MUSIC_TRACK := "mixed_battle" # data/m/mixed_battle.ogg — level theme
+const MUSIC_TRACK := "mixed_battle" # music/mixed_battle.ogg — level theme
 const PLAYER_SPAWN := Vector2(435, 425)
 const RESPAWN_DELAY := 2.0
 const LEVEL_CLEAR_DELAY := 3.0
@@ -100,12 +100,12 @@ func _ready() -> void:
 	NativeGame.ensure_weapons()
 
 	# Level music — loops for the duration of the scene.
-	if NativeGame.muzyka == 1:
+	if NativeGame.music_enabled == 1:
 		var music := NativeAssets.music(music_track)
 		if music != null:
 			var player := AudioStreamPlayer.new()
 			player.stream = music
-			player.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
+			player.volume_db = linear_to_db(maxf(0.01, NativeGame.sound_volume))
 			add_child(player)
 			player.play()
 

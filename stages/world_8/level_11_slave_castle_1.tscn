@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3]
 
-[ext_resource type="Texture2D" id="t1" path="res://images/backgrounds/background0.0.jpg"]
-[ext_resource type="Texture2D" id="t2" path="res://images/sprites/s_player_a.543.0.png"]
-[ext_resource type="Texture2D" id="t3" path="res://images/sprites/s_player_a.543.12.png"]
-[ext_resource type="Texture2D" id="t4" path="res://images/sprites/s_hud.5.0.png"]
-[ext_resource type="Texture2D" id="t5" path="res://images/sprites/s_enemy_n.70.0.png"]
+[ext_resource type="Texture2D" id="t1" path="res://gfx/backgrounds/background0.0.jpg"]
+[ext_resource type="Texture2D" id="t2" path="res://gfx/sprites/s_player_a.543.0.png"]
+[ext_resource type="Texture2D" id="t3" path="res://gfx/sprites/s_player_a.543.12.png"]
+[ext_resource type="Texture2D" id="t4" path="res://gfx/sprites/s_hud.5.0.png"]
+[ext_resource type="Texture2D" id="t5" path="res://gfx/sprites/s_enemy_n.70.0.png"]
 [ext_resource type="Script" path="res://engine/room_preview_boot.gd" id="boot"]
 [ext_resource type="Script" path="res://engine/level_bounds_guide.gd" id="bounds_guide"]
 
@@ -387,7 +387,7 @@ position = Vector2(80, 96)
 source_position = Vector2(80, 96)
 object_index = 12
 match_enemy_kind = 51
-preview_layers = [{"texture": "res://images/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}]
 source_key = "o_enemy_1:51"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_12"
 
@@ -397,7 +397,7 @@ position = Vector2(180, 96)
 source_position = Vector2(180, 96)
 object_index = 12
 match_enemy_kind = 52
-preview_layers = [{"texture": "res://images/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://images/sprites/s_castle_cannon.301.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 25, "oy": 25, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://gfx/sprites/s_castle_cannon.301.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 25, "oy": 25, "blend": 0}]
 source_key = "o_enemy_1:52"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_13"
 
@@ -407,7 +407,7 @@ position = Vector2(280, 96)
 source_position = Vector2(280, 96)
 object_index = 12
 match_enemy_kind = 53
-preview_layers = [{"texture": "res://images/sprites/s_castle_piece_6.306.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://images/sprites/s_castle_piece_7.307.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_castle_piece_6.306.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://gfx/sprites/s_castle_piece_7.307.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}]
 source_key = "o_enemy_1:53"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_20"
 
@@ -417,7 +417,7 @@ position = Vector2(380, 96)
 source_position = Vector2(380, 96)
 object_index = 12
 match_enemy_kind = 54
-preview_layers = [{"texture": "res://images/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://images/sprites/s_castle_piece_9.310.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 49, "oy": 47, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/s_blocker.300.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 32, "oy": 32, "blend": 0}, {"texture": "res://gfx/sprites/s_castle_piece_9.310.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 49, "oy": 47, "blend": 0}]
 source_key = "o_enemy_1:54"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_24"
 
@@ -427,7 +427,7 @@ position = Vector2(480, 96)
 source_position = Vector2(480, 96)
 object_index = 214
 match_enemy_kind = -1
-preview_layers = [{"texture": "res://images/sprites/s_bonus_coin2.230.0.png", "x": 0, "y": 0, "sx": 0.315, "sy": 0.309, "rotation": -0.0, "ox": 48, "oy": 48, "blend": 2}, {"texture": "res://images/sprites/s_bonus_coin.229.0.png", "x": 0, "y": 0, "sx": 0.3, "sy": 0.309, "rotation": -0.0, "ox": 43, "oy": 43, "blend": 1}]
+preview_layers = [{"texture": "res://gfx/sprites/s_bonus_coin2.230.0.png", "x": 0, "y": 0, "sx": 0.315, "sy": 0.309, "rotation": -0.0, "ox": 48, "oy": 48, "blend": 2}, {"texture": "res://gfx/sprites/s_bonus_coin.229.0.png", "x": 0, "y": 0, "sx": 0.3, "sy": 0.309, "rotation": -0.0, "ox": 43, "oy": 43, "blend": 1}]
 source_key = "o_coindrop:-1"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_28"
 
@@ -437,7 +437,7 @@ position = Vector2(580, 96)
 source_position = Vector2(580, 96)
 object_index = 12
 match_enemy_kind = 3
-preview_layers = [{"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://images/sprites/sprite158.158.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 40, "oy": 37, "blend": 0}]
+preview_layers = [{"texture": "res://gfx/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://gfx/sprites/sprite157.157.0.png", "x": 0, "y": 0, "sx": -1, "sy": 1, "rotation": -0.0, "ox": 35, "oy": 17, "blend": 0}, {"texture": "res://gfx/sprites/sprite158.158.0.png", "x": 0, "y": 0, "sx": 1, "sy": 1, "rotation": -0.0, "ox": 40, "oy": 37, "blend": 0}]
 source_key = "o_enemy_1:3"
 source_description = "Controls every matching original spawn, including scripted child spawns. Moving this control offsets spawn and formation target; it is not a simultaneous starting enemy. o_castle_obj/event_8_0/action_0/castle_item_29"
 

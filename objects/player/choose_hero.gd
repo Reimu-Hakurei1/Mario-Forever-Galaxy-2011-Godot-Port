@@ -89,10 +89,10 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_1(S, A: Array) -> Variant:
-    R.sprite_replace_alpha(S, 523, "./data/a/hero_0.png", 1, 0, 1, (286 / float(2)), (454 / float(2)))
-    R.sprite_replace_alpha(S, 524, "./data/a/hero_1.png", 1, 0, 1, (371 / float(2)), (402 / float(2)))
-    R.sprite_replace_alpha(S, 525, "./data/a/hero_2.png", 1, 0, 1, (277 / float(2)), (327 / float(2)))
-    R.sprite_replace_alpha(S, 526, "./data/a/hero_3.png", 1, 0, 1, (225 / float(2)), (423 / float(2)))
+    R.sprite_replace_alpha(S, 523, "./gfx/cutscene/hero_0.png", 1, 0, 1, (286 / float(2)), (454 / float(2)))
+    R.sprite_replace_alpha(S, 524, "./gfx/cutscene/hero_1.png", 1, 0, 1, (371 / float(2)), (402 / float(2)))
+    R.sprite_replace_alpha(S, 525, "./gfx/cutscene/hero_2.png", 1, 0, 1, (277 / float(2)), (327 / float(2)))
+    R.sprite_replace_alpha(S, 526, "./gfx/cutscene/hero_3.png", 1, 0, 1, (225 / float(2)), (423 / float(2)))
     return 0
 
 static func ev_0_0_2(S, A: Array) -> Variant:
@@ -104,7 +104,7 @@ static func ev_0_0_2(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_3(S, A: Array) -> Variant:
-    P0.SXMS_C_Play(S, ["./data/m/choose_hero.ogg"])
+    P0.SXMS_C_Play(S, ["./music/choose_hero.ogg"])
     P0.SXMS_C_Loop(S, [0])
     G.aktual_music_vol = G.glosnosc_muzyki
     P2.SXMS_SFX_MasterVolume(S, [255])

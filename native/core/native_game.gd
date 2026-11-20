@@ -113,11 +113,11 @@ const HEROES := [
 # Level handoff — the star map writes the chosen level's config here and
 # the arena reads it on _ready. Keeps scenes decoupled (no direct refs).
 static var pending_level: Dictionary = {}
-static var efekty: int = 2           ## G.efekty — particle quality setting
-static var dzwiek: int = 1           ## G.dzwiek — sound enabled
-static var muzyka: int = 1           ## G.muzyka — music enabled
-static var glosnosc_dzwieku: float = 1.0  ## G.glosnosc_dzwieku — sfx volume
-static var glosnosc_muzyki: float = 1.0   ## G.glosnosc_muzyki — music volume
+static var effects: int = 2           ## G.effects — particle quality setting
+static var sound_enabled: int = 1           ## G.sound_enabled — sound enabled
+static var music_enabled: int = 1           ## G.music_enabled — music enabled
+static var sound_volume: float = 1.0  ## G.sound_volume — sfx volume
+static var music_volume: float = 1.0   ## G.music_volume — music volume
 static var fullscreen: bool = false     ## borderless fullscreen toggle
 
 # Rebindable controls — the original's ster1..ster9 (objects/ui/title.gd
@@ -489,11 +489,11 @@ static func save() -> void:
 	cfg.set_value("profile", "special_slots", special_slots)
 	cfg.set_value("profile", "hero", hero)
 	cfg.set_value("profile", "hero_tint", hero_tint)
-	cfg.set_value("settings", "efekty", efekty)
-	cfg.set_value("settings", "dzwiek", dzwiek)
-	cfg.set_value("settings", "muzyka", muzyka)
-	cfg.set_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku)
-	cfg.set_value("settings", "glosnosc_muzyki", glosnosc_muzyki)
+	cfg.set_value("settings", "effects", effects)
+	cfg.set_value("settings", "sound_enabled", sound_enabled)
+	cfg.set_value("settings", "music_enabled", music_enabled)
+	cfg.set_value("settings", "sound_volume", sound_volume)
+	cfg.set_value("settings", "music_volume", music_volume)
 	cfg.set_value("settings", "key_bindings", key_bindings)
 	cfg.set_value("settings", "fullscreen", fullscreen)
 	cfg.save(slot_path(save_slot))
@@ -630,11 +630,17 @@ static func load_save() -> bool:
 		special_slots[i] = int(saved_specials[i])
 	hero = int(cfg.get_value("profile", "hero", hero))
 	hero_tint = cfg.get_value("profile", "hero_tint", hero_tint)
-	efekty = int(cfg.get_value("settings", "efekty", efekty))
-	dzwiek = int(cfg.get_value("settings", "dzwiek", dzwiek))
-	muzyka = int(cfg.get_value("settings", "muzyka", muzyka))
-	glosnosc_dzwieku = float(cfg.get_value("settings", "glosnosc_dzwieku", glosnosc_dzwieku))
-	glosnosc_muzyki = float(cfg.get_value("settings", "glosnosc_muzyki", glosnosc_muzyki))
+	effects = int(cfg.get_value("settings", "effects",
+		cfg.get_value("settings", "efekty", effects)))
+	# Fall back to the legacy Polish key names so old saves keep settings.
+	sound_enabled = int(cfg.get_value("settings", "sound_enabled",
+		cfg.get_value("settings", "dzwiek", sound_enabled)))
+	music_enabled = int(cfg.get_value("settings", "music_enabled",
+		cfg.get_value("settings", "muzyka", music_enabled)))
+	sound_volume = float(cfg.get_value("settings", "sound_volume",
+		cfg.get_value("settings", "glosnosc_dzwieku", sound_volume)))
+	music_volume = float(cfg.get_value("settings", "music_volume",
+		cfg.get_value("settings", "glosnosc_muzyki", music_volume)))
 	var kb: Dictionary = cfg.get_value("settings", "key_bindings", {})
 	for a in KEY_ACTIONS:
 		if kb.has(a):

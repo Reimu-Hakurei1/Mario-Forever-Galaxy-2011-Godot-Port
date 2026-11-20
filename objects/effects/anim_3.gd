@@ -46,17 +46,17 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_quake = 0
     S.g_quake_nagraj = 0
     S.g_quake_nagraj2 = 0
-    R.sprite_replace_alpha(S, 604, "./data/a/anim_obj_17.png", 1, 0, 1, 45, 0)
-    R.sprite_replace_alpha(S, 605, "./data/a/anim_obj_18.png", 1, 0, 1, 30, -(102))
-    R.sprite_replace_alpha(S, 606, "./data/a/anim_obj_19.png", 1, 0, 1, 30, -(102))
-    R.sprite_replace_alpha(S, 608, "./data/a/anim_obj_20.png", 1, 0, 1, (94 / float(2)), (70 / float(2)))
-    R.sprite_replace_alpha(S, 569, "./data/a/toad_0_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 570, "./data/a/toad_1_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 571, "./data/a/toad_2_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 572, "./data/a/toad_3_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 573, "./data/a/toad_4_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 574, "./data/a/toad_5_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 575, "./data/a/toad_6_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 604, "./gfx/cutscene/anim_obj_17.png", 1, 0, 1, 45, 0)
+    R.sprite_replace_alpha(S, 605, "./gfx/cutscene/anim_obj_18.png", 1, 0, 1, 30, -(102))
+    R.sprite_replace_alpha(S, 606, "./gfx/cutscene/anim_obj_19.png", 1, 0, 1, 30, -(102))
+    R.sprite_replace_alpha(S, 608, "./gfx/cutscene/anim_obj_20.png", 1, 0, 1, (94 / float(2)), (70 / float(2)))
+    R.sprite_replace_alpha(S, 569, "./gfx/cutscene/toad_0_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 570, "./gfx/cutscene/toad_1_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 571, "./gfx/cutscene/toad_2_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 572, "./gfx/cutscene/toad_3_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 573, "./gfx/cutscene/toad_4_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 574, "./gfx/cutscene/toad_5_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 575, "./gfx/cutscene/toad_6_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
     S.g_scrooler = 0
     S.g_scrooler2 = 0
     S.g_scrooler3 = 0

@@ -44,40 +44,40 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_quake = 0
     S.g_quake_nagraj = 0
     S.g_quake_nagraj2 = 0
-    R.sprite_replace_alpha(S, 547, "./data/a/anim_obj_0.png", 1, 0, 1, 16, 70)
-    R.sprite_replace_alpha(S, 548, "./data/a/anim_obj_1.png", 1, 0, 1, 16, 70)
-    R.sprite_replace_alpha(S, 549, "./data/a/anim_obj_2.png", 1, 0, 1, 16, 70)
-    R.sprite_replace_alpha(S, 551, "./data/a/anim_obj_5.png", 1, 0, 1, 16, 70)
-    R.sprite_replace_alpha(S, 564, "./data/a/anim_obj_7.png", 1, 0, 1, 16, 70)
-    R.sprite_replace_alpha(S, 565, "./data/a/anim_obj_6.png", 1, 0, 1, (613 / float(2)), (720 / float(2)))
-    R.sprite_replace_alpha(S, 566, "./data/a/anim_obj_8.png", 1, 0, 1, (613 / float(2)), (720 / float(2)))
-    R.sprite_replace_alpha(S, 567, "./data/a/anim_obj_9.png", 1, 0, 1, (195 / float(2)), 210)
-    R.sprite_replace_alpha(S, 568, "./data/a/anim_obj_10.png", 1, 0, 1, (195 / float(2)), 330)
-    R.sprite_replace_alpha(S, 578, "./data/a/anim_obj_11.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 579, "./data/a/anim_obj_12.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 580, "./data/a/anim_obj_13.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 581, "./data/a/anim_obj_14.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 582, "./data/a/anim_obj_15.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 583, "./data/a/anim_obj_16.png", 1, 0, 1, 0, 0)
-    R.sprite_replace_alpha(S, 569, "./data/a/toad_0.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 570, "./data/a/toad_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 571, "./data/a/toad_2.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 572, "./data/a/toad_3.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 573, "./data/a/toad_4.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 574, "./data/a/toad_5.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 575, "./data/a/toad_6.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 552, "./data/a/txt_1.png", 1, 0, 1, (526 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 553, "./data/a/txt_2.png", 1, 0, 1, (514 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 554, "./data/a/txt_3.png", 1, 0, 1, (397 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 555, "./data/a/txt_4.png", 1, 0, 1, (460 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 556, "./data/a/txt_5.png", 1, 0, 1, (614 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 557, "./data/a/txt_6.png", 1, 0, 1, (694 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 558, "./data/a/txt_7.png", 1, 0, 1, (343 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 559, "./data/a/txt_8.png", 1, 0, 1, (690 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 560, "./data/a/txt_9.png", 1, 0, 1, (517 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 561, "./data/a/txt_10.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 562, "./data/a/txt_11.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
-    R.sprite_replace_alpha(S, 563, "./data/a/txt_12.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 547, "./gfx/cutscene/anim_obj_0.png", 1, 0, 1, 16, 70)
+    R.sprite_replace_alpha(S, 548, "./gfx/cutscene/anim_obj_1.png", 1, 0, 1, 16, 70)
+    R.sprite_replace_alpha(S, 549, "./gfx/cutscene/anim_obj_2.png", 1, 0, 1, 16, 70)
+    R.sprite_replace_alpha(S, 551, "./gfx/cutscene/anim_obj_5.png", 1, 0, 1, 16, 70)
+    R.sprite_replace_alpha(S, 564, "./gfx/cutscene/anim_obj_7.png", 1, 0, 1, 16, 70)
+    R.sprite_replace_alpha(S, 565, "./gfx/cutscene/anim_obj_6.png", 1, 0, 1, (613 / float(2)), (720 / float(2)))
+    R.sprite_replace_alpha(S, 566, "./gfx/cutscene/anim_obj_8.png", 1, 0, 1, (613 / float(2)), (720 / float(2)))
+    R.sprite_replace_alpha(S, 567, "./gfx/cutscene/anim_obj_9.png", 1, 0, 1, (195 / float(2)), 210)
+    R.sprite_replace_alpha(S, 568, "./gfx/cutscene/anim_obj_10.png", 1, 0, 1, (195 / float(2)), 330)
+    R.sprite_replace_alpha(S, 578, "./gfx/cutscene/anim_obj_11.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 579, "./gfx/cutscene/anim_obj_12.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 580, "./gfx/cutscene/anim_obj_13.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 581, "./gfx/cutscene/anim_obj_14.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 582, "./gfx/cutscene/anim_obj_15.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 583, "./gfx/cutscene/anim_obj_16.png", 1, 0, 1, 0, 0)
+    R.sprite_replace_alpha(S, 569, "./gfx/cutscene/toad_0.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 570, "./gfx/cutscene/toad_1.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 571, "./gfx/cutscene/toad_2.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 572, "./gfx/cutscene/toad_3.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 573, "./gfx/cutscene/toad_4.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 574, "./gfx/cutscene/toad_5.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 575, "./gfx/cutscene/toad_6.png", 1, 0, 1, (51 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 552, "./gfx/cutscene/txt_1.png", 1, 0, 1, (526 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 553, "./gfx/cutscene/txt_2.png", 1, 0, 1, (514 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 554, "./gfx/cutscene/txt_3.png", 1, 0, 1, (397 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 555, "./gfx/cutscene/txt_4.png", 1, 0, 1, (460 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 556, "./gfx/cutscene/txt_5.png", 1, 0, 1, (614 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 557, "./gfx/cutscene/txt_6.png", 1, 0, 1, (694 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 558, "./gfx/cutscene/txt_7.png", 1, 0, 1, (343 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 559, "./gfx/cutscene/txt_8.png", 1, 0, 1, (690 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 560, "./gfx/cutscene/txt_9.png", 1, 0, 1, (517 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 561, "./gfx/cutscene/txt_10.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 562, "./gfx/cutscene/txt_11.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
+    R.sprite_replace_alpha(S, 563, "./gfx/cutscene/txt_12.png", 1, 0, 1, (631 / float(2)), (63 / float(2)))
     S.g_scrooler = 0
     S.g_scrooler2 = 0
     S.g_scrooler3 = 0
@@ -122,15 +122,15 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_dostal_list2 = 0
     S.g_czytal_list = 0
     S.g_czytal_list2 = 0
-    R.aset(G.anim_sprite, 0, R.sprite_add_alpha(S, "./data/a/anim_obj_3_1.png", 0, 0, 1, 16, 70))
-    R.aset(G.anim_sprite, 1, R.sprite_add_alpha(S, "./data/a/anim_obj_3_2.png", 0, 0, 1, 16, 70))
-    R.aset(G.anim_sprite, 2, R.sprite_add_alpha(S, "./data/a/anim_obj_3_3.png", 0, 0, 1, 16, 70))
-    R.aset(G.anim_sprite, 3, R.sprite_add_alpha(S, "./data/a/anim_obj_4_1.png", 0, 0, 1, 16, 70))
-    R.aset(G.anim_sprite, 4, R.sprite_add_alpha(S, "./data/a/anim_obj_4_2.png", 0, 0, 1, 16, 70))
-    R.aset(G.anim_sprite, 5, R.sprite_add_alpha(S, "./data/a/anim_obj_4_3.png", 0, 0, 1, 16, 70))
-    R.background_replace_alpha(S, 0, "./data/a/background.png", 1)
-    R.background_replace_alpha(S, 2, "./data/a/background1.png", 1)
-    R.background_replace_alpha(S, 4, "./data/a/background2.png", 1)
+    R.aset(G.anim_sprite, 0, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_3_1.png", 0, 0, 1, 16, 70))
+    R.aset(G.anim_sprite, 1, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_3_2.png", 0, 0, 1, 16, 70))
+    R.aset(G.anim_sprite, 2, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_3_3.png", 0, 0, 1, 16, 70))
+    R.aset(G.anim_sprite, 3, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_4_1.png", 0, 0, 1, 16, 70))
+    R.aset(G.anim_sprite, 4, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_4_2.png", 0, 0, 1, 16, 70))
+    R.aset(G.anim_sprite, 5, R.sprite_add_alpha(S, "./gfx/cutscene/anim_obj_4_3.png", 0, 0, 1, 16, 70))
+    R.background_replace_alpha(S, 0, "./gfx/cutscene/background.png", 1)
+    R.background_replace_alpha(S, 2, "./gfx/cutscene/background1.png", 1)
+    R.background_replace_alpha(S, 4, "./gfx/cutscene/background2.png", 1)
     G.anim_speed = 0
     G.anim_speedy = 0
     S.g_blanker_y = 0
@@ -448,7 +448,7 @@ static func ev_0_0_0(S, A: Array) -> Variant:
 static func ev_0_0_1(S, A: Array) -> Variant:
     P3.SXMS_WAP_Stop(S, [])
     P0.SXMS_C_Stop(S, [])
-    P3.SXMS_WAP_Play(S, ["./data/m/anim_1"])
+    P3.SXMS_WAP_Play(S, ["./music/anim_1"])
     G.aktual_music_vol = G.glosnosc_muzyki
     P2.SXMS_SFX_MasterVolume(S, [255])
     P1.SXMS_C_Volume(S, [G.aktual_music_vol])
@@ -611,7 +611,7 @@ static func ev_8_0(S, A: Array) -> Variant:
             S.g_blanker_blank += 0.01
         if (S.g_blanker_blank >= 1):
             R.aset(S.g_sekwencja, 0, 3)
-            P3.SXMS_WAP_Play(S, ["./data/m/anim_2"])
+            P3.SXMS_WAP_Play(S, ["./music/anim_2"])
             S.g_yo = 21
             R.inst_set(R.aget(S.g_slave, S.g_yo), "visible", 0)
             S.g_yo = 22
@@ -705,7 +705,7 @@ static func ev_8_0(S, A: Array) -> Variant:
         if R.eqv(S, R.aget(S.g_napis_ostrzezenia, 9), 0):
             R.aset(S.g_napis_ostrzezenia, 9, 1)
             P3.SXMS_WAP_Stop(S, [])
-            P0.SXMS_C_Play(S, ["./data/m/evil_castle.ogg"])
+            P0.SXMS_C_Play(S, ["./music/evil_castle.ogg"])
         R.aset(S.g_napis_ostrzezenia, 1, (R.aget(S.g_napis_ostrzezenia, 1) + 1))
         if (G.anim_speed > -(50)):
             G.anim_speed -= 0.5

@@ -114,25 +114,25 @@ static func sound(sound_id: int) -> AudioStream:
 ## Fire-and-forget sound effect. Entities don't each own an
 ## AudioStreamPlayer, so this spawns a temporary one on the scene root
 ## that frees itself when the stream finishes. Respects the
-## NativeGame.dzwiek / glosnosc_dzwieku settings.
+## NativeGame.sound_enabled / sound_volume settings.
 static func play_sound(sound_id: int) -> void:
 	var stream := sound(sound_id)
-	if stream == null or NativeGame.dzwiek != 1:
+	if stream == null or NativeGame.sound_enabled != 1:
 		return
 	var tree := Engine.get_main_loop() as SceneTree
 	if tree == null:
 		return
 	var player := AudioStreamPlayer.new()
 	player.stream = stream
-	player.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
+	player.volume_db = linear_to_db(maxf(0.01, NativeGame.sound_volume))
 	tree.root.add_child(player)
 	player.play()
 	player.finished.connect(player.queue_free)
 
 
-## Music tracks live in res://data/m/<name>.ogg, referenced by name.
+## Music tracks live in res://music/<name>.ogg, referenced by name.
 static func music(track_name: String) -> AudioStream:
-	var path := "res://data/m/%s.ogg" % track_name
+	var path := "res://music/%s.ogg" % track_name
 	if not _stream_cache.has(path):
 		_stream_cache[path] = load(path)
 	return _stream_cache[path]
@@ -141,12 +141,12 @@ static func music(track_name: String) -> AudioStream:
 static var _music_player: AudioStreamPlayer = null
 
 ## Scene music — stops whatever is playing and loops the named track.
-## Pass "" to stop music. Honors the muzyka setting.
+## Pass "" to stop music. Honors the music_enabled setting.
 static func play_music(track_name: String) -> void:
 	if _music_player != null and is_instance_valid(_music_player):
 		_music_player.queue_free()
 		_music_player = null
-	if track_name == "" or NativeGame.muzyka != 1:
+	if track_name == "" or NativeGame.music_enabled != 1:
 		return
 	var stream := music(track_name)
 	if stream == null:
@@ -157,7 +157,7 @@ static func play_music(track_name: String) -> void:
 	_music_player = AudioStreamPlayer.new()
 	_music_player.stream = stream
 	_music_player.volume_db = linear_to_db(
-		maxf(0.01, NativeGame.glosnosc_muzyki))
+		maxf(0.01, NativeGame.music_volume))
 	# Deferred — play_music is usually called from _ready while the
 	# scene root is still busy parenting its children.
 	tree.root.add_child.call_deferred(_music_player)

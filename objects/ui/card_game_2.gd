@@ -13,7 +13,7 @@ static func ev_0_0(S, A: Array) -> Variant:
     R.instance_create(S, 0, 0, 270)
     G.map_level_numering = 0
     P3.SXMS_WAP_Stop(S, [])
-    P0.SXMS_C_Play(S, ["./data/m/cardgame.ogg"])
+    P0.SXMS_C_Play(S, ["./music/cardgame.ogg"])
     G.particle5 = R.part_system_create(S)
     R.part_system_automatic_update(S, G.particle5, 1)
     R.part_system_depth(S, G.particle5, -(1000))
@@ -83,7 +83,7 @@ static func ev_8_0(S, A: Array) -> Variant:
     P1.SXMS_C_Volume(S, [G.aktual_music_vol])
     P3.SXMS_WAP_Volume(S, [0, G.aktual_music_vol])
     if (R.eqv(S, P3.SXMS_WAP_IsPlaying(S, []), 0) and R.eqv(S, P0.SXMS_C_IsPlaying(S, []), 0)):
-        P0.SXMS_C_Play(S, ["./data/m/cardgame.ogg"])
+        P0.SXMS_C_Play(S, ["./music/cardgame.ogg"])
     if (G.aktual_music_vol < G.glosnosc_muzyki):
         G.aktual_music_vol += 5
     if (G.aktual_music_vol > G.glosnosc_muzyki):

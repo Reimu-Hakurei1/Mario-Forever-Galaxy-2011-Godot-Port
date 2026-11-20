@@ -134,7 +134,7 @@ static func ev_8_0(S, A: Array) -> Variant:
                 R.instance_destroy(S)
                 R.set_obj_var(532, "g_end_level", 1)
                 G.gadanina = 0
-                P0.SXMS_C_Play(S, ["./data/m/map_completed.ogg"])
+                P0.SXMS_C_Play(S, ["./music/map_completed.ogg"])
                 G.cogra = G.muzyka
                 P3.SXMS_WAP_Stop(S, [])
                 G.muzyka = 100

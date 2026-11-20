@@ -442,9 +442,9 @@ func _muzzle_flash(pos: Vector2, aim: Vector2) -> void:
 ## Muzzle report — sound id 29 from the original sampel table.
 func _play_shot_sound() -> void:
 	var stream := NativeAssets.sound(29)
-	if stream != null and NativeGame.dzwiek == 1:
+	if stream != null and NativeGame.sound_enabled == 1:
 		_sfx.stream = stream
-		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.glosnosc_dzwieku))
+		_sfx.volume_db = linear_to_db(maxf(0.01, NativeGame.sound_volume))
 		_sfx.play()
 
 

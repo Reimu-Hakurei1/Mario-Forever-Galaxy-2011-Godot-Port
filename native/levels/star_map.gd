@@ -77,7 +77,7 @@ const MAP_MUSIC := {
 }
 
 func _play_map_music() -> void:
-	if NativeGame.muzyka <= 0:
+	if NativeGame.music_enabled <= 0:
 		return
 	var region := NativeGame.map_current.get_slice(":", 0)
 	if region == "":
@@ -163,7 +163,7 @@ func _build_header() -> void:
 
 
 ## Authored galaxy map — node positions come straight from the
-## original's room_map* instance placements (data/levels/native/
+## original's room_map* instance placements (levels/native/
 ## map_nodes.json). Each of the 8 maps gets a region in the world
 ## container; playable nodes (those with an extracted stage schedule)
 ## become level buttons ranked by NativeLevelTable, connector nodes
@@ -178,7 +178,7 @@ var _node_rank: Dictionary = {}    # "m:n" -> playable level index
 var _node_pos: Dictionary = {}     # "m:n" -> world-space base center
 var _orbit_nodes: Array = []       # [{key, base, btn|dot}] — 20px orbit
 var _lanes: Array = []             # [{line, a, b}] orbiting flight lanes
-var _promien := 0.0                # orbit clock — each node adds its own
+var _orbit_clock := 0.0                # orbit clock — each node adds its own
 								   # g_promien phase offset (random 0-3 init)
 var _phase_off := {}               # node key -> orbit phase offset
 var _node_btns: Dictionary = {}    # "m:n" -> node Button
@@ -188,7 +188,7 @@ var _map_meta: Dictionary = {}     # "m:n" -> {name, map_nextlev, ...}
 func _load_map_data() -> void:
 	if not _map_nodes.is_empty():
 		return
-	var path := "res://data/levels/native/map_nodes.json"
+	var path := "res://levels/native/map_nodes.json"
 	if FileAccess.file_exists(path):
 		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
 		if typeof(parsed) == TYPE_DICTIONARY:
@@ -199,7 +199,7 @@ func _load_map_data() -> void:
 				_map_nodes[int(k)] = arr
 	for i in NativeLevelTable.level_count():
 		_node_rank[NativeLevelTable.stage_key(i)] = i
-	var mpath := "res://data/levels/native/map_meta.json"
+	var mpath := "res://levels/native/map_meta.json"
 	if FileAccess.file_exists(mpath):
 		var mparsed = JSON.parse_string(FileAccess.get_file_as_string(mpath))
 		if typeof(mparsed) == TYPE_DICTIONARY:
@@ -277,11 +277,11 @@ func _map_cleared(m: int) -> bool:
 ## Map secrets — the original's hidden map goodies (o_map_goodie_*)
 ## and loot panels (o_map_panel_loot_2): twinkling galactic sprites
 ## and pulsing panels scattered between the level nodes. Decorative
-## only; they need efekty >= 1 like the original's G.efekty check.
+## only; they need effects >= 1 like the original's G.effects check.
 var _decor: Array = []   # {sprite, base_pos, phase, kind}
 
 func _build_map_decor() -> void:
-	if NativeGame.efekty < 1:
+	if NativeGame.effects < 1:
 		return
 	# Twinkling goodie sprites scattered at region edges — the original's
 	# hidden map goodies (o_map_goodie_*).
@@ -544,7 +544,7 @@ func _launch_current() -> void:
 ## (20·sin(promien/5), 20·cos(promien)) each frame (part_7 map draw).
 func _orbit_pos(key: String) -> Vector2:
 	var base: Vector2 = _node_pos.get(key, Vector2.ZERO)
-	var ph: float = _promien + float(_phase_off.get(key, 0.0))
+	var ph: float = _orbit_clock + float(_phase_off.get(key, 0.0))
 	return base + Vector2(sin(ph / 5.0) * 20.0,
 		cos(ph) * 20.0)
 
@@ -698,9 +698,9 @@ func _process(_delta: float) -> void:
 	# Ship cursor orbit+bob handled in the orbit block below.
 	# Node orbits — every map node circles its anchor on a 20px radius
 	# (g_promien += 0.05/frame in the original's map draw).
-	_promien += _delta * 60.0 * 0.05
+	_orbit_clock += _delta * 60.0 * 0.05
 	for n in _orbit_nodes:
-		var ph: float = _promien + float(_phase_off.get(n["key"], 0.0))
+		var ph: float = _orbit_clock + float(_phase_off.get(n["key"], 0.0))
 		var off := Vector2(sin(ph / 5.0) * 20.0,
 			cos(ph) * 20.0)
 		var p: Vector2 = n["base"] + off

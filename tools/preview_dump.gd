@@ -38,7 +38,7 @@ func _process(_d: float) -> bool:
 			var smeta: Dictionary = R.sprites.get(sidx, {})
 			var sname: String = str(smeta.get("name", ""))
 			if sname == "": continue
-			var tex := "res://images/sprites/%s.%d.%d.png" % [sname, sidx, sub]
+			var tex := "res://gfx/sprites/%s.%d.%d.png" % [sname, sidx, sub]
 			if not ResourceLoader.exists(tex): continue
 			var vis: Variant = R.inst_get(inst.g_id, "visible")
 			if vis != null and not bool(vis): continue

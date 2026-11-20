@@ -35,21 +35,21 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_refreshed = 0
     S.g_podjasnianie = 0
     S.g_podjasnianie2 = 0
-    R.sprite_replace(S, 701, "./data/l/smarter.jpg", 0, 0, 0, 0, 0, 0, 0)
-    R.sprite_replace(S, 702, "./data/l/joy.jpg", 0, 0, 0, 0, 0, (604 / float(2)), (351 / float(2)))
-    R.sprite_replace_alpha(S, 680, "./data/l/anim_logo.png", 0, 0, 0, (396 / float(2)), (287 / float(2)))
-    R.sprite_replace(S, 688, "./data/l/anim_logo2.jpg", 0, 0, 0, 0, 0, (532 / float(2)), (337 / float(2)))
-    R.sprite_replace(S, 689, "./data/l/anim_logo3.jpg", 0, 0, 0, 0, 0, (254 / float(2)), (133 / float(2)))
-    R.sprite_replace_alpha(S, 690, "./data/l/anim_logo4.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
-    R.sprite_replace_alpha(S, 691, "./data/l/anim_logo5.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
-    R.sprite_replace_alpha(S, 692, "./data/l/anim_logo6.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
-    R.sprite_replace_alpha(S, 693, "./data/l/anim_logo7.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
-    R.sprite_replace_alpha(S, 694, "./data/l/anim_logo8.png", 0, 0, 0, (64 / float(2)), (64 / float(2)))
-    R.sprite_replace_alpha(S, 695, "./data/l/anim_logo9.png", 0, 0, 0, (64 / float(2)), (64 / float(2)))
-    R.sprite_replace_alpha(S, 696, "./data/l/anim_logo10.png", 0, 0, 0, 0, 0)
-    R.sprite_replace_alpha(S, 697, "./data/l/anim_logo11.png", 0, 0, 0, 700, 0)
-    R.sprite_replace_alpha(S, 698, "./data/l/anim_logo12.png", 0, 0, 0, (196 / float(2)), (196 / float(2)))
-    R.sprite_replace_alpha(S, 699, "./data/l/anim_logo13.png", 0, 0, 0, (253 / float(2)), (253 / float(2)))
+    R.sprite_replace(S, 701, "./gfx/logo/smarter.jpg", 0, 0, 0, 0, 0, 0, 0)
+    R.sprite_replace(S, 702, "./gfx/logo/joy.jpg", 0, 0, 0, 0, 0, (604 / float(2)), (351 / float(2)))
+    R.sprite_replace_alpha(S, 680, "./gfx/logo/anim_logo.png", 0, 0, 0, (396 / float(2)), (287 / float(2)))
+    R.sprite_replace(S, 688, "./gfx/logo/anim_logo2.jpg", 0, 0, 0, 0, 0, (532 / float(2)), (337 / float(2)))
+    R.sprite_replace(S, 689, "./gfx/logo/anim_logo3.jpg", 0, 0, 0, 0, 0, (254 / float(2)), (133 / float(2)))
+    R.sprite_replace_alpha(S, 690, "./gfx/logo/anim_logo4.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
+    R.sprite_replace_alpha(S, 691, "./gfx/logo/anim_logo5.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
+    R.sprite_replace_alpha(S, 692, "./gfx/logo/anim_logo6.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
+    R.sprite_replace_alpha(S, 693, "./gfx/logo/anim_logo7.png", 0, 0, 0, (53 / float(2)), (53 / float(2)))
+    R.sprite_replace_alpha(S, 694, "./gfx/logo/anim_logo8.png", 0, 0, 0, (64 / float(2)), (64 / float(2)))
+    R.sprite_replace_alpha(S, 695, "./gfx/logo/anim_logo9.png", 0, 0, 0, (64 / float(2)), (64 / float(2)))
+    R.sprite_replace_alpha(S, 696, "./gfx/logo/anim_logo10.png", 0, 0, 0, 0, 0)
+    R.sprite_replace_alpha(S, 697, "./gfx/logo/anim_logo11.png", 0, 0, 0, 700, 0)
+    R.sprite_replace_alpha(S, 698, "./gfx/logo/anim_logo12.png", 0, 0, 0, (196 / float(2)), (196 / float(2)))
+    R.sprite_replace_alpha(S, 699, "./gfx/logo/anim_logo13.png", 0, 0, 0, (253 / float(2)), (253 / float(2)))
     S.g_distance = 20
     G.particle1 = R.part_system_create(S)
     G.particle2 = R.part_system_create(S)
@@ -101,7 +101,7 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     return 0
 
 static func ev_0_0_1(S, A: Array) -> Variant:
-    P0.SXMS_C_Play(S, ["./data/l/sfx_logo.ogg"])
+    P0.SXMS_C_Play(S, ["./gfx/logo/sfx_logo.ogg"])
     return 0
 
 static func ev_0_0_2(S, A: Array) -> Variant:
