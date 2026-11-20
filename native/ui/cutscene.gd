@@ -152,10 +152,12 @@ func _make_layer() -> TextureRect:
 
 
 func _tex(file: String) -> Texture2D:
-	var img := Image.new()
-	if img.load(IMG_DIR + file) != OK:
+	# data/a/*.png are imported resources (.import files present) —
+	# load() returns Texture2D and stays export-safe, unlike Image.load.
+	var path := IMG_DIR + file
+	if not ResourceLoader.exists(path):
 		return null
-	return ImageTexture.create_from_image(img)
+	return load(path)
 
 
 func _unhandled_input(event: InputEvent) -> void:

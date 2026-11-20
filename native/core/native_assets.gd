@@ -158,8 +158,10 @@ static func play_music(track_name: String) -> void:
 	_music_player.stream = stream
 	_music_player.volume_db = linear_to_db(
 		maxf(0.01, NativeGame.glosnosc_dzwieku))
-	tree.root.add_child(_music_player)
+	# Deferred — play_music is usually called from _ready while the
+	# scene root is still busy parenting its children.
+	tree.root.add_child.call_deferred(_music_player)
+	_music_player.play.call_deferred()
 	_music_player.finished.connect(func():
 		if _music_player != null and is_instance_valid(_music_player):
 			_music_player.play())   # loop
-	_music_player.play()
