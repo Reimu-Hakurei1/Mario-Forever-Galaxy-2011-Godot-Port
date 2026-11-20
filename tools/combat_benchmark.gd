@@ -13,6 +13,7 @@ var last_time := 0
 var spawn_ms := 0.0
 var events_enabled := true
 var enemy_kind := 0
+var finish_frame := 421
 
 
 func _initialize() -> void:
@@ -27,6 +28,8 @@ func _initialize() -> void:
 			enemy_kind = int(arg.substr(7))
 		elif arg == "--no-event-profile":
 			events_enabled = false
+		elif arg.begins_with("--frames="):
+			finish_frame = int(arg.substr(9))
 	if savedir.is_empty() or not OS.get_environment("APPDATA").replace("\\", "/").contains("isolated"):
 		quit(2)
 		return
@@ -68,7 +71,11 @@ func _process(_delta: float) -> bool:
 		R.profile_event_calls.clear()
 	if frame % 120 == 0:
 		print("BENCH_PROGRESS frame=%d enemies=%d instances=%d" % [frame, R.instance_number(null, 12), R.instances.size()])
-	if frame == 421:
+	if frame % 30 == 0:
+		print("STEP us=%d drawlg=%d logic=%d motion=%d end=%d vis=%d views=%d draw=%d cmds=%d" % [
+			R.perf_step_usec, R.perf_drawlogic_usec, R.perf_logic_usec, R.perf_motion_usec,
+			R.perf_end_usec, R.perf_vis_usec, R.perf_views_usec, R.perf_draw_usec, R.draw_cmd_count])
+	if frame == finish_frame:
 		_finish.call_deferred()
 		game = null
 	return false

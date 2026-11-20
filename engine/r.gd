@@ -181,7 +181,7 @@ class DrawRec extends RefCounted:
 		cmd.append_array(args)
 		if m == 2 and mid >= 1 and mid <= 3:
 			cmd[1] = R._subtract_texture(cmd[1])
-		if m == 0:
+		if m == 0 and inst.blend_segs.is_empty():
 			inst.draw_cmds0.append(cmd)
 			return
 		var segs: Array = inst.blend_segs
