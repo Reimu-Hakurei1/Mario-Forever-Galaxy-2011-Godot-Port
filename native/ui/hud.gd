@@ -21,10 +21,16 @@ const HEAT_POS := Vector2(5, 200)
 const HEAT_W := 157.0
 const WEAPON_POS := [Vector2(44, 316), Vector2(88, 288), Vector2(134, 316),
 	Vector2(61, 364), Vector2(117, 364)]
-const SCORE_POS := Vector2(8, 498)
-const COINS_POS := Vector2(8, 578)
 const ENERGY_POS := Vector2(43, 674)
 const LIFE_Y := 741.0
+
+# Sprite-font digits — the original builds g_cyferki/g_cyferki2 via
+# font_add_sprite(439/440, ord("+"), 0, -2): monospaced glyphs starting
+# at '+' (frame = charcode - 43), advance = widest frame - 2px.
+const DIGIT_SPR := 439
+const DIGIT_GLOW_SPR := 440
+const DIGIT_FIRST := 43
+const DIGIT_COUNT := 10
 
 var _special_slide := 0.0        # g_wysun_pasek_specjal (0..200)
 var _fx_phase := 0.0             # g_efektspecjal (slot-0 pulse)
@@ -38,6 +44,9 @@ var _heat_glow: Control
 var _gun_icons: Array[TextureRect] = []
 var _score_label: Label
 var _coins_label: Label
+var _digit_cell := 12.0
+var _score_digits: Array = []    # [{glow, color}]
+var _coin_digits: Array = []
 var _energy_bar: TextureRect
 var _life_icons: Array[TextureRect] = []
 var _buffs_label: Label
@@ -79,14 +88,13 @@ func _build() -> void:
 		add_child(icon)
 		_gun_icons.append(icon)
 
-	# --- Score / coins: plain digit readouts like the original ---
-	_score_label = _make_label("0", 20)
-	_score_label.position = SCORE_POS
-	add_child(_score_label)
-	_coins_label = _make_label("0", 16)
-	_coins_label.position = COINS_POS
-	_coins_label.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
-	add_child(_coins_label)
+	# --- Score / coins: sprite-font digits like the original ---
+	# x = 152 - width("00000000") (8 monospaced cells), y = 504 / 584.
+	_digit_cell = _digit_cell_width()
+	var digit_x := 152.0 - 8.0 * _digit_cell
+	for i in DIGIT_COUNT:
+		_score_digits.append(_digit_pair(digit_x + i * _digit_cell, 504.0))
+		_coin_digits.append(_digit_pair(digit_x + i * _digit_cell, 584.0))
 
 	# --- Hull bar (sprite 15, x-stretched by energy fraction) ---
 	_energy_bar = TextureRect.new()
@@ -167,8 +175,8 @@ func _process(delta: float) -> void:
 		var tex := clip.get_child(0) as TextureRect
 		tex.position.x = -heat_frac * HEAT_W
 
-	_score_label.text = str(NativeGame.score)
-	_coins_label.text = str(NativeGame.coins)
+	_set_digits(_score_digits, NativeGame.score)
+	_set_digits(_coin_digits, NativeGame.coins)
 
 	# Hull bar — sprite stretched on x by the energy fraction.
 	var en_tex := _energy_bar.texture
@@ -220,6 +228,58 @@ func _process(delta: float) -> void:
 		icon.size = tex.get_size() * 0.5
 		icon.position = WEAPON_POS[i] - half
 		icon.modulate = Color.WHITE if wid >= 0 else Color(1, 1, 1, 0.18)
+
+
+func _digit_cell_width() -> float:
+	var max_w := 0
+	for i in NativeAssets.sprite_frames(DIGIT_SPR).size():
+		var t := NativeAssets.sprite_frame(DIGIT_SPR, i)
+		if t != null:
+			max_w = maxi(max_w, t.get_width())
+	return maxf(1.0, max_w - 2.0)   # sep = -2
+
+
+func _digit_pair(x: float, y: float) -> Dictionary:
+	var glow := TextureRect.new()
+	glow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	glow.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	glow.position = Vector2(x, y)
+	glow.modulate = Color(1, 1, 1, 0.55)
+	var gm := CanvasItemMaterial.new()
+	gm.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	glow.material = gm
+	add_child(glow)
+	var color := TextureRect.new()
+	color.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	color.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	color.position = Vector2(x, y)
+	add_child(color)
+	return {"glow": glow, "color": color}
+
+
+func _set_digits(pool: Array, value: int) -> void:
+	var s := str(value)
+	for i in pool.size():
+		var pair: Dictionary = pool[i]
+		var ch := s[i] if i < s.length() else " "
+		var show := i < s.length()
+		for r in [pair["glow"], pair["color"]]:
+			r.visible = show
+			if not show:
+				continue
+		var code := ch.unicode_at(0)
+		var fi := code - DIGIT_FIRST
+		if fi < 0 or fi >= NativeAssets.sprite_frames(DIGIT_SPR).size():
+			pair["color"].visible = false
+			pair["glow"].visible = false
+			continue
+		pair["color"].texture = NativeAssets.sprite_frame(DIGIT_SPR, fi)
+		var gt := NativeAssets.sprite_frame(DIGIT_GLOW_SPR, fi)
+		pair["glow"].texture = gt if gt != null else pair["color"].texture
+		# glyphs draw at natural size, advance is the fixed cell width
+		for r in [pair["glow"], pair["color"]]:
+			var t: Texture2D = r.texture
+			r.size = t.get_size() if t != null else Vector2.ZERO
 
 
 func _sprite_rect(tex: Texture2D, pos: Vector2) -> TextureRect:
