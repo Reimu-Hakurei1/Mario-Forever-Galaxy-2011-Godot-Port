@@ -212,6 +212,10 @@ var _spin_left := 0
 # o_enemy_1): fighters launched on a fixed GameMaker direction instead
 # of AI — sprite_id_override picks their hull (41 vs 502).
 var sprite_id_override := -1
+## boss_giga_2 (obj 419) — the spinning gravity orb: rotates 5°/frame,
+## and on player contact it dies but drags the ship 20px/frame toward
+## itself while draining 200 energy. Bullet kills pay a flat 5000.
+var giga2_pull := false
 var dart_dir := Vector2.ZERO      # px/frame velocity while >0
 var dart_speed := 0.0
 
@@ -337,6 +341,9 @@ func _physics_process(_delta: float) -> void:
 	if NativeGame.paused or _dead:
 		return
 	_age_frames += 1
+	# boss_giga_2 spins 5 degrees per frame (g_image_angle += 5).
+	if giga2_pull:
+		rotation += deg_to_rad(5.0)
 	# enemy_9 burns out after 300 frames if it never reached the ship.
 	if life_limit > 0 and _age_frames > life_limit:
 		die()
@@ -778,8 +785,10 @@ func die() -> void:
 		return
 	_dead = true
 	NativeGame.kill_enemy()
-	# Streak multiplier applies to the kill score — chained kills pay more.
-	var points := int(_score * NativeGame.score_mult())
+	# Streak multiplier applies to the kill score — chained kills pay
+	# more. boss_giga_2 pays a flat 5000 (g_naliczator += 5000).
+	var points := 5000 if giga2_pull \
+		else int(_score * NativeGame.score_mult())
 	NativeGame.add_score(points)
 	_roll_drop()
 	_spawn_explosion(points)
@@ -923,6 +932,14 @@ func _check_player_collision() -> void:
 		queue_free()
 		return
 	if ship.invulnerable:
+		return
+	if giga2_pull:
+		# boss_giga_2 contact: the orb dies, hauling the ship toward its
+		# position (g_ixor/g_iyor += lengthdir 20) and burning 200 hull.
+		ship.vel += to_enemy.normalized() * 20.0
+		NativeGame.damage_player(200.0)
+		_spawn_explosion(0)
+		queue_free()
 		return
 	NativeGame.damage_player(contact_damage)
 	# Bounce the player away from the enemy — negate the ship→enemy

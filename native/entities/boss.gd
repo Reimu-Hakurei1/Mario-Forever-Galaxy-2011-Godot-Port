@@ -78,13 +78,13 @@ const FIGHT_CFG := [
 	# boss_6_fight — + dookola surrounder (410), paired rockets (116).
 	{"wps": WP_MAIN, "volley": 2, "volley_gap": 10, "ring": 30,
 		"ring_gap": 30, "tail": 10, "tail_gap": 40, "sweep": "slow_home",
-		"giga0": -300.0, "hell": false, "goomba": true, "biggery": true,
+		"giga0": -300.0, "hell": false, "biggery": true,
 		"dookola": true, "rockets": true},
 	# boss_7_fight — hyper cadence (20 shots / 3f), bossbul_33 sweep,
 	# faster ring/tail, rockets, teams, orbit pair.
 	{"wps": WP_MAIN, "volley": 20, "volley_gap": 3, "ring": 30,
 		"ring_gap": 5, "tail": 10, "tail_gap": 5, "sweep": "fast_home",
-		"giga0": -300.0, "hell": false, "goomba": true, "biggery": true,
+		"giga0": -300.0, "hell": false, "biggery": true,
 		"dookola": true, "rockets": true},
 	# boss_8_fight — the bullet-hell finale (sekwencja_rakiet).
 	{"wps": WP_MAIN, "volley": 20, "volley_gap": 3, "ring": 30,
@@ -377,7 +377,9 @@ func _fight_tick() -> void:
 		_boss8_tick(cfg)
 	else:
 		_seq_tick(cfg)
-	_barrage_tick(cfg)
+		# boss_8_fight's g_sekwencja2 is vestigial — it latches to 1 and
+		# is never read again, so the barrage machine doesn't run there.
+		_barrage_tick(cfg)
 	_giga_tick()
 	_team_tick(cfg)
 	_extras_tick(cfg)
@@ -592,6 +594,8 @@ func _team_tick(cfg: Dictionary) -> void:
 	if cfg.get("goomba", false):
 		_wypusc_goombe += 1.0
 		_wypuszczanie_goomby += 1.0
+		# boss_4 releases inside the first 150f of each 800f
+		# cycle, boss_5 inside 100f.
 		var window := 100.0 if tier == 4 else 150.0
 		if _wypuszczanie_goomby < window and _wypusc_goombe > 30.0:
 			_wypusc_goombe = 0.0
@@ -624,8 +628,10 @@ func _team_tick(cfg: Dictionary) -> void:
 				var orb := NativeEnemy.new()
 				orb.kind = NativeEnemy.Kind.MINI
 				orb.sprite_id_override = 201
-				orb.health = 10.0
-				orb.contact_damage = 20.0
+				# boss_giga_2: ~400hp gravity orb — contact hauls the
+				# ship in and drains 200 hull; kills pay flat 5000.
+				orb.giga2_pull = true
+				orb.health = 400.0
 				orb.global_position = position
 				get_parent().add_child(orb)
 				_biggery.append(orb)
