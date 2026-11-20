@@ -568,6 +568,14 @@ static func ev_8_0(S, A: Array) -> Variant:
         if ((G.anim_speed > -(50)) and (S.g_timer < 300)):
             G.anim_speed -= 0.15
             G.anim_speedy = 1
+        if R.eqv(S, G.anim_fire_held, 0):
+            G.anim_speed_original = G.anim_speed
+        if R.keyboard_check(S, G.ster5):
+            G.anim_fire_held = 1
+            G.anim_speed = G.anim_speed_original * 2
+        else:
+            G.anim_fire_held = 0
+            G.anim_speed = G.anim_speed_original
         if ((S.g_timer >= 300) and R.eqv(S, S.g_ustaw_zamek_maria, 0)):
             G.anim_speed = (G.anim_speed / float(1.03))
         if ((S.g_timer >= 300) and (G.anim_speed >= -(3))):
@@ -581,6 +589,8 @@ static func ev_8_0(S, A: Array) -> Variant:
                 R.inst_set(R.aget(S.g_slave, 21), "y", 519)
         if ((S.g_timer >= 300) and (G.anim_speed >= -(0.01))):
             G.anim_speed = 0
+            G.anim_speed_original = 0
+            G.anim_fire_held = 0
             S.g_timer = 0
             R.aset(S.g_sekwencja, 0, 2)
             P2.SXMS_SFX_PlayExt(S, [215, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
