@@ -29,7 +29,7 @@ const TIER_PROFILES := [
 	{"sprite": 332, "scale": 0.9, "tint": Color(1.0, 0.65, 0.6)},
 	{"sprite": 502, "scale": 0.8, "tint": Color(1.0, 0.6, 0.55)},
 ]
-const ANIM_FPS := 6.0
+const ANIM_FPS := 60.0
 const ENTER_SPEED := 0.8          # px/frame descent
 const FIGHT_Y := 160.0            # hover line at the top of the arena
 const HIT_FLASH := 4
