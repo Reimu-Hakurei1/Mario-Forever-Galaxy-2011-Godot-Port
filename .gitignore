@@ -20,3 +20,4 @@ export_credentials.cfg
 _shots/
 _test_saves/
 build_tmp/
+shots_tmp/
