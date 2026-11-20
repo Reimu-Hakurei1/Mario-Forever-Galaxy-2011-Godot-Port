@@ -23,9 +23,10 @@ func _enter_tree() -> void:
 	_timeline = load("res://addons/room_frame/level_timeline.gd").new()
 	add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, _timeline)
 	var icon := EditorInterface.get_base_control().get_theme_icon("Node2D", "EditorIcons")
-	add_custom_type("GalaxyWaves", "Node2D", preload("res://engine/level_waves.gd"), icon)
-	add_custom_type("GalaxySpawnRule", "Node2D", preload("res://engine/level_spawn_rule.gd"), icon)
-	add_custom_type("GalaxyWaveSetting", "Node", preload("res://engine/level_wave_setting.gd"), icon)
+	# Custom node types removed (files not in archive). Commented out so plugin loads.
+	# add_custom_type("GalaxyWaves", "Node2D", preload("res://engine/level_waves.gd"), icon)
+	# add_custom_type("GalaxySpawnRule", "Node2D", preload("res://engine/level_spawn_rule.gd"), icon)
+	# add_custom_type("GalaxyWaveSetting", "Node", preload("res://engine/level_wave_setting.gd"), icon)
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--editor-shot="):
 			_shot = a.substr(14)
@@ -43,9 +44,9 @@ func _exit_tree() -> void:
 	if is_instance_valid(_timeline):
 		remove_control_from_container(CONTAINER_CANVAS_EDITOR_MENU, _timeline)
 		_timeline.queue_free()
-	remove_custom_type("GalaxyWaves")
-	remove_custom_type("GalaxySpawnRule")
-	remove_custom_type("GalaxyWaveSetting")
+	# remove_custom_type("GalaxyWaves")
+	# remove_custom_type("GalaxySpawnRule")
+	# remove_custom_type("GalaxyWaveSetting")
 
 
 func _find_editor_controls() -> void:
