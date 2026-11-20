@@ -151,6 +151,8 @@ static func ev_0_0_0(S, A: Array) -> Variant:
     S.g_wielkosc23 = 0
     S.g_wielkosc24 = 0
     S.g_wielkosc25 = 0
+    S.g_wielkosc26 = 0
+    S.g_wielkosc27 = 0
     S.g_wielkosc30 = 0
     S.g_wielkosc31 = 0
     S.g_wielkosc32 = 0
@@ -188,6 +190,8 @@ static func ev_0_0_1(S, A: Array) -> Variant:
     G.map_elements = R.ini_read_real(S, "options", "set7", 1)
     G.resolution = R.ini_read_real(S, "options", "set8", 1)
     G.glosnosc_muzyki = R.ini_read_real(S, "options", "set9", 1)
+    G.vsync = R.ini_read_real(S, "options", "set10", 1)
+    G.fps_limit = R.ini_read_real(S, "options", "set11", 60)
     R.ini_close(S)
     return 0
 
@@ -201,6 +205,11 @@ static func ev_7_5(S, A: Array) -> Variant:
         P3.SXMS_WAP_Init(S, [])
         P3.SXMS_WAP_LoadPlugOut(S, ["out_ds.dll"])
         P3.SXMS_WAP_LoadPlugIn(S, ["in_psf.dll"])
+    if R.eqv(S, G.vsync, 0):
+        DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+    if R.eqv(S, G.vsync, 1):
+        DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+    Engine.max_fps = G.fps_limit
     return 0
 
 static func ev_8_0(S, A: Array) -> Variant:
@@ -575,15 +584,15 @@ static func ev_8_0_0(S, A: Array) -> Variant:
         S.g_podopcja2 -= 1
         S.g_klik1 = 1
         P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
-    if ((((R.keyboard_check(S, 40) and (S.g_podopcja2 < 19)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
+    if ((((R.keyboard_check(S, 40) and (S.g_podopcja2 < 20)) and R.eqv(S, S.g_klik1, 0)) and R.eqv(S, S.g_opcja1, 2)) and R.eqv(S, S.g_nastaw, 0)):
         S.g_podopcja2 += 1
         S.g_klik1 = 1
         P2.SXMS_SFX_PlayExt(S, [203, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
     if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 2)):
         S.g_klik1 = 0
     if (S.g_podopcja2 <= -(1)):
-        S.g_podopcja2 = 17
-    if (S.g_podopcja2 >= 18):
+        S.g_podopcja2 = 19
+    if (S.g_podopcja2 >= 20):
         S.g_podopcja2 = 0
     if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and (S.g_wielkosc11 < 0.1)):
         S.g_wielkosc11 += 0.01
@@ -693,6 +702,18 @@ static func ev_8_0_0(S, A: Array) -> Variant:
         S.g_wielkosc25 -= 0.01
     if (S.g_wielkosc25 < 0):
         S.g_wielkosc23 = 0
+    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and (S.g_wielkosc26 < 0.1)):
+        S.g_wielkosc26 += 0.01
+    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 18))) and (S.g_wielkosc26 > 0)):
+        S.g_wielkosc26 -= 0.01
+    if (S.g_wielkosc26 < 0):
+        S.g_wielkosc26 = 0
+    if ((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and (S.g_wielkosc27 < 0.1)):
+        S.g_wielkosc27 += 0.01
+    if (((1 - R.eqv(S, S.g_opcja1, 2)) or (1 - R.eqv(S, S.g_podopcja2, 19))) and (S.g_wielkosc27 > 0)):
+        S.g_wielkosc27 -= 0.01
+    if (S.g_wielkosc27 < 0):
+        S.g_wielkosc27 = 0
     if R.eqv(S, S.g_opcja1, 2):
         R.draw_set_color(S, 0x00FFFF)
         R.draw_text_transformed(S, 512, (550 - (25 * 16)), "CONTROLS :", 0.6, 0.6, 0)
@@ -785,9 +806,13 @@ static func ev_8_0_0(S, A: Array) -> Variant:
             R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : ALL", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
         if R.eqv(S, G.map_elements, 0):
             R.draw_text_transformed(S, 512, (((550 + (25 * 3)) + S.g_ywafel) + S.g_unsuported), "MAP ELEMENTS : NONE", (0.5 + S.g_wielkosc25), (0.5 + S.g_wielkosc25), 0)
+        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc26 * 50000)))
+        R.draw_text_transformed(S, 512, (((550 + (25 * 4)) + S.g_ywafel) + S.g_unsuported), R.concat("VSYNC : ", S.g_tekstowa3), (0.5 + S.g_wielkosc26), (0.5 + S.g_wielkosc26), 0)
+        R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc27 * 50000)))
+        R.draw_text_transformed(S, 512, (((550 + (25 * 5)) + S.g_ywafel) + S.g_unsuported), R.concat("FPS LIMIT : ", S.g_tekstowa4), (0.5 + S.g_wielkosc27), (0.5 + S.g_wielkosc27), 0)
         R.draw_set_color(S, (0x0000FF - (150000 * S.g_BRON)))
         R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc24 * 50000)))
-        R.draw_text_transformed(S, 512, (((550 + (25 * 4)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
+        R.draw_text_transformed(S, 512, (((550 + (25 * 6)) + S.g_ywafel) + S.g_unsuported), "BACK TO MAIN", (0.5 + S.g_wielkosc24), (0.5 + S.g_wielkosc24), 0)
     if (((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 0)) and R.keyboard_check(S, 13)) and R.eqv(S, S.g_klik2, 0)):
         S.g_klik2 = 1
         S.g_nastaw = 1
@@ -1089,6 +1114,27 @@ static func ev_8_0_0(S, A: Array) -> Variant:
         S.g_tekstowa1 = "LOW"
     if R.eqv(S, G.efekty, 3):
         S.g_tekstowa1 = "ALL"
+    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync > 0)):
+        G.vsync -= 1
+        S.g_klik4 = 1
+        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 18)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.vsync < 1)):
+        G.vsync += 1
+        S.g_klik4 = 1
+        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+    if R.eqv(S, G.vsync, 0):
+        S.g_tekstowa3 = "OFF"
+    if R.eqv(S, G.vsync, 1):
+        S.g_tekstowa3 = "ON"
+    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and R.keyboard_check(S, 37)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit > 30)):
+        G.fps_limit -= 10
+        S.g_klik4 = 1
+        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+    if ((((R.eqv(S, S.g_opcja1, 2) and R.eqv(S, S.g_podopcja2, 19)) and R.keyboard_check(S, 39)) and R.eqv(S, S.g_klik4, 0)) and (G.fps_limit < 240)):
+        G.fps_limit += 10
+        S.g_klik4 = 1
+        P2.SXMS_SFX_PlayExt(S, [104, (((S.x / float(R.room_width))) * 255), G.glosnosc_dzwieku, 0, 0])
+    S.g_tekstowa4 = R.string(S, G.fps_limit)
     if ((1 - R.eqv(S, S.g_opcja1, 3)) and (S.g_dodatkus > 0)):
         S.g_dodatkus = (S.g_dodatkus / float(1.1))
     if (S.g_dodatkus > 0.01):
@@ -1150,6 +1196,8 @@ static func ev_8_0_1(S, A: Array) -> Variant:
         R.ini_write_real(S, "options", "set7", G.map_elements)
         R.ini_write_real(S, "options", "set8", G.resolution)
         R.ini_write_real(S, "options", "set9", G.glosnosc_muzyki)
+        R.ini_write_real(S, "options", "set10", G.vsync)
+        R.ini_write_real(S, "options", "set11", G.fps_limit)
         R.ini_close(S)
     if ((1 - R.eqv(S, S.g_opcja1, 1)) and R.eqv(S, S.g_nagrywanie_opcji, 1)):
         S.g_nagrywanie_opcji = 0
