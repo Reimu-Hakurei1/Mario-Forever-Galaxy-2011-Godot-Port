@@ -173,10 +173,7 @@ func _next_level() -> void:
 	NativeGame.complete_node(NativeGame.active_node)
 	if NativeGame.campaign_complete():
 		NativeGame.save()
-		var cs = load("res://native/ui/cutscene.gd").new()
-		cs.setup("finale")
-		cs.next_scene = "res://native/ui/ending.tscn"
-		get_tree().root.add_child(cs)
+		get_tree().change_scene_to_file("res://native/ui/ending.tscn")
 		return
 	if NativeGame.cleared_map_exit():
 		NativeGame.map_transition = int(NativeGame.active_node.get_slice(":", 0)) + 1

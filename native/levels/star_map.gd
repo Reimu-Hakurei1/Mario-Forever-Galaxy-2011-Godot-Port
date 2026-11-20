@@ -15,7 +15,6 @@ const NODE_SIZE := 56.0
 const NODE_GAP := 14.0
 const ROW_HEIGHT := 84.0
 const MARGIN := 60.0
-const MAX_LEVELS := 80           # 8 worlds x 10 (NativeLevelTable)
 
 ## Display names for each world row — the Galaxy map names its regions.
 const WORLD_NAMES := [

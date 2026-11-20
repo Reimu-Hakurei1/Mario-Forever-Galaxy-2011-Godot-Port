@@ -160,7 +160,7 @@ func _finish() -> void:
 	queue_free()
 
 
-func _play(cards: Array) -> void:
+func _play(cards: Array, then := "") -> void:
 	var idx := 0
 	while idx < cards.size() and is_inside_tree():
 		var tex := _tex(cards[idx])
@@ -184,7 +184,17 @@ func _play(cards: Array) -> void:
 	fade.tween_property(_layer_a, "modulate:a", 0.0, 0.5)
 	fade.tween_property(_layer_b, "modulate:a", 0.0, 0.5)
 	await fade.finished
-	_finish()
+	# Chain into the next cinematic room (the original's room order is
+	# anim_1 → anim_2 → anim_3 → anim_4 → map, rooms 52-55 → 51).
+	if then == "anim3":
+		_play_anim3()
+	elif then == "anim4":
+		_play_anim4()
+	elif then != "":
+		_finish()
+		return
+	else:
+		_finish()
 
 
 ## --- room_animation_1 (objects/effects/anim_1.gd) ---
@@ -491,13 +501,14 @@ func _anim1_letter() -> void:
 func _anim1_done() -> void:
 	_anim1 = false
 	_free_cinematic()
-	_play(SEQUENCES["opening"])
+	# Cards approximate room_animation_2's dialogue; then anim_3.
+	_play(SEQUENCES["opening"], "anim3")
 
 
 func _anim3_done() -> void:
 	_anim1 = false
 	_free_cinematic()
-	_play(SEQUENCES["mid"])
+	_play(SEQUENCES["mid"], "anim4")
 
 
 func _free_cinematic() -> void:
