@@ -307,6 +307,56 @@ func _spawn_bullet(dir: Vector2) -> void:
 ## orbiters (enemy_around_1) and heavier wingmen (boss_giga_2 ≈ elite);
 ## boss_7/8 lean on the bonus_3_b swarm (also accelerating runners).
 func _summon_minions() -> void:
+	# Signature adds per boss_N_fight script:
+	#  boss_1/3 release a sub-boss (o_boss_3/o_boss_5) — approximated by
+	#    an elite heavy escort; boss_4/5 call goomba_team orbit squads;
+	#    boss_5/6 field bossgiga2 (bigger ring + bruiser); boss_8 sends
+	#    the dodatkowy_3_b heavy swarm.
+	match tier:
+		0, 2:
+			if randf() < 0.35:
+				var heavy := NativeEnemy.new()
+				heavy.kind = NativeEnemy.Kind.FAT_BOY
+				heavy.health = 60.0
+				heavy.global_position = position + Vector2(0, 80)
+				get_parent().add_child(heavy)
+		3, 4:
+			if randf() < 0.4:
+				var squad := NativeEnemyRing.new()
+				squad.orbiters_count = 6
+				squad.start_radius = 140.0
+				squad.shrink_delay = 700.0
+				squad.orbiter_kind = NativeEnemy.Kind.GOOMBA
+				squad.orbiter_health = 8.0
+				squad.global_position = position + Vector2(0, 120)
+				get_parent().add_child(squad)
+				return
+		5, 6:
+			if randf() < 0.4:
+				var big := NativeEnemyRing.new()
+				big.orbiters_count = 10
+				big.start_radius = 180.0
+				big.shrink_delay = 800.0
+				big.orbiter_kind = NativeEnemy.Kind.ELITE
+				big.orbiter_health = 15.0
+				big.global_position = position + Vector2(0, 120)
+				get_parent().add_child(big)
+				var bruiser := NativeEnemy.new()
+				bruiser.kind = NativeEnemy.Kind.FAT_BOY
+				bruiser.health = 80.0
+				bruiser.global_position = position + Vector2(0, 60)
+				get_parent().add_child(bruiser)
+				return
+		7:
+			var swarm := NativeEnemyRing.new()
+			swarm.orbiters_count = 12
+			swarm.start_radius = 200.0
+			swarm.shrink_delay = 900.0
+			swarm.orbiter_kind = NativeEnemy.Kind.RUNNER
+			swarm.orbiter_health = 12.0
+			swarm.global_position = position + Vector2(0, 120)
+			get_parent().add_child(swarm)
+			return
 	# Late-tier bosses sometimes release a ring instead of a pair.
 	if tier >= 4 and randf() < 0.3:
 		var ring := NativeEnemyRing.new()
