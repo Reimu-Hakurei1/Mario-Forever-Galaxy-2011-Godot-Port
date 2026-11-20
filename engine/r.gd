@@ -1838,7 +1838,7 @@ static func concat(a: Variant, b: Variant) -> Variant:
 
 
 static func aget(arr: Variant, i: Variant) -> Variant:
-	if not level_waves.bindings.is_empty():
+	if level_waves.neg_first:
 		var override: Variant = level_waves.read_override(arr, int(i), -1)
 		if override != null:
 			return override

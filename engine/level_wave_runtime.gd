@@ -7,6 +7,9 @@ var bindings: Array = []
 # read_override runs once per array access in generated scripts, so it must
 # stay cheap — array indexing beats dictionary lookups by several times.
 var binding_rows: Array = []
+# True when any bound row can match index -1 (aget's sentinel); when false,
+# aget callers skip read_override altogether.
+var neg_first: bool = false
 var pending_spawns: Array = []
 var event_stack: Array = []
 var tutorial_complete: bool = false
@@ -36,6 +39,7 @@ func configure(data: Dictionary) -> void:
 	spawns = data.get("spawns", [])
 	bindings.clear()
 	binding_rows.clear()
+	neg_first = false
 	pending_spawns.clear()
 	tutorial_complete = false
 	added_roots.clear()
@@ -83,6 +87,8 @@ func bind_controller(inst) -> void:
 			binding_rows.append([array, int(edit.activation), int(edit.stage),
 				int(edit.first), int(edit.last), edit.value,
 				int(edit.activation) == 1])
+			if int(edit.first) <= -1:
+				neg_first = true
 
 
 func read_override(array: Variant, stage: int, index: int) -> Variant:
@@ -92,8 +98,9 @@ func read_override(array: Variant, stage: int, index: int) -> Variant:
 		var activation: int = row[1]
 		if activation == 1 and not tutorial_complete:
 			continue
-		if activation >= priority and is_same(array, row[0]) and row[2] == stage \
-				and index >= row[3] and index <= row[4]:
+		if activation < priority or row[2] != stage or index < row[3] or index > row[4]:
+			continue
+		if is_same(array, row[0]):
 			value = row[5]
 			priority = activation
 	return value
