@@ -17,6 +17,7 @@ const BEAT := 3.2               # seconds per card
 const ANIM1_DATA := "res://data/levels/native/anim_1_slaves.json"
 const ANIM3_DATA := "res://data/levels/native/anim_3_slaves.json"
 const ANIM4_DATA := "res://data/levels/native/anim_4_slaves.json"
+const ANIM2_KOKO := "res://data/levels/native/anim_2_koko.json"
 
 # The four legacy sequences. "opening" is special-cased: it plays the
 # real room_animation_1 choreography (spiral text crawl, parallax
@@ -86,6 +87,22 @@ var _a4_blue: ColorRect
 var _a4_heroes: Array = []     # [{rect, file}] phases 7-11
 var _a4_koko: Array = []       # diving sprites phases 2+
 var _a4_over := false
+
+# --- room_animation_2 boss reveal (objects/effects/anim_2.gd +
+#     anim_bowser.gd + anim_bowser_2.gd) ---
+var _a2_phase := 0
+var _a2_timer := 0.0
+var _a2_f := 0.0
+var _a2_boss: TextureRect
+var _a2_boss_y := 1400.0
+var _a2_iyor := 10.0
+var _a2_dialogue: Array = []
+var _a2_dlg_idx := 0
+var _a2_dlg_char := 0.0
+var _a2_dlg_label: Label
+var _a2_army: Array = []
+var _a2_clouds: Array = []
+var _a2_over := false
 var _anim_frame := 0.0
 var _anim_speed := 0.0
 var _napis_y := 0.0
@@ -114,6 +131,8 @@ func _ready() -> void:
 			_play_anim3()
 		"finale":
 			_play_anim4()
+		"anim2":
+			_play_anim2()
 		_:
 			var cards: Array = SEQUENCES.get(_sequence, [])
 			_play(cards)
@@ -186,7 +205,9 @@ func _play(cards: Array, then := "") -> void:
 	await fade.finished
 	# Chain into the next cinematic room (the original's room order is
 	# anim_1 → anim_2 → anim_3 → anim_4 → map, rooms 52-55 → 51).
-	if then == "anim3":
+	if then == "anim2":
+		_play_anim2()
+	elif then == "anim3":
 		_play_anim3()
 	elif then == "anim4":
 		_play_anim4()
@@ -387,7 +408,9 @@ func _process(delta: float) -> void:
 	_tick_booms()
 	if _anim_kind == "anim4" and _anim1:
 		_anim4_tick(delta)
-	if _anim_kind != "anim4":
+	if _anim_kind == "anim2" and _anim1:
+		_anim2_tick()
+	if _anim_kind != "anim4" and _anim_kind != "anim2":
 		match _anim_phase:
 			0: _anim1_spiral()
 			1: _anim1_whoosh()
@@ -501,14 +524,21 @@ func _anim1_letter() -> void:
 func _anim1_done() -> void:
 	_anim1 = false
 	_free_cinematic()
-	# Cards approximate room_animation_2's dialogue; then anim_3.
-	_play(SEQUENCES["opening"], "anim3")
+	# Cards approximate the interstitial dialogue; then anim_2's boss
+	# reveal and Bowser's awakening speech.
+	_play(SEQUENCES["opening"], "anim2")
+
+
+func _anim2_done() -> void:
+	_anim1 = false
+	_free_cinematic()
+	_play(SEQUENCES["mid"], "anim3")
 
 
 func _anim3_done() -> void:
 	_anim1 = false
 	_free_cinematic()
-	_play(SEQUENCES["mid"], "anim4")
+	_play(SEQUENCES["finale"], "anim4")
 
 
 func _free_cinematic() -> void:
@@ -930,4 +960,239 @@ func _anim4_done() -> void:
 	_a4_over = true
 	_anim1 = false
 	_free_cinematic()
-	_play(SEQUENCES.get("finale", []))
+	# The finale cards already played between anim_3 and anim_4.
+	_finish()
+
+
+## --- room_animation_2: Bowser's ship reveal + awakening speech ---
+## ev_8_0 phases 0-4 choreograph the boss ascent/descent; ev_3_0
+## phases 5-11 cover the dialogue wait, the 35-ship army dive and the
+## blur/blink outro. Sprite approximations: boss hull = sprite 328,
+## army = anim_metroid strips (the original's obj-550 "koko").
+
+const A2_DIALOGUE := [
+	"HAHAHAHA!!!#WELL WELL WELL#I HAVE#FINALLY#AWAKENED.",
+	"TIME TO RUN#INTO SOME#PARTY.",
+	"PREPARE TO#TAKE OFF#MY ARMY!",
+	"HAHAHA!#I HOPE THEY#WILL BE#GLAD TO#SEE ME!",
+	"BUAHAHA!",
+]
+
+func _play_anim2() -> void:
+	_anim1 = true
+	_anim_kind = "anim2"
+	_anim_phase = 0
+	_a2_phase = 0
+	_a2_timer = 0.0
+	_a2_f = 0.0
+	_a2_over = false
+	_a2_boss_y = 1400.0
+	_a2_iyor = 10.0
+	_a2_dialogue = A2_DIALOGUE
+	_a2_dlg_idx = 0
+	_a2_dlg_char = 0.0
+	_blanker = 1.0
+	# Backdrop + entry blanker.
+	var bg := _sprite_node("background1.png")
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	bg.modulate = Color(0.6, 0.6, 0.8, 0.5)
+	bg.name = "a2_bg"
+	add_child(bg)
+	# Cloud layers — four descending bands like bg_y[1..4].
+	for i in 4:
+		var c := ColorRect.new()
+		c.color = Color(0.75, 0.75, 0.85).lerp(Color(0.4, 0.4, 0.55), i / 3.0)
+		c.position = Vector2(-50, -120.0 * (i + 1))
+		c.size = Vector2(1124, 130)
+		c.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(c)
+		_a2_clouds.append({"rect": c, "y": -120.0 * (i + 1), "div": 8.0 - i})
+	# Boss ship — sprite 328 hull, rises from below with engine shake.
+	var frames := NativeAssets.sprite_frames(328)
+	if not frames.is_empty():
+		_a2_boss = TextureRect.new()
+		_a2_boss.texture = frames[0]
+		_a2_boss.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		_a2_boss.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		_a2_boss.custom_minimum_size = _a2_boss.texture.get_size()
+		_a2_boss.size = _a2_boss.texture.get_size()
+		_a2_boss.pivot_offset = _a2_boss.size / 2.0
+		_a2_boss.position = Vector2(512, _a2_boss_y) - _a2_boss.size / 2.0
+		_a2_boss.z_index = 300
+		add_child(_a2_boss)
+	# Dialogue label — typewriter like anim_bowser_2's draw_text.
+	_a2_dlg_label = Label.new()
+	_a2_dlg_label.position = Vector2(212, 214)
+	_a2_dlg_label.add_theme_font_size_override("font_size", 22)
+	_a2_dlg_label.add_theme_color_override("font_color", Color.WHITE)
+	_a2_dlg_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+	_a2_dlg_label.add_theme_constant_override("shadow_offset_x", 2)
+	_a2_dlg_label.add_theme_constant_override("shadow_offset_y", 2)
+	_a2_dlg_label.visible = false
+	add_child(_a2_dlg_label)
+	_dim = ColorRect.new()
+	_dim.color = Color.BLACK
+	_dim.modulate.a = _blanker
+	_dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(_dim)
+
+
+func _anim2_tick() -> void:
+	if _a2_over:
+		return
+	_a2_f += 1.0
+	_a2_timer += 1.0
+	# Cloud bands descend with the accelerating chmurk speed (ev_8_0 p0).
+	if _a2_phase == 0:
+		var chm := minf(4.0, _a2_f * 0.02)
+		for cl in _a2_clouds:
+			cl["y"] = float(cl["y"]) + chm / float(cl["div"])
+			(cl["rect"] as ColorRect).position.y = float(cl["y"])
+			if float(cl["y"]) > 900.0:
+				(cl["rect"] as ColorRect).visible = false
+		# Random birds crossing the top every ~6 frames.
+		if int(_a2_f) % 6 == 0:
+			var r := _sprite_node("anim_metroid_%d.png" % (randi() % 11))
+			r.position = Vector2(randf() * 1100.0 - 50.0, -80.0)
+			r.scale = Vector2(0.4, 0.4)
+			r.z_index = 250
+			add_child(r)
+			_a2_army.append({"rect": r, "x": r.position.x, "y": -80.0,
+				"v": randf_range(1.5, 3.0)})
+	# Boss ascent — iyor grows each frame (anim_bowser ev_8_0).
+	if _a2_phase <= 1 and is_instance_valid(_a2_boss):
+		_a2_boss_y -= _a2_iyor
+		_a2_iyor += 1.0
+		_a2_boss.position = Vector2(512, _a2_boss_y) - _a2_boss.size / 2.0
+		_shake = 6.0
+		if _a2_boss_y < -2200.0:
+			_a2_boss.visible = false
+	# p0 → p1 once the boss has cleared the top and ~100f pass.
+	if _a2_phase == 0 and _a2_boss_y < -2200.0 and _a2_timer > 100.0:
+		_a2_phase = 1
+		_a2_timer = 0.0
+		_blanker = 1.0
+	# p1 (100f) → boss re-enters left and crosses (p2/p3 simplified
+	# into one glide), then descends to centre (p4).
+	if _a2_phase == 1 and _a2_timer > 100.0:
+		_a2_phase = 2
+		_a2_timer = 0.0
+		_blanker = 1.0
+		if is_instance_valid(_a2_boss):
+			_a2_boss.visible = true
+			_a2_boss_y = 384.0
+			_a2_boss.position = Vector2(-400, _a2_boss_y) - _a2_boss.size / 2.0
+	if _a2_phase == 2:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		_a2_boss.position.x += 4.0   # crosses left→right
+		if _a2_timer > 250.0:
+			_a2_phase = 3
+			_a2_timer = 0.0
+			_blanker = 1.0
+	if _a2_phase == 3:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		# Descend to screen centre (512, 384) like ev_8_0 p4→p5.
+		var target := Vector2(512, 384) - _a2_boss.size / 2.0
+		_a2_boss.position = _a2_boss.position.lerp(target, 0.02)
+		if _a2_timer > 160.0:
+			_a2_phase = 4
+			_a2_timer = 0.0
+			_blanker = 1.0
+	# p4 (150f) → phase 6: Bowser's awakening dialogue.
+	if _a2_phase == 4:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		if _a2_timer > 150.0:
+			_a2_phase = 6
+			_a2_timer = 0.0
+	# p6: typewriter dialogue — 5f/char, # = line break, 150f hold.
+	if _a2_phase == 6:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		if _a2_dlg_idx < _a2_dialogue.size():
+			_a2_dlg_label.visible = true
+			var line: String = _a2_dialogue[_a2_dlg_idx]
+			var shown := line.substr(0, int(_a2_dlg_char))
+			_a2_dlg_label.text = shown.replace("#", "\n")
+			_a2_dlg_char += 0.2   # ~5 frames per char
+			if _a2_dlg_char >= line.length():
+				_a2_dlg_char = line.length()
+				_a2_dlg_hold += 1.0
+				if _a2_dlg_hold > 150.0:
+					_a2_dlg_idx += 1
+					_a2_dlg_char = 0.0
+					_a2_dlg_hold = 0.0
+					_a2_dlg_label.text = ""
+		else:
+			_a2_phase = 7
+			_a2_timer = 0.0
+			_a2_dlg_label.visible = false
+			if is_instance_valid(_a2_boss):
+				_a2_boss.visible = false
+			_spawn_a2_army()
+	# p7 (450f): army dive + camera drift; then three 60f blur blips
+	# (p8/p9/p10) and the 600f outro (p11).
+	if _a2_phase == 7:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		if _a2_timer > 450.0:
+			_a2_phase = 8
+			_a2_timer = 0.0
+			_blanker = 1.0
+	if _a2_phase == 8 and _a2_timer > 60.0:
+		_a2_phase = 9
+		_a2_timer = 0.0
+		_blanker = 1.0
+	if _a2_phase == 9 and _a2_timer > 60.0:
+		_a2_phase = 10
+		_a2_timer = 0.0
+		_blanker = 1.0
+	if _a2_phase == 10 and _a2_timer > 60.0:
+		_a2_phase = 11
+		_a2_timer = 0.0
+		_blanker = 1.0
+	if _a2_phase == 11:
+		_blanker = maxf(0.0, _blanker / 1.05)
+		if _a2_timer > 600.0:
+			# blanker2 fade-out then hand off.
+			_blanker = minf(1.0, _blanker + 0.01)
+			if _blanker >= 1.0:
+				_anim2_done()
+	# Ambient motion: birds/army dive, clouds keep sinking, shake.
+	for k in _a2_army.duplicate():
+		k["y"] = float(k["y"]) + float(k.get("v", 2.0))
+		var r: TextureRect = k["rect"]
+		r.position = Vector2(float(k["x"]), float(k["y"]))
+		if float(k["y"]) > 820.0:
+			r.queue_free()
+			_a2_army.erase(k)
+	if _a2_phase >= 7:
+		for cl in _a2_clouds:
+			if (cl["rect"] as ColorRect).visible:
+				cl["y"] = float(cl["y"]) + 0.5
+				(cl["rect"] as ColorRect).position.y = float(cl["y"])
+	if is_instance_valid(_dim):
+		_dim.modulate.a = clampf(_blanker, 0.0, 1.0)
+	if _shake > 0.0:
+		if _parade != null:
+			_parade.position.x += randf_range(-_shake, _shake) * 0.02
+		_shake = maxf(0.0, _shake - 1.0)
+
+
+var _a2_dlg_hold := 0.0
+
+
+## The 35-ship army dive from anim_2 ev_3_0 phase 7 (anim_2_koko.json).
+func _spawn_a2_army() -> void:
+	var data = JSON.parse_string(FileAccess.get_file_as_string(ANIM2_KOKO))
+	if typeof(data) != TYPE_DICTIONARY:
+		return
+	for k in data.get("koko", []):
+		var i := _a2_army.size()
+		var r := _sprite_node("anim_metroid_%d.png" % (i % 11))
+		var s: float = float(k.get("xs", 1.0))
+		r.scale = Vector2(s, s)
+		r.position = Vector2(float(k["x"]), float(k["y"])) - r.size * s / 2.0
+		r.z_index = int(-float(k.get("depth", 0)) / 100.0)
+		add_child(r)
+		# iyor ≈ descent speed; deep spawns take proportionally longer.
+		_a2_army.append({"rect": r, "x": float(k["x"]),
+			"y": float(k["y"]), "v": maxf(1.0, float(k.get("iyor", 10.0)) / 8.0)})
