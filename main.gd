@@ -13,6 +13,24 @@ func _ready() -> void:
 			_savedir = a.substr(10).replace("\\", "/")
 			DirAccess.make_dir_recursive_absolute(_savedir)
 	R.boot(self)
+	# Check for stage_launch temp file to override the first room
+	var temp_path := "user://stage_launch_room.txt"
+	if FileAccess.file_exists(temp_path):
+		var room_name := FileAccess.get_file_as_string(temp_path).strip_edges()
+		DirAccess.remove_absolute(temp_path)
+		if room_name != "":
+			# Load rooms.json to find the room index by name
+			var rooms_text: String = FileAccess.get_file_as_string("res://game/rooms.json")
+			var rooms_data: Dictionary = JSON.parse_string(rooms_text) as Dictionary
+			if not rooms_data.is_empty():
+				var rooms: Dictionary = rooms_data.get("rooms", {})
+				for idx in rooms.keys():
+					var room: Dictionary = rooms[idx]
+					if room.get("name", "") == room_name:
+						R.room_order.clear()
+						R.room_order.append(int(idx))
+						R._load_room(int(idx))
+						break
 
 
 func _process(delta: float) -> void:

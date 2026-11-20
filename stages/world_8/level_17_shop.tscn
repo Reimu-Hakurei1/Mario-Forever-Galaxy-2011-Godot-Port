@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://editor/stage_launch.gd" id="stage_launch"]
 
 [node name="level_17_shop" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "room_shop"
 metadata/gm_map = 7
 metadata/gm_lev = 17

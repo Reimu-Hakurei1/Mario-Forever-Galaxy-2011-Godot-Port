@@ -19,6 +19,7 @@ blend_mode = 1
 blend_mode = 2
 
 [node name="level_03_gombas_camp" type="Node2D"]
+script = ExtResource("stage_launch")
 metadata/gm_room = "level_0000"
 metadata/gm_map = 0
 metadata/gm_lev = 3

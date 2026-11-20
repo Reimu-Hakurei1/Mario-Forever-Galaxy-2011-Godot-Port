@@ -1,16 +1,13 @@
 extends Node
 
 ## Attached to every stages/*.tscn scene. When running the GameMaker
-## runtime (main scene = scenes/game.tscn), these scenes should launch
-## the specific room they represent. The metadata/gm_room holds the
-## room name that maps to a level JSON file.
+## runtime (main scene = scenes/game.tscn), these scenes launch the
+## specific room they represent by reading gm_room metadata and
+## forcing R to load that room instead of the default first_room.
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	# The GameMaker runtime boots through R.boot in main.gd.
-	# For F6/current-scene execution on a stage, we need to set the
-	# target room so the runtime loads it instead of the default.
 	_launch_room.call_deferred()
 
 
