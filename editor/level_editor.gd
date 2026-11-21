@@ -11,13 +11,19 @@ extends Control
 ## Pressing Playtest launches the saved scene, which boots the game straight
 ## into the custom room.
 ##
+## Controls: wheel = zoom, middle-drag = pan, right-click = delete spawn,
+## Delete = delete selected, Esc = back to select mode, double-click an item
+## in the list to center the view on it.
+##
 ## Run with:  godot --path . editor/level_editor.tscn
 
 const ROOM_W := 1024.0
 const ROOM_H := 768.0
+const VIEW_CENTER := Vector2(512, 384)
 const CUSTOM_DIR := "res://stages/custom"
 const ROOM_CODE_PART := 2            # game/room_code/room_2.gd creates HUD/controller
 const FIRST_ROOM_ID := 100
+const SNAP := 8.0
 
 const KIND_LIST := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
 	18, 19, 20, 21, 22, 23, 24, 50, 51, 52, 53, 54, 55, 56]
@@ -37,6 +43,7 @@ var _assets: Dictionary = {}
 var _catalog: Dictionary = {}
 var _bases: Array = []          # {label,map,lev,path}
 var _bgs: Array = []            # {key,name,texture}
+var _kind_tex: Dictionary = {}  # kind -> Texture2D palette icon
 
 var level_name := "my_level"
 var base_map := 0
@@ -58,6 +65,14 @@ var _sel := -1
 var _tool := "select"           # "select" | "spawn"
 var _pending_kind := 0
 
+# canvas view state
+var _zoom := 1.0
+var _view_center := VIEW_CENTER
+var _panning := false
+var _pan_last := Vector2.ZERO
+var _mouse_world := Vector2.ZERO
+var _snap := true
+
 var _status: Label
 var _item_list: ItemList
 var _inspector: VBoxContainer
@@ -66,16 +81,22 @@ var _svc: SubViewportContainer
 var _level_view: Node2D
 var _marker_root: Node2D
 var _player_marker: Node2D
+var _ghost: Node2D
+var _ghost_sprite: Sprite2D
+var _timeline: Control
 var _name_edit: LineEdit
 var _base_opt: OptionButton
 var _bg_opt: OptionButton
 var _hspeed_spin: SpinBox
 var _vspeed_spin: SpinBox
 var _blank_check: CheckBox
-var _kind_opt: OptionButton
 var _open_opt: OptionButton
+var _snap_check: CheckBox
+var _palette_grid: GridContainer
+var _palette_btns: Dictionary = {}
 var _drag_idx := -1
 var _drag_offset := Vector2.ZERO
+var _hint: Label
 
 
 func _ready() -> void:
@@ -99,6 +120,11 @@ func _load_data() -> void:
 		var tex: Texture2D = load(str(frames[0]))
 		_bgs.append({"key": str(bk), "name": str(_assets["backgrounds"][bk].get("name", bk)), "texture": tex})
 	_bgs.sort_custom(func(a, b): return int(a.key) < int(b.key))
+	# Palette icons: first preview layer of each enemy kind.
+	for k in KIND_LIST:
+		var layers := _spawn_layers({"kind": k, "object": 12})
+		if not layers.is_empty():
+			_kind_tex[k] = load(str(layers[0].texture))
 	_scan_bases()
 
 
@@ -159,9 +185,9 @@ func _build_ui() -> void:
 	var main := HBoxContainer.new()
 	margin.add_child(main)
 
-	# ---- left column: level settings + item list
+	# ---- left column: level settings + enemy palette + item list
 	var left := VBoxContainer.new()
-	left.custom_minimum_size = Vector2(300, 0)
+	left.custom_minimum_size = Vector2(320, 0)
 	main.add_child(left)
 
 	var settings := Label.new()
@@ -211,6 +237,12 @@ func _build_ui() -> void:
 	_blank_check.toggled.connect(func(v): blank_waves = v; _apply_blank_preset())
 	left.add_child(_blank_check)
 
+	_snap_check = CheckBox.new()
+	_snap_check.text = "Snap to 8px grid"
+	_snap_check.button_pressed = true
+	_snap_check.toggled.connect(func(v): _snap = v)
+	left.add_child(_snap_check)
+
 	var btn_row := HBoxContainer.new()
 	btn_row.add_child(_btn("New", _new_level))
 	btn_row.add_child(_btn("Save", _save_level))
@@ -226,38 +258,49 @@ func _build_ui() -> void:
 	_refresh_open_list()
 
 	left.add_child(HSeparator.new())
+	var pl := Label.new()
+	pl.text = "ENEMIES"
+	pl.add_theme_font_size_override("font_size", 14)
+	left.add_child(pl)
+	_hint = _lbl("Click an enemy, then click the canvas to place it.")
+	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	left.add_child(_hint)
+	var pscroll := ScrollContainer.new()
+	pscroll.custom_minimum_size = Vector2(0, 170)
+	pscroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	left.add_child(pscroll)
+	_palette_grid = GridContainer.new()
+	_palette_grid.columns = 6
+	_palette_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	pscroll.add_child(_palette_grid)
+	_build_palette()
+
+	left.add_child(HSeparator.new())
 	var l2 := Label.new()
-	l2.text = "SPAWN (click canvas to place)"
+	l2.text = "ITEMS"
 	l2.add_theme_font_size_override("font_size", 14)
 	left.add_child(l2)
-	_kind_opt = OptionButton.new()
-	for k in KIND_LIST:
-		_kind_opt.add_item("%d  %s" % [k, KIND_NAMES[k].replace("_", " ")])
-	_kind_opt.select(0)
-	left.add_child(_kind_opt)
-	var prow := HBoxContainer.new()
-	prow.add_child(_btn("Place mode", func(): _tool = "spawn"; _pending_kind = KIND_LIST[_kind_opt.selected]))
-	prow.add_child(_btn("Select mode", func(): _tool = "select"))
-	left.add_child(prow)
-	left.add_child(_lbl("TIP: drag markers to move. Click an item below to edit."))
-
 	_item_list = ItemList.new()
-	_item_list.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_item_list.custom_minimum_size = Vector2(0, 110)
 	_item_list.item_selected.connect(_on_item_selected)
+	_item_list.item_activated.connect(_on_item_activated)
 	left.add_child(_item_list)
 	var drow := HBoxContainer.new()
 	drow.add_child(_btn("Delete", _delete_selected))
 	drow.add_child(_btn("Add timing row", _add_timing_row))
 	left.add_child(drow)
 
-	# ---- center: level view
+	# ---- center: level view + wave timeline
 	var center := PanelContainer.new()
 	center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	main.add_child(center)
+	var cvbox := VBoxContainer.new()
+	center.add_child(cvbox)
 	_svc = SubViewportContainer.new()
 	_svc.stretch = true
-	_svc.custom_minimum_size = Vector2(1024, 768)
-	center.add_child(_svc)
+	_svc.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_svc.custom_minimum_size = Vector2(640, 480)
+	cvbox.add_child(_svc)
 	_svc.gui_input.connect(_on_viewport_input)
 	_viewport = SubViewport.new()
 	_viewport.size = Vector2i(int(ROOM_W), int(ROOM_H))
@@ -268,6 +311,17 @@ func _build_ui() -> void:
 	_viewport.add_child(_level_view)
 	_marker_root = Node2D.new()
 	_level_view.add_child(_marker_root)
+	_ghost = Node2D.new()
+	_ghost.visible = false
+	_level_view.add_child(_ghost)
+	_ghost_sprite = Sprite2D.new()
+	_ghost_sprite.centered = false
+	_ghost_sprite.modulate = Color(1, 1, 1, 0.55)
+	_ghost.add_child(_ghost_sprite)
+	_timeline = Control.new()
+	_timeline.set_script(load("res://editor/wave_timeline.gd"))
+	_timeline.editor = self
+	cvbox.add_child(_timeline)
 
 	# ---- right column: inspector
 	var right := VBoxContainer.new()
@@ -303,6 +357,58 @@ func _btn(t: String, cb: Callable) -> Button:
 	return b
 
 
+func _build_palette() -> void:
+	for k in KIND_LIST:
+		var b := Button.new()
+		b.toggle_mode = true
+		b.custom_minimum_size = Vector2(56, 52)
+		b.tooltip_text = _kind_name(k)
+		var tex: Texture2D = _kind_tex.get(k)
+		if tex != null:
+			var tr := TextureRect.new()
+			tr.texture = tex
+			tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			tr.set_anchors_preset(Control.PRESET_FULL_RECT)
+			tr.offset_top = 4
+			tr.offset_bottom = 22
+			tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			b.add_child(tr)
+		var l := Label.new()
+		l.text = _kind_name(k).left(9)
+		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		l.add_theme_font_size_override("font_size", 9)
+		l.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+		l.offset_top = -16
+		l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		b.add_child(l)
+		b.pressed.connect(_on_palette_pick.bind(k, b))
+		_palette_grid.add_child(b)
+		_palette_btns[k] = b
+	# preselect first enemy
+	if KIND_LIST.size() > 0:
+		_on_palette_pick(KIND_LIST[0], _palette_btns[KIND_LIST[0]])
+
+
+func _on_palette_pick(kind: int, btn: Button) -> void:
+	_pending_kind = kind
+	_tool = "spawn"
+	for k in _palette_btns:
+		_palette_btns[k].button_pressed = (_palette_btns[k] == btn)
+	_hint.text = "Placing %s — click the canvas. Right-click deletes, Esc cancels." % _kind_name(kind)
+	if _status != null:
+		_status.text = "Placing: " + _kind_name(kind)
+
+
+func _set_select_tool() -> void:
+	_tool = "select"
+	for k in _palette_btns:
+		_palette_btns[k].button_pressed = false
+	_hint.text = "Click an enemy below, then click the canvas to place it."
+	if _status != null:
+		_status.text = "Select mode"
+
+
 # ------------------------------------------------------------- level data
 
 func _new_level() -> void:
@@ -319,6 +425,9 @@ func _new_level() -> void:
 	timings.clear()
 	scene_path = ""
 	room_id = -1
+	_zoom = 1.0
+	_view_center = VIEW_CENTER
+	_apply_view()
 	if _bases.size() > 0:
 		_base_opt.select(0)
 		_on_base_selected(0)
@@ -331,7 +440,7 @@ func _new_level() -> void:
 	_vspeed_spin.value = 0.0
 	_apply_blank_preset()
 	_refresh_all()
-	_status.text = "New level. Place enemies, tune waves, then Save."
+	_status.text = "New level. Pick an enemy below, then click the canvas to place it."
 
 
 func _on_base_selected(idx: int) -> void:
@@ -378,9 +487,8 @@ func _add_timing_row() -> void:
 
 
 func _default_spawn(pos: Vector2) -> Dictionary:
-	var kind: int = KIND_LIST[_kind_opt.selected]
 	return {
-		"mode": 1, "object": 12, "match_kind": -1, "kind": kind,
+		"mode": 1, "object": 12, "match_kind": -1, "kind": _pending_kind,
 		"sequence": 100, "kamikaze": -1, "stage": 0,
 		"start": 10.0, "count": 1, "interval": 1.0,
 		"pos": pos, "target": Vector2(440, 128), "override_target": true,
@@ -408,6 +516,9 @@ func _refresh_all() -> void:
 	_rebuild_markers()
 	_refresh_items()
 	_refresh_inspector()
+	_update_ghost()
+	if _timeline != null:
+		_timeline.queue_redraw()
 
 
 func _rebuild_markers() -> void:
@@ -422,6 +533,8 @@ func _rebuild_markers() -> void:
 			Color(1, 0.6, 0.2))
 		marker.set_meta("item", _item_ref("spawn", i))
 		_marker_root.add_child(marker)
+	if _timeline != null:
+		_timeline.queue_redraw()
 
 
 func _make_marker(pos: Vector2, sprite: Texture2D, text: String, color: Color) -> Node2D:
@@ -516,6 +629,24 @@ func _on_item_selected(idx: int) -> void:
 	_refresh_inspector()
 
 
+func _on_item_activated(idx: int) -> void:
+	# double-click / Enter: center the view on the item
+	if idx < 0 or idx >= _items.size():
+		return
+	var it: Dictionary = _items[idx]
+	if it.type == "spawn":
+		_center_on(spawns[it.index].pos)
+	elif it.type == "player":
+		_center_on(player_pos)
+
+
+func _select_spawn_index(spawn_i: int) -> void:
+	_sel = _item_index_of("spawn", spawn_i)
+	if _sel >= 0:
+		_item_list.select(_sel)
+		_refresh_inspector()
+
+
 func _selected() -> Dictionary:
 	if _sel < 0 or _sel >= _items.size():
 		return {}
@@ -533,8 +664,13 @@ func _delete_selected() -> void:
 	var it: Dictionary = _items[_sel]
 	if it.type == "spawn":
 		spawns.remove_at(it.index)
+		_status.text = "Deleted spawn."
 	elif it.type == "timing":
 		timings.remove_at(it.index)
+		_status.text = "Deleted timing row."
+	else:
+		_status.text = "The player start can't be deleted."
+		return
 	_sel = -1
 	_refresh_all()
 
@@ -649,13 +785,24 @@ func _build_player_inspector() -> void:
 
 
 func _on_data_changed() -> void:
-	_refresh_items()
 	_rebuild_markers()
+	_refresh_items()
+	_update_ghost()
 
 
-# ------------------------------------------------------------- canvas input
+# ------------------------------------------------------------- canvas view
 
-func _view_pos(event: InputEvent) -> Vector2:
+func _apply_view() -> void:
+	_level_view.scale = Vector2(_zoom, _zoom)
+	_level_view.position = VIEW_CENTER - _view_center * _zoom
+
+
+func _center_on(world: Vector2) -> void:
+	_view_center = world
+	_apply_view()
+
+
+func _viewport_px(event: InputEvent) -> Vector2:
 	var p: Vector2 = event.position
 	var s := _svc.size
 	if s.x <= 0 or s.y <= 0:
@@ -663,35 +810,90 @@ func _view_pos(event: InputEvent) -> Vector2:
 	return Vector2(p.x * ROOM_W / s.x, p.y * ROOM_H / s.y)
 
 
+func _view_to_world(vp: Vector2) -> Vector2:
+	return (vp - VIEW_CENTER) / _zoom + _view_center
+
+
+func _snap_pos(v: Vector2) -> Vector2:
+	if not _snap:
+		return v
+	return Vector2(roundf(v.x / SNAP) * SNAP, roundf(v.y / SNAP) * SNAP)
+
+
+func _update_ghost() -> void:
+	if _ghost == null:
+		return
+	var show := _tool == "spawn"
+	_ghost.visible = show
+	if not show:
+		return
+	_ghost.position = _snap_pos(_mouse_world)
+	var layers := _spawn_layers({"kind": _pending_kind, "object": 12})
+	if not layers.is_empty():
+		var tex: Texture2D = _kind_tex.get(_pending_kind)
+		if tex == null:
+			tex = load(str(layers[0].texture))
+		_ghost_sprite.texture = tex
+		_ghost_sprite.offset = Vector2.ZERO
+
+
+# ------------------------------------------------------------- canvas input
+
 func _on_viewport_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and _drag_idx >= 0:
-		var it: Dictionary = _items[_drag_idx]
-		var pos: Vector2 = _view_pos(event) - _drag_offset
-		pos.x = clampf(pos.x, 0, ROOM_W)
-		pos.y = clampf(pos.y, 0, ROOM_H)
-		if it.type == "spawn":
-			spawns[it.index].pos = pos
-		elif it.type == "player":
-			player_pos = pos
-		_rebuild_markers()
-		_refresh_items()
-		_refresh_inspector()
+	# middle-mouse drag pans the view
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE:
+		_panning = event.pressed
+		_pan_last = _viewport_px(event)
+		return
+	if event is InputEventMouseMotion:
+		var vp := _viewport_px(event)
+		_mouse_world = _view_to_world(vp)
+		if _panning:
+			_view_center -= (vp - _pan_last) / _zoom
+			_pan_last = vp
+			_apply_view()
+			return
+		if _drag_idx >= 0:
+			var it: Dictionary = _items[_drag_idx]
+			var pos: Vector2 = _snap_pos(_mouse_world - _drag_offset)
+			pos.x = clampf(pos.x, 0, ROOM_W)
+			pos.y = clampf(pos.y, 0, ROOM_H)
+			if it.type == "spawn":
+				spawns[it.index].pos = pos
+			elif it.type == "player":
+				player_pos = pos
+			_rebuild_markers()
+			_refresh_items()
+			_refresh_inspector()
+			return
+		_update_ghost()
+		return
+	# wheel zooms around the cursor
+	if event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+		var vp := _viewport_px(event)
+		var world_under := _view_to_world(vp)
+		var factor := 1.15 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0 / 1.15
+		_zoom = clampf(_zoom * factor, 0.3, 4.0)
+		_view_center = world_under - (vp - VIEW_CENTER) / _zoom
+		_apply_view()
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		var pos: Vector2 = _view_pos(event)
+		_mouse_world = _view_to_world(_viewport_px(event))
+		var pos := _snap_pos(_mouse_world)
 		if event.pressed:
-			if _tool == "spawn":
+			# clicking an existing marker always selects it, even in place mode
+			var hit := _hit_marker(_mouse_world)
+			var hit_type: String = str(hit.get("type", ""))
+			if hit_type == "" and _tool == "spawn":
+				pos.x = clampf(pos.x, 0, ROOM_W)
+				pos.y = clampf(pos.y, 0, ROOM_H)
 				spawns.append(_default_spawn(pos))
-				_sel = _items.size()  # will be last after rebuild
 				_rebuild_items()
 				_sel = _items.size() - 2  # spawn is second-to-last (player last)
 				_refresh_all()
 				_item_list.select(_sel)
 				_refresh_inspector()
 				return
-			# hit-test markers: player first, then spawns topmost-last
-			var hit := _hit_marker(pos)
-			var hit_type: String = str(hit.get("type", ""))
 			if hit_type == "player":
 				_sel = _items.size() - 1
 				_drag_idx = _sel
@@ -707,13 +909,27 @@ func _on_viewport_input(event: InputEvent) -> void:
 			_refresh_inspector()
 		else:
 			_drag_idx = -1
+		return
+	# right-click deletes the spawn under the cursor
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		_mouse_world = _view_to_world(_viewport_px(event))
+		var hit := _hit_marker(_mouse_world)
+		if str(hit.get("type", "")) == "spawn":
+			var si := int(hit.index)
+			if si >= 0 and si < spawns.size():
+				spawns.remove_at(si)
+				_sel = -1
+				_refresh_all()
+				_status.text = "Deleted spawn (right-click)."
+		return
 
 
 func _hit_marker(pos: Vector2) -> Dictionary:
-	if player_pos.distance_to(pos) < 24.0:
+	var radius := 24.0 / _zoom
+	if player_pos.distance_to(pos) < radius:
 		return {"type": "player", "index": 0}
 	for i in range(spawns.size() - 1, -1, -1):
-		if spawns[i].pos.distance_to(pos) < 24.0:
+		if spawns[i].pos.distance_to(pos) < radius:
 			return {"type": "spawn", "index": i}
 	return {}
 
@@ -723,6 +939,20 @@ func _item_index_of(type: String, index: int) -> int:
 		if _items[i].type == type and _items[i].index == index:
 			return i
 	return -1
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed and not event.echo):
+		return
+	# don't steal keys while typing in a text field
+	var focus := get_viewport().gui_get_focus_owner()
+	if focus is LineEdit or focus is SpinBox or focus is TextEdit:
+		return
+	match event.keycode:
+		KEY_DELETE, KEY_BACKSPACE:
+			_delete_selected()
+		KEY_ESCAPE:
+			_set_select_tool()
 
 
 # ------------------------------------------------------------- open
@@ -823,6 +1053,10 @@ func _load_scene(path: String) -> void:
 	_hspeed_spin.value = bg_hspeed
 	_vspeed_spin.value = bg_vspeed
 	_apply_blank_preset()
+	_zoom = 1.0
+	_view_center = VIEW_CENTER
+	_apply_view()
+	_set_select_tool()
 	_refresh_all()
 	_status.text = "Loaded " + path.get_file()
 

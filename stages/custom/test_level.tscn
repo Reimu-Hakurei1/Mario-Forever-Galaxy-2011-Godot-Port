@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://engine/level_wave_setting.gd" id="5_d1mch"]
 [ext_resource type="Script" path="res://engine/level_spawn_rule.gd" id="6_nr04i"]
 
-[node name="custom_test_level" type="Node2D" unique_id=1467104411]
+[node name="custom_test_level" type="Node2D" unique_id=117928970]
 script = ExtResource("1_jonts")
 metadata/gm_room = "custom_test_level"
 metadata/gm_map = 0
@@ -16,49 +16,49 @@ metadata/gm_minigame = 0
 metadata/gm_label = "TEST_LEVEL"
 metadata/gm_bg_colour = 0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1010604226]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=280337427]
 position = Vector2(512, 384)
 limit_left = 0
 limit_top = 0
 limit_right = 1024
 limit_bottom = 768
 
-[node name="Bg0_background0" type="Node2D" parent="." unique_id=1700736627]
+[node name="Bg0_background0" type="Node2D" parent="." unique_id=1921482307]
 z_index = -4080
 metadata/gm_foreground = false
 metadata/gm_background_slot = 0
 metadata/gm_hspeed = 0.0
 metadata/gm_vspeed = 0.0
 
-[node name="t0_0" type="Sprite2D" parent="Bg0_background0" unique_id=602140654]
+[node name="t0_0" type="Sprite2D" parent="Bg0_background0" unique_id=160008953]
 position = Vector2(-444, 0)
 texture = ExtResource("2_ta4nk")
 centered = false
 
-[node name="Bg1_background0" type="Node2D" parent="." unique_id=578852294]
+[node name="Bg1_background0" type="Node2D" parent="." unique_id=986975700]
 z_index = -4079
 metadata/gm_foreground = false
 metadata/gm_background_slot = 1
 metadata/gm_hspeed = 0.0
 metadata/gm_vspeed = 0.0
 
-[node name="t0_0" type="Sprite2D" parent="Bg1_background0" unique_id=1354662300]
+[node name="t0_0" type="Sprite2D" parent="Bg1_background0" unique_id=2006202430]
 position = Vector2(-222, 0)
 texture = ExtResource("2_ta4nk")
 centered = false
 
-[node name="Objects_-10000000" type="Node2D" parent="." unique_id=1067383588]
+[node name="Objects_-10000000" type="Node2D" parent="." unique_id=34218855]
 z_index = -1000
 metadata/gm_depth = -10000000.0
 
-[node name="Objects_-1000000" type="Node2D" parent="." unique_id=806008633]
+[node name="Objects_-1000000" type="Node2D" parent="." unique_id=1177136656]
 z_index = -100
 metadata/gm_depth = -1000000.0
 
-[node name="Objects_0" type="Node2D" parent="." unique_id=464372659]
+[node name="Objects_0" type="Node2D" parent="." unique_id=387422059]
 metadata/gm_depth = 0.0
 
-[node name="custom_test_level_player" type="Sprite2D" parent="Objects_0" unique_id=1418158252]
+[node name="custom_test_level_player" type="Sprite2D" parent="Objects_0" unique_id=1150727926]
 position = Vector2(416, 576)
 rotation = -1.5707964
 texture = ExtResource("3_b0huc")
@@ -73,14 +73,14 @@ metadata/gm_preview_only = false
 metadata/gm_position = Vector2(416, 576)
 metadata/gm_empty_draw_event = false
 
-[node name="Waves" type="Node2D" parent="." unique_id=964829195]
+[node name="Waves" type="Node2D" parent="." unique_id=1697951317]
 script = ExtResource("4_5orki")
 
-[node name="Timing" type="Node" parent="Waves" unique_id=1668815858]
+[node name="Timing" type="Node" parent="Waves" unique_id=1710735651]
 
-[node name="Custom" type="Node" parent="Waves/Timing" unique_id=1149526366]
+[node name="Custom" type="Node" parent="Waves/Timing" unique_id=1097724752]
 
-[node name="Timing_00" type="Node" parent="Waves/Timing/Custom" unique_id=619145512]
+[node name="Timing_00" type="Node" parent="Waves/Timing/Custom" unique_id=305346615]
 script = ExtResource("5_d1mch")
 table = "num"
 first_index = -1
@@ -88,16 +88,16 @@ last_index = -1
 force_override = true
 source_key = "custom:test_level:0"
 
-[node name="Timing_01" type="Node" parent="Waves/Timing/Custom" unique_id=328001803]
+[node name="Timing_01" type="Node" parent="Waves/Timing/Custom" unique_id=2081028046]
 script = ExtResource("5_d1mch")
 table = "perioder"
 last_index = 199
 force_override = true
 source_key = "custom:test_level:1"
 
-[node name="Enemies" type="Node2D" parent="Waves" unique_id=600038031]
+[node name="Enemies" type="Node2D" parent="Waves" unique_id=1748721725]
 
-[node name="spawn_00" type="Node2D" parent="Waves/Enemies" unique_id=483421137]
+[node name="spawn_00" type="Node2D" parent="Waves/Enemies" unique_id=561707163]
 position = Vector2(150, 150)
 script = ExtResource("6_nr04i")
 mode = 1
@@ -123,7 +123,7 @@ preview_layers = [{
 }]
 source_key = "custom:test_level:spawn:0"
 
-[node name="spawn_01" type="Node2D" parent="Waves/Enemies" unique_id=1315993774]
+[node name="spawn_01" type="Node2D" parent="Waves/Enemies" unique_id=667455332]
 position = Vector2(290, 270)
 script = ExtResource("6_nr04i")
 mode = 1
@@ -149,7 +149,7 @@ preview_layers = [{
 }]
 source_key = "custom:test_level:spawn:1"
 
-[node name="spawn_02" type="Node2D" parent="Waves/Enemies" unique_id=594813796]
+[node name="spawn_02" type="Node2D" parent="Waves/Enemies" unique_id=913430958]
 position = Vector2(430, 390)
 script = ExtResource("6_nr04i")
 mode = 1
@@ -175,7 +175,7 @@ preview_layers = [{
 }]
 source_key = "custom:test_level:spawn:2"
 
-[node name="spawn_03" type="Node2D" parent="Waves/Enemies" unique_id=180749955]
+[node name="spawn_03" type="Node2D" parent="Waves/Enemies" unique_id=656525566]
 position = Vector2(570, 150)
 script = ExtResource("6_nr04i")
 mode = 1
@@ -201,7 +201,7 @@ preview_layers = [{
 }]
 source_key = "custom:test_level:spawn:3"
 
-[node name="spawn_04" type="Node2D" parent="Waves/Enemies" unique_id=573973905]
+[node name="spawn_04" type="Node2D" parent="Waves/Enemies" unique_id=2011851933]
 position = Vector2(710, 270)
 script = ExtResource("6_nr04i")
 mode = 1
@@ -227,7 +227,7 @@ preview_layers = [{
 }]
 source_key = "custom:test_level:spawn:4"
 
-[node name="spawn_05" type="Node2D" parent="Waves/Enemies" unique_id=1015965632]
+[node name="spawn_05" type="Node2D" parent="Waves/Enemies" unique_id=55633548]
 position = Vector2(850, 390)
 script = ExtResource("6_nr04i")
 mode = 1

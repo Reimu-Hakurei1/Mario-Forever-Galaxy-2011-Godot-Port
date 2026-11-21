@@ -124,9 +124,16 @@ godot --path . editor/level_editor.tscn
   condition — or check **Blank level** to start from an empty timeline.
 - Choose a **background** and scroll speed; drag the **green marker** to set
   the player start position.
-- Pick an enemy type, press **Place mode**, and click the canvas to add timed
-  spawns. Each spawn has a start period, count, interval, arrival sequence and
-  target — all editable in the properties panel or by dragging its marker.
+- **ENEMIES palette** — every enemy type as a sprite button; click one, then
+  click the canvas to place timed spawns. Each spawn has a start period,
+  count, interval, arrival sequence and target — editable in the properties
+  panel, by dragging its marker, or on the **wave timeline** strip under the
+  canvas (each colored span is a spawn's schedule on the 0–200 period axis —
+  click a span to select it).
+- **Canvas controls** — mouse wheel zooms, middle-drag pans, 8px grid snap
+  (toggleable), ghost preview follows the cursor while placing, right-click or
+  Delete removes a spawn, Esc returns to select mode, double-click an item in
+  the list to center the view on it.
 - **Timing rows** override the wave tables (`num`, `perioder`, `kamik`, ...)
   for the base stage; **Add timing row** inserts a new one.
 - **Save** writes `stages/custom/<name>.tscn`, registers the room in
@@ -150,7 +157,7 @@ they run through the exact same runtime path (`engine/level_wave_runtime.gd`).
 | `gfx/`, `music/`, `sfx/` | Extracted sprites, backgrounds, music, and sound effects |
 | `images/` | Additional sprite/background PNGs |
 | `native/` | Early experimental native-GDScript port (kept for reference; the shipping game uses the `engine/` runtime) |
-| `editor/` | Editor-only helpers: `stage_launch.gd` (boot stage scenes), `level_editor.*` + `level_view.gd` + `marker_ring.gd` (custom level editor) |
+| `editor/` | Editor-only helpers: `stage_launch.gd` (boot stage scenes), `level_editor.*` + `level_view.gd` + `marker_ring.gd` + `wave_timeline.gd` (custom level editor) |
 | `tools/` | Headless probes and validation scripts |
 | `addons/room_frame/` | Editor plugin that draws level scenes |
 
