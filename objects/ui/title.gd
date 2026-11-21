@@ -297,17 +297,17 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 	if ((R.lnot(R.keyboard_check(S, 38)) and R.lnot(R.keyboard_check(S, 40))) and R.eqv(S, S.g_opcja1, 1)):
 		S.g_klik1 = 0
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((348 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((318 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((388 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((358 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 2)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((428 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((398 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 3)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((468 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((438 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 4)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((508 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((478 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if (R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 5)):
-		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((548 + R.random(S, 20)) - R.random(S, 20)), 565)
+		R.instance_create(S, ((512 + R.random(S, 300)) - R.random(S, 300)), ((518 + R.random(S, 20)) - R.random(S, 20)), 565)
 	if ((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 1)) and (S.g_wielkosc1 < 0.5)):
 		S.g_wielkosc1 += 0.05
 	if (((1 - R.eqv(S, S.g_opcja1, 1)) or (1 - R.eqv(S, S.g_podopcja1, 1))) and (S.g_wielkosc1 > 0)):
@@ -356,11 +356,6 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 		S.g_wielkosc32 -= 0.05
 	if (S.g_wielkosc32 < 0):
 		S.g_wielkosc32 = 0
-	R.draw_set_alpha(S, S.g_blank_opcji_jeden)
-	R.draw_set_color(S, 0x000000)
-	R.draw_rectangle(S, (250 + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (100 + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 250) - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 50) - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
-	R.draw_rectangle(S, (250 - (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), (100 - (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), ((1024 - 250) + (10 * R.sin(S, R.degtorad(S, S.g_lopor)))), ((768 - 50) + (10 * R.sin(S, R.degtorad(S, (S.g_lopor / float(2)))))), 0)
-	R.draw_set_alpha(S, 1)
 	if (R.eqv(S, S.g_opcja1, 1) and (S.g_blank_opcji_jeden < 0.25)):
 		S.g_blank_opcji_jeden += 0.01
 	if ((1 - R.eqv(S, S.g_opcja1, 1)) and (S.g_blank_opcji_jeden > 0)):
@@ -370,40 +365,40 @@ static func ev_8_0_0(S, A: Array) -> Variant:
 			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
 			R.draw_set_halign(S, 1)
 			R.draw_set_valign(S, 1)
-			R.draw_text_transformed(S, 512, 348, "STORY MODE", ((0.5 + S.g_wielkosc30) + S.g_crumpy2), ((0.5 + S.g_wielkosc30) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 318, "STORY MODE", ((0.5 + S.g_wielkosc30) + S.g_crumpy2), ((0.5 + S.g_wielkosc30) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.8)))
-			R.draw_text_transformed(S, 512, 348, "STORY MODE", (0.5 + S.g_wielkosc30), (0.5 + S.g_wielkosc30), 0)
+			R.draw_text_transformed(S, 512, 318, "STORY MODE", (0.5 + S.g_wielkosc30), (0.5 + S.g_wielkosc30), 0)
 		if R.eqv(S, S.g_podopcja1, 1):
 			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
-			R.draw_text_transformed(S, 512, 388, "SURVIVAL", ((0.5 + S.g_wielkosc1) + S.g_crumpy2), ((0.5 + S.g_wielkosc1) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 358, "SURVIVAL", ((0.5 + S.g_wielkosc1) + S.g_crumpy2), ((0.5 + S.g_wielkosc1) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (50000 * 0.4)))
-			R.draw_text_transformed(S, 512, 388, "SURVIVAL", (0.5 + S.g_wielkosc1), (0.5 + S.g_wielkosc1), 0)
+			R.draw_text_transformed(S, 512, 358, "SURVIVAL", (0.5 + S.g_wielkosc1), (0.5 + S.g_wielkosc1), 0)
 		if R.eqv(S, S.g_podopcja1, 2):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
-			R.draw_text_transformed(S, 512, 428, "OPTIONS", ((0.5 + S.g_wielkosc2) + S.g_crumpy2), ((0.5 + S.g_wielkosc2) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 398, "OPTIONS", ((0.5 + S.g_wielkosc2) + S.g_crumpy2), ((0.5 + S.g_wielkosc2) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc2 * 50000)))
-			R.draw_text_transformed(S, 512, 428, "OPTIONS", (0.5 + S.g_wielkosc2), (0.5 + S.g_wielkosc2), 0)
+			R.draw_text_transformed(S, 512, 398, "OPTIONS", (0.5 + S.g_wielkosc2), (0.5 + S.g_wielkosc2), 0)
 		if R.eqv(S, S.g_podopcja1, 3):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
-			R.draw_text_transformed(S, 512, 468, "CREDITS", ((0.5 + S.g_wielkosc3) + S.g_crumpy2), ((0.5 + S.g_wielkosc3) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 438, "CREDITS", ((0.5 + S.g_wielkosc3) + S.g_crumpy2), ((0.5 + S.g_wielkosc3) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc3 * 50000)))
-			R.draw_text_transformed(S, 512, 468, "CREDITS", (0.5 + S.g_wielkosc3), (0.5 + S.g_wielkosc3), 0)
+			R.draw_text_transformed(S, 512, 438, "CREDITS", (0.5 + S.g_wielkosc3), (0.5 + S.g_wielkosc3), 0)
 		if R.eqv(S, S.g_podopcja1, 4):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
-			R.draw_text_transformed(S, 512, 508, "CHECK UPDATES", ((0.5 + S.g_wielkosc5) + S.g_crumpy2), ((0.5 + S.g_wielkosc5) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 478, "CHECK UPDATES", ((0.5 + S.g_wielkosc5) + S.g_crumpy2), ((0.5 + S.g_wielkosc5) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc5 * 50000)))
-			R.draw_text_transformed(S, 512, 508, "CHECK UPDATES", (0.5 + S.g_wielkosc5), (0.5 + S.g_wielkosc5), 0)
+			R.draw_text_transformed(S, 512, 478, "CHECK UPDATES", (0.5 + S.g_wielkosc5), (0.5 + S.g_wielkosc5), 0)
 		if R.eqv(S, S.g_podopcja1, 5):
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
-			R.draw_text_transformed(S, 512, 548, "EXIT", ((0.5 + S.g_wielkosc32) + S.g_crumpy2), ((0.5 + S.g_wielkosc32) + S.g_crumpy2), 0)
+			R.draw_text_transformed(S, 512, 518, "EXIT", ((0.5 + S.g_wielkosc32) + S.g_crumpy2), ((0.5 + S.g_wielkosc32) + S.g_crumpy2), 0)
 		else:
 			R.draw_set_color(S, (0xFFFFFF - (S.g_wielkosc32 * 50000)))
-			R.draw_text_transformed(S, 512, 548, "EXIT", (0.5 + S.g_wielkosc32), (0.5 + S.g_wielkosc32), 0)
+			R.draw_text_transformed(S, 512, 518, "EXIT", (0.5 + S.g_wielkosc32), (0.5 + S.g_wielkosc32), 0)
 	if (((R.eqv(S, S.g_opcja1, 1) and R.eqv(S, S.g_podopcja1, 0)) and R.eqv(S, S.g_klik2, 0)) and R.keyboard_check(S, 13)):
 		S.g_klik2 = 1
 		S.g_opcja1 = 10
