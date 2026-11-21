@@ -22,24 +22,35 @@ func _ready() -> void:
 		remove_child(_preview)
 		_preview.free()
 	NativeAssets.play_music("title")
+
+	# deep-space backdrop
 	var bg := ColorRect.new()
-	bg.color = Color(0.02, 0.03, 0.1)
+	bg.color = Color(0.015, 0.025, 0.09)
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+	_add_nebula()
 	_add_starfield()
 
-	var title := Label.new()
-	title.text = "MARIO FOREVER\nGALAXY"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	title.set_anchors_preset(Control.PRESET_FULL_RECT)
-	title.offset_top = -140
-	title.offset_bottom = -40
-	title.add_theme_font_size_override("font_size", 56)
-	title.add_theme_color_override("font_color", Color(1, 0.85, 0.3))
-	title.add_theme_color_override("font_outline_color", Color(0, 0, 0))
-	title.add_theme_constant_override("outline_size", 8)
-	add_child(title)
+	# real title logo art
+	var logo := TextureRect.new()
+	logo.texture = load("res://gfx/title/title_0.png")
+	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	logo.set_anchors_preset(Control.PRESET_FULL_RECT)
+	logo.anchor_top = 0.06
+	logo.anchor_bottom = 0.44
+	logo.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(logo)
+
+	var sub := TextureRect.new()
+	sub.texture = load("res://gfx/title/title_1.png")
+	sub.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	sub.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	sub.set_anchors_preset(Control.PRESET_FULL_RECT)
+	sub.anchor_top = 0.45
+	sub.anchor_bottom = 0.53
+	sub.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(sub)
 
 	var has_save := NativeGame.any_save()
 	# Apply the saved display mode before the first frame is shown.
@@ -48,41 +59,86 @@ func _ready() -> void:
 		else DisplayServer.WINDOW_MODE_WINDOWED)
 	_has_save = has_save
 
-	var cont := Button.new()
-	cont.text = "CONTINUE" if has_save else "START"
-	cont.custom_minimum_size = Vector2(280, 60)
-	cont.add_theme_font_size_override("font_size", 24)
-	cont.position = Vector2(372, 400)
-	cont.pressed.connect(_on_continue)
-	add_child(cont)
+	var menu := VBoxContainer.new()
+	menu.set_anchors_preset(Control.PRESET_CENTER)
+	menu.offset_left = -140
+	menu.offset_right = 140
+	menu.offset_top = -160 if has_save else -120
+	menu.offset_bottom = 160
+	menu.add_theme_constant_override("separation", 14)
+	add_child(menu)
 
+	menu.add_child(_menu_button("CONTINUE" if has_save else "START", _on_continue))
 	if has_save:
-		var fresh := Button.new()
-		fresh.text = "NEW GAME"
-		fresh.custom_minimum_size = Vector2(280, 60)
-		fresh.add_theme_font_size_override("font_size", 24)
-		fresh.position = Vector2(372, 480)
-		fresh.pressed.connect(_on_new_game)
-		add_child(fresh)
-
-	var opts := Button.new()
-	opts.text = "OPTIONS"
-	opts.custom_minimum_size = Vector2(280, 50)
+		menu.add_child(_menu_button("NEW GAME", _on_new_game))
+	var opts := _menu_button("OPTIONS", _on_options)
 	opts.add_theme_font_size_override("font_size", 20)
-	opts.position = Vector2(372, has_save and 550 or 470)
-	opts.pressed.connect(_on_options)
-	add_child(opts)
+	opts.custom_minimum_size = Vector2(280, 50)
+	menu.add_child(opts)
 
 	var hint := Label.new()
 	hint.name = "Hint"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hint.add_theme_font_size_override("font_size", 14)
-	hint.add_theme_color_override("font_color", Color(0.6, 0.6, 0.6))
+	hint.add_theme_color_override("font_color", Color(0.55, 0.6, 0.75))
 	hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	hint.offset_top = -40
 	hint.offset_bottom = -16
 	add_child(hint)
 	_refresh_hint()
+
+
+func _menu_button(text: String, cb: Callable) -> Button:
+	var b := Button.new()
+	b.text = text
+	b.custom_minimum_size = Vector2(280, 60)
+	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	b.add_theme_font_size_override("font_size", 24)
+	var normal := _btn_box(Color(0.04, 0.07, 0.2, 0.88), Color(0.35, 0.5, 0.9), 12, 2)
+	var hover := _btn_box(Color(0.1, 0.16, 0.38, 0.95), Color(1.0, 0.85, 0.3), 12, 2)
+	var pressed := _btn_box(Color(0.02, 0.04, 0.12, 0.95), Color(1.0, 0.85, 0.3), 12, 2)
+	b.add_theme_stylebox_override("normal", normal)
+	b.add_theme_stylebox_override("hover", hover)
+	b.add_theme_stylebox_override("pressed", pressed)
+	b.add_theme_stylebox_override("focus", hover)
+	b.add_theme_color_override("font_color", Color(0.95, 0.97, 1.0))
+	b.add_theme_color_override("font_hover_color", Color(1.0, 0.9, 0.5))
+	b.add_theme_color_override("font_pressed_color", Color(1.0, 0.9, 0.5))
+	b.pressed.connect(cb)
+	return b
+
+
+func _btn_box(bg: Color, border: Color, radius: int, bw: int) -> StyleBoxFlat:
+	var s := StyleBoxFlat.new()
+	s.bg_color = bg
+	s.border_color = border
+	s.set_border_width_all(bw)
+	s.set_corner_radius_all(radius)
+	s.content_margin_left = 12
+	s.content_margin_right = 12
+	s.content_margin_top = 8
+	s.content_margin_bottom = 8
+	return s
+
+
+## Soft colored nebula blobs behind the starfield.
+func _add_nebula() -> void:
+	var blobs := [
+		[Vector2(180, 140), 340.0, Color(0.1, 0.05, 0.25, 0.5)],
+		[Vector2(860, 560), 420.0, Color(0.05, 0.12, 0.3, 0.45)],
+		[Vector2(700, 120), 300.0, Color(0.22, 0.08, 0.12, 0.4)],
+	]
+	for bl in blobs:
+		var p := Polygon2D.new()
+		var pts := PackedVector2Array()
+		var c: Vector2 = bl[0]
+		var r: float = bl[1]
+		for i in 24:
+			var a := TAU * i / 24.0
+			pts.append(c + Vector2(cos(a), sin(a)) * r * (0.75 + 0.25 * sin(a * 3.0)))
+		p.polygon = pts
+		p.color = bl[2]
+		add_child(p)
 
 
 func _unhandled_input(event: InputEvent) -> void:
