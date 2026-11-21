@@ -39,6 +39,17 @@ const KIND_NAMES := {
 }
 const TABLE_NAMES := ["num", "lev", "pozd", "levtime", "sekwencus", "kamik", "perioder", "sila_wrogow"]
 
+# dark editor theme
+const C_BG := Color(0.09, 0.10, 0.13)
+const C_TOOLBAR := Color(0.13, 0.14, 0.18)
+const C_PANEL := Color(0.15, 0.16, 0.21)
+const C_PANEL2 := Color(0.20, 0.21, 0.27)
+const C_BORDER := Color(0.32, 0.34, 0.42)
+const C_TEXT := Color(0.90, 0.91, 0.94)
+const C_DIM := Color(0.58, 0.60, 0.66)
+const C_ACCENT := Color(1.0, 0.62, 0.22)
+const C_GOOD := Color(0.40, 0.85, 0.50)
+
 var _assets: Dictionary = {}
 var _catalog: Dictionary = {}
 var _bases: Array = []          # {label,map,lev,path}
@@ -92,6 +103,8 @@ var _vspeed_spin: SpinBox
 var _blank_check: CheckBox
 var _open_opt: OptionButton
 var _snap_check: CheckBox
+var _grid_check: CheckBox
+var _zoom_lbl: Label
 var _palette_grid: GridContainer
 var _palette_btns: Dictionary = {}
 var _drag_idx := -1
@@ -173,47 +186,95 @@ func _tag(txt: String, prop: String) -> String:
 # ------------------------------------------------------------------ UI
 
 func _build_ui() -> void:
-	var root_panel := PanelContainer.new()
-	root_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(root_panel)
-	var margin := MarginContainer.new()
-	margin.add_theme_constant_override("margin_left", 8)
-	margin.add_theme_constant_override("margin_top", 8)
-	margin.add_theme_constant_override("margin_right", 8)
-	margin.add_theme_constant_override("margin_bottom", 8)
-	root_panel.add_child(margin)
-	var main := HBoxContainer.new()
-	margin.add_child(main)
+	# ---- root: dark themed vertical layout
+	var bg := ColorRect.new()
+	bg.color = C_BG
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(bg)
+	var root_vbox := VBoxContainer.new()
+	root_vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	root_vbox.add_theme_constant_override("separation", 4)
+	add_child(root_vbox)
 
-	# ---- left column: level settings + enemy palette + item list
+	# ---- top toolbar
+	var toolbar := PanelContainer.new()
+	toolbar.add_theme_stylebox_override("panel", _sb(C_TOOLBAR, C_BORDER, 0, 0))
+	root_vbox.add_child(toolbar)
+	var trow := HBoxContainer.new()
+	trow.add_theme_constant_override("separation", 6)
+	toolbar.add_child(trow)
+	var title := Label.new()
+	title.text = "GALAXY LEVEL EDITOR"
+	title.add_theme_font_size_override("font_size", 15)
+	title.add_theme_color_override("font_color", C_ACCENT)
+	trow.add_child(title)
+	trow.add_child(_vsep())
+	trow.add_child(_tbtn("Select", _set_select_tool))
+	trow.add_child(_tbtn("New", _new_level))
+	trow.add_child(_tbtn("Open", _open_level))
+	trow.add_child(_tbtn("Save", _save_level, true))
+	trow.add_child(_tbtn("Play", _playtest, true))
+	trow.add_child(_vsep())
+	trow.add_child(_lbl("Zoom"))
+	trow.add_child(_tbtn("-", func(): _zoom_step(1.0 / 1.25)))
+	_zoom_lbl = _lbl("100%")
+	_zoom_lbl.custom_minimum_size = Vector2(44, 0)
+	_zoom_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	trow.add_child(_zoom_lbl)
+	trow.add_child(_tbtn("+", func(): _zoom_step(1.25)))
+	trow.add_child(_tbtn("Fit", _fit_view))
+	trow.add_child(_tbtn("Player", func(): _center_on(player_pos)))
+	trow.add_child(_vsep())
+	_snap_check = CheckBox.new()
+	_snap_check.text = "Snap"
+	_snap_check.button_pressed = true
+	_snap_check.toggled.connect(func(v): _snap = v)
+	trow.add_child(_snap_check)
+	_grid_check = CheckBox.new()
+	_grid_check.text = "Grid"
+	_grid_check.button_pressed = true
+	_grid_check.toggled.connect(func(v): _level_view.show_grid = v; _level_view.queue_redraw())
+	trow.add_child(_grid_check)
+	trow.add_child(_vsep())
+	_open_opt = OptionButton.new()
+	_open_opt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_open_opt.tooltip_text = "Saved custom levels"
+	trow.add_child(_open_opt)
+	_refresh_open_list()
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	trow.add_child(spacer)
+
+	# ---- main row: palette | canvas | inspector
+	var main := HBoxContainer.new()
+	main.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	main.add_theme_constant_override("separation", 4)
+	root_vbox.add_child(main)
+
+	# left: level settings + enemy palette + items
 	var left := VBoxContainer.new()
-	left.custom_minimum_size = Vector2(320, 0)
+	left.custom_minimum_size = Vector2(300, 0)
+	left.add_theme_constant_override("separation", 4)
 	main.add_child(left)
 
-	var settings := Label.new()
-	settings.text = "LEVEL"
-	settings.add_theme_font_size_override("font_size", 18)
+	var settings := _section("LEVEL")
 	left.add_child(settings)
-
-	left.add_child(_lbl("Name"))
+	settings.add_child(_lbl("Name"))
 	_name_edit = LineEdit.new()
 	_name_edit.text_changed.connect(func(t): level_name = t; _refresh_items())
-	left.add_child(_name_edit)
-
-	left.add_child(_lbl("Base stage (wave timeline / music / win condition)"))
+	settings.add_child(_name_edit)
+	settings.add_child(_lbl("Base stage (wave timeline / music / win condition)"))
 	_base_opt = OptionButton.new()
 	for b in _bases:
 		_base_opt.add_item("%s  (map %d lev %d)" % [b.label if b.label != "" else b.path.get_file(), b.map, b.lev])
 	_base_opt.item_selected.connect(_on_base_selected)
-	left.add_child(_base_opt)
-
-	left.add_child(_lbl("Background"))
+	settings.add_child(_base_opt)
+	settings.add_child(_lbl("Background"))
 	_bg_opt = OptionButton.new()
 	for b in _bgs:
 		_bg_opt.add_item("%s (%s)" % [b.name, b.key])
 	_bg_opt.item_selected.connect(_on_bg_selected)
-	left.add_child(_bg_opt)
-
+	settings.add_child(_bg_opt)
 	var hrow := HBoxContainer.new()
 	hrow.add_child(_lbl("Scroll X"))
 	_hspeed_spin = SpinBox.new()
@@ -229,77 +290,49 @@ func _build_ui() -> void:
 	_vspeed_spin.step = 0.05
 	_vspeed_spin.value_changed.connect(func(v): bg_vspeed = v; _refresh_bg())
 	hrow.add_child(_vspeed_spin)
-	left.add_child(hrow)
-
+	settings.add_child(hrow)
 	_blank_check = CheckBox.new()
 	_blank_check.text = "Blank level — remove base waves"
 	_blank_check.button_pressed = true
 	_blank_check.toggled.connect(func(v): blank_waves = v; _apply_blank_preset())
-	left.add_child(_blank_check)
+	settings.add_child(_blank_check)
 
-	_snap_check = CheckBox.new()
-	_snap_check.text = "Snap to 8px grid"
-	_snap_check.button_pressed = true
-	_snap_check.toggled.connect(func(v): _snap = v)
-	left.add_child(_snap_check)
-
-	var btn_row := HBoxContainer.new()
-	btn_row.add_child(_btn("New", _new_level))
-	btn_row.add_child(_btn("Save", _save_level))
-	btn_row.add_child(_btn("Play", _playtest))
-	left.add_child(btn_row)
-
-	var orow := HBoxContainer.new()
-	_open_opt = OptionButton.new()
-	_open_opt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	orow.add_child(_open_opt)
-	orow.add_child(_btn("Open", _open_level))
-	left.add_child(orow)
-	_refresh_open_list()
-
-	left.add_child(HSeparator.new())
-	var pl := Label.new()
-	pl.text = "ENEMIES"
-	pl.add_theme_font_size_override("font_size", 14)
-	left.add_child(pl)
-	_hint = _lbl("Click an enemy, then click the canvas to place it.")
-	_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	left.add_child(_hint)
+	var pal := _section("ENEMIES — click, then click canvas")
+	pal.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	left.add_child(pal)
 	var pscroll := ScrollContainer.new()
-	pscroll.custom_minimum_size = Vector2(0, 170)
 	pscroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	left.add_child(pscroll)
+	pal.add_child(pscroll)
 	_palette_grid = GridContainer.new()
-	_palette_grid.columns = 6
+	_palette_grid.columns = 5
 	_palette_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	pscroll.add_child(_palette_grid)
 	_build_palette()
 
-	left.add_child(HSeparator.new())
-	var l2 := Label.new()
-	l2.text = "ITEMS"
-	l2.add_theme_font_size_override("font_size", 14)
-	left.add_child(l2)
+	var items_panel := _section("ITEMS")
+	left.add_child(items_panel)
 	_item_list = ItemList.new()
-	_item_list.custom_minimum_size = Vector2(0, 110)
+	_item_list.custom_minimum_size = Vector2(0, 96)
 	_item_list.item_selected.connect(_on_item_selected)
 	_item_list.item_activated.connect(_on_item_activated)
-	left.add_child(_item_list)
+	items_panel.add_child(_item_list)
 	var drow := HBoxContainer.new()
-	drow.add_child(_btn("Delete", _delete_selected))
-	drow.add_child(_btn("Add timing row", _add_timing_row))
-	left.add_child(drow)
+	drow.add_theme_constant_override("separation", 4)
+	drow.add_child(_tbtn("Delete", _delete_selected))
+	drow.add_child(_tbtn("+ Wave", _add_timing_row))
+	items_panel.add_child(drow)
 
-	# ---- center: level view + wave timeline
+	# center: canvas + timeline
 	var center := PanelContainer.new()
 	center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	main.add_child(center)
 	var cvbox := VBoxContainer.new()
+	cvbox.add_theme_constant_override("separation", 2)
 	center.add_child(cvbox)
 	_svc = SubViewportContainer.new()
 	_svc.stretch = true
 	_svc.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_svc.custom_minimum_size = Vector2(640, 480)
+	_svc.custom_minimum_size = Vector2(480, 360)
 	cvbox.add_child(_svc)
 	_svc.gui_input.connect(_on_viewport_input)
 	_viewport = SubViewport.new()
@@ -323,25 +356,171 @@ func _build_ui() -> void:
 	_timeline.editor = self
 	cvbox.add_child(_timeline)
 
-	# ---- right column: inspector
+	# right: inspector
 	var right := VBoxContainer.new()
-	right.custom_minimum_size = Vector2(280, 0)
+	right.custom_minimum_size = Vector2(290, 0)
 	main.add_child(right)
-	var il := Label.new()
-	il.text = "PROPERTIES"
-	il.add_theme_font_size_override("font_size", 18)
-	right.add_child(il)
+	var ipanel := _section("PROPERTIES")
+	ipanel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	right.add_child(ipanel)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	right.add_child(scroll)
+	ipanel.add_child(scroll)
 	_inspector = VBoxContainer.new()
 	_inspector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_inspector)
 
-	_status = Label.new()
-	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_status.custom_minimum_size = Vector2(0, 48)
-	left.add_child(_status)
+	# ---- status bar
+	var status_bar := PanelContainer.new()
+	status_bar.add_theme_stylebox_override("panel", _sb(C_TOOLBAR, C_BORDER, 0, 0))
+	root_vbox.add_child(status_bar)
+	var srow := HBoxContainer.new()
+	srow.add_theme_constant_override("separation", 8)
+	status_bar.add_child(srow)
+	_hint = _lbl("Wheel: zoom · Middle-drag: pan · Right-click: delete · Esc: select")
+	_hint.add_theme_color_override("font_color", C_DIM)
+	_hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	srow.add_child(_hint)
+	_status = _lbl("")
+	_status.add_theme_color_override("font_color", C_ACCENT)
+	_status.custom_minimum_size = Vector2(280, 0)
+	_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	srow.add_child(_status)
+
+	_apply_theme_recursive(root_vbox)
+
+
+# ------------------------------------------------------------- theme
+
+func _sb(bg: Color, border: Color = C_BORDER, radius: int = 4, bw: int = 1) -> StyleBoxFlat:
+	var s := StyleBoxFlat.new()
+	s.bg_color = bg
+	s.border_color = border
+	s.set_border_width_all(bw)
+	s.set_corner_radius_all(radius)
+	s.content_margin_left = 6
+	s.content_margin_right = 6
+	s.content_margin_top = 3
+	s.content_margin_bottom = 3
+	return s
+
+
+func _apply_theme_recursive(n: Node) -> void:
+	if (n is PanelContainer or n is Panel) and not n.has_theme_stylebox_override("panel"):
+		n.add_theme_stylebox_override("panel", _sb(C_PANEL))
+	elif n is Button:
+		var b := n as Button
+		var accent: bool = b.get_meta("accent", false)
+		var pressed_bg := C_ACCENT.darkened(0.45) if accent else C_ACCENT.darkened(0.55)
+		var pressed_border := C_ACCENT if accent else C_BORDER.lightened(0.2)
+		b.add_theme_stylebox_override("normal", _sb(C_PANEL2))
+		b.add_theme_stylebox_override("hover", _sb(C_PANEL2.lightened(0.10)))
+		b.add_theme_stylebox_override("pressed", _sb(pressed_bg, pressed_border))
+		b.add_theme_stylebox_override("hover_pressed", _sb(pressed_bg.lightened(0.08), pressed_border))
+		b.add_theme_stylebox_override("focus", _sb(Color(0, 0, 0, 0), C_ACCENT, 4, 1))
+		b.add_theme_stylebox_override("disabled", _sb(C_PANEL.darkened(0.3)))
+		b.add_theme_color_override("font_color", C_TEXT)
+		b.add_theme_color_override("font_hover_color", Color.WHITE)
+		b.add_theme_color_override("font_pressed_color", Color.WHITE)
+		b.add_theme_color_override("font_disabled_color", C_DIM)
+		b.add_theme_font_size_override("font_size", 12)
+	elif n is Label and not n.has_theme_color_override("font_color"):
+		n.add_theme_color_override("font_color", C_TEXT)
+	elif n is LineEdit:
+		n.add_theme_stylebox_override("normal", _sb(C_BG))
+		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
+		n.add_theme_color_override("font_color", C_TEXT)
+		n.add_theme_color_override("font_placeholder_color", C_DIM)
+	elif n is OptionButton:
+		n.add_theme_color_override("font_color", C_TEXT)
+		n.add_theme_color_override("font_selected_color", Color.WHITE)
+		n.add_theme_stylebox_override("normal", _sb(C_BG))
+		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
+		n.add_theme_stylebox_override("hover", _sb(C_PANEL2))
+		n.add_theme_stylebox_override("pressed", _sb(C_PANEL2.lightened(0.1)))
+		# dark dropdown popup
+		var pop: PopupMenu = n.get_popup()
+		if pop != null:
+			pop.add_theme_stylebox_override("panel", _sb(C_PANEL2, C_BORDER, 4, 1))
+			pop.add_theme_color_override("font_color", C_TEXT)
+			pop.add_theme_color_override("font_hover_color", Color.WHITE)
+	elif n is SpinBox:
+		n.add_theme_color_override("font_color", C_TEXT)
+		n.add_theme_color_override("font_selected_color", Color.WHITE)
+		n.add_theme_stylebox_override("normal", _sb(C_BG))
+		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
+		n.add_theme_stylebox_override("hover", _sb(C_PANEL2))
+		n.add_theme_stylebox_override("pressed", _sb(C_PANEL2.lightened(0.1)))
+	elif n is ItemList:
+		n.add_theme_stylebox_override("panel", _sb(C_BG))
+		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
+		n.add_theme_stylebox_override("selected", _sb(C_ACCENT.darkened(0.55), C_ACCENT, 3, 1))
+		n.add_theme_stylebox_override("selected_focus", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 3, 1))
+		n.add_theme_color_override("font_color", C_TEXT)
+		n.add_theme_color_override("font_selected_color", Color.WHITE)
+	elif n is ScrollBar:
+		n.add_theme_stylebox_override("scroll", _sb(C_BG, C_BORDER, 3, 0))
+		n.add_theme_stylebox_override("grabber", _sb(C_PANEL2.lightened(0.15), C_BORDER, 3, 0))
+		n.add_theme_stylebox_override("grabber_highlight", _sb(C_PANEL2.lightened(0.3), C_ACCENT, 3, 1))
+		n.add_theme_stylebox_override("grabber_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 3, 1))
+		n.add_theme_stylebox_override("increment", _sb(C_PANEL2, C_BORDER, 0, 0))
+		n.add_theme_stylebox_override("increment_highlight", _sb(C_PANEL2.lightened(0.2), C_ACCENT, 0, 0))
+		n.add_theme_stylebox_override("increment_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 0, 0))
+		n.add_theme_stylebox_override("decrement", _sb(C_PANEL2, C_BORDER, 0, 0))
+		n.add_theme_stylebox_override("decrement_highlight", _sb(C_PANEL2.lightened(0.2), C_ACCENT, 0, 0))
+		n.add_theme_stylebox_override("decrement_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 0, 0))
+	elif n is CheckBox:
+		n.add_theme_color_override("font_color", C_TEXT)
+		n.add_theme_color_override("font_hover_color", Color.WHITE)
+		n.add_theme_color_override("font_pressed_color", Color.WHITE)
+		n.add_theme_color_override("font_hover_pressed_color", Color.WHITE)
+	elif n is Separator or n is HSeparator or n is VSeparator:
+		n.add_theme_color_override("font_color", C_BORDER)
+	for c in n.get_children(true):
+		_apply_theme_recursive(c)
+
+
+func _section(title_text: String) -> PanelContainer:
+	var p := PanelContainer.new()
+	p.add_theme_stylebox_override("panel", _sb(C_PANEL, C_BORDER, 5, 1))
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 4)
+	p.add_child(vb)
+	var l := Label.new()
+	l.text = title_text
+	l.add_theme_font_size_override("font_size", 12)
+	l.add_theme_color_override("font_color", C_ACCENT)
+	vb.add_child(l)
+	return p
+
+
+func _tbtn(t: String, cb: Callable, accent := false) -> Button:
+	var b := Button.new()
+	b.text = t
+	if accent:
+		b.set_meta("accent", true)
+	b.pressed.connect(cb)
+	return b
+
+
+func _vsep() -> VSeparator:
+	var s := VSeparator.new()
+	s.add_theme_constant_override("separation", 4)
+	return s
+
+
+func _zoom_step(f: float) -> void:
+	_zoom = clampf(_zoom * f, 0.3, 4.0)
+	_apply_view()
+
+
+func _fit_view() -> void:
+	var s := _svc.size
+	if s.x <= 0 or s.y <= 0:
+		return
+	_zoom = clampf(minf(s.x / ROOM_W, s.y / ROOM_H) * 0.96, 0.3, 4.0)
+	_view_center = VIEW_CENTER
+	_apply_view()
 
 
 func _lbl(t: String) -> Label:
@@ -395,7 +574,8 @@ func _on_palette_pick(kind: int, btn: Button) -> void:
 	_tool = "spawn"
 	for k in _palette_btns:
 		_palette_btns[k].button_pressed = (_palette_btns[k] == btn)
-	_hint.text = "Placing %s — click the canvas. Right-click deletes, Esc cancels." % _kind_name(kind)
+	if _hint != null:
+		_hint.text = "Placing %s — click the canvas. Right-click deletes, Esc cancels." % _kind_name(kind)
 	if _status != null:
 		_status.text = "Placing: " + _kind_name(kind)
 
@@ -404,7 +584,8 @@ func _set_select_tool() -> void:
 	_tool = "select"
 	for k in _palette_btns:
 		_palette_btns[k].button_pressed = false
-	_hint.text = "Click an enemy below, then click the canvas to place it."
+	if _hint != null:
+		_hint.text = "Wheel: zoom · Middle-drag: pan · Right-click: delete · Esc: select"
 	if _status != null:
 		_status.text = "Select mode"
 
@@ -683,6 +864,7 @@ func _refresh_inspector() -> void:
 	var sel := _selected()
 	if sel.is_empty():
 		_inspector.add_child(_lbl("Select an item to edit its properties."))
+		_apply_theme_recursive(_inspector)
 		return
 	var it: Dictionary = _items[_sel]
 	if it.type == "spawn":
@@ -691,6 +873,7 @@ func _refresh_inspector() -> void:
 		_build_timing_inspector(sel)
 	else:
 		_build_player_inspector()
+	_apply_theme_recursive(_inspector)
 
 
 func _field_row(parent: VBoxContainer, text: String, control: Control) -> void:
@@ -795,6 +978,8 @@ func _on_data_changed() -> void:
 func _apply_view() -> void:
 	_level_view.scale = Vector2(_zoom, _zoom)
 	_level_view.position = VIEW_CENTER - _view_center * _zoom
+	if _zoom_lbl != null:
+		_zoom_lbl.text = "%d%%" % roundi(_zoom * 100)
 
 
 func _center_on(world: Vector2) -> void:

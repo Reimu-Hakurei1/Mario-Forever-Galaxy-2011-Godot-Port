@@ -4,6 +4,7 @@ extends Node2D
 ## over the 1024x768 room plus a faint grid and the room border.
 
 var bg_texture: Texture2D = null
+var show_grid := true
 
 
 func _draw() -> void:
@@ -17,9 +18,10 @@ func _draw() -> void:
 				for x in cols:
 					draw_texture(bg_texture, Vector2(x * w - 444.0, y * h))
 	# grid
-	for x in range(0, 1025, 64):
-		draw_line(Vector2(x, 0), Vector2(x, 768), Color(1, 1, 1, 0.06))
-	for y in range(0, 769, 64):
-		draw_line(Vector2(0, y), Vector2(1024, y), Color(1, 1, 1, 0.06))
+	if show_grid:
+		for x in range(0, 1025, 64):
+			draw_line(Vector2(x, 0), Vector2(x, 768), Color(1, 1, 1, 0.06))
+		for y in range(0, 769, 64):
+			draw_line(Vector2(0, y), Vector2(1024, y), Color(1, 1, 1, 0.06))
 	# room border
 	draw_rect(Rect2(0, 0, 1024, 768), Color(0.4, 0.8, 1.0, 0.9), false, 2.0)
