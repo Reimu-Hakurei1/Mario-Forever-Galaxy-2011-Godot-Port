@@ -4872,7 +4872,14 @@ static func display_get_height(S) -> Variant:
 	return DisplayServer.screen_get_size().y
 
 
+static func _window_maximized() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED
+
+
 static func window_set_size(S, w: int, h: int) -> Variant:
+	# a maximized window is a user choice — don't let the game shrink it
+	if _window_maximized():
+		return 0
 	DisplayServer.window_set_size(Vector2i(maxi(1, int(w)), maxi(1, int(h))))
 	return 0
 
@@ -4883,6 +4890,9 @@ static func window_set_position(S, x: int, y: int) -> Variant:
 
 
 static func window_set_fullscreen(S, full: Variant) -> Variant:
+	if float(full) == 0 and _window_maximized():
+		# leaving "fullscreen" while maximized: stay maximized, it's still windowed
+		return 0
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if float(full) != 0
 		else DisplayServer.WINDOW_MODE_WINDOWED)
 	return 0
@@ -5233,6 +5243,8 @@ static func texture_set_interpolation(S, linear: Variant) -> Variant:
 
 
 static func window_center(S) -> Variant:
+	if _window_maximized():
+		return 0
 	var screen := DisplayServer.screen_get_size()
 	var win := DisplayServer.window_get_size()
 	DisplayServer.window_set_position((screen - win) / 2)
