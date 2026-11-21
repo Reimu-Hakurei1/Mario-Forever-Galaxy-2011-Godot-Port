@@ -278,13 +278,5 @@
   "width": 1024,
   "height": 768,
   "fps": 60
- },
- {
-  "name": "custom_test_level",
-  "scene": "res://stages/custom/test_level.tscn",
-  "data": "",
-  "width": 1024,
-  "height": 768,
-  "fps": 60
  }
 ]

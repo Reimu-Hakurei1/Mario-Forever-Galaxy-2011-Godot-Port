@@ -78,7 +78,7 @@ The root node carries the room identity in metadata:
 - `gm_minigame` — non-zero for minigame rooms
 - `gm_label` — display name shown on the map ("ASTEROIDS")
 
-`editor/stage_launch.gd` reads these when you run a stage scene directly (F6):
+`engine/room_preview_boot.gd` reads these when you run a stage scene directly (F6):
 it sets `R.pending_stage_room/map/lev` and hands off to `scenes/game.tscn`, so a
 stage scene always boots the real game flow into that exact room.
 
@@ -112,38 +112,6 @@ code, views) that the `.tscn` scenes were generated from, and `levels/index.json
 maps every room to its scene + data file. `game/registry.json` maps every
 GameMaker object index to its English script path.
 
-### Custom level editor
-
-`editor/level_editor.tscn` is a standalone scene for building your own levels:
-
-```
-godot --path . editor/level_editor.tscn
-```
-
-- Pick a **base stage** — it supplies the wave timeline, music, and win
-  condition — or check **Blank level** to start from an empty timeline.
-- Choose a **background** and scroll speed; drag the **green marker** to set
-  the player start position.
-- **ENEMIES palette** — every enemy type as a sprite button; click one, then
-  click the canvas to place timed spawns. Each spawn has a start period,
-  count, interval, arrival sequence and target — editable in the properties
-  panel, by dragging its marker, or on the **wave timeline** strip under the
-  canvas (each colored span is a spawn's schedule on the 0–200 period axis —
-  click a span to select it).
-- **Canvas controls** — mouse wheel zooms, middle-drag pans, 8px grid snap
-  (toggleable), ghost preview follows the cursor while placing, right-click or
-  Delete removes a spawn, Esc returns to select mode, double-click an item in
-  the list to center the view on it.
-- **Timing rows** override the wave tables (`num`, `perioder`, `kamik`, ...)
-  for the base stage; **Add timing row** inserts a new one.
-- **Save** writes `stages/custom/<name>.tscn`, registers the room in
-  `game/rooms.json` / `game/registry.json`, and adds it to `levels/index.json`.
-- **Play** launches the saved level straight into the game.
-- **Open** reloads any previously saved custom level for further editing.
-
-Custom levels reuse the same `Waves` node format as the built-in stages, so
-they run through the exact same runtime path (`engine/level_wave_runtime.gd`).
-
 ## Repository layout
 
 | Path | Contents |
@@ -151,13 +119,12 @@ they run through the exact same runtime path (`engine/level_wave_runtime.gd`).
 | `engine/` | Hand-written compatibility runtime: `r.gd` (GM8 interpreter), `gm_instance.gd`, wave runtime, audio, surfaces |
 | `objects/<category>/` | One script per GameMaker object, named in English (`enemies/ufo_a.gd`, `effects/explosion_1.gd`, ...) |
 | `game/` | Generated data: globals, constants, registry, every GameMaker script body, room creation code |
-| `stages/` | All room scenes — `world_1..8/` levels plus map, shop, card game, cutscene scenes, and `custom/` user-made levels |
+| `stages/` | All room scenes — `world_1..8/` levels plus map, shop, card game, and cutscene scenes  |
 | `levels/` | Imported room JSON + `index.json` room catalog |
 | `data/` | `assets.json` mapping GameMaker sprite/sound ids to files |
 | `gfx/`, `music/`, `sfx/` | Extracted sprites, backgrounds, music, and sound effects |
 | `images/` | Additional sprite/background PNGs |
 | `native/` | Early experimental native-GDScript port (kept for reference; the shipping game uses the `engine/` runtime) |
-| `editor/` | Editor-only helpers: `stage_launch.gd` (boot stage scenes), `level_editor.*` + `level_view.gd` + `marker_ring.gd` + `wave_timeline.gd` (custom level editor) |
 | `tools/` | Headless probes and validation scripts |
 | `addons/room_frame/` | Editor plugin that draws level scenes |
 
