@@ -39,15 +39,10 @@ const KIND_NAMES := {
 }
 const TABLE_NAMES := ["num", "lev", "pozd", "levtime", "sekwencus", "kamik", "perioder", "sila_wrogow"]
 
-# dark editor theme
-const C_BG := Color(0.09, 0.10, 0.13)
-const C_TOOLBAR := Color(0.13, 0.14, 0.18)
-const C_PANEL := Color(0.15, 0.16, 0.21)
-const C_PANEL2 := Color(0.20, 0.21, 0.27)
-const C_BORDER := Color(0.32, 0.34, 0.42)
-const C_TEXT := Color(0.90, 0.91, 0.94)
-const C_DIM := Color(0.58, 0.60, 0.66)
+# editor palette (Mario-Maker style: light-blue panels, white buttons)
+const C_BG := Color(0.55, 0.65, 0.78)
 const C_ACCENT := Color(1.0, 0.62, 0.22)
+const C_DIM := Color(0.36, 0.38, 0.44)
 const C_GOOD := Color(0.40, 0.85, 0.50)
 
 var _assets: Dictionary = {}
@@ -186,7 +181,8 @@ func _tag(txt: String, prop: String) -> String:
 # ------------------------------------------------------------------ UI
 
 func _build_ui() -> void:
-	# ---- root: dark themed vertical layout
+	theme = _build_theme()
+	# ---- root layout
 	var bg := ColorRect.new()
 	bg.color = C_BG
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -198,7 +194,6 @@ func _build_ui() -> void:
 
 	# ---- top toolbar
 	var toolbar := PanelContainer.new()
-	toolbar.add_theme_stylebox_override("panel", _sb(C_TOOLBAR, C_BORDER, 0, 0))
 	root_vbox.add_child(toolbar)
 	var trow := HBoxContainer.new()
 	trow.add_theme_constant_override("separation", 6)
@@ -372,13 +367,11 @@ func _build_ui() -> void:
 
 	# ---- status bar
 	var status_bar := PanelContainer.new()
-	status_bar.add_theme_stylebox_override("panel", _sb(C_TOOLBAR, C_BORDER, 0, 0))
 	root_vbox.add_child(status_bar)
 	var srow := HBoxContainer.new()
 	srow.add_theme_constant_override("separation", 8)
 	status_bar.add_child(srow)
 	_hint = _lbl("Wheel: zoom · Middle-drag: pan · Right-click: delete · Esc: select")
-	_hint.add_theme_color_override("font_color", C_DIM)
 	_hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	srow.add_child(_hint)
 	_status = _lbl("")
@@ -387,102 +380,127 @@ func _build_ui() -> void:
 	_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	srow.add_child(_status)
 
-	_apply_theme_recursive(root_vbox)
-
 
 # ------------------------------------------------------------- theme
 
-func _sb(bg: Color, border: Color = C_BORDER, radius: int = 4, bw: int = 1) -> StyleBoxFlat:
+func _build_theme() -> Theme:
+	var th := Theme.new()
+	th.default_font = load("res://font/Super-Mario-Maker-2.ttf")
+	th.default_font_size = 16
+
+	# white rounded buttons with black border (SMM style), same art all states
+	var btn_tex: Texture2D = load("res://editor/ui/btn_frame.png")
+	var btn := StyleBoxTexture.new()
+	btn.texture = btn_tex
+	btn.texture_margin_left = 9.0
+	btn.texture_margin_top = 9.0
+	btn.texture_margin_right = 9.0
+	btn.texture_margin_bottom = 9.0
+	btn.content_margin_left = 12.0
+	btn.content_margin_right = 12.0
+	btn.content_margin_top = 5.0
+	btn.content_margin_bottom = 5.0
+	for sn in ["normal", "hover", "pressed", "hover_pressed", "focus"]:
+		th.set_stylebox(sn, "Button", btn)
+	var btn_dis := StyleBoxFlat.new()
+	btn_dis.bg_color = Color(0.72, 0.72, 0.76)
+	btn_dis.border_color = Color(0.35, 0.35, 0.4)
+	btn_dis.set_border_width_all(2)
+	btn_dis.set_corner_radius_all(8)
+	th.set_stylebox("disabled", "Button", btn_dis)
+	th.set_color("font_color", "Button", Color(0.24, 0.24, 0.24))
+	th.set_color("font_hover_color", "Button", Color(0.10, 0.10, 0.12))
+	th.set_color("font_pressed_color", "Button", Color(0.10, 0.10, 0.12))
+	th.set_color("font_disabled_color", "Button", Color(0.5, 0.5, 0.55))
+	th.set_color("font_outline_color", "Button", Color(0.34, 0.25, 1.0))
+	th.set_constant("outline_size", "Button", 2)
+
+	# labels: white text with thick black outline (readable on panels + canvas)
+	th.set_color("font_color", "Label", Color.WHITE)
+	th.set_color("font_outline_color", "Label", Color.BLACK)
+	th.set_constant("outline_size", "Label", 5)
+
+	# panels: light-blue SMM item box
+	var box_tex: Texture2D = load("res://editor/ui/panel_box.png")
+	var box := StyleBoxTexture.new()
+	box.texture = box_tex
+	box.texture_margin_left = 68.0
+	box.texture_margin_top = 64.0
+	box.texture_margin_right = 68.0
+	box.texture_margin_bottom = 64.0
+	box.content_margin_left = 14.0
+	box.content_margin_right = 14.0
+	box.content_margin_top = 10.0
+	box.content_margin_bottom = 10.0
+	th.set_stylebox("panel", "PanelContainer", box)
+	th.set_stylebox("panel", "Panel", box)
+
+	# text inputs reuse the white button box, dark text
+	for sn in ["normal", "hover", "pressed", "focus", "read_only"]:
+		th.set_stylebox(sn, "LineEdit", btn)
+	th.set_color("font_color", "LineEdit", Color(0.15, 0.15, 0.18))
+	th.set_color("font_placeholder_color", "LineEdit", Color(0.45, 0.45, 0.5))
+	th.set_color("caret_color", "LineEdit", Color(0.15, 0.15, 0.18))
+	th.set_color("selection_color", "LineEdit", Color(0.4, 0.6, 0.95, 0.6))
+	for sn in ["normal", "hover", "pressed", "focus", "disabled"]:
+		th.set_stylebox(sn, "OptionButton", btn)
+	th.set_color("font_color", "OptionButton", Color(0.15, 0.15, 0.18))
+	th.set_color("font_selected_color", "OptionButton", Color(0.15, 0.15, 0.18))
+
+	# item list: panel box, dark text, blue selection
+	th.set_stylebox("panel", "ItemList", box)
+	th.set_stylebox("focus", "ItemList", box)
+	var sel := StyleBoxFlat.new()
+	sel.bg_color = Color(0.35, 0.55, 0.95)
+	sel.set_corner_radius_all(3)
+	sel.content_margin_left = 4
+	sel.content_margin_right = 4
+	th.set_stylebox("selected", "ItemList", sel)
+	th.set_stylebox("selected_focus", "ItemList", sel)
+	th.set_color("font_color", "ItemList", Color(0.15, 0.15, 0.18))
+	th.set_color("font_selected_color", "ItemList", Color.WHITE)
+
+	# scroll bars: light grabber on translucent track
+	var sbg := StyleBoxFlat.new()
+	sbg.bg_color = Color(1, 1, 1, 0.2)
+	sbg.set_corner_radius_all(4)
+	var sgrab := StyleBoxFlat.new()
+	sgrab.bg_color = Color(0.92, 0.92, 0.96)
+	sgrab.border_color = Color(0.3, 0.3, 0.35)
+	sgrab.set_border_width_all(1)
+	sgrab.set_corner_radius_all(4)
+	th.set_stylebox("scroll", "ScrollBar", sbg)
+	for sn in ["grabber", "grabber_highlight", "grabber_pressed"]:
+		th.set_stylebox(sn, "ScrollBar", sgrab)
+
+	# checkboxes: same outlined white text as labels
+	for cn in ["font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color"]:
+		th.set_color(cn, "CheckBox", Color.WHITE)
+	th.set_color("font_outline_color", "CheckBox", Color.BLACK)
+	th.set_constant("outline_size", "CheckBox", 4)
+
+	# popup menus: panel box + dark text
+	th.set_stylebox("panel", "PopupMenu", box)
+	th.set_color("font_color", "PopupMenu", Color(0.15, 0.15, 0.18))
+	th.set_color("font_hover_color", "PopupMenu", Color.WHITE)
+	var hov := StyleBoxFlat.new()
+	hov.bg_color = Color(0.35, 0.55, 0.95)
+	hov.set_corner_radius_all(3)
+	th.set_stylebox("hover", "PopupMenu", hov)
+	return th
+
+
+func _sb(bg: Color, border: Color = Color.BLACK, radius: int = 6, bw: int = 2) -> StyleBoxFlat:
 	var s := StyleBoxFlat.new()
 	s.bg_color = bg
 	s.border_color = border
 	s.set_border_width_all(bw)
 	s.set_corner_radius_all(radius)
-	s.content_margin_left = 6
-	s.content_margin_right = 6
-	s.content_margin_top = 3
-	s.content_margin_bottom = 3
 	return s
-
-
-func _apply_theme_recursive(n: Node) -> void:
-	if (n is PanelContainer or n is Panel) and not n.has_theme_stylebox_override("panel"):
-		n.add_theme_stylebox_override("panel", _sb(C_PANEL))
-	elif n is Button:
-		var b := n as Button
-		var accent: bool = b.get_meta("accent", false)
-		var pressed_bg := C_ACCENT.darkened(0.45) if accent else C_ACCENT.darkened(0.55)
-		var pressed_border := C_ACCENT if accent else C_BORDER.lightened(0.2)
-		b.add_theme_stylebox_override("normal", _sb(C_PANEL2))
-		b.add_theme_stylebox_override("hover", _sb(C_PANEL2.lightened(0.10)))
-		b.add_theme_stylebox_override("pressed", _sb(pressed_bg, pressed_border))
-		b.add_theme_stylebox_override("hover_pressed", _sb(pressed_bg.lightened(0.08), pressed_border))
-		b.add_theme_stylebox_override("focus", _sb(Color(0, 0, 0, 0), C_ACCENT, 4, 1))
-		b.add_theme_stylebox_override("disabled", _sb(C_PANEL.darkened(0.3)))
-		b.add_theme_color_override("font_color", C_TEXT)
-		b.add_theme_color_override("font_hover_color", Color.WHITE)
-		b.add_theme_color_override("font_pressed_color", Color.WHITE)
-		b.add_theme_color_override("font_disabled_color", C_DIM)
-		b.add_theme_font_size_override("font_size", 12)
-	elif n is Label and not n.has_theme_color_override("font_color"):
-		n.add_theme_color_override("font_color", C_TEXT)
-	elif n is LineEdit:
-		n.add_theme_stylebox_override("normal", _sb(C_BG))
-		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
-		n.add_theme_color_override("font_color", C_TEXT)
-		n.add_theme_color_override("font_placeholder_color", C_DIM)
-	elif n is OptionButton:
-		n.add_theme_color_override("font_color", C_TEXT)
-		n.add_theme_color_override("font_selected_color", Color.WHITE)
-		n.add_theme_stylebox_override("normal", _sb(C_BG))
-		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
-		n.add_theme_stylebox_override("hover", _sb(C_PANEL2))
-		n.add_theme_stylebox_override("pressed", _sb(C_PANEL2.lightened(0.1)))
-		# dark dropdown popup
-		var pop: PopupMenu = n.get_popup()
-		if pop != null:
-			pop.add_theme_stylebox_override("panel", _sb(C_PANEL2, C_BORDER, 4, 1))
-			pop.add_theme_color_override("font_color", C_TEXT)
-			pop.add_theme_color_override("font_hover_color", Color.WHITE)
-	elif n is SpinBox:
-		n.add_theme_color_override("font_color", C_TEXT)
-		n.add_theme_color_override("font_selected_color", Color.WHITE)
-		n.add_theme_stylebox_override("normal", _sb(C_BG))
-		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
-		n.add_theme_stylebox_override("hover", _sb(C_PANEL2))
-		n.add_theme_stylebox_override("pressed", _sb(C_PANEL2.lightened(0.1)))
-	elif n is ItemList:
-		n.add_theme_stylebox_override("panel", _sb(C_BG))
-		n.add_theme_stylebox_override("focus", _sb(C_BG, C_ACCENT))
-		n.add_theme_stylebox_override("selected", _sb(C_ACCENT.darkened(0.55), C_ACCENT, 3, 1))
-		n.add_theme_stylebox_override("selected_focus", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 3, 1))
-		n.add_theme_color_override("font_color", C_TEXT)
-		n.add_theme_color_override("font_selected_color", Color.WHITE)
-	elif n is ScrollBar:
-		n.add_theme_stylebox_override("scroll", _sb(C_BG, C_BORDER, 3, 0))
-		n.add_theme_stylebox_override("grabber", _sb(C_PANEL2.lightened(0.15), C_BORDER, 3, 0))
-		n.add_theme_stylebox_override("grabber_highlight", _sb(C_PANEL2.lightened(0.3), C_ACCENT, 3, 1))
-		n.add_theme_stylebox_override("grabber_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 3, 1))
-		n.add_theme_stylebox_override("increment", _sb(C_PANEL2, C_BORDER, 0, 0))
-		n.add_theme_stylebox_override("increment_highlight", _sb(C_PANEL2.lightened(0.2), C_ACCENT, 0, 0))
-		n.add_theme_stylebox_override("increment_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 0, 0))
-		n.add_theme_stylebox_override("decrement", _sb(C_PANEL2, C_BORDER, 0, 0))
-		n.add_theme_stylebox_override("decrement_highlight", _sb(C_PANEL2.lightened(0.2), C_ACCENT, 0, 0))
-		n.add_theme_stylebox_override("decrement_pressed", _sb(C_ACCENT.darkened(0.5), C_ACCENT, 0, 0))
-	elif n is CheckBox:
-		n.add_theme_color_override("font_color", C_TEXT)
-		n.add_theme_color_override("font_hover_color", Color.WHITE)
-		n.add_theme_color_override("font_pressed_color", Color.WHITE)
-		n.add_theme_color_override("font_hover_pressed_color", Color.WHITE)
-	elif n is Separator or n is HSeparator or n is VSeparator:
-		n.add_theme_color_override("font_color", C_BORDER)
-	for c in n.get_children(true):
-		_apply_theme_recursive(c)
 
 
 func _section(title_text: String) -> PanelContainer:
 	var p := PanelContainer.new()
-	p.add_theme_stylebox_override("panel", _sb(C_PANEL, C_BORDER, 5, 1))
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 4)
 	p.add_child(vb)
@@ -556,11 +574,16 @@ func _build_palette() -> void:
 		var l := Label.new()
 		l.text = _kind_name(k).left(9)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		l.add_theme_font_size_override("font_size", 9)
+		l.add_theme_font_size_override("font_size", 10)
+		l.add_theme_color_override("font_color", Color(0.24, 0.24, 0.24))
 		l.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 		l.offset_top = -16
 		l.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		b.add_child(l)
+		# gold highlight while this enemy is armed for placement
+		var sel_box := _sb(Color(1.0, 0.88, 0.45), Color(0.55, 0.38, 0.05), 8, 3)
+		b.add_theme_stylebox_override("pressed", sel_box)
+		b.add_theme_stylebox_override("hover_pressed", sel_box)
 		b.pressed.connect(_on_palette_pick.bind(k, b))
 		_palette_grid.add_child(b)
 		_palette_btns[k] = b
@@ -864,7 +887,6 @@ func _refresh_inspector() -> void:
 	var sel := _selected()
 	if sel.is_empty():
 		_inspector.add_child(_lbl("Select an item to edit its properties."))
-		_apply_theme_recursive(_inspector)
 		return
 	var it: Dictionary = _items[_sel]
 	if it.type == "spawn":
@@ -873,7 +895,6 @@ func _refresh_inspector() -> void:
 		_build_timing_inspector(sel)
 	else:
 		_build_player_inspector()
-	_apply_theme_recursive(_inspector)
 
 
 func _field_row(parent: VBoxContainer, text: String, control: Control) -> void:
